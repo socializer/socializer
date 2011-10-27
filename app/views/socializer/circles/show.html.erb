@@ -1,0 +1,12 @@
+<h1><%= @circle.name %></h1>
+<h2>Ties (<%= @circle.ties.count %>)</h2>
+<ul>
+<% @circle.ties.each do |tie| %>
+<li><%= tie.contact.display_name %> (<%= link_to "delete", tie, :method => :delete %>)</li>
+<% end %>
+</ul>
+
+<%= form_for @circle.ties.build do |f| %>
+  <%= f.hidden_field :circle_id %>  <%= select("tie", "contact_id", @users.collect {|p| [ p.display_name, p.embedded_object.id ] }, {:include_blank => ''}) %>
+  <%= f.submit "add" %>
+<% end %>

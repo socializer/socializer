@@ -1,0 +1,23 @@
+<%= form_for(@person) do |form| %>
+
+<p>
+  <%= form.label :display_name %><br>
+  <%= form.text_field :display_name %>
+</p>
+
+<p>
+  <%= form.label :email %><br>
+  <%= form.text_field :email %>
+</p>
+
+<p>
+  <%= form.label :language %><br>
+  <%= form.text_field :language %>
+</p>
+
+<p>
+  <%= link_to "Cancel", people_path %>
+  <%= form.submit %>
+</p>
+
+<% end %>

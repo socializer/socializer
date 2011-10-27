@@ -1,0 +1,15 @@
+<%= form_for(@comment) do |form| %>
+
+<p>
+  <%= form.label :content, "What's in your mind?" %><br>
+  <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
+</p>
+
+<%= form.hidden_field :object_id, :value => params[:id] %>
+
+<p>
+  <%= link_to "Cancel", stream_path %>
+  <%= form.submit %>
+</p>
+
+<% end %>

@@ -1,0 +1,29 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+ul.activities {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.activities > li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+ul.activities ul {
+  list-style-type: none;
+  margin: 5px 50px;
+  padding: 0;
+}
+
+ul.activities ul > li {
+  border-bottom-width: 0;
+  padding: 0;
+}
+
+.activity-content {
+  white-space: pre;
+}

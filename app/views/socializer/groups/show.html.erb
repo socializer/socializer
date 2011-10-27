@@ -1,0 +1,32 @@
+<h1><%= @group.name %> (<%= @group.privacy_level %>)</h1>
+<p><%= @group.author.display_name %></p>
+<p>Embeddable type : <%= @group.embedded_object.embeddable_type %> </p>
+<p><%= link_to "Return to all notes", groups_path %></p>
+
+<% if ! @group.member?(current_user) %>
+
+<%= form_for current_user.memberships.build(:group_id => @group.id) do |f| %>
+  <%= f.hidden_field :group_id %>
+  <%= f.submit "join" %>
+<% end %>
+
+<% else %>
+
+<%= link_to "leave", @membership, :method => :delete %>
+
+<% end %>
+
+<h2>Members</h2>
+<ul>
+<% @group.memberships.each do |membership| %>
+  <li><%= membership.member.display_name %><% unless membership.active %> (Not approved yet, <%= link_to "approve", approve_membership_path(membership) %>)<% end %></li>
+<% end %>
+</ul>
+
+<% if @group.privacy_level == 'PRIVATE' %>
+<h2>Invite members</h2>
+<% Socializer::Person.all.each do |user| %>
+  <li><%= link_to user.display_name, invite_membership_path(:group_id => @group, :user_id => user) %></li>
+<% end %>
+
+<% end %>

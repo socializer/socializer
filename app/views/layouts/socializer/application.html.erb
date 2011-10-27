@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socializer</title>
+  <%= stylesheet_link_tag    "socializer/application" %>
+  <%= javascript_include_tag "socializer/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if signed_in? %>
+<div style="width: 960px; margin: 0 auto;">
+  <div style="border-bottom: 1px solid #ddd; padding: 10px 0 20px;">
+    <span style="font-weight: bold; font-size: 40px; margin-right: 40px;">Socializer</span>
+    <%= link_to "Home", root_path %> |
+    <%= link_to "Profile", stream_path(:provider => :people, :id => current_user.id) %> |
+    <%= link_to "Circles", circles_path %> |
+    <%= link_to "Authentications", authentications_path %> |
+    <%= link_to "Groups", groups_path %> |
+    <%= link_to "Notifications", notifications_path %> |
+    <%= link_to "Sign out", signout_path, :method => :delete %>
+  </div>
+  <div style="float: left; width: 200px;">
+    <p><%= link_to current_user.display_name, stream_path(:provider => :people, :id => current_user.id) %></p>
+    <p><%= link_to "Streams", stream_path %></p>
+    <ul>
+    <% current_user.circles.each do |circle| %>
+      <li><%= link_to circle.name, stream_path(:provider => :circles, :id => circle.id) %></li>
+    <% end %>
+    </ul>
+    <ul>
+    <% current_user.memberships.each do |membership| %>
+      <li><%= link_to membership.group.name, stream_path(:provider => :groups, :id => membership.group.id) %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% if params[:controller] == 'socializer/activities' %>
+  <div style="float: left; width: 500px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; padding: 0 29px;">
+    <%= yield %>
+  </div>
+  <div style="float: left; width: 160px; padding: 0 20px;">
+    <% if params[:provider] == 'circles' %>
+    <h3><%= @title %></h3>
+    <p><%= @circle.description %></p>
+    <ul style="padding: 0 20px; margin: 0;">
+    <% @circle.ties.each do |tie| %>
+    <li><%= link_to tie.contact.display_name, stream_path(:provider => :people, :id => tie.contact.id) %>
+    <% end %>
+  </ul>
+    <% elsif params[:provider] == 'people' %>
+    <h3><%= @title %></h3>
+    <p><%= @person.email %></p>
+    <% elsif params[:provider] == 'groups' %>
+    <h3><%= @title %></h3>
+    <% @group.members.each do |member| %>
+    <li><%= link_to member.display_name, stream_path(:provider => :people, :id => member.id) %>
+    <% end %>
+    <% elsif params[:provider].nil? %>
+    <h3>In your circles</h3>
+    <ul style="padding: 0 20px; margin: 0;">
+    <% current_user.circles.each do |circle| %>
+    <% circle.ties.each do |tie| %>
+    <li><%= link_to tie.contact.display_name, stream_path(:provider => :people, :id => tie.contact.id) %>
+    <% end %>
+    <% end %>
+  </ul>
+    <% else %>
+    <div style="white-space: pre-wrap;"><%= params.to_yaml %></div>
+    <% end %>
+  </div>
+  <% else %>
+  <div style="float: left; width: 701px; border-left: 1px solid #ddd; padding: 0 29px;">
+    <%= yield %>
+  </div>
+  <% end %>
+</div>
+
+<% else %>
+<div style="width: 960px; margin: 0 auto;">
+  <h1>Welcome to Socializer</h1>
+  <h2>You can login using the following services</h2>
+  <p>
+    <%= link_to image_tag("socializer/auth_buttons/facebook_32.png"), signin_path(:facebook) %>
+    <%= link_to image_tag("socializer/auth_buttons/twitter_32.png"), signin_path(:twitter) %>
+    <%= link_to image_tag("socializer/auth_buttons/linkedin_32.png"), signin_path(:linked_in) %>
+    <%= link_to image_tag("socializer/auth_buttons/yahoo_32.png"), signin_path(:yahoo) %>
+    <%= link_to image_tag("socializer/auth_buttons/google_32.png"), signin_path(:google) %>
+  </p>
+</div>
+<% end %>
+
+</body>
+</html>

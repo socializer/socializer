@@ -1,0 +1,18 @@
+<%= form_for(@circle) do |form| %>
+
+<p>
+  <%= form.label :name %><br>
+  <%= form.text_field :name %>
+</p>
+
+<p>
+  <%= form.label :description %><br>
+  <%= form.text_area :description %>
+</p>
+
+<p>
+  <%= link_to "Cancel", circles_path %>
+  <%= form.submit %>
+</p>
+
+<% end %>

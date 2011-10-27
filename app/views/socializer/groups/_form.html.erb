@@ -1,0 +1,35 @@
+<%= form_for(@group) do |form| %>
+
+<p>
+  <%= form.label :name %><br>
+  <%= form.text_field :name %>
+</p>
+
+<fieldset>
+  <legend>Privacy level</legend>
+  <p>
+    <label>
+      <%= form.radio_button "privacy_level", "PUBLIC" %>
+      Public
+    </label>
+  </p>
+  <p>
+    <label>
+      <%= form.radio_button "privacy_level", "RESTRICTED" %>
+      Restricted
+    </label>
+  </p>
+  <p>
+    <label>
+      <%= form.radio_button "privacy_level", "PRIVATE" %>
+      Private
+    </label>
+  </p>
+</fieldset>
+
+<p>
+  <%= link_to "Cancel", groups_path %>
+  <%= form.submit %>
+</p>
+
+<% end %>

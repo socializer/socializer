@@ -1,0 +1,6 @@
+<h1>Notifications</h1>
+<ul>
+<% @notifications.each do |recipient| %>
+  <li><% unless recipient.read? %><b><% end %><%= link_to recipient.message.title, recipient.message %><% unless recipient.read? %></b><% end %></li>
+<% end %>
+</ul>

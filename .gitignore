@@ -1,0 +1,17 @@
+*.DS_Store
+*.rbc
+*.sassc
+.sass-cache
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/pkg/*
+/spec/tmp/*
+/config/*.yml
+/config/initializers/omniauth.rb
+
+test/dummy/config/*.yml
+test/dummy/log/
+test/dummy/tmp/

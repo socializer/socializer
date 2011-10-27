@@ -1,0 +1,13 @@
+<%= form_for(@note) do |form| %>
+
+<p>
+  <%= form.label :content, "What's in your mind?" %><br>
+  <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
+</p>
+
+<p>
+  <%= link_to "Cancel", stream_path %>
+  <%= form.submit %>
+</p>
+
+<% end %>
