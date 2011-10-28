@@ -35,13 +35,13 @@ module Socializer
         activity.verb      = activity_verb
         activity.save!
         
-        if scope == 'PUBLIC' || scope == 'CIRCLES'
-          audience             = Audience.new
-          audience.activity_id = activity.id       
-          audience.scope       = scope        
-          audience.save!
-        else
-          object_ids.each do |object_id|
+        object_ids.each do |object_id|
+          if object_id == 'PUBLIC' || object_id == 'CIRCLES'
+            audience             = Audience.new
+            audience.activity_id = activity.id       
+            audience.scope       = object_id        
+            audience.save!
+          else
             audience             = Audience.new
             audience.activity_id = activity.id       
             audience.scope       = 'LIMITED'

@@ -5,33 +5,14 @@
   <%= form.label :content, "What's in your mind?" %><br>
   <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
 </p>
-<fieldset>
-  <legend>Audiences</legend>
-  <label>
-  <%= check_box_tag "note[scope]", "PUBLIC" %>
-  Public
-  <%= check_box_tag "note[scope]", "CIRCLES" %>
-  Circles
-  </label>
-  <% current_user.circles.each do |circle| %>
-    <label>
-    <%= check_box_tag "note[object_ids][]", circle.guid %>
-    <%= circle.name %>
-    </label>
-  <% end %>
-  <% Socializer::Person.all.each do |person| %>
-   <label>
-    <%= check_box_tag "note[object_ids][]", person.guid %>
-    <%= person.display_name %>
-    </label>
-  <% end %>
-  <% Socializer::Group.all.each do |group| %>
-   <label>
-    <%= check_box_tag "note[object_ids][]", group.guid %>
-    <%= group.name %>
-    </label>
-  <% end %>
-</fieldset>
+<p>
+	<%= form.text_field :object_ids %>
+</p>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#note_object_ids").tokenInput("audiences.json", { minChars: 0 });
+    });
+    </script>
 <p>
   <%= form.submit "Post" %>
 </p>

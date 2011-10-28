@@ -7,6 +7,7 @@ module Socializer
   
     def create
       @note = current_user.embedded_object.notes.build(params[:note])
+      @note.object_ids = @note.object_ids.split(",")
       @note.activity_verb = 'post'
       @note.save!
       redirect_to stream_path

@@ -29,6 +29,8 @@ Socializer::Engine.routes.draw do
   resources :ties,            :only => [ :create, :destroy ]
   resources :notifications,   :only => [ :index ]
   
+  resources :audiences,       :only => [ :index ]
+  
   root :to => "pages#index"
 
 end
