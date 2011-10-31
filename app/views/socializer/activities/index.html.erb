@@ -10,7 +10,7 @@
 </p>
     <script type="text/javascript">
     $(document).ready(function() {
-        $("#note_object_ids").tokenInput("audiences.json", { minChars: 0 });
+        $("#note_object_ids").tokenInput("<%= audiences_path %>", { minChars: 0 });
     });
     </script>
 <p>
