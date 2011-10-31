@@ -6,11 +6,11 @@
   </label>
 </p>
 <p>
-    <%= form.text_field :object_ids %>
+	<input type="text" name="share[object_ids]" id="share_object_ids" />
 </p>
     <script type="text/javascript">
     $(document).ready(function() {
-        $("#note_object_ids").tokenInput("<%= audiences_path %>", { minChars: 0 });
+        $("#share_object_ids").tokenInput("<%= audiences_path %>", { minChars: 0 });
     });
     </script>
 <input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @embedded_object.id %>">
