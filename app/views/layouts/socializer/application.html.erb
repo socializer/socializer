@@ -52,7 +52,7 @@
     <% elsif params[:provider] == 'people' %>
     <h3><%= @title %></h3>
     <p><%= @person.email %></p>
-    <% if current_user?(current_user) %>
+    <% if current_user?(@person) %>
     <p><%= link_to "Edit your profile", edit_person_path(current_user) %></p>
     <% end %>
     <% elsif params[:provider] == 'groups' %>
