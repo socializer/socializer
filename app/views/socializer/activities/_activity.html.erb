@@ -48,6 +48,8 @@
 <%= link_to "Delete", activity.object, :method => :delete %>
 <% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
 &#8211;
+<%= link_to "Comment", stream_comment_path(activity) %>
+&#8211;
 <%= link_to "Delete", activity, :method => :delete %>
 <% end %>
 <% end %>
