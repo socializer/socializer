@@ -1,8 +1,21 @@
+gem_version = File.read(File.expand_path("SOCIALIZER_VERSION", __FILE__)).strip
+
 Gem::Specification.new do |s|
-  s.name = "socializer"
-  s.authors = ["Dominic Goulet"]
-  s.summary = "Make your project social."
-  s.description = "Add social network capabilities to your projects."
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.version = "0.1.2"
+
+  s.name        = 'socializer'
+  s.version     = gem_version
+  s.summary     = 'Make your project social.'
+  s.description = 'Add social network capabilities to your projects.'
+  
+  s.author      = 'Dominic Goulet'
+  s.email       = 'dominic.goulet@froggedsoft.com'
+  s.homepage    = 'http://www.froggedsoft.com'
+  
+  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  
+  s.add_dependency('rails',        '3.1.0')
+  s.add_dependency('mysql2',       '0.3.7')
+  s.add_dependency('omniauth',     '0.2.6')
+  s.add_dependency('jquery-rails', '1.0.14')
+  
 end
