@@ -9,12 +9,12 @@ module Socializer
         @groups = Group.where("name LIKE '%" + params[:q] + "%'")
       else
         @people = []
-        @circles = []
-        @groups = []
+        @circles = current_user.circles
+        @groups = current_user.groups
       end
       
       @audiences = ["id" => "PUBLIC", "name" => "Public"] +
-                   ["id" => "CIRCLES", "name" => "Circles"] + 
+                   ["id" => "CIRCLES", "name" => "Your circles"] + 
                    @people.collect{ |x| {"id" => x.guid, "name" => x.display_name} } + 
                    @circles.collect{ |x| {"id" => x.guid, "name" => x.name} } +
                    @groups.collect{ |x| {"id" => x.guid, "name" => x.name} }
