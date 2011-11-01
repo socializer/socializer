@@ -6,13 +6,17 @@
   <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
 </p>
 <p>
-	<%= form.text_field :object_ids %>
+  <%= form.text_field :object_ids %>
 </p>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#note_object_ids").tokenInput("<%= audiences_path %>", { minChars: 0 });
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#note_object_ids").tokenInput("<%= audiences_path %>", { 
+      minChars: 0
+     ,preventDuplicates: true
+     <% unless @current_id.nil? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
     });
-    </script>
+  });
+</script>
 <p>
   <%= form.submit "Post" %>
 </p>

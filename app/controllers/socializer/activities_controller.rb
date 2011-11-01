@@ -3,15 +3,19 @@ module Socializer
     
     def index
       @activities = Activity.stream(:provider => params[:provider], :actor_id => params[:id], :viewer_id => current_user.id)
+      @current_id = nil
       if params[:provider] == 'circles'
         @circle = Circle.find(params[:id])
         @title = @circle.name
+        @current_id = @circle.guid
       elsif params[:provider] == 'people'
         @person = Person.find(params[:id])
-        @title = @person.display_name  
+        @title = @person.display_name
+        @current_id = @circle.guid
       elsif params[:provider] == 'groups'
         @group = Group.find(params[:id])
-        @title = @group.name       
+        @title = @group.name
+        @current_id = @circle.guid
       else
         @title = "Activity stream"
       end
