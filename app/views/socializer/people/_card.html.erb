@@ -1,0 +1,5 @@
+<h3><%= @title %></h3>
+<p><%= @person.email %></p>
+<% if current_user?(@person) %>
+<p><%= link_to "Edit your profile", edit_person_path(current_user) %></p>
+<% end %>

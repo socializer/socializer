@@ -1,0 +1,7 @@
+<h3><%= @title %></h3>
+<p><%= @circle.description %></p>
+<ul style="padding: 0 20px; margin: 0;">
+<% @circle.ties.each do |tie| %>
+  <li><%= link_to tie.contact.display_name, stream_path(:provider => :people, :id => tie.contact.id) %>
+<% end %>
+</ul>
