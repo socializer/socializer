@@ -1,4 +1,4 @@
-gem_version = File.read(File.expand_path("SOCIALIZER_VERSION", __FILE__)).strip
+gem_version = File.read(File.expand_path("../SOCIALIZER_VERSION", __FILE__)).strip
 
 Gem::Specification.new do |s|
 
