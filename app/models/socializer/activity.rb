@@ -12,21 +12,13 @@ module Socializer
     belongs_to :embeddable_object,   :class_name => 'EmbeddedObject', :foreign_key => 'object_id'
     belongs_to :embeddable_target,   :class_name => 'EmbeddedObject', :foreign_key => 'target_id'
     
+    has_one :actor,  :through => :embeddable_actor, :source => :embeddable
+    has_one :object, :through => :embeddable_actor, :source => :embeddable
+    has_one :target, :through => :embeddable_actor, :source => :embeddable
+    
     attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
     
     default_scope :order => 'created_at DESC'
-    
-    def actor
-      embeddable_actor.embeddable
-    end
-    
-    def object
-      embeddable_object.embeddable
-    end
-    
-    def target
-      embeddable_target.embeddable
-    end
     
     def comments
       children
