@@ -12,10 +12,10 @@
 
 <% if signed_in? %>
 
-  <%= render 'header' %>
+  <%= render 'layouts/socializer/header' %>
 
   <div style="float: left; width: 200px;">
-    <%= render 'activities/stream_list' %>
+    <%= render 'socializer/activities/stream_list' %>
   </div>
 
   <% if params[:controller] == 'socializer/activities' %>
@@ -27,13 +27,13 @@
   <div style="float: left; width: 160px; padding: 0 20px;">
 
     <% if params[:provider] == 'circles' %>
-      <%= render 'circles/card' %>
+      <%= render 'socializer/circles/card' %>
     <% elsif params[:provider] == 'people' %>
-      <%= render 'people/card' %>
+      <%= render 'socializer/people/card' %>
     <% elsif params[:provider] == 'groups' %>
-      <%= render 'groups/card' %>
+      <%= render 'socializer/groups/card' %>
     <% elsif params[:provider].nil? %>
-      <%= render 'activities/stream_card' %>
+      <%= render 'socializer/activities/stream_card' %>
     <% else %>
     <div style="white-space: pre-wrap;"><%= params.to_yaml %></div>
     <% end %>
@@ -49,7 +49,7 @@
   <% end %>
 
 <% else %>
-  <%= render 'people/login' %>
+  <%= render 'socializer/people/login' %>
 <% end %>
 
 </div>

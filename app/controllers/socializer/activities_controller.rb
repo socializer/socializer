@@ -56,6 +56,10 @@ module Socializer
         end
       end
       
+      # Remove any duplicates from the list. It can happen when, for example, someone
+      # post a message to itself.
+      @object_ids.uniq!
+      
     end
     
     def like
