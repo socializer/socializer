@@ -11,11 +11,11 @@ module Socializer
       elsif params[:provider] == 'people'
         @person = Person.find(params[:id])
         @title = @person.display_name
-        @current_id = @circle.guid
+        @current_id = @person.guid
       elsif params[:provider] == 'groups'
         @group = Group.find(params[:id])
         @title = @group.name
-        @current_id = @circle.guid
+        @current_id = @group.guid
       else
         @title = "Activity stream"
       end
