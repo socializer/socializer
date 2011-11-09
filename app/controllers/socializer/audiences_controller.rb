@@ -5,8 +5,8 @@ module Socializer
       
       if !params[:q].nil? && params[:q].size > 0
         @people = Person.where("display_name LIKE '%" + params[:q] + "%'")
-        @circles = Circle.where("name LIKE '%" + params[:q] + "%'")
-        @groups = Group.where("name LIKE '%" + params[:q] + "%'")
+        @circles = current_user.circles.where("name LIKE '%" + params[:q] + "%'")
+        @groups = current_user.groups.where("name LIKE '%" + params[:q] + "%'")
       else
         @people = []
         @circles = current_user.circles
