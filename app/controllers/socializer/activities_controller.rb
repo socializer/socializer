@@ -26,19 +26,30 @@ module Socializer
       @object_ids = []
       
       activities.each do |activity|
+      
+        # The actor of the activity is always part of the audience.
+        @object_ids.push activity.embeddable_actor
+      
         activity.audiences.each do |audience|
+          # In case of CIRCLES audience, add each contacts of every circles
+          # of the actor of the activity.
           if audience.scope == 'CIRCLES'
-            current_user.circles.each do |circle|
+            activity.actor.circles.each do |circle|
               circle.embedded_contacts.each do |contact|
                 @object_ids.push contact
               end
             end
           else
             if audience.embedded_object.embeddable_type == 'Socializer::Circle'
+              # In the case of LIMITED audience, then go through all the audience
+              # circles and add contacts from those circles in the list of allowed
+              # audience.
               audience.embedded_object.embeddable.embedded_contacts.each do |contact|
                 @object_ids.push contact
               end
             else
+              # Otherwise, the target audience is either a group or a person,
+              # which means we can add it as it is in the audience list.
               @object_ids.push audience.embedded_object
             end
           end
