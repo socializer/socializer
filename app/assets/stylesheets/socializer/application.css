@@ -5,3 +5,15 @@
  *= require_self
  *= require_tree . 
 */
+#page-header
+{
+	border-bottom: 1px solid #ddd; 
+	padding: 10px 0 20px;
+}
+
+#page-header img:hover
+{
+	opacity: .5;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // first!
+	filter: alpha(opacity=50);					// second!
+}

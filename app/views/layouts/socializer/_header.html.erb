@@ -1,10 +1,10 @@
-<div style="border-bottom: 1px solid #ddd; padding: 10px 0 20px;">
+<div id="page-header">
   <span style="font-weight: bold; font-size: 40px; margin-right: 40px;">Socializer</span>
-  <%= link_to "Home", root_path %> |
-  <%= link_to "Profile", stream_path(:provider => :people, :id => current_user.id) %> |
-  <%= link_to "Circles", circles_path %> |
-  <%= link_to "Authentications", authentications_path %> |
-  <%= link_to "Groups", groups_path %> |
-  <%= link_to "Notifications", notifications_path %> |
-  <%= link_to "Sign out", signout_path, :method => :delete %>
+  <%= link_to image_tag("socializer/icons/Home.png",  :width => 60, :title => "Home"),            root_path %>
+  <%= link_to image_tag("socializer/icons/User.png",  :width => 60, :title => "Profile"),         stream_path(:provider => :people, :id => current_user.id) %>
+  <%= link_to image_tag("socializer/icons/Web.png",   :width => 60, :title => "Circles"),         circles_path %>
+  <%= link_to image_tag("socializer/icons/Safe.png",  :width => 60, :title => "Authentications"), authentications_path %>
+  <%= link_to image_tag("socializer/icons/Users.png", :width => 60, :title => "Groups"),          groups_path %>
+  <%= link_to image_tag("socializer/icons/Bell.png",  :width => 60, :title => "Notifications"),   notifications_path %>
+  <%= link_to image_tag("socializer/icons/Power.png", :width => 60, :title => "Signout"),         signout_path, :method => :delete %>
 </div>
