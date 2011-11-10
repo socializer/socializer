@@ -81,6 +81,7 @@ module Socializer
                               "FROM socializer_circles " +
                               "INNER JOIN socializer_embedded_objects " +
                               "ON socializer_circles.id = socializer_embedded_objects.embeddable_id " +
+                                  "AND socializer_embedded_objects.embeddable_type = 'Socializer::Circle' " +
                               "WHERE socializer_embedded_objects.id = socializer_audiences.object_id "
       
       # Retrieve all the contacts (people) that are part of those circles
