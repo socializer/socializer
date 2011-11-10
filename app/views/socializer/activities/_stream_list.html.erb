@@ -1,11 +1,11 @@
 <p><%= link_to current_user.display_name, stream_path(:provider => :people, :id => current_user.id) %></p>
 <p><%= link_to "Streams", stream_path %></p>
-<ul>
+<ul id="circles-stream-list">
 <% current_user.circles.each do |circle| %>
   <li><%= link_to circle.name, stream_path(:provider => :circles, :id => circle.id) %></li>
 <% end %>
 </ul>
-<ul>
+<ul id="groups-stream-list">
 <% current_user.memberships.each do |membership| %>
   <li><%= link_to membership.group.name, stream_path(:provider => :groups, :id => membership.group.id) %></li>
 <% end %>

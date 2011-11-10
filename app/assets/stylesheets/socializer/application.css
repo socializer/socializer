@@ -5,15 +5,77 @@
  *= require_self
  *= require_tree . 
 */
+
+#outer-page
+{
+    width: 960px; 
+    margin: 0 auto;
+}
+
 #page-header
 {
 	border-bottom: 1px solid #ddd; 
-	padding: 10px 0 20px;
+	padding: 15px 0 5px;
+    text-align: center;
 }
 
 #page-header img:hover
 {
 	opacity: .5;
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // first!
-	filter: alpha(opacity=50);					// second!
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+}
+
+#stream-column
+{
+    float: left; 
+    width: 200px;
+}
+
+#stream-column a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+#stream-column a:hover
+{
+    color: #aaa;
+}
+
+#stream-column p a
+{
+    font-weight: bold;
+}
+
+#stream-column ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#stream-column ul li
+{
+    padding: 0 0 0 20px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 16px 16px;
+}
+
+#circles-stream-list li
+{
+    background-image: url(icons/Web.png);
+}
+
+#groups-stream-list
+{
+    background-image: url(icons/Users.png);
+}
+
+#contextual-column
+{
+    float: left; 
+    width: 160px; 
+    padding: 0 20px;
 }

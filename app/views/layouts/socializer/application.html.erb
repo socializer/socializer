@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<div style="width: 960px; margin: 0 auto;">
+<div id="outer-page">
 
 <% if signed_in? %>
 
   <%= render 'layouts/socializer/header' %>
 
-  <div style="float: left; width: 200px;">
+  <div id="stream-column">
     <%= render 'socializer/activities/stream_list' %>
   </div>
 
@@ -24,7 +24,7 @@
     <%= yield %>
   </div>
 
-  <div style="float: left; width: 160px; padding: 0 20px;">
+  <div id="contextual-column">
 
     <% if params[:provider] == 'circles' %>
       <%= render 'socializer/circles/card' %>
