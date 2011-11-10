@@ -60,6 +60,10 @@ module Socializer
       # post a message to itself.
       @object_ids.uniq!
       
+      respond_to do |format|
+        format.html { render :layout => false if request.xhr? }
+      end
+      
     end
     
     def like
@@ -79,7 +83,12 @@ module Socializer
       @object_ids = []            
       activity.embedded_object.likes.each do |person|
         @object_ids.push person.embedded_object
-      end        
+      end
+      
+      respond_to do |format|
+        format.html { render :layout => false if request.xhr? }
+      end
+      
     end
     
     def new_share

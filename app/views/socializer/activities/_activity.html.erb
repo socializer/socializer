@@ -7,7 +7,7 @@
 <% if audience.scope == 'PUBLIC' %>
   Public
 <% else %>
-  <%= link_to "Limited", stream_audience_path(activity) %>
+  <%= link_to "Limited", stream_audience_path(activity), :class => 'tooltip' %>
 <% end %>
 <% end %>
 </div>
@@ -25,10 +25,11 @@
 
 <div class="activity-bottom">
 <% if !current_user.likes?(activity.embedded_object) %>
-<%= link_to "Like", stream_like_path(activity.embedded_object), :method => :post %> (<%= link_to activity.embedded_object.like_count, stream_likes_path(activity) %>)
+<%= link_to "Like", stream_like_path(activity.embedded_object), :method => :post %>
 <% else %>
-<%= link_to "Unlike", stream_unlike_path(activity.embedded_object), :method => :post %> (<%= link_to activity.embedded_object.like_count, stream_likes_path(activity) %>)
-<% end %>  
+<%= link_to "Unlike", stream_unlike_path(activity.embedded_object), :method => :post %>
+<% end %>
+(<%= link_to activity.embedded_object.like_count, stream_likes_path(activity), :class => 'tooltip' %>)
 <% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
 &#8211;
 <%= link_to "Comment", stream_comment_path(activity) %>
