@@ -1,6 +1,8 @@
 <ul>
 <% @object_ids.each do |object| %>
-  <% if object.embeddable_type == 'Socializer::Person' %>
+  <% if object == 'PUBLIC' %>
+  <li>Anyone can see this</li>
+  <% elsif object.embeddable_type == 'Socializer::Person' %>
   <li><%= object.embeddable.display_name %></li>
   <% else %>
   <li><%= object.embeddable.name %></li>

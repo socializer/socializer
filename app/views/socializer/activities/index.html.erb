@@ -1,26 +1,41 @@
+<% if params[:provider] == 'people' %>
+	<%= render 'socializer/people/menu' %>
+<% else %>
 <h1><%= @title %></h1>
+<div style="padding: 0px 20px;">
+	<%= form_for(Socializer::Note.new) do |form| %>
+  		<%= form.text_area :content, :class => "note-content-field" %>
+  		<%= form.text_field :object_ids %>
+	<script type="text/javascript">
+  	$(document).ready(function() {
 
-<%= form_for(Socializer::Note.new) do |form| %>
-<p>
-  <%= form.label :content, "What's in your mind?" %><br>
-  <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
-</p>
-<p>
-  <%= form.text_field :object_ids %>
-</p>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#note_object_ids").tokenInput("<%= audiences_path %>", { 
-      minChars: 0
-     ,preventDuplicates: true
-     <% unless @current_id.nil? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
-    });
-  });
-</script>
-<p>
-  <%= form.submit "Post" %>
-</p>
+		$("#note_content").val('Share anything with anyone...').css({fontStyle: 'italic', color: '#aaa'});
+
+		$("#note_object_ids").hide();
+		$(".action-button").hide();
+		
+		$("#note_content").one('click', function() {
+			
+			$('#note_content').val('').css({fontStyle: 'normal', color: '#000'});
+			
+			$(this).animate({height: 100}, 'fast');
+			
+			$("#note_object_ids").tokenInput("<%= audiences_path %>", { 
+	      		minChars: 0
+	     		,preventDuplicates: true
+	     		<% unless @current_id.nil? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
+	    	});
+	
+			$(".action-button").show("fast");
+	
+		});
+		
+  	});
+	</script>
+  	<%= form.submit "Share", :class => "action-button" %>
+	<% end %>
 <% end %>
+</div>
 
 <ul class="activities">
 <% @activities.each do |activity| %>

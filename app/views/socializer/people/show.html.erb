@@ -1,2 +1,4 @@
-<h1><%= @person.display_name %></h1>
-<p><%= @person.email %></p>
+<%= render 'socializer/people/menu' %>
+<p class="field-title">Name</p>                <p class="field-value"><%= @person.display_name %></p>
+<p class="field-title">Email</p>               <p class="field-value"><%= @person.email %></p>
+<p class="field-title">Language</p>            <p class="field-value"><%= @person.language %></p>

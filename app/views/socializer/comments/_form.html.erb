@@ -1,15 +1,8 @@
 <%= form_for(@comment) do |form| %>
-
-<p>
-  <%= form.label :content, "What's in your mind?" %><br>
-  <%= form.text_area :content, :rows => 5, :style => "width: 100%;" %>
-</p>
-
-<%= form.hidden_field :object_id, :value => params[:id] %>
-
-<p>
-  <%= link_to "Cancel", stream_path %>
-  <%= form.submit %>
-</p>
-
+<h1>Comment activity</h1>
+<div style="padding: 0px 20px;">
+  <%= form.text_area :content, :rows => 5, :style => "width: 706px; margin-bottom: 5px; padding: 5px; resize: none;" %>
+  <%= form.hidden_field :object_id, :value => params[:id] %>
+  <%= form.submit "Comment", :class => "action-button" %>
+</div>
 <% end %>

@@ -1,15 +1,16 @@
 <% if activity.embeddable_object.embeddable_type == "Socializer::Note" || activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
 
 <div class="activity-top">
-	<%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id) %>
-	&#8211;
-	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(:provider => :activities, :id => activity.id) %> 
-	&#8211;
+	<%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id), :class => "important-link" %>
+	<span class="separator">&#8211;<span>
+	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(:provider => :activities, :id => activity.id), :class => "unimportant-link" %> 
 	<% activity.audiences.uniq.each do |audience| %>
 		<% if audience.scope == 'PUBLIC' %>
-  	Public
+  	<span class="separator">&#8211;<span>
+	<%= link_to "Public", stream_audience_path(activity), :class => 'tooltip unimportant-link', :title => "Anyone can see this" %>
 		<% else %>
-	<%= link_to "Limited", stream_audience_path(activity), :class => 'tooltip' %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Limited", stream_audience_path(activity), :class => 'tooltip unimportant-link' %>
 		<% end %>
 	<% end %>
 </div>
@@ -22,8 +23,8 @@
 <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id) %> &#8211; <%= activity.object.content %></div>
 <% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
 <div class="activity-content"><%= activity.content %></div>
-<blockquote><%= link_to activity.object.actor.display_name, stream_path(:provider => :people, :id => activity.object.actor.id) %> originally shared this:</blockquote>
-<blockquote><%=  activity.object.object.content %></blockquote>
+<div class="activity-subcontent"><%= link_to activity.object.actor.display_name, stream_path(:provider => :people, :id => activity.object.actor.id) %> originally shared this:</div>
+<div class="activity-subcontent"><%=  activity.object.object.content %></div>
 <% else %>
 <div class="activity-content"><%= activity.embeddable_object.embeddable_type %></div>
 <% end %>
@@ -41,23 +42,30 @@
 <% end %>
 
 <% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
-	&#8211; <%= link_to "Comment", stream_comment_path(activity) %>
-	&#8211; <%= link_to "Share", stream_share_path(activity.embedded_object) %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Comment", stream_comment_path(activity) %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Share", stream_share_path(activity.embedded_object) %>
 <% end %>
 
 <% if activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
-	&#8211; <%= link_to "Comment", stream_comment_path(activity) %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Comment", stream_comment_path(activity) %>
 <% end %>
 
 <% if activity.actor.id == current_user.id %>
 	<% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
-	&#8211; <%= link_to "Edit", edit_note_path(activity.object) %>
-	&#8211; <%= link_to "Delete", activity.object, :method => :delete %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Edit", edit_note_path(activity.object) %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Delete", activity.object, :method => :delete %>
 	<% elsif activity.embeddable_object.embeddable_type == "Socializer::Comment" %>
-	&#8211; <%= link_to "Edit", edit_comment_path(activity.object) %>
-	&#8211; <%= link_to "Delete", activity.object, :method => :delete %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Edit", edit_comment_path(activity.object) %>
+	<span class="separator">&#8211;<span>
+	<%= link_to "Delete", activity.object, :method => :delete %>
 	<% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
-	&#8211; <%= link_to "Delete", activity, :method => :delete %>
+	<span class="separator">&#8211;<span><%= link_to "Delete", activity, :method => :delete %>
 	<% end %>
 <% end %>
 

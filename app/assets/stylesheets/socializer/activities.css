@@ -10,26 +10,71 @@ ul.activities {
 
 ul.activities > li {
   border-bottom: 1px solid #ccc;
-  padding: 10px 0;
+  padding: 10px 20px;
 }
 
 ul.activities ul {
   list-style-type: none;
-  margin: 5px 50px;
+  margin: 5px 0 5px 50px;
   padding: 0;
 }
 
 ul.activities ul > li {
   border-bottom-width: 0;
   padding: 0;
+  margin: 0;
 }
 
 .activity-content {
-  white-space: pre;
+  white-space: pre-wrap;
+}
+
+.activity-subcontent
+{
+	padding: 5px 20px 10px 50px;
 }
 
 .ui-tooltip-content ul
 {
 	padding: 0;
 	margin: 0;
+}
+
+ul.activities a.important-link
+{
+	font-weight: bold;
+	text-decoration: none;
+	color: #00a;
+}
+
+ul.activities a.unimportant-link
+{
+	text-decoration: none;
+	color: #aaa;
+}
+
+ul.activities a
+{
+	color: #00a;
+	text-decoration: none;
+}
+
+ul.activities a:hover
+{
+	text-decoration: underline;
+}
+
+.note-content-field
+{
+	width: 506px;
+	height: 16px;
+	resize: none;
+	border: 1px solid #ccc;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+ul.activities .separator
+{
+	color: #ccc;
 }

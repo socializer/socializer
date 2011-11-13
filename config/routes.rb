@@ -18,6 +18,8 @@ Socializer::Engine.routes.draw do
   match '/memberships/:group_id/invite/:user_id' => 'memberships#invite', :as => :invite_membership
   match '/memberships/:id/confirm' => 'memberships#confirm', :as => :confirm_membership
 
+  match '/people/:id/likes' => 'people#likes', :as => :person_likes
+
   resources :authentications, :only => [ :index, :show, :destroy ]
   resources :people,          :only => [ :index, :show, :edit, :update ]
   resources :notes,           :only => [ :index, :show, :new, :create, :edit, :update, :destroy ]

@@ -33,6 +33,7 @@ ul.token-input-list {
     padding: 3px;
     background: transparent;
     border: 1px solid #ccc;
+    margin-bottom: 5px;
 }
 
 ul.token-input-list.error {

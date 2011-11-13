@@ -17,6 +17,11 @@ module Socializer
       current_user.update_attributes!(params[:person])
       redirect_to current_user
     end
+    
+    def likes
+      @likes = current_user.likes
+      @person = current_user
+    end
   
   end
 end

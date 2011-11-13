@@ -1,5 +1,14 @@
-<h3><%= @title %></h3>
-<p><%= @person.email %></p>
-<% if current_user?(@person) %>
-<p><%= link_to "Edit your profile", edit_person_path(current_user) %></p>
+<h3><%= @person.display_name %></h3>
+<%= link_to "Send a message", @person, :class => 'action-button' %>
+<p>In <%= @person.display_name %>'s circles (<%= @person.contacts.size %>):</p>
+<ul>
+<% @person.contacts.each do |contact| %>
+<li><%= link_to contact.display_name, stream_path(:provider => :people, :id => contact.id) %>
 <% end %>
+</ul>
+<p>Have <%= @person.display_name %> in circles (xx):</p>
+<ul>
+<% @person.contact_of.each do |person| %>
+<li><%= link_to person.display_name, stream_path(:provider => :people, :id => person.id) %>
+<% end %>
+</ul>

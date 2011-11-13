@@ -1,6 +1,6 @@
 module Socializer
   class ActivitiesController < ApplicationController
-    
+
     def index
       @activities = Activity.stream(:provider => params[:provider], :actor_id => params[:id], :viewer_id => current_user.id)
       @current_id = nil
@@ -20,20 +20,21 @@ module Socializer
         @title = "Activity stream"
       end
     end
-    
+
     def audience
       activities = Activity.stream(:provider => 'activities', :actor_id => params[:id], :viewer_id => current_user.id)
+
       @object_ids = []
-      
+      is_public = false
+
       activities.each do |activity|
-      
-        # The actor of the activity is always part of the audience.
-        @object_ids.push activity.embeddable_actor
-      
         activity.audiences.each do |audience|
           # In case of CIRCLES audience, add each contacts of every circles
           # of the actor of the activity.
-          if audience.scope == 'CIRCLES'
+          if audience.scope == 'PUBLIC'
+            @object_ids.push audience.scope
+            is_public = true
+          elsif audience.scope == 'CIRCLES'
             activity.actor.circles.each do |circle|
               circle.embedded_contacts.each do |contact|
                 @object_ids.push contact
@@ -56,58 +57,65 @@ module Socializer
         end
       end
       
+      unless is_public
+        activities.each do |activity|
+          # The actor of the activity is always part of the audience.
+          @object_ids.push activity.embeddable_actor
+        end
+      end
+
       # Remove any duplicates from the list. It can happen when, for example, someone
       # post a message to itself.
       @object_ids.uniq!
-      
+
       respond_to do |format|
         format.html { render :layout => false if request.xhr? }
       end
-      
+
     end
-    
+
     def like
       @embedded_object = EmbeddedObject.find(params[:id])
       @embedded_object.like!(current_user)
       redirect_to stream_path
     end
-    
+
     def unlike
       @embedded_object = EmbeddedObject.find(params[:id])
       @embedded_object.unlike!(current_user)
       redirect_to stream_path
     end
-    
+
     def likes
       activity = Activity.find(params[:id])
       @object_ids = []            
       activity.embedded_object.likes.each do |person|
         @object_ids.push person.embedded_object
       end
-      
+
       respond_to do |format|
         format.html { render :layout => false if request.xhr? }
       end
-      
+
     end
-    
+
     def new_share
       @embedded_object = EmbeddedObject.find(params[:id])
       render 'share'
     end
-    
+
     def share
-      
+
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
-      
+
       activity           = Activity.new     
       activity.actor_id  = current_user.guid
       activity.object_id = params[:share][:activity_id]
       activity.content   = params[:share][:content]
       activity.verb      = 'share'
       activity.save!
-      
+
       object_ids.each do |object_id|
         if object_id == 'PUBLIC' || object_id == 'CIRCLES'
           audience             = Audience.new
@@ -122,16 +130,16 @@ module Socializer
           audience.save!
         end
       end
-      
+
       redirect_to stream_path
-      
+
     end
-    
+
     def destroy
       @activity = Activity.find(params[:id])
       @activity.destroy
       redirect_to stream_path
     end
-  
+
   end
 end

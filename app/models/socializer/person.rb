@@ -28,7 +28,21 @@ module Socializer
     
     def received_notifications
       raise "Method not implemented yet."
-    end   
+    end
+    
+    def contacts
+      circles.map { |c| c.contacts }.flatten!.uniq! || []
+    end
+    
+    def contact_of
+      Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |c| c.author }.uniq!
+    end
+
+    def likes
+      likes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'like')
+      unlikes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'unlike')
+      return likes - unlikes
+    end
     
     def likes? (object)
       likes = Activity.where(:object_id => object.id, :actor_id => self.embedded_object.id, :verb => 'like')

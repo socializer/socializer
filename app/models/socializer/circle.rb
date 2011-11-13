@@ -7,6 +7,12 @@ module Socializer
     has_many   :ties
     has_many   :embedded_contacts, :through => :ties
     
+    belongs_to :embedded_author,  :class_name => 'EmbeddedObject', :foreign_key => 'author_id'
+    
+    def author
+      embedded_author.embeddable
+    end
+    
     def contacts
       embedded_contacts.map { |ec| ec.embeddable }
     end

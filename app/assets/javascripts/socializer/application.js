@@ -9,8 +9,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-    // Match all <A/> links with a title tag and use it as the content (default).
-    $('#page-header a img[title]').qtip({
+    $('a img[title]').qtip({
 	   style: {
 	      classes: 'ui-tooltip-dark ui-tooltip-tipsy'
 	   },

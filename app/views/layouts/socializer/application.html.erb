@@ -7,20 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	
+<% if signed_in? %>
+<%= render 'layouts/socializer/header' %>
 <div id="outer-page">
 
-<% if signed_in? %>
-
-  <%= render 'layouts/socializer/header' %>
-
   <div id="stream-column">
+  <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
+    <%= render 'socializer/people/card' %>
+  <% else %>
     <%= render 'socializer/activities/stream_list' %>
+  <% end %>
   </div>
 
-  <% if params[:controller] == 'socializer/activities' %>
+  <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
 
-  <div style="float: left; width: 500px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; padding: 0 29px;">
+  <div id="page-content" style="width: 558px;">
     <%= yield %>
   </div>
 
@@ -28,31 +30,28 @@
 
     <% if params[:provider] == 'circles' %>
       <%= render 'socializer/circles/card' %>
-    <% elsif params[:provider] == 'people' %>
-      <%= render 'socializer/people/card' %>
     <% elsif params[:provider] == 'groups' %>
       <%= render 'socializer/groups/card' %>
     <% elsif params[:provider].nil? %>
       <%= render 'socializer/activities/stream_card' %>
-    <% else %>
-    <div style="white-space: pre-wrap;"><%= params.to_yaml %></div>
     <% end %>
 
   </div>
 
   <% else %>
 
-  <div style="float: left; width: 701px; border-left: 1px solid #ddd; padding: 0 29px;">
+  <div id="page-content" style="width: 758px;">
     <%= yield %>
   </div>
 
   <% end %>
+</div>
 
 <% else %>
   <%= render 'socializer/people/login' %>
 <% end %>
 
-</div>
+
 
 </body>
 </html>
