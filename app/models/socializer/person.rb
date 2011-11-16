@@ -31,17 +31,20 @@ module Socializer
     end
     
     def contacts
-      circles.map { |c| c.contacts }.flatten!.uniq! || []
+      contacts = circles.map { |c| c.contacts } || []
+      contacts.flatten! if contacts.size > 0
+      return contacts.uniq!
     end
     
     def contact_of
-      Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |c| c.author }.uniq! || []
+      contact_of = Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |c| c.author } || []
+      return contact_of.uniq!
     end
 
     def likes
-      likes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'like')
-      unlikes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'unlike')
-      return likes - unlikes
+      unlikes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'unlike', :parent_id => nil).map { |activity| activity.object.guid }
+      likes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'like', :parent_id => nil)
+      return likes.delete_if{ |activity| unlikes.include?(activity.object.guid) }
     end
     
     def likes? (object)

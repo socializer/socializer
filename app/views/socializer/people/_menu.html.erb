@@ -4,6 +4,6 @@
 <h1><%= @person.display_name %></h1>
 <p class="content-header-bar">
 <%= link_to "Stream", stream_path(:provider => :people, :id => @person.id), :class => (params[:action] == 'index' ? "current" : nil) %>
-<%= link_to "About", @person, :class =>  (params[:action] == 'show' ? "current" : nil) %>
+<%= link_to "About", @person, :class =>  (params[:action] == 'show' || params[:action] == 'edit' ? "current" : nil) %>
 <%= link_to "Likes", person_likes_path(@person), :class =>  (params[:action] == 'likes' ? "current" : nil) %>
 </p>

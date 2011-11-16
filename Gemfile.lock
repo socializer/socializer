@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    socializer (0.1.4)
+    socializer (0.1.5)
       jquery-rails (= 1.0.14)
       mysql2 (= 0.3.7)
       omniauth (= 0.2.6)
