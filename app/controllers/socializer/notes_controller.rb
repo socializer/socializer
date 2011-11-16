@@ -10,7 +10,10 @@ module Socializer
       @note.object_ids = @note.object_ids.split(",")
       @note.activity_verb = 'post'
       @note.save!
-      redirect_to stream_path
+      @activity = Activity.find_by_object_id(@note.guid)
+      respond_to do |format|
+        format.js
+      end
     end
   
     def edit
@@ -25,8 +28,11 @@ module Socializer
     
     def destroy
       @note = current_user.embedded_object.notes.find(params[:id])
+      @activity_guid = Activity.find_by_object_id(@note.guid).guid
       @note.destroy
-      redirect_to stream_path
+      respond_to do |format|
+        format.js
+      end
     end
   
   end

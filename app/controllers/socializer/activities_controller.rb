@@ -76,14 +76,20 @@ module Socializer
 
     def like
       @embedded_object = EmbeddedObject.find(params[:id])
-      @embedded_object.like!(current_user)
-      redirect_to stream_path
+      @embedded_object.like!(current_user) unless current_user.likes?(@embedded_object)
+      @activity = @embedded_object.embeddable
+      respond_to do |format|
+        format.js
+      end
     end
 
     def unlike
       @embedded_object = EmbeddedObject.find(params[:id])
-      @embedded_object.unlike!(current_user)
-      redirect_to stream_path
+      @embedded_object.unlike!(current_user) if current_user.likes?(@embedded_object)
+      @activity = @embedded_object.embeddable
+      respond_to do |format|
+        format.js
+      end
     end
 
     def likes
@@ -137,8 +143,11 @@ module Socializer
 
     def destroy
       @activity = Activity.find(params[:id])
+      @activity_guid = @activity.guid
       @activity.destroy
-      redirect_to stream_path
+      respond_to do |format|
+        format.js
+      end
     end
 
   end

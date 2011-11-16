@@ -6,7 +6,7 @@
 <li><%= link_to contact.display_name, stream_path(:provider => :people, :id => contact.id) %>
 <% end %>
 </ul>
-<p>Have <%= @person.display_name %> in circles (xx):</p>
+<p>Have <%= @person.display_name %> in circles (<%= @person.contact_of.size %>):</p>
 <ul>
 <% @person.contact_of.each do |person| %>
 <li><%= link_to person.display_name, stream_path(:provider => :people, :id => person.id) %>
