@@ -67,13 +67,13 @@ module Socializer
     
     def avatar_url
       if avatar_provider == "FACEBOOK"
-        authentications.where(:provider => 'facebook').image_url
+        authentications.where(:provider => 'facebook')[0].image_url unless authentications.where(:provider => 'facebook')[0].nil?
       elsif avatar_provider == "TWITTER"
-        authentications.where(:provider => 'twitter').image_url
+        authentications.where(:provider => 'twitter')[0].image_url unless authentications.where(:provider => 'twitter')[0].nil?
       elsif avatar_provider == "LINKEDIN"
-        authentications.where(:provider => 'linkedin').image_url
+        authentications.where(:provider => 'linked_in')[0].image_url unless authentications.where(:provider => 'linked_in')[0].nil?
       else
-        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}"
+        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}" unless self.email.nil?
       end
     end
     
@@ -90,6 +90,7 @@ module Socializer
           user.email = auth['extra']['user_hash']['email'] if auth['extra']['user_hash']['email']
           image_url = auth['extra']['user_hash']['image'] if auth['extra']['user_hash']['image']
         end
+        user.avatar_provider = "GRAVATAR"
         user.authentications.build(:provider => auth['provider'], :uid => auth['uid'], :image_url => image_url)
       end
     end

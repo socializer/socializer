@@ -2,7 +2,26 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.small-contact-list {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+.small-contact-list li {
+	display: inline;
+	padding: 0;
+	margin: 0;
+	line-height: 45px;
+}
+
+.small-contact-list li img {
+	width: 40px;
+	height: 40px;
+}
+
 .large-contact-list {
+	list-style-type: none;
 	padding: 20px 0;
 }
 

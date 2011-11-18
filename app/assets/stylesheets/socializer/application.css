@@ -241,14 +241,14 @@ p { padding: 10px 0; }
     font-weight: bold;
 }
 
-#stream-column ul
+#stream-column #groups-stream-list, #stream-column #circles-stream-list
 {
     list-style-type: none;
     margin: 0;
     padding: 0 0 5px 5px;
 }
 
-#stream-column ul li
+#stream-column #groups-stream-list li, #stream-column #circles-stream-list li
 {
     padding: 2px 0 2px 24px;
     background-repeat: no-repeat;

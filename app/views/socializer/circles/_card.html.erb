@@ -1,6 +1,6 @@
 <h3><%= @title %></h3>
 <p><%= @circle.description %></p>
-<ul style="padding: 0 20px; margin: 0;">
+<ul class="small-contact-list">
 <% @circle.ties.each do |tie| %>
   <li><%= link_to image_tag(tie.contact.avatar_url), stream_path(:provider => :people, :id => tie.contact.id) %>
 <% end %>

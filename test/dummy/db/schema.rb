@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905175825) do
+ActiveRecord::Schema.define(:version => 20110805125606) do
 
   create_table "socializer_activities", :force => true do |t|
     t.integer  "parent_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20110905175825) do
     t.integer  "person_id"
     t.string   "provider"
     t.string   "uid"
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20110905175825) do
     t.string   "display_name"
     t.string   "email"
     t.string   "language"
+    t.string   "avatar_provider"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
