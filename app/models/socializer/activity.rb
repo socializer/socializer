@@ -17,19 +17,19 @@ module Socializer
     default_scope :order => 'created_at DESC'
     
     def comments
-      children
+      @comments ||= children
     end
     
     def actor
-      embeddable_actor.embeddable
+      @actor ||= embeddable_actor.embeddable
     end
     
     def object
-      embeddable_object.embeddable
+      @object ||= embeddable_object.embeddable
     end
     
     def target
-      embeddable_target.embeddable
+      @target ||= embeddable_target.embeddable
     end
     
     # retrieve all the activites that either the person made, that is public from a person in

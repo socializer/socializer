@@ -7,23 +7,23 @@ module Socializer
     attr_accessible :display_name, :email, :language
     
     def circles
-      embedded_object.circles
+      @circles ||= embedded_object.circles
     end
     
     def comments
-      embedded_object.comments
+      @comments ||= embedded_object.comments
     end
     
     def notes
-      embedded_object.notes
+      @notes ||= embedded_object.notes
     end
     
     def groups
-      embedded_object.groups
+      @groups ||= embedded_object.groups
     end
     
     def memberships
-      embedded_object.memberships
+      @memberships ||= embedded_object.memberships
     end
     
     def received_notifications
@@ -31,20 +31,17 @@ module Socializer
     end
     
     def contacts
-      contacts = circles.map { |c| c.contacts } || []
-      contacts.flatten! if contacts.size > 0
-      return contacts.uniq!
+      @contacts ||= self.circles.map { |c| c.contacts }.flatten.uniq
     end
     
     def contact_of
-      contact_of = Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |c| c.author } || []
-      return contact_of.uniq!
+      @contact_of ||= Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |circle| circle.author }.uniq
     end
 
     def likes
-      unlikes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'unlike', :parent_id => nil).map { |activity| activity.object.guid }
-      likes = Activity.where(:actor_id => self.embedded_object.id, :verb => 'like', :parent_id => nil)
-      return likes.delete_if{ |activity| unlikes.include?(activity.object.guid) }
+      @likes ||= Activity.where(:actor_id => self.embedded_object.id, :verb => 'like', :parent_id => nil).delete_if { |activity| 
+        (Activity.where(:actor_id => self.embedded_object.id, :verb => 'unlike', :parent_id => nil).map { |activity| activity.object.guid }).include?(activity.object.guid) 
+      }
     end
     
     def likes? (object)
@@ -57,12 +54,11 @@ module Socializer
           return false
         end
       end
-      
       return true
     end
     
     def pending_memberships_invites
-      memberships.where(:active => false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 'PRIVATE' ) > 0 ")
+      @pending_memberships_invites ||= memberships.where(:active => false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 'PRIVATE' ) > 0 ")
     end
     
     def self.create_with_omniauth(auth)

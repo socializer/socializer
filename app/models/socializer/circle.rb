@@ -10,11 +10,11 @@ module Socializer
     belongs_to :embedded_author,  :class_name => 'EmbeddedObject', :foreign_key => 'author_id'
     
     def author
-      embedded_author.embeddable
+      @author ||= embedded_author.embeddable
     end
     
     def contacts
-      embedded_contacts.map { |ec| ec.embeddable }
+      @contacts ||= embedded_contacts.map { |ec| ec.embeddable }
     end
     
     def add_contact (contact_id)

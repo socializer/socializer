@@ -5,7 +5,7 @@ module Socializer
     belongs_to :embedded_member, :class_name => 'EmbeddedObject', :foreign_key => 'member_id'
     
     def member
-      embedded_member.embeddable
+      @member ||= embedded_member.embeddable
     end
     
     def approve!

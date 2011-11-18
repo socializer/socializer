@@ -8,11 +8,11 @@ module Socializer
     belongs_to :embedded_commented_object, :class_name => 'EmbeddedObject', :foreign_key => 'object_id'
     
     def author
-      embedded_author.embeddable
+      @author ||= embedded_author.embeddable
     end
     
     def commented_object
-      embedded_commented_object.embeddable
+      @commented_object ||= embedded_commented_object.embeddable
     end
     
   end

@@ -14,11 +14,11 @@ module Socializer
     before_destroy :deny_delete_if_members
     
     def author
-      embedded_author.embeddable
+      @author ||= embedded_author.embeddable
     end
     
     def members
-      embedded_members.map { |em| em.embeddable }
+      @members ||= embedded_members.map { |em| em.embeddable }
     end
     
     def join (person)

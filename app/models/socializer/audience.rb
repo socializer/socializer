@@ -5,7 +5,7 @@ module Socializer
     belongs_to :embedded_object, :class_name => 'EmbeddedObject', :foreign_key => 'object_id'
     
     def object
-      embedded_object.embeddable
+      @object ||= embedded_object.embeddable
     end
     
     validates_inclusion_of :scope, :in => %w( PUBLIC CIRCLES LIMITED )
