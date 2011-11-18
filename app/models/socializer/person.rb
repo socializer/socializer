@@ -62,16 +62,19 @@ module Socializer
     end
     
     def self.create_with_omniauth(auth)
+      image_url = ""
       create! do |user|
         if auth['user_info']
           user.display_name = auth['user_info']['name'] if auth['user_info']['name']
           user.email = auth['user_info']['email'] if auth['user_info']['email']
+          image_url = auth['user_info']['image'] if auth['user_info']['image']
         end
         if auth['extra'] && auth['extra']['user_hash']
           user.display_name = auth['extra']['user_hash']['name'] if auth['extra']['user_hash']['name']
           user.email = auth['extra']['user_hash']['email'] if auth['extra']['user_hash']['email']
+          image_url = auth['extra']['user_hash']['image'] if auth['extra']['user_hash']['image']
         end
-        user.authentications.build(:provider => auth['provider'], :uid => auth['uid'])
+        user.authentications.build(:provider => auth['provider'], :uid => auth['uid'], :image_url => image_url)
       end
     end
     

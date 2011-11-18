@@ -3,7 +3,7 @@ module Socializer
     
     belongs_to :person
     
-    attr_accessible :provider, :uid
+    attr_accessible :provider, :uid, :image_url
     
     before_destroy :make_sure_its_not_the_last_one
     
