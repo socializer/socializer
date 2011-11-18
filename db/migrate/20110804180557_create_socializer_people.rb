@@ -4,6 +4,7 @@ class CreateSocializerPeople < ActiveRecord::Migration
       t.string   :display_name
       t.string   :email
       t.string   :language
+      t.string   :avatar_provider
 
       t.timestamps
     end

@@ -4,6 +4,7 @@ class CreateSocializerAuthentications < ActiveRecord::Migration
       t.integer  :person_id
       t.string   :provider
       t.string   :uid
+      t.string   :image_url
 
       t.timestamps
     end

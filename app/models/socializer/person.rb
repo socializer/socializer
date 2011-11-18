@@ -1,10 +1,14 @@
+require 'digest/md5'
+
 module Socializer
   class Person < ActiveRecord::Base
     include Socializer::EmbeddedObjectBase
     
     has_many :authentications
     
-    attr_accessible :display_name, :email, :language
+    attr_accessible :display_name, :email, :language, :avatar_provider
+    
+    validates_inclusion_of :avatar_provider, :in => %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
     
     def circles
       @circles ||= embedded_object.circles
@@ -61,17 +65,32 @@ module Socializer
       @pending_memberships_invites ||= memberships.where(:active => false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 'PRIVATE' ) > 0 ")
     end
     
+    def avatar_url
+      if avatar_provider == "FACEBOOK"
+        authentications.where(:provider => 'facebook').image_url
+      elsif avatar_provider == "TWITTER"
+        authentications.where(:provider => 'twitter').image_url
+      elsif avatar_provider == "LINKEDIN"
+        authentications.where(:provider => 'linkedin').image_url
+      else
+        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}"
+      end
+    end
+    
     def self.create_with_omniauth(auth)
+      image_url = ""
       create! do |user|
         if auth['user_info']
           user.display_name = auth['user_info']['name'] if auth['user_info']['name']
           user.email = auth['user_info']['email'] if auth['user_info']['email']
+          image_url = auth['user_info']['image'] if auth['user_info']['image']
         end
         if auth['extra'] && auth['extra']['user_hash']
           user.display_name = auth['extra']['user_hash']['name'] if auth['extra']['user_hash']['name']
           user.email = auth['extra']['user_hash']['email'] if auth['extra']['user_hash']['email']
+          image_url = auth['extra']['user_hash']['image'] if auth['extra']['user_hash']['image']
         end
-        user.authentications.build(:provider => auth['provider'], :uid => auth['uid'])
+        user.authentications.build(:provider => auth['provider'], :uid => auth['uid'], :image_url => image_url)
       end
     end
     

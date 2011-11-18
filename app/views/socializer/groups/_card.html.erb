@@ -1,6 +1,6 @@
 <h3><%= @title %></h3>
 <ul style="padding: 0 20px; margin: 0;">
 <% @group.members.each do |member| %>
-  <li><%= link_to member.display_name, stream_path(:provider => :people, :id => member.id) %>
+  <li><%= link_to image_tag(member.avatar_url), stream_path(:provider => :people, :id => member.id) %>
 <% end %>
 </ul>
