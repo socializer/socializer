@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 module Socializer
   class Person < ActiveRecord::Base
     include Socializer::EmbeddedObjectBase
@@ -61,6 +63,18 @@ module Socializer
     
     def pending_memberships_invites
       @pending_memberships_invites ||= memberships.where(:active => false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 'PRIVATE' ) > 0 ")
+    end
+    
+    def avatar_url
+      if avatar_provider == "FACEBOOK"
+        authentications.where(:provider => 'facebook').image_url
+      elsif avatar_provider == "TWITTER"
+        authentications.where(:provider => 'twitter').image_url
+      elsif avatar_provider == "LINKEDIN"
+        authentications.where(:provider => 'linkedin').image_url
+      else
+        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}"
+      end
     end
     
     def self.create_with_omniauth(auth)
