@@ -1,0 +1,7 @@
+<%= render 'menu' %>
+<ul class="large-contact-list">
+<% Socializer::Person.all.each do |contact| %>
+<li><%= link_to contact.display_name, stream_path(:provider => :people, :id => contact.id), :class => "draggable", "data-object-id" => contact.id %>
+<% end %>
+</ul>
+<%= render 'circles' %>

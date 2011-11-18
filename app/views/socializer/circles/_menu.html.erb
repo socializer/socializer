@@ -1,0 +1,6 @@
+<h1>Your circles</h1>
+<p class="content-header-bar">
+<%= link_to "People in your circles", circles_contacts_path, :class => (params[:action] == 'contacts' ? "current" : nil) %>
+<%= link_to "People who have added you", circles_contact_of_path, :class =>  (params[:action] == 'contact_of' ? "current" : nil) %>
+<%= link_to "Find new people", circles_find_people_path, :class =>  (params[:action] == 'find_people' ? "current" : nil) %>
+</p>

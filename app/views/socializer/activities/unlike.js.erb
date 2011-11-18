@@ -1,0 +1,1 @@
+$("#[data-activityid=<%= @activity.guid.to_s %>]").replaceWith('<%= escape_javascript(render @activity) %>');
