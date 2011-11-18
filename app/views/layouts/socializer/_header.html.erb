@@ -2,7 +2,7 @@
 	<div id="inner-header">
 		<%= link_to image_tag("socializer/icons/Home.png",  :width => 60, :title => "Home"),            root_path %>
 		<%= link_to image_tag("socializer/icons/User.png",  :width => 60, :title => "Profile"),         stream_path(:provider => :people, :id => current_user.id) %>
-		<%= link_to image_tag("socializer/icons/Web.png",   :width => 60, :title => "Circles"),         circles_path %>
+		<%= link_to image_tag("socializer/icons/Web.png",   :width => 60, :title => "Circles"),         circles_contacts_path %>
 		<%= link_to image_tag("socializer/icons/Safe.png",  :width => 60, :title => "Authentications"), authentications_path %>
 		<%= link_to image_tag("socializer/icons/Users.png", :width => 60, :title => "Groups"),          groups_path %>
 		<%= link_to image_tag("socializer/icons/Bell.png",  :width => 60, :title => "Notifications"),   notifications_path %>

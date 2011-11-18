@@ -19,6 +19,10 @@ Socializer::Engine.routes.draw do
   match '/memberships/:id/confirm' => 'memberships#confirm', :as => :confirm_membership
 
   match '/people/:id/likes' => 'people#likes', :as => :person_likes
+  
+  match '/circles/contacts' => 'circles#contacts', :as => :circles_contacts
+  match '/circles/contact_of' => 'circles#contact_of', :as => :circles_contact_of
+  match '/circles/find_people' => 'circles#find_people', :as => :circles_find_people
 
   resources :authentications, :only => [ :index, :show, :destroy ]
   resources :people,          :only => [ :index, :show, :edit, :update ]

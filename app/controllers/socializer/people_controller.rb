@@ -19,8 +19,8 @@ module Socializer
     end
     
     def likes
-      @likes = current_user.likes
-      @person = current_user
+      @person = Person.find(params[:id])
+      @likes = @person.likes
     end
   
   end

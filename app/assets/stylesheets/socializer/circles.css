@@ -2,3 +2,12 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.large-contact-list {
+	padding: 20px 0;
+}
+
+.large-contact-list li {
+	display: inline;
+	padding: 20px 10px;
+	line-height: 25px;
+}

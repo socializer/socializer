@@ -4,6 +4,18 @@ module Socializer
     def index
       @circles = current_user.circles
     end
+    
+    def contacts
+      @circles = current_user.circles
+    end
+    
+    def contact_of
+      @circles = current_user.circles
+    end
+    
+    def find_people
+      @circles = current_user.circles
+    end
   
     def show
       @circle = current_user.circles.find(params[:id])

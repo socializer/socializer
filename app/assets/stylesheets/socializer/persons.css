@@ -9,10 +9,12 @@
 	text-align: right;
 	padding-right: 30px;
 	color: #aaa;
+	height: 17px;
 }
 
 .field-value
 {
 	float: left;
 	width: 568px;
+	height: 17px;
 }
