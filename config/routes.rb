@@ -1,6 +1,5 @@
 Socializer::Engine.routes.draw do
 
-  match '/auth/:provider' => 'sessions#blank'
   match '/auth/:provider/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
   match '/signin' => 'sessions#new', :as => :signin

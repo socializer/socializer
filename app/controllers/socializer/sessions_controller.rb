@@ -32,10 +32,6 @@ module Socializer
     def failure
       redirect_to root_url
     end
-    
-    def blank 
-      render :text => "Not Found", :status => 404 
-    end
 
   end
 end
