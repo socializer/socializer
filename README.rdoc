@@ -37,10 +37,21 @@ When you register with one of the omniauth providers, you create yourself an *au
 created, you can bind multiple authentications to your account. This will be used later on to share your activities
 with other networking sites.
 
+== Todo
+
+The todo list looks as follow :
+- Finish core components (people, circles, groups, notes, comments)
+- Complete the activity stream (activities, audience)
+- Add notifications (notify a person when an activity affects him directly)
+- Add a search feature (to find people, groups and notes)
+- Create a comprehensive html structure than can easily be templated in hosts applications
+- Package the engine cleanly (configurations, file names, etc.)
+
 == If you want to contribute
 
 The best way to contribute is to do one of the following :
 - Creating tests
 - Refactoring
 - Testing (over at http://socializer.froggedsoft.com) and creating issues for me to solve
+- Correcting logged issues
 - Correcting my english ! (im a french Canadian, so don't hesitate to fix my sentences or whole texts)
