@@ -9,11 +9,8 @@ module Socializer
           current_user.authentications.build(:provider => auth['provider'], :uid => auth['uid']).save!
           redirect_to authentications_path
         else
-          logger.debug ">>>>>>>>>>>>> Person.create_with_omniauth(auth) <<<<<<<<<<<<<"
           user = Person.create_with_omniauth(auth)
-          logger.debug ">>>>>>>>>>>>> CREATING CIRCLE :: FRIENDS <<<<<<<<<<<<<"
           user.embedded_object.circles.build(:name => "Friends",       :description => "Your real friends, the ones you feel comfortable sharing private details with.").save!
-          logger.debug ">>>>>>>>>>>>> CREATING CIRCLE :: FAMILY <<<<<<<<<<<<<"
           user.embedded_object.circles.build(:name => "Family",        :description => "Your close and extended family, with as many or as few in-laws as you want.").save!
           user.embedded_object.circles.build(:name => "Acquaintances", :description => "A good place to stick people you've met but aren't particularly close to.").save!
           user.embedded_object.circles.build(:name => "Following",     :description => "People you don't know personally, but whose posts you find interesting.").save!
@@ -34,6 +31,10 @@ module Socializer
     
     def failure
       redirect_to root_url
+    end
+    
+    def blank 
+      render :text => "Not Found", :status => 404 
     end
 
   end
