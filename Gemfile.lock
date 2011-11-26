@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    socializer (0.1.6)
+    socializer (0.1.7)
       jquery-rails (= 1.0.14)
-      mysql2 (= 0.3.7)
       omniauth (= 0.2.6)
+      pg
       rails (= 3.1.1)
 
 GEM
@@ -59,7 +59,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.3)
     multi_xml (0.2.2)
-    multipart-post (1.1.3)
+    multipart-post (1.1.4)
     mysql2 (0.3.7)
     net-ldap (0.2.2)
     nokogiri (1.4.7)
@@ -100,6 +100,7 @@ GEM
       oa-more (= 0.2.6)
       oa-oauth (= 0.2.6)
       oa-openid (= 0.2.6)
+    pg (0.11.0)
     polyglot (0.3.3)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.3.5)
@@ -154,5 +155,6 @@ PLATFORMS
 
 DEPENDENCIES
   jquery-rails (= 1.0.14)
+  mysql2 (= 0.3.7)
   omniauth (= 0.2.6)
   socializer!
