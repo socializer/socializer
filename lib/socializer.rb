@@ -1,8 +1,8 @@
 require "socializer/engine"
-require "socializer/models/embedded_object_base.rb"
+require "socializer/models/object.rb"
 
 module Socializer
   module Models
-    autoload :EmbeddedObjectBase, 'socializer/models/embedded_object_base'
+    autoload :EmbeddedObjectBase, 'socializer/models/object'
   end
 end
