@@ -1,6 +1,6 @@
 module Socializer
   class Activity < ActiveRecord::Base
-    include Socializer::EmbeddedObjectBase
+    include Socializer::Object
     
     has_and_belongs_to_many :embedded_objects, :class_name => 'EmbeddedObject', :join_table => 'socializer_audiences', :foreign_key => "activity_id", :association_foreign_key => "object_id"
     

@@ -1,7 +1,7 @@
 require 'active_support/concern'
 
 module Socializer  
-  module EmbeddedObjectBase
+  module Object
     extend ActiveSupport::Concern
 
     included do

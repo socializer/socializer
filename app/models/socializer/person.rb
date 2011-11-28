@@ -2,7 +2,7 @@ require 'digest/md5'
 
 module Socializer
   class Person < ActiveRecord::Base
-    include Socializer::EmbeddedObjectBase
+    include Socializer::Object
     
     has_many :authentications
     

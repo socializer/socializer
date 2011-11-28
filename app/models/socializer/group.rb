@@ -1,6 +1,6 @@
 module Socializer
   class Group < ActiveRecord::Base
-    include Socializer::EmbeddedObjectBase
+    include Socializer::Object
     
     attr_accessible :name, :privacy_level
     
