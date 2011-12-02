@@ -11,6 +11,7 @@
 /spec/tmp/*
 /config/*.yml
 /config/initializers/omniauth.rb
+Gemfile.lock
 
 test/dummy/config/*.yml
 test/dummy/log/
