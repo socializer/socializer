@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
   
   s.add_dependency('rails',        '3.1.3')
-  s.add_dependency('omniauth',     '0.3.2')
+  s.add_dependency('omniauth',     '1.0.1')
   s.add_dependency('jquery-rails', '1.0.19')
   
   s.add_development_dependency('sqlite3',       '1.3.4')
