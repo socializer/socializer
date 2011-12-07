@@ -71,27 +71,29 @@ module Socializer
       elsif avatar_provider == "TWITTER"
         authentications.where(:provider => 'twitter')[0].image_url unless authentications.where(:provider => 'twitter')[0].nil?
       elsif avatar_provider == "LINKEDIN"
-        authentications.where(:provider => 'linked_in')[0].image_url unless authentications.where(:provider => 'linked_in')[0].nil?
+        authentications.where(:provider => 'linkedin')[0].image_url unless authentications.where(:provider => 'linkedin')[0].nil?
       else
         "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}" unless self.email.nil?
       end
     end
     
     def self.create_with_omniauth(auth)
-      image_url = ""
+      
       create! do |user|
-        if auth['user_info']
-          user.display_name = auth['user_info']['name'] if auth['user_info']['name']
-          user.email = auth['user_info']['email'] if auth['user_info']['email']
-          image_url = auth['user_info']['image'] if auth['user_info']['image']
+        
+        user.display_name = auth['info']['name'] if auth['info']['name']
+        user.email = auth['info']['email'] if auth['info']['email']
+        image_url = auth['info']['image'] if auth['info']['image']
+        
+        if image_url.nil?
+          image_url = ""
+          user.avatar_provider = "GRAVATAR"
+        else
+          user.avatar_provider = auth['provider'].upcase
         end
-        if auth['extra'] && auth['extra']['user_hash']
-          user.display_name = auth['extra']['user_hash']['name'] if auth['extra']['user_hash']['name']
-          user.email = auth['extra']['user_hash']['email'] if auth['extra']['user_hash']['email']
-          image_url = auth['extra']['user_hash']['image'] if auth['extra']['user_hash']['image']
-        end
-        user.avatar_provider = "GRAVATAR"
+        
         user.authentications.build(:provider => auth['provider'], :uid => auth['uid'], :image_url => image_url)
+        
       end
     end
     
