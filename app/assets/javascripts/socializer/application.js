@@ -9,6 +9,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+	// Add a qTip to menu items.
     $('a img[title]').qtip({
 	   style: {
 	      classes: 'ui-tooltip-dark ui-tooltip-tipsy'

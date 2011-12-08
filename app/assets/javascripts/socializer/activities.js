@@ -3,28 +3,37 @@
 
 $(document).ready(function()
 {
+	// Add a qTip to all tooltip elements.
 	$('.tooltip').each(function() {
-		$(this).qtip({
-			content: {
-				text: 'Loading...',
-				ajax: {
-					url: $(this).attr('href')
-				},
-			},
-			style: {
-				classes: 'ui-tooltip-dark ui-tooltip-tipsy'
-			},
-			position: {
-				my: 'top center',
-				at: 'bottom center'
-			},
-			show: {
-				event: 'click',
-				solo: true
-			},
-			hide: 'unfocus'
-		})
-	}).click(function(event) { 
-		event.preventDefault(); 
+		addTooltipSupport( $(this) );
 	});
 });
+
+function addTooltipSupport( jQueryElement ) {
+	
+	jQueryElement.qtip({
+		content: {
+			text: 'Loading...',
+			ajax: {
+				url: jQueryElement.attr('href')
+			},
+		},
+		style: {
+			classes: 'ui-tooltip-dark ui-tooltip-tipsy'
+		},
+		position: {
+			my: 'top center',
+			at: 'bottom center'
+		},
+		show: {
+			event: 'click',
+			solo: true
+		},
+		hide: 'unfocus'
+	});
+	
+	jQueryElement.click(function(event) { 
+		event.preventDefault();
+	});
+	
+}
