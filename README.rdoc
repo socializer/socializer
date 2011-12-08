@@ -28,14 +28,12 @@ circles, any of your groups and any of the people you are connected with.
 
 People can consult the activity *stream* with different filters : 'profile' where you see all the activities of a 
 single person, 'circle' where you see the activities performed by the people in that circle, 'group' where you
-see activities performed by people in that group or 'home, where you see everything that people you are connected
+see activities performed by people in that group or 'home', where you see everything that people you are connected
 with (groups, circles, yourself) performed. When viewing a stream, people can *comment* any of the stream.
 
 For the registration and login, Socializer is currently using only omniauth with the following providers : 
-LinkedIn, Facebook, Twitter, Yahoo and Google. It is planned to add a registration process with internal accounts.
-When you register with one of the omniauth providers, you create yourself an *authentication*. Once your account is
-created, you can bind multiple authentications to your account. This will be used later on to share your activities
-with other networking sites.
+LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple 
+authentications to your account. This will be used later on to share your activities with other networking sites.
 
 == Todo
 
@@ -43,6 +41,7 @@ The todo list looks as follow :
 - Finish core components (people, circles, groups, notes, comments)
 - Complete the activity stream (activities, audience)
 - Add notifications (notify a person when an activity affects him directly)
+- Add interaction with other networking sites (authentications)
 - Add a search feature (to find people, groups and notes)
 - Create a comprehensive html structure than can easily be templated in hosts applications
 - Package the engine cleanly (configurations, file names, etc.)
@@ -52,6 +51,6 @@ The todo list looks as follow :
 The best way to contribute is to do one of the following :
 - Creating tests
 - Refactoring
-- Testing (over at http://social-gem.herokuapp.com/) and creating issues for me to solve
+- Testing (over at http://social-gem.herokuapp.com) and creating issues for me to solve
 - Correcting logged issues
 - Correcting my english ! (im a french Canadian, so don't hesitate to fix my sentences or whole texts)
