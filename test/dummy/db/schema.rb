@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110805125606) do
+ActiveRecord::Schema.define(:version => 20111207234435) do
 
   create_table "socializer_activities", :force => true do |t|
     t.integer  "parent_id"
@@ -88,6 +88,14 @@ ActiveRecord::Schema.define(:version => 20110805125606) do
   end
 
   add_index "socializer_groups", ["author_id"], :name => "index_socializer_groups_on_author_id"
+
+  create_table "socializer_identities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "socializer_memberships", :force => true do |t|
     t.integer  "group_id"
