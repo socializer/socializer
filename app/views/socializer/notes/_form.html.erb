@@ -8,7 +8,7 @@
 		$("#note_content").val('Share anything with anyone...').css({fontStyle: 'italic', color: '#aaa'});
 
 		$("#note_object_ids").hide();
-		$(".action-button").hide();
+		$("form .action-button").hide();
 		
 		$("#note_content").one('click', function() {
 			
@@ -28,15 +28,9 @@
 			<% end %>
 			<% end %>
 	
-			$(".action-button").show("fast");
+			$("form .action-button").show("fast");
 	
 		});
-		
-		<% unless @current_id.nil? %>
-		<% if @title.nil? %>
-		$("#note_content").click();
-		<% end %>
-		<% end %>
 		
   	});
 	</script>

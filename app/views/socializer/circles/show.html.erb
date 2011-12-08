@@ -1,12 +1,10 @@
-<h1><%= @circle.name %></h1>
-<h2>Ties (<%= @circle.ties.count %>)</h2>
-<ul>
+<p style="float: right;"><%= link_to image_tag("socializer/icons/Edit.png", :width => 50, :title => "Edit this circle"), edit_circle_path(@circle) %></p>
+<%= render 'menu' %>
+<h2><%= @circle.name %></h2>
+<p class="field-info"><%= @circle.description %></p>
+<h3>Contacts (<%= @circle.ties.count %>)</h3>
+<ul class="large-contact-list">
 <% @circle.ties.each do |tie| %>
-<li><%= tie.contact.display_name %> (<%= link_to "delete", tie, :method => :delete %>)</li>
+<li><%= link_to image_tag(tie.contact.avatar_url, :width => 40, :height => 40), stream_path(:provider => :people, :id => tie.contact.id), :title => tie.contact.display_name %> (<%= link_to "delete", tie, :method => :delete %>)</li>
 <% end %>
 </ul>
-
-<%= form_for @circle.ties.build do |f| %>
-  <%= f.hidden_field :circle_id %>  <%= select("tie", "contact_id", @users.collect {|p| [ p.display_name, p.embedded_object.id ] }, {:include_blank => ''}) %>
-  <%= f.submit "add" %>
-<% end %>

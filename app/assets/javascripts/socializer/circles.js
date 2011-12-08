@@ -6,8 +6,15 @@ $(document).ready(function() {
 		drop: function( event, ui ) {
 			var circle_id = $("a", this).attr("data-object-id");
 			var person_id = ui.draggable.attr("data-object-id");
+			var circle_name = $("a", this).text();
+			var person_name = ui.draggable.attr("title");
       		$.post( "/ties", { "tie[circle_id]" : circle_id, "tie[contact_id]" : person_id } ).success(function() {
-			  ui.draggable.remove();
+			  var text = person_name + " was added to your " + circle_name + " circle.";
+			  $(".circle-info-message").html(text);
+			  $(".circle-info-message").show();
+			  setTimeout(function() {
+				$(".circle-info-message").hide();
+			  }, 5000)
 		    });
 		}
 	});

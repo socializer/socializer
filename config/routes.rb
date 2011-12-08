@@ -19,6 +19,7 @@ Socializer::Engine.routes.draw do
   match '/memberships/:id/confirm' => 'memberships#confirm', :as => :confirm_membership
 
   match '/people/:id/likes' => 'people#likes', :as => :person_likes
+  match '/people/:id/message' => 'people#message', :as => :person_message
   
   match '/circles/contacts' => 'circles#contacts', :as => :circles_contacts
   match '/circles/contact_of' => 'circles#contact_of', :as => :circles_contact_of

@@ -29,7 +29,7 @@ module Socializer
     def create
       @circle = current_user.circles.build(params[:circle])
       @circle.save!
-      redirect_to circles_path
+      redirect_to circles_contacts_path
     end
   
     def edit
@@ -39,13 +39,13 @@ module Socializer
     def update
       @circle = current_user.circles.find(params[:id])
       @circle.update_attributes!(params[:circle])
-      redirect_to circles_path
+      redirect_to @circle
     end
     
     def destroy
       @circle = current_user.circles.find(params[:id])
       @circle.destroy
-      redirect_to circles_path
+      redirect_to circles_contacts_path
     end
   
   end

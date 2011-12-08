@@ -1,4 +1,4 @@
-if (window.location.href.indexOf('notes/new') > 0) {
+if (window.location.href.indexOf('message') > 0) {
 	window.location.href = '<%= stream_path(:provider => :people, :id => @note.object_ids[0]) %>';
 } else {
 	$(".activities").prepend('<%= escape_javascript(render @activity) %>');

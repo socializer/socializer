@@ -22,6 +22,11 @@ module Socializer
       @person = Person.find(params[:id])
       @likes = @person.likes
     end
+    
+    def message
+      @person = Person.find(params[:id])
+      @current_id = @person.id
+    end
   
   end
 end

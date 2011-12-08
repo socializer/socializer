@@ -9,12 +9,17 @@
 	text-align: right;
 	padding-right: 30px;
 	color: #aaa;
-	height: 17px;
+	min-height: 17px;
 }
 
 .field-value
 {
 	float: left;
 	width: 568px;
-	height: 17px;
+	min-height: 17px;
+}
+
+.field-info {
+	color: #666;
+	padding: 0 20px;
 }
