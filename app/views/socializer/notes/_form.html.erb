@@ -22,9 +22,21 @@
 	     		<% unless @current_id.nil? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
 	    	});
 	
+			<% unless @current_id.nil? %>
+			<% if @title.nil? %>
+			$(".token-input-list").hide();
+			<% end %>
+			<% end %>
+	
 			$(".action-button").show("fast");
 	
 		});
+		
+		<% unless @current_id.nil? %>
+		<% if @title.nil? %>
+		$("#note_content").click();
+		<% end %>
+		<% end %>
 		
   	});
 	</script>

@@ -1,6 +1,6 @@
 <h3><%= @person.display_name %></h3>
 <%= image_tag(@person.avatar_url) %>
-<%= link_to "Send a message", @person, :class => 'action-button' %>
+<%= link_to "Send a message", new_note_path(:id => @person.guid), :class => 'action-button' %>
 <p>In <%= @person.display_name %>'s circles (<%= @person.contacts.size %>):</p>
 <ul class="small-contact-list">
 <% @person.contacts.each do |contact| %>

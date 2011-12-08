@@ -3,6 +3,7 @@ module Socializer
     
     def new
       @note = Note.new
+      @current_id = params[:id]
     end
   
     def create

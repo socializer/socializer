@@ -1,3 +1,7 @@
-$(".activities").prepend('<%= escape_javascript(render @activity) %>');
-$(".note-form").replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');
-addTooltipSupport( $(".tooltip", ".activities") );
+if (window.location.href.indexOf('notes/new') > 0) {
+	window.location.href = '<%= stream_path(:provider => :people, :id => @note.object_ids[0]) %>';
+} else {
+	$(".activities").prepend('<%= escape_javascript(render @activity) %>');
+	$(".note-form").replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');
+	addTooltipSupport( $(".tooltip", ".activities") );
+}
