@@ -1,0 +1,5 @@
+<h1>Authentications</h1>
+<p class="content-header-bar">
+<%= link_to "Bound services (" + current_user.authentications.size.to_s + ")", authentications_path, :class => (params[:action] == 'index' ? "current" : nil) %>
+<%= link_to "Add a new service", new_authentication_path, :class =>  (params[:action] == 'new' ? "current" : nil) %>
+</p>

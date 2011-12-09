@@ -1,17 +1,4 @@
-<h1>Authentications</h1>
-
-<h2>Add a new service</h2>
-
-<p>
-  <%= link_to image_tag("socializer/auth_buttons/facebook_32.png"), signin_path(:facebook) %>
-  <%= link_to image_tag("socializer/auth_buttons/twitter_32.png"), signin_path(:twitter) %>
-  <%= link_to image_tag("socializer/auth_buttons/linkedin_32.png"), signin_path(:linkedin) %>
-  <%= link_to image_tag("socializer/auth_buttons/yahoo_32.png"), signin_path(:yahoo) %>
-  <%= link_to image_tag("socializer/auth_buttons/google_32.png"), signin_path(:google) %>
-</p>
-
-<h3>Bound services</h3>
-
+<%= render 'menu' %>
 <% @authentications.each do |authentication| %>
 <div style="text-align: center; margin: 10px 10px 10px 0; padding: 15px 0; border: 1px solid #ccc; background-color: #dedede; width: 150px; float: left;">
   <%= image_tag "socializer/auth_buttons/" + authentication.provider.camelize.downcase + "_64.png" %><br>
@@ -19,4 +6,3 @@
 <%= link_to "unbind", authentication, :method => :delete %>
 </div>
 <% end %>
-
