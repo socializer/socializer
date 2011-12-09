@@ -1,4 +1,4 @@
-<h1>Your circles</h1>
+<h1>Your groups</h1>
 <p class="content-header-bar">
 <%= link_to "Memberships (" + current_user.memberships.size.to_s + ")", groups_memberships_path, :class => (params[:action] == 'memberships' ? "current" : nil) %>
 <%= link_to "Pending invites (" + current_user.pending_memberships_invites.size.to_s + ")", groups_pending_invites_path, :class =>  (params[:action] == 'pending_invites' ? "current" : nil) %>
