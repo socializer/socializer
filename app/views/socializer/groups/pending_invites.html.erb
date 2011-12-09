@@ -1,0 +1,6 @@
+<%= render 'menu' %>
+<ul>
+<% @pending_invites.each do |membership| %>
+  <li><%= link_to membership.group.name, membership.group %> | <%= membership.group.members.count %> members | (<%= link_to "confirm", confirm_membership_path(membership) %>)</li>
+<% end %>
+</ul>

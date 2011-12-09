@@ -2,8 +2,18 @@ module Socializer
   class GroupsController < ApplicationController
     
     def index
-      @groups = current_user.groups
-      @memberships = current_user.memberships
+    end
+    
+    def memberships
+        @memberships = current_user.memberships
+    end
+    
+    def ownerships
+        @ownerships = current_user.groups
+    end
+    
+    def pending_invites
+        @pending_invites = current_user.pending_memberships_invites
     end
   
     def show

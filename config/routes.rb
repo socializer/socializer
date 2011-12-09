@@ -24,6 +24,10 @@ Socializer::Engine.routes.draw do
   match '/circles/contacts' => 'circles#contacts', :as => :circles_contacts
   match '/circles/contact_of' => 'circles#contact_of', :as => :circles_contact_of
   match '/circles/find_people' => 'circles#find_people', :as => :circles_find_people
+  
+  match '/groups/memberships' => 'groups#memberships', :as => :groups_memberships
+  match '/groups/ownerships' => 'groups#ownerships', :as => :groups_ownerships
+  match '/groups/pending_invites' => 'groups#pending_invites', :as => :groups_pending_invites
 
   resources :authentications, :only => [ :index, :show, :destroy ]
   resources :people,          :only => [ :index, :show, :edit, :update ]

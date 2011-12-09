@@ -1,35 +1,8 @@
+<%= render 'menu' %>
 <%= form_for(@group) do |form| %>
-
-<p>
-  <%= form.label :name %><br>
-  <%= form.text_field :name %>
-</p>
-
-<fieldset>
-  <legend>Privacy level</legend>
-  <p>
-    <label>
-      <%= form.radio_button "privacy_level", "PUBLIC" %>
-      Public
-    </label>
-  </p>
-  <p>
-    <label>
-      <%= form.radio_button "privacy_level", "RESTRICTED" %>
-      Restricted
-    </label>
-  </p>
-  <p>
-    <label>
-      <%= form.radio_button "privacy_level", "PRIVATE" %>
-      Private
-    </label>
-  </p>
-</fieldset>
-
-<p>
-  <%= link_to "Cancel", groups_path %>
-  <%= form.submit %>
-</p>
-
+<p class="field-title"><%= form.label :name %></p>                <p class="field-value"><%= form.text_field :name %></p>
+<p class="field-title"><%= form.label :privacy_level %></p>       <p class="field-value"><label><%= form.radio_button "privacy_level", "PUBLIC" %> Public</label></p>
+<p class="field-title"></p>                                       <p class="field-value"><label><%= form.radio_button "privacy_level", "RESTRICTED" %> Restricted</label></p>
+<p class="field-title"></p>                                       <p class="field-value"><label><%= form.radio_button "privacy_level", "PRIVATE" %> Private</label></p>
+<p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", :class => "action-button" %></p>
 <% end %>

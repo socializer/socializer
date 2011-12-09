@@ -9,7 +9,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-	// Add a qTip to menu items.
+	// Replace default titles on images with link by qTip tooltips
     $('a img[title]').qtip({
 	   style: {
 	      classes: 'ui-tooltip-dark ui-tooltip-tipsy'
