@@ -25,7 +25,7 @@ module Socializer
     
     def message
       @person = Person.find(params[:id])
-      @current_id = @person.id
+      @current_id = @person.guid
     end
   
   end
