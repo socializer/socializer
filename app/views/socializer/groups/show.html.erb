@@ -1,4 +1,5 @@
-<h1><%= @group.name %> (<%= @group.privacy_level %>)</h1>
+<%= render 'menu' %>
+<h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
 
 <% if ! @group.member?(current_user) %>
 <%= form_for current_user.memberships.build(:group_id => @group.id) do |f| %>

@@ -1,5 +1,5 @@
 if (window.location.href.indexOf('message') > 0) {
-	window.location.href = '<%= stream_path(:provider => :people, :id => @note.object_ids[0]) %>';
+	window.location.href = '<%= stream_path %>';
 } else {
 	$(".activities").prepend('<%= escape_javascript(render @activity) %>');
 	$(".note-form").replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');

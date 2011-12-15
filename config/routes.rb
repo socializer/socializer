@@ -29,7 +29,7 @@ Socializer::Engine.routes.draw do
   match '/groups/ownerships' => 'groups#ownerships', :as => :groups_ownerships
   match '/groups/pending_invites' => 'groups#pending_invites', :as => :groups_pending_invites
 
-  resources :authentications, :only => [ :index, :show, :destroy ]
+  resources :authentications, :only => [ :index, :show, :new, :destroy ]
   resources :people,          :only => [ :index, :show, :edit, :update ]
   resources :notes,           :only => [ :index, :show, :new, :create, :edit, :update, :destroy ]
   resources :circles,         :only => [ :index, :show, :new, :create, :edit, :update, :destroy ]
