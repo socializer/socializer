@@ -16,4 +16,4 @@ Gemfile.lock
 test/dummy/config/*.yml
 test/dummy/log/
 test/dummy/tmp/
-test/dummy/db/db_development
+test/dummy/db/*.sqlite3
