@@ -10,26 +10,26 @@ great job at implenting the social network definition. And yes, it does a lot le
 
 ## Core concepts
 
-*People* are connected with each other in numerous ways. First of all, they can signify to another person
-that they want to be connected with them by adding them to their *circles*. The association between a person
-and a circle is called a *tie*. This link is not direct and does not force each other to have the same link.
+**People** are connected with each other in numerous ways. First of all, they can signify to another person
+that they want to be connected with them by adding them to their **circles**. The association between a person
+and a circle is called a **tie**. This link is not direct and does not force each other to have the same link.
 For instance, one can classify the other person as a 'friend', while the other one will return the favor by adding
-them to their 'colleague' circle. Second, *groups* are a link between people where all members share the same level
+them to their 'colleague' circle. Second, **groups** are a link between people where all members share the same level
 of connection with each other. They are all members of the 'Project X Research Group'. The association between a
-person and a group is called *membership*.
+person and a group is called **membership**.
 
-Like any other social networking application, you can post *notes*. Notes are pieces of information (currently only
+Like any other social networking application, you can post **notes**. Notes are pieces of information (currently only
 text is supported, but pictures, videos, files and more are coming) that you want to keep for posterity.
 
-When you perform actions in Socializer, there is a log of your *activities*. Activities are shared with
-an *audience*. Let's say you perform the action of creating a note. While creating that note,
+When you perform actions in Socializer, there is a log of your **activities**. Activities are shared with
+an **audience**. Let's say you perform the action of creating a note. While creating that note,
 you will have to specify this activity audience. You can choose between 'Public', 'All your circles', any of your
 circles, any of your groups and any of the people you are connected with.
 
-People can consult the activity *stream* with different filters : 'profile' where you see all the activities of a
+People can consult the activity **stream** with different filters : 'profile' where you see all the activities of a
 single person, 'circle' where you see the activities performed by the people in that circle, 'group' where you
 see activities performed by people in that group or 'home', where you see everything that people you are connected
-with (groups, circles, yourself) performed. When viewing a stream, people can *comment* any of the stream.
+with (groups, circles, yourself) performed. When viewing a stream, people can **comment** any of the stream.
 
 For the registration and login, Socializer is currently using only omniauth with the following providers :
 LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple
