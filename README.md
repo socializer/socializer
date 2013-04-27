@@ -1,4 +1,4 @@
-= Socializer
+# Socializer
 
 Socializer is a rails engine fully dedicated to add social network capabilities so you can focus
 on what really matters.
@@ -8,7 +8,7 @@ the excellent spec from http://www.activitystrea.ms. Yes, it may looks like a Go
 great job at implenting the social network definition. And yes, it does a lot less than Google+, but we don't have
 400 developers on the subject.
 
-== Core concepts
+## Core concepts
 
 *People* are connected with each other in numerous ways. First of all, they can signify to another person
 that they want to be connected with them by adding them to their *circles*. The association between a person
@@ -35,22 +35,22 @@ For the registration and login, Socializer is currently using only omniauth with
 LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple
 authentications to your account. This will be used later on to share your activities with other networking sites.
 
-== Todo
+## Todo
 
 The todo list looks as follow :
-- Finish core components (people, circles, groups, notes, comments)
-- Complete the activity stream (activities, audience)
-- Add notifications (notify a person when an activity affects him directly)
-- Add interaction with other networking sites (authentications)
-- Add a search feature (to find people, groups and notes)
-- Create a comprehensive html structure than can easily be templated in hosts applications
-- Package the engine cleanly (configurations, file names, etc.)
+* Finish core components (people, circles, groups, notes, comments)
+* Complete the activity stream (activities, audience)
+* Add notifications (notify a person when an activity affects him directly)
+* Add interaction with other networking sites (authentications)
+* Add a search feature (to find people, groups and notes)
+* Create a comprehensive html structure than can easily be templated in hosts applications
+* Package the engine cleanly (configurations, file names, etc.)
 
-== If you want to contribute
+## If you want to contribute
 
 The best way to contribute is to do one of the following :
-- Creating tests
-- Refactoring
-- Testing (over at http://socializer.froggedsoft.com) and creating issues for me to solve
-- Correcting logged issues
-- Correcting my english ! (im a french Canadian, so don't hesitate to fix my sentences or whole texts)
+* Creating tests
+* Refactoring
+* Testing (over at http://socializer.froggedsoft.com) and creating issues for me to solve
+* Correcting logged issues
+* Correcting my english ! (im a french Canadian, so don't hesitate to fix my sentences or whole texts)
