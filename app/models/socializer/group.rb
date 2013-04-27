@@ -33,18 +33,18 @@ module Socializer
       @membership.save
     end
 
-    def invite (person)
+    def invite(person)
       @membership = person.memberships.build(:group_id => self.id)
       @membership.active = false
       @membership.save
     end
 
-    def leave (person)
+    def leave(person)
       @membership = person.memberships.find_by_group_id(self.id)
       @membership.destroy
     end
 
-    def member? (person)
+    def member?(person)
       person.memberships.find_by_group_id(self.id).present?
     end
 

@@ -48,7 +48,7 @@ module Socializer
       }
     end
 
-    def likes? (object)
+    def likes?(object)
       likes = Activity.where(:object_id => object.id, :actor_id => self.embedded_object.id, :verb => 'like')
       if likes.count == 0
         return false
