@@ -3,8 +3,8 @@
 Socializer is a rails engine fully dedicated to add social network capabilities so you can focus
 on what really matters.
 
-It is designed based on the wikipedia definition of social networks (http://en.wikipedia.org/wiki/Social_network) and
-the excellent spec from http://www.activitystrea.ms. Yes, it may looks like a Google+ clone, but Google did a
+It is designed based on the wikipedia definition of social networks [en.wikipedia.org/wiki/Social_network](http://en.wikipedia.org/wiki/Social_network)
+and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may looks like a Google+ clone, but Google did a
 great job at implenting the social network definition. And yes, it does a lot less than Google+, but we don't have
 400 developers on the subject.
 
@@ -51,6 +51,6 @@ The todo list looks as follow :
 The best way to contribute is to do one of the following :
 * Creating tests
 * Refactoring
-* Testing (over at http://socializer.froggedsoft.com) and creating issues for me to solve
+* Testing (over at [socializer.froggedsoft.com](http://socializer.froggedsoft.com)) and creating issues for me to solve
 * Correcting logged issues
 * Correcting my english ! (im a french Canadian, so don't hesitate to fix my sentences or whole texts)
