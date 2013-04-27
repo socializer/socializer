@@ -16,19 +16,19 @@ module Socializer
           user.embedded_object.circles.build(:name => "Following",     :description => "People you don't know personally, but whose posts you find interesting.").save!
         end
       else
-        user = user_auth.person unless user_auth.nil?
+        user = user_auth.person if user_auth.present?
       end
       if user
         cookies[:user_id] = { :domain => :all, :value => "#{user.id}" }
         redirect_to root_url
       end
     end
-    
+
     def destroy
       cookies.delete :user_id, :domain => :all
       redirect_to root_url
     end
-    
+
     def failure
       redirect_to root_url
     end
