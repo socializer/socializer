@@ -9,29 +9,29 @@
 
 		$("#note_object_ids").hide();
 		$("form .action-button").hide();
-		
+
 		$("#note_content").one('click', function() {
-			
+
 			$('#note_content').val('').css({fontStyle: 'normal', color: '#000'});
-			
+
 			$(this).animate({height: 100}, 'fast');
-			
-			$("#note_object_ids").tokenInput("<%= audiences_path %>", { 
+
+			$("#note_object_ids").tokenInput("<%= audiences_path %>", {
 	      		minChars: 0
 	     		,preventDuplicates: true
-	     		<% unless @current_id.nil? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
+	     		<% if @current_id.present? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
 	    	});
-	
-			<% unless @current_id.nil? %>
+
+			<% if @current_id.present? %>
 			<% if @title.nil? %>
 			$(".token-input-list").hide();
 			<% end %>
 			<% end %>
-	
+
 			$("form .action-button").show("fast");
-	
+
 		});
-		
+
   	});
 	</script>
   	<%= form.submit "Share", :class => "action-button" %>
