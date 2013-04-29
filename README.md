@@ -3,9 +3,9 @@
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
 on what really matters.
 
-It is designed based on the wikipedia definition of [social networks](http://en.wikipedia.org/wiki/Social_network)
+It is designed based on the Wikipedia definition of [social networks](http://en.wikipedia.org/wiki/Social_network)
 and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may look like a Google+ clone, but Google did a
-great job implenting the social network definition. And yes, it does a lot less than Google+, but we don't have
+great job implementing the social network definition. And yes, it does a lot less than Google+, but we don't have
 400 developers on the project.
 
 ## Core concepts
@@ -27,10 +27,10 @@ you will have to specify the audience for that note. You can choose between 'Pub
 circles, any of your groups, and any of the people you are connected with.
 
 People can view the activity **stream** with different filters :
-* **profile** - you see all the activities of a single person
-* **circle** - you see the activities performed by the people in that circle
-* **group** - you see the activities performed by the people in that group
-* **home** - you see everything from the people you are connected with (groups, circles, yourself)
+* **Profile** - you see all the activities of a single person
+* **Circle** - you see the activities performed by the people in that circle
+* **Group** - you see the activities performed by the people in that group
+* **Home** - you see everything from the people you connect with (groups, circles, yourself)
 
 When viewing a stream, people can **comment** any of the objects in the stream.
 
@@ -40,13 +40,13 @@ authentications to your account. This will be used later on to share your activi
 
 ## Todo
 
-The todo list is as follow :
+The todo list is as follows :
 * Finish core components (people, circles, groups, notes, comments)
 * Complete the activity stream (activities, audience)
 * Add notifications (notify a person when an activity affects him directly)
 * Add interaction with other networking sites (authentications)
 * Add a search feature (to find people, groups and notes)
-* Create a comprehensive html structure than can easily be templated in hosts applications
+* Create a comprehensive html structure than can easily be templated in host applications
 * Package the engine cleanly (configurations, file names, etc.)
 
 ## If you want to contribute
@@ -56,4 +56,4 @@ The best way to contribute is to do one of the following :
 * Refactoring
 * Testing (over at [socializer.froggedsoft.com](http://socializer.froggedsoft.com)) and creating issues for me to solve
 * Correcting logged issues
-* Correcting my english! (I'm a french Canadian, so don't hesitate to fix my sentences or whole paragraphs.)
+* Correcting my English! (I'm a french Canadian, so don't hesitate to fix my sentences or whole paragraphs.)
