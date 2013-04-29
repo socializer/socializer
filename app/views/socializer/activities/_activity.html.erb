@@ -4,7 +4,7 @@
 <div class="activity-top">
 	<%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id), :class => "important-link" %>
 	<span class="separator">&#8211;<span>
-	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(:provider => :activities, :id => activity.id), :class => "unimportant-link" %> 
+	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(:provider => :activities, :id => activity.id), :class => "unimportant-link" %>
 	<% activity.audiences.uniq.each do |audience| %>
 		<% if audience.scope == 'PUBLIC' %>
   	<span class="separator">&#8211;<span>
@@ -31,11 +31,11 @@
 <% end %>
 
 <div class="activity-bottom">
-	
-<% if !current_user.likes?(activity.embedded_object) %>
-	<%= link_to "Like", stream_like_path(activity.embedded_object), :method => :post, :remote => true %>
-<% else %>
+
+<% if current_user.likes?(activity.embedded_object) %>
 	<%= link_to "Unlike", stream_unlike_path(activity.embedded_object), :method => :post, :remote => true %>
+<% else %>
+	<%= link_to "Like", stream_like_path(activity.embedded_object), :method => :post, :remote => true %>
 <% end %>
 
 <% if activity.embedded_object.like_count > 0 %>
