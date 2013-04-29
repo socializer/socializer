@@ -32,7 +32,7 @@ People can view the activity **stream** with different filters :
 * **Group** - you see the activities performed by the people in that group
 * **Home** - you see everything from the people you connect with (groups, circles, yourself)
 
-When viewing a stream, people can **comment** any of the objects in the stream.
+When viewing a stream, people can **comment** on any of the objects in the stream.
 
 For registration and login, Socializer is currently using omniauth with the following providers :
 LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple
