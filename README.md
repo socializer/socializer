@@ -4,7 +4,7 @@ Socializer is a rails engine fully dedicated to adding social network capabiliti
 on what really matters.
 
 It is designed based on the wikipedia definition of [social networks](http://en.wikipedia.org/wiki/Social_network)
-and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may looks like a Google+ clone, but Google did a
+and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may look like a Google+ clone, but Google did a
 great job implenting the social network definition. And yes, it does a lot less than Google+, but we don't have
 400 developers on the project.
 
