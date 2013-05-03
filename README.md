@@ -5,7 +5,7 @@ on what really matters.
 
 It is designed based on the Wikipedia definition of [social networks](http://en.wikipedia.org/wiki/Social_network)
 and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may look like a Google+ clone, but Google did a
-great job implementing the social network definition. And yes, it does a lot less than Google+, but we don't have
+great job implementing the social network definition. And yes, it does a lot less than Google+, we don't have
 400 developers on the project.
 
 ## Core concepts
@@ -13,7 +13,7 @@ great job implementing the social network definition. And yes, it does a lot les
 **People** are connected with each other in numerous ways. First of all, they can signify to another person
 that they want to be connected with them by adding them to their **circles**. The association between a person
 and a circle is called a **tie**. This link is not direct and does not force each person to have the same link.
-For instance, one can classify the other person as a 'friend', while the other one will return the favor by adding
+For instance, one person can classify the other as a 'friend', while the other person will return the favor by adding
 them to their 'colleague' circle. Second, **groups** are a link between people where all members share the same level
 of connection with each other. They are all members of the 'Project X Research Group'. The association between a
 person and a group is called **membership**.
@@ -22,7 +22,7 @@ Like any other social networking application, you can post **notes**. Notes are 
 text is supported, but pictures, videos, files and more are coming) that you want to keep for posterity.
 
 When you perform actions in Socializer, there is a log of your **activities**. Activities are shared with
-an **audience**. Let's say you perform the action of creating a note. While creating that note,
+an **audience**. Let's say you perform the action of creating a note. While creating a note,
 you will have to specify the audience for that note. You can choose between 'Public', 'All your circles', any of your
 circles, any of your groups, and any of the people you are connected with.
 
@@ -34,7 +34,7 @@ People can view the activity **stream** with different filters :
 
 When viewing a stream, people can **comment** on any of the objects in the stream.
 
-For registration and login, Socializer is currently using omniauth with the following providers :
+For registration and login, Socializer is currently using omniauth with the following providers:
 LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple
 authentications to your account. This will be used later on to share your activities with other networking sites.
 
@@ -46,7 +46,7 @@ The todo list is as follows :
 * Add notifications (notify a person when an activity affects him directly)
 * Add interaction with other networking sites (authentications)
 * Add a search feature (to find people, groups and notes)
-* Create a comprehensive html structure than can easily be templated in host applications
+* Create a comprehensive html structure that can easily be templated in host applications
 * Package the engine cleanly (configurations, file names, etc.)
 
 ## If you want to contribute
