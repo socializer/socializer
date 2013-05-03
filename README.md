@@ -46,7 +46,7 @@ The todo list is as follows :
 * Add notifications (notify a person when an activity affects him directly)
 * Add interaction with other networking sites (authentications)
 * Add a search feature (to find people, groups and notes)
-* Create a comprehensive html structure than can easily be templated in host applications
+* Create a comprehensive html structure that can easily be templated in host applications
 * Package the engine cleanly (configurations, file names, etc.)
 
 ## If you want to contribute
