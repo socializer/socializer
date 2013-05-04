@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("capybara",           "~> 2.1.0")
   spec.add_development_dependency("factory_girl_rails", "~> 4.2.1")
   spec.add_development_dependency("shoulda-matchers",   "~> 2.0.0")
+  spec.add_development_dependency("database_cleaner",   "~> 0.9.1")
 end
