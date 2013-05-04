@@ -13,7 +13,10 @@
 /config/initializers/omniauth.rb
 Gemfile.lock
 
-test/dummy/config/*.yml
-test/dummy/log/
-test/dummy/tmp/
-test/dummy/db/*.sqlite3
+spec/dummy/config/*.yml
+spec/dummy/log/
+spec/dummy/tmp/
+spec/dummy/db/*.sqlite3
+
+.ruby-gemset
+.ruby-version
