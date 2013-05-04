@@ -19,7 +19,9 @@ Gem::Specification.new do |s|
   s.add_dependency('jquery-rails', '1.0.19')
   s.add_dependency('bcrypt-ruby',  '3.0.1')
 
-  s.add_development_dependency('sqlite3',       '1.3.4')
+  s.add_development_dependency('sqlite3',     '1.3.4')
+  s.add_development_dependency('rspec-rails', '2.13.0')
+  s.add_development_dependency('cucumber',    '~> 1.3.1')
 
   s.license = "MIT"
 end
