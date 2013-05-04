@@ -1,3 +1,4 @@
+require "socializer/version"
 require "socializer/engine"
 require "socializer/models/object.rb"
 
