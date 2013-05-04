@@ -61,4 +61,5 @@ The best way to contribute is to do one of the following :
 ## License ##
 
 Copyright 2011-2013, Dominic Goulet, http://www.dominicgoulet.com
+
 MIT License - http://www.opensource.org/licenses/mit-license.php
