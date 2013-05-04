@@ -1,27 +1,31 @@
-# -*- encoding: utf-8 -*-
-gem_version = File.read(File.expand_path("../SOCIALIZER_VERSION", __FILE__)).strip
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'socializer/version'
 
-Gem::Specification.new do |s|
+Gem::Specification.new do |spec|
+  spec.name          = "socializer"
+  spec.version       = Socializer::VERSION
+  spec.authors       = ["Dominic Goulet"]
+  spec.email         = ["dominic.goulet@froggedsoft.com"]
+  spec.description   = %q{Add social network capabilities to your projects.}
+  spec.summary       = %q{Make your project social.}
+  spec.homepage      = "http://www.froggedsoft.com"
+  spec.license       = "MIT"
 
-  s.name        = 'socializer'
-  s.version     = gem_version
-  s.summary     = 'Make your project social.'
-  s.description = 'Add social network capabilities to your projects.'
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
 
-  s.author      = 'Dominic Goulet'
-  s.email       = 'dominic.goulet@froggedsoft.com'
-  s.homepage    = 'http://www.froggedsoft.com'
+  spec.add_dependency('rails',        '3.1.3')
+  spec.add_dependency('omniauth',     '1.0.1')
+  spec.add_dependency('jquery-rails', '1.0.19')
+  spec.add_dependency('bcrypt-ruby',  '3.0.1')
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
-
-  s.add_dependency('rails',        '3.1.3')
-  s.add_dependency('omniauth',     '1.0.1')
-  s.add_dependency('jquery-rails', '1.0.19')
-  s.add_dependency('bcrypt-ruby',  '3.0.1')
-
-  s.add_development_dependency('sqlite3',     '1.3.4')
-  s.add_development_dependency('rspec-rails', '2.13.0')
-  s.add_development_dependency('cucumber',    '~> 1.3.1')
-
-  s.license = "MIT"
+  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency('sqlite3',     '1.3.4')
+  spec.add_development_dependency('rspec-rails', '2.13.0')
+  spec.add_development_dependency('cucumber',    '~> 1.3.1')
 end
