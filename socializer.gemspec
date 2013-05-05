@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rake")
   spec.add_development_dependency("sqlite3",            "1.3.4")
   spec.add_development_dependency("rspec-rails",        "2.13.0")
-  spec.add_development_dependency("cucumber",           "~> 1.3.1")
+  spec.add_development_dependency("cucumber-rails",     "~> 1.3.1")
   spec.add_development_dependency("capybara",           "~> 2.1.0")
   spec.add_development_dependency("factory_girl_rails", "~> 4.2.1")
   spec.add_development_dependency("shoulda-matchers",   "~> 2.0.0")
