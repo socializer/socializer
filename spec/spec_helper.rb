@@ -8,7 +8,7 @@ require 'rspec/autorun'
 
 require 'capybara/rspec'
 require 'capybara/rails'
-require 'capybara/cucumber'
+# require 'capybara/cucumber'
 
 require 'factory_girl'
 require 'database_cleaner'
@@ -45,6 +45,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
