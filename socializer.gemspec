@@ -18,10 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency("rails",        "~> 3.2.11")
+  spec.add_dependency("rails",        "3.2.13")
   spec.add_dependency("omniauth",     "~> 1.1.4")
   spec.add_dependency("jquery-rails")
   spec.add_dependency("bcrypt-ruby",  "~> 3.0.1")
+  spec.add_dependency("tire",         "~> 0.5.7")
 
   spec.add_development_dependency("bundler",            "~> 1.3")
   spec.add_development_dependency("rake")
