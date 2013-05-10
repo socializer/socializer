@@ -11,7 +11,8 @@ module Socializer
       attr_accessor   :activity_verb, :scope, :object_ids, :activity_parent_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_parent_id
 
-      before_create  :create_embedded_object
+      # before_create  :create_embedded_object
+      after_create  :create_embedded_object
       after_create   :append_to_activity_stream
 
     end
