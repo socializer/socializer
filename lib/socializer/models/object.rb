@@ -6,20 +6,22 @@ module Socializer
 
     included do
 
-      has_one :embedded_object, :as => :embeddable, :dependent => :destroy
-
       attr_accessor   :activity_verb, :scope, :object_ids, :activity_parent_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_parent_id
 
-      # before_create  :create_embedded_object
-      after_create  :create_embedded_object
-      after_create   :append_to_activity_stream
+      has_one :embedded_object, :as => :embeddable, :dependent => :destroy
+
+      after_create :create_embedded_object
+      after_create :append_to_activity_stream
 
     end
 
     def guid
       embedded_object.id
     end
+
+
+    protected
 
     def create_embedded_object
       EmbeddedObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
