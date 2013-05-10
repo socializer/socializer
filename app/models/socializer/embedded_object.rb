@@ -2,7 +2,7 @@ module Socializer
   class EmbeddedObject < ActiveRecord::Base
 
     attr_accessor :scope, :object_ids
-    attr_accessible :scope, :object_ids
+    attr_accessible :scope, :object_ids, :embeddable_id, :embeddable_type
 
     belongs_to :embeddable, :polymorphic => true
 
