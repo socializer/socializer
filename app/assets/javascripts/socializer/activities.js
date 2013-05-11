@@ -4,9 +4,9 @@
 $(document).ready(function()
 {
 	// Add a qTip to all tooltip elements.
-	// $('.tooltip').each(function() {
-	// 	addTooltipSupport( $(this) );
-	// });
+	$('.tooltip').each(function() {
+		addTooltipSupport( $(this) );
+	});
 });
 
 function addTooltipSupport( jQueryElement ) {
