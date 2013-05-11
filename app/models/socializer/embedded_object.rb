@@ -20,7 +20,7 @@ module Socializer
     has_many :circles,    :foreign_key => 'author_id'
 
     has_many :ties,        :foreign_key => 'contact_id'
-    has_many :memberships, :foreign_key => 'member_id', :conditions => [ "active = ?", true ]
+    has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
     def likes
       people = []
