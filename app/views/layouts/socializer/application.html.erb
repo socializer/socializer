@@ -3,14 +3,14 @@
 <head>
   <title>Socializer</title>
   <%= stylesheet_link_tag    "socializer/application" %>
-  <%= stylesheet_link_tag    "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"%>
+  <%= stylesheet_link_tag    "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"%>
   <%= javascript_include_tag "socializer/application" %>
 
-  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
+
 <% if signed_in? %>
 <%= render 'layouts/socializer/header' %>
 <div id="outer-page">
