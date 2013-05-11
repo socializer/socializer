@@ -19,7 +19,7 @@ function addTooltipSupport( jQueryElement ) {
 			},
 		},
 		style: {
-			classes: 'ui-tooltip-dark ui-tooltip-tipsy'
+			classes: 'qtip-tipsy'
 		},
 		position: {
 			my: 'top center',
