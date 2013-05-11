@@ -1,11 +1,11 @@
 module Socializer
-  class NotesController < ApplicationController  
-    
+  class NotesController < ApplicationController
+
     def new
       @note = Note.new
       @current_id = params[:id]
     end
-  
+
     def create
       @note = current_user.embedded_object.notes.build(params[:note])
       @note.object_ids = @note.object_ids.split(",")
@@ -16,17 +16,17 @@ module Socializer
         format.js
       end
     end
-  
+
     def edit
       @note = current_user.embedded_object.notes.find(params[:id])
     end
-  
+
     def update
       @note = current_user.embedded_object.notes.find(params[:id])
       @note.update_attributes!(params[:note])
       redirect_to stream_path
     end
-    
+
     def destroy
       @note = current_user.embedded_object.notes.find(params[:id])
       @activity_guid = Activity.find_by_object_id(@note.guid).guid
@@ -35,6 +35,6 @@ module Socializer
         format.js
       end
     end
-  
+
   end
 end

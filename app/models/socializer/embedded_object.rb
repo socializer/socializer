@@ -2,7 +2,7 @@ module Socializer
   class EmbeddedObject < ActiveRecord::Base
 
     attr_accessor :scope, :object_ids
-    attr_accessible :scope, :object_ids
+    attr_accessible :scope, :object_ids, :embeddable_id, :embeddable_type, :like_count
 
     belongs_to :embeddable, :polymorphic => true
 
@@ -21,8 +21,6 @@ module Socializer
 
     has_many :ties,        :foreign_key => 'contact_id'
     has_many :memberships, :foreign_key => 'member_id', :conditions => [ "active = ?", true ]
-
-    attr_accessible :like_count
 
     def likes
       people = []
