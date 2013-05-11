@@ -56,7 +56,7 @@ module Socializer
           end
         end
       end
-      
+
       unless is_public
         activities.each do |activity|
           # The actor of the activity is always part of the audience.
@@ -94,7 +94,7 @@ module Socializer
 
     def likes
       activity = Activity.find(params[:id])
-      @object_ids = []            
+      @object_ids = []
       activity.embedded_object.likes.each do |person|
         @object_ids.push person.embedded_object
       end
@@ -115,24 +115,24 @@ module Socializer
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
-      activity           = Activity.new     
+      activity           = Activity.new
       activity.actor_id  = current_user.guid
       activity.object_id = params[:share][:activity_id]
       activity.content   = params[:share][:content]
       activity.verb      = 'share'
       activity.save!
 
-      object_ids.each do |object_id|
+      object_ids.split(",").each do |object_id|
         if object_id == 'PUBLIC' || object_id == 'CIRCLES'
           audience             = Audience.new
-          audience.activity_id = activity.id       
-          audience.scope       = object_id        
+          audience.activity_id = activity.id
+          audience.scope       = object_id
           audience.save!
         else
           audience             = Audience.new
-          audience.activity_id = activity.id       
+          audience.activity_id = activity.id
           audience.scope       = 'LIMITED'
-          audience.object_id   = object_id            
+          audience.object_id   = object_id
           audience.save!
         end
       end
