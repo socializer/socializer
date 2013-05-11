@@ -4,13 +4,13 @@
 $(document).ready(function()
 {
 	// Add a qTip to all tooltip elements.
-	$('.tooltip').each(function() {
-		addTooltipSupport( $(this) );
-	});
+	// $('.tooltip').each(function() {
+	// 	addTooltipSupport( $(this) );
+	// });
 });
 
 function addTooltipSupport( jQueryElement ) {
-	
+
 	jQueryElement.qtip({
 		content: {
 			text: 'Loading...',
@@ -31,9 +31,9 @@ function addTooltipSupport( jQueryElement ) {
 		},
 		hide: 'unfocus'
 	});
-	
-	jQueryElement.click(function(event) { 
+
+	jQueryElement.click(function(event) {
 		event.preventDefault();
 	});
-	
+
 }
