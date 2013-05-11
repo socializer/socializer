@@ -11,7 +11,7 @@ module Socializer
 
       has_one :embedded_object, :as => :embeddable, :dependent => :destroy
 
-      after_create :create_embedded_object
+      before_create :create_embedded_object
       after_create :append_to_activity_stream
 
     end
@@ -24,7 +24,8 @@ module Socializer
     protected
 
     def create_embedded_object
-      EmbeddedObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
+      build_embedded_object
+      # EmbeddedObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
     end
 
     def append_to_activity_stream
