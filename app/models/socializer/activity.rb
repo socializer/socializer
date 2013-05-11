@@ -2,15 +2,15 @@ module Socializer
   class Activity < ActiveRecord::Base
     include Socializer::Object
 
-    has_and_belongs_to_many :embedded_objects, :class_name => 'EmbeddedObject', :join_table => 'socializer_audiences', :foreign_key => "activity_id", :association_foreign_key => "object_id"
+    has_and_belongs_to_many :embedded_objects, class_name: 'EmbeddedObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
 
-    has_many   :audiences,           :class_name => 'Audience',       :foreign_key => 'activity_id'#, :dependent => :destroy
-    has_many   :children,            :class_name => 'Activity',       :foreign_key => 'parent_id',   :dependent => :destroy
+    has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
+    has_many   :children,            class_name: 'Activity',       foreign_key: 'parent_id',   dependent: :destroy
 
-    belongs_to :parent,              :class_name => 'Activity',       :foreign_key => 'parent_id'
-    belongs_to :embeddable_actor,    :class_name => 'EmbeddedObject', :foreign_key => 'actor_id'
-    belongs_to :embeddable_object,   :class_name => 'EmbeddedObject', :foreign_key => 'object_id'
-    belongs_to :embeddable_target,   :class_name => 'EmbeddedObject', :foreign_key => 'target_id'
+    belongs_to :parent,              class_name: 'Activity',       foreign_key: 'parent_id'
+    belongs_to :embeddable_actor,    class_name: 'EmbeddedObject', foreign_key: 'actor_id'
+    belongs_to :embeddable_object,   class_name: 'EmbeddedObject', foreign_key: 'object_id'
+    belongs_to :embeddable_target,   class_name: 'EmbeddedObject', foreign_key: 'target_id'
 
     attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
 
@@ -111,7 +111,7 @@ module Socializer
       if args[:provider].nil?
 
         # this is your dashboard. display everything about people in circles and yourself.
-        joins(:audiences).where(:verb => verbs_of_interest).where(:parent_id => nil).where(security_sql).uniq
+        joins(:audiences).where(verb: verbs_of_interest).where(parent_id: nil).where(security_sql).uniq
 
       else
 
@@ -119,13 +119,13 @@ module Socializer
 
           # we only want to display a single activity. make sure the viwer is allowed to do so.
           activity_id = args[:actor_id]
-          joins(:audiences).where(:verb => verbs_of_interest).where("id = #{activity_id}").where(:parent_id => nil).where(security_sql).uniq
+          joins(:audiences).where(verb: verbs_of_interest).where("id = #{activity_id}").where(parent_id: nil).where(security_sql).uniq
 
         elsif args[:provider] == 'people'
 
           # this is a user profile. display everything about him that you are allowed to see
           person_id = Person.find(args[:actor_id]).guid
-          joins(:audiences).where(:verb => verbs_of_interest).where("actor_id = #{person_id}").where(:parent_id => nil).where(security_sql).uniq
+          joins(:audiences).where(verb: verbs_of_interest).where("actor_id = #{person_id}").where(parent_id: nil).where(security_sql).uniq
 
         elsif args[:provider] == 'circles'
 
@@ -134,13 +134,13 @@ module Socializer
           circle_id = Circle.find(args[:actor_id]).id
           circles_sql  = "SELECT socializer_circles.id FROM socializer_circles WHERE author_id = #{viewer_id} AND id = #{circle_id}"
           followed_sql = "SELECT socializer_ties.contact_id FROM socializer_ties WHERE socializer_ties.circle_id IN ( #{circles_sql} )"
-          joins(:audiences).where(:verb => verbs_of_interest).where("actor_id IN ( #{followed_sql} )").where(:parent_id => nil).where(security_sql).uniq
+          joins(:audiences).where(verb: verbs_of_interest).where("actor_id IN ( #{followed_sql} )").where(parent_id: nil).where(security_sql).uniq
 
         elsif args[:provider] == 'groups'
 
           # this is a group. display everything that was posted to this group as audience
           group_id = Group.find(args[:actor_id]).guid
-          joins(:audiences).where(:verb => verbs_of_interest).where("socializer_audiences.object_id = #{group_id}").where(:parent_id => nil).where(security_sql).uniq
+          joins(:audiences).where(verb: verbs_of_interest).where("socializer_audiences.object_id = #{group_id}").where(parent_id: nil).where(security_sql).uniq
 
         else
 
