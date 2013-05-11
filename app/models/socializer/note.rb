@@ -1,4 +1,3 @@
-# FIXME: Notes appear to be saving twice
 module Socializer
   class Note < ActiveRecord::Base
     include Socializer::Object
