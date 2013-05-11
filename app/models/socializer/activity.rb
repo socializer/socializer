@@ -2,19 +2,19 @@ module Socializer
   class Activity < ActiveRecord::Base
     include Socializer::Object
 
-    has_and_belongs_to_many :embedded_objects, class_name: 'EmbeddedObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
+    default_scope { order('created_at DESC') }
 
-    has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
-    has_many   :children,            class_name: 'Activity',       foreign_key: 'parent_id',   dependent: :destroy
+    attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
 
     belongs_to :parent,              class_name: 'Activity',       foreign_key: 'parent_id'
     belongs_to :embeddable_actor,    class_name: 'EmbeddedObject', foreign_key: 'actor_id'
     belongs_to :embeddable_object,   class_name: 'EmbeddedObject', foreign_key: 'object_id'
     belongs_to :embeddable_target,   class_name: 'EmbeddedObject', foreign_key: 'target_id'
 
-    attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
+    has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
+    has_many   :children,            class_name: 'Activity',       foreign_key: 'parent_id',   dependent: :destroy
 
-    default_scope { order('created_at DESC') }
+    has_and_belongs_to_many :embedded_objects, class_name: 'EmbeddedObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
 
     def comments
       @comments ||= children
