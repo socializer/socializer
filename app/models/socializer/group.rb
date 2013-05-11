@@ -8,7 +8,7 @@ module Socializer
     validates_inclusion_of :privacy_level, in: %w( PUBLIC RESTRICTED PRIVATE )
 
     has_many :memberships
-    has_many :embedded_members, -> { where active: true }, through: :memberships
+    has_many :embedded_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
     belongs_to :embedded_author,  class_name: 'EmbeddedObject', foreign_key: 'author_id'
 
