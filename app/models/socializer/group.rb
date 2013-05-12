@@ -42,12 +42,12 @@ module Socializer
     end
 
     def leave(person)
-      @membership = person.memberships.find_by_group_id(self.id)
+      @membership = person.memberships.find_by(group_id: self.id)
       @membership.destroy
     end
 
     def member?(person)
-      person.memberships.find_by_group_id(self.id).present?
+      person.memberships.find_by(group_id: self.id).present?
     end
 
     private

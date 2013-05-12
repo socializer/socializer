@@ -23,7 +23,7 @@ module Socializer
     end
 
     def remove_contact(contact_id)
-      @tie = ties.find_by_contact_id(contact_id)
+      @tie = ties.find_by(contact_id: contact_id)
       @tie.destroy
     end
 
