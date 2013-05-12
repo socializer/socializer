@@ -2,7 +2,7 @@ module Socializer
   class Activity < ActiveRecord::Base
     include Socializer::Object
 
-    default_scope { order('created_at DESC') }
+    default_scope { order(created_at: :desc) }
 
     attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
 
