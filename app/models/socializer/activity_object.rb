@@ -1,5 +1,5 @@
 module Socializer
-  class EmbeddedObject < ActiveRecord::Base
+  class ActivityObject < ActiveRecord::Base
 
     attr_accessor :scope, :object_ids
     attr_accessible :scope, :object_ids, :embeddable_id, :embeddable_type, :like_count
@@ -40,7 +40,7 @@ module Socializer
 
     def like!(person)
       activity = Activity.new
-      activity.actor_id = person.embedded_object.id
+      activity.actor_id = person.activity_object.id
       activity.object_id = self.id
       activity.verb = 'like'
       activity.save!
@@ -55,7 +55,7 @@ module Socializer
 
     def unlike!(person)
       activity = Activity.new
-      activity.actor_id = person.embedded_object.id
+      activity.actor_id = person.activity_object.id
       activity.object_id = self.id
       activity.verb = 'unlike'
       activity.save!

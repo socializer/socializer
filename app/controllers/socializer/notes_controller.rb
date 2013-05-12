@@ -7,7 +7,7 @@ module Socializer
     end
 
     def create
-      @note = current_user.embedded_object.notes.build(params[:note])
+      @note = current_user.activity_object.notes.build(params[:note])
       @note.object_ids = @note.object_ids.split(",")
       @note.activity_verb = 'post'
       @note.save!
@@ -18,17 +18,17 @@ module Socializer
     end
 
     def edit
-      @note = current_user.embedded_object.notes.find(params[:id])
+      @note = current_user.activity_object.notes.find(params[:id])
     end
 
     def update
-      @note = current_user.embedded_object.notes.find(params[:id])
+      @note = current_user.activity_object.notes.find(params[:id])
       @note.update!(params[:note])
       redirect_to stream_path
     end
 
     def destroy
-      @note = current_user.embedded_object.notes.find(params[:id])
+      @note = current_user.activity_object.notes.find(params[:id])
       @activity_guid = Activity.find_by(object_id: @note.guid).guid
       @note.destroy
       respond_to do |format|

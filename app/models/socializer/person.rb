@@ -12,23 +12,23 @@ module Socializer
 
 
     def circles
-      @circles ||= embedded_object.circles
+      @circles ||= activity_object.circles
     end
 
     def comments
-      @comments ||= embedded_object.comments
+      @comments ||= activity_object.comments
     end
 
     def notes
-      @notes ||= embedded_object.notes
+      @notes ||= activity_object.notes
     end
 
     def groups
-      @groups ||= embedded_object.groups
+      @groups ||= activity_object.groups
     end
 
     def memberships
-      @memberships ||= embedded_object.memberships
+      @memberships ||= activity_object.memberships
     end
 
     def received_notifications
@@ -44,17 +44,17 @@ module Socializer
     end
 
     def likes
-      @likes ||= Activity.where(actor_id: self.embedded_object.id, verb: 'like', parent_id: nil).delete_if { |activity|
-        (Activity.where(actor_id: self.embedded_object.id, verb: 'unlike', parent_id: nil).map { |activity| activity.object.guid }).include?(activity.object.guid)
+      @likes ||= Activity.where(actor_id: self.activity_object.id, verb: 'like', parent_id: nil).delete_if { |activity|
+        (Activity.where(actor_id: self.activity_object.id, verb: 'unlike', parent_id: nil).map { |activity| activity.object.guid }).include?(activity.object.guid)
       }
     end
 
     def likes?(object)
-      likes = Activity.where(object_id: object.id, actor_id: self.embedded_object.id, verb: 'like')
+      likes = Activity.where(object_id: object.id, actor_id: self.activity_object.id, verb: 'like')
       if likes.count == 0
         return false
       else
-        unlikes = Activity.where(object_id: object.id, actor_id: self.embedded_object.id, verb: 'unlike')
+        unlikes = Activity.where(object_id: object.id, actor_id: self.activity_object.id, verb: 'unlike')
         if likes.count == unlikes.count
           return false
         end

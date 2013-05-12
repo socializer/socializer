@@ -10,7 +10,7 @@ module Socializer
     has_many :memberships
     has_many :embedded_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
-    belongs_to :embedded_author,  class_name: 'EmbeddedObject', foreign_key: 'author_id'
+    belongs_to :embedded_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members

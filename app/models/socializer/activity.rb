@@ -7,14 +7,14 @@ module Socializer
     attr_accessible :parent_id, :verb, :circles, :actor_id, :object_id, :target_id, :content
 
     belongs_to :parent,              class_name: 'Activity',       foreign_key: 'parent_id'
-    belongs_to :embeddable_actor,    class_name: 'EmbeddedObject', foreign_key: 'actor_id'
-    belongs_to :embeddable_object,   class_name: 'EmbeddedObject', foreign_key: 'object_id'
-    belongs_to :embeddable_target,   class_name: 'EmbeddedObject', foreign_key: 'target_id'
+    belongs_to :embeddable_actor,    class_name: 'ActivityObject', foreign_key: 'actor_id'
+    belongs_to :embeddable_object,   class_name: 'ActivityObject', foreign_key: 'object_id'
+    belongs_to :embeddable_target,   class_name: 'ActivityObject', foreign_key: 'target_id'
 
     has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
     has_many   :children,            class_name: 'Activity',       foreign_key: 'parent_id',   dependent: :destroy
 
-    has_and_belongs_to_many :embedded_objects, class_name: 'EmbeddedObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
+    has_and_belongs_to_many :activity_objects, class_name: 'ActivityObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
 
     def comments
       @comments ||= children
@@ -59,10 +59,10 @@ module Socializer
 
       # Audience : CIRCLES
       # Retrieve the author's unique identifier
-      actor_id_sql = "SELECT socializer_embedded_objects.id " +
-                     "FROM socializer_embedded_objects " +
+      actor_id_sql = "SELECT socializer_activity_objects.id " +
+                     "FROM socializer_activity_objects " +
                      "INNER JOIN socializer_people " +
-                     "ON socializer_embedded_objects.embeddable_id = socializer_people.id " +
+                     "ON socializer_activity_objects.embeddable_id = socializer_people.id " +
                      "WHERE socializer_people.id = socializer_activities.actor_id"
 
       # Retrieve the author's circles
@@ -79,10 +79,10 @@ module Socializer
       # is not a circle, this query will simply return nothing)
       limited_circle_id_sql = "SELECT socializer_circles.id " +
                               "FROM socializer_circles " +
-                              "INNER JOIN socializer_embedded_objects " +
-                              "ON socializer_circles.id = socializer_embedded_objects.embeddable_id " +
-                                  "AND socializer_embedded_objects.embeddable_type = 'Socializer::Circle' " +
-                              "WHERE socializer_embedded_objects.id = socializer_audiences.object_id "
+                              "INNER JOIN socializer_activity_objects " +
+                              "ON socializer_circles.id = socializer_activity_objects.embeddable_id " +
+                                  "AND socializer_activity_objects.embeddable_type = 'Socializer::Circle' " +
+                              "WHERE socializer_activity_objects.id = socializer_audiences.object_id "
 
       # Retrieve all the contacts (people) that are part of those circles
       limited_followed_sql = "SELECT socializer_ties.contact_id " +
@@ -90,11 +90,11 @@ module Socializer
                              "WHERE socializer_ties.circle_id IN ( #{limited_circle_id_sql} )"
 
       # Retrieve all the groups that the viewer is member of.
-      limited_groups_sql = "SELECT socializer_embedded_objects.id " +
+      limited_groups_sql = "SELECT socializer_activity_objects.id " +
                            "FROM socializer_memberships " +
-                           "INNER JOIN socializer_embedded_objects " +
-                           "ON socializer_embedded_objects.embeddable_id = socializer_memberships.group_id " +
-                               "AND socializer_embedded_objects.embeddable_type = 'Socializer::Group' " +
+                           "INNER JOIN socializer_activity_objects " +
+                           "ON socializer_activity_objects.embeddable_id = socializer_memberships.group_id " +
+                               "AND socializer_activity_objects.embeddable_type = 'Socializer::Group' " +
                            "WHERE socializer_memberships.member_id = #{viewer_id}"
 
       # Ensure that the audience is LIMITED and then make sure that the viewer is either

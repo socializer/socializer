@@ -7,7 +7,7 @@ module Socializer
     has_many   :ties
     has_many   :embedded_contacts, through: :ties
 
-    belongs_to :embedded_author,  class_name: 'EmbeddedObject', foreign_key: 'author_id'
+    belongs_to :embedded_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
     def author
       @author ||= embedded_author.embeddable
