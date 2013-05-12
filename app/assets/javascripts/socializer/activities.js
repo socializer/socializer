@@ -23,7 +23,8 @@ function addTooltipSupport( jQueryElement ) {
 		},
 		position: {
 			my: 'top center',
-			at: 'bottom center'
+			at: 'bottom center',
+			effect: false
 		},
 		show: {
 			event: 'click',
