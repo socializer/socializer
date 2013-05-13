@@ -4,11 +4,12 @@ module Socializer
   class Person < ActiveRecord::Base
     include Socializer::Object
 
-    has_many :authentications
-
     attr_accessible :display_name, :email, :language, :avatar_provider
 
-    validates_inclusion_of :avatar_provider, :in => %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
+    has_many :authentications
+
+    validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
+
 
     def circles
       @circles ||= embedded_object.circles
