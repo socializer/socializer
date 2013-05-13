@@ -41,22 +41,22 @@ module Socializer
               end
             end
           else
-            if audience.embedded_object.embeddable_type == 'Socializer::Circle'
+            if audience.activity_object.embeddable_type == 'Socializer::Circle'
               # In the case of LIMITED audience, then go through all the audience
               # circles and add contacts from those circles in the list of allowed
               # audience.
-              audience.embedded_object.embeddable.embedded_contacts.each do |contact|
+              audience.activity_object.embeddable.embedded_contacts.each do |contact|
                 @object_ids.push contact
               end
             else
               # Otherwise, the target audience is either a group or a person,
               # which means we can add it as it is in the audience list.
-              @object_ids.push audience.embedded_object
+              @object_ids.push audience.activity_object
             end
           end
         end
       end
-      
+
       unless is_public
         activities.each do |activity|
           # The actor of the activity is always part of the audience.
@@ -75,18 +75,18 @@ module Socializer
     end
 
     def like
-      @embedded_object = EmbeddedObject.find(params[:id])
-      @embedded_object.like!(current_user) unless current_user.likes?(@embedded_object)
-      @activity = @embedded_object.embeddable
+      @activity_object = ActivityObject.find(params[:id])
+      @activity_object.like!(current_user) unless current_user.likes?(@activity_object)
+      @activity = @activity_object.embeddable
       respond_to do |format|
         format.js
       end
     end
 
     def unlike
-      @embedded_object = EmbeddedObject.find(params[:id])
-      @embedded_object.unlike!(current_user) if current_user.likes?(@embedded_object)
-      @activity = @embedded_object.embeddable
+      @activity_object = ActivityObject.find(params[:id])
+      @activity_object.unlike!(current_user) if current_user.likes?(@activity_object)
+      @activity = @activity_object.embeddable
       respond_to do |format|
         format.js
       end
@@ -94,9 +94,9 @@ module Socializer
 
     def likes
       activity = Activity.find(params[:id])
-      @object_ids = []            
-      activity.embedded_object.likes.each do |person|
-        @object_ids.push person.embedded_object
+      @object_ids = []
+      activity.activity_object.likes.each do |person|
+        @object_ids.push person.activity_object
       end
 
       respond_to do |format|
@@ -106,7 +106,7 @@ module Socializer
     end
 
     def new_share
-      @embedded_object = EmbeddedObject.find(params[:id])
+      @activity_object = ActivityObject.find(params[:id])
       render 'share'
     end
 
@@ -115,24 +115,24 @@ module Socializer
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
-      activity           = Activity.new     
+      activity           = Activity.new
       activity.actor_id  = current_user.guid
       activity.object_id = params[:share][:activity_id]
       activity.content   = params[:share][:content]
       activity.verb      = 'share'
       activity.save!
 
-      object_ids.each do |object_id|
+      object_ids.split(",").each do |object_id|
         if object_id == 'PUBLIC' || object_id == 'CIRCLES'
           audience             = Audience.new
-          audience.activity_id = activity.id       
-          audience.scope       = object_id        
+          audience.activity_id = activity.id
+          audience.scope       = object_id
           audience.save!
         else
           audience             = Audience.new
-          audience.activity_id = activity.id       
+          audience.activity_id = activity.id
           audience.scope       = 'LIMITED'
-          audience.object_id   = object_id            
+          audience.object_id   = object_id
           audience.save!
         end
       end
