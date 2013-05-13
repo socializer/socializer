@@ -6,8 +6,8 @@ module Socializer
 
     included do
 
-      attr_accessor   :activity_verb, :scope, :object_ids, :activity_parent_id
-      attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_parent_id
+      attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
+      attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
       has_one :activity_object, :as => :embeddable, :dependent => :destroy
 
@@ -33,7 +33,7 @@ module Socializer
       if activity_verb.present?
 
         activity           = Activity.new
-        activity.parent_id = activity_parent_id if activity_parent_id.present?
+        activity.target_id = activity_target_id if activity_target_id.present?
         activity.actor_id  = author_id
         activity.object_id = guid
         activity.verb      = activity_verb

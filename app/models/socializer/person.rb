@@ -44,8 +44,8 @@ module Socializer
     end
 
     def likes
-      @likes ||= Activity.where(actor_id: self.activity_object.id, verb: 'like', parent_id: nil).delete_if { |activity|
-        (Activity.where(actor_id: self.activity_object.id, verb: 'unlike', parent_id: nil).map { |activity| activity.object.guid }).include?(activity.object.guid)
+      @likes ||= Activity.where(actor_id: self.activity_object.id, verb: 'like', target_id: nil).delete_if { |activity|
+        (Activity.where(actor_id: self.activity_object.id, verb: 'unlike', target_id: nil).map { |activity| activity.object.guid }).include?(activity.object.guid)
       }
     end
 

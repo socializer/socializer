@@ -9,7 +9,7 @@ module Socializer
       @comment = current_user.comments.build(params[:comment])
       @comment.activity_verb = 'add'
       @comment.scope = 'PUBLIC'
-      @comment.activity_parent_id = @comment.object_id
+      @comment.activity_target_id = @comment.object_id
       @comment.save!
       redirect_to stream_path
     end
