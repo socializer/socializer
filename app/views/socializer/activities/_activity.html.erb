@@ -24,7 +24,7 @@
 <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id) %> &#8211; <%= activity.object.content %></div>
 <% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
 <div class="activity-content"><%= activity.content %></div>
-<div class="activity-subcontent"><%= link_to activity.object.actor.display_name, stream_path(:provider => :people, :id => activity.object.actor.id) %> originally shared this:</div>
+<div class="activity-subcontent"><%= link_to activity.object.actor.display_name, stream_path(:provider => :people, :id => activity.object.actor.id) %> originally shared this <%= link_to(activity.object.object.class.name.demodulize.downcase, stream_path(:provider => :activities, :id => activity.object.id)) %>:</div>
 <div class="activity-subcontent"><%=  activity.object.object.content %></div>
 <% else %>
 <div class="activity-content"><%= activity.embeddable_object.embeddable_type %></div>
