@@ -7,20 +7,20 @@ module Socializer
 
     validates_inclusion_of :privacy_level, in: %w( PUBLIC RESTRICTED PRIVATE )
 
-    has_many :memberships
-    has_many :embedded_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
+    belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
-    belongs_to :embedded_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
+    has_many :memberships
+    has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members
 
     def author
-      @author ||= embedded_author.embeddable
+      @author ||= activity_author.activitable
     end
 
     def members
-      @members ||= embedded_members.map { |em| em.embeddable }
+      @members ||= activity_members.map { |em| em.activitable }
     end
 
     def join (person)

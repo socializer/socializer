@@ -5,7 +5,7 @@ module Socializer
     belongs_to :activity_object, class_name: 'ActivityObject', foreign_key: 'object_id'
 
     def object
-      @object ||= activity_object.embeddable
+      @object ||= activity_object.activitable
     end
 
     validates_inclusion_of :scope, in: %w( PUBLIC CIRCLES LIMITED )

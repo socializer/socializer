@@ -4,10 +4,10 @@ module Socializer
 
     attr_accessible :content
 
-    belongs_to :embedded_author, class_name: 'ActivityObject', foreign_key: 'author_id'
+    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id'
 
     def author
-      @author ||= embedded_author.embeddable
+      @author ||= activity_author.activitable
     end
 
   end

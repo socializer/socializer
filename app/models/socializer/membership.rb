@@ -4,10 +4,10 @@ module Socializer
     attr_accessible :group_id
 
     belongs_to :group
-    belongs_to :embedded_member, class_name: 'ActivityObject', foreign_key: 'member_id'
+    belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id'
 
     def member
-      @member ||= embedded_member.embeddable
+      @member ||= activity_member.activitable
     end
 
     def approve!
