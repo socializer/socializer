@@ -9,8 +9,7 @@ module Socializer
       attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
-      # TODO: Rename the embeddable polymorphic relationship
-      has_one :activity_object, :as => :embeddable, :dependent => :destroy
+      has_one :activity_object, :as => :activitable, :dependent => :destroy
 
       before_create :create_activity_object
       after_create :append_to_activity_stream
@@ -26,7 +25,7 @@ module Socializer
 
     def create_activity_object
       build_activity_object
-      # ActivityObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
+      # ActivityObject.create!(:activitable_id => self.id, :activitable_type => self.class.to_s)
     end
 
     def append_to_activity_stream

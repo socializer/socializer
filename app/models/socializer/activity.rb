@@ -7,9 +7,9 @@ module Socializer
     attr_accessible :verb, :circles, :actor_id, :object_id, :target_id, :content
 
     belongs_to :parent,              class_name: 'Activity',       foreign_key: 'target_id'
-    belongs_to :embeddable_actor,    class_name: 'ActivityObject', foreign_key: 'actor_id'
-    belongs_to :embeddable_object,   class_name: 'ActivityObject', foreign_key: 'object_id'
-    belongs_to :embeddable_target,   class_name: 'ActivityObject', foreign_key: 'target_id'
+    belongs_to :activitable_actor,   class_name: 'ActivityObject', foreign_key: 'actor_id'
+    belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'object_id'
+    belongs_to :activitable_target,  class_name: 'ActivityObject', foreign_key: 'target_id'
 
     has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
     has_many   :children,            class_name: 'Activity',       foreign_key: 'target_id',   dependent: :destroy
@@ -21,15 +21,15 @@ module Socializer
     end
 
     def actor
-      @actor ||= embeddable_actor.embeddable
+      @actor ||= activitable_actor.activitable
     end
 
     def object
-      @object ||= embeddable_object.embeddable
+      @object ||= activitable_object.activitable
     end
 
     def target
-      @target ||= embeddable_target.embeddable
+      @target ||= activitable_target.activitable
     end
 
     # retrieve all the activites that either the person made, that is public from a person in
@@ -62,7 +62,7 @@ module Socializer
       actor_id_sql = "SELECT socializer_activity_objects.id " +
                      "FROM socializer_activity_objects " +
                      "INNER JOIN socializer_people " +
-                     "ON socializer_activity_objects.embeddable_id = socializer_people.id " +
+                     "ON socializer_activity_objects.activitable_id = socializer_people.id " +
                      "WHERE socializer_people.id = socializer_activities.actor_id"
 
       # Retrieve the author's circles
@@ -80,8 +80,8 @@ module Socializer
       limited_circle_id_sql = "SELECT socializer_circles.id " +
                               "FROM socializer_circles " +
                               "INNER JOIN socializer_activity_objects " +
-                              "ON socializer_circles.id = socializer_activity_objects.embeddable_id " +
-                                  "AND socializer_activity_objects.embeddable_type = 'Socializer::Circle' " +
+                              "ON socializer_circles.id = socializer_activity_objects.activitable_id " +
+                                  "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " +
                               "WHERE socializer_activity_objects.id = socializer_audiences.object_id "
 
       # Retrieve all the contacts (people) that are part of those circles
@@ -93,8 +93,8 @@ module Socializer
       limited_groups_sql = "SELECT socializer_activity_objects.id " +
                            "FROM socializer_memberships " +
                            "INNER JOIN socializer_activity_objects " +
-                           "ON socializer_activity_objects.embeddable_id = socializer_memberships.group_id " +
-                               "AND socializer_activity_objects.embeddable_type = 'Socializer::Group' " +
+                           "ON socializer_activity_objects.activitable_id = socializer_memberships.group_id " +
+                               "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
                            "WHERE socializer_memberships.member_id = #{viewer_id}"
 
       # Ensure that the audience is LIMITED and then make sure that the viewer is either

@@ -36,16 +36,16 @@ module Socializer
             is_public = true
           elsif audience.scope == 'CIRCLES'
             activity.actor.circles.each do |circle|
-              circle.embedded_contacts.each do |contact|
+              circle.activity_contacts.each do |contact|
                 @object_ids.push contact
               end
             end
           else
-            if audience.activity_object.embeddable_type == 'Socializer::Circle'
+            if audience.activity_object.activitable_type == 'Socializer::Circle'
               # In the case of LIMITED audience, then go through all the audience
               # circles and add contacts from those circles in the list of allowed
               # audience.
-              audience.activity_object.embeddable.embedded_contacts.each do |contact|
+              audience.activity_object.activitable.activity_contacts.each do |contact|
                 @object_ids.push contact
               end
             else
@@ -60,7 +60,7 @@ module Socializer
       unless is_public
         activities.each do |activity|
           # The actor of the activity is always part of the audience.
-          @object_ids.push activity.embeddable_actor
+          @object_ids.push activity.activitable_actor
         end
       end
 
@@ -77,7 +77,7 @@ module Socializer
     def like
       @activity_object = ActivityObject.find(params[:id])
       @activity_object.like!(current_user) unless current_user.likes?(@activity_object)
-      @activity = @activity_object.embeddable
+      @activity = @activity_object.activitable
       respond_to do |format|
         format.js
       end
@@ -86,7 +86,7 @@ module Socializer
     def unlike
       @activity_object = ActivityObject.find(params[:id])
       @activity_object.unlike!(current_user) if current_user.likes?(@activity_object)
-      @activity = @activity_object.embeddable
+      @activity = @activity_object.activitable
       respond_to do |format|
         format.js
       end

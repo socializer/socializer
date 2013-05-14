@@ -4,10 +4,10 @@ module Socializer
     attr_accessible :contact_id
 
     belongs_to :circle
-    belongs_to :embedded_contact, class_name: 'ActivityObject', foreign_key: 'contact_id'
+    belongs_to :activity_contact, class_name: 'ActivityObject', foreign_key: 'contact_id'
 
     def contact
-      @contact ||= embedded_contact.embeddable
+      @contact ||= activity_contact.activitable
     end
 
   end

@@ -1,5 +1,5 @@
 <li data-activityid="<%= activity.guid %>">
-<% if activity.embeddable_object.embeddable_type == "Socializer::Note" || activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
+<% if activity.activitable_object.activitable_type == "Socializer::Note" || activity.activitable_object.activitable_type == "Socializer::Activity" %>
 
 <div class="activity-top">
 	<%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id), :class => "important-link" %>
@@ -18,16 +18,16 @@
 
 <% end %>
 
-<% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
+<% if activity.activitable_object.activitable_type == "Socializer::Note" %>
 <div class="activity-content"><%= activity.object.content %></div>
-<% elsif activity.embeddable_object.embeddable_type == "Socializer::Comment" %>
+<% elsif activity.activitable_object.activitable_type == "Socializer::Comment" %>
 <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(:provider => :people, :id => activity.actor.id) %> &#8211; <%= activity.object.content %></div>
-<% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
+<% elsif activity.activitable_object.activitable_type == "Socializer::Activity" %>
 <div class="activity-content"><%= activity.content %></div>
 <div class="activity-subcontent"><%= link_to activity.object.actor.display_name, stream_path(:provider => :people, :id => activity.object.actor.id) %> originally shared this <%= link_to(activity.object.object.class.name.demodulize.downcase, stream_path(:provider => :activities, :id => activity.object.id)) %>:</div>
 <div class="activity-subcontent"><%=  activity.object.object.content %></div>
 <% else %>
-<div class="activity-content"><%= activity.embeddable_object.embeddable_type %></div>
+<div class="activity-content"><%= activity.activitable_object.activitable_type %></div>
 <% end %>
 
 <div class="activity-bottom">
@@ -42,30 +42,30 @@
 	(<%= link_to activity.activity_object.like_count, stream_likes_path(activity), :class => 'tooltip' %>)
 <% end %>
 
-<% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
+<% if activity.activitable_object.activitable_type == "Socializer::Note" %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Comment", stream_comment_path(activity) %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Share", stream_share_path(activity.activity_object) %>
 <% end %>
 
-<% if activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
+<% if activity.activitable_object.activitable_type == "Socializer::Activity" %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Comment", stream_comment_path(activity) %>
 <% end %>
 
 <% if activity.actor.id == current_user.id %>
-	<% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
+	<% if activity.activitable_object.activitable_type == "Socializer::Note" %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Edit", edit_note_path(activity.object) %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Delete", activity.object, :method => :delete, :remote => true %>
-	<% elsif activity.embeddable_object.embeddable_type == "Socializer::Comment" %>
+	<% elsif activity.activitable_object.activitable_type == "Socializer::Comment" %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Edit", edit_comment_path(activity.object) %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Delete", activity.object, :method => :delete, :remote => true %>
-	<% elsif activity.embeddable_object.embeddable_type == "Socializer::Activity" %>
+	<% elsif activity.activitable_object.activitable_type == "Socializer::Activity" %>
 	<span class="separator">&#8211;<span><%= link_to "Delete", activity, :method => :delete, :remote => true %>
 	<% end %>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_tag new_stream_share_path(@activity_object.embeddable) do %>
+<%= form_tag new_stream_share_path(@activity_object.activitable) do %>
 <p>
   <label>
     Would you like to say something along with the sharing of this activity?<br>
@@ -15,7 +15,7 @@
     </script>
 <input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @activity_object.id %>">
 <ul>
-<li><%= render @activity_object.embeddable %></li>
+<li><%= render @activity_object.activitable %></li>
 </ul>
 <p>
   <input type="submit" value="Share" />
