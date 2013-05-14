@@ -1,7 +1,7 @@
 require 'active_support/concern'
 
 module Socializer
-  module Object
+  module ObjectTypeBase
     extend ActiveSupport::Concern
 
     included do
@@ -9,6 +9,7 @@ module Socializer
       attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
+      # TODO: Rename the embeddable polymorphic relationship
       has_one :activity_object, :as => :embeddable, :dependent => :destroy
 
       before_create :create_activity_object
