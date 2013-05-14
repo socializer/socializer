@@ -1,7 +1,7 @@
 # TODO: Group names must be unique by author
 module Socializer
   class Group < ActiveRecord::Base
-    include Socializer::Object
+    include Socializer::ObjectTypeBase
 
     attr_accessible :name, :privacy_level
 

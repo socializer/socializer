@@ -1,8 +1,8 @@
 require "socializer/engine"
-require "socializer/models/object.rb"
+require "socializer/models/object_type_base.rb"
 
 module Socializer
   module Models
-    autoload :ActivityObjectBase, 'socializer/models/object'
+    autoload :ObjectTypeBase, 'socializer/models/object_type_base'
   end
 end

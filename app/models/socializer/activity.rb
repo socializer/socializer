@@ -1,6 +1,6 @@
 module Socializer
   class Activity < ActiveRecord::Base
-    include Socializer::Object
+    include Socializer::ObjectTypeBase
 
     default_scope { order(created_at: :desc) }
 
