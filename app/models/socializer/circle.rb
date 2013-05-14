@@ -4,17 +4,17 @@ module Socializer
 
     attr_accessible :name, :description
 
-    has_many   :ties
-    has_many   :embedded_contacts, through: :ties
+    belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
-    belongs_to :embedded_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
+    has_many   :ties
+    has_many   :activity_contacts, through: :ties
 
     def author
-      @author ||= embedded_author.embeddable
+      @author ||= activity_author.activitable
     end
 
     def contacts
-      @contacts ||= embedded_contacts.map { |ec| ec.embeddable }
+      @contacts ||= activity_contacts.map { |ec| ec.activitable }
     end
 
     def add_contact(contact_id)
