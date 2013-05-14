@@ -2,7 +2,7 @@ require 'digest/md5'
 
 module Socializer
   class Person < ActiveRecord::Base
-    include Socializer::Object
+    include Socializer::ObjectTypeBase
 
     attr_accessible :display_name, :email, :language, :avatar_provider
 

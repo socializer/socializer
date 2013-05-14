@@ -4,6 +4,7 @@ module Socializer
     attr_accessor :scope, :object_ids
     attr_accessible :scope, :object_ids, :embeddable_id, :embeddable_type, :like_count
 
+    # TODO: Rename the embeddable polymorphic relationship
     belongs_to :embeddable, polymorphic: true
 
     has_and_belongs_to_many :activities, class_name: 'Activity', join_table: 'socializer_audiences', foreign_key: "object_id", association_foreign_key: "activity_id"
