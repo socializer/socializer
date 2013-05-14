@@ -32,21 +32,21 @@
 
 <div class="activity-bottom">
 
-<% if current_user.likes?(activity.embedded_object) %>
-	<%= link_to "Unlike", stream_unlike_path(activity.embedded_object), :method => :post, :remote => true %>
+<% if current_user.likes?(activity.activity_object) %>
+	<%= link_to "Unlike", stream_unlike_path(activity.activity_object), :method => :post, :remote => true %>
 <% else %>
-	<%= link_to "Like", stream_like_path(activity.embedded_object), :method => :post, :remote => true %>
+	<%= link_to "Like", stream_like_path(activity.activity_object), :method => :post, :remote => true %>
 <% end %>
 
-<% if activity.embedded_object.like_count > 0 %>
-	(<%= link_to activity.embedded_object.like_count, stream_likes_path(activity), :class => 'tooltip' %>)
+<% if activity.activity_object.like_count > 0 %>
+	(<%= link_to activity.activity_object.like_count, stream_likes_path(activity), :class => 'tooltip' %>)
 <% end %>
 
 <% if activity.embeddable_object.embeddable_type == "Socializer::Note" %>
 	<span class="separator">&#8211;<span>
 	<%= link_to "Comment", stream_comment_path(activity) %>
 	<span class="separator">&#8211;<span>
-	<%= link_to "Share", stream_share_path(activity.embedded_object) %>
+	<%= link_to "Share", stream_share_path(activity.activity_object) %>
 <% end %>
 
 <% if activity.embeddable_object.embeddable_type == "Socializer::Activity" %>

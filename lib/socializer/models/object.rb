@@ -6,26 +6,26 @@ module Socializer
 
     included do
 
-      attr_accessor   :activity_verb, :scope, :object_ids, :activity_parent_id
-      attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_parent_id
+      attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
+      attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
-      has_one :embedded_object, :as => :embeddable, :dependent => :destroy
+      has_one :activity_object, :as => :embeddable, :dependent => :destroy
 
-      before_create :create_embedded_object
+      before_create :create_activity_object
       after_create :append_to_activity_stream
 
     end
 
     def guid
-      embedded_object.id
+      activity_object.id
     end
 
 
     protected
 
-    def create_embedded_object
-      build_embedded_object
-      # EmbeddedObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
+    def create_activity_object
+      build_activity_object
+      # ActivityObject.create!(:embeddable_id => self.id, :embeddable_type => self.class.to_s)
     end
 
     def append_to_activity_stream
@@ -33,7 +33,7 @@ module Socializer
       if activity_verb.present?
 
         activity           = Activity.new
-        activity.parent_id = activity_parent_id if activity_parent_id.present?
+        activity.target_id = activity_target_id if activity_target_id.present?
         activity.actor_id  = author_id
         activity.object_id = guid
         activity.verb      = activity_verb

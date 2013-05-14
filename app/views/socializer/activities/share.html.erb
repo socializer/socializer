@@ -1,4 +1,4 @@
-<%= form_tag stream_share_path(@embedded_object.embeddable) do %>
+<%= form_tag new_stream_share_path(@activity_object.embeddable) do %>
 <p>
   <label>
     Would you like to say something along with the sharing of this activity?<br>
@@ -13,9 +13,9 @@
         $("#share_object_ids").tokenInput("<%= audiences_path %>", { minChars: 0 });
     });
     </script>
-<input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @embedded_object.id %>">
+<input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @activity_object.id %>">
 <ul>
-<li><%= render @embedded_object.embeddable %></li>
+<li><%= render @activity_object.embeddable %></li>
 </ul>
 <p>
   <input type="submit" value="Share" />

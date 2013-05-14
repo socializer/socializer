@@ -10,7 +10,7 @@ $(document).ready(function()
 });
 
 function addTooltipSupport( jQueryElement ) {
-	
+
 	jQueryElement.qtip({
 		content: {
 			text: 'Loading...',
@@ -19,11 +19,12 @@ function addTooltipSupport( jQueryElement ) {
 			},
 		},
 		style: {
-			classes: 'ui-tooltip-dark ui-tooltip-tipsy'
+			classes: 'qtip-tipsy'
 		},
 		position: {
 			my: 'top center',
-			at: 'bottom center'
+			at: 'bottom center',
+			effect: false
 		},
 		show: {
 			event: 'click',
@@ -31,9 +32,9 @@ function addTooltipSupport( jQueryElement ) {
 		},
 		hide: 'unfocus'
 	});
-	
-	jQueryElement.click(function(event) { 
+
+	jQueryElement.click(function(event) {
 		event.preventDefault();
 	});
-	
+
 }
