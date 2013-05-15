@@ -7,7 +7,8 @@ class CreateSocializerGroups < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :socializer_groups, :author_id
+    add_index :socializer_groups, [:name, :author_id], unique: true
   end
 end

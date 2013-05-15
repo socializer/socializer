@@ -1,10 +1,10 @@
-# TODO: Group names must be unique by author
 module Socializer
   class Group < ActiveRecord::Base
     include Socializer::ObjectTypeBase
 
     attr_accessible :name, :privacy_level
 
+    validates :name, uniqueness: { scope: :author_id }
     validates_inclusion_of :privacy_level, in: %w( PUBLIC RESTRICTED PRIVATE )
 
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
