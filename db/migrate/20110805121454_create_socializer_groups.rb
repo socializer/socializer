@@ -3,7 +3,7 @@ class CreateSocializerGroups < ActiveRecord::Migration
     create_table :socializer_groups do |t|
       t.integer  :author_id
       t.string   :name
-      t.string   :privacy_level
+      t.integer  :privacy_level
 
       t.timestamps
     end
