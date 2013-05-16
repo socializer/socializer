@@ -63,7 +63,8 @@ module Socializer
     end
 
     def pending_memberships_invites
-      @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 'PRIVATE' ) > 0 ")
+      # FIXME: Get the value of PRIVATE from the privacy_level enum. This scope should do it - with_privacy_level(:private)
+      @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
     end
 
     def avatar_url
