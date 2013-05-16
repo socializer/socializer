@@ -27,8 +27,12 @@ module Socializer
 
     def create
       @group = current_user.groups.build(params[:group])
-      @group.save!
-      redirect_to @group
+
+      if @group.save
+        redirect_to @group
+      else
+        render :new
+      end
     end
 
     def edit

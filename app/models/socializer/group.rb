@@ -1,16 +1,18 @@
-# TODO: Group names must be unique by author
 module Socializer
   class Group < ActiveRecord::Base
+    extend Enumerize
     include Socializer::ObjectTypeBase
 
-    attr_accessible :name, :privacy_level
+    enumerize :privacy_level, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 
-    validates_inclusion_of :privacy_level, in: %w( PUBLIC RESTRICTED PRIVATE )
+    attr_accessible :name, :privacy_level
 
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
     has_many :memberships
     has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
+
+    validates :name, :presence => true, uniqueness: { scope: :author_id }
 
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members
@@ -25,9 +27,9 @@ module Socializer
 
     def join (person)
       @membership = person.memberships.build(group_id: self.id)
-      if self.privacy_level == 'PUBLIC'
+      if self.privacy_level.public?
         @membership.active = true
-      elsif self.privacy_level == 'RESTRICTED'
+      elsif self.privacy_level.restricted?
         @membership.active = false
       else
         raise "Cannot self-join a private group, you need to be invited"
