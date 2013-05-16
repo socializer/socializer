@@ -1,5 +1,5 @@
-require "socializer/engine"
-require "socializer/models/object_type_base.rb"
+require 'socializer/engine'
+require 'socializer/models/object_type_base.rb'
 
 module Socializer
   module Models

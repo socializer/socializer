@@ -1,0 +1,7 @@
+fr:
+  enumerize:
+    group:
+      privacy_level:
+        public: "Publique"
+        restricted: "Limité"
+        private: "Privé"

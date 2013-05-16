@@ -17,7 +17,7 @@
 <% end %>
 </ul>
 
-<% if @group.privacy_level == 'PRIVATE' %>
+<% if @group.privacy_level.private? %>
 
 <h2>Invite members</h2>
 <ul class="large-contact-list">
