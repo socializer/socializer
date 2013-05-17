@@ -41,16 +41,19 @@ module Socializer
 
         if object_ids.present?
           object_ids.each do |object_id|
-            if object_id == 'PUBLIC' || object_id == 'CIRCLES'
-              audience             = Audience.new
-              audience.activity_id = activity.id
-              audience.scope       = object_id
+            public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+            circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+
+            if object_id == public || object_id == circles
+              audience               = Audience.new
+              audience.activity_id   = activity.id
+              audience.privacy_level = object_id
               audience.save!
             else
-              audience             = Audience.new
-              audience.activity_id = activity.id
-              audience.scope       = 'LIMITED'
-              audience.object_id   = object_id
+              audience               = Audience.new
+              audience.activity_id   = activity.id
+              audience.privacy_level = :limited
+              audience.object_id     = object_id
               audience.save!
             end
           end
