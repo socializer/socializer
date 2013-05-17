@@ -54,8 +54,9 @@ module Socializer
       #       i)  A contact in one of the audience listed circles
       #       ii) Directly tagged as an allowed audience
 
+      # FIXME: Use with_privacy_level(:public)
       # Audience : PUBLIC
-      public_sql   = "socializer_audiences.scope = 'PUBLIC'"
+      public_sql   = "socializer_audiences.privacy_level = 1"
 
       # Audience : CIRCLES
       # Retrieve the author's unique identifier
@@ -70,8 +71,9 @@ module Socializer
                           "FROM socializer_circles  " +
                           "WHERE socializer_circles.author_id IN ( #{actor_id_sql} ) "
 
+      # FIXME: Use with_privacy_level(:circles)
       # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
-      circles_sql  = "socializer_audiences.scope = 'CIRCLES' " +
+      circles_sql  = "socializer_audiences.privacy_level = 2 " +
                      "AND #{viewer_id} IN ( #{actor_circles_sql} )"
 
       # Audience : LIMITED
@@ -97,10 +99,11 @@ module Socializer
                                "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
                            "WHERE socializer_memberships.member_id = #{viewer_id}"
 
+      # FIXME: Use with_privacy_level(:limited)
       # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
-      limited_sql  = "socializer_audiences.scope = 'LIMITED' " +
+      limited_sql  = "socializer_audiences.privacy_level = 3 " +
                      "AND ( #{viewer_id} IN ( #{limited_followed_sql} ) " +
                         "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
                         "OR socializer_audiences.object_id = #{viewer_id} ) "

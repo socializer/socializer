@@ -31,10 +31,10 @@ module Socializer
         activity.audiences.each do |audience|
           # In case of CIRCLES audience, add each contacts of every circles
           # of the actor of the activity.
-          if audience.scope == 'PUBLIC'
-            @object_ids.push audience.scope
+          if audience.privacy_level.public?
+            @object_ids.push audience.privacy_level
             is_public = true
-          elsif audience.scope == 'CIRCLES'
+          elsif audience.privacy_level.circles?
             activity.actor.circles.each do |circle|
               circle.activity_contacts.each do |contact|
                 @object_ids.push contact
@@ -123,16 +123,19 @@ module Socializer
       activity.save!
 
       object_ids.split(",").each do |object_id|
-        if object_id == 'PUBLIC' || object_id == 'CIRCLES'
-          audience             = Audience.new
-          audience.activity_id = activity.id
-          audience.scope       = object_id
+        public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+        circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+
+        if object_id == public || object_id == circles
+          audience               = Audience.new
+          audience.activity_id   = activity.id
+          audience.privacy_level = object_id
           audience.save!
         else
-          audience             = Audience.new
-          audience.activity_id = activity.id
-          audience.scope       = 'LIMITED'
-          audience.object_id   = object_id
+          audience               = Audience.new
+          audience.activity_id   = activity.id
+          audience.privacy_level = :limited
+          audience.object_id     = object_id
           audience.save!
         end
       end

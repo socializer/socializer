@@ -5,3 +5,8 @@ en:
         public: "Public"
         restricted: "Restricted"
         private: "Private"
+    audience:
+      privacy_level:
+        public: "Public"
+        circles: "Circles"
+        limited: "Limited"
