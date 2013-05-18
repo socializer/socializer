@@ -7,6 +7,6 @@ fr:
         private: "Privé"
     audience:
       privacy_level:
-        public: "Public"
-        circles: "Circles"
+        public: "Publique"
+        circles: "Cercles"
         limited: "Limitée"
