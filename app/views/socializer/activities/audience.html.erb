@@ -1,6 +1,6 @@
 <ul>
 <% @object_ids.each do |object| %>
-  <% if object == 'PUBLIC' %>
+  <% if object == 'public' %>
   <li>Anyone can see this</li>
   <% elsif object.activitable_type == 'Socializer::Person' %>
   <li><%= object.activitable.display_name %></li>
