@@ -10,7 +10,6 @@ module Socializer
 
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
-
     def circles
       @circles ||= activity_object.circles
     end
@@ -40,32 +39,40 @@ module Socializer
     end
 
     def contact_of
-      @contact_of ||= Circle.joins(:ties).where('socializer_ties.contact_id' => self.guid).map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{self.guid}}.map { |circle| circle.author }.uniq
     end
 
     def likes
-      @likes ||= Activity.where(actor_id: self.activity_object.id, verb: 'like', target_id: nil).delete_if { |activity|
-        (Activity.where(actor_id: self.activity_object.id, verb: 'unlike', target_id: nil).map { |activity| activity.object.guid }).include?(activity.object.guid)
-      }
+      activity_object_id = self.activity_object.id
+      query = Activity.where{actor_id.eq(activity_object_id) & target_id.eq(nil)}
+
+      @likes ||= query.where{verb.eq('like')}.delete_if do |activity|
+        (query.where{verb.eq('unlike')}.map { |activity| activity.object.guid }).include?(activity.object.guid)
+      end
     end
 
+    # TODO: Refactor.
     def likes?(object)
-      likes = Activity.where(object_id: object.id, actor_id: self.activity_object.id, verb: 'like')
-      if likes.count == 0
-        return false
-      else
-        unlikes = Activity.where(object_id: object.id, actor_id: self.activity_object.id, verb: 'unlike')
-        if likes.count == unlikes.count
-          return false
-        end
-      end
+      activity_object_id = self.activity_object.id
+
+      query   = Activity.where{object_id.eq(object.id) & actor_id.eq(activity_object_id)}
+      likes   = query.where{verb.eq('like')}
+      unlikes = query.where{verb.eq('unlike')}
+
+      # Can replace the 3 return statements, but always runs 2 queries
+      # !(likes.present? && unlikes.present?)
+
+      return false if likes.count == 0
+      return false if likes.count == unlikes.count
       return true
     end
 
     def pending_memberships_invites
-      # FIXME: Get the value of PRIVATE from the privacy_level enum. This scope should do it - with_privacy_level(:private)
-      @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
-    end
+      # FIXME: Find a better way to do the comparison > 0. Does a native way exist to do "(#{subquery.to_sql}) > 0"
+      # @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
+      subquery = Socializer::Group.joins{memberships}.with_privacy_level(:private).select{count(1)}
+      @pending_memberships_invites ||= memberships.where{active.eq(false)}.where{"(#{subquery.to_sql}) > 0"}
+      end
 
     def avatar_url
       if avatar_provider == "FACEBOOK"
