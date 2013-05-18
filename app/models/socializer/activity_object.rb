@@ -46,7 +46,7 @@ module Socializer
       activity.save!
 
       audience = Audience.new
-      audience.scope = 'PUBLIC'
+      audience.privacy_level = :public
       audience.activity_id = activity.id
       audience.save!
 
@@ -61,7 +61,7 @@ module Socializer
       activity.save!
 
       audience = Audience.new
-      audience.scope = 'PUBLIC'
+      audience.privacy_level = :public
       audience.activity_id = activity.id
       audience.save!
 
@@ -75,23 +75,22 @@ module Socializer
       activity.verb = 'share'
       activity.save!
 
-      if scope == 'PUBLIC' || scope == 'CIRCLES'
+      public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+      circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
+      if scope == public || scope == circles
         audience = Audience.new
         audience.activity_id = activity.id
-        audience.scope = scope
+        audience.privacy_level = scope
         audience.save!
-
       else
-
         object_ids.each do |object_id|
           audience = Audience.new
           audience.activity_id = activity.id
-          audience.scope = 'LIMITED'
+          audience.privacy_level = :limited
           audience.object_id = object_id
           audience.save!
         end
-
       end
 
     end

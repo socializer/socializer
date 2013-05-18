@@ -13,15 +13,17 @@ module Socializer
         @groups = current_user.groups
       end
 
-      @audiences = ["id" => "PUBLIC", "name" => "Public"] +
-                   ["id" => "CIRCLES", "name" => "Your circles"] +
-                   @people.collect{ |x| {"id" => x.guid, "name" => x.display_name} } +
-                   @circles.collect{ |x| {"id" => x.guid, "name" => x.name} } +
-                   @groups.collect{ |x| {"id" => x.guid, "name" => x.name} }
+      public = Socializer::Audience.privacy_level.find_value(:public)
+      circles = Socializer::Audience.privacy_level.find_value(:circles)
 
+      @audiences = [id: public.value, name: public.text] +
+                   [id: circles.value, name: circles.text] +
+                   @people.collect{ |x| {id: x.guid, name: x.display_name} } +
+                   @circles.collect{ |x| {id: x.guid, name: x.name} } +
+                   @groups.collect{ |x| {id: x.guid, name: x.name} }
 
       respond_to do |format|
-        format.json { render :json => @audiences }
+        format.json { render json: @audiences }
       end
 
     end

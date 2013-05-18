@@ -6,7 +6,7 @@
 	<span class="separator">&#8211;<span>
 	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(:provider => :activities, :id => activity.id), :class => "unimportant-link" %>
 	<% activity.audiences.uniq.each do |audience| %>
-		<% if audience.scope == 'PUBLIC' %>
+		<% if audience.privacy_level.public? %>
   	<span class="separator">&#8211;<span>
 	<%= link_to "Public", stream_audience_path(activity), :class => 'tooltip unimportant-link', :title => "Anyone can see this" %>
 		<% else %>
