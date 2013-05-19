@@ -86,6 +86,7 @@ module Socializer
 
       # FIXME: Use with_privacy_level(:circles)
       # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
+      # circles_sql  = Socializer::Audience.with_privacy_level(:circles).where{viewer_id.in(actor_circles_sql)}
       circles_sql  = "socializer_audiences.privacy_level = 2 " +
                      "AND #{viewer_id} IN ( #{actor_circles_sql} )"
 
@@ -158,16 +159,16 @@ module Socializer
       end
     }
 
-    def stream1(options = {})
-      options.assert_valid_keys(:provider, :actor_id, :viewer)
+    # def stream1(options = {})
+    #   options.assert_valid_keys(:provider, :actor_id, :viewer)
 
-      provider  = options.delete(:provider)
-      actor_uid = options.delete(:actor_id)
-      viewer    = options.delete(:viewer)
+    #   provider  = options.delete(:provider)
+    #   actor_uid = options.delete(:actor_id)
+    #   viewer    = options.delete(:viewer)
 
-      raise "Unknown stream provider." if provider.empty?
+    #   raise "Unknown stream provider." if provider.empty?
 
-      viewer_id = viewer.guid
-    end
- end
+    #   viewer_id = viewer.guid
+    # end
+  end
 end
