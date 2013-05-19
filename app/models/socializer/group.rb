@@ -27,6 +27,7 @@ module Socializer
 
     def join (person)
       @membership = person.memberships.build(group_id: self.id)
+
       if self.privacy_level.public?
         @membership.active = true
       elsif self.privacy_level.restricted?
@@ -34,11 +35,13 @@ module Socializer
       else
         raise "Cannot self-join a private group, you need to be invited"
       end
+
       @membership.save
     end
 
     def invite(person)
       @membership = person.memberships.build(group_id: self.id)
+
       @membership.active = false
       @membership.save
     end
@@ -56,6 +59,7 @@ module Socializer
 
     def add_author_to_members
       @membership = author.memberships.build(group_id: self.id)
+
       @membership.active = true
       @membership.save
     end
