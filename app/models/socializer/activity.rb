@@ -57,6 +57,11 @@ module Socializer
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = ["post", "share"]
 
+      # privacy_levels
+      privacy_public  = Socializer::Audience.privacy_level.find_value(:public).value
+      privacy_circles = Socializer::Audience.privacy_level.find_value(:circles).value
+      privacy_limited = Socializer::Audience.privacy_level.find_value(:limited).value
+
       # To be allowed to see an activity, one of the following must be true
       # 1) You are the author
       # 2) Someone in your circles is the author and one of the following is true :
@@ -69,10 +74,13 @@ module Socializer
       # FIXME: Use with_privacy_level(:public)
       # Audience : PUBLIC
       # public_sql = Socializer::Audience.with_privacy_level(:public)
-      public_sql   = "socializer_audiences.privacy_level = 1"
+      # public_sql   = { audiences: { privacy_level: Socializer::Audience.privacy_level.find_value(:public).value } }
+      public_sql   = "socializer_audiences.privacy_level = #{privacy_public}"
 
       # Audience : CIRCLES
       # Retrieve the author's unique identifier
+      # FIXME: the activities.actor_id part isn't referencing the correct table. May need add .includes(:activities) or include a join to activities
+      # actor_id_sql = Socializer::ActivityObject.select{id}.joins{activitable(Socializer::Person)}.joins{activities}.where{activities.actor_id.eq(activitable(Socializer::Person).id)}
       actor_id_sql = "SELECT socializer_activity_objects.id " +
                      "FROM socializer_activity_objects " +
                      "INNER JOIN socializer_people " +
@@ -88,7 +96,7 @@ module Socializer
       # FIXME: Use with_privacy_level(:circles)
       # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
       # circles_sql  = Socializer::Audience.with_privacy_level(:circles).where{`"#{viewer_id}"`.in(actor_circles_sql)}
-      circles_sql  = "socializer_audiences.privacy_level = 2 " +
+      circles_sql  = "socializer_audiences.privacy_level = #{privacy_circles} " +
                      "AND #{viewer_id} IN ( #{actor_circles_sql} )"
 
       # Audience : LIMITED
@@ -120,7 +128,7 @@ module Socializer
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
       # limited_sql = Socializer::Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (object_id.in(limited_groups_sql)) | (object_id.eq(viewer_id))}
-      limited_sql  = "socializer_audiences.privacy_level = 3 " +
+      limited_sql  = "socializer_audiences.privacy_level = #{privacy_limited} " +
                      "AND ( #{viewer_id} IN ( #{limited_followed_sql} ) " +
                         "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
                         "OR socializer_audiences.object_id = #{viewer_id} ) "
@@ -129,7 +137,7 @@ module Socializer
       security_sql = "( ( #{public_sql} ) OR ( #{circles_sql} ) OR ( #{limited_sql} ) OR actor_id = #{viewer_id} )"
 
       query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
-debugger
+
       if provider.nil?
         # this is your dashboard. display everything about people in circles and yourself.
         query.uniq
