@@ -57,6 +57,93 @@ module Socializer
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = ["post", "share"]
 
+      # Build full audience sql string
+      security_sql = build_security_sql(viewer_id)
+
+      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
+
+      case provider
+      when nil
+        # this is your dashboard. display everything about people in circles and yourself.
+        query.uniq
+      when 'activities'
+        # we only want to display a single activity. make sure the viewer is allowed to do so.
+        activity_id = actor_uid
+        query.where{id.eq(activity_id)}.uniq
+      when 'people'
+        # this is a user profile. display everything about him that you are allowed to see
+        person_id = Person.find(actor_uid).guid
+        query.where{actor_id.eq(person_id)}.uniq
+      when 'circles'
+        # this is a circle. display everything that was posted by contacts in that circle.
+        # viewer_id = Person.find(viewer_id).guid
+        circle_uid   = Circle.find(actor_uid).id
+        circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
+        followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
+
+        query.where{actor_id.in(followed_sql)}.uniq
+      when 'groups'
+        # this is a group. display everything that was posted to this group as audience
+        group_id = Group.find(actor_uid).guid
+        query.where(audiences: {object_id: group_id}).uniq
+        # FIXME: the object_id reservered word appears to be interfering with using squeel here
+        # query.where{audiences.object_id.eq(group_id)}.uniq
+      else
+        raise "Unknown stream provider."
+      end
+    }
+
+    def self.stream1(options = {})
+      options.assert_valid_keys(:provider, :actor_id, :viewer_id)
+
+      provider  = options.delete(:provider)
+      actor_uid = options.delete(:actor_id)
+      viewer_id = options.delete(:viewer_id)
+
+      viewer_id = Person.find(viewer_id).guid
+
+      # for an activity to be interesting, it must correspond to one of these verbs
+      verbs_of_interest = ["post", "share"]
+
+      # Build full audience sql string
+      security_sql = build_security_sql(viewer_id)
+
+      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
+
+      case provider
+      when nil
+        # this is your dashboard. display everything about people in circles and yourself.
+        query.uniq
+      when 'activities'
+        # we only want to display a single activity. make sure the viewer is allowed to do so.
+        activity_id = actor_uid
+        query.where{id.eq(activity_id)}.uniq
+      when 'people'
+        # this is a user profile. display everything about him that you are allowed to see
+        person_id = Person.find(actor_uid).guid
+        query.where{actor_id.eq(person_id)}.uniq
+      when 'circles'
+        # this is a circle. display everything that was posted by contacts in that circle.
+        # viewer_id = Person.find(viewer_id).guid
+        circle_uid   = Circle.find(actor_uid).id
+        circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
+        followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
+
+        query.where{actor_id.in(followed_sql)}.uniq
+      when 'groups'
+        # this is a group. display everything that was posted to this group as audience
+        group_id = Group.find(actor_uid).guid
+        query.where(audiences: {object_id: group_id}).uniq
+        # FIXME: the object_id reservered word appears to be interfering with using squeel here
+        # query.where{audiences.object_id.eq(group_id)}.uniq
+      else
+        raise "Unknown stream provider."
+      end
+    end
+
+    private
+
+    def self.build_security_sql(viewer_id)
       # privacy_levels
       privacy_public  = Socializer::Audience.privacy_level.find_value(:public).value
       privacy_circles = Socializer::Audience.privacy_level.find_value(:circles).value
@@ -135,51 +222,6 @@ module Socializer
 
       # Build full audience sql string
       security_sql = "( ( #{public_sql} ) OR ( #{circles_sql} ) OR ( #{limited_sql} ) OR actor_id = #{viewer_id} )"
-
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
-
-      if provider.nil?
-        # this is your dashboard. display everything about people in circles and yourself.
-        query.uniq
-      else
-        if provider == 'activities'
-          # we only want to display a single activity. make sure the viewer is allowed to do so.
-          activity_id = actor_uid
-          query.where{id.eq(activity_id)}.uniq
-        elsif provider == 'people'
-          # this is a user profile. display everything about him that you are allowed to see
-          person_id = Person.find(actor_uid).guid
-          query.where{actor_id.eq(person_id)}.uniq
-        elsif provider == 'circles'
-          # this is a circle. display everything that was posted by contacts in that circle.
-          # viewer_id = Person.find(viewer_id).guid
-          circle_uid   = Circle.find(actor_uid).id
-          circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
-          followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
-
-          query.where{actor_id.in(followed_sql)}.uniq
-        elsif provider == 'groups'
-          # this is a group. display everything that was posted to this group as audience
-          group_id = Group.find(actor_uid).guid
-          query.where(audiences: {object_id: group_id}).uniq
-          # FIXME: the object_id reservered word appears to be interfering with using squeel here
-          # query.where{audiences.object_id.eq(group_id)}.uniq
-        else
-          raise "Unknown stream provider."
-        end
-      end
-    }
-
-    # def stream1(options = {})
-    #   options.assert_valid_keys(:provider, :actor_id, :viewer)
-
-    #   provider  = options.delete(:provider)
-    #   actor_uid = options.delete(:actor_id)
-    #   viewer    = options.delete(:viewer)
-
-    #   raise "Unknown stream provider." if provider.empty?
-
-    #   viewer_id = viewer.guid
-    # end
+    end
   end
 end
