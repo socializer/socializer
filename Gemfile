@@ -14,8 +14,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'omniauth-openid'
 
-gem 'rails4_upgrade', github: 'alindeman/rails4_upgrade'
-
+# TODO: Remove when final version ships for Rails 4
+gem "squeel", github: 'ernie/squeel'
 
 group :development, :test do
   gem 'debugger'
