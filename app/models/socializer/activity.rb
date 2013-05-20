@@ -39,61 +39,13 @@ module Socializer
     # scope :test, -> value { where{sift :verb_contains, value} if value.present? }
     # scope :test1, -> value { where(:audiences => {:privacy_level => value}) if value.present? }
 
-    # TODO: Refactor and make stream a method
     # retrieve all the activites that either the person made, that is public from a person in
     # one of his circle or that is shared to one of the circle he is part of
     # possible arguments :
-    #   args[:provider]  => nil, activities, people, circles, groups
-    #   args[:actor_id]  => unique identifier of the previously typed provider
-    #   args[:viewer_id] => who wants to see the activity stream
-    scope :stream, -> args {
-
-      provider  = args.delete(:provider)
-      actor_uid = args.delete(:actor_id)
-      viewer_id = args.delete(:viewer_id)
-
-      viewer_id = Person.find(viewer_id).guid
-
-      # for an activity to be interesting, it must correspond to one of these verbs
-      verbs_of_interest = ["post", "share"]
-
-      # Build full audience sql string
-      security_sql = build_security_sql(viewer_id)
-
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
-
-      case provider
-      when nil
-        # this is your dashboard. display everything about people in circles and yourself.
-        query.uniq
-      when 'activities'
-        # we only want to display a single activity. make sure the viewer is allowed to do so.
-        activity_id = actor_uid
-        query.where{id.eq(activity_id)}.uniq
-      when 'people'
-        # this is a user profile. display everything about him that you are allowed to see
-        person_id = Person.find(actor_uid).guid
-        query.where{actor_id.eq(person_id)}.uniq
-      when 'circles'
-        # this is a circle. display everything that was posted by contacts in that circle.
-        # viewer_id = Person.find(viewer_id).guid
-        circle_uid   = Circle.find(actor_uid).id
-        circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
-        followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
-
-        query.where{actor_id.in(followed_sql)}.uniq
-      when 'groups'
-        # this is a group. display everything that was posted to this group as audience
-        group_id = Group.find(actor_uid).guid
-        query.where(audiences: {object_id: group_id}).uniq
-        # FIXME: the object_id reservered word appears to be interfering with using squeel here
-        # query.where{audiences.object_id.eq(group_id)}.uniq
-      else
-        raise "Unknown stream provider."
-      end
-    }
-
-    def self.stream1(options = {})
+    #   options[:provider]  => nil, activities, people, circles, groups
+    #   options[:actor_id]  => unique identifier of the previously typed provider
+    #   options[:viewer_id] => who wants to see the activity stream
+    def self.stream(options = {})
       options.assert_valid_keys(:provider, :actor_id, :viewer_id)
 
       provider  = options.delete(:provider)
