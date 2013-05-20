@@ -24,13 +24,14 @@ module Socializer
 
     def likes
       people = []
+      query  =  Activity.where{object_id.eq(self.id)}
 
-      activities_likes = Activity.where(verb: 'like', object_id: self.id)
+      activities_likes = query.where{verb.eq('like')}
       activities_likes.each do |activity|
         people.push activity.actor
       end
 
-      activities_unlikes = Activity.where(verb: 'unlike', object_id: self.id)
+      activities_unlikes = query.where{verb.eq('unlike')}
       activities_unlikes.each do |activity|
         people.delete_at people.index(activity.actor)
       end
