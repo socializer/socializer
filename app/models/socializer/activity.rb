@@ -54,13 +54,7 @@ module Socializer
 
       viewer_id = Person.find(viewer_id).guid
 
-      # for an activity to be interesting, it must correspond to one of these verbs
-      verbs_of_interest = ["post", "share"]
-
-      # Build full audience sql string
-      security_sql = build_security_sql(viewer_id)
-
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
+      query = build_query(viewer_id)
 
       case provider
       when nil
@@ -95,7 +89,20 @@ module Socializer
 
     private
 
+    def self.build_query(viewer_id)
+      raise "viewer_id cannot be nil." if viewer_id.nil?
+
+      # for an activity to be interesting, it must correspond to one of these verbs
+      verbs_of_interest = ["post", "share"]
+
+      # Build full audience sql string
+      security_sql = build_security_sql(viewer_id)
+
+      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
+    end
+
     def self.build_security_sql(viewer_id)
+
       # privacy_levels
       privacy_public  = Socializer::Audience.privacy_level.find_value(:public).value
       privacy_circles = Socializer::Audience.privacy_level.find_value(:circles).value
