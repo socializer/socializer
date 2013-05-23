@@ -32,66 +32,98 @@ module Socializer
       @target ||= activitable_target.activitable
     end
 
-    # sifter :verb_contains do |string|
-    #   verb.eq(string)
-    # end
+    # Selects the activites that either the person made, that is public from a person in
+    # one of his circle, or that is shared to one of the circles he is part of.
+    #
+    # * <tt>options[:provider]</tt>  - <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>, <tt>groups</tt>
+    # * <tt>options[:actor_id]</tt>  - unique identifier of the previously typed provider
+    # * <tt>options[:viewer_id]</tt> - who wants to see the activity stream
+    #
+    #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
+    def self.stream(options = {})
+      options.assert_valid_keys(:provider, :actor_id, :viewer_id)
 
-    # scope :test, -> value { where{sift :verb_contains, value} if value.present? }
-    # scope :test1, -> value { where(:audiences => {:privacy_level => value}) if value.present? }
-
-    # TODO: Refactor and make stream a method
-    # retrieve all the activites that either the person made, that is public from a person in
-    # one of his circle or that is shared to one of the circle he is part of
-    # possible arguments :
-    #   args[:provider]  => nil, activities, people, circles, groups
-    #   args[:actor_id]  => unique identifier of the previously typed provider
-    #   args[:viewer_id] => who wants to see the activity stream
-    scope :stream, -> args {
-
-      provider  = args.delete(:provider)
-      actor_uid = args.delete(:actor_id)
-      viewer_id = args.delete(:viewer_id)
+      provider  = options.delete(:provider)
+      actor_uid = options.delete(:actor_id)
+      viewer_id = options.delete(:viewer_id)
 
       viewer_id = Person.find(viewer_id).guid
+
+      query = build_query(viewer_id)
+
+      case provider
+      when nil
+        # this is your dashboard. display everything about people in circles and yourself.
+        query.uniq
+      when 'activities'
+        # we only want to display a single activity. make sure the viewer is allowed to do so.
+        activity_id = actor_uid
+        query.where{id.eq(activity_id)}.uniq
+      when 'people'
+        # this is a user profile. display everything about him that you are allowed to see
+        person_id = Person.find(actor_uid).guid
+        query.where{actor_id.eq(person_id)}.uniq
+      when 'circles'
+        # FIXME: Should display notes even if circle has no members and the owner is viewing it.
+        # viewer_id = Person.find(viewer_id).guid
+        circle_uid   = Circle.find(actor_uid).id
+        circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
+        followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
+
+        query.where{actor_id.in(followed_sql)}.uniq
+      when 'groups'
+        # this is a group. display everything that was posted to this group as audience
+        group_id = Group.find(actor_uid).guid
+        query.where(audiences: {object_id: group_id}).uniq
+        # FIXME: the object_id reservered word appears to be interfering with using squeel here
+        # query.where{audiences.object_id.eq(group_id)}.uniq
+      else
+        raise "Unknown stream provider."
+      end
+    end
+
+    private
+
+    def self.build_query(viewer_id)
+      raise "viewer_id cannot be nil." if viewer_id.nil?
 
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = ["post", "share"]
 
-      # To be allowed to see an activity, one of the following must be true
-      # 1) You are the author
-      # 2) Someone in your circles is the author and one of the following is true :
-      #    a) It's audience is PUBLIC
-      #    b) It's audience is CIRCLES and you are part of the author's circles
-      #    c) It's audience is LIMITED and you are either :
-      #       i)  A contact in one of the audience listed circles
-      #       ii) Directly tagged as an allowed audience
+      # privacy_levels
+      privacy_public  = Socializer::Audience.privacy_level.find_value(:public).value
+      privacy_circles = Socializer::Audience.privacy_level.find_value(:circles).value
+      privacy_limited = Socializer::Audience.privacy_level.find_value(:limited).value
 
-      # FIXME: Use with_privacy_level(:public)
-      # Audience : PUBLIC
-      # public_sql = Socializer::Audience.with_privacy_level(:public)
-      public_sql   = "socializer_audiences.privacy_level = 1"
+      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}
+      query = query.where{(audiences.privacy_level == privacy_public) |
+        ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my{build_circles_subquery})) |
+        ((audiences.privacy_level == privacy_limited) & `#{viewer_id}`.in(my{build_limited_subquery(viewer_id)})) |
+        (actor_id == viewer_id)}
+    end
 
-      # Audience : CIRCLES
+    # Audience : CIRCLES
+    # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
+    def self.build_circles_subquery
+      # TODO: Convert this to squeel
+
       # Retrieve the author's unique identifier
-      actor_id_sql = "SELECT socializer_activity_objects.id " +
-                     "FROM socializer_activity_objects " +
-                     "INNER JOIN socializer_people " +
-                     "ON socializer_activity_objects.activitable_id = socializer_people.id " +
-                     "WHERE socializer_people.id = socializer_activities.actor_id"
+      subquery = "SELECT socializer_activity_objects.id " +
+                 "FROM socializer_activity_objects " +
+                 "INNER JOIN socializer_people " +
+                 "ON socializer_activity_objects.activitable_id = socializer_people.id " +
+                 "WHERE socializer_people.id = socializer_activities.actor_id"
 
-      # Retrieve the author's circles
-      # actor_circles_sql = Socializer::Circle.select{id}.where{author_id.in(actor_id_sql)}
-      actor_circles_sql = "SELECT socializer_circles.id " +
-                          "FROM socializer_circles  " +
-                          "WHERE socializer_circles.author_id IN ( #{actor_id_sql} ) "
+      Socializer::Circle.select{id}.where{author_id.in(`#{subquery}`)}
+    end
 
-      # FIXME: Use with_privacy_level(:circles)
-      # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
-      # circles_sql  = Socializer::Audience.with_privacy_level(:circles).where{`"#{viewer_id}"`.in(actor_circles_sql)}
-      circles_sql  = "socializer_audiences.privacy_level = 2 " +
-                     "AND #{viewer_id} IN ( #{actor_circles_sql} )"
+    # Audience : LIMITED
+    # Ensure that the audience is LIMITED and then make sure that the viewer is either
+    # part of a circle that is the target audience, or that the viewer is part of
+    # a group that is the target audience, or that the viewer is the target audience.
+    def self.build_limited_subquery(viewer_id)
+      # TODO: Convert this to squeel
 
-      # Audience : LIMITED
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       limited_circle_id_sql = "SELECT socializer_circles.id " +
@@ -102,12 +134,10 @@ module Socializer
                               "WHERE socializer_activity_objects.id = socializer_audiences.object_id "
 
       # Retrieve all the contacts (people) that are part of those circles
-      # limited_followed_sql = Socializer::Tie.select{contact_id}.where{circle_id.in(limited_circle_id_sql)}
-      limited_followed_sql = "SELECT socializer_ties.contact_id " +
-                             "FROM socializer_ties " +
-                             "WHERE socializer_ties.circle_id IN ( #{limited_circle_id_sql} )"
+      limited_followed_sql = Socializer::Tie.select{contact_id}.where{circle_id.in(`#{limited_circle_id_sql}`)}.to_sql
 
       # Retrieve all the groups that the viewer is member of.
+      # limited_groups_query = Socializer::Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Socializer::Group)}.where{member_id == viewer_id}
       limited_groups_sql = "SELECT socializer_activity_objects.id " +
                            "FROM socializer_memberships " +
                            "INNER JOIN socializer_activity_objects " +
@@ -115,63 +145,14 @@ module Socializer
                                "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
                            "WHERE socializer_memberships.member_id = #{viewer_id}"
 
-      # FIXME: Use with_privacy_level(:limited)
       # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
       # limited_sql = Socializer::Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (object_id.in(limited_groups_sql)) | (object_id.eq(viewer_id))}
-      limited_sql  = "socializer_audiences.privacy_level = 3 " +
-                     "AND ( #{viewer_id} IN ( #{limited_followed_sql} ) " +
-                        "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
-                        "OR socializer_audiences.object_id = #{viewer_id} ) "
+      limited_sql  = "( #{limited_followed_sql} ) " +
+                     "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
+                     "OR socializer_audiences.object_id = #{viewer_id} ) "
 
-      # Build full audience sql string
-      security_sql = "( ( #{public_sql} ) OR ( #{circles_sql} ) OR ( #{limited_sql} ) OR actor_id = #{viewer_id} )"
-
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}.where{security_sql}
-debugger
-      if provider.nil?
-        # this is your dashboard. display everything about people in circles and yourself.
-        query.uniq
-      else
-        if provider == 'activities'
-          # we only want to display a single activity. make sure the viewer is allowed to do so.
-          activity_id = actor_uid
-          query.where{id.eq(activity_id)}.uniq
-        elsif provider == 'people'
-          # this is a user profile. display everything about him that you are allowed to see
-          person_id = Person.find(actor_uid).guid
-          query.where{actor_id.eq(person_id)}.uniq
-        elsif provider == 'circles'
-          # this is a circle. display everything that was posted by contacts in that circle.
-          # viewer_id = Person.find(viewer_id).guid
-          circle_uid   = Circle.find(actor_uid).id
-          circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
-          followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
-
-          query.where{actor_id.in(followed_sql)}.uniq
-        elsif provider == 'groups'
-          # this is a group. display everything that was posted to this group as audience
-          group_id = Group.find(actor_uid).guid
-          query.where(audiences: {object_id: group_id}).uniq
-          # FIXME: the object_id reservered word appears to be interfering with using squeel here
-          # query.where{audiences.object_id.eq(group_id)}.uniq
-        else
-          raise "Unknown stream provider."
-        end
-      end
-    }
-
-    # def stream1(options = {})
-    #   options.assert_valid_keys(:provider, :actor_id, :viewer)
-
-    #   provider  = options.delete(:provider)
-    #   actor_uid = options.delete(:actor_id)
-    #   viewer    = options.delete(:viewer)
-
-    #   raise "Unknown stream provider." if provider.empty?
-
-    #   viewer_id = viewer.guid
-    # end
+    end
   end
 end
