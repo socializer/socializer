@@ -66,10 +66,9 @@ module Socializer
       when 'circles'
         # FIXME: Should display notes even if circle has no members and the owner is viewing it.
         #        Notes still don't show after adding people to the circles.
-        # viewer_id = Person.find(viewer_id).guid
-        circle_uid   = Circle.find(actor_uid).id
-        circles_sql  = Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
-        followed_sql = Tie.where{circle_id.in(circles_sql)}.select{contact_id}
+
+        circles_sql  = Circle.select{id}.where{(id.eq actor_uid) & (author_id.eq viewer_id)}
+        followed_sql = Tie.select{contact_id}.where{circle_id.in(circles_sql)}
 
         query.where{actor_id.in(followed_sql)}.uniq
       when 'groups'
