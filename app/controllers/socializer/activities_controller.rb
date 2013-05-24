@@ -119,7 +119,7 @@ module Socializer
       activity.actor_id  = current_user.guid
       activity.object_id = params[:share][:activity_id]
       activity.content   = params[:share][:content]
-      activity.verb      = 'share'
+      activity.verb      = Verb.find_or_create_by(name: 'share')
       activity.save!
 
       object_ids.split(",").each do |object_id|

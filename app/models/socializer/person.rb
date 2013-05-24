@@ -42,22 +42,23 @@ module Socializer
       @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{self.guid}}.map { |circle| circle.author }.uniq
     end
 
+    # TODO: Refactor. DRY up the query =
     def likes
       activity_object_id = self.activity_object.id
-      query = Activity.where{actor_id.eq(activity_object_id) & target_id.eq(nil)}
+      query = Activity.joins{verb}.where{actor_id.eq(activity_object_id) & target_id.eq(nil)}
 
-      @likes ||= query.where{verb.eq('like')}.delete_if do |activity|
-        (query.where{verb.eq('unlike')}.map { |activity| activity.object.guid }).include?(activity.object.guid)
+      @likes ||= query.where{verb.name.eq('like')}.delete_if do |activity|
+        (query.where{verb.name.eq('unlike')}.map { |activity| activity.object.guid }).include?(activity.object.guid)
       end
     end
 
-    # TODO: Refactor.
+    # TODO: Refactor. DRY up the query =
     def likes?(object)
       activity_object_id = self.activity_object.id
 
-      query   = Activity.where{object_id.eq(object.id) & actor_id.eq(activity_object_id)}
-      likes   = query.where{verb.eq('like')}
-      unlikes = query.where{verb.eq('unlike')}
+      query   = Activity.joins{verb}.where{object_id.eq(object.id) & actor_id.eq(activity_object_id)}
+      likes   = query.where{verb.name.eq('like')}
+      unlikes = query.where{verb.name.eq('unlike')}
 
       # Can replace the 3 return statements, but always runs 2 queries
       # !(likes.present? && unlikes.present?)
