@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :socializer_verb, :class => 'Verb' do
-    name "MyString"
+    name "post"
   end
 end
