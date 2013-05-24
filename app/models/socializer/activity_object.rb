@@ -24,14 +24,14 @@ module Socializer
 
     def likes
       people = []
-      query  =  Activity.where{object_id.eq(self.id)}
+      query  =  Activity.joins{verb}.where{object_id.eq(self.id)}
 
-      activities_likes = query.where{verb.eq('like')}
+      activities_likes = query.where{verb.name.eq('like')}
       activities_likes.each do |activity|
         people.push activity.actor
       end
 
-      activities_unlikes = query.where{verb.eq('unlike')}
+      activities_unlikes = query.where{verb.name.eq('unlike')}
       activities_unlikes.each do |activity|
         people.delete_at people.index(activity.actor)
       end
@@ -43,7 +43,7 @@ module Socializer
       activity = Activity.new
       activity.actor_id = person.activity_object.id
       activity.object_id = self.id
-      activity.verb = 'like'
+      activity.verb = Verb.find_or_create_by(name: 'like')
       activity.save!
 
       audience = Audience.new
@@ -58,7 +58,7 @@ module Socializer
       activity = Activity.new
       activity.actor_id = person.activity_object.id
       activity.object_id = self.id
-      activity.verb = 'unlike'
+      activity.verb = Verb.find_or_create_by(name: 'unlike')
       activity.save!
 
       audience = Audience.new
@@ -73,7 +73,7 @@ module Socializer
       activity = Activity.new
       activity.actor_id = self.actor_id
       activity.object_id = self.id
-      activity.verb = 'share'
+      activity.verb = Verb.find_or_create_by(name: 'share')
       activity.save!
 
       public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
