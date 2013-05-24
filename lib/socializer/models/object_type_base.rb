@@ -36,7 +36,7 @@ module Socializer
         activity.target_id = activity_target_id if activity_target_id.present?
         activity.actor_id  = author_id
         activity.object_id = guid
-        activity.verb      = activity_verb
+        activity.verb      = Verb.find_or_create_by(name: activity_verb)
         activity.save!
 
         if object_ids.present?
