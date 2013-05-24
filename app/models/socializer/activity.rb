@@ -92,13 +92,15 @@ module Socializer
 
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = ["post", "share"]
+      verbs_of_interest = Verb.where{name.in(verbs_of_interest)}
 
       # privacy_levels
       privacy_public  = Audience.privacy_level.find_value(:public).value
       privacy_circles = Audience.privacy_level.find_value(:circles).value
       privacy_limited = Audience.privacy_level.find_value(:limited).value
 
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}
+      query = joins{audiences}.where{verb_id.in(verbs_of_interest)}.where{target_id.eq(nil)}
+
       query = query.where{(audiences.privacy_level == privacy_public) |
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my{build_circles_subquery})) |
         ((audiences.privacy_level == privacy_limited) & `#{viewer_id}`.in(my{build_limited_subquery(viewer_id)})) |
