@@ -10,11 +10,14 @@ module Socializer
     belongs_to :activitable_actor,   class_name: 'ActivityObject', foreign_key: 'actor_id'
     belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'object_id'
     belongs_to :activitable_target,  class_name: 'ActivityObject', foreign_key: 'target_id'
+    belongs_to :verb
 
     has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
     has_many   :children,            class_name: 'Activity',       foreign_key: 'target_id',   dependent: :destroy
 
     has_and_belongs_to_many :activity_objects, class_name: 'ActivityObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
+
+    validates :verb, :presence => true
 
     def comments
       @comments ||= children
