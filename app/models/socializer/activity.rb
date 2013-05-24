@@ -10,11 +10,14 @@ module Socializer
     belongs_to :activitable_actor,   class_name: 'ActivityObject', foreign_key: 'actor_id'
     belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'object_id'
     belongs_to :activitable_target,  class_name: 'ActivityObject', foreign_key: 'target_id'
+    belongs_to :verb
 
     has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
     has_many   :children,            class_name: 'Activity',       foreign_key: 'target_id',   dependent: :destroy
 
     has_and_belongs_to_many :activity_objects, class_name: 'ActivityObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
+
+    validates :verb, :presence => true
 
     def comments
       @comments ||= children
@@ -65,10 +68,10 @@ module Socializer
         query.where{actor_id.eq(person_id)}.uniq
       when 'circles'
         # FIXME: Should display notes even if circle has no members and the owner is viewing it.
-        # viewer_id = Person.find(viewer_id).guid
-        circle_uid   = Circle.find(actor_uid).id
-        circles_sql  = Socializer::Circle.where{author_id.eq(viewer_id) & id.eq(circle_uid)}.select{id}
-        followed_sql = Socializer::Tie.where{circle_id.in(circles_sql)}.select{contact_id}
+        #        Notes still don't show after adding people to the circles.
+
+        circles_sql  = Circle.select{id}.where{(id.eq actor_uid) & (author_id.eq viewer_id)}
+        followed_sql = Tie.select{contact_id}.where{circle_id.in(circles_sql)}
 
         query.where{actor_id.in(followed_sql)}.uniq
       when 'groups'
@@ -89,13 +92,15 @@ module Socializer
 
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = ["post", "share"]
+      verbs_of_interest = Verb.where{name.in(verbs_of_interest)}
 
       # privacy_levels
-      privacy_public  = Socializer::Audience.privacy_level.find_value(:public).value
-      privacy_circles = Socializer::Audience.privacy_level.find_value(:circles).value
-      privacy_limited = Socializer::Audience.privacy_level.find_value(:limited).value
+      privacy_public  = Audience.privacy_level.find_value(:public).value
+      privacy_circles = Audience.privacy_level.find_value(:circles).value
+      privacy_limited = Audience.privacy_level.find_value(:limited).value
 
-      query = joins{audiences}.where{verb.in(verbs_of_interest)}.where{target_id.eq(nil)}
+      query = joins{audiences}.where{verb_id.in(verbs_of_interest)}.where{target_id.eq(nil)}
+
       query = query.where{(audiences.privacy_level == privacy_public) |
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my{build_circles_subquery})) |
         ((audiences.privacy_level == privacy_limited) & `#{viewer_id}`.in(my{build_limited_subquery(viewer_id)})) |
@@ -114,7 +119,7 @@ module Socializer
                  "ON socializer_activity_objects.activitable_id = socializer_people.id " +
                  "WHERE socializer_people.id = socializer_activities.actor_id"
 
-      Socializer::Circle.select{id}.where{author_id.in(`#{subquery}`)}
+      Circle.select{id}.where{author_id.in(`#{subquery}`)}
     end
 
     # Audience : LIMITED
@@ -134,10 +139,10 @@ module Socializer
                               "WHERE socializer_activity_objects.id = socializer_audiences.object_id "
 
       # Retrieve all the contacts (people) that are part of those circles
-      limited_followed_sql = Socializer::Tie.select{contact_id}.where{circle_id.in(`#{limited_circle_id_sql}`)}.to_sql
+      limited_followed_sql = Tie.select{contact_id}.where{circle_id.in(`#{limited_circle_id_sql}`)}.to_sql
 
       # Retrieve all the groups that the viewer is member of.
-      # limited_groups_query = Socializer::Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Socializer::Group)}.where{member_id == viewer_id}
+      # limited_groups_query = Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Group)}.where{member_id == viewer_id}
       limited_groups_sql = "SELECT socializer_activity_objects.id " +
                            "FROM socializer_memberships " +
                            "INNER JOIN socializer_activity_objects " +
@@ -148,7 +153,7 @@ module Socializer
       # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
-      # limited_sql = Socializer::Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (object_id.in(limited_groups_sql)) | (object_id.eq(viewer_id))}
+      # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (object_id.in(limited_groups_sql)) | (object_id.eq(viewer_id))}
       limited_sql  = "( #{limited_followed_sql} ) " +
                      "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
                      "OR socializer_audiences.object_id = #{viewer_id} ) "
