@@ -42,7 +42,7 @@ module Socializer
       @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{self.guid}}.map { |circle| circle.author }.uniq
     end
 
-    # TODO: Refactor. DRY up the query =
+    # REFACTOR: DRY up the query =
     def likes
       activity_object_id = self.activity_object.id
       query = Activity.joins{verb}.where{actor_id.eq(activity_object_id) & target_id.eq(nil)}
@@ -52,7 +52,7 @@ module Socializer
       end
     end
 
-    # TODO: Refactor. DRY up the query =
+    # REFACTOR: DRY up the query =
     def likes?(object)
       activity_object_id = self.activity_object.id
 
