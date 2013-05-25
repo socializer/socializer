@@ -2,7 +2,7 @@ ActiveRecord::Schema.define do
 
   create_table "socializer_activities", force: true do |t|
     t.integer  "actor_id"
-    t.integer  "object_id"
+    t.integer  "activity_object_id"
     t.integer  "target_id"
     t.integer  "verb_id"
     t.text     "content"
@@ -10,8 +10,8 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at"
   end
 
+  add_index "socializer_activities", ["activity_object_id"], name: "index_socializer_activities_on_activity_object_id"
   add_index "socializer_activities", ["actor_id"], name: "index_socializer_activities_on_actor_id"
-  add_index "socializer_activities", ["object_id"], name: "index_socializer_activities_on_object_id"
   add_index "socializer_activities", ["target_id"], name: "index_socializer_activities_on_target_id"
   add_index "socializer_activities", ["verb_id"], name: "index_socializer_activities_on_verb_id"
 
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define do
 
   add_index "socializer_activity_objects", ["activitable_type", "activitable_id"], name: "index_socializer_activity_objects_on_activitable"
 
-  create_table "socializer_audiences", id: false, force: true do |t|
+  create_table "socializer_audiences", force: true do |t|
     t.integer  "activity_id"
-    t.integer  "object_id"
+    t.integer  "activity_object_id"
     t.integer  "privacy_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "socializer_audiences", ["activity_id", "object_id"], name: "index_socializer_audiences_on_activity_id_and_object_id", unique: true
+  add_index "socializer_audiences", ["activity_id", "activity_object_id"], name: "index_socializer_audiences_on_activity_id__activity_object_id", unique: true
   add_index "socializer_audiences", ["privacy_level"], name: "index_socializer_audiences_on_privacy_level"
 
   create_table "socializer_authentications", force: true do |t|
@@ -58,14 +58,14 @@ ActiveRecord::Schema.define do
 
   create_table "socializer_comments", force: true do |t|
     t.integer  "author_id"
-    t.integer  "object_id"
+    t.integer  "activity_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "socializer_comments", ["activity_id"], name: "index_socializer_comments_on_activity_id"
   add_index "socializer_comments", ["author_id"], name: "index_socializer_comments_on_author_id"
-  add_index "socializer_comments", ["object_id"], name: "index_socializer_comments_on_object_id"
 
   create_table "socializer_groups", force: true do |t|
     t.integer  "author_id"
