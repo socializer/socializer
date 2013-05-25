@@ -41,31 +41,25 @@ module Socializer
     end
 
     def like!(person)
-      activity = Activity.new
-      activity.actor_id = person.activity_object.id
-      activity.activity_object_id = self.id
-      activity.verb = Verb.find_or_create_by(name: 'like')
-      activity.save!
+      activity = Activity.create! do |a|
+        a.actor_id = person.activity_object.id
+        a.activity_object_id = self.id
+        a.verb = Verb.find_or_create_by(name: 'like')
+      end
 
-      audience = Audience.new
-      audience.privacy_level = :public
-      audience.activity_id = activity.id
-      audience.save!
+      Audience.create!(privacy_level: :public, activity_id: activity.id)
 
       increment_like_count
     end
 
     def unlike!(person)
-      activity = Activity.new
-      activity.actor_id = person.activity_object.id
-      activity.activity_object_id = self.id
-      activity.verb = Verb.find_or_create_by(name: 'unlike')
-      activity.save!
+      activity = Activity.create! do |a|
+        a.actor_id = person.activity_object.id
+        a.activity_object_id = self.id
+        a.verb = Verb.find_or_create_by(name: 'unlike')
+      end
 
-      audience = Audience.new
-      audience.privacy_level = :public
-      audience.activity_id = activity.id
-      audience.save!
+      Audience.create!(privacy_level: :public, activity_id: activity.id)
 
       decrement_like_count
     end
