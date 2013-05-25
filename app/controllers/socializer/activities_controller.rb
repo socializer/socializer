@@ -115,11 +115,11 @@ module Socializer
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
-      activity           = Activity.new
-      activity.actor_id  = current_user.guid
-      activity.object_id = params[:share][:activity_id]
-      activity.content   = params[:share][:content]
-      activity.verb      = Verb.find_or_create_by(name: 'share')
+      activity                    = Activity.new
+      activity.actor_id           = current_user.guid
+      activity.activity_object_id = params[:share][:activity_id]
+      activity.content            = params[:share][:content]
+      activity.verb               = Verb.find_or_create_by(name: 'share')
       activity.save!
 
       object_ids.split(",").each do |object_id|
@@ -133,10 +133,10 @@ module Socializer
           audience.privacy_level = object_id
           audience.save!
         else
-          audience               = Audience.new
-          audience.activity_id   = activity.id
-          audience.privacy_level = :limited
-          audience.object_id     = object_id
+          audience                    = Audience.new
+          audience.activity_id        = activity.id
+          audience.privacy_level      = :limited
+          audience.activity_object_id = object_id
           audience.save!
         end
       end

@@ -44,8 +44,8 @@ module Socializer
 
     # REFACTOR: DRY up the query =
     def likes
-      activity_object_id = self.activity_object.id
-      query = Activity.joins{verb}.where{actor_id.eq(activity_object_id) & target_id.eq(nil)}
+      activity_obj_id = self.activity_object.id
+      query = Activity.joins{verb}.where{actor_id.eq(activity_obj_id) & target_id.eq(nil)}
 
       @likes ||= query.where{verb.name.eq('like')}.delete_if do |activity|
         (query.where{verb.name.eq('unlike')}.map { |activity| activity.object.guid }).include?(activity.object.guid)
@@ -54,9 +54,9 @@ module Socializer
 
     # REFACTOR: DRY up the query =
     def likes?(object)
-      activity_object_id = self.activity_object.id
+      activity_obj_id = self.activity_object.id
 
-      query   = Activity.joins{verb}.where{object_id.eq(object.id) & actor_id.eq(activity_object_id)}
+      query   = Activity.joins{verb}.where{activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id)}
       likes   = query.where{verb.name.eq('like')}
       unlikes = query.where{verb.name.eq('unlike')}
 

@@ -6,10 +6,10 @@ module Socializer
 
     belongs_to :activitable, polymorphic: true
 
-    has_and_belongs_to_many :activities, class_name: 'Activity', join_table: 'socializer_audiences', foreign_key: "object_id", association_foreign_key: "activity_id"
+    has_and_belongs_to_many :activities, class_name: 'Activity', join_table: 'socializer_audiences', foreign_key: "activity_object_id", association_foreign_key: "activity_id"
 
     has_many :actor_activities,  class_name: 'Activity', foreign_key: 'actor_id',  dependent: :destroy
-    has_many :object_activities, class_name: 'Activity', foreign_key: 'object_id', dependent: :destroy
+    has_many :object_activities, class_name: 'Activity', foreign_key: 'activity_object_id', dependent: :destroy
     has_many :target_activities, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
 
     # when the embedded object is an actor (person/group)
@@ -24,7 +24,7 @@ module Socializer
 
     def likes
       people = []
-      query  =  Activity.joins{verb}.where{object_id.eq(self.id)}
+      query  =  Activity.joins{verb}.where{activity_object_id.eq(self.id)}
 
       activities_likes = query.where{verb.name.eq('like')}
       activities_likes.each do |activity|
@@ -42,7 +42,7 @@ module Socializer
     def like!(person)
       activity = Activity.new
       activity.actor_id = person.activity_object.id
-      activity.object_id = self.id
+      activity.activity_object_id = self.id
       activity.verb = Verb.find_or_create_by(name: 'like')
       activity.save!
 
@@ -57,7 +57,7 @@ module Socializer
     def unlike!(person)
       activity = Activity.new
       activity.actor_id = person.activity_object.id
-      activity.object_id = self.id
+      activity.activity_object_id = self.id
       activity.verb = Verb.find_or_create_by(name: 'unlike')
       activity.save!
 
@@ -72,7 +72,7 @@ module Socializer
     def share!
       activity = Activity.new
       activity.actor_id = self.actor_id
-      activity.object_id = self.id
+      activity.activity_object_id = self.id
       activity.verb = Verb.find_or_create_by(name: 'share')
       activity.save!
 
@@ -89,7 +89,7 @@ module Socializer
           audience = Audience.new
           audience.activity_id = activity.id
           audience.privacy_level = :limited
-          audience.object_id = object_id
+          audience.activity_object_id = object_id
           audience.save!
         end
       end

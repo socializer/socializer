@@ -4,18 +4,18 @@ module Socializer
 
     default_scope { order(created_at: :desc) }
 
-    attr_accessible :verb, :circles, :actor_id, :object_id, :target_id, :content
+    attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id, :content
 
     belongs_to :parent,              class_name: 'Activity',       foreign_key: 'target_id'
     belongs_to :activitable_actor,   class_name: 'ActivityObject', foreign_key: 'actor_id'
-    belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'object_id'
+    belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'activity_object_id'
     belongs_to :activitable_target,  class_name: 'ActivityObject', foreign_key: 'target_id'
     belongs_to :verb
 
     has_many   :audiences,           class_name: 'Audience',       foreign_key: 'activity_id'#, dependent: :destroy
     has_many   :children,            class_name: 'Activity',       foreign_key: 'target_id',   dependent: :destroy
 
-    has_and_belongs_to_many :activity_objects, class_name: 'ActivityObject', join_table: 'socializer_audiences', foreign_key: "activity_id", association_foreign_key: "object_id"
+    has_and_belongs_to_many :activity_objects, class_name: 'ActivityObject', join_table: 'socializer_audiences', foreign_key: 'activity_id', association_foreign_key: 'activity_object_id'
 
     validates :verb, :presence => true
 
@@ -77,9 +77,8 @@ module Socializer
       when 'groups'
         # this is a group. display everything that was posted to this group as audience
         group_id = Group.find(actor_uid).guid
-        query.where(audiences: {object_id: group_id}).uniq
-        # FIXME: the object_id reservered word appears to be interfering with using squeel here
-        # query.where{audiences.object_id.eq(group_id)}.uniq
+        # query.where(audiences: {activity_object_id: group_id}).uniq
+        query.where{audiences.activity_object_id.eq(group_id)}.uniq
       else
         raise "Unknown stream provider."
       end
@@ -136,7 +135,7 @@ module Socializer
                               "INNER JOIN socializer_activity_objects " +
                               "ON socializer_circles.id = socializer_activity_objects.activitable_id " +
                                   "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " +
-                              "WHERE socializer_activity_objects.id = socializer_audiences.object_id "
+                              "WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id "
 
       # Retrieve all the contacts (people) that are part of those circles
       limited_followed_sql = Tie.select{contact_id}.where{circle_id.in(`#{limited_circle_id_sql}`)}.to_sql
@@ -153,10 +152,10 @@ module Socializer
       # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
-      # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (object_id.in(limited_groups_sql)) | (object_id.eq(viewer_id))}
+      # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
       limited_sql  = "( #{limited_followed_sql} ) " +
-                     "OR socializer_audiences.object_id IN ( #{limited_groups_sql} ) " +
-                     "OR socializer_audiences.object_id = #{viewer_id} ) "
+                     "OR socializer_audiences.activity_object_id IN ( #{limited_groups_sql} ) " +
+                     "OR socializer_audiences.activity_object_id = #{viewer_id} ) "
 
     end
   end
