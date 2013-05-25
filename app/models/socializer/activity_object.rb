@@ -6,7 +6,8 @@ module Socializer
 
     belongs_to :activitable, polymorphic: true
 
-    has_and_belongs_to_many :activities, class_name: 'Activity', join_table: 'socializer_audiences', foreign_key: "activity_object_id", association_foreign_key: "activity_id"
+    has_many :audiences #, dependent: :destroy
+    has_many :activities, through: :audiences, source: :activity
 
     has_many :actor_activities,  class_name: 'Activity', foreign_key: 'actor_id',  dependent: :destroy
     has_many :object_activities, class_name: 'Activity', foreign_key: 'activity_object_id', dependent: :destroy

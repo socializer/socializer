@@ -1,6 +1,6 @@
 class CreateSocializerAudiences < ActiveRecord::Migration
   def change
-    create_table :socializer_audiences, :id => false do |t|
+    create_table :socializer_audiences do |t|
       t.integer  :activity_id
       t.integer  :activity_object_id
       t.integer  :privacy_level
