@@ -91,7 +91,7 @@ module Socializer
       raise "viewer_id cannot be nil." if viewer_id.nil?
 
       # for an activity to be interesting, it must correspond to one of these verbs
-      verbs_of_interest = ["post", "share"]
+      verbs_of_interest = %w(post share)
       verbs_of_interest = Verb.where{name.in(verbs_of_interest)}
 
       # privacy_levels
