@@ -31,13 +31,12 @@ module Socializer
     def append_to_activity_stream
 
       if activity_verb.present?
-
-        activity                    = Activity.new
-        activity.target_id          = activity_target_id if activity_target_id.present?
-        activity.actor_id           = author_id
-        activity.activity_object_id = guid
-        activity.verb               = Verb.find_or_create_by(name: activity_verb)
-        activity.save!
+        activity = Activity.create! do |a|
+          a.target_id          = activity_target_id if activity_target_id.present?
+          a.actor_id           = author_id
+          a.activity_object_id = guid
+          a.verb               = Verb.find_or_create_by(name: activity_verb)
+        end
 
         if object_ids.present?
           object_ids.each do |object_id|
@@ -45,16 +44,13 @@ module Socializer
             circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
             if object_id == public || object_id == circles
-              audience               = Audience.new
-              audience.activity_id   = activity.id
-              audience.privacy_level = object_id
-              audience.save!
+              Audience.create!(privacy_level: object_id, activity_id: activity.id)
             else
-              audience                    = Audience.new
-              audience.activity_id        = activity.id
-              audience.privacy_level      = :limited
-              audience.activity_object_id = object_id
-              audience.save!
+              Audience.create! do |a|
+                a.activity_id = activity.id
+                a.privacy_level = :limited
+                a.activity_object_id = object_id
+              end
             end
           end
         end
