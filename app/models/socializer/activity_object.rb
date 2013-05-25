@@ -65,27 +65,24 @@ module Socializer
     end
 
     def share!
-      activity = Activity.new
-      activity.actor_id = self.actor_id
-      activity.activity_object_id = self.id
-      activity.verb = Verb.find_or_create_by(name: 'share')
-      activity.save!
-
       public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
       circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
+      activity = Activity.create! do |a|
+        a.actor_id = self.actor_id
+        a.activity_object_id = self.id
+        a.verb = Verb.find_or_create_by(name: 'share')
+      end
+
       if scope == public || scope == circles
-        audience = Audience.new
-        audience.activity_id = activity.id
-        audience.privacy_level = scope
-        audience.save!
+        Audience.create!(privacy_level: scope, activity_id: activity.id)
       else
         object_ids.each do |object_id|
-          audience = Audience.new
-          audience.activity_id = activity.id
-          audience.privacy_level = :limited
-          audience.activity_object_id = object_id
-          audience.save!
+          Audience.create! do |a|
+            a.activity_id = activity.id
+            a.privacy_level = :limited
+            a.activity_object_id = object_id
+          end
         end
       end
 
