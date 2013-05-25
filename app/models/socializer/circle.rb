@@ -2,7 +2,7 @@ module Socializer
   class Circle < ActiveRecord::Base
     include Socializer::ObjectTypeBase
 
-    attr_accessible :name, :description
+    attr_accessible :name, :content
 
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 

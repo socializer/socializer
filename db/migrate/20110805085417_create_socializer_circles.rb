@@ -3,7 +3,7 @@ class CreateSocializerCircles < ActiveRecord::Migration
     create_table :socializer_circles do |t|
       t.integer  :author_id
       t.string   :name
-      t.text     :description
+      t.text     :content
 
       t.timestamps
     end
