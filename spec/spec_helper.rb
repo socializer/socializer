@@ -3,14 +3,17 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 # require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
-require 'combustion'
+require 'rubygems'
+require 'bundler/setup'
 
-Combustion.initialize!
+require 'combustion'
+require 'capybara/rspec'
+
+Combustion.initialize! :active_record, :action_controller , :action_view #, :sprockets
 
 require 'rspec/rails'
 require 'rspec/autorun'
 
-require 'capybara/rspec'
 require 'capybara/rails'
 # require 'capybara/cucumber'
 
