@@ -32,11 +32,11 @@ module Socializer
 
       if activity_verb.present?
 
-        activity           = Activity.new
-        activity.target_id = activity_target_id if activity_target_id.present?
-        activity.actor_id  = author_id
-        activity.object_id = guid
-        activity.verb      = Verb.find_or_create_by(name: activity_verb)
+        activity                    = Activity.new
+        activity.target_id          = activity_target_id if activity_target_id.present?
+        activity.actor_id           = author_id
+        activity.activity_object_id = guid
+        activity.verb               = Verb.find_or_create_by(name: activity_verb)
         activity.save!
 
         if object_ids.present?
@@ -50,10 +50,10 @@ module Socializer
               audience.privacy_level = object_id
               audience.save!
             else
-              audience               = Audience.new
-              audience.activity_id   = activity.id
-              audience.privacy_level = :limited
-              audience.object_id     = object_id
+              audience                    = Audience.new
+              audience.activity_id        = activity.id
+              audience.privacy_level      = :limited
+              audience.activity_object_id = object_id
               audience.save!
             end
           end

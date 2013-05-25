@@ -10,7 +10,7 @@ module Socializer
       @comment.activity_verb = 'add'
       # TODO: Is scope needed?
       @comment.scope = Socializer::Audience.privacy_level.find_value(:public)
-      @comment.activity_target_id = @comment.object_id
+      @comment.activity_target_id = @comment.activity_id
       @comment.save!
       redirect_to stream_path
     end
