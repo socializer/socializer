@@ -2,12 +2,14 @@ module Socializer
   class Circle < ActiveRecord::Base
     include Socializer::ObjectTypeBase
 
-    attr_accessible :name, :description
+    attr_accessible :name, :content
 
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
     has_many   :ties
     has_many   :activity_contacts, through: :ties
+
+    validates :name, :presence => true, uniqueness: { scope: :author_id }
 
     def author
       @author ||= activity_author.activitable

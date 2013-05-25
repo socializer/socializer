@@ -126,6 +126,7 @@ module Socializer
         public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
         circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
+        # REFACTOR: remove duplicates and use activity.audience.new
         if object_id == public || object_id == circles
           audience               = Audience.new
           audience.activity_id   = activity.id
