@@ -6,10 +6,10 @@ module Socializer
 
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id, :content
 
-    belongs_to :parent,              class_name: 'Activity',       foreign_key: 'target_id'
-    belongs_to :activitable_actor,   class_name: 'ActivityObject', foreign_key: 'actor_id'
-    belongs_to :activitable_object,  class_name: 'ActivityObject', foreign_key: 'activity_object_id'
-    belongs_to :activitable_target,  class_name: 'ActivityObject', foreign_key: 'target_id'
+    belongs_to :parent,             class_name: 'Activity',       foreign_key: 'target_id'
+    belongs_to :activitable_actor,  class_name: 'ActivityObject', foreign_key: 'actor_id'
+    belongs_to :activitable_object, class_name: 'ActivityObject', foreign_key: 'activity_object_id'
+    belongs_to :activitable_target, class_name: 'ActivityObject', foreign_key: 'target_id'
     belongs_to :verb
 
     has_many :audiences #, dependent: :destroy
@@ -155,7 +155,6 @@ module Socializer
       limited_sql  = "( #{limited_followed_sql} ) " +
                      "OR socializer_audiences.activity_object_id IN ( #{limited_groups_sql} ) " +
                      "OR socializer_audiences.activity_object_id = #{viewer_id} ) "
-
     end
   end
 end

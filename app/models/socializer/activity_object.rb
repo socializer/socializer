@@ -85,7 +85,6 @@ module Socializer
           end
         end
       end
-
     end
 
     def increment_like_count
