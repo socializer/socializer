@@ -21,8 +21,19 @@ RDoc::Task.new(:rdoc) do |rdoc|
 end
 
 
+APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+
+if File.exists?(APP_RAKEFILE)
+  load 'rails/tasks/engine.rake'
+end
+
+Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each {|f| load f }
+
 Bundler::GemHelper.install_tasks
 
+require 'rspec/core'
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
+
+RSpec::Core::RakeTask.new(:spec => 'app:spec')
+
 task :default => :spec
