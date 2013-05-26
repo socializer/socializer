@@ -7,6 +7,7 @@ module Socializer
     belongs_to :activitable, polymorphic: true
 
     has_many :audiences #, dependent: :destroy
+    # FIXME: This shouldn't need source. See if it is fixed in Rails 4 RC2 or Final
     has_many :activities, through: :audiences, source: :activity
 
     has_many :actor_activities,  class_name: 'Activity', foreign_key: 'actor_id',  dependent: :destroy
