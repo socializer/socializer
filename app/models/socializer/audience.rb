@@ -4,6 +4,8 @@ module Socializer
 
     enumerize :privacy_level, in: { public: 1, circles: 2, limited: 3 }, default: :public, predicates: true, scope: true
 
+    attr_accessible :activity_id, :privacy_level
+
     belongs_to :activity
     belongs_to :activity_object
 
