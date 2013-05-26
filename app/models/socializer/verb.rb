@@ -3,7 +3,7 @@ module Socializer
 
     attr_accessible :name
 
-    has_many :activities
+    has_many :activities, inverse_of: :verb
 
     validates :name, :presence => true, uniqueness: true
   end
