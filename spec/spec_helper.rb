@@ -1,15 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
-# require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+# require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rubygems'
 require 'bundler/setup'
 
-require 'combustion'
+# require 'combustion'
 require 'capybara/rspec'
 
-Combustion.initialize! :active_record, :action_controller , :action_view #, :sprockets
+# Combustion.initialize! :active_record, :action_controller , :action_view #, :sprockets
 
 require 'rspec/rails'
 require 'rspec/autorun'
@@ -17,13 +17,16 @@ require 'rspec/autorun'
 require 'capybara/rails'
 # require 'capybara/cucumber'
 
-require 'factory_girl'
+require 'factory_girl_rails'
 require 'database_cleaner'
 require 'shoulda-matchers'
 
+ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+# Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
   # ## Mock Framework
