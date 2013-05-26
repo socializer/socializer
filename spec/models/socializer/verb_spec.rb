@@ -3,7 +3,7 @@ require 'spec_helper'
 module Socializer
   describe Verb do
     it { should allow_mass_assignment_of(:name) }
-    # it { should have_many(:activities) }
+    it { should have_many(:activities) }
     it { should validate_uniqueness_of(:name) }
     it { should validate_presence_of(:name) }
 
