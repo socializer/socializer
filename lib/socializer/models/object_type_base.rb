@@ -28,8 +28,10 @@ module Socializer
     end
 
     def append_to_activity_stream
+      # REFACTOR: the activity_verb.present? and object_ids.present? checks shouldn't be needed
+      #           since the recorded will be invalid without them.
       if activity_verb.present?
-        activity = Activity.create! do |a|
+        activity = Activity.new do |a|
           a.target_id          = activity_target_id if activity_target_id.present?
           a.actor_id           = author_id
           a.activity_object_id = guid
@@ -40,18 +42,20 @@ module Socializer
           public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
           circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
+          # REFACTOR: remove duplication
           object_ids.each do |object_id|
             if object_id == public || object_id == circles
-              Audience.create!(privacy_level: object_id, activity_id: activity.id)
+              activity.audiences.build(privacy_level: object_id)
             else
-              Audience.create! do |a|
-                a.activity_id = activity.id
+              activity.audiences.build do |a|
                 a.privacy_level = :limited
                 a.activity_object_id = object_id
               end
             end
           end
         end
+
+        activity.save!
       end
     end
   end
