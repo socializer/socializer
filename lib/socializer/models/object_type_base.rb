@@ -37,10 +37,10 @@ module Socializer
         end
 
         if object_ids.present?
-          object_ids.each do |object_id|
-            public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-            circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+          public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+          circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
+          object_ids.each do |object_id|
             if object_id == public || object_id == circles
               Audience.create!(privacy_level: object_id, activity_id: activity.id)
             else
