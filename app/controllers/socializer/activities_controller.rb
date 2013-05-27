@@ -111,16 +111,15 @@ module Socializer
     end
 
     def share
-
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
-      activity                    = Activity.new
-      activity.actor_id           = current_user.guid
-      activity.activity_object_id = params[:share][:activity_id]
-      activity.content            = params[:share][:content]
-      activity.verb               = Verb.find_or_create_by(name: 'share')
-      activity.save!
+      activity = Activity.create! do |a|
+        a.actor_id           = current_user.guid
+        a.activity_object_id = params[:share][:activity_id]
+        a.content            = params[:share][:content]
+        a.verb               = Verb.find_or_create_by(name: 'share')
+      end
 
       object_ids.split(",").each do |object_id|
         public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
@@ -128,21 +127,17 @@ module Socializer
 
         # REFACTOR: remove duplicates and use activity.audience.new
         if object_id == public || object_id == circles
-          audience               = Audience.new
-          audience.activity_id   = activity.id
-          audience.privacy_level = object_id
-          audience.save!
+          Audience.create!(privacy_level: object_id, activity_id: activity.id)
         else
-          audience                    = Audience.new
-          audience.activity_id        = activity.id
-          audience.privacy_level      = :limited
-          audience.activity_object_id = object_id
-          audience.save!
+          Audience.create! do |a|
+            a.activity_id = activity.id
+            a.privacy_level = :limited
+            a.activity_object_id = object_id
+          end
         end
       end
 
       redirect_to stream_path
-
     end
 
     def destroy
