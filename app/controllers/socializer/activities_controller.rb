@@ -114,7 +114,7 @@ module Socializer
       scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
-      activity = Activity.create! do |a|
+      activity = Activity.new do |a|
         a.actor_id           = current_user.guid
         a.activity_object_id = params[:share][:activity_id]
         a.content            = params[:share][:content]
@@ -125,17 +125,18 @@ module Socializer
         public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
         circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
-        # REFACTOR: remove duplicates and use activity.audience.new
+        # REFACTOR: remove duplication
         if object_id == public || object_id == circles
-          Audience.create!(privacy_level: object_id, activity_id: activity.id)
+          activity.audiences.build(privacy_level: object_id)
         else
-          Audience.create! do |a|
-            a.activity_id = activity.id
+          activity.audiences.build do |a|
             a.privacy_level = :limited
             a.activity_object_id = object_id
           end
         end
       end
+
+      activity.save!
 
       redirect_to stream_path
     end
