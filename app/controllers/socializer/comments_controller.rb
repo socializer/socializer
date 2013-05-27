@@ -8,9 +8,8 @@ module Socializer
     def create
       @comment = current_user.comments.build(params[:comment])
       @comment.activity_verb = 'add'
-      # TODO: Is scope needed?
-      @comment.scope = Socializer::Audience.privacy_level.find_value(:public)
-      @comment.activity_target_id = @comment.activity_id
+      # TODO: Is scope needed? Try commenting it out to see what happens
+      @comment.scope = Audience.privacy_level.find_value(:public)
       @comment.save!
       redirect_to stream_path
     end
