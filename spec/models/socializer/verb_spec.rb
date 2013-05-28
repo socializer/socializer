@@ -11,7 +11,7 @@ module Socializer
       expect(create(:socializer_verb)).to be_valid
     end
 
-    it "is valid without a name" do
+    it "is valid with a name" do
       expect(build(:socializer_verb, name: 'post')).to be_valid
     end
 
