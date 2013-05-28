@@ -4,7 +4,7 @@ module Socializer
 
     default_scope { order(created_at: :desc) }
 
-    attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id, :content
+    attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
 
     belongs_to :parent,             class_name: 'Activity',       foreign_key: 'target_id'
     belongs_to :activitable_actor,  class_name: 'ActivityObject', foreign_key: 'actor_id'
@@ -12,6 +12,7 @@ module Socializer
     belongs_to :activitable_target, class_name: 'ActivityObject', foreign_key: 'target_id'
     belongs_to :verb, inverse_of: :activities
 
+    has_one  :activity_field
     has_many :audiences #, dependent: :destroy
     has_many :activity_objects, through: :audiences
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
