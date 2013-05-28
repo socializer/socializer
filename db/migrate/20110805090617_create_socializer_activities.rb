@@ -5,7 +5,6 @@ class CreateSocializerActivities < ActiveRecord::Migration
       t.integer  :activity_object_id
       t.integer  :target_id
       t.integer  :verb_id
-      t.text     :content
 
       t.timestamps
     end
