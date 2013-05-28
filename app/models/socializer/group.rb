@@ -25,7 +25,7 @@ module Socializer
       @members ||= activity_members.map { |em| em.activitable }
     end
 
-    def join (person)
+    def join(person)
       @membership = person.memberships.build(group_id: self.id)
 
       if self.privacy_level.public?
