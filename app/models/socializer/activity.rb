@@ -12,7 +12,7 @@ module Socializer
     belongs_to :activitable_target, class_name: 'ActivityObject', foreign_key: 'target_id'
     belongs_to :verb, inverse_of: :activities
 
-    has_one  :activity_field
+    has_one  :activity_field, inverse_of: :activity
     has_many :audiences #, dependent: :destroy
     has_many :activity_objects, through: :audiences
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
