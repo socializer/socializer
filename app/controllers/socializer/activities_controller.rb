@@ -117,9 +117,10 @@ module Socializer
       activity = Activity.new do |a|
         a.actor_id           = current_user.guid
         a.activity_object_id = params[:share][:activity_id]
-        a.content            = params[:share][:content]
         a.verb               = Verb.find_or_create_by(name: 'share')
       end
+
+      activity.build_activity_field(content: params[:share][:content]) if params[:share][:content]
 
       object_ids.split(",").each do |object_id|
         public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
