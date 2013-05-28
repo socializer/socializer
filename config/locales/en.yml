@@ -1,11 +1,11 @@
 en:
   enumerize:
-    group:
+    socializer/group:
       privacy_level:
         public: "Public"
         restricted: "Restricted"
         private: "Private"
-    audience:
+    socializer/audience:
       privacy_level:
         public: "Public"
         circles: "Circles"
