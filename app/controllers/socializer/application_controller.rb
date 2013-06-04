@@ -11,9 +11,7 @@ module Socializer
     end
 
     def signed_in?
-      return true if current_user
-      return false
+      current_user.present?
     end
-
   end
 end
