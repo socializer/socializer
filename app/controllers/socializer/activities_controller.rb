@@ -2,7 +2,7 @@ module Socializer
   class ActivitiesController < ApplicationController
 
     def index
-      @activities = Activity.stream(:provider => params[:provider], :actor_id => params[:id], :viewer_id => current_user.id)
+      @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id)
       @current_id = nil
       if params[:provider] == 'circles'
         @circle = Circle.find(params[:id])
@@ -22,7 +22,7 @@ module Socializer
     end
 
     def audience
-      activities = Activity.stream(:provider => 'activities', :actor_id => params[:id], :viewer_id => current_user.id)
+      activities = Activity.stream(provider: 'activities', actor_id: params[:id], viewer_id: current_user.id)
 
       @object_ids = []
       is_public = false
@@ -69,7 +69,7 @@ module Socializer
       @object_ids.uniq!
 
       respond_to do |format|
-        format.html { render :layout => false if request.xhr? }
+        format.html { render layout: false if request.xhr? }
       end
 
     end
@@ -100,7 +100,7 @@ module Socializer
       end
 
       respond_to do |format|
-        format.html { render :layout => false if request.xhr? }
+        format.html { render layout: false if request.xhr? }
       end
 
     end
