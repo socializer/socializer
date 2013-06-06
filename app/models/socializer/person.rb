@@ -42,14 +42,14 @@ module Socializer
       @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{self.guid}}.map { |circle| circle.author }.uniq
     end
 
-    # REFACTOR: DRY up the query =
+    # FIXME: If you like, unlike, and then like again the activity doesn't show up
+    #        This was true before the refactoring
     def likes
       activity_obj_id = self.activity_object.id
-      query = Activity.joins{verb}.where{actor_id.eq(activity_obj_id) & target_id.eq(nil)}
+      query  = Activity.joins{verb}.where{actor_id.eq(activity_obj_id) & target_id.eq(nil)}
+      unlike = query.where{verb.name.eq('unlike')}.select{activity_object_id}
 
-      @likes ||= query.where{verb.name.eq('like')}.delete_if do |activity|
-        (query.where{verb.name.eq('unlike')}.map { |activity| activity.object.guid }).include?(activity.object.guid)
-      end
+      @likes ||= query.where{verb.name.eq('like')}.where{activity_object_id.not_in(unlike)}
     end
 
     # REFACTOR: DRY up the query =

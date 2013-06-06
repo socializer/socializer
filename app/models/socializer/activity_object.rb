@@ -24,9 +24,10 @@ module Socializer
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
+    # REFACTOR: DRY this up. Reduce database calls
     def likes
       people = []
-      query  =  Activity.joins{verb}.where{activity_object_id.eq(self.id)}
+      query  =  Activity.joins{verb}.where{activity_object_id.eq(my{id})}
 
       activities_likes = query.where{verb.name.eq('like')}
       activities_likes.each do |activity|
