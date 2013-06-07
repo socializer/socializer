@@ -1,11 +1,8 @@
-require 'active_support/concern'
-
 module Socializer
   module ObjectTypeBase
     extend ActiveSupport::Concern
 
     included do
-
       attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
@@ -20,7 +17,6 @@ module Socializer
       activity_object.id
     end
 
-
     protected
 
     def create_activity_object
@@ -29,7 +25,7 @@ module Socializer
 
     def append_to_activity_stream
       # REFACTOR: the activity_verb.present? and object_ids.present? checks shouldn't be needed
-      #           since the recorded will be invalid without them.
+      #           since the record should be invalid without them.
       if activity_verb.present?
         activity = Activity.new do |a|
           a.target_id          = activity_target_id if activity_target_id.present?
