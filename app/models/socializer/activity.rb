@@ -20,7 +20,7 @@ module Socializer
     validates :verb, :presence => true
 
     def comments
-      @comments ||= children
+      @comments ||= children.joins(:activitable_object).where{activitable_object.activitable_type.eq('Socializer::Comment')}
     end
 
     def actor
