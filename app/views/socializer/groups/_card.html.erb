@@ -1,6 +1,6 @@
 <h3><%= @title %></h3>
 <ul class="small-contact-list">
 <% @group.members.each do |member| %>
-  <li><%= link_to image_tag(member.avatar_url, :title => member.display_name), stream_path(:provider => :people, :id => member.id) %>
+  <li><%= link_to image_tag(member.avatar_url, title: member.display_name), stream_path(provider: :people, id: member.id) %>
 <% end %>
 </ul>

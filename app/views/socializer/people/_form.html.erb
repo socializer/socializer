@@ -5,6 +5,6 @@
 <p class="field-title"><%= form.label :language %></p>            <p class="field-value"><%= select( "person", "language", { "English" => "en", "Français" => "fr"}) %></p>
 <p class="field-title"><%= form.label :avatar_provider %></p>     <p class="field-value"><%= select( "person", "avatar_provider", { "Twitter" => "TWITTER", "Facebook" => "FACEBOOK", "Linked In" => "LINKEDIN", "Gravatar" => "GRAVATAR"}) %></p>
 
-<p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", :class => "action-button" %></p>
+<p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", class: "action-button" %></p>
 
 <% end %>

@@ -1,6 +1,6 @@
 <p><%= link_to "Create a new circle", new_circle_path %></p>
 <ul>
 <% @circles.each do |circle| %>
-  <li><%= link_to circle.name, circle %> (<%= link_to "edit", edit_circle_path(circle) %> | <%= link_to "delete", circle, :method => :delete %>)</li>
+  <li><%= link_to circle.name, circle %> (<%= link_to "edit", edit_circle_path(circle) %> | <%= link_to "delete", circle, method: :delete %>)</li>
 <% end %>
 </ul>

@@ -4,7 +4,7 @@ module Socializer
 
     belongs_to :activity, inverse_of: :activity_field
 
-    validates :content,  :presence => true
-    validates :activity, :presence => true
+    validates :content,  presence: true
+    validates :activity, presence: true
   end
 end
