@@ -2,5 +2,5 @@
 <%= form_for(@group) do |form| %>
 <p class="field-title"><%= form.label :name %></p>                <p class="field-value"><%= form.text_field :name %></p>
 <p class="field-title"><%= form.label :privacy_level %></p>       <p class="field-value"><%= form.select :privacy_level, Socializer::Group.privacy_level.options %></p>
-<p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", :class => "action-button" %></p>
+<p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", class: "action-button" %></p>
 <% end %>

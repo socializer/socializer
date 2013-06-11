@@ -2,9 +2,9 @@
 <h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
 
 <% if @group.member?(current_user) %>
-<%= link_to "leave", @membership, :method => :delete %>
+<%= link_to "leave", @membership, method: :delete %>
 <% else %>
-<%= form_for current_user.memberships.build(:group_id => @group.id) do |f| %>
+<%= form_for current_user.memberships.build(group_id: @group.id) do |f| %>
   <%= f.hidden_field :group_id %>
   <%= f.submit "join" %>
 <% end %>
@@ -13,7 +13,7 @@
 <h2>Members</h2>
 <ul class="large-contact-list">
 <% @group.memberships.each do |membership| %>
-  <li><%= link_to image_tag(membership.member.avatar_url, :width => 40, :height => 40, :title => membership.member.display_name), stream_path(:provider => :people, :id => membership.member.id) %></li>
+  <li><%= link_to image_tag(membership.member.avatar_url, width: 40, height: 40, title: membership.member.display_name), stream_path(provider: :people, id: membership.member.id) %></li>
 <% end %>
 </ul>
 
@@ -22,7 +22,7 @@
 <h2>Invite members</h2>
 <ul class="large-contact-list">
 <% Socializer::Person.all.each do |user| %>
-  <li><%= link_to image_tag(user.avatar_url, :width => 40, :height => 40, :title => user.display_name), invite_membership_path(:group_id => @group, :user_id => user) %></li>
+  <li><%= link_to image_tag(user.avatar_url, width: 40, height: 40, title: user.display_name), invite_membership_path(group_id: @group, user_id: user) %></li>
 <% end %>
 </ul>
 

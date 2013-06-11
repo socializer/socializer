@@ -9,7 +9,7 @@ module Socializer
     has_many   :ties
     has_many   :activity_contacts, through: :ties
 
-    validates :name, :presence => true, uniqueness: { scope: :author_id }
+    validates :name, presence: true, uniqueness: { scope: :author_id }
 
     def author
       @author ||= activity_author.activitable

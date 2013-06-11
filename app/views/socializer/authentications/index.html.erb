@@ -3,6 +3,6 @@
 <div style="text-align: center; margin: 10px 10px 10px 0; padding: 15px 0; border: 1px solid #ccc; background-color: #dedede; width: 150px; float: left;">
   <%= image_tag "socializer/auth_buttons/" + authentication.provider.camelize.downcase + "_64.png" %><br>
 <%= authentication.uid %><br>
-<%= link_to "unbind", authentication, :method => :delete %>
+<%= link_to "unbind", authentication, method: :delete %>
 </div>
 <% end %>
