@@ -1,6 +1,6 @@
 <div style="padding: 0px 20px;">
-	<%= form_for(Socializer::Note.new, :remote => true) do |form| %>
-  		<%= form.text_area :content, :class => "note-content-field" %>
+	<%= form_for(Socializer::Note.new, remote: true) do |form| %>
+  		<%= form.text_area :content, class: "note-content-field" %>
   		<%= form.text_field :object_ids %>
 	<script type="text/javascript">
   	$(document).ready(function() {
@@ -34,6 +34,6 @@
 
   	});
 	</script>
-  	<%= form.submit "Share", :class => "action-button" %>
+  	<%= form.submit "Share", class: "action-button" %>
 	<% end %>
 </div>

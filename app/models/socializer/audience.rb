@@ -9,7 +9,7 @@ module Socializer
     belongs_to :activity
     belongs_to :activity_object
 
-    validates :privacy_level, :presence => true
+    validates :privacy_level, presence: true
 
     def object
       @object ||= activity_object.activitable

@@ -1,6 +1,6 @@
 <ul class="large-contact-list">
 <% current_user.circles.each do |circle| %>
-  <li class="droppable circle"><%= link_to circle.name, circle, "data-object-id" => circle.id %><br>(<span class="circle-tie-count"><%= circle.ties.count %></span>)</li>
+  <li class="droppable circle"><%= link_to circle.name, circle, data: { object_id: circle.id } %><br>(<span class="circle-tie-count"><%= circle.ties.count %></span>)</li>
 <% end %>
 </ul>
 <div class="circle-info-message"></div>

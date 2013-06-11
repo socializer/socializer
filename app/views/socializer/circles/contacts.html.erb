@@ -1,7 +1,7 @@
 <%= render 'menu' %>
 <ul class="large-contact-list">
 <% current_user.contacts.each do |contact| %>
-<li class="draggable"><%= link_to image_tag(contact.avatar_url, :width => 40, :height => 40, :title => contact.display_name), stream_path(:provider => :people, :id => contact.id), :class => "draggable", "data-object-id" => contact.guid %>
+<li class="draggable"><%= link_to image_tag(contact.avatar_url, width: 40, height: 40, title: contact.display_name), stream_path(provider: :people, id: contact.id), class: "draggable", data: { object_id: contact.guid } %>
 <% end %>
 </ul>
 <%= render 'circles' %>
