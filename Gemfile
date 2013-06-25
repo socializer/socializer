@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'sass-rails',   '~> 4.0.0.rc2'
+gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -16,6 +16,9 @@ gem 'omniauth-openid'
 
 # TODO: Remove when final version ships for Rails 4
 gem "squeel", github: 'ernie/squeel'
+
+# TODO: Remove when next version is released
+gem 'enumerize', github: 'brainspec/enumerize'
 
 group :development, :test do
   gem 'debugger'
