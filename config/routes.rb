@@ -1,5 +1,9 @@
 Socializer::Engine.routes.draw do
 
+  get "likes/index"
+  get "likes/create"
+  get "likes/destroy"
+
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   match '/auth/failure' => 'sessions#failure', via: [:get, :post]
   match '/signin' => 'sessions#new', as: :signin,  via: :get
