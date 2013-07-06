@@ -1,12 +1,8 @@
 module Socializer
   class LikesController < ApplicationController
-    # TODO: Why doesn't the before_action work with a method?
-    # before_action :set_likable, only: [:create, :destroy]
-    before_action only: [:create, :destroy] do |controller|
-      @likable = ActivityObject.find(controller.params[:id])
-    end
+    before_action :set_likable, only: [:create, :destroy]
 
-    # REFACTOR:
+    # REFACTOR: should handle activity/tooltip as well as people likes
     # Used to display the Like tooltip
     def index
       activity = Activity.find(params[:id])
@@ -38,16 +34,16 @@ module Socializer
         format.js
       end
     end
+
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_likable
+        @likable = ActivityObject.find(params[:id])
+      end
+
+        # # Never trust parameters from the scary internet, only allow the white list through.
+        # def like_params
+        #   params.require(:like).permit(:actor_id, :activity_object_id)
+        # end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_likable
-      @likable = ActivityObject.find(params[:id])
-    end
-
-    # # Never trust parameters from the scary internet, only allow the white list through.
-    # def like_params
-    #   params.require(:like).permit(:actor_id, :activity_object_id)
-    # end
 end
