@@ -1,0 +1,2 @@
+$("#[data-activityid=<%= @activity.guid.to_s %>]").replaceWith('<%= escape_javascript(render @activity) %>');
+addTooltipSupport( $(".tooltip", "#[data-activityid=<%= @activity.guid.to_s %>]") );
