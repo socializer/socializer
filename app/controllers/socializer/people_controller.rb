@@ -18,6 +18,8 @@ module Socializer
       redirect_to current_user
     end
 
+    # TODO: Should be handled by the likes controller.
+    # Used to display the likes in the user profile
     def likes
       @person = Person.find(params[:id])
       @likes = @person.likes
