@@ -25,6 +25,7 @@ module Socializer
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
     # REFACTOR: DRY this up. Reduce database calls
+    # TODO: Rename this method to liked_by
     def likes
       people = []
       query  =  Activity.joins{verb}.where{activity_object_id.eq(my{id})}

@@ -6,14 +6,14 @@ Socializer::Engine.routes.draw do
   match '/signout' => 'sessions#destroy', as: :signout, via: [:get, :delete]
 
   scope '/stream' do
-    get  '(/:provider/:id)' => 'activities#index', as: :stream
-    get  '/activities/:id/audience' => 'activities#audience', as: :stream_audience
-    get  '/activities/:id/likes' => 'activities#likes', as: :stream_likes
-    post '/activities/:id/like' => 'activities#like', as: :stream_like
-    post '/activities/:id/unlike' => 'activities#unlike', as: :stream_unlike
-    get  '/activities/:id/share' => 'activities#new_share', as: :new_stream_share
-    post '/activities/:id/share' => 'activities#share', as: :stream_share
-    get  '/activities/:id/comment' => 'comments#new', as: :stream_comment
+    get    '(/:provider/:id)' => 'activities#index', as: :stream
+    get    '/activities/:id/audience' => 'activities#audience', as: :stream_audience
+    get    '/activities/:id/likes' => 'likes#index', as: :stream_likes
+    post   '/activities/:id/like' => 'likes#create', as: :stream_like
+    delete '/activities/:id/unlike' => 'likes#destroy', as: :stream_unlike
+    get    '/activities/:id/share' => 'activities#new_share', as: :new_stream_share
+    post   '/activities/:id/share' => 'activities#share', as: :stream_share
+    get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
   end
 
   scope '/memberships' do

@@ -74,37 +74,6 @@ module Socializer
 
     end
 
-    def like
-      @activity_object = ActivityObject.find(params[:id])
-      @activity_object.like!(current_user) unless current_user.likes?(@activity_object)
-      @activity = @activity_object.activitable
-      respond_to do |format|
-        format.js
-      end
-    end
-
-    def unlike
-      @activity_object = ActivityObject.find(params[:id])
-      @activity_object.unlike!(current_user) if current_user.likes?(@activity_object)
-      @activity = @activity_object.activitable
-      respond_to do |format|
-        format.js
-      end
-    end
-
-    def likes
-      activity = Activity.find(params[:id])
-      @object_ids = []
-      activity.activity_object.likes.each do |person|
-        @object_ids.push person.activity_object
-      end
-
-      respond_to do |format|
-        format.html { render layout: false if request.xhr? }
-      end
-
-    end
-
     def new_share
       @activity_object = ActivityObject.find(params[:id])
       render 'share'
