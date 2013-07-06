@@ -1,2 +1,5 @@
-<h1>Likes#index</h1>
-<p>Find me in app/views/socializer/likes/index.html.erb</p>
+<ul>
+<% @object_ids.each do |object| %>
+  <li><%= object.activitable.display_name %></li>
+<% end %>
+</ul>
