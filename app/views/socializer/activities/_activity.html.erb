@@ -46,7 +46,7 @@
 	<span class="separator">&#8211;<span>
 	<%= link_to "Comment", stream_comment_path(activity) %>
 	<span class="separator">&#8211;<span>
-	<%= link_to "Share", stream_shares_path(activity.activity_object) %>
+	<%= link_to "Share", new_stream_share_path(activity.activity_object) %>
 <% end %>
 
 <% if activity.activitable_object.activitable_type == "Socializer::Activity" %>
