@@ -1,0 +1,18 @@
+<%= form_tag stream_shares_path(@share) do %>
+<p>
+  <label>
+    Would you like to say something along with the sharing of this activity?<br>
+    <textarea id="share[content]" name="share[content]" rows="5" style="width: 100%;"></textarea>
+  </label>
+</p>
+<p>
+  <input type="text" name="share[object_ids]" id="share_object_ids" data-path="<%= audiences_path %>" />
+</p>
+<input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @activity_object.id %>">
+<ul>
+<li><%= render @activity_object.activitable %></li>
+</ul>
+<p>
+  <input type="submit" value="Share" />
+</p>
+<% end %>
