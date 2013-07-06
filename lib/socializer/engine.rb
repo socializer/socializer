@@ -1,3 +1,5 @@
+require 'coffee-rails'
+require 'sass/rails'
 require 'enumerize'
 
 module Socializer
