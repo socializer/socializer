@@ -12,7 +12,7 @@ Socializer::Engine.routes.draw do
     post   '/activities/:id/like' => 'likes#create', as: :stream_like
     delete '/activities/:id/unlike' => 'likes#destroy', as: :stream_unlike
     get    '/activities/:id/share' => 'activities#new_share', as: :new_stream_share
-    post   '/activities/:id/share' => 'activities#share', as: :stream_share
+    post   '/activities/:id/share' => 'activities#share', as: :stream_shares
     get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
   end
 
