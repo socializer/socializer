@@ -52,7 +52,7 @@ module Socializer
       @likes ||= query.where{verb.name.eq('like')}.where{activity_object_id.not_in(unlike)}
     end
 
-    # REFACTOR: DRY up the query =
+    # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1
     def likes?(object)
       activity_obj_id = self.activity_object.id
 
