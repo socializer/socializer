@@ -50,11 +50,11 @@ And then execute:
 
 Then:
 
-  rake socializer:install:migrations
+    rake socializer:install:migrations
 
 Don't forget to migrate your database:
 
-  rake db:migrate
+    rake db:migrate
 
 ## Getting Started
 
