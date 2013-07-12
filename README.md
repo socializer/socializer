@@ -38,6 +38,27 @@ For registration and login, Socializer is currently using omniauth with the foll
 LinkedIn, Facebook, Twitter, Yahoo, Google and Identity. Once your account is created, you can bind multiple
 authentications to your account. This will be used later on to share your activities with other networking sites.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'socializer', github: 'dominicgoulet/socializer'
+
+And then execute:
+
+    $ bundle
+
+Then:
+
+  rake socializer:install:migrations
+
+Don't forget to migrate your database:
+
+  rake db:migrate
+
+## Getting Started
+
+
 ## Todo
 
 The todo list is as follows :
