@@ -15,7 +15,7 @@ module Socializer
         @groups = current_user.groups
       end
 
-      public = Socializer::Audience.privacy_level.find_value(:public)
+      public  = Socializer::Audience.privacy_level.find_value(:public)
       circles = Socializer::Audience.privacy_level.find_value(:circles)
 
       @audiences = [id: public.value, name: public.text] +

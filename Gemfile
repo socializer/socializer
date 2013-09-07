@@ -14,9 +14,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'omniauth-openid'
 
-# TODO: Remove when next version is released
-gem 'enumerize', github: 'brainspec/enumerize'
-
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
