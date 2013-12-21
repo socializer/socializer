@@ -1,6 +1,5 @@
 module Socializer
   class ActivityObject < ActiveRecord::Base
-
     attr_accessor :scope, :object_ids
     attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count
 
@@ -40,7 +39,7 @@ module Socializer
         people.delete_at people.index(activity.actor)
       end
 
-      return people
+      people
     end
 
     def like!(person)
@@ -99,6 +98,5 @@ module Socializer
     def decrement_like_count
       self.decrement!(:like_count)
     end
-
   end
 end

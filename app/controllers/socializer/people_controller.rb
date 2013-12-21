@@ -1,6 +1,5 @@
 module Socializer
   class PeopleController < ApplicationController
-
     def index
       @people = Person.all
     end
@@ -29,6 +28,5 @@ module Socializer
       @person = Person.find(params[:id])
       @current_id = @person.guid
     end
-
   end
 end

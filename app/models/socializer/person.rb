@@ -31,7 +31,7 @@ module Socializer
     end
 
     def received_notifications
-      raise "Method not implemented yet."
+      raise 'Method not implemented yet.'
     end
 
     def contacts
@@ -65,7 +65,7 @@ module Socializer
 
       return false if likes.count == 0
       return false if likes.count == unlikes.count
-      return true
+      true
     end
 
     def pending_memberships_invites
@@ -73,14 +73,14 @@ module Socializer
       # @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
       subquery = Socializer::Group.joins{memberships}.with_privacy_level(:private).select{count(1)}
       @pending_memberships_invites ||= memberships.where{active.eq(false)}.where{"(#{subquery.to_sql}) > 0"}
-      end
+    end
 
     def avatar_url
-      if avatar_provider == "FACEBOOK"
+      if avatar_provider == 'FACEBOOK'
         authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
-      elsif avatar_provider == "TWITTER"
+      elsif avatar_provider == 'TWITTER'
         authentications.where(provider: 'twitter')[0].image_url if authentications.where(provider: 'twitter')[0].present?
-      elsif avatar_provider == "LINKEDIN"
+      elsif avatar_provider == 'LINKEDIN'
         authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
       else
         "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}" if self.email.present?
@@ -88,7 +88,6 @@ module Socializer
     end
 
     def self.create_with_omniauth(auth)
-
       create! do |user|
 
         user.display_name = auth['info']['name'] if auth['info']['name']
@@ -96,8 +95,8 @@ module Socializer
         image_url = auth['info']['image'] if auth['info']['image']
 
         if image_url.nil?
-          image_url = ""
-          user.avatar_provider = "GRAVATAR"
+          image_url = ''
+          user.avatar_provider = 'GRAVATAR'
         else
           user.avatar_provider = auth['provider'].upcase
         end
@@ -106,6 +105,5 @@ module Socializer
 
       end
     end
-
   end
 end

@@ -22,7 +22,7 @@ module Socializer
       public  = Socializer::Audience.privacy_level.find_value(:public).value.to_s
       circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
-      object_ids.split(",").each do |object_id|
+      object_ids.split(',').each do |object_id|
         # REFACTOR: remove duplication
         if object_id == public || object_id == circles
           activity.audiences.build(privacy_level: object_id)
@@ -40,6 +40,7 @@ module Socializer
     end
 
     private
+
       # # Use callbacks to share common setup or constraints between actions.
       # def set_share
       #   @share = Share.find(params[:id])

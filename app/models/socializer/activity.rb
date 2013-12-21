@@ -80,14 +80,14 @@ module Socializer
         # query.where(audiences: {activity_object_id: group_id}).uniq
         query.where{audiences.activity_object_id.eq(group_id)}.uniq
       else
-        raise "Unknown stream provider."
+        raise 'Unknown stream provider.'
       end
     end
 
     private
 
     def self.build_query(viewer_id)
-      raise "viewer_id cannot be nil." if viewer_id.nil?
+      raise 'viewer_id cannot be nil.' if viewer_id.nil?
 
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
@@ -112,11 +112,11 @@ module Socializer
       # TODO: Convert this to squeel
 
       # Retrieve the author's unique identifier
-      subquery = "SELECT socializer_activity_objects.id " +
-                 "FROM socializer_activity_objects " +
-                 "INNER JOIN socializer_people " +
-                 "ON socializer_activity_objects.activitable_id = socializer_people.id " +
-                 "WHERE socializer_people.id = socializer_activities.actor_id"
+      subquery = 'SELECT socializer_activity_objects.id ' +
+                 'FROM socializer_activity_objects ' +
+                 'INNER JOIN socializer_people ' +
+                 'ON socializer_activity_objects.activitable_id = socializer_people.id ' +
+                 'WHERE socializer_people.id = socializer_activities.actor_id'
 
       Circle.select{id}.where{author_id.in(`#{subquery}`)}
     end
@@ -130,22 +130,22 @@ module Socializer
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
-      limited_circle_id_sql = "SELECT socializer_circles.id " +
-                              "FROM socializer_circles " +
-                              "INNER JOIN socializer_activity_objects " +
-                              "ON socializer_circles.id = socializer_activity_objects.activitable_id " +
+      limited_circle_id_sql = 'SELECT socializer_circles.id ' +
+                              'FROM socializer_circles ' +
+                              'INNER JOIN socializer_activity_objects ' +
+                              'ON socializer_circles.id = socializer_activity_objects.activitable_id ' +
                                   "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " +
-                              "WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id "
+                              'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
 
       # Retrieve all the contacts (people) that are part of those circles
       limited_followed_sql = Tie.select{contact_id}.where{circle_id.in(`#{limited_circle_id_sql}`)}.to_sql
 
       # Retrieve all the groups that the viewer is member of.
       # limited_groups_query = Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Group)}.where{member_id == viewer_id}
-      limited_groups_sql = "SELECT socializer_activity_objects.id " +
-                           "FROM socializer_memberships " +
-                           "INNER JOIN socializer_activity_objects " +
-                           "ON socializer_activity_objects.activitable_id = socializer_memberships.group_id " +
+      limited_groups_sql = 'SELECT socializer_activity_objects.id ' +
+                           'FROM socializer_memberships ' +
+                           'INNER JOIN socializer_activity_objects ' +
+                           'ON socializer_activity_objects.activitable_id = socializer_memberships.group_id ' +
                                "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
                            "WHERE socializer_memberships.member_id = #{viewer_id}"
 

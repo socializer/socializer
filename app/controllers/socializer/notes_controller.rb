@@ -1,6 +1,5 @@
 module Socializer
   class NotesController < ApplicationController
-
     def new
       @note = Note.new
       @current_id = params[:id]
@@ -8,7 +7,7 @@ module Socializer
 
     def create
       @note = current_user.activity_object.notes.build(params[:note])
-      @note.object_ids = @note.object_ids.split(",")
+      @note.object_ids = @note.object_ids.split(',')
       @note.activity_verb = 'post'
       @note.save!
       @activity = Activity.find_by(activity_object_id: @note.guid)
@@ -35,6 +34,5 @@ module Socializer
         format.js
       end
     end
-
   end
 end

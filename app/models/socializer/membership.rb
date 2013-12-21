@@ -1,6 +1,5 @@
 module Socializer
   class Membership < ActiveRecord::Base
-
     attr_accessible :group_id
 
     belongs_to :group
@@ -17,6 +16,5 @@ module Socializer
     def confirm!
       self.update_attribute(:active, true)
     end
-
   end
 end

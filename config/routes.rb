@@ -24,6 +24,7 @@ Socializer::Engine.routes.draw do
 
   scope '/people' do
     get '/:id/likes' => 'people#likes', as: :person_likes
+    # get '/:person_id/likes' => 'likes#index', as: :person_likes
     get '/:id/message' => 'people#message', as: :person_message
   end
 
@@ -39,19 +40,19 @@ Socializer::Engine.routes.draw do
     get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
   end
 
-  resources :authentications, only: [ :index, :show, :new, :destroy ]
-  resources :people,          only: [ :index, :show, :edit, :update ]
-  resources :notes,           only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
-  resources :circles,         only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
-  resources :activities,      only: [ :index, :destroy ]
-  resources :comments,        only: [ :new, :create, :edit, :update, :destroy ]
-  resources :groups,          only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
-  resources :memberships,     only: [ :create, :destroy ]
-  resources :ties,            only: [ :create, :destroy ]
-  resources :notifications,   only: [ :index ]
+  resources :authentications, only: [:index, :show, :new, :destroy]
+  resources :people,          only: [:index, :show, :edit, :update]
+  resources :notes,           only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :circles,         only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :activities,      only: [:index, :destroy]
+  resources :comments,        only: [:new, :create, :edit, :update, :destroy]
+  resources :groups,          only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :memberships,     only: [:create, :destroy]
+  resources :ties,            only: [:create, :destroy]
+  resources :notifications,   only: [:index]
 
-  resources :audiences,       only: [ :index ]
+  resources :audiences,       only: [:index]
 
-  root to: "pages#index"
+  root to: 'pages#index'
 
 end

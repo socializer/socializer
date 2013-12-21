@@ -1,6 +1,5 @@
 module Socializer
   class ActivitiesController < ApplicationController
-
     def index
       @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id)
       @current_id = nil
@@ -17,7 +16,7 @@ module Socializer
         @title = @group.name
         @current_id = @group.guid
       else
-        @title = "Activity stream"
+        @title = 'Activity stream'
       end
     end
 
@@ -71,7 +70,6 @@ module Socializer
       respond_to do |format|
         format.html { render layout: false if request.xhr? }
       end
-
     end
 
     def destroy
@@ -82,6 +80,5 @@ module Socializer
         format.js
       end
     end
-
   end
 end
