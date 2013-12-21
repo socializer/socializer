@@ -18,9 +18,9 @@ module Socializer
 
       @audiences = [id: public.value, name: public.text] +
                    [id: circles.value, name: circles.text] +
-                   @people.collect{ |x| {id: x.guid, name: x.display_name} } +
-                   @circles.collect{ |x| {id: x.guid, name: x.name} } +
-                   @groups.collect{ |x| {id: x.guid, name: x.name} }
+                   @people.collect{ |x| { id: x.guid, name: x.display_name } } +
+                   @circles.collect{ |x| { id: x.guid, name: x.name } } +
+                   @groups.collect{ |x| { id: x.guid, name: x.name } }
 
       respond_to do |format|
         format.json { render json: @audiences }
