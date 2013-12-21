@@ -1,6 +1,5 @@
 module Socializer
   class GroupsController < ApplicationController
-
     def index
     end
 
@@ -50,6 +49,5 @@ module Socializer
       @group.destroy
       redirect_to groups_path
     end
-
   end
 end

@@ -88,7 +88,6 @@ module Socializer
     end
 
     def self.create_with_omniauth(auth)
-
       create! do |user|
 
         user.display_name = auth['info']['name'] if auth['info']['name']
@@ -106,6 +105,5 @@ module Socializer
 
       end
     end
-
   end
 end

@@ -1,6 +1,5 @@
 module Socializer
   class CirclesController < ApplicationController
-
     def index
       @circles = current_user.circles
     end
@@ -47,6 +46,5 @@ module Socializer
       @circle.destroy
       redirect_to circles_contacts_path
     end
-
   end
 end

@@ -1,6 +1,5 @@
 module Socializer
   class MembershipsController < ApplicationController
-
     def create
       @group = Group.find(params[:membership][:group_id])
       @group.join(current_user)
@@ -32,6 +31,5 @@ module Socializer
       @membership.confirm!
       redirect_to @membership.group
     end
-
   end
 end

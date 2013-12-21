@@ -9,6 +9,5 @@ module Socializer
     def author
       @author ||= activity_author.activitable
     end
-
   end
 end

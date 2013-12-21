@@ -1,6 +1,5 @@
 module Socializer
   class Authentication < ActiveRecord::Base
-
     belongs_to :person
 
     attr_accessible :provider, :uid, :image_url
@@ -12,6 +11,5 @@ module Socializer
         raise 'Cannot delete the last authentication available.'
       end
     end
-
   end
 end

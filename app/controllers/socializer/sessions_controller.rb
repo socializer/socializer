@@ -1,6 +1,5 @@
 module Socializer
   class SessionsController < ApplicationController
-
     def create
       auth = request.env['omniauth.auth']
       user_auth = Authentication.where(provider: auth['provider'], uid: auth['uid']).first
@@ -32,6 +31,5 @@ module Socializer
     def failure
       redirect_to root_url
     end
-
   end
 end

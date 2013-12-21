@@ -1,6 +1,5 @@
 module Socializer
   class Tie < ActiveRecord::Base
-
     attr_accessible :contact_id
 
     belongs_to :circle
@@ -9,6 +8,5 @@ module Socializer
     def contact
       @contact ||= activity_contact.activitable
     end
-
   end
 end

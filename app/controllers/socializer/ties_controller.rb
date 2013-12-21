@@ -1,6 +1,5 @@
 module Socializer
   class TiesController < ApplicationController
-
     def create
       @circle = Circle.find(params[:tie][:circle_id])
       @circle.add_contact(params[:tie][:contact_id])
@@ -13,6 +12,5 @@ module Socializer
       @tie.destroy
       redirect_to @circle
     end
-
   end
 end

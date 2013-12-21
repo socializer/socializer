@@ -1,6 +1,5 @@
 module Socializer
   class CommentsController < ApplicationController
-
     def new
       @comment = Comment.new
     end
@@ -29,6 +28,5 @@ module Socializer
       @comment.destroy
       redirect_to stream_path
     end
-
   end
 end

@@ -70,6 +70,5 @@ module Socializer
         raise 'Cannot delete a group that has members in it.'
       end
     end
-
   end
 end

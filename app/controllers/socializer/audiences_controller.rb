@@ -1,8 +1,6 @@
 module Socializer
   class AudiencesController < ApplicationController
-
     def index
-
       if params[:q].present? && params[:q].size > 0
         query_value = "%#{params[:q]}%"
 
@@ -27,8 +25,6 @@ module Socializer
       respond_to do |format|
         format.json { render json: @audiences }
       end
-
     end
-
   end
 end

@@ -1,6 +1,5 @@
 module Socializer
   class NotesController < ApplicationController
-
     def new
       @note = Note.new
       @current_id = params[:id]
@@ -35,6 +34,5 @@ module Socializer
         format.js
       end
     end
-
   end
 end

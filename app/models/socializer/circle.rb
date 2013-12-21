@@ -28,6 +28,5 @@ module Socializer
       @tie = ties.find_by(contact_id: contact_id)
       @tie.destroy
     end
-
   end
 end
