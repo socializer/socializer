@@ -5,13 +5,14 @@ module Socializer
       @circle = Circle.find(params[:tie][:circle_id])
       @circle.add_contact(params[:tie][:contact_id])
       redirect_to @circle
-    end
+    end
+
     def destroy
       @tie = Tie.find(params[:id])
       @circle = @tie.circle
       @tie.destroy
-      redirect_to @circle  
-    end 
-  
+      redirect_to @circle
+    end
+
   end
 end
