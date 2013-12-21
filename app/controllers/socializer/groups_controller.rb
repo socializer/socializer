@@ -4,15 +4,15 @@ module Socializer
     end
 
     def memberships
-        @memberships = current_user.memberships
+      @memberships = current_user.memberships
     end
 
     def ownerships
-        @ownerships = current_user.groups
+      @ownerships = current_user.groups
     end
 
     def pending_invites
-        @pending_invites = current_user.pending_memberships_invites
+      @pending_invites = current_user.pending_memberships_invites
     end
 
     def show
