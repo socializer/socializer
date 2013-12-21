@@ -39,7 +39,7 @@ module Socializer
         people.delete_at people.index(activity.actor)
       end
 
-      return people
+      people
     end
 
     def like!(person)

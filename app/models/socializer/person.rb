@@ -65,7 +65,7 @@ module Socializer
 
       return false if likes.count == 0
       return false if likes.count == unlikes.count
-      return true
+      true
     end
 
     def pending_memberships_invites
