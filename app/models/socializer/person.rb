@@ -73,7 +73,7 @@ module Socializer
       # @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
       subquery = Socializer::Group.joins{memberships}.with_privacy_level(:private).select{count(1)}
       @pending_memberships_invites ||= memberships.where{active.eq(false)}.where{"(#{subquery.to_sql}) > 0"}
-      end
+    end
 
     def avatar_url
       if avatar_provider == 'FACEBOOK'
