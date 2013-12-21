@@ -31,7 +31,7 @@ module Socializer
     end
 
     def received_notifications
-      raise "Method not implemented yet."
+      raise 'Method not implemented yet.'
     end
 
     def contacts
@@ -76,11 +76,11 @@ module Socializer
       end
 
     def avatar_url
-      if avatar_provider == "FACEBOOK"
+      if avatar_provider == 'FACEBOOK'
         authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
-      elsif avatar_provider == "TWITTER"
+      elsif avatar_provider == 'TWITTER'
         authentications.where(provider: 'twitter')[0].image_url if authentications.where(provider: 'twitter')[0].present?
-      elsif avatar_provider == "LINKEDIN"
+      elsif avatar_provider == 'LINKEDIN'
         authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
       else
         "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}" if self.email.present?
@@ -96,8 +96,8 @@ module Socializer
         image_url = auth['info']['image'] if auth['info']['image']
 
         if image_url.nil?
-          image_url = ""
-          user.avatar_provider = "GRAVATAR"
+          image_url = ''
+          user.avatar_provider = 'GRAVATAR'
         else
           user.avatar_provider = auth['provider'].upcase
         end

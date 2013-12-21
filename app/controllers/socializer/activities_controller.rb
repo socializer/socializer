@@ -17,7 +17,7 @@ module Socializer
         @title = @group.name
         @current_id = @group.guid
       else
-        @title = "Activity stream"
+        @title = 'Activity stream'
       end
     end
 
