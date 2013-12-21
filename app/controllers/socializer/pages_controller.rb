@@ -1,9 +1,7 @@
 module Socializer
   class PagesController < ApplicationController
     def index
-      if signed_in?
-        redirect_to stream_path
-      end
+      redirect_to stream_path if signed_in?
     end
   end
 end
