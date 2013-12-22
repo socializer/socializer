@@ -10,11 +10,11 @@ module Socializer
     end
 
     def approve!
-      self.update_attribute(:active, true)
+      update_attribute(:active, true)
     end
 
     def confirm!
-      self.update_attribute(:active, true)
+      update_attribute(:active, true)
     end
   end
 end

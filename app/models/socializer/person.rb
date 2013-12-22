@@ -35,17 +35,17 @@ module Socializer
     end
 
     def contacts
-      @contacts ||= self.circles.map { |c| c.contacts }.flatten.uniq
+      @contacts ||= circles.map { |c| c.contacts }.flatten.uniq
     end
 
     def contact_of
-      @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{self.guid}}.map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{guid}}.map { |circle| circle.author }.uniq
     end
 
     # FIXME: If you like, unlike, and then like again the activity doesn't show up
     #        This was true before the refactoring
     def likes
-      activity_obj_id = self.activity_object.id
+      activity_obj_id = activity_object.id
       query  = Activity.joins{verb}.where{actor_id.eq(activity_obj_id) & target_id.eq(nil)}
       unlike = query.where{verb.name.eq('unlike')}.select{activity_object_id}
 
@@ -54,7 +54,7 @@ module Socializer
 
     # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1
     def likes?(object)
-      activity_obj_id = self.activity_object.id
+      activity_obj_id = activity_object.id
 
       query   = Activity.joins{verb}.where{activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id)}
       likes   = query.where{verb.name.eq('like')}
@@ -76,6 +76,7 @@ module Socializer
     end
 
     def avatar_url
+      # debugger
       if avatar_provider == 'FACEBOOK'
         authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
       elsif avatar_provider == 'TWITTER'
@@ -83,7 +84,7 @@ module Socializer
       elsif avatar_provider == 'LINKEDIN'
         authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
       else
-        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}" if self.email.present?
+        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}" if email.present?
       end
     end
 

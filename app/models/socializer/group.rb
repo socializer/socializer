@@ -27,11 +27,11 @@ module Socializer
     end
 
     def join(person)
-      @membership = person.memberships.build(group_id: self.id)
+      @membership = person.memberships.build(group_id: id)
 
-      if self.privacy_level.public?
+      if privacy_level.public?
         @membership.active = true
-      elsif self.privacy_level.restricted?
+      elsif privacy_level.restricted?
         @membership.active = false
       else
         raise 'Cannot self-join a private group, you need to be invited'
@@ -41,25 +41,25 @@ module Socializer
     end
 
     def invite(person)
-      @membership = person.memberships.build(group_id: self.id)
+      @membership = person.memberships.build(group_id: id)
 
       @membership.active = false
       @membership.save
     end
 
     def leave(person)
-      @membership = person.memberships.find_by(group_id: self.id)
+      @membership = person.memberships.find_by(group_id: id)
       @membership.destroy
     end
 
     def member?(person)
-      person.memberships.find_by(group_id: self.id).present?
+      person.memberships.find_by(group_id: id).present?
     end
 
     private
 
     def add_author_to_members
-      @membership = author.memberships.build(group_id: self.id)
+      @membership = author.memberships.build(group_id: id)
 
       @membership.active = true
       @membership.save

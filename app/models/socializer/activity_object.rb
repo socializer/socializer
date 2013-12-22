@@ -45,7 +45,7 @@ module Socializer
     def like!(person)
       activity = Activity.create! do |a|
         a.actor_id = person.activity_object.id
-        a.activity_object_id = self.id
+        a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: 'like')
       end
 
@@ -57,7 +57,7 @@ module Socializer
     def unlike!(person)
       activity = Activity.create! do |a|
         a.actor_id = person.activity_object.id
-        a.activity_object_id = self.id
+        a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: 'unlike')
       end
 
@@ -71,8 +71,8 @@ module Socializer
       circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
 
       activity = Activity.new do |a|
-        a.actor_id = self.actor_id
-        a.activity_object_id = self.id
+        a.actor_id = actor_id
+        a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: 'share')
       end
 
@@ -92,11 +92,11 @@ module Socializer
     end
 
     def increment_like_count
-      self.increment!(:like_count)
+      increment!(:like_count)
     end
 
     def decrement_like_count
-      self.decrement!(:like_count)
+      decrement!(:like_count)
     end
   end
 end
