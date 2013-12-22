@@ -4,9 +4,9 @@ module Socializer
       if params[:q].present? && params[:q].size > 0
         query_value = "%#{params[:q]}%"
 
-        @people = Person.where{display_name.like query_value}
-        @circles = current_user.circles.where{name.like query_value}
-        @groups = current_user.groups.where{name.like query_value}
+        @people = Person.where { display_name.like query_value }
+        @circles = current_user.circles.where { name.like query_value }
+        @groups = current_user.groups.where { name.like query_value }
       else
         @people = []
         @circles = current_user.circles

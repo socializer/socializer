@@ -39,26 +39,26 @@ module Socializer
     end
 
     def contact_of
-      @contact_of ||= Circle.joins{ties}.where{ties.contact_id.eq my{guid}}.map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins { ties }.where { ties.contact_id.eq my { guid } }.map { |circle| circle.author }.uniq
     end
 
     # FIXME: If you like, unlike, and then like again the activity doesn't show up
     #        This was true before the refactoring
     def likes
       activity_obj_id = activity_object.id
-      query  = Activity.joins{verb}.where{actor_id.eq(activity_obj_id) & target_id.eq(nil)}
-      unlike = query.where{verb.name.eq('unlike')}.select{activity_object_id}
+      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) }
+      unlike = query.where { verb.name.eq('unlike') }.select { activity_object_id }
 
-      @likes ||= query.where{verb.name.eq('like')}.where{activity_object_id.not_in(unlike)}
+      @likes ||= query.where { verb.name.eq('like') }.where { activity_object_id.not_in(unlike) }
     end
 
     # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1
     def likes?(object)
       activity_obj_id = activity_object.id
 
-      query   = Activity.joins{verb}.where{activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id)}
-      likes   = query.where{verb.name.eq('like')}
-      unlikes = query.where{verb.name.eq('unlike')}
+      query   = Activity.joins { verb }.where { activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id) }
+      likes   = query.where { verb.name.eq('like') }
+      unlikes = query.where { verb.name.eq('unlike') }
 
       # Can replace the 3 return statements, but always runs 2 queries
       # !(likes.present? && unlikes.present?)
@@ -71,8 +71,8 @@ module Socializer
     def pending_memberships_invites
       # FIXME: Find a better way to do the comparison > 0. Does a native way exist to do "(#{subquery.to_sql}) > 0"
       # @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
-      subquery = Socializer::Group.joins{memberships}.with_privacy_level(:private).select{count(1)}
-      @pending_memberships_invites ||= memberships.where{active.eq(false)}.where{"(#{subquery.to_sql}) > 0"}
+      subquery ||= Socializer::Group.joins { memberships }.with_privacy_level(:private).select { count(1) }
+      @pending_memberships_invites ||= memberships.where { active.eq(false) }.where { "(#{subquery.to_sql}) > 0" }
     end
 
     def avatar_url
