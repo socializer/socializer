@@ -34,7 +34,7 @@ module Socializer
       elsif privacy_level.restricted?
         @membership.active = false
       else
-        raise 'Cannot self-join a private group, you need to be invited'
+        fail 'Cannot self-join a private group, you need to be invited'
       end
 
       @membership.save
@@ -67,7 +67,7 @@ module Socializer
 
     def deny_delete_if_members
       if memberships.count > 0
-        raise 'Cannot delete a group that has members in it.'
+        fail 'Cannot delete a group that has members in it.'
       end
     end
   end

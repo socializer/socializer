@@ -31,7 +31,7 @@ module Socializer
     end
 
     def received_notifications
-      raise 'Method not implemented yet.'
+      fail 'Method not implemented yet.'
     end
 
     def contacts

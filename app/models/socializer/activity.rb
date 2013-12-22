@@ -80,14 +80,14 @@ module Socializer
         # query.where(audiences: {activity_object_id: group_id}).uniq
         query.where{audiences.activity_object_id.eq(group_id)}.uniq
       else
-        raise 'Unknown stream provider.'
+        fail 'Unknown stream provider.'
       end
     end
 
     private
 
     def self.build_query(viewer_id)
-      raise 'viewer_id cannot be nil.' if viewer_id.nil?
+      fail 'viewer_id cannot be nil.' if viewer_id.nil?
 
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
