@@ -8,23 +8,23 @@ module Socializer
     it { should validate_presence_of(:content) }
     it { should validate_presence_of(:activity) }
 
-    it "has a valid factory" do
+    it 'has a valid factory' do
       expect(create(:socializer_activity_field)).to be_valid
     end
 
-    it "is valid with content" do
+    it 'is valid with content' do
       expect(build(:socializer_activity_field, content: 'this is content')).to be_valid
     end
 
-    it "is invalid without content" do
+    it 'is invalid without content' do
       expect(build(:socializer_activity_field, content: nil)).to have(1).errors_on(:content)
     end
 
-    it "is valid with activity" do
+    it 'is valid with activity' do
       expect(build(:socializer_activity_field, activity: FactoryGirl.build(:socializer_activity))).to be_valid
     end
 
-    it "is invalid without activity" do
+    it 'is invalid without activity' do
       expect(build(:socializer_activity_field, activity: nil)).to have(1).errors_on(:activity)
     end
   end
