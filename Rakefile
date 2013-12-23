@@ -26,7 +26,7 @@ if File.exists?(APP_RAKEFILE)
   load 'rails/tasks/engine.rake'
 end
 
-Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each {|f| load f }
+Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each { |f| load f }
 
 Bundler::GemHelper.install_tasks
 
