@@ -8,7 +8,7 @@ module Socializer
 
     def make_sure_its_not_the_last_one
       if person.authentications.count == 1
-        raise 'Cannot delete the last authentication available.'
+        fail 'Cannot delete the last authentication available.'
       end
     end
   end
