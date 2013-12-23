@@ -75,17 +75,27 @@ module Socializer
       @pending_memberships_invites ||= memberships.where { active.eq(false) }.where { "(#{subquery.to_sql}) > 0" }
     end
 
+    # TODO: avatar_url - clean this up
     def avatar_url
-      # debugger
-      if avatar_provider == 'FACEBOOK'
-        authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
-      elsif avatar_provider == 'TWITTER'
-        authentications.where(provider: 'twitter')[0].image_url if authentications.where(provider: 'twitter')[0].present?
-      elsif avatar_provider == 'LINKEDIN'
-        authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
+      avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
+      if avatar_provider_array.include?(avatar_provider)
+        provider = avatar_provider.downcase
+        authentications_query = authentications.where(provider: provider)
+        authentications_query.first.image_url if authentications_query.present?
+        # authentications.where(provider: provider).first.image_url if authentications.where(provider: provider).present?
       else
         "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}" if email.present?
       end
+
+      # if avatar_provider == 'FACEBOOK'
+      #   authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
+      # elsif avatar_provider == 'TWITTER'
+      #   authentications.where(provider: 'twitter')[0].image_url if authentications.where(provider: 'twitter')[0].present?
+      # elsif avatar_provider == 'LINKEDIN'
+      #   authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
+      # else
+      #   "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}" if email.present?
+      # end
     end
 
     def self.create_with_omniauth(auth)
