@@ -6,7 +6,7 @@ class CreateSocializerTies < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :socializer_ties, :contact_id
     add_index :socializer_ties, :circle_id
   end
