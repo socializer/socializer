@@ -6,7 +6,7 @@ class CreateSocializerNotes < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :socializer_notes, :author_id
   end
 end
