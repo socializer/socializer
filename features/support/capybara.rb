@@ -13,4 +13,4 @@ Capybara.save_and_open_page_path = 'tmp/capybara'
 
 combustion_rack_builder = eval 'Rack::Builder.new {( ' + File.read(File.dirname(__FILE__) + '/../../config.ru') + "\n )}"
 Capybara.app = combustion_rack_builder.to_app
-World{Capybara.app.routes.url_helpers}
+World { Capybara.app.routes.url_helpers }
