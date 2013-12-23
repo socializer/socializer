@@ -13,6 +13,15 @@ AllCops:
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: true
 
+ConstantName:
+  # TODO Uncomment Exclude and delete Enabled
+  # Exclude: Rakefile
+  Enabled: false
+
+RegexpLiteral:
+  # TODO Uncomment Exclude and delete Enabled
+  # Exclude: '*.gemspec'
+  Enabled: false
 #
 # TODO: Clean these up
 
