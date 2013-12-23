@@ -22,9 +22,7 @@ end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 
-if File.exists?(APP_RAKEFILE)
-  load 'rails/tasks/engine.rake'
-end
+load 'rails/tasks/engine.rake' if File.exists?(APP_RAKEFILE)
 
 Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each { |f| load f }
 
