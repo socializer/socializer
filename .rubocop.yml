@@ -1,0 +1,43 @@
+AllCops:
+  # Include gemspec and Rakefile
+  Includes:
+    - '*.gemspec'
+    - Rakefile
+    - config.ru
+    - db/migrate
+  Excludes:
+    - spec/dummy/**
+    - spec/internal/**
+
+  # By default, the rails cops are not run. Override in project or home
+  # directory .rubocop.yml files, or by giving the -R/--rails option.
+  RunRailsCops: true
+
+#
+# TODO: Clean these up
+
+# Needed for squeel
+BlockAlignment:
+  Enabled: false
+
+# Needed for squeel
+Blocks:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+LeadingCommentSpace:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+UselessAssignment:
+  Enabled: false
