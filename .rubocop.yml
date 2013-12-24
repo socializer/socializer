@@ -4,8 +4,9 @@ AllCops:
     - '*.gemspec'
     - Rakefile
     - config.ru
-    - db/migrate
+    - db/migrate/**
   Excludes:
+    - bin/**
     - spec/dummy/**
     - spec/internal/**
 
@@ -23,6 +24,7 @@ RegexpLiteral:
   # Exclude: '*.gemspec'
   Enabled: false
 #
+
 # TODO: Clean these up
 
 # Needed for squeel
@@ -43,6 +45,7 @@ LeadingCommentSpace:
   Enabled: false
 
 LineLength:
+  # Max: 120
   Enabled: false
 
 MethodLength:
