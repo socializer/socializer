@@ -4,8 +4,9 @@ AllCops:
     - '*.gemspec'
     - Rakefile
     - config.ru
-    - db/migrate
+    - db/migrate/**
   Excludes:
+    - bin/**
     - spec/dummy/**
     - spec/internal/**
 
@@ -13,7 +14,17 @@ AllCops:
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: true
 
+ConstantName:
+  # TODO Uncomment Exclude and delete Enabled
+  # Exclude: Rakefile
+  Enabled: false
+
+RegexpLiteral:
+  # TODO Uncomment Exclude and delete Enabled
+  # Exclude: '*.gemspec'
+  Enabled: false
 #
+
 # TODO: Clean these up
 
 # Needed for squeel
@@ -34,6 +45,7 @@ LeadingCommentSpace:
   Enabled: false
 
 LineLength:
+  # Max: 120
   Enabled: false
 
 MethodLength:
