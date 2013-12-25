@@ -36,6 +36,3 @@ LineLength:
 
 MethodLength:
   Enabled: false
-
-UselessAssignment:
-  Enabled: false
