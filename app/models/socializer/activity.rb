@@ -103,6 +103,8 @@ module Socializer
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
         ((audiences.privacy_level == privacy_limited) & `#{viewer_id}`.in(my { build_limited_subquery(viewer_id) })) |
         (actor_id == viewer_id) }
+
+      query
     end
 
     # Audience : CIRCLES
@@ -155,6 +157,8 @@ module Socializer
       limited_sql  = "( #{limited_followed_sql} ) " +
                      "OR socializer_audiences.activity_object_id IN ( #{limited_groups_sql} ) " +
                      "OR socializer_audiences.activity_object_id = #{viewer_id} ) "
+
+      limited_sql
     end
   end
 end
