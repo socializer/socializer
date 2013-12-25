@@ -8,7 +8,7 @@ module Socializer
     end
 
     def create
-      scope = params[:share][:scope]
+      # scope = params[:share][:scope]
       object_ids = params[:share][:object_ids]
 
       activity = Activity.new do |a|
