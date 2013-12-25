@@ -37,14 +37,14 @@ module Socializer
 
     private
 
-      # Use callbacks to share common setup or constraints between actions.
-      def set_likable
-        @likable = ActivityObject.find(params[:id])
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_likable
+      @likable = ActivityObject.find(params[:id])
+    end
 
-        # # Never trust parameters from the scary internet, only allow the white list through.
-        # def like_params
-        #   params.require(:like).permit(:actor_id, :activity_object_id)
-        # end
+      # # Never trust parameters from the scary internet, only allow the white list through.
+      # def like_params
+      #   params.require(:like).permit(:actor_id, :activity_object_id)
+      # end
   end
 end
