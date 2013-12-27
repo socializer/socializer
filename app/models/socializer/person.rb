@@ -78,13 +78,13 @@ module Socializer
     # TODO: avatar_url - clean this up
     def avatar_url
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
+
       if avatar_provider_array.include?(avatar_provider)
         provider = avatar_provider.downcase
-        authentications_query = authentications.where(provider: provider)
-        authentications_query.first.image_url if authentications_query.present?
-        # authentications.where(provider: provider).first.image_url if authentications.where(provider: provider).present?
+        authentications.where(provider: provider).first.try(:image_url)
       else
-        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}" if email.present?
+        return if email.blank?
+        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
       end
 
       # if avatar_provider == 'FACEBOOK'
