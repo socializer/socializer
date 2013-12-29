@@ -1,3 +1,3 @@
-ActiveSupport::Inflector.inflections do |inflect|
-  inflect.irregular 'tie', 'ties'
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.singular /^ties$/i, 'tie'
 end
