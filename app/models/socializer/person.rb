@@ -104,11 +104,9 @@ module Socializer
     def self.create_with_omniauth(auth)
       create! do |user|
 
-        debugger
-
-        user.display_name = auth.info.name if auth.info.name
-        user.email = auth.info.email if auth.info.email
-        image_url = auth.info.image if auth.info.image
+        user.display_name = auth.info.name
+        user.email = auth.info.email
+        image_url = auth.info.image
 
         if image_url.nil?
           image_url = ''
