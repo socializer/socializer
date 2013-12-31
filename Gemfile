@@ -18,7 +18,7 @@ group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'cucumber-rails', :require => false, github: 'cucumber/cucumber-rails', :branch => 'master_rails4_test'
+  gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'database_cleaner'
 end
 
