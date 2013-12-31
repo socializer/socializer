@@ -2,7 +2,10 @@ require 'digest/md5'
 
 module Socializer
   class Person < ActiveRecord::Base
+    # extend Enumerize
     include Socializer::ObjectTypeBase
+
+    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 }, default: :gravatar, predicates: true, scope: true
 
     attr_accessible :display_name, :email, :language, :avatar_provider
 
@@ -101,18 +104,18 @@ module Socializer
     def self.create_with_omniauth(auth)
       create! do |user|
 
-        user.display_name = auth['info']['name'] if auth['info']['name']
-        user.email = auth['info']['email'] if auth['info']['email']
-        image_url = auth['info']['image'] if auth['info']['image']
+        user.display_name = auth.info.name
+        user.email = auth.info.email
+        image_url = auth.info.image
 
         if image_url.nil?
           image_url = ''
           user.avatar_provider = 'GRAVATAR'
         else
-          user.avatar_provider = auth['provider'].upcase
+          user.avatar_provider = auth.provider.upcase
         end
 
-        user.authentications.build(provider: auth['provider'], uid: auth['uid'], image_url: image_url)
+        user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
 
       end
     end

@@ -1,3 +1,3 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.singular /^ties$/i, 'tie'
+  inflect.singular(/(t)ies$/i, '\1ie')
 end
