@@ -23,6 +23,22 @@ module Socializer
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
+    def note?
+      activitable_type == "Socializer::Note"
+    end
+
+    def activity?
+      activitable_type == "Socializer::Activity"
+    end
+
+    def comment?
+      activitable_type == "Socializer::Comment"
+    end
+
+    def person?
+      activitable_type == 'Socializer::Person'
+    end
+
     # REFACTOR: DRY this up. Reduce database calls
     # TODO: Rename this method to liked_by
     def likes
