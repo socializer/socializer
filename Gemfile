@@ -1,10 +1,12 @@
 source "http://rubygems.org"
 
+ruby "2.0.0"
+
 gemspec
 
-gem 'sass-rails',   '~> 4.0.1'
-gem 'coffee-rails', '~> 4.0.1'
-gem 'uglifier', '>= 2.4.0'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 
@@ -20,6 +22,8 @@ group :development, :test do
   gem 'capybara'
   gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'database_cleaner'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 # add these gems to help with the transition to Rails 4:

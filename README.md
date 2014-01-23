@@ -75,12 +75,12 @@ The todo list is as follows :
 The best way to contribute is to do one of the following :
 * Creating tests
 * Refactoring
-* Testing (over at [socializer.froggedsoft.com](http://socializer.froggedsoft.com)) and creating issues for me to solve
+* Coding features
 * Correcting logged issues
 * Correcting my English! (I'm a french Canadian, so don't hesitate to fix my sentences or whole paragraphs.)
 
 ## License ##
 
-Copyright 2011-2013, Dominic Goulet, http://www.dominicgoulet.com
+Copyright 2011-2014, Dominic Goulet, http://www.dominicgoulet.com
 
 MIT License - http://www.opensource.org/licenses/mit-license.php

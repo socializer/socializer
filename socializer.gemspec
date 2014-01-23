@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',            '~> 1.3.8')
   spec.add_development_dependency('rspec-rails',        '~> 2.14.0')
-  # spec.add_development_dependency('combustion',         '~> 0.5.0')
   spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',           '~> 2.2.0')
   spec.add_development_dependency('factory_girl_rails', '~> 4.3.0')
