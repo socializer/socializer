@@ -8,6 +8,18 @@ en:
         groups_you_own: 'Groups you own'
         create_new_group: 'Create new group'
 
+    people:
+      login:
+        welcome: 'Welcome to Socializer'
+        sub_heading: 'You can login using the following services'
+        local_account_query: "Don't use these services?"
+        create_account: 'Create an account'
+        login: 'Login'
+
+    shares:
+      form:
+        content_label: 'Would you like to say something along with the sharing of this activity?'
+
   layouts:
     socializer:
       header:

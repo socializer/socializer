@@ -1,7 +1,8 @@
 <%= form_tag stream_shares_path(@share) do %>
 <p>
   <label>
-    Would you like to say something along with the sharing of this activity?<br>
+    <%= t('.content_label') %>
+    <br>
     <textarea id="share[content]" name="share[content]" rows="5" style="width: 100%;"></textarea>
   </label>
 </p>

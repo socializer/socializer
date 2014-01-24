@@ -1,5 +1,5 @@
-<h1>Welcome to Socializer</h1>
-<h2>You can login using the following services</h2>
+<h1><%= t('.welcome') %></h1>
+<h2><%= t('.sub_heading') %></h2>
 <p>
   <%= link_to image_tag("socializer/auth_buttons/facebook_32.png"), signin_path(:facebook) %>
   <%= link_to image_tag("socializer/auth_buttons/twitter_32.png"), signin_path(:twitter) %>
@@ -8,7 +8,7 @@
   <%= link_to image_tag("socializer/auth_buttons/google_32.png"), signin_path(:google) %>
 </p>
 <p>
-  <strong>Don't use these services?</strong>
-  <%= link_to "Create an account", "/auth/identity/register" %> or
-  <%= link_to "Login", signin_path(:identity) %>
+  <strong><%= t('.local_account_query')%></strong>
+  <%= link_to t('.create_account'), "/auth/identity/register" %> or
+  <%= link_to t('.login'), signin_path(:identity) %>
 </p>
