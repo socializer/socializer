@@ -1,6 +1,6 @@
 <%= render 'menu' %>
 <ul>
 <% @memberships.each do |membership| %>
-  <li><%= link_to membership.group.name, membership.group %> | <%= membership.group.members.count %> members | (<%= link_to "leave", membership, method: :delete %>)</li>
+  <li><%= link_to membership.group.name, membership.group %> | <%= membership.group.members.count %> members | (<%= link_to t('.leave'), membership, method: :delete %>)</li>
 <% end %>
 </ul>
