@@ -3,21 +3,21 @@ fr:
     groups:
       menu:
         your_groups: 'Vos groupes'
-        memberships: 'Memberships'
-        pending_invites: 'Invite attente'
+        memberships: 'Adhésions'
+        pending_invites: 'Invitations en attente'
         groups_you_own: 'Groupes que vous possédez'
         create_new_group: 'Créer un nouveau groupe'
 
   layouts:
     socializer:
       header:
-        home: 'Home'
+        home: 'Accueil'
         profile: 'Profil'
         circles: 'Cercles'
         authentications: 'Authentifications'
         groups: 'Groupes'
         notifications: 'Notifications'
-        signout: 'Signout'
+        signout: 'Déconnexion'
 
   enumerize:
     socializer/group:
