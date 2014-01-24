@@ -171,6 +171,5 @@ module Socializer
     def self.build_limited_viewer_subquery(viewer_id)
       "( #{viewer_id} )"
     end
-
   end
 end
