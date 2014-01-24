@@ -108,9 +108,9 @@ module Socializer
         )) |
         (actor_id == viewer_id) }
 
-      logger.debug " =================================== "
+      logger.debug ' =================================== '
       logger.debug query
-      logger.debug " =================================== "
+      logger.debug ' =================================== '
 
       query
     end
