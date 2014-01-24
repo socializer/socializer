@@ -8,6 +8,17 @@ fr:
         groups_you_own: 'Groupes que vous possédez'
         create_new_group: 'Créer un nouveau groupe'
 
+    notes:
+      form:
+        share_placeholder: 'Share anything with anyone...'
+        share: 'Share'
+      new:
+        header: 'Send a message'
+
+    notifications:
+      index:
+        header: 'Notifications'
+
     people:
       login:
         welcome: 'Bienvenue à Socializer'

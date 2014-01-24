@@ -5,7 +5,7 @@
 	<script type="text/javascript">
   	$(document).ready(function() {
 
-		$("#note_content").val('Share anything with anyone...').css({fontStyle: 'italic', color: '#aaa'});
+		$("#note_content").val("<%= t('.share_placeholder') %>").css({fontStyle: 'italic', color: '#aaa'});
 
 		$("#note_object_ids").hide();
 		$("form .action-button").hide();
@@ -34,6 +34,6 @@
 
   	});
 	</script>
-  	<%= form.submit "Share", class: "action-button" %>
+  	<%= form.submit t('.share'), class: "action-button" %>
 	<% end %>
 </div>
