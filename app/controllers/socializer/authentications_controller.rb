@@ -1,7 +1,7 @@
 module Socializer
   class AuthenticationsController < ApplicationController
     def index
-      @authentications = current_user.authentications
+      @authentications = current_user.services
     end
 
     def destroy
