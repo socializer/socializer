@@ -24,15 +24,15 @@ module Socializer
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
     def note?
-      activitable_type == "Socializer::Note"
+      activitable_type == 'Socializer::Note'
     end
 
     def activity?
-      activitable_type == "Socializer::Activity"
+      activitable_type == 'Socializer::Activity'
     end
 
     def comment?
-      activitable_type == "Socializer::Comment"
+      activitable_type == 'Socializer::Comment'
     end
 
     def person?
