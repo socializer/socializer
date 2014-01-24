@@ -10,10 +10,10 @@ fr:
 
     notes:
       form:
-        share_placeholder: 'Share anything with anyone...'
-        share: 'Share'
+        share_placeholder: 'Partez tout avec qui vous voulez...'
+        share: 'Partager'
       new:
-        header: 'Send a message'
+        header: 'Envoyer un message'
 
     notifications:
       index:
@@ -21,15 +21,15 @@ fr:
 
     people:
       login:
-        welcome: 'Bienvenue à Socializer'
+        welcome: 'Bienvenue sur Socializer'
         sub_heading: 'Vous pouvez vous connecter en utilisant les services suivants'
-        local_account_query: "Ne pas utiliser ces services?"
+        local_account_query: "Vous n'utilisez pas ces services?"
         create_account: 'Créer un compte'
-        login: 'Enter'
+        login: 'Connexion'
 
     shares:
       form:
-        content_label: 'Voulez-vous dire quelque chose avec le partage de cette activité?'
+        content_label: 'Voulez-vous ajouter un commentaire avec le partage de cette activité?'
 
   layouts:
     socializer:
