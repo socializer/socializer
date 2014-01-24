@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-ruby "2.0.0"
+ruby '2.1.0'
 
 gemspec
 
@@ -20,7 +20,7 @@ group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'cucumber-rails', '~> 1.4.0', :require => false
+  # gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'database_cleaner'
   gem "better_errors"
   gem "binding_of_caller"
