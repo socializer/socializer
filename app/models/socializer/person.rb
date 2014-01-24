@@ -13,6 +13,10 @@ module Socializer
 
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
+    def services
+      @services ||= authentications.where(':provider != ?', 'Identity')
+    end
+
     def circles
       @circles ||= activity_object.circles
     end
