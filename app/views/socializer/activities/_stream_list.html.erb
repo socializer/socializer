@@ -1,7 +1,7 @@
 
 <p><%= link_to current_user.display_name, stream_path(provider: :people, id: current_user.id) %></p>
 
-<p><%= link_to "Streams", stream_path %></p>
+<p><%= link_to t('.streams'), stream_path %></p>
 
 <ul id="circles-stream-list">
   <% current_user.circles.each do |circle| %>

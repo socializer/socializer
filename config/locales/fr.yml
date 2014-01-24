@@ -1,5 +1,35 @@
 fr:
   socializer:
+    activities:
+      stream_card:
+        header: 'In your circles'
+      stream_list:
+        streams: 'Streams'
+
+    authentications:
+      menu:
+        header: 'Authentications'
+        services: 'Bound services'
+        add_service: 'Add a new service'
+      index:
+        unbind: 'unbind'
+
+    circles:
+      form:
+        submit: 'Save changes'
+      menu:
+        header: 'Your circles'
+        in_your_circles: 'People in your circles'
+        added_you: 'People who have added you'
+        find: 'Find new people'
+        new: 'Create new circle'
+      index:
+        new: 'Create a new circle'
+        edit: 'edit'
+        delete: 'delete'
+      show:
+        edit_this_circle: 'Edit this circle'
+
     comments:
       form:
         submit: 'Comment'
