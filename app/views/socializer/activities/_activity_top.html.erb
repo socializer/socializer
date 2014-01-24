@@ -4,7 +4,7 @@
 	<%= separator %>
 
 	<%# Time elapsed %>
-	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(provider: :activities, id: activity.id), 
+	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(provider: :activities, id: activity.id),
 				class: "unimportant-link" %>
 
 	<%# List of audiences %>
@@ -13,11 +13,11 @@
 		<%= separator %>
 
 		<% if audience.privacy_level.public? %>
-  			<%= link_to "Public", stream_audience_path(activity), class: 'tooltip unimportant-link', title: "Anyone can see this" %>
+  			<%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "Anyone can see this" %>
 		<% else %>
 			<%= link_to "Limited", stream_audience_path(activity), class: 'tooltip unimportant-link' %>
 		<% end %>
 
 	<% end %>
-	
+
 </div>
