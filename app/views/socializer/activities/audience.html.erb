@@ -1,11 +1,19 @@
 <ul>
-<% @object_ids.each do |object| %>
-  <% if object == 'public' %>
-  <li>Anyone can see this</li>
-  <% elsif object.activitable_type == 'Socializer::Person' %>
-  <li><%= object.activitable.display_name %></li>
-  <% else %>
-  <li><%= object.activitable.name %></li>
+  <% @object_ids.each do |object| %>
+    
+    <% if object == 'public' %>
+
+      <li>Anyone can see this</li>
+
+    <% elsif object.person? %>
+
+      <li><%= object.activitable.display_name %></li>
+
+    <% else %>
+
+      <li><%= object.activitable.name %></li>
+
+    <% end %>
+
   <% end %>
-<% end %>
 </ul>
