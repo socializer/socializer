@@ -158,14 +158,14 @@ module Socializer
     def self.build_limited_group_subquery(viewer_id)
       # Retrieve all the groups that the viewer is member of.
       # limited_groups_query = Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Group)}.where{member_id == viewer_id}
-      #limited_groups_sql = 'SELECT socializer_activity_objects.id ' +
+      # limited_groups_sql = 'SELECT socializer_activity_objects.id ' +
       #                     'FROM socializer_memberships ' +
       #                     'INNER JOIN socializer_activity_objects ' +
       #                     'ON socializer_activity_objects.activitable_id = socializer_memberships.group_id ' +
       #                         "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
       #                     "WHERE socializer_memberships.member_id = #{viewer_id}"
 
-      ActivityObject.select{ id }.joins{ activitable(Membership).group }.where{ activitable.member_id.eq(viewer_id) }
+      ActivityObject.select { id }.joins { activitable(Membership).group }.where { activitable.member_id.eq(viewer_id) }
     end
 
     def self.build_limited_viewer_subquery(viewer_id)
