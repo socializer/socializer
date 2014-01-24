@@ -8,10 +8,10 @@ module Socializer
       user == current_user
     end
 
-  	def separator
-  		content_tag(:span, :class =>"separator") do
-  			"&#8211;".html_safe
-  		end
-  	end
+    def separator
+      content_tag(:span, class: 'separator') do
+        '&#8211;'.html_safe
+      end
+    end
   end
 end
