@@ -1,12 +1,32 @@
 en:
+  socializer:
+    groups:
+      menu:
+        your_groups: 'Your groups'
+        memberships: 'Memberships'
+        pending_invites: 'Pending invites'
+        groups_you_own: 'Groups you own'
+        create_new_group: 'Create new group'
+
+  layouts:
+    socializer:
+      header:
+        home: 'Home'
+        profile: 'Profile'
+        circles: 'Circles'
+        authentications: 'Authentications'
+        groups: 'Groups'
+        notifications: 'Notifications'
+        signout: 'Signout'
+
   enumerize:
     socializer/group:
       privacy_level:
-        public: "Public"
-        restricted: "Restricted"
-        private: "Private"
+        public: 'Public'
+        restricted: 'Restricted'
+        private: 'Private'
     socializer/audience:
       privacy_level:
-        public: "Public"
-        circles: "Circles"
-        limited: "Limited"
+        public: 'Public'
+        circles: 'Circles'
+        limited: 'Limited'
