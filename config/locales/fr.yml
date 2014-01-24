@@ -1,12 +1,28 @@
 fr:
   socializer:
+    comments:
+      form:
+        submit: 'Comment'
+
     groups:
+      form:
+        submit: 'Save changes'
       menu:
         your_groups: 'Vos groupes'
         memberships: 'Adhésions'
         pending_invites: 'Invitations en attente'
         groups_you_own: 'Groupes que vous possédez'
         create_new_group: 'Créer un nouveau groupe'
+      memberships:
+        leave: 'leave'
+      ownerships:
+        edit: 'edit'
+        delete: 'delete'
+      pending_invites:
+        confirm: 'confirm'
+      show:
+        leave: 'leave'
+        join: 'join'
 
     notes:
       form:
