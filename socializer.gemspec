@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth',     '~> 1.1.4')
   spec.add_dependency('jquery-rails')
   spec.add_dependency('bcrypt-ruby',  '~> 3.1.2')
+  spec.add_dependency('draper',       '~> 1.3.0')
   spec.add_dependency('tire',         '~> 0.6.1')
   spec.add_dependency('enumerize',    '~> 0.7.0')
   spec.add_dependency('squeel',       '~> 1.1.0')
