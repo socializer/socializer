@@ -9,8 +9,8 @@ module Socializer
     end
 
     def separator
-      content_tag(:span, :class =>"separator") do
-        "&#8211;".html_safe
+      content_tag(:span, :class => 'separator') do
+        '&#8211;'.html_safe
       end
     end
   end
