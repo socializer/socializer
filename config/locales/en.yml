@@ -3,6 +3,7 @@ en:
     activities:
       activity_top:
         tooltip_public: 'Anyone can see this'
+        time_format: '%s ago'
       stream_card:
         header: 'In your circles'
       stream_list:
