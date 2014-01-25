@@ -99,7 +99,8 @@ module Socializer
       privacy_limited = Audience.privacy_level.find_value(:limited).value
 
       query = joins { audiences }.where { verb_id.in(verbs_of_interest) }.where { target_id.eq(nil) }
-      query = query.where { (audiences.privacy_level == privacy_public) |
+
+      query.where { (audiences.privacy_level == privacy_public) |
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
         ((audiences.privacy_level == privacy_limited) & (
           `#{viewer_id}`.in(my { build_limited_subquery(viewer_id) }) |
@@ -107,12 +108,6 @@ module Socializer
           audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
         )) |
         (actor_id == viewer_id) }
-
-      logger.debug ' =================================== '
-      logger.debug query
-      logger.debug ' =================================== '
-
-      query
     end
 
     # Audience : CIRCLES
