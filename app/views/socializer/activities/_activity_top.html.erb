@@ -1,7 +1,7 @@
 <div class="activity-top">
 	<%# Author's name  %>
 	<%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id), class: "important-link" %>
-	<%= separator %>
+	<span class='separator'></span>
 
 	<%# Time elapsed %>
 	<%= link_to time_ago_in_words(activity.created_at) + " ago", stream_path(provider: :activities, id: activity.id),
@@ -10,7 +10,7 @@
 	<%# List of audiences %>
 	<% activity.audiences.uniq.each do |audience| %>
 
-		<%= separator %>
+		<span class='separator'></span>
 
 		<% if audience.privacy_level.public? %>
   			<%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "#{t('.tooltip_public')}" %>

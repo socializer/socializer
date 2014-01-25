@@ -78,3 +78,7 @@ ul.activities .separator
 {
 	color: #ccc;
 }
+.separator:before
+{
+  content: '\2013';
+}

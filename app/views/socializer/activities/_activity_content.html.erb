@@ -4,7 +4,7 @@
 
 <% elsif activity.activitable_object.comment? %>
 
-	<div class="activity-content"><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %>&#8211;<%= activity.object.content %></div>
+	<div class="activity-content"><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %><span class='separator'></span><%= activity.object.content %></div>
 
 <% elsif activity.activitable_object.activity? %>
 
@@ -15,5 +15,5 @@
 <% else %>
 
 	<div class="activity-content"><%= activity.activitable_object.activitable_type %></div>
-	
+
 <% end %>
