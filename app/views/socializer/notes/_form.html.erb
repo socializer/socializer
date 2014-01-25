@@ -1,37 +1,29 @@
 <div style="padding: 0px 20px;">
 	<%= form_for(Socializer::Note.new, remote: true) do |form| %>
-  		<%= form.text_area :content, class: "note-content-field" %>
+  		<%= form.text_area :content, class: "note-content-field", placeholder: "#{t('.share_placeholder')}" %>
   		<%= form.text_field :object_ids %>
 	<script type="text/javascript">
-  	$(document).ready(function() {
+  	$(document).ready(function () {
 
-		$("#note_content").val("<%= t('.share_placeholder') %>").css({fontStyle: 'italic', color: '#aaa'});
+  		$("#note_object_ids").hide();
+  		$("form .action-button").hide();
 
-		$("#note_object_ids").hide();
-		$("form .action-button").hide();
+  		$("#note_content").one('click', function () {
+  			$(this).animate({height: 100}, 'fast');
 
-		$("#note_content").one('click', function() {
+  			$("#note_object_ids").tokenInput("<%= audiences_path %>", {
+  	      		minChars: 0
+  	     		,preventDuplicates: true
+  	     		<% if @current_id.present? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
+  	    	});
 
-			$('#note_content').val('').css({fontStyle: 'normal', color: '#000'});
+  			<% if @current_id.present? && @title.nil? %>
+  			$(".token-input-list").hide();
+  			<% end %>
 
-			$(this).animate({height: 100}, 'fast');
+  			$("form .action-button").show("fast");
 
-			$("#note_object_ids").tokenInput("<%= audiences_path %>", {
-	      		minChars: 0
-	     		,preventDuplicates: true
-	     		<% if @current_id.present? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
-	    	});
-
-			<% if @current_id.present? %>
-			<% if @title.nil? %>
-			$(".token-input-list").hide();
-			<% end %>
-			<% end %>
-
-			$("form .action-button").show("fast");
-
-		});
-
+  		});
   	});
 	</script>
   	<%= form.submit t('.share'), class: "action-button" %>
