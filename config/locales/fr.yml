@@ -1,12 +1,83 @@
 fr:
   socializer:
+    activities:
+      activity_top:
+        tooltip_public: 'Anyone can see this'
+      stream_card:
+        header: 'In your circles'
+      stream_list:
+        streams: 'Streams'
+
+    authentications:
+      menu:
+        header: 'Authentications'
+        services: 'Bound services'
+        add_service: 'Add a new service'
+      index:
+        unbind: 'unbind'
+
+    circles:
+      form:
+        submit: 'Save changes'
+      menu:
+        header: 'Your circles'
+        in_your_circles: 'People in your circles'
+        added_you: 'People who have added you'
+        find: 'Find new people'
+        new: 'Create new circle'
+      index:
+        new: 'Create a new circle'
+        edit: 'edit'
+        delete: 'delete'
+      show:
+        edit_this_circle: 'Edit this circle'
+
+    comments:
+      form:
+        submit: 'Comment'
+
     groups:
+      form:
+        submit: 'Save changes'
       menu:
         your_groups: 'Vos groupes'
         memberships: 'Adhésions'
         pending_invites: 'Invitations en attente'
         groups_you_own: 'Groupes que vous possédez'
         create_new_group: 'Créer un nouveau groupe'
+      memberships:
+        leave: 'leave'
+      ownerships:
+        edit: 'edit'
+        delete: 'delete'
+      pending_invites:
+        confirm: 'confirm'
+      show:
+        leave: 'leave'
+        join: 'join'
+
+    notes:
+      form:
+        share_placeholder: 'Partez tout avec qui vous voulez...'
+        share: 'Partager'
+      new:
+        header: 'Envoyer un message'
+
+    notifications:
+      index:
+        header: 'Notifications'
+
+    people:
+      login:
+        welcome: 'Bienvenue sur Socializer'
+        sub_heading: 'Vous pouvez vous connecter en utilisant les services suivants'
+        local_account_query: "Vous n'utilisez pas ces services?"
+        create_account: 'Créer un compte'
+        login: 'Connexion'
+
+    shares:
+      form:
+        content_label: 'Voulez-vous ajouter un commentaire avec le partage de cette activité?'
 
   layouts:
     socializer:

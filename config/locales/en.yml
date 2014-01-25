@@ -1,12 +1,83 @@
 en:
   socializer:
+    activities:
+      activity_top:
+        tooltip_public: 'Anyone can see this'
+      stream_card:
+        header: 'In your circles'
+      stream_list:
+        streams: 'Streams'
+
+    authentications:
+      menu:
+        header: 'Authentications'
+        services: 'Bound services'
+        add_service: 'Add a new service'
+      index:
+        unbind: 'unbind'
+
+    circles:
+      form:
+        submit: 'Save changes'
+      menu:
+        header: 'Your circles'
+        in_your_circles: 'People in your circles'
+        added_you: 'People who have added you'
+        find: 'Find new people'
+        new: 'Create new circle'
+      index:
+        new: 'Create a new circle'
+        edit: 'edit'
+        delete: 'delete'
+      show:
+        edit_this_circle: 'Edit this circle'
+
+    comments:
+      form:
+        submit: 'Comment'
+
     groups:
+      form:
+        submit: 'Save changes'
       menu:
         your_groups: 'Your groups'
         memberships: 'Memberships'
         pending_invites: 'Pending invites'
         groups_you_own: 'Groups you own'
         create_new_group: 'Create new group'
+      memberships:
+        leave: 'leave'
+      ownerships:
+        edit: 'edit'
+        delete: 'delete'
+      pending_invites:
+        confirm: 'confirm'
+      show:
+        leave: 'leave'
+        join: 'join'
+
+    notes:
+      form:
+        share_placeholder: 'Share anything with anyone...'
+        share: 'Share'
+      new:
+        header: 'Send a message'
+
+    notifications:
+      index:
+        header: 'Notifications'
+
+    people:
+      login:
+        welcome: 'Welcome to Socializer'
+        sub_heading: 'You can login using the following services'
+        local_account_query: "Don't use these services?"
+        create_account: 'Create an account'
+        login: 'Login'
+
+    shares:
+      form:
+        content_label: 'Would you like to say something along with the sharing of this activity?'
 
   layouts:
     socializer:

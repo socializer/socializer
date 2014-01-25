@@ -3,6 +3,6 @@
 <div style="padding: 0px 20px;">
   <%= form.text_area :content, rows: 5, style: "width: 706px; margin-bottom: 5px; padding: 5px; resize: none;" %>
   <%= form.hidden_field :activity_target_id, value: params[:id] %>
-  <%= form.submit "Comment", class: "action-button" %>
+  <%= form.submit t('.submit'), class: "action-button" %>
 </div>
 <% end %>
