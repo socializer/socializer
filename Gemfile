@@ -16,19 +16,23 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'omniauth-openid'
 
-group :development, :test do
-  gem 'debugger'
-  gem 'rspec-rails'
-  gem 'capybara'
+group :development do
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'rails-dummy'
+  gem 'meta_request'      # For RailsPanel
 end
 
 group :test do
   gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'database_cleaner'
   gem 'simplecov', '~> 0.8.2', :require => false
+end
+
+group :development, :test do
+  gem 'debugger'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'rails-dummy'
 end
 
 # add these gems to help with the transition to Rails 4:
