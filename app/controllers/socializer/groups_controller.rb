@@ -3,6 +3,10 @@ module Socializer
     def index
     end
 
+    def public
+      @groups = Socializer::Group.public
+    end
+
     def memberships
       @memberships = current_user.memberships
     end
