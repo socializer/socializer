@@ -12,6 +12,7 @@ module Socializer
     has_many :memberships
     has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
+    validates :author_id, presence: true
     validates :name, presence: true, uniqueness: { scope: :author_id }
     validates :privacy_level, presence: true
 
