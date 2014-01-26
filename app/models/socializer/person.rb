@@ -76,10 +76,8 @@ module Socializer
     end
 
     def pending_memberships_invites
-      # FIXME: Find a better way to do the comparison > 0. Does a native way exist to do "(#{subquery.to_sql}) > 0"
-      # @pending_memberships_invites ||= memberships.where(active: false).where(" ( SELECT COUNT(1) FROM socializer_groups WHERE socializer_groups.id = socializer_memberships.group_id AND socializer_groups.privacy_level = 3 ) > 0 ")
-      subquery ||= Socializer::Group.joins { memberships }.with_privacy_level(:private).select { count(1) }
-      @pending_memberships_invites ||= memberships.where { active.eq(false) }.where { "(#{subquery.to_sql}) > 0" }
+      privacy_private = Group.privacy_level.find_value(:private).value
+      @pending_memberships_invites ||= Membership.joins { group }.where { member_id.eq(my { guid }) & active.eq(false) & group.privacy_level.eq(privacy_private) }
     end
 
     # TODO: avatar_url - clean this up
