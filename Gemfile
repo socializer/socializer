@@ -20,10 +20,14 @@ group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'cucumber-rails', '~> 1.4.0', :require => false
-  gem 'database_cleaner'
   gem "better_errors"
   gem "binding_of_caller"
+end
+
+group :test do
+  gem 'cucumber-rails', '~> 1.4.0', :require => false
+  gem 'database_cleaner'
+  gem 'simplecov', '~> 0.8.2', :require => false
 end
 
 # add these gems to help with the transition to Rails 4:
