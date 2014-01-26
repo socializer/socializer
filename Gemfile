@@ -24,6 +24,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'rails-dummy'
 end
 
 # add these gems to help with the transition to Rails 4:
