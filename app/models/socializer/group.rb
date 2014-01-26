@@ -19,6 +19,10 @@ module Socializer
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members
 
+    scope :public, -> { where(privacy_level: 1) }
+    scope :restricted, -> { where(privacy_level: 2) }
+    scope :private, -> { where(privacy_level: 3) }
+
     def author
       @author ||= activity_author.activitable
     end
