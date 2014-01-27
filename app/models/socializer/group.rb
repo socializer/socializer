@@ -7,24 +7,41 @@ module Socializer
 
     attr_accessible :name, :privacy_level
 
+    # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
 
     has_many :memberships
     has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
+    # Validations
     validates :author_id, presence: true
     validates :name, presence: true, uniqueness: { scope: :author_id }
     validates :privacy_level, presence: true
 
+    # Callbacks
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members
 
-    scope :public, -> { where { privacy_level.eq(1) } }
-    scope :restricted, -> { where { privacy_level.eq(2) } }
-    scope :private, -> { where { privacy_level.eq(3) } }
+    # Named Scopes
 
-    scope :joinable, -> { where { privacy_level.in([1, 2]) } }
+    # Class Methods
+    def self.public
+      Group.with_privacy_level(:public)
+    end
 
+    def self.restricted
+      Group.with_privacy_level(:restricted)
+    end
+
+    def self.private
+      Group.with_privacy_level(:private)
+    end
+
+    def self.joinable
+      Group.with_privacy_level(:public, :restricted)
+    end
+
+    # Instance Methods
     def author
       @author ||= activity_author.activitable
     end
