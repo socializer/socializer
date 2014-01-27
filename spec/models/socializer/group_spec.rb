@@ -115,7 +115,7 @@ module Socializer
 
       context 'and a person joins it' do
         it 'raises an error' do
-          expect{ group.join(person) }.to raise_error
+          expect { group.join(person) }.to raise_error
         end
       end
     end
