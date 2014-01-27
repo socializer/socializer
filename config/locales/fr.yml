@@ -41,6 +41,8 @@ fr:
         submit: 'Save changes'
       menu:
         public: 'Groupes publiques'
+        restricted: 'Groupes restreints'
+        joinable: 'Groupes joingables'
         your_groups: 'Vos groupes'
         memberships: 'Adhésions'
         pending_invites: 'Invitations en attente'
