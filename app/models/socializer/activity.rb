@@ -103,7 +103,7 @@ module Socializer
       query.where { (audiences.privacy_level == privacy_public) |
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
         ((audiences.privacy_level == privacy_limited) & (
-          `#{viewer_id}`.in(my { build_limited_subquery(viewer_id) }) |
+          `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
           audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
           audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
         )) |
@@ -129,7 +129,7 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
-    def self.build_limited_subquery(viewer_id)
+    def self.build_limited_circle_subquery(viewer_id)
       # TODO: Convert this to squeel
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
@@ -151,16 +151,7 @@ module Socializer
     end
 
     def self.build_limited_group_subquery(viewer_id)
-      # Retrieve all the groups that the viewer is member of.
-      # limited_groups_query = Membership.select{activity_member.id}.joins{activity_member}.joins{activity_member.activitable(Group)}.where{member_id == viewer_id}
-      # limited_groups_sql = 'SELECT socializer_activity_objects.id ' +
-      #                     'FROM socializer_memberships ' +
-      #                     'INNER JOIN socializer_activity_objects ' +
-      #                     'ON socializer_activity_objects.activitable_id = socializer_memberships.group_id ' +
-      #                         "AND socializer_activity_objects.activitable_type = 'Socializer::Group' " +
-      #                     "WHERE socializer_memberships.member_id = #{viewer_id}"
-
-      ActivityObject.select { id }.joins { activitable(Membership).group }.where { activitable.member_id.eq(viewer_id) }
+      ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
     end
 
     def self.build_limited_viewer_subquery(viewer_id)

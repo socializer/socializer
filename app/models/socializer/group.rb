@@ -12,11 +12,16 @@ module Socializer
     has_many :memberships
     has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
 
+    validates :author_id, presence: true
     validates :name, presence: true, uniqueness: { scope: :author_id }
     validates :privacy_level, presence: true
 
     after_create   :add_author_to_members
     before_destroy :deny_delete_if_members
+
+    scope :public, -> { where(privacy_level: 1) }
+    scope :restricted, -> { where(privacy_level: 2) }
+    scope :private, -> { where(privacy_level: 3) }
 
     def author
       @author ||= activity_author.activitable

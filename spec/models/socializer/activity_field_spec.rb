@@ -2,6 +2,10 @@ require 'spec_helper'
 
 module Socializer
   describe ActivityField do
+    # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
+    #       with the next release of shoulda-matchers
+    # expect(ActivityField).to allow_mass_assignment_of(::content)
+    # expect(ActivityField).to allow_mass_assignment_of(::activity)
     it { should allow_mass_assignment_of(:content) }
     it { should allow_mass_assignment_of(:activity) }
     it { should belong_to(:activity) }

@@ -41,6 +41,7 @@ fr:
       form:
         submit: 'Save changes'
       menu:
+        public: 'Groupes publiques'
         your_groups: 'Vos groupes'
         memberships: 'Adhésions'
         pending_invites: 'Invitations en attente'

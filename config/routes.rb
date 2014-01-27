@@ -35,6 +35,7 @@ Socializer::Engine.routes.draw do
   end
 
   scope '/groups' do
+    get '/public' => 'groups#public', as: 'groups_public'
     get '/memberships' => 'groups#memberships', as: 'groups_memberships'
     get '/ownerships' => 'groups#ownerships', as: 'groups_ownerships'
     get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
