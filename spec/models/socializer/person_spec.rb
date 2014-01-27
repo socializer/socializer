@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 module Socializer
-  describe Group do
+  describe Person do
+
+    # Define a person for common testd instead of build one for each
+    let(:person) { FactoryGirl.build(:socializer_person) }
+
     it 'has a valid factory' do
-      expect(build(:socializer_person)).to be_valid
+      expect(person).to be_valid
     end
 
     it '.create_with_omniauth' do
@@ -11,55 +15,67 @@ module Socializer
     end
 
     it '#authentications' do
-      expect(build(:socializer_person)).to respond_to(:authentications)
+      expect(person).to respond_to(:authentications)
     end
 
     it '#services' do
-      expect(build(:socializer_person)).to respond_to(:services)
+      expect(person).to respond_to(:services)
     end
 
     it '#circles' do
-      expect(build(:socializer_person)).to respond_to(:circles)
+      expect(person).to respond_to(:circles)
     end
 
     it '#comments' do
-      expect(build(:socializer_person)).to respond_to(:comments)
+      expect(person).to respond_to(:comments)
     end
 
     it '#notes' do
-      expect(build(:socializer_person)).to respond_to(:notes)
+      expect(person).to respond_to(:notes)
     end
 
     it '#groups' do
-      expect(build(:socializer_person)).to respond_to(:groups)
+      expect(person).to respond_to(:groups)
     end
 
     it '#memberships' do
-      expect(build(:socializer_person)).to respond_to(:memberships)
+      expect(person).to respond_to(:memberships)
     end
 
     it '#contacts' do
-      expect(build(:socializer_person)).to respond_to(:contacts)
+      expect(person).to respond_to(:contacts)
     end
 
     it '#contact_of' do
-      expect(build(:socializer_person)).to respond_to(:contact_of)
+      expect(person).to respond_to(:contact_of)
     end
 
     it '#likes' do
-      expect(build(:socializer_person)).to respond_to(:likes)
+      expect(person).to respond_to(:likes)
     end
 
     it '#likes?' do
-      expect(build(:socializer_person)).to respond_to(:likes?)
+      expect(person).to respond_to(:likes?)
     end
 
     it '#pending_memberships_invites' do
-      expect(build(:socializer_person)).to respond_to(:pending_memberships_invites)
+      expect(person).to respond_to(:pending_memberships_invites)
     end
 
     it '#avatar_url' do
-      expect(build(:socializer_person)).to respond_to(:avatar_url)
+      expect(person).to respond_to(:avatar_url)
+    end
+
+    it '#accept avatar_provider' do
+      %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |p|
+        expect(build(:socializer_person, avatar_provider: p)).to have(0).error_on(:avatar_provider)
+      end
+    end
+
+    it '#reject avatar_provider' do
+      %w( IDENTITY TEST DUMMY OTHER ).each do |p|
+        expect(build(:socializer_person, avatar_provider: p)).to have(1).error_on(:avatar_provider)
+      end
     end
 
   end
