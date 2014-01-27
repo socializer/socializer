@@ -2,6 +2,9 @@ require 'spec_helper'
 
 module Socializer
   describe Verb do
+    # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
+    #       with the next release of shoulda-matchers
+    # expect(Verb).to allow_mass_assignment_of(:name)
     it { should allow_mass_assignment_of(:name) }
     it { should have_many(:activities) }
     it { should validate_uniqueness_of(:name) }

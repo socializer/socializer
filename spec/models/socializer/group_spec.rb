@@ -2,6 +2,10 @@ require 'spec_helper'
 
 module Socializer
   describe Group do
+    # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
+    #       with the next release of shoulda-matchers
+    # expect(Group).to allow_mass_assignment_of(:name)
+    # expect(Group).to allow_mass_assignment_of(:privacy_level)
     it { should allow_mass_assignment_of(:name) }
     it { should allow_mass_assignment_of(:privacy_level) }
 
