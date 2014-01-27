@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-addTooltipSupport = (jQueryElement) ->
+@addTooltipSupport = (jQueryElement) ->
   jQueryElement.qtip
     content:
       text: 'Loading...'
