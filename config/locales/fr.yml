@@ -3,6 +3,7 @@ fr:
     activities:
       activity_top:
         tooltip_public: 'Anyone can see this'
+        time_format: 'depuis %s'
       stream_card:
         header: 'In your circles'
       stream_list:
