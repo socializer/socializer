@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  url = $('#share_object_ids').data("path")
+  url = $('#share_object_ids').data('path')
   $('#share_object_ids').tokenInput(url, { minChars: 0 })
