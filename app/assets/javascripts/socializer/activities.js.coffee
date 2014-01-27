@@ -5,28 +5,28 @@
 addTooltipSupport = (jQueryElement) ->
   jQueryElement.qtip
     content:
-      text: "Loading..."
+      text: 'Loading...'
       ajax:
-        url: jQueryElement.attr("href")
+        url: jQueryElement.attr('href')
 
     style:
-      classes: "qtip-tipsy"
+      classes: 'qtip-tipsy'
 
     position:
-      my: "top center"
-      at: "bottom center"
+      my: 'top center'
+      at: 'bottom center'
       effect: false
 
     show:
-      event: "click"
+      event: 'click'
       solo: true
 
-    hide: "unfocus"
+    hide: 'unfocus'
 
   jQueryElement.click (event) ->
     event.preventDefault()
 
 jQuery ->
   # Add a qTip to all tooltip elements.
-  $(".tooltip").each ->
+  $('.tooltip').each ->
     addTooltipSupport $(this)
