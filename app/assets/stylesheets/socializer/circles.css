@@ -39,13 +39,13 @@
 	margin-right: 10px;
 	margin-bottom: 10px;
 	text-align: center;
-	padding: 36px 0;
-	
-	moz-border-radius: 200px;
-	-webkit-border-radius: 200px;
-	-khtml-border-radius: 200px;
-	border-radius: 200px;
-	
+	padding: 43px 0;
+
+	moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	border-radius: 50%;
+
 	-moz-background-clip: padding;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;

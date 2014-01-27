@@ -1,6 +1,14 @@
 <%= render 'menu' %>
-<ul>
+<ul class="large-group-list">
 <% @groups.each do |group| %>
-  <li><%= link_to group.name, group %> | <%= group.members.count %> members | <%= group.privacy_level %></li>
+  <li>
+    <%= link_to group do %>
+      <div class="<%= group.privacy_level %>">
+        <span class="group-name"><%= group.name %></span>
+        <span class="group-member-count"><%= group.members.count %> members</span>
+        <span class="group-privacy-level"><%= group.privacy_level %></span>
+      </div>
+    <% end %>
+  </li>
 <% end %>
 </ul>

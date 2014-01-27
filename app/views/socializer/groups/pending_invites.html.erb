@@ -1,6 +1,15 @@
 <%= render 'menu' %>
-<ul>
+<ul class="large-group-list">
 <% @pending_invites.each do |membership| %>
-  <li><%= link_to membership.group.name, membership.group %> | <%= membership.group.members.count %> members | (<%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>)</li>
+  <li>
+    <%= link_to membership.group do %>
+      <div class="<%= membership.group.privacy_level %>">
+        <span class="group-name"><%= membership.group.name %></span>
+        <span class="group-member-count"><%= membership.group.members.count %> members</span>
+        <span class="group-privacy-level"><%= membership.group.privacy_level %></span>
+        (<%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>)
+      </div>
+    <% end %>
+  </li>
 <% end %>
 </ul>

@@ -1,6 +1,19 @@
 <%= render 'menu' %>
-<ul>
+<ul class="large-group-list">
 <% @ownerships.each do |group| %>
-  <li><%= link_to group.name, group %> | <%= group.members.count %> members | (<%= link_to t('.edit'), edit_group_path(group) %> | <%= link_to t('.delete'), group, method: :delete %>)</li>
+  <li>
+    <%= link_to group do %>
+      <div class="<%= group.privacy_level %>">
+        <span class="group-name"><%= group.name %></span>
+        <span class="group-member-count"><%= group.members.count %> members</span>
+        <span class="group-privacy-level"><%= group.privacy_level %></span>
+        (
+        <%= link_to t('.edit'), edit_group_path(group) %>
+        |
+        <%= link_to t('.delete'), group, method: :delete %>
+        )
+      </div>
+    <% end %>
+  </li>
 <% end %>
 </ul>

@@ -2,3 +2,52 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.large-group-list {
+  list-style-type: none;
+  padding: 20px 0;
+}
+
+.large-group-list li div {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 5px solid #ddd;
+  background-color: #efefef;
+  width: 205px;
+  min-height: 100px;
+  max-height: 100px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 15px 5px 0px 5px;
+}
+
+.large-group-list li div.public {
+  border-color: #d6e9c6;
+  background-color: #dff0d8;
+}
+
+.large-group-list li div.restricted {
+  border-color: #bce8f1;
+  background-color: #d9edf7;
+}
+
+.large-group-list li div.private {
+  border-color: #faebcc;
+  background-color: #fcf8e3;
+}
+
+.large-group-list li div span.group-name {
+  font-weight: bold;
+  display: block;
+  font-size: 13pt;
+}
+
+.large-group-list li div span.group-member-count {
+  float: left;
+}
+
+.large-group-list li div span.group-privacy-level {
+  float: right;
+}
