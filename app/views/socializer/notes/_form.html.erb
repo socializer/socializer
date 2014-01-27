@@ -1,4 +1,4 @@
-<div style="padding: 0px 20px;">
+<div class="note-form" style="padding: 0px 20px;">
 	<%= form_for(Socializer::Note.new, remote: true) do |form| %>
   		<%= form.text_area :content, class: "note-content-field", placeholder: "#{t('.share_placeholder')}" %>
   		<%= form.text_field :object_ids %>
@@ -15,7 +15,9 @@
   	      		minChars: 0
   	     		,preventDuplicates: true
   	     		<% if @current_id.present? %>,prePopulate: [{id: <%= @current_id %>, name: "<%= @title %>"}]<% end %>
-  	    	});
+  	    });
+
+        $('#note_content').val('');
 
   			<% if @current_id.present? && @title.nil? %>
   			$(".token-input-list").hide();
