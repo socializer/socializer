@@ -29,5 +29,5 @@
       ), 5000
 
 jQuery ->
-  if $('body').data('controller') == 'notes'
+  if $('body').data('controller') == 'circles'
     setup()
