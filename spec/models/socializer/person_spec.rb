@@ -66,15 +66,15 @@ module Socializer
       expect(person).to respond_to(:avatar_url)
     end
 
-    it '#accept avatar_provider' do
+    it 'accepts known avatar_provider' do
       %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |p|
-        expect(build(:socializer_person, avatar_provider: p)).to have(0).error_on(:avatar_provider)
+        expect(build(:socializer_person, avatar_provider: p)).to be_valid
       end
     end
 
-    it '#reject avatar_provider' do
+    it 'rejects unknown avatar_provider' do
       %w( IDENTITY TEST DUMMY OTHER ).each do |p|
-        expect(build(:socializer_person, avatar_provider: p)).to have(1).error_on(:avatar_provider)
+        expect(build(:socializer_person, avatar_provider: p)).to be_invalid
       end
     end
 
