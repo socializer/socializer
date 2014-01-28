@@ -55,6 +55,7 @@ en:
         edit: 'edit'
         delete: 'delete'
       pending_invites:
+        decline: 'decline'
         confirm: 'confirm'
       show:
         leave: 'leave'

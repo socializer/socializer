@@ -16,5 +16,9 @@ module Socializer
     def confirm!
       update_attribute(:active, true)
     end
+
+    def decline!
+      destroy
+    end
   end
 end

@@ -2,14 +2,19 @@
 <ul class="large-group-list">
 <% @pending_invites.each do |membership| %>
   <li>
-    <%= link_to membership.group do %>
-      <div class="<%= membership.group.privacy_level %>">
-        <span class="group-name"><%= membership.group.name %></span>
-        <span class="group-member-count"><%= membership.group.members.count %> members</span>
-        <span class="group-privacy-level"><%= membership.group.privacy_level %></span>
-        (<%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>)
+    <div class="group-card <%= membership.group.privacy_level %>">
+      <%= link_to membership.group do %>
+        <div class="group-info">
+          <span class="group-name"><%= membership.group.name %></span>
+          <span class="group-member-count"><%= membership.group.members.count %> members</span>
+          <span class="group-privacy-level"><%= membership.group.privacy_level %></span>
+        </div>
+      <% end %>
+      <div class="group-actions">
+        <%= link_to t('.decline'), decline_membership_path(membership), method: :post %> |
+        <%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>
       </div>
-    <% end %>
+    </div>
   </li>
 <% end %>
 </ul>
