@@ -2,11 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-  if $('body').data('controller') == 'notes'
-    setup()
-
-@setup ->
+@setup = ->
   $('.draggable').draggable revert: true
   $('.droppable').droppable drop: (event, ui) ->
     circle = $('a', this)
@@ -31,3 +27,7 @@ jQuery ->
       setTimeout (->
         $('.circle-info-message').hide()
       ), 5000
+
+jQuery ->
+  if $('body').data('controller') == 'notes'
+    setup()
