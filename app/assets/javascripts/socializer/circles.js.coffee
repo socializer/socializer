@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  if $('body').data('controller') == 'notes'
+    setup()
+
+@setup ->
   $('.draggable').draggable revert: true
   $('.droppable').droppable drop: (event, ui) ->
     circle = $('a', this)

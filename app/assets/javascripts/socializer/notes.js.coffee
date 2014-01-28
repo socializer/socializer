@@ -33,4 +33,5 @@
     $('form .action-button').show 'fast'
 
 jQuery ->
-  resetNoteForm()
+  if $('body').data('controller') == 'notes'
+    resetNoteForm()

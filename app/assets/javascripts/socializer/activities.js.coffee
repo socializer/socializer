@@ -27,6 +27,7 @@
     event.preventDefault()
 
 jQuery ->
-  # Add a qTip to all tooltip elements.
-  $('.tooltip').each ->
-    addTooltipSupport $(this)
+  if $('body').data('controller') == 'circles'
+    # Add a qTip to all tooltip elements.
+    $('.tooltip').each ->
+      addTooltipSupport $(this)
