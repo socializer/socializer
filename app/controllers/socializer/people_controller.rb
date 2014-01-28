@@ -1,11 +1,13 @@
 module Socializer
   class PeopleController < ApplicationController
+
+    before_filter :set_person, only: [:show, :likes, :message]
+
     def index
       @people = Person.all
     end
 
     def show
-      @person = Person.find(params[:id])
     end
 
     def edit
@@ -20,13 +22,18 @@ module Socializer
     # TODO: Should be handled by the likes controller.
     # Used to display the likes in the user profile
     def likes
-      @person = Person.find(params[:id])
       @likes = @person.likes
     end
 
     def message
-      @person = Person.find(params[:id])
       @current_id = @person.guid
     end
+
+    private
+
+    def set_person
+      @person = Person.find(params[:id])
+    end
+
   end
 end

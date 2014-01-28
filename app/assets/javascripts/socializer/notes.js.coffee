@@ -33,4 +33,6 @@
     $('#new_note .action-button').show 'fast'
 
 jQuery ->
-  resetNoteForm()
+  controller_name = $('body').data('controller')
+  if controller_name == 'notes' || controller_name = 'activities'
+    resetNoteForm()

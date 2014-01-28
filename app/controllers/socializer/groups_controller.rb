@@ -1,5 +1,8 @@
 module Socializer
   class GroupsController < ApplicationController
+
+    before_filter :set_group, only: [:edit, :update, :destroy]
+
     def index
     end
 
@@ -47,19 +50,22 @@ module Socializer
     end
 
     def edit
-      @group = current_user.groups.find(params[:id])
     end
 
     def update
-      @group = current_user.groups.find(params[:id])
       @group.update!(params[:group])
       redirect_to @group
     end
 
     def destroy
-      @group = current_user.groups.find(params[:id])
       @group.destroy
       redirect_to groups_path
+    end
+
+    private
+
+    def set_group
+      @group = current_user.groups.find(params[:id])
     end
   end
 end
