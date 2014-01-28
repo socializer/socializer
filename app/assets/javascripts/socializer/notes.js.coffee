@@ -6,7 +6,7 @@
   $('#note_content').removeAttr('style').val('')
   $('#note_object_ids').hide()
   $('.token-input-list').hide()
-  $('form .action-button').hide()
+  $('#new_note .action-button').hide()
 
   $('#note_content').one 'click', ->
     $(this).animate
@@ -30,7 +30,7 @@
       prePopulate: prepopulate
 
     $('.token-input-list').hide()  if (current_id?) and (title is '')
-    $('form .action-button').show 'fast'
+    $('#new_note .action-button').show 'fast'
 
 jQuery ->
   resetNoteForm()

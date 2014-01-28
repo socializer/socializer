@@ -31,5 +31,11 @@ module Socializer
       @membership.confirm!
       redirect_to @membership.group
     end
+
+    def decline
+      @membership = Membership.find(params[:id])
+      @membership.decline!
+      redirect_to groups_pending_invites_path
+    end
   end
 end

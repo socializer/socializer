@@ -20,6 +20,7 @@ Socializer::Engine.routes.draw do
     post '/:id/approve' => 'memberships#approve', as: :approve_membership
     get  '/:group_id/invite/:user_id' => 'memberships#invite', as: :invite_membership
     post '/:id/confirm' => 'memberships#confirm', as: :confirm_membership
+    post '/:id/decline' => 'memberships#decline', as: :decline_membership
   end
 
   scope '/people' do

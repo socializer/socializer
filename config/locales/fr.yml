@@ -50,19 +50,20 @@ fr:
         groups_you_own: 'Groupes que vous possédez'
         create_new_group: 'Créer un nouveau groupe'
       memberships:
-        leave: 'leave'
+        leave: 'quitter'
       ownerships:
-        edit: 'edit'
-        delete: 'delete'
+        edit: 'éditer'
+        delete: 'supprimer'
       pending_invites:
-        confirm: 'confirm'
+        decline: 'refuser'
+        confirm: 'confirmer'
       show:
-        leave: 'leave'
-        join: 'join'
+        leave: 'quitter'
+        join: 'joindre'
 
     notes:
       form:
-        share_placeholder: 'Partez tout avec qui vous voulez...'
+        share_placeholder: 'Partagez tout ce que vous voulez avec qui vous voulez...'
         share: 'Partager'
       new:
         header: 'Envoyer un message'
