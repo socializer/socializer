@@ -1,5 +1,8 @@
 module Socializer
   class CirclesController < ApplicationController
+
+    before_filter :set_circle, only: [:show, :edit, :update, :destroy]
+
     def index
       @circles = current_user.circles
     end
@@ -17,7 +20,6 @@ module Socializer
     end
 
     def show
-      @circle = current_user.circles.find(params[:id])
       @users = Person.all
     end
 
@@ -32,19 +34,23 @@ module Socializer
     end
 
     def edit
-      @circle = current_user.circles.find(params[:id])
     end
 
     def update
-      @circle = current_user.circles.find(params[:id])
       @circle.update!(params[:circle])
       redirect_to @circle
     end
 
     def destroy
-      @circle = current_user.circles.find(params[:id])
       @circle.destroy
       redirect_to circles_contacts_path
     end
+
+    private
+
+    def set_circle
+      @circle = current_user.circles.find(params[:id])
+    end
+
   end
 end
