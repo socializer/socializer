@@ -9,7 +9,7 @@
   <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" >
 
 <% if signed_in? %>
 <%= render 'layouts/socializer/header' %>

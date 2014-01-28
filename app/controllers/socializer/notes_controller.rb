@@ -1,5 +1,8 @@
 module Socializer
   class NotesController < ApplicationController
+
+    before_filter :set_note, only: [:edit, :update, :destroy]
+
     def new
       @note = Note.new
       @current_id = params[:id]
@@ -17,22 +20,26 @@ module Socializer
     end
 
     def edit
-      @note = current_user.activity_object.notes.find(params[:id])
     end
 
     def update
-      @note = current_user.activity_object.notes.find(params[:id])
       @note.update!(params[:note])
       redirect_to stream_path
     end
 
     def destroy
-      @note = current_user.activity_object.notes.find(params[:id])
       @activity_guid = Activity.find_by(activity_object_id: @note.guid).guid
       @note.destroy
       respond_to do |format|
         format.js
       end
     end
+
+    private
+
+    def set_note
+      @note = current_user.activity_object.notes.find(params[:id])
+    end
+
   end
 end

@@ -1,5 +1,8 @@
 module Socializer
   class MembershipsController < ApplicationController
+
+    before_filter :set_membership, only: [:approve, :confirm, :decline]
+
     def create
       @group = Group.find(params[:membership][:group_id])
       @group.join(current_user)
@@ -14,7 +17,6 @@ module Socializer
     end
 
     def approve
-      @membership = Membership.find(params[:id])
       @membership.approve!
       redirect_to @membership.group
     end
@@ -27,15 +29,20 @@ module Socializer
     end
 
     def confirm
-      @membership = Membership.find(params[:id])
       @membership.confirm!
       redirect_to @membership.group
     end
 
     def decline
-      @membership = Membership.find(params[:id])
       @membership.decline!
       redirect_to groups_pending_invites_path
     end
+
+    private
+
+    def set_membership
+      @membership = Membership.find(params[:id])
+    end
+
   end
 end
