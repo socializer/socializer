@@ -1,5 +1,8 @@
 module Socializer
   class CommentsController < ApplicationController
+
+    before_filter :set_comment, only: [:edit, :update, :destroy]
+
     def new
       @comment = Comment.new
     end
@@ -14,19 +17,23 @@ module Socializer
     end
 
     def edit
-      @comment = current_user.comments.find(params[:id])
     end
 
     def update
-      @comment = current_user.comments.find(params[:id])
       @comment.update!(params[:comment])
       redirect_to stream_path
     end
 
     def destroy
-      @comment = current_user.comments.find(params[:id])
       @comment.destroy
       redirect_to stream_path
     end
+
+    private
+
+    def set_comment
+      @comment = current_user.comments.find(params[:id])
+    end
+
   end
 end
