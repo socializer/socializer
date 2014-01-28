@@ -9,7 +9,7 @@ module Socializer
       has_one :activity_object, as: :activitable, dependent: :destroy
 
       before_create :create_activity_object
-      after_create :append_to_activity_stream
+      after_create  :append_to_activity_stream
 
     end
 
@@ -24,35 +24,35 @@ module Socializer
     end
 
     def append_to_activity_stream
-      # REFACTOR: the activity_verb.present? and object_ids.present? checks shouldn't be needed
+      # REFACTOR: the activity_verb.blank? and object_ids.blank? checks shouldn't be needed
       #           since the record should be invalid without them.
-      if activity_verb.present?
-        activity = Activity.new do |a|
-          a.target_id          = activity_target_id if activity_target_id.present?
-          a.actor_id           = author_id
-          a.activity_object_id = guid
-          a.verb               = Verb.find_or_create_by(name: activity_verb)
-        end
+      return if activity_verb.blank?
 
-        if object_ids.present?
-          public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-          circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+      activity = Activity.new do |a|
+        a.target_id          = activity_target_id if activity_target_id.present?
+        a.actor_id           = author_id
+        a.activity_object_id = guid
+        a.verb               = Verb.find_or_create_by(name: activity_verb)
+      end
 
-          # REFACTOR: remove duplication
-          object_ids.each do |object_id|
-            if object_id == public || object_id == circles
-              activity.audiences.build(privacy_level: object_id)
-            else
-              activity.audiences.build do |a|
-                a.privacy_level = :limited
-                a.activity_object_id = object_id
-              end
-            end
+      return if object_ids.blank?
+
+      public  = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+      circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+
+      # REFACTOR: remove duplication
+      object_ids.each do |object_id|
+        if object_id == public || object_id == circles
+          activity.audiences.build(privacy_level: object_id)
+        else
+          activity.audiences.build do |a|
+            a.privacy_level = :limited
+            a.activity_object_id = object_id
           end
         end
-
-        activity.save!
       end
+
+      activity.save!
     end
   end
 end
