@@ -16,6 +16,7 @@ module Socializer
     has_many :audiences # , dependent: :destroy
     has_many :activity_objects, through: :audiences
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
+    has_many :notifications
 
     validates :verb, presence: true
 
