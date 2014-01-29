@@ -1,6 +1,5 @@
 module Socializer
   class NotesController < ApplicationController
-
     before_filter :set_note, only: [:edit, :update, :destroy]
 
     def new
@@ -40,6 +39,5 @@ module Socializer
     def set_note
       @note = current_user.activity_object.notes.find(params[:id])
     end
-
   end
 end

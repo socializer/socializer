@@ -1,6 +1,5 @@
 module Socializer
   class PeopleController < ApplicationController
-
     before_filter :set_person, only: [:show, :likes, :message]
 
     def index
@@ -34,6 +33,5 @@ module Socializer
     def set_person
       @person = Person.find(params[:id])
     end
-
   end
 end
