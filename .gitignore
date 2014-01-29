@@ -9,7 +9,7 @@
 /tmp/*
 /pkg/*
 /spec/tmp/*
-/config/*.yml
+# /config/*.yml
 /config/initializers/omniauth.rb
 Gemfile.lock
 
