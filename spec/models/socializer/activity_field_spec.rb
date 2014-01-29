@@ -13,7 +13,7 @@ module Socializer
     it { should validate_presence_of(:activity) }
 
     it 'has a valid factory' do
-      expect(create(:socializer_activity_field)).to be_valid
+      expect(build(:socializer_activity_field)).to be_valid
     end
 
     it 'is valid with content' do

@@ -12,7 +12,7 @@ module Socializer
     it { should enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public) }
 
     it 'has a valid factory' do
-      expect(create(:socializer_group)).to be_valid
+      expect(build(:socializer_group)).to be_valid
     end
 
     it 'is invalid without an author' do

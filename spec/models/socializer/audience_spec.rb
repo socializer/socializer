@@ -5,7 +5,7 @@ module Socializer
     it { should enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public) }
 
     it 'has a valid factory' do
-      expect(create(:socializer_audience)).to be_valid
+      expect(build(:socializer_audience)).to be_valid
     end
 
     it 'is invalid without a privacy level' do

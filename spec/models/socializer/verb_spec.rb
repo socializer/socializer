@@ -11,7 +11,7 @@ module Socializer
     it { should validate_presence_of(:name) }
 
     it 'has a valid factory' do
-      expect(create(:socializer_verb)).to be_valid
+      expect(build(:socializer_verb)).to be_valid
     end
 
     it 'is valid with a name' do
