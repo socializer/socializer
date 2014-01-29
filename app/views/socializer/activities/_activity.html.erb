@@ -1,23 +1,23 @@
 <li data-activityid="<%= activity.guid %>">
 
-	<%# Activity top (for notes and activities) %>
-	<% if activity.activitable_object.note? || activity.activitable_object.activity? %>
+  <%# Activity top (for notes and activities) %>
+  <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
 
-		<%= render 'socializer/activities/activity_top', activity: activity %>
+    <%= render 'socializer/activities/activity_top', activity: activity %>
 
-	<% end %>
+  <% end %>
 
-	<%= render 'socializer/activities/activity_content', activity: activity %>
+  <%= render 'socializer/activities/activity_content', activity: activity %>
 
-	<%= render 'socializer/activities/activity_bottom', activity: activity %>
+  <%= render 'socializer/activities/activity_bottom', activity: activity %>
 
-	<%# Render comments %>
-	<ul>
-	  <% activity.comments.each do |subactivity| %>
+  <%# Render comments %>
+  <ul>
+    <% activity.comments.each do |subactivity| %>
 
-	  	<li><%= render subactivity %></li>
+      <li><%= render subactivity %></li>
 
-	  <% end %>
-	</ul>
+    <% end %>
+  </ul>
 
 </li>

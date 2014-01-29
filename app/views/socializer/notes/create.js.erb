@@ -1,10 +1,10 @@
 if (window.location.href.indexOf('message') > 0) {
-	window.location.href = '<%= stream_path %>';
+  window.location.href = '<%= stream_path %>';
 } else {
-	$('.activities').prepend('<%= escape_javascript(render @activity) %>');
+  $('.activities').prepend('<%= escape_javascript(render @activity) %>');
   // TODO: Note - create.js.erb - no need to re-render the partial when using the resetNoteForm function.
   //        If re-rendering is preferred, some modifications should be made to resetNoteForm
   // $('.note-form').replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');
-	resetNoteForm();
-	addTooltipSupport( $('.tooltip', '.activities') );
+  resetNoteForm();
+  addTooltipSupport( $('.tooltip', '.activities') );
 }
