@@ -1,6 +1,5 @@
 module Socializer
   class MembershipsController < ApplicationController
-
     before_filter :set_membership, only: [:approve, :confirm, :decline]
 
     def create
@@ -43,6 +42,5 @@ module Socializer
     def set_membership
       @membership = Membership.find(params[:id])
     end
-
   end
 end
