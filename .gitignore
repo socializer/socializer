@@ -9,7 +9,7 @@
 /tmp/*
 /pkg/*
 /spec/tmp/*
-/config/*.yml
+# /config/*.yml
 /config/initializers/omniauth.rb
 Gemfile.lock
 
@@ -24,3 +24,6 @@ spec/internal/db/*.sqlite3
 
 .ruby-gemset
 .ruby-version
+
+rails_best_practices_output.html
+report.html

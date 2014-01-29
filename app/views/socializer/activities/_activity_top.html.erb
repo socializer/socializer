@@ -1,23 +1,23 @@
 <div class="activity-top">
-	<%# Author's name  %>
-	<%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id), class: "important-link" %>
-	<span class='separator'></span>
+  <%# Author's name  %>
+  <%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id), class: "important-link" %>
+  <span class='separator'></span>
 
-	<%# Time elapsed %>
+  <%# Time elapsed %>
   <% display_time = "#{t('.time_format')}" % time_ago_in_words(activity.created_at)  %>
-	<%= link_to display_time, stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
+  <%= link_to display_time, stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
 
-	<%# List of audiences %>
-	<% activity.audiences.uniq.each do |audience| %>
+  <%# List of audiences %>
+  <% activity.audiences.uniq.each do |audience| %>
 
-		<span class='separator'></span>
+    <span class='separator'></span>
 
-		<% if audience.privacy_level.public? %>
-  			<%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "#{t('.tooltip_public')}" %>
-		<% else %>
-			<%= link_to "Limited", stream_audience_path(activity), class: 'tooltip unimportant-link' %>
-		<% end %>
+    <% if audience.privacy_level.public? %>
+        <%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "#{t('.tooltip_public')}" %>
+    <% else %>
+      <%= link_to "Limited", stream_audience_path(activity), class: 'tooltip unimportant-link' %>
+    <% end %>
 
-	<% end %>
+  <% end %>
 
 </div>

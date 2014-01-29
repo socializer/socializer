@@ -1,15 +1,15 @@
 <% if params[:provider] == 'people' %>
 
-	<%= render 'socializer/people/menu' %>
+  <%= render 'socializer/people/menu' %>
 
 <% else %>
 
-	<h1><%= @title %></h1>
+  <h1><%= @title %></h1>
 
-	<%= render 'socializer/notes/form' %>
+  <%= render 'socializer/notes/form' %>
 
 <% end %>
 
 <ul class="activities">
-	<%= render @activities %>
+  <%= render @activities %>
 </ul>

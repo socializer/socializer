@@ -1,7 +1,7 @@
 <div class="note-form" style='padding: 0px 20px;'>
-	<%= form_for(Socializer::Note.new, remote: true) do |form| %>
+  <%= form_for(Socializer::Note.new, remote: true) do |form| %>
     <%= form.text_area :content, class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" %>
-  	<%= form.text_field :object_ids, data: { path: j(audiences_path), title: j(@title), current_id: @current_id } %>
+    <%= form.text_field :object_ids, data: { path: j(audiences_path), title: j(@title), current_id: @current_id } %>
     <%= form.submit t('.share'), class: 'action-button' %>
-	<% end %>
+  <% end %>
 </div>
