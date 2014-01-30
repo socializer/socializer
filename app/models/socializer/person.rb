@@ -10,6 +10,7 @@ module Socializer
     attr_accessible :display_name, :email, :language, :avatar_provider
 
     has_many :authentications
+    has_many :notifications
 
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 

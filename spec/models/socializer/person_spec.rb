@@ -40,6 +40,10 @@ module Socializer
       expect(person).to respond_to(:memberships)
     end
 
+    it '#notifications' do
+      expect(person).to respond_to(:notifications)
+    end
+
     it '#contacts' do
       expect(person).to respond_to(:contacts)
     end
