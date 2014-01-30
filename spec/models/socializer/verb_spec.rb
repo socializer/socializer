@@ -2,6 +2,8 @@ require 'spec_helper'
 
 module Socializer
   describe Verb do
+    let(:verb) { build(:socializer_verb) }
+
     # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
     #       with the next release of shoulda-matchers
     # expect(Verb).to allow_mass_assignment_of(:name)
@@ -11,7 +13,7 @@ module Socializer
     it { should validate_presence_of(:name) }
 
     it 'has a valid factory' do
-      expect(build(:socializer_verb)).to be_valid
+      expect(verb).to be_valid
     end
 
     it 'is valid with a name' do

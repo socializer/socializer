@@ -2,8 +2,18 @@ require 'spec_helper'
 
 module Socializer
   describe Comment do
+    let(:comment) { build(:socializer_comment) }
+
     it 'has a valid factory' do
-      expect(build(:socializer_comment)).to be_valid
+      expect(comment).to be_valid
+    end
+
+    it '#content' do
+      expect(comment).to respond_to(:content)
+    end
+
+    it '#author' do
+      expect(comment).to respond_to(:author)
     end
   end
 end

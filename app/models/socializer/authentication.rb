@@ -6,6 +6,8 @@ module Socializer
 
     before_destroy :make_sure_its_not_the_last_one
 
+    private
+
     def make_sure_its_not_the_last_one
       if person.authentications.count == 1
         fail 'Cannot delete the last authentication available.'

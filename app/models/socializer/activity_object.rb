@@ -39,6 +39,14 @@ module Socializer
       activitable_type == 'Socializer::Person'
     end
 
+    def group?
+      activitable_type == 'Socializer::Group'
+    end
+
+    def circle?
+      activitable_type == 'Socializer::Circle'
+    end
+
     # REFACTOR: DRY this up. Reduce database calls
     # TODO: Rename this method to liked_by
     def likes
@@ -106,6 +114,8 @@ module Socializer
 
       activity.save!
     end
+
+    private
 
     def increment_like_count
       increment!(:like_count)

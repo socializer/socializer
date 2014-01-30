@@ -2,10 +2,12 @@ require 'spec_helper'
 
 module Socializer
   describe Audience do
+    let(:audience) { build(:socializer_audience) }
+
     it { should enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public) }
 
     it 'has a valid factory' do
-      expect(build(:socializer_audience)).to be_valid
+      expect(audience).to be_valid
     end
 
     it 'is invalid without a privacy level' do
@@ -13,15 +15,15 @@ module Socializer
     end
 
     it '#activity' do
-      expect(build(:socializer_audience)).to respond_to(:activity)
+      expect(audience).to respond_to(:activity)
     end
 
     it '#activity_object' do
-      expect(build(:socializer_audience)).to respond_to(:activity_object)
+      expect(audience).to respond_to(:activity_object)
     end
 
     it '#object' do
-      expect(build(:socializer_audience)).to respond_to(:object)
+      expect(audience).to respond_to(:object)
     end
   end
 end

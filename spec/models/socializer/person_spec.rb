@@ -2,9 +2,7 @@ require 'spec_helper'
 
 module Socializer
   describe Person do
-
-    # Define a person for common testd instead of build one for each
-    let(:person) { FactoryGirl.build(:socializer_person) }
+    let(:person) { build(:socializer_person) }
 
     it 'has a valid factory' do
       expect(person).to be_valid

@@ -2,6 +2,8 @@ require 'spec_helper'
 
 module Socializer
   describe ActivityField do
+    let(:activity_field) { build(:socializer_activity_field) }
+
     # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
     #       with the next release of shoulda-matchers
     # expect(ActivityField).to allow_mass_assignment_of(::content)
@@ -13,23 +15,15 @@ module Socializer
     it { should validate_presence_of(:activity) }
 
     it 'has a valid factory' do
-      expect(build(:socializer_activity_field)).to be_valid
-    end
-
-    it 'is valid with content' do
-      expect(build(:socializer_activity_field, content: 'this is content')).to be_valid
+      expect(activity_field).to be_valid
     end
 
     it 'is invalid without content' do
-      expect(build(:socializer_activity_field, content: nil)).to have(1).errors_on(:content)
-    end
-
-    it 'is valid with activity' do
-      expect(build(:socializer_activity_field, activity: FactoryGirl.build(:socializer_activity))).to be_valid
+      expect(build(:socializer_activity_field, content: nil)).to be_invalid
     end
 
     it 'is invalid without activity' do
-      expect(build(:socializer_activity_field, activity: nil)).to have(1).errors_on(:activity)
+      expect(build(:socializer_activity_field, activity: nil)).to be_invalid
     end
   end
 end
