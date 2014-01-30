@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
 ruby '2.1.0'
 
@@ -17,8 +17,8 @@ gem 'omniauth-linkedin'
 gem 'omniauth-openid'
 
 group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'meta_request'      # For RailsPanel
 end
 
