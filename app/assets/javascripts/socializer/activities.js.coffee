@@ -31,17 +31,3 @@ jQuery ->
     # Add a qTip to all tooltip elements.
     $('.tooltip').each ->
       addTooltipSupport $(this)
-
-  if $('body').data('controller') == 'activities' || controller_name = 'shares'
-    # Use moment.js to mimic the Rails time time_ago_in_words helper
-    $('time').each ->
-      timeago  = $(this).data('time-ago')
-
-      # This could also be timeago?, but this is more explicit
-      if timeago is "moment.js"
-        datetime = $(this).attr('datetime')
-        locale   = $('body').data('locale')
-
-        moment.lang locale
-
-        $(this).text moment(datetime).fromNow()
