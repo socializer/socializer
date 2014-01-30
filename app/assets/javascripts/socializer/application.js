@@ -7,6 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require moment/moment
+//= require moment/langs
 
 $(document).ready(function() {
 	// Replace default titles on images with link by qTip tooltips

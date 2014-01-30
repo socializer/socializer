@@ -4,8 +4,7 @@
   <span class='separator'></span>
 
   <%# Time elapsed %>
-  <% display_time = "#{t('.time_format')}" % time_ago_in_words(activity.created_at)  %>
-  <%= link_to display_time, stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
+  <%= link_to time_ago(activity.created_at), stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
 
   <%# List of audiences %>
   <% activity.audiences.uniq.each do |audience| %>
