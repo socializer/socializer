@@ -4,23 +4,25 @@ module Socializer
   describe Audience do
     let(:audience) { build(:socializer_audience) }
 
-    it { should enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public) }
-
     it 'has a valid factory' do
       expect(audience).to be_valid
     end
 
-    it 'is invalid without a privacy level' do
-      expect(build(:socializer_audience, privacy_level: nil)).to be_invalid
+    context 'mass assignment' do
+      it { expect(audience).to allow_mass_assignment_of(:activity_id) }
+      it { expect(audience).to allow_mass_assignment_of(:privacy_level) }
     end
 
-    it '#activity' do
-      expect(audience).to respond_to(:activity)
+    context 'relationships' do
+      it { expect(audience).to belong_to(:activity) }
+      it { expect(audience).to belong_to(:activity_object) }
     end
 
-    it '#activity_object' do
-      expect(audience).to respond_to(:activity_object)
+    context 'validations' do
+      it { expect(audience).to validate_presence_of(:privacy_level) }
     end
+
+    it { expect(enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public)) }
 
     it '#object' do
       expect(audience).to respond_to(:object)
