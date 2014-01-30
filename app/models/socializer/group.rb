@@ -5,7 +5,7 @@ module Socializer
 
     enumerize :privacy_level, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 
-    attr_accessible :name, :privacy_level
+    attr_accessible :name, :privacy_level, :author_id
 
     # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
