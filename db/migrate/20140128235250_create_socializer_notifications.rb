@@ -3,8 +3,8 @@ class CreateSocializerNotifications < ActiveRecord::Migration
     create_table :socializer_notifications do |t|
       t.integer :activity_id
       t.integer :person_id
-      t.boolean :displayed
-      t.boolean :read
+      t.boolean :displayed,     :default => false
+      t.boolean :read,          :default => false
 
       t.timestamps
     end

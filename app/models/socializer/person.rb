@@ -39,7 +39,7 @@ module Socializer
     end
 
     def received_notifications
-      fail 'Method not implemented yet.'
+      @notifications ||= Notification.where { person_id.eq my { id } }
     end
 
     def contacts
