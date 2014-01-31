@@ -17,7 +17,7 @@
 
   <div id="stream-column">
   <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
-    <%= render 'socializer/people/card' %>
+    <%= render 'socializer/people/card', person: @person %>
   <% else %>
     <%= render 'socializer/activities/stream_list' %>
   <% end %>
@@ -32,9 +32,9 @@
   <div id="contextual-column">
 
     <% if params[:provider] == 'circles' %>
-      <%= render 'socializer/circles/card' %>
+      <%= render 'socializer/circles/card', circle: @circle, title: @title %>
     <% elsif params[:provider] == 'groups' %>
-      <%= render 'socializer/groups/card' %>
+      <%= render 'socializer/groups/card', group: @group, title: @title %>
     <% elsif params[:provider].nil? %>
       <%= render 'socializer/activities/stream_card' %>
     <% end %>

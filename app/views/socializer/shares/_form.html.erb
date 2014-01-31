@@ -1,4 +1,4 @@
-<%= form_tag stream_shares_path(@share) do %>
+<%= form_tag stream_shares_path(share) do %>
 <p>
   <label>
     <%= t('.content_label') %>
@@ -9,9 +9,9 @@
 <p>
   <input type="text" name="share[object_ids]" id="share_object_ids" data-path="<%=j audiences_path %>" />
 </p>
-<input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= @activity_object.id %>">
+<input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= activity_object.id %>">
 <ul>
-<li><%= render @activity_object.activitable %></li>
+  <li><%= render activity_object.activitable %></li>
 </ul>
 <p>
   <input type="submit" value="Share" />
