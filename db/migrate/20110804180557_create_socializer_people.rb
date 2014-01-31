@@ -6,6 +6,25 @@ class CreateSocializerPeople < ActiveRecord::Migration
       t.string   :language
       t.string   :avatar_provider
 
+      # story
+      t.string   :tagline
+      t.text     :introduction
+      t.string   :bragging_rights
+
+      # work
+      t.string   :occupation
+      t.string   :skills
+
+      # basic information
+      t.integer  :gender
+      t.boolean  :looking_for_friends
+      t.boolean  :looking_for_dating
+      t.boolean  :looking_for_relationship
+      t.boolean  :looking_for_networking
+      t.datetime :birthdate
+      t.integer  :relationship
+      t.string   :other_names
+
       t.timestamps
     end
   end

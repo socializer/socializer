@@ -11,6 +11,14 @@ module Socializer
 
     has_many :authentications
 
+    has_many :addresses, class_name: 'PersonAddress', foreign_key: 'person_id', dependent: :destroy
+    has_many :contributions, class_name: 'PersonContribution', foreign_key: 'person_id', dependent: :destroy
+    has_many :educations, class_name: 'PersonEducation', foreign_key: 'person_id', dependent: :destroy
+    has_many :employments, class_name: 'PersonEmployment', foreign_key: 'person_id', dependent: :destroy
+    has_many :links, class_name: 'PersonLink', foreign_key: 'person_id', dependent: :destroy
+    has_many :phones, class_name: 'PersonPhone', foreign_key: 'person_id', dependent: :destroy
+    has_many :places, class_name: 'PersonPlace', foreign_key: 'person_id', dependent: :destroy
+
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
     def services

@@ -8,12 +8,19 @@ module Socializer
       expect(person).to be_valid
     end
 
-    it '.create_with_omniauth' do
-      expect(Socializer::Person).to respond_to(:create_with_omniauth)
+    context 'relationships' do
+      it { expect(person).to have_many(:authentications) }
+      it { expect(person).to have_many(:addresses) }
+      it { expect(person).to have_many(:contributions) }
+      it { expect(person).to have_many(:educations) }
+      it { expect(person).to have_many(:employments) }
+      it { expect(person).to have_many(:links) }
+      it { expect(person).to have_many(:phones) }
+      it { expect(person).to have_many(:places) }
     end
 
-    it '#authentications' do
-      expect(person).to respond_to(:authentications)
+    it '.create_with_omniauth' do
+      expect(Socializer::Person).to respond_to(:create_with_omniauth)
     end
 
     it '#services' do

@@ -18,6 +18,8 @@ module Socializer
       it { expect(group).to belong_to(:activity_author) }
       it { expect(group).to have_many(:memberships) }
       it { expect(group).to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
+      it { expect(group).to have_many(:links) }
+      it { expect(group).to have_many(:categories) }
     end
 
     context 'validations' do
