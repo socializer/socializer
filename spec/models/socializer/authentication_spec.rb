@@ -28,7 +28,7 @@ module Socializer
       let(:last_authentication) { create(:socializer_authentication) }
 
       it 'cannot be deleted' do
-        expect{ last_authentication.destroy }.to raise_error
+        expect { last_authentication.destroy }.to raise_error
       end
     end
   end

@@ -60,7 +60,7 @@ module Socializer
       end
 
       it 'no longer exists' do
-        expect{ inactive_membership.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { inactive_membership.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
