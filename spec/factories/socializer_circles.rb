@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :socializer_circle, class: Socializer::Circle do
-    sequence(:name) { |n| "Friends no#{n}"}
+    sequence(:name) { |n| "Friends no#{n}" }
   end
 end
