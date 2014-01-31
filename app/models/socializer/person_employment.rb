@@ -1,8 +1,8 @@
 module Socializer
   class PersonEmployment < ActiveRecord::Base
-    belongs_to :person
-
     attr_accessible :employer_name, :job_title, :start, :end, :current, :job_description
 
+    # Relationships
+    belongs_to :person
   end
 end
