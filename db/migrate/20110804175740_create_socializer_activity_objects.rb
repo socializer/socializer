@@ -3,7 +3,8 @@ class CreateSocializerActivityObjects < ActiveRecord::Migration
     create_table :socializer_activity_objects do |t|
       t.integer  :activitable_id
       t.string   :activitable_type
-      t.integer  :like_count,          default: 0
+      t.integer  :like_count,                 default: 0
+      t.integer  :unread_notifications_count, default: 0
 
       t.timestamps
     end

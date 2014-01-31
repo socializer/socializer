@@ -39,7 +39,7 @@ module Socializer
     end
 
     def received_notifications
-      @notifications ||= Notification.where { person_id.eq my { id } }
+      @notifications ||= activity_object.notifications
     end
 
     def contacts

@@ -20,10 +20,6 @@ module Socializer
       end
     end
 
-    def show
-      @activity = Activity.find(params[:id])
-    end
-
     def audience
       activities = Activity.stream(provider: 'activities', actor_id: params[:id], viewer_id: current_user.id)
 

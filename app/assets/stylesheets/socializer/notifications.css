@@ -4,12 +4,12 @@
 */
 ul.notification-list {
   list-style-type: none;
-  border-bottom: 1px solid lightgray;
   margin: 0px 50px;
 }
 
 .notification-list li {
   padding: 10px;
+  border-bottom: 1px solid lightgray;
 }
 
 .notification-list li img {

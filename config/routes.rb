@@ -7,7 +7,6 @@ Socializer::Engine.routes.draw do
 
   scope '/stream' do
     get    '(/:provider/:id)' => 'activities#index', as: :stream
-    get    '/activities/:id/show' => 'activities#show', as: :stream_show
     get    '/activities/:id/audience' => 'activities#audience', as: :stream_audience
     get    '/activities/:id/likes' => 'likes#index', as: :stream_likes
     post   '/activities/:id/like' => 'likes#create', as: :stream_like
@@ -45,7 +44,7 @@ Socializer::Engine.routes.draw do
     get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
   end
 
-  resources :authentications, only: [:index, :show, :new, :destroy, :show]
+  resources :authentications, only: [:index, :show, :new, :destroy]
   resources :people,          only: [:index, :show, :edit, :update]
   resources :notes,           only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :circles,         only: [:index, :show, :new, :create, :edit, :update, :destroy]

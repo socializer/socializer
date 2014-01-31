@@ -1,17 +1,23 @@
 <h1><%= t('.header') %></h1>
 
 <ul class="notification-list">
+  <% index_notification = 0 %>
 
   <% @notifications.each do |n| %>
+
     <%
+      index_notification += 1
       classname = 'not-read' unless n.read
-      classname = 'not-displayed' unless n.displayed
+      classname = 'not-displayed' if index_notification <= current_user.activity_object.unread_notifications_count
     %>
     <li class="<%= classname %>">
+
       <a href="<%= notification_url(n.id) %>">
+
         <div class="lfloat">
           <%= image_tag(n.activity.actor.avatar_url, title: n.activity.actor.display_name) %>
         </div>
+
         <div class="notification-body">
           <div>
             <span class="person-name"><%= n.activity.actor.display_name %></span>
@@ -19,10 +25,11 @@
           </div>
           <div class="time-elapsed"><%= time_ago(n.created_at) %></div>
         </div>
+
       </a>
-      <%# link_to n.person.display_name, notification_path(n.id)%>
       <div class="clearfix"></div>
     </li>
+
 <% end %>
 
 </ul>
