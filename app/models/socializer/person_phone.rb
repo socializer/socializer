@@ -4,12 +4,13 @@ module Socializer
 
     enumerize :category, in: { home: 1, work: 2 }, default: :home, predicates: true, scope: true
 
-    belongs_to :person
-
     attr_accessible :label, :number
 
+    # Relationships
+    belongs_to :person
+
+    # Validations
     validates :label, presence: true
     validates :number, presence: true
-
   end
 end
