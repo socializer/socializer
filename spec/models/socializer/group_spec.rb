@@ -200,7 +200,7 @@ module Socializer
       end
 
       it 'can be deleted' do
-        expect{ group_without_members.destroy }.not_to raise_error
+        expect { group_without_members.destroy }.not_to raise_error
       end
     end
 
@@ -208,7 +208,7 @@ module Socializer
       let(:group_with_members) { create(:socializer_group, privacy_level: 3) }
 
       it 'cannot be deleted' do
-        expect{ group_with_members.destroy }.to raise_error
+        expect { group_with_members.destroy }.to raise_error
       end
     end
 
