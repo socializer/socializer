@@ -1,15 +1,15 @@
-<h3><%= @person.display_name %></h3>
-<%= image_tag(@person.avatar_url, size: "190x190") %>
-<%= link_to "Send a message", person_message_path(@person), class: 'action-button', rel: 'shadowbox' %>
-<p>In <%= @person.display_name %>'s circles (<%= @person.contacts.size %>):</p>
+<h3><%= person.display_name %></h3>
+<%= image_tag(person.avatar_url, size: "190x190") %>
+<%= link_to "Send a message", person_message_path(person), class: 'action-button', rel: 'shadowbox' %>
+<p>In <%= person.display_name %>'s circles (<%= person.contacts.size %>):</p>
 <ul class="small-contact-list">
-<% @person.contacts.each do |contact| %>
+<% person.contacts.each do |contact| %>
 <li><%= link_to image_tag(contact.avatar_url, title: contact.display_name), stream_path(provider: :people, id: contact.id) %>
 <% end %>
 </ul>
-<p>Have <%= @person.display_name %> in circles (<%= @person.contact_of.size %>):</p>
+<p>Have <%= person.display_name %> in circles (<%= person.contact_of.size %>):</p>
 <ul class="small-contact-list">
-<% @person.contact_of.each do |person| %>
+<% person.contact_of.each do |person| %>
 <li><%= link_to image_tag(person.avatar_url, title: person.display_name), stream_path(provider: :people, id: person.id) %>
 <% end %>
 </ul>

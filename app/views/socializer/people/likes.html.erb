@@ -1,4 +1,4 @@
-<%= render 'socializer/people/menu' %>
+<%= render 'socializer/people/menu', person: @person %>
 <ul class="activities">
 <% @likes.each do |activity| %>
   <li><%= render activity.object %></li>

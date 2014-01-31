@@ -1,7 +1,7 @@
-<h3><%= @title %></h3>
-<p><%= @circle.content %></p>
+<h3><%= title %></h3>
+<p><%= circle.content %></p>
 <ul class="small-contact-list">
-<% @circle.ties.each do |tie| %>
+<% circle.ties.each do |tie| %>
   <li><%= link_to image_tag(tie.contact.avatar_url, title: tie.contact.display_name), stream_path(provider: :people, id: tie.contact.id) %>
 <% end %>
 </ul>
