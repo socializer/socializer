@@ -4,30 +4,32 @@ module Socializer
   describe Group do
     let(:group) { build(:socializer_group) }
 
-    # TODO: shoulda-matchers - replace should allow_mass_assignment_of with new expect syntax
-    #       with the next release of shoulda-matchers
-    # expect(Group).to allow_mass_assignment_of(:name)
-    # expect(Group).to allow_mass_assignment_of(:privacy_level)
-    it { should allow_mass_assignment_of(:name) }
-    it { should allow_mass_assignment_of(:privacy_level) }
-
-    it { should enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public) }
-
     it 'has a valid factory' do
       expect(group).to be_valid
     end
 
-    it 'is invalid without an author' do
-      expect(build(:socializer_group, author_id: nil)).to be_invalid
+    context 'mass assignment' do
+      it { expect(group).to allow_mass_assignment_of(:name) }
+      it { expect(group).to allow_mass_assignment_of(:privacy_level) }
+      it { expect(group).to allow_mass_assignment_of(:author_id) }
     end
 
-    it 'is invalid without a name' do
-      expect(build(:socializer_group, name: nil)).to be_invalid
+    context 'relationships' do
+      it { expect(group).to belong_to(:activity_author) }
+      it { expect(group).to have_many(:memberships) }
+      it { expect(group).to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
     end
 
-    it 'is invalid without a privacy level' do
-      expect(build(:socializer_group, privacy_level: nil)).to be_invalid
+    context 'validations' do
+      # TODO: Update factory to include relationshp
+      # it { expect(group).to validate_presence_of(:activity_author) }
+      it { expect(group).to validate_presence_of(:author_id) }
+      it { expect(group).to validate_presence_of(:name) }
+      it { expect(group).to validate_presence_of(:privacy_level) }
+      it { expect(create(:socializer_group)).to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
+
+    it { expect(enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public)) }
 
     it '#author' do
       expect(group).to respond_to(:author)
