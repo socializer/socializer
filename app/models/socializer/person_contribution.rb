@@ -1,11 +1,12 @@
 module Socializer
   class PersonContribution < ActiveRecord::Base
-    belongs_to :person
-
     attr_accessible :label, :url, :current
 
+    # Relationships
+    belongs_to :person
+
+    # Validations
     validates :label, presence: true
     validates :url, presence: true
-
   end
 end
