@@ -1,3 +1,9 @@
+[![Coverage Status](https://coveralls.io/repos/dominicgoulet/socializer/badge.png)](https://coveralls.io/r/dominicgoulet/socializer)
+
+[![Code Climate](https://codeclimate.com/repos/52ebf4c9e30ba002a0004d2b/badges/ae294dc137097d614073/gpa.png)](https://codeclimate.com/repos/52ebf4c9e30ba002a0004d2b/feed)
+
+[![Dependency Status](https://gemnasium.com/dominicgoulet/socializer.png)](https://gemnasium.com/dominicgoulet/socializer)
+
 # Socializer
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
