@@ -13,7 +13,7 @@ module Socializer
     private
 
     def current_user
-      @current_user ||= Person.find_by_id(cookies[:user_id]) if cookies[:user_id].present?
+      @current_user ||= Person.find_by(id: cookies[:user_id]) if cookies[:user_id].present?
     end
 
     def signed_in?
