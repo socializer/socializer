@@ -12,6 +12,5 @@ module Socializer
     # Validations
     validates_presence_of :activity_id
     validates_presence_of :activity_object_id
-
   end
 end
