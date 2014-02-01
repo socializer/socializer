@@ -1,5 +1,7 @@
 language: ruby
-before_script: bundle exec rake dummy:app --trace
+before_script:
+  - bundle exec rake dummy:app --trace
+  - bundle exec rake app:db:migrate --trace
 script: bundle exec rspec spec
 env:
   - DB=postgres
