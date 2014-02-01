@@ -23,29 +23,14 @@ module Socializer
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
-    def note?
-      activitable_type == 'Socializer::Note'
+    # define a class macro for setting comparaison with activitable_type
+    def self.attribute_type_of(*args)
+      args.each do |type|
+        define_method("#{type}?") { activitable_type == "Socializer::#{type.capitalize}" }
+      end
     end
 
-    def activity?
-      activitable_type == 'Socializer::Activity'
-    end
-
-    def comment?
-      activitable_type == 'Socializer::Comment'
-    end
-
-    def person?
-      activitable_type == 'Socializer::Person'
-    end
-
-    def group?
-      activitable_type == 'Socializer::Group'
-    end
-
-    def circle?
-      activitable_type == 'Socializer::Circle'
-    end
+    attribute_type_of :note, :activity, :comment, :person, :group, :circle
 
     # REFACTOR: DRY this up. Reduce database calls
     # TODO: Rename this method to liked_by
