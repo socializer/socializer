@@ -58,9 +58,9 @@ module Socializer
 
     %w(Person Activity Note Comment Group Circle).each do |type|
 
-      it 'is type of %s' % type do
+      it sprintf('is type of %s', type) do
         activity_object.activitable_type = "Socializer::#{type}"
-        expect( eval("activity_object.#{type.downcase}?") ).to be_true
+        expect(eval("activity_object.#{type.downcase}?")).to be_true
       end
 
     end

@@ -25,6 +25,5 @@ module Socializer
         current_user.activity_object.save!
       end
     end
-
   end
 end

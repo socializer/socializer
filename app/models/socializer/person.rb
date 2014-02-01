@@ -64,9 +64,10 @@ module Socializer
     end
 
     def likes
-      activity_obj_id = activity_object.id
-      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(['like', 'unlike']) }
-      @likes ||= query.group { activity_object_id }.having("COUNT(1) % 2 == 1") # Need to convert having to squeel ... how do you use % in squeel?
+      activity_obj_id   = activity_object.id
+      verbs_of_interest = %w(like unlike)
+      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(verbs_of_interest) }
+      @likes ||= query.group { activity_object_id }.having('COUNT(1) % 2 == 1') # Need to convert having to squeel ... how do you use % in squeel?
     end
 
     # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1

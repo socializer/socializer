@@ -10,8 +10,7 @@ module Socializer
     belongs_to :activity_object # Person, Group, ...
 
     # Validations
-    validates_presence_of :activity_id
-    validates_presence_of :activity_object_id
-
+    validates :activity_id, presence: true
+    validates :activity_object_id, presence: true
   end
 end
