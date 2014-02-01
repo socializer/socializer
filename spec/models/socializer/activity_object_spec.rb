@@ -55,5 +55,15 @@ module Socializer
     it '#share!' do
       expect(activity_object).to respond_to(:share!)
     end
+
+    %w(Person Activity Note Comment Group Circle).each do |type|
+
+      it 'is type of %s' % type do
+        activity_object.activitable_type = "Socializer::#{type}"
+        expect( eval("activity_object.#{type.downcase}?") ).to be_true
+      end
+
+    end
+
   end
 end
