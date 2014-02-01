@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :socializer_notification, :class => Socializer::Notification do
+  factory :socializer_notification, class: Socializer::Notification do
     displayed false
     read false
 
