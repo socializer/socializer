@@ -2,3 +2,23 @@
 <p class="field-title">Name</p>                <p class="field-value"><%= @person.display_name %></p>
 <p class="field-title">Email</p>               <p class="field-value"><%= @person.email %></p>
 <p class="field-title">Language</p>            <p class="field-value"><%= @person.language %></p>
+
+<p class="field-title">Tagline</p>             <p class="field-value"><%= @person.tagline %></p>
+<p class="field-title">Introduction</p>        <p class="field-value"><%= @person.introduction %></p>
+<p class="field-title">Bragging rights</p>     <p class="field-value"><%= @person.bragging_rights %></p>
+
+<p class="field-title">Occupation</p>          <p class="field-value"><%= @person.occupation %></p>
+<p class="field-title">Skills</p>              <p class="field-value"><%= @person.skills %></p>
+
+<p class="field-title">Gender</p>              <p class="field-value"><%= @person.gender %></p>
+<p class="field-title">Looking for</p>         <div class="field-value" style="padding: 10px 0;">
+                                                 <ul>
+                                                   <% if @person.looking_for_friends %><li>Friends</li><% end %>
+                                                   <% if @person.looking_for_dating %><li>Dating</li><% end %>
+                                                   <% if @person.looking_for_relationship %><li>Relationship</li><% end %>
+                                                   <% if @person.looking_for_networking %><li>Networking</li><% end %>
+                                                 </ul>
+                                               </div>
+<p class="field-title">Birthdate</p>           <p class="field-value"><%= @person.birthdate %></p>
+<p class="field-title">Relationship</p>        <p class="field-value"><%= @person.relationship %></p>
+<p class="field-title">Other names</p>         <p class="field-value"><%= @person.other_names %></p>

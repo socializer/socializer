@@ -2,12 +2,17 @@ require 'digest/md5'
 
 module Socializer
   class Person < ActiveRecord::Base
-    # extend Enumerize
+    extend Enumerize
     include Socializer::ObjectTypeBase
 
     # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 }, default: :gravatar, predicates: true, scope: true
 
-    attr_accessible :display_name, :email, :language, :avatar_provider
+    attr_accessible :display_name, :email, :language, :avatar_provider, :tagline, :introduction, :bragging_rights,
+                    :occupation, :skills, :gender, :looking_for_friends, :looking_for_dating, :looking_for_relationship,
+                    :looking_for_networking, :birthdate, :relationship, :other_names
+
+    enumerize :gender, in: { unknown: 0, female: 1, male: 2 }, default: :unknown, predicates: true, scope: true
+    enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2, engaged: 3, married: 4, complicated: 5, open: 6, widowed: 7, domestic: 8, civil: 9 }, default: :unknown, predicates: true, scope: true
 
     has_many :authentications
 
@@ -57,14 +62,10 @@ module Socializer
       @contact_of ||= Circle.joins { ties }.where { ties.contact_id.eq my { guid } }.map { |circle| circle.author }.uniq
     end
 
-    # FIXME: If you like, unlike, and then like again the activity doesn't show up
-    #        This was true before the refactoring
     def likes
       activity_obj_id = activity_object.id
-      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) }
-      unlike = query.where { verb.name.eq('unlike') }.select { activity_object_id }
-
-      @likes ||= query.where { verb.name.eq('like') }.where { activity_object_id.not_in(unlike) }
+      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(['like', 'unlike']) }
+      @likes ||= query.group { activity_object_id }.having("COUNT(1) % 2 == 1") # Need to convert having to squeel ... how do you use % in squeel?
     end
 
     # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1

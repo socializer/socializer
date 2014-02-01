@@ -2,8 +2,28 @@
 
 <p class="field-title"><%= form.label :display_name %></p>        <p class="field-value"><%= form.text_field :display_name %></p>
 <p class="field-title"><%= form.label :email %></p>               <p class="field-value"><%= form.text_field :email %></p>
-<p class="field-title"><%= form.label :language %></p>            <p class="field-value"><%= select( "person", "language", { "English" => "en", "Français" => "fr"}) %></p>
+<p class="field-title"><%= form.label :language %></p>            <p class="field-value"><%= select( "person", "language", { "" => "", "English" => "en", "Français" => "fr"}) %></p>
 <p class="field-title"><%= form.label :avatar_provider %></p>     <p class="field-value"><%= select( "person", "avatar_provider", { "Twitter" => "TWITTER", "Facebook" => "FACEBOOK", "Linked In" => "LINKEDIN", "Gravatar" => "GRAVATAR"}) %></p>
+
+<p class="field-title"><%= form.label :tagline %></p>             <p class="field-value"><%= form.text_field :tagline %></p>
+<p class="field-title"><%= form.label :introduction %></p>        <p class="field-value"><%= form.text_area :introduction %></p>
+<p class="field-title"><%= form.label :bragging_rights %></p>     <p class="field-value"><%= form.text_field :bragging_rights %></p>
+
+<p class="field-title"><%= form.label :occupation %></p>          <p class="field-value"><%= form.text_field :occupation %></p>
+<p class="field-title"><%= form.label :skills %></p>              <p class="field-value"><%= form.text_field :skills %></p>
+
+<p class="field-title"><%= form.label :gender %></p>              <p class="field-value"><%= select( "person", "gender", Socializer::Person.gender.options) %></p>
+<p class="field-title">Looking for : </p>                         <div class="field-value" style="padding: 10px 0;">
+                                                                    <ul>
+                                                                      <li><%= form.check_box :looking_for_friends %> <%= form.label :looking_for_friends %></li>
+                                                                      <li><%= form.check_box :looking_for_dating %> <%= form.label :looking_for_dating %></li>
+                                                                      <li><%= form.check_box :looking_for_relationship %> <%= form.label :looking_for_relationship %></li>
+                                                                      <li><%= form.check_box :looking_for_networking %> <%= form.label :looking_for_networking %></li>
+                                                                    </ul>
+                                                                  </div>
+<p class="field-title"><%= form.label :birthdate %></p>           <p class="field-value"><%= form.date_field :birthdate %></p>
+<p class="field-title"><%= form.label :relationship %></p>        <p class="field-value"><%= select( "person", "relationship", Socializer::Person.relationship.options) %></p>
+<p class="field-title"><%= form.label :other_names %></p>         <p class="field-value"><%= form.text_field :other_names %></p>
 
 <p class="field-title"></p>                                       <p class="field-value"><%= form.submit "Save changes", class: "action-button" %></p>
 
