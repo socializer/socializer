@@ -34,8 +34,8 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',             '~> 2.2.0')
   spec.add_development_dependency('factory_girl_rails',   '~> 4.3.0')
-  spec.add_development_dependency('shoulda-matchers',     '~> 2.4.0')
+  spec.add_development_dependency('shoulda-matchers',     '~> 2.5.0')
   spec.add_development_dependency('database_cleaner',     '~> 1.2.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.14.4')
-  spec.add_development_dependency('rubocop',              '~> 0.17.0')
+  spec.add_development_dependency('rubocop',              '~> 0.18.0')
 end
