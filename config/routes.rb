@@ -53,7 +53,7 @@ Socializer::Engine.routes.draw do
   resources :groups,          only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :memberships,     only: [:create, :destroy]
   resources :ties,            only: [:create, :destroy]
-  resources :notifications,   only: [:index]
+  resources :notifications,   only: [:index, :show]
 
   resources :audiences,       only: [:index]
 

@@ -1,10 +1,11 @@
 module Socializer
   class ActivityObject < ActiveRecord::Base
     attr_accessor :scope, :object_ids
-    attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count
+    attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count, :unread_notifications_count
 
     belongs_to :activitable, polymorphic: true
 
+    has_many :notifications
     has_many :audiences # , dependent: :destroy
     # FIXME: This shouldn't need source. See if it is fixed in Rails 4 RC2 or Final
     has_many :activities, through: :audiences, source: :activity
@@ -113,6 +114,10 @@ module Socializer
       end
 
       activity.save!
+    end
+
+    def increment_unread_notifications_count
+      increment!(:unread_notifications_count)
     end
 
     private

@@ -1,6 +1,35 @@
 <h1><%= t('.header') %></h1>
-<ul>
-<% @notifications.each do |recipient| %>
-  <li><% unless recipient.read? %><b><% end %><%= link_to recipient.message.title, recipient.message %><% unless recipient.read? %></b><% end %></li>
+
+<ul class="notification-list">
+  <% index_notification = 0 %>
+
+  <% @notifications.each do |n| %>
+
+    <%
+      index_notification += 1
+      classname = 'not-read' unless n.read
+      classname = 'not-displayed' if index_notification <= current_user.activity_object.unread_notifications_count
+    %>
+    <li class="<%= classname %>">
+
+      <a href="<%= notification_url(n.id) %>">
+
+        <div class="lfloat">
+          <%= image_tag(n.activity.actor.avatar_url, title: n.activity.actor.display_name) %>
+        </div>
+
+        <div class="notification-body">
+          <div>
+            <span class="person-name"><%= n.activity.actor.display_name %></span>
+            <span><%= n.activity.verb.name %></span>
+          </div>
+          <div class="time-elapsed"><%= time_ago(n.created_at) %></div>
+        </div>
+
+      </a>
+      <div class="clearfix"></div>
+    </li>
+
 <% end %>
+
 </ul>

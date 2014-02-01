@@ -15,6 +15,7 @@ module Socializer
     enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2, engaged: 3, married: 4, complicated: 5, open: 6, widowed: 7, domestic: 8, civil: 9 }, default: :unknown, predicates: true, scope: true
 
     has_many :authentications
+    has_many :notifications
 
     has_many :addresses, class_name: 'PersonAddress', foreign_key: 'person_id', dependent: :destroy
     has_many :contributions, class_name: 'PersonContribution', foreign_key: 'person_id', dependent: :destroy
@@ -51,7 +52,7 @@ module Socializer
     end
 
     def received_notifications
-      fail 'Method not implemented yet.'
+      @notifications ||= activity_object.notifications
     end
 
     def contacts
