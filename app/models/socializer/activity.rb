@@ -116,10 +116,10 @@ module Socializer
       # TODO: Convert this to squeel
 
       # Retrieve the author's unique identifier
-      subquery = 'SELECT socializer_activity_objects.id ' +
-                 'FROM socializer_activity_objects ' +
-                 'INNER JOIN socializer_people ' +
-                 'ON socializer_activity_objects.activitable_id = socializer_people.id ' +
+      subquery = 'SELECT socializer_activity_objects.id ' \
+                 'FROM socializer_activity_objects ' \
+                 'INNER JOIN socializer_people ' \
+                 'ON socializer_activity_objects.activitable_id = socializer_people.id ' \
                  'WHERE socializer_people.id = socializer_activities.actor_id'
 
       Circle.select { id }.where { author_id.in(`#{subquery}`) }
@@ -134,11 +134,11 @@ module Socializer
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
-      limited_circle_id_sql = 'SELECT socializer_circles.id ' +
-                              'FROM socializer_circles ' +
-                              'INNER JOIN socializer_activity_objects ' +
-                              'ON socializer_circles.id = socializer_activity_objects.activitable_id ' +
-                                  "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " +
+      limited_circle_id_sql = 'SELECT socializer_circles.id ' \
+                              'FROM socializer_circles ' \
+                              'INNER JOIN socializer_activity_objects ' \
+                              'ON socializer_circles.id = socializer_activity_objects.activitable_id ' \
+                                  "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " \
                               'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
 
       # Retrieve all the contacts (people) that are part of those circles
