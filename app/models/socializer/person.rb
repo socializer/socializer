@@ -65,24 +65,15 @@ module Socializer
     def likes
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query  = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(verbs_of_interest) }
+      query = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(verbs_of_interest) }
       @likes ||= query.group { activity_object_id }.having('COUNT(1) % 2 == 1') # Need to convert having to squeel ... how do you use % in squeel?
     end
 
-    # REFACTOR: It may make more sense to retreive the activity object where the verb is like or unlike order by updated_at desc limit 1
     def likes?(object)
       activity_obj_id = activity_object.id
-
-      query   = Activity.joins { verb }.where { activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id) }
-      likes   = query.where { verb.name.eq('like') }
-      unlikes = query.where { verb.name.eq('unlike') }
-
-      # Can replace the 3 return statements, but always runs 2 queries
-      # !(likes.present? && unlikes.present?)
-
-      return false if likes.count == 0
-      return false if likes.count == unlikes.count
-      true
+      verbs_of_interest = %w(like unlike)
+      query = Activity.joins { verb }.where { activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id) & verb.name.in(verbs_of_interest) }
+      query.count.odd?
     end
 
     def pending_memberships_invites
