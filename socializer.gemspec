@@ -19,12 +19,20 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency('rails',                '4.0.2')
-  spec.add_dependency('omniauth',             '~> 1.2.1')
   spec.add_dependency('jquery-rails')
+  spec.add_dependency('sass-rails')
+  spec.add_dependency('coffee-rails')
+  spec.add_dependency('uglifier')
   spec.add_dependency('bcrypt-ruby',          '~> 3.1.2')
   spec.add_dependency('draper',               '~> 1.3.0')
   spec.add_dependency('elasticsearch-rails',  '~> 0.1.0.rc1')
   spec.add_dependency('enumerize',            '~> 0.7.0')
+  spec.add_dependency('omniauth',             '~> 1.2.1')
+  spec.add_dependency('omniauth-identity',    '~> 1.1.1')
+  spec.add_dependency('omniauth-facebook',    '~> 1.6.0')
+  spec.add_dependency('omniauth-linkedin',    '~> 0.1.0')
+  spec.add_dependency('omniauth-openid',      '~> 1.0.1')
+  spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
   spec.add_dependency('squeel',               '~> 1.1.0')
 
   spec.add_development_dependency('bundler',              '~> 1.5.0')

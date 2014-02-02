@@ -4,18 +4,6 @@ ruby '2.1.0'
 
 gemspec
 
-gem 'sass-rails'
-gem 'coffee-rails'
-gem 'uglifier'
-
-gem 'jquery-rails'
-
-gem 'omniauth-identity'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-linkedin'
-gem 'omniauth-openid'
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
