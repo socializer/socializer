@@ -1,5 +1,5 @@
 language: ruby
-cache: bundler
+# cache: bundler
 # bundler_args: --without development
 before_script:
   - bundle exec rake dummy:app --trace
