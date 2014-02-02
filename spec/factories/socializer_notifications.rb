@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :socializer_notification, class: Socializer::Notification do
-    displayed false
     read false
 
-    association :person,   factory: :socializer_person
-    association :activity, factory: :socializer_activity
+    association :activity_object, factory: :socializer_activity_object
+    association :activity,        factory: :socializer_activity
   end
 end

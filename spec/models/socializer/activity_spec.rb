@@ -8,8 +8,8 @@ module Socializer
       expect(activity).to be_valid
     end
 
-    it '#notifications' do
-      expect(activity).to respond_to(:notifications)
+    context 'relationships' do
+      it { expect(activity).to have_many(:notifications) }
     end
 
   end

@@ -48,7 +48,7 @@ module Socializer
     end
 
     it '#notifications' do
-      expect(person).to respond_to(:notifications)
+      expect(person).to respond_to(:received_notifications)
     end
 
     it '#contacts' do

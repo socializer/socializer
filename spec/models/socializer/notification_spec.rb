@@ -4,26 +4,24 @@ module Socializer
   describe Notification do
 
     # Define a person for common testd instead of build one for each
-    let(:notification) { FactoryGirl.build(:socializer_notification) }
+    let(:notification) { build(:socializer_notification) }
 
     it 'has a valid factory' do
       expect(notification).to be_valid
     end
 
-    it '#respond to person' do
-      expect(notification).to respond_to(:person)
+    context 'mass assignment' do
+      it { expect(notification).to allow_mass_assignment_of(:read) }
     end
 
-    it '#person must be present' do
-      expect(notification.person).to_not be_nil
+    context 'relationships' do
+      it { expect(notification).to belong_to(:activity) }
+      it { expect(notification).to belong_to(:activity_object) }
     end
 
-    it '#respond to activity' do
-      expect(notification).to respond_to(:activity)
-    end
-
-    it '#activity must be present' do
-      expect(notification.activity).to_not be_nil
+    context 'validations' do
+      it { expect(notification).to validate_presence_of(:activity_id) }
+      it { expect(notification).to validate_presence_of(:activity_object_id) }
     end
 
   end
