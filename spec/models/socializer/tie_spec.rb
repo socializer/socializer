@@ -8,8 +8,13 @@ module Socializer
       expect(tie).to be_valid
     end
 
-    it '#circle' do
-      expect(tie).to respond_to(:circle)
+    context 'mass assignment' do
+      it { expect(tie).to allow_mass_assignment_of(:contact_id) }
+    end
+
+    context 'relationships' do
+      it { expect(tie).to belong_to(:circle) }
+      it { expect(tie).to belong_to(:activity_contact) }
     end
 
     it '#contact' do
