@@ -116,7 +116,6 @@ module Socializer
 
     def self.create_with_omniauth(auth)
       create! do |user|
-
         user.display_name = auth.info.name
         user.email = auth.info.email
         image_url = auth.info.image
@@ -129,7 +128,6 @@ module Socializer
         end
 
         user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
-
       end
     end
   end
