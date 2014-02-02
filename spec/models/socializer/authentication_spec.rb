@@ -8,20 +8,14 @@ module Socializer
       expect(authentication).to be_valid
     end
 
-    it '#person' do
-      expect(authentication).to respond_to(:person)
+    context 'mass assignment' do
+      it { expect(authentication).to allow_mass_assignment_of(:provider) }
+      it { expect(authentication).to allow_mass_assignment_of(:uid) }
+      it { expect(authentication).to allow_mass_assignment_of(:image_url) }
     end
 
-    it '#provider' do
-      expect(authentication).to respond_to(:provider)
-    end
-
-    it '#uid' do
-      expect(authentication).to respond_to(:uid)
-    end
-
-    it '#image_url' do
-      expect(authentication).to respond_to(:image_url)
+    context 'relationships' do
+      it { expect(authentication).to belong_to(:person) }
     end
 
     context 'when last authentication for a person' do
