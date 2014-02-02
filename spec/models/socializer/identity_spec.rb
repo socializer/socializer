@@ -8,12 +8,17 @@ module Socializer
       expect(identity).to be_valid
     end
 
-    it '#name' do
-      expect(identity).to respond_to(:name)
+    context 'mass assignment' do
+      it { expect(identity).to allow_mass_assignment_of(:name) }
+      it { expect(identity).to allow_mass_assignment_of(:email) }
+      it { expect(identity).to allow_mass_assignment_of(:password) }
+      it { expect(identity).to allow_mass_assignment_of(:password_confirmation) }
     end
 
-    it '#email' do
-      expect(identity).to respond_to(:email)
+    context 'validations' do
+      it { expect(identity).to validate_presence_of(:name) }
+      it { expect(identity).to validate_presence_of(:email) }
+      it { expect(create(:socializer_identity)).to validate_uniqueness_of(:email) }
     end
 
     it '#password' do
