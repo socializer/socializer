@@ -1,6 +1,12 @@
 require 'coffee-rails'
 require 'sass/rails'
 require 'enumerize'
+require 'omniauth'
+require 'omniauth-identity'
+require 'omniauth-facebook'
+require 'omniauth-linkedin'
+require 'omniauth-openid'
+require 'omniauth-twitter'
 
 module Socializer
   class Engine < Rails::Engine
