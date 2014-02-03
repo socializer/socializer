@@ -8,16 +8,20 @@ module Socializer
       expect(circle).to be_valid
     end
 
-    it 'is invalid without a name' do
-      expect(build(:socializer_circle, name: nil)).to be_invalid
+    context 'mass assignment' do
+      it { expect(circle).to allow_mass_assignment_of(:name) }
+      it { expect(circle).to allow_mass_assignment_of(:content) }
     end
 
-    it '#name' do
-      expect(circle).to respond_to(:name)
+    context 'relationships' do
+      it { expect(circle).to belong_to(:activity_author) }
+      it { expect(circle).to have_many(:ties) }
+      it { expect(circle).to have_many(:activity_contacts).through(:ties) }
     end
 
-    it '#ties' do
-      expect(circle).to respond_to(:ties)
+    context 'validations' do
+      it { expect(circle).to validate_presence_of(:name) }
+      it { expect(create(:socializer_circle, name: 'Family')).to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
     it '#author' do
