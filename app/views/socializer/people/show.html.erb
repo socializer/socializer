@@ -59,7 +59,7 @@
 
 <ul>
 <% current_user.profiles.each do |profile| %>
-  <li><%= like_to profile.label, profile.url %></li>
+  <li><%= link_to profile.label, profile.url %></li>
 <% end %>
 </ul>
 
@@ -67,7 +67,7 @@
 
 <ul>
 <% current_user.contributions.each do |contribution| %>
-  <li><%= like_to contribution.label, contribution.url %></li>
+  <li><%= link_to contribution.label, contribution.url %></li>
 <% end %>
 </ul>
 
@@ -75,7 +75,7 @@
 
 <ul>
 <% current_user.links.each do |link| %>
-  <li><%= like_to link.label, link.url %></li>
+  <li><%= link_to link.label, link.url %></li>
 <% end %>
 </ul>
 
