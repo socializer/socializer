@@ -7,5 +7,6 @@ class CreateSocializerIdentities < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :socializer_identities, :email, unique: true
   end
 end
