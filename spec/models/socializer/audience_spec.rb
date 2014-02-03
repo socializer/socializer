@@ -20,6 +20,7 @@ module Socializer
 
     context 'validations' do
       it { expect(audience).to validate_presence_of(:privacy_level) }
+      it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
     end
 
     it { expect(enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public)) }

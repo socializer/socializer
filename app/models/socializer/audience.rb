@@ -9,6 +9,7 @@ module Socializer
     belongs_to :activity
     belongs_to :activity_object
 
+    validates :activity_id, presence: true, uniqueness: { scope: :activity_object_id }
     validates :privacy_level, presence: true
 
     def object
