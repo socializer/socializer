@@ -1,0 +1,12 @@
+<%= form_for(person_address) do |form| %>
+<p class="field-title"><%= form.label :category %></p>            <p class="field-value"><%= form.select :category, Socializer::PersonAddress.category.options %></p>
+<p class="field-title"><%= form.label :label %></p>               <p class="field-value"><%= form.text_field :label %></p>
+<p class="field-title"><%= form.label :line1 %></p>               <p class="field-value"><%= form.text_field :line1 %></p>
+<p class="field-title"><%= form.label :line2 %></p>               <p class="field-value"><%= form.text_field :line2 %></p>
+<p class="field-title"><%= form.label :city %></p>                <p class="field-value"><%= form.text_field :city %></p>
+<p class="field-title"><%= form.label :postal_code_or_zip %></p>  <p class="field-value"><%= form.text_field :postal_code_or_zip %></p>
+<p class="field-title"><%= form.label :province_or_state %></p>   <p class="field-value"><%= form.text_field :province_or_state %></p>
+<p class="field-title"><%= form.label :country %></p>             <p class="field-value"><%= form.text_field :country %></p>
+
+<p class="field-title"></p>                                       <p class="field-value"><%= form.submit t('.submit'), class: "action-button" %></p>
+<% end %>

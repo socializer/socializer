@@ -1,0 +1,6 @@
+<%= form_for(person_place) do |form| %>
+<p class="field-title"><%= form.label :city_name %></p>           <p class="field-value"><%= form.text_field :city_name %></p>
+<p class="field-title"><%= form.label :current %></p>             <p class="field-value"><%= form.check_box :current %></p>
+
+<p class="field-title"></p>                                       <p class="field-value"><%= form.submit t('.submit'), class: "action-button" %></p>
+<% end %>

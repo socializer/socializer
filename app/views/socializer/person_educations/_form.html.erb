@@ -1,0 +1,10 @@
+<%= form_for(person_education) do |form| %>
+<p class="field-title"><%= form.label :school_name %></p>             <p class="field-value"><%= form.text_field :school_name %></p>
+<p class="field-title"><%= form.label :major_or_field_of_study %></p> <p class="field-value"><%= form.text_field :major_or_field_of_study %></p>
+<p class="field-title"><%= form.label :start %></p>                   <p class="field-value"><%= form.date_field :start %></p>
+<p class="field-title"><%= form.label :end %></p>                     <p class="field-value"><%= form.date_field :end %></p>
+<p class="field-title"><%= form.label :current %></p>                 <p class="field-value"><%= form.check_box :current %></p>
+<p class="field-title"><%= form.label :courses_description %></p>     <p class="field-value"><%= form.text_area :courses_description %></p>
+
+<p class="field-title"></p>                                           <p class="field-value"><%= form.submit t('.submit'), class: "action-button" %></p>
+<% end %>

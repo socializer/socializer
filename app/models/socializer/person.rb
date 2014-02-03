@@ -23,6 +23,7 @@ module Socializer
     has_many :links, class_name: 'PersonLink', foreign_key: 'person_id', dependent: :destroy
     has_many :phones, class_name: 'PersonPhone', foreign_key: 'person_id', dependent: :destroy
     has_many :places, class_name: 'PersonPlace', foreign_key: 'person_id', dependent: :destroy
+    has_many :profiles, class_name: 'PersonProfile', foreign_key: 'person_id', dependent: :destroy
 
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 

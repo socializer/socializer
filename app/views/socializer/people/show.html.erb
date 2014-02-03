@@ -1,14 +1,85 @@
 <%= render 'socializer/people/menu', person: @person %>
 <p class="field-title">Name</p>                <p class="field-value"><%= @person.display_name %></p>
-<p class="field-title">Email</p>               <p class="field-value"><%= @person.email %></p>
-<p class="field-title">Language</p>            <p class="field-value"><%= @person.language %></p>
 
+<div>
+<h2>Story</h2>
 <p class="field-title">Tagline</p>             <p class="field-value"><%= @person.tagline %></p>
 <p class="field-title">Introduction</p>        <p class="field-value"><%= @person.introduction %></p>
 <p class="field-title">Bragging rights</p>     <p class="field-value"><%= @person.bragging_rights %></p>
+</div>
+
+<h2>Work</h2>
 
 <p class="field-title">Occupation</p>          <p class="field-value"><%= @person.occupation %></p>
 <p class="field-title">Skills</p>              <p class="field-value"><%= @person.skills %></p>
+
+<ul>
+<% current_user.employments.each do |employment| %>
+  <li>
+    <%= employment.employer_name %><br>
+    <%= employment.job_description %>,
+    <%= employment.start.to_s %> -
+    <% if employment.current? %>
+      present
+    <% else %>
+      <%= employment.end.to_s %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Education</h2>
+
+<ul>
+<% current_user.educations.each do |education| %>
+  <li>
+    <%= education.school_name %><br>
+    <%= education.major_or_field_of_study %>,
+    <%= education.start.to_s %> -
+    <% if education.current? %>
+      present
+    <% else %>
+      <%= education.end.to_s %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Places</h2>
+
+<ul>
+<% current_user.places.each do |place| %>
+  <li><%= place.city_name %></li>
+<% end %>
+</ul>
+
+<h2>Links</h2>
+
+<h3>Other profiles</h3>
+
+<ul>
+<% current_user.profiles.each do |profile| %>
+  <li><%= like_to profile.label, profile.url %></li>
+<% end %>
+</ul>
+
+<h3>Contributions</h3>
+
+<ul>
+<% current_user.contributions.each do |contribution| %>
+  <li><%= like_to contribution.label, contribution.url %></li>
+<% end %>
+</ul>
+
+<h3>Links</h3>
+
+<ul>
+<% current_user.links.each do |link| %>
+  <li><%= like_to link.label, link.url %></li>
+<% end %>
+</ul>
+
+<h2>Basic information</h2>
 
 <p class="field-title">Gender</p>              <p class="field-value"><%= @person.gender %></p>
 <p class="field-title">Looking for</p>         <div class="field-value" style="padding: 10px 0;">
@@ -22,3 +93,30 @@
 <p class="field-title">Birthdate</p>           <p class="field-value"><%= @person.birthdate %></p>
 <p class="field-title">Relationship</p>        <p class="field-value"><%= @person.relationship %></p>
 <p class="field-title">Other names</p>         <p class="field-value"><%= @person.other_names %></p>
+
+<h2>Contact information</h2>
+
+<p class="field-title">Email</p>               <p class="field-value"><%= @person.email %></p>
+
+<h3>Addresses</h3>
+
+<ul>
+<% current_user.addresses.each do |address| %>
+  <li>
+    <%= address.line1 %><br>
+    <%= address.line2 %><br>
+    <%= address.city %>, <%= address.province_or_state %>, <%= address.postal_code_or_zip %><br>
+    <%= address.country %>
+  </li>
+<% end %>
+</ul>
+
+<h3>Phones</h3>
+
+<ul>
+<% current_user.phones.each do |phone| %>
+  <li>
+    <%= phone.label %> : <%= phone.number %>
+  </li>
+<% end %>
+</ul>
