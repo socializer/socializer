@@ -1,5 +1,7 @@
 module Socializer
   class PersonLinksController < ApplicationController
+    before_filter :set_person_link, only: [:update, :destroy]
+
     def create
       @person_link = current_user.adresses.build(params[:person_link])
       @person_link.save!
@@ -7,15 +9,19 @@ module Socializer
     end
 
     def update
-      @person_link = current_user.links.find(params[:id])
       @person_link.update!(params[:person_link])
       redirect_to current_user
     end
 
     def destroy
-      @person_link = current_user.links.find(params[:id])
       @person_link.destroy
       redirect_to current_user
+    end
+
+    private
+
+    def set_person_link
+      @person_link = current_user.links.find(params[:id])
     end
   end
 end
