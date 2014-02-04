@@ -24,20 +24,30 @@ module Socializer
       it { expect(create(:socializer_circle, name: 'Family')).to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
+    context 'when adding a contact' do
+      let(:circle_with_contacts) { create(:socializer_circle) }
+
+      before do
+        circle_with_contacts.add_contact(1)
+        circle_with_contacts.reload
+      end
+
+      it { expect(circle_with_contacts.ties.size).to be(1) }
+      it { expect(circle_with_contacts.contacts.size).to be(1) }
+
+      context 'and removing it' do
+        before do
+          circle_with_contacts.remove_contact(1)
+          circle_with_contacts.reload
+        end
+
+        it { expect(circle_with_contacts.ties.size).to be(0) }
+        it { expect(circle_with_contacts.contacts.size).to be(0) }
+      end
+    end
+
     it '#author' do
       expect(circle).to respond_to(:author)
-    end
-
-    it '#contacts' do
-      expect(circle).to respond_to(:contacts)
-    end
-
-    it '#add_contact' do
-      expect(circle).to respond_to(:add_contact)
-    end
-
-    it '#remove_contact' do
-      expect(circle).to respond_to(:remove_contact)
     end
   end
 end
