@@ -87,5 +87,19 @@ module Socializer
       end
     end
 
+    context 'when liking an object' do
+      let(:activity_object) { create(:socializer_activity_object) }
+      let(:liking_person) { create(:socializer_person) }
+
+      before do
+        activity_object.like! liking_person
+        liking_person.reload
+      end
+
+      # it { expect(liking_person.likes.size).to eq(1) }
+      # it { expect(liking_person.likes? activity_object).to be_true }
+
+    end
+
   end
 end

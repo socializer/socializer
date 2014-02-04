@@ -38,20 +38,22 @@ module Socializer
       let(:liking_person) { create(:socializer_person) }
       let(:liked_activity_object) { create(:socializer_activity_object) }
 
-      it 'increments like_count' do
-        expect { liked_activity_object.like! liking_person }.to change {
-          liked_activity_object.like_count}.from(0).to(1)
+      before do
+        liked_activity_object.like! liking_person
+        liked_activity_object.reload
       end
+
+      it { expect(liked_activity_object.like_count).to eq(1) }
+      # it { expect(liked_activity_object.likes.size).to eq(1) }
 
       context 'and unliked' do
         before do
-          liked_activity_object.like! liking_person
+          liked_activity_object.unlike! liking_person
+          liked_activity_object.reload
         end
 
-        it 'decrements like_count' do
-          expect { liked_activity_object.unlike! liking_person }.to change {
-            liked_activity_object.like_count}.from(1).to(0)
-        end
+        it { expect(liked_activity_object.like_count).to eq(0) }
+        # it { expect(liked_activity_object.likes.size).to eq(0) }
       end
     end
 
