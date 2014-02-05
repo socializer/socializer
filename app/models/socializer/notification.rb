@@ -16,13 +16,11 @@ module Socializer
     validates :activity_object_id, presence: true
 
     def self.create_for_activity(activity)
-      logger.info "Create notifications ........."
       # Get all ties related to the audience of the activity
       potential_contact_id = get_potential_contact_id(activity.id)
       potential_contact_id.each do |t|
         # If the contact has the author of the activity in one of his circle.
         if has_person_into_circle(t.contact_id, activity.activitable_actor.id)
-        logger.info "New notification ........."
           create_notification(activity, t.contact_id)
         end
       end
