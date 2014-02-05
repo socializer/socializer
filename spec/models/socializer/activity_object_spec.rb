@@ -31,7 +31,7 @@ module Socializer
       it { expect(activity_object).to have_many(:groups) }
       it { expect(activity_object).to have_many(:circles) }
       it { expect(activity_object).to have_many(:ties) }
-      it { expect(activity_object).to have_many(:memberships) }
+      it { expect(activity_object).to have_many(:memberships).conditions(active: true) }
     end
 
     context 'when liked' do
