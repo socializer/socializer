@@ -13,6 +13,7 @@ module Socializer
       @note.activity_verb = 'post'
       @note.save!
       @activity = Activity.find_by(activity_object_id: @note.guid)
+      Notification.create_for_activity(@activity)
       respond_to do |format|
         format.js
       end
