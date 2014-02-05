@@ -22,7 +22,7 @@ module Socializer
       it { expect(activity_object).to belong_to(:activitable) }
       it { expect(activity_object).to have_many(:notifications) }
       it { expect(activity_object).to have_many(:audiences) }
-      it { expect(activity_object).to have_many(:activities) }
+      it { expect(activity_object).to have_many(:activities).through(:audiences) }
       it { expect(activity_object).to have_many(:actor_activities) }
       it { expect(activity_object).to have_many(:object_activities) }
       it { expect(activity_object).to have_many(:target_activities) }
