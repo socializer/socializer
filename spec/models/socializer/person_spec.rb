@@ -93,13 +93,13 @@ module Socializer
 
       before do
         activity_object.like! liking_person
+        activity_object.reload
         liking_person.reload
       end
 
-      # it { expect(liking_person.likes.size).to eq(1) }
-      # it { expect(liking_person.likes? activity_object).to be_true }
-
+      it { expect(activity_object.like_count).to eq(1) }
+      it { expect(liking_person.likes.count.size).to eq(1) }
+      it { expect(liking_person.likes? activity_object).to be_true }
     end
-
   end
 end
