@@ -66,14 +66,14 @@ module Socializer
     def likes
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(verbs_of_interest) }
-      @likes ||= query.group { activity_object_id }.having('COUNT(1) % 2 == 1') # Need to convert having to squeel ... how do you use % in squeel?
+      query = Activity.joins(:verb).where(actor_id: activity_obj_id, target_id: nil, socializer_verbs: { name: verbs_of_interest })
+      @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
     def likes?(object)
-      activity_obj_id = activity_object.id
+      activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins { verb }.where { activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id) & verb.name.in(verbs_of_interest) }
+      query = Activity.joins(:verb).where(activity_object_id: object.id, actor_id: activity_obj_id, socializer_verbs: { name: verbs_of_interest })
       query.count.odd?
     end
 
