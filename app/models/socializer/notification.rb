@@ -20,7 +20,7 @@ module Socializer
       potential_contact_id = get_potential_contact_id(activity.id)
       potential_contact_id.each do |t|
         # If the contact has the author of the activity in one of his circle.
-        if has_person_into_circle(t.contact_id, activity.activitable_actor.id)
+        if person_in_circle?(t.contact_id, activity.activitable_actor.id)
           create_notification(activity, t.contact_id)
         end
       end
@@ -42,7 +42,7 @@ module Socializer
         }.where  { circle.activity_object.audiences.activity_id.eq( activity_id ) }.flatten.uniq
     end
 
-    def self.has_person_into_circle(parent_contact_id, child_contact_id)
+    def self.person_in_circle?(parent_contact_id, child_contact_id)
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
       ActivityObject.select { id
