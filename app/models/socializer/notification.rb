@@ -39,7 +39,7 @@ module Socializer
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.select { contact_id
         }.joins  { circle.activity_object.audiences
-        }.where  { circle.activity_object.audiences.activity_id.eq( activity_id ) }.flatten.uniq
+        }.where  { circle.activity_object.audiences.activity_id.eq(activity_id) }.flatten.uniq
     end
 
     def self.person_in_circle?(parent_contact_id, child_contact_id)
