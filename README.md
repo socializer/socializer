@@ -4,6 +4,10 @@
 [![Dependency Status](https://gemnasium.com/dominicgoulet/socializer.png)](https://gemnasium.com/dominicgoulet/socializer)
 [![Gem Version](https://badge.fury.io/rb/socializer.png)](http://badge.fury.io/rb/socializer)
 
+# Important notice!
+
+Socializer is **not ready for production** yet. It's a work in progress. If you would like to get involved, fork and work! Or contact me at dominic.goulet@icloud.com.
+
 # Socializer
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
