@@ -76,10 +76,9 @@ module Socializer
     end
 
     # Share the activity with an audience
-    # Params:
-    # +actor_id+   :: User who share the activity (current_user)
-    # +object_ids+ :: List of audiences to target
-    # +content+    :: Text with the share
+    # @param actor_id [Integer] User who share the activity (current_user)
+    # @param object_ids [Array<Integer>] List of audiences to target
+    # @param content [String] Text with the share
     def share!(actor_id, object_ids, content)
 
       # REFACTOR : check for validation?

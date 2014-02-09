@@ -8,6 +8,7 @@ module Socializer
     before(:all) do
       Rails.application.routes.draw { get ':controller(/:action)'  }
     end
+
     after(:all) do
       Rails.application.reload_routes!
     end
@@ -29,9 +30,6 @@ module Socializer
     end
 
     describe 'GET #create' do
-
-
     end
-
   end
 end
