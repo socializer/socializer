@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/socializer/socializer.png?branch=master)](https://travis-ci.org/socializer/socializer)
-[![Coverage Status](https://coveralls.io/repos/dominicgoulet/socializer/badge.png?branch=master)](https://coveralls.io/r/dominicgoulet/socializer?branch=master)
-[![Code Climate](https://codeclimate.com/repos/52ebf4c9e30ba002a0004d2b/badges/ae294dc137097d614073/gpa.png)](https://codeclimate.com/repos/52ebf4c9e30ba002a0004d2b/feed)
-[![Dependency Status](https://gemnasium.com/dominicgoulet/socializer.png)](https://gemnasium.com/dominicgoulet/socializer)
+[![Coverage Status](https://coveralls.io/repos/socializer/socializer/badge.png?branch=master)](https://coveralls.io/r/socializer/socializer?branch=master)
+[![Code Climate](https://codeclimate.com/repos/52f9181fe30ba05e8504e654/badges/ffdf51c181e471fd7980/gpa.png)](https://codeclimate.com/repos/52f9181fe30ba05e8504e654/feed)
+[![Dependency Status](https://gemnasium.com/socializer/socializer.png)](https://gemnasium.com/socializer/socializer)
 [![Gem Version](https://badge.fury.io/rb/socializer.png)](http://badge.fury.io/rb/socializer)
 
 # Important notice!
