@@ -18,7 +18,7 @@ module Socializer
 
     describe 'GET #new' do
       # Visit the new page
-      before { get :new, :id => note.activity_object.id }
+      before { get :new, id: note.activity_object.id }
 
       it 'should return an activity object' do
         expect(assigns(:activity_object)).to eq(note.activity_object)
