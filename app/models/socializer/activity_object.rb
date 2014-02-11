@@ -75,9 +75,17 @@ module Socializer
       decrement_like_count
     end
 
-    def share!
-      public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-      circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+    # Share the activity with an audience
+    # @param actor_id [Integer] User who share the activity (current_user)
+    # @param object_ids [Array<Integer>] List of audiences to target
+    # @param content [String] Text with the share
+    def share!(actor_id, object_ids, content)
+
+      # REFACTOR : check for validation?
+      return unless object_ids.present? && actor_id.present?
+
+      public  = Audience.privacy_level.find_value(:public).value.to_s
+      circles = Audience.privacy_level.find_value(:circles).value.to_s
 
       activity = Activity.new do |a|
         a.actor_id = actor_id
@@ -85,11 +93,13 @@ module Socializer
         a.verb = Verb.find_or_create_by(name: 'share')
       end
 
-      # REFACTOR: remove duplication
-      if scope == public || scope == circles
-        activity.audiences.build(privacy_level: scope)
-      else
-        object_ids.each do |object_id|
+      activity.build_activity_field(content: content) if content
+
+      object_ids.split(',').each do |object_id|
+        # REFACTOR: remove duplication
+        if object_id == public || object_id == circles
+          activity.audiences.build(privacy_level: object_id)
+        else
           activity.audiences.build do |a|
             a.privacy_level = :limited
             a.activity_object_id = object_id
