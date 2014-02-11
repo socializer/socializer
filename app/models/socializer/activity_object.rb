@@ -80,7 +80,6 @@ module Socializer
     # @param object_ids [Array<Integer>] List of audiences to target
     # @param content [String] Text with the share
     def share!(actor_id, object_ids, content)
-
       # REFACTOR : check for validation?
       return unless object_ids.present? && actor_id.present?
 

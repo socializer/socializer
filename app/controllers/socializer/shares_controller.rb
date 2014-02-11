@@ -1,6 +1,5 @@
 module Socializer
   class SharesController < ApplicationController
-
     def new
       @activity_object = ActivityObject.find(params[:id])
       @share = @activity_object.activitable
@@ -11,6 +10,5 @@ module Socializer
       activity_object.share!(current_user.guid, params[:share][:object_ids], params[:share][:content])
       redirect_to stream_path
     end
-
   end
 end
