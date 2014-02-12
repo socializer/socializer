@@ -3,15 +3,6 @@ require 'spec_helper'
 module Socializer
   describe LikesController do
 
-    # before and after are necessary since shares_controller isn't accessible directly in routes.
-    before(:all) do
-      Rails.application.routes.draw { get ':controller(/:action)'  }
-    end
-
-    after(:all) do
-      Rails.application.reload_routes!
-    end
-
     # Create a user and a activity
     let(:user) { create(:socializer_person) }
     let(:note_activity) { create(:socializer_activity) }
@@ -22,7 +13,7 @@ module Socializer
     describe 'Set likable and activity' do
       # Verify that the likable variable is set before create and destroy action
       [:create, :destroy].each do |action|
-        before { get action, id: note_activity.activity_object.id, format: :js }
+        before { post action, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
         it 'should set likable for action #{action}' do
           expect(assigns(:likable)).to eq(note_activity.activity_object)
@@ -41,7 +32,7 @@ module Socializer
 
     describe 'GET #create' do
       # Create a like
-      before { get :create, id: note_activity.activity_object.id, format: :js }
+      before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
       it 'should likes the note after liking it' do
         expect( user.likes?(note_activity.activity_object) ).to be_true
@@ -50,9 +41,9 @@ module Socializer
 
     describe 'GET #destroy' do
       # Create a like
-      before { get :create,  id: note_activity.activity_object.id, format: :js }
+      before { post :create,  id: note_activity.activity_object.id, format: :js, use_route: :socializer }
       # Destroy the like
-      before { get :destroy, id: note_activity.activity_object.id, format: :js }
+      before { post :destroy, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
       it 'should not likes the note anymore' do
         expect( user.likes?(note_activity.activity_object) ).to be_false
@@ -61,9 +52,9 @@ module Socializer
 
     describe 'GET #index' do
       # Create a like
-      before { get :create, id: note_activity.activity_object.id, format: :js }
+      before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
       # Get the people ou like the activity
-      before { get :index,  id: note_activity.id, format: :html }
+      before { get :index,  id: note_activity.id, format: :html, use_route: :socializer }
 
       it 'should return people' do
         expect(assigns(:object_ids)).to be_present
