@@ -1,6 +1,7 @@
 module Socializer
   class LikesController < ApplicationController
-    before_action :set_likable, only: [:create, :destroy]
+    before_action :set_likable,  only: [:create, :destroy]
+    before_action :set_activity, only: [:create, :destroy]
 
     # REFACTOR: should handle activity/tooltip as well as people likes
     # Used to display the Like tooltip
@@ -19,7 +20,6 @@ module Socializer
 
     def create
       @likable.like!(current_user) unless current_user.likes?(@likable)
-      @activity = @likable.activitable
 
       respond_to do |format|
         format.js
@@ -28,7 +28,6 @@ module Socializer
 
     def destroy
       @likable.unlike!(current_user) if current_user.likes?(@likable)
-      @activity = @likable.activitable
 
       respond_to do |format|
         format.js
@@ -40,6 +39,10 @@ module Socializer
     # Use callbacks to share common setup or constraints between actions.
     def set_likable
       @likable = ActivityObject.find(params[:id])
+    end
+
+    def set_activity
+      @activity = @likable.activitable
     end
 
       # # Never trust parameters from the scary internet, only allow the white list through.
