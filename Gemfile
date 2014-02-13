@@ -15,7 +15,6 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov', '~> 0.8.2', require: false
   gem 'coveralls', require: false
-  gem 'squeel', '~> 1.1.0'
 end
 
 group :development, :test do
