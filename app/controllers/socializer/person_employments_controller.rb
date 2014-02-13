@@ -1,6 +1,6 @@
 module Socializer
   class PersonEmploymentsController < ApplicationController
-    before_filter :set_person_employment, only: [:update, :destroy]
+    before_action :set_person_employment, only: [:update, :destroy]
 
     def create
       @person_employment = current_user.adresses.build(params[:person_employment])

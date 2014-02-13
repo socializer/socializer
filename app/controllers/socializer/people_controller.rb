@@ -1,6 +1,6 @@
 module Socializer
   class PeopleController < ApplicationController
-    before_filter :set_person, only: [:show, :likes, :message]
+    before_action :set_person, only: [:show, :likes, :message]
 
     def index
       @people = Person.all

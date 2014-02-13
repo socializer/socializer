@@ -1,6 +1,6 @@
 module Socializer
   class PersonContributionsController < ApplicationController
-    before_filter :set_person_contribution, only: [:update, :destroy]
+    before_action :set_person_contribution, only: [:update, :destroy]
 
     def create
       @person_contribution = current_user.adresses.build(params[:person_contribution])

@@ -1,6 +1,6 @@
 module Socializer
   class PersonLinksController < ApplicationController
-    before_filter :set_person_link, only: [:update, :destroy]
+    before_action :set_person_link, only: [:update, :destroy]
 
     def create
       @person_link = current_user.adresses.build(params[:person_link])

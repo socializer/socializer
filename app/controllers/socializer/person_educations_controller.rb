@@ -1,6 +1,6 @@
 module Socializer
   class PersonEducationsController < ApplicationController
-    before_filter :set_person_education, only: [:update, :destroy]
+    before_action :set_person_education, only: [:update, :destroy]
 
     def create
       @person_education = current_user.adresses.build(params[:person_education])

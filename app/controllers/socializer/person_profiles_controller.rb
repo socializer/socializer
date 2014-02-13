@@ -1,6 +1,6 @@
 module Socializer
   class PersonProfilesController < ApplicationController
-    before_filter :set_person_profile, only: [:update, :destroy]
+    before_action :set_person_profile, only: [:update, :destroy]
 
     def create
       @person_profile = current_user.adresses.build(params[:person_profile])

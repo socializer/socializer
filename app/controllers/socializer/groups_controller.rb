@@ -1,6 +1,6 @@
 module Socializer
   class GroupsController < ApplicationController
-    before_filter :set_group, only: [:edit, :update, :destroy]
+    before_action :set_group, only: [:edit, :update, :destroy]
 
     def index
     end

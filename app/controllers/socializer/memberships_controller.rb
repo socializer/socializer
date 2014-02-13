@@ -1,6 +1,6 @@
 module Socializer
   class MembershipsController < ApplicationController
-    before_filter :set_membership, only: [:approve, :confirm, :decline]
+    before_action :set_membership, only: [:approve, :confirm, :decline]
 
     def create
       @group = Group.find(params[:membership][:group_id])

@@ -1,6 +1,6 @@
 module Socializer
   class PersonPhonesController < ApplicationController
-    before_filter :set_person_phone, only: [:update, :destroy]
+    before_action :set_person_phone, only: [:update, :destroy]
 
     def create
       @person_phone = current_user.adresses.build(params[:person_phone])

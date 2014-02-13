@@ -1,6 +1,6 @@
 module Socializer
   class CirclesController < ApplicationController
-    before_filter :set_circle, only: [:show, :edit, :update, :destroy]
+    before_action :set_circle, only: [:show, :edit, :update, :destroy]
 
     def index
       @circles = current_user.circles
