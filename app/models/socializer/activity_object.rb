@@ -23,7 +23,7 @@ module Socializer
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
-    # define a class macro for setting comparaison with activitable_type
+    # define a class macro for setting comparison with activitable_type
     def self.attribute_type_of(*args)
       args.each do |type|
         define_method("#{type}?") { activitable_type == "Socializer::#{type.capitalize}" }

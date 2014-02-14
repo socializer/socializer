@@ -36,7 +36,7 @@ module Socializer
       @target ||= activitable_target.activitable
     end
 
-    # Selects the activites that either the person made, that is public from a person in
+    # Selects the activities that either the person made, that is public from a person in
     # one of his circle, or that is shared to one of the circles he is part of.
     #
     # * <tt>options[:provider]</tt>  - <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>, <tt>groups</tt>
