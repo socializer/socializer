@@ -9,7 +9,10 @@ module Socializer
     end
 
     context 'relationships' do
-      it { expect(activity).to have_many(:notifications) }
+      relations = [:audiences, :notifications, :activity_objects, :children]
+      relations.each do |relation|
+        it { expect(activity).to have_many(relation) }
+      end
     end
 
   end
