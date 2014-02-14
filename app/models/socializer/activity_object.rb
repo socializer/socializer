@@ -78,9 +78,9 @@ module Socializer
         a.actor_id = actor_id
         a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: 'share')
-      end
 
-      activity.build_activity_field(content: content) if content
+        a.build_activity_field(content: content) if content
+      end
 
       object_ids.split(',').each do |object_id|
         # REFACTOR: remove duplication
