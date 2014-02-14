@@ -13,6 +13,7 @@
 /config/initializers/omniauth.rb
 Gemfile.lock
 
+.idea
 coverage/*
 
 spec/dummy/*
