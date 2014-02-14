@@ -52,14 +52,12 @@ module Socializer
     end
 
     def like!(person)
-      create_activity(person, 'like')
-
+      create_activity(person.activity_object.id, 'like')
       increment_like_count
     end
 
     def unlike!(person)
-      create_activity(person, 'unlike')
-
+      create_activity(person.activity_object.id, 'unlike')
       decrement_like_count
     end
 
@@ -103,9 +101,9 @@ module Socializer
 
     private
 
-    def create_activity(person, verb)
+    def create_activity(actor_id, verb)
       Activity.create! do |a|
-        a.actor_id = person.activity_object.id
+        a.actor_id = actor_id
         a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: verb)
 
