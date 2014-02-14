@@ -11,14 +11,14 @@
 //= require moment/langs
 
 $(document).ready(function() {
-	// Replace default titles on images with link by qTip tooltips
-    $('a img[title]').qtip({
-	   style: {
-	      classes: 'qtip-tipsy'
-	   },
-	   position: {
-	      my: 'top center',
-	      at: 'bottom center'
-	   }
-	});
+  // Replace default titles on images with link by qTip tooltips
+  $('a img[title]').qtip({
+    style: {
+      classes: 'qtip-tipsy'
+    },
+    position: {
+      my: 'top center',
+      at: 'bottom center'
+    }
+  });
 });
