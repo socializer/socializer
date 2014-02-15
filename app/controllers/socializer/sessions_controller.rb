@@ -10,10 +10,7 @@ module Socializer
           redirect_to authentications_path
         else
           user = Person.create_with_omniauth(auth)
-          user.activity_object.circles.create!(name: 'Friends',       content: 'Your real friends, the ones you feel comfortable sharing private details with.')
-          user.activity_object.circles.create!(name: 'Family',        content: 'Your close and extended family, with as many or as few in-laws as you want.')
-          user.activity_object.circles.create!(name: 'Acquaintances', content: "A good place to stick people you've met but aren't particularly close to.")
-          user.activity_object.circles.create!(name: 'Following',     content: "People you don't know personally, but whose posts you find interesting.")
+          user.add_default_circle
         end
       else
         user = user_auth.person if user_auth.present?

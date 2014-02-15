@@ -105,6 +105,13 @@ module Socializer
       # end
     end
 
+    def add_default_circle
+      activity_object.circles.create!(name: 'Friends',       content: 'Your real friends, the ones you feel comfortable sharing private details with.')
+      activity_object.circles.create!(name: 'Family',        content: 'Your close and extended family, with as many or as few in-laws as you want.')
+      activity_object.circles.create!(name: 'Acquaintances', content: "A good place to stick people you've met but aren't particularly close to.")
+      activity_object.circles.create!(name: 'Following',     content: "People you don't know personally, but whose posts you find interesting.")
+    end
+
     def self.create_with_omniauth(auth)
       create! do |user|
         user.display_name = auth.info.name
