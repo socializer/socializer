@@ -5,20 +5,10 @@ module Socializer
       user_auth = Authentication.where(provider: auth.provider, uid: auth.uid).first
 
       if user_auth.nil?
-        if signed_in?
-          current_user.authentications.create!(provider: auth.provider, uid: auth.uid)
-          redirect_to authentications_path
-        else
-          user = Person.create_with_omniauth(auth)
-          user.add_default_circle
-        end
+        add_authentication(auth) if signed_in?
+        create_authentication(auth) unless signed_in?
       else
-        user = user_auth.person if user_auth.present?
-      end
-
-      if user
-        cookies[:user_id] = { domain: :all, value: "#{user.id}" }
-        redirect_to root_url
+        login(user_auth.person)
       end
     end
 
@@ -28,6 +18,24 @@ module Socializer
     end
 
     def failure
+      redirect_to root_url
+    end
+
+    private
+
+    def add_authentication(auth)
+      current_user.authentications.create!(provider: auth.provider, uid: auth.uid)
+      redirect_to authentications_path
+    end
+
+    def create_authentication(auth)
+      user = Person.create_with_omniauth(auth)
+      user.add_default_circle
+      login(user)
+    end
+
+    def login(user)
+      cookies[:user_id] = { domain: :all, value: "#{user.id}" }
       redirect_to root_url
     end
   end
