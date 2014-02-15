@@ -69,9 +69,6 @@ module Socializer
       # REFACTOR : check for validation?
       return unless object_ids.present? && actor_id.present?
 
-      public  = Audience.privacy_level.find_value(:public).value.to_s
-      circles = Audience.privacy_level.find_value(:circles).value.to_s
-
       activity = Activity.new do |a|
         a.actor_id = actor_id
         a.activity_object_id = id
@@ -80,17 +77,7 @@ module Socializer
         a.build_activity_field(content: content) if content
       end
 
-      object_ids.split(',').each do |object_id|
-        # REFACTOR: remove duplication
-        if object_id == public || object_id == circles
-          activity.audiences.build(privacy_level: object_id)
-        else
-          activity.audiences.build do |a|
-            a.privacy_level = :limited
-            a.activity_object_id = object_id
-          end
-        end
-      end
+      add_audience_to_activity(activity, object_ids)
 
       activity.save!
     end
