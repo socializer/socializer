@@ -18,9 +18,9 @@ module Socializer
 
       @audiences = [id: public.value, name: public.text] +
                    [id: circles.value, name: circles.text] +
-                   @people.map { |x| { id: x.guid, name: x.display_name } } +
-                   @circles.map { |x| { id: x.guid, name: x.name } } +
-                   @groups.map { |x| { id: x.guid, name: x.name } }
+                   @people.map { |p| { id: p.guid, name: p.display_name } } +
+                   @circles.map { |c| { id: c.guid, name: c.name } } +
+                   @groups.map { |g| { id: g.guid, name: g.name } }
 
       respond_to do |format|
         format.json { render json: @audiences }
