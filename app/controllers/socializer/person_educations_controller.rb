@@ -1,5 +1,6 @@
 module Socializer
   class PersonEducationsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person_education, only: [:update, :destroy]
 
     def create

@@ -1,5 +1,6 @@
 module Socializer
   class NotificationsController < ApplicationController
+    before_action :authenticate_user!
     after_filter :reset_unread_notifications, only: [:index]
 
     def index

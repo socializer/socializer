@@ -1,5 +1,7 @@
 module Socializer
   class AudiencesController < ApplicationController
+    before_action :authenticate_user!
+
     def index
       if params[:q].present? && params[:q].size > 0
         query_value = "%#{params[:q]}%"

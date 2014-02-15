@@ -4,6 +4,11 @@ module Socializer
   describe SharesController do
     pending "add test for action #create to #{__FILE__}"
 
+    # Create a user
+    let(:user) { create(:socializer_person) }
+    # Setting the current user
+    before { cookies[:user_id] = user.guid }
+
     # Create an activity_object to share
     let(:note) { create(:socializer_note) }
 

@@ -1,5 +1,6 @@
 module Socializer
   class PersonEmploymentsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person_employment, only: [:update, :destroy]
 
     def create

@@ -1,5 +1,6 @@
 module Socializer
   class LikesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_likable_and_activity, only: [:create, :destroy]
 
     # REFACTOR: should handle activity/tooltip as well as people likes

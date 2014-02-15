@@ -1,5 +1,6 @@
 module Socializer
   class GroupsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_group, only: [:edit, :update, :destroy]
 
     def index

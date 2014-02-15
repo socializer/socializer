@@ -1,5 +1,7 @@
 module Socializer
   class SharesController < ApplicationController
+    before_action :authenticate_user!
+
     def new
       @activity_object = ActivityObject.find(params[:id])
       @share = @activity_object.activitable
