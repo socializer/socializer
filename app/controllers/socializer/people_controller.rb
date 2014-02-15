@@ -1,5 +1,6 @@
 module Socializer
   class PeopleController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person, only: [:show, :likes, :message]
 
     def index

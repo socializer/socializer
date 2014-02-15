@@ -1,5 +1,6 @@
 module Socializer
   class CirclesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_circle, only: [:show, :edit, :update, :destroy]
 
     def index

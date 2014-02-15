@@ -1,5 +1,7 @@
 module Socializer
   class ActivitiesController < ApplicationController
+    before_action :authenticate_user!
+
     def index
       @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id)
       @current_id = nil

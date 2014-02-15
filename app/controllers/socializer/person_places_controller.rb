@@ -1,5 +1,6 @@
 module Socializer
   class PersonPlacesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person_place, only: [:update, :destroy]
 
     def create

@@ -1,5 +1,7 @@
 module Socializer
   class TiesController < ApplicationController
+    before_action :authenticate_user!
+
     def create
       @circle = Circle.find(params[:tie][:circle_id])
       @circle.add_contact(params[:tie][:contact_id])

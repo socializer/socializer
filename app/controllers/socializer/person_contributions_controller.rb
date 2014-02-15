@@ -1,5 +1,6 @@
 module Socializer
   class PersonContributionsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person_contribution, only: [:update, :destroy]
 
     def create

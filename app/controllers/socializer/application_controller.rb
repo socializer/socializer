@@ -10,6 +10,12 @@ module Socializer
 
     before_action :set_locale
 
+    protected
+
+    def authenticate_user!
+      redirect_to root_path unless signed_in?
+    end
+
     private
 
     def current_user

@@ -1,5 +1,6 @@
 module Socializer
   class PersonPhonesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_person_phone, only: [:update, :destroy]
 
     def create
