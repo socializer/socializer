@@ -52,16 +52,17 @@ module Socializer
     end
 
     def like!(person)
-      create_activity(person.activity_object.id, 'like')
-      increment_like_count
+      success = create_activity(person.activity_object.id, 'like')
+      increment_like_count if success
     end
 
     def unlike!(person)
-      create_activity(person.activity_object.id, 'unlike')
-      decrement_like_count
+      success = create_activity(person.activity_object.id, 'unlike')
+      decrement_like_count if success
     end
 
     # Share the activity with an audience
+    #
     # @param actor_id [Integer] User who share the activity (current_user)
     # @param object_ids [Array<Integer>] List of audiences to target
     # @param content [String] Text with the share
@@ -89,13 +90,15 @@ module Socializer
     private
 
     def create_activity(actor_id, verb)
-      Activity.create! do |a|
+      activity = Activity.new do |a|
         a.actor_id = actor_id
         a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: verb)
 
         a.audiences.build(privacy_level: :public)
       end
+
+      activity.save!
     end
 
     def increment_like_count
