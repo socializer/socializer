@@ -40,10 +40,10 @@ module Socializer
     end
 
     def create_note
-      note = current_user.activity_object.notes.build(params[:note])
-      note.object_ids = @note.object_ids.split(',')
-      note.activity_verb = 'post'
-      note.save!
+      current_user.activity_object.notes.create!(params[:note]) do |n|
+        n.object_ids    = n.object_ids.split(',')
+        n.activity_verb = 'post'
+      end
     end
   end
 end
