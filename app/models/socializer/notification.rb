@@ -29,10 +29,12 @@ module Socializer
     private
 
     def self.create_notification(activity, contact_id)
-      n = Notification.new
-      n.activity = activity
-      n.activity_object = ActivityObject.find_by(id: contact_id)
-      n.save!
+      notification = Notification.new do |n|
+        n.activity = activity
+        n.activity_object = ActivityObject.find_by(id: contact_id)
+      end
+
+      notification.save!
     end
 
     def self.get_potential_contact_id(activity_id)
