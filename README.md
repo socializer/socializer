@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/socializer/socializer.png?branch=master)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://coveralls.io/repos/socializer/socializer/badge.png?branch=master)](https://coveralls.io/r/socializer/socializer?branch=master)
-[![Code Climate](https://codeclimate.com/repos/52f9181fe30ba05e8504e654/badges/ffdf51c181e471fd7980/gpa.png)](https://codeclimate.com/repos/52f9181fe30ba05e8504e654/feed)
+[![Code Climate](https://codeclimate.com/github/socializer/socializer.png)](https://codeclimate.com/github/socializer/socializer)
 [![Dependency Status](https://gemnasium.com/socializer/socializer.png)](https://gemnasium.com/socializer/socializer)
 [![Gem Version](https://badge.fury.io/rb/socializer.png)](http://badge.fury.io/rb/socializer)
 
