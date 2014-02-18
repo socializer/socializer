@@ -1,4 +1,6 @@
 require 'spec_helper'
 
-describe NotificationDecorator do
+module Socializer
+  describe NotificationDecorator do
+  end
 end

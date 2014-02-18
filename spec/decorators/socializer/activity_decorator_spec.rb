@@ -1,4 +1,6 @@
 require 'spec_helper'
 
-describe ActivityDecorator do
+module Socializer
+  describe ActivityDecorator do
+  end
 end
