@@ -24,7 +24,7 @@
             <span><%= 'has %s ' % n.activity.verb.name %></span>
             <span><%= 'a note' if n.activity.activitable_object.note? %></span>
           </div>
-          <div class="time-elapsed"><%= time_ago(n.created_at) %></div>
+          <div class="time-elapsed"><%=  n.created_at_time_ago %></div>
         </div>
 
       </a>
