@@ -4,7 +4,7 @@ module Socializer
     after_filter :reset_unread_notifications, only: [:index]
 
     def index
-      @notifications = current_user.received_notifications
+      @notifications = current_user.received_notifications.decorate
     end
 
     def show
