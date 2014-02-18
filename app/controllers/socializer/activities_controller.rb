@@ -3,7 +3,7 @@ module Socializer
     before_action :authenticate_user!
 
     def index
-      @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id)
+      @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id).decorate
       @current_id = nil
       if params[:provider] == 'circles'
         @circle = Circle.find(params[:id])
