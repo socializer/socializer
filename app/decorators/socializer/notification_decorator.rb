@@ -1,5 +1,6 @@
 module Socializer
   class NotificationDecorator < ApplicationDecorator
+    # TODO: ActivityDecorator - be explicit about what is delegated
     delegate_all
 
     # Define presentation-specific methods here. Helpers are accessed through
