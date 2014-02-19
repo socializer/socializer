@@ -26,6 +26,7 @@ module Socializer
     def append_to_activity_stream
       # REFACTOR: the activity_verb.blank? and object_ids.blank? checks shouldn't be needed
       #           since the record should be invalid without them.
+      #           Comments don't have object_ids
       return if activity_verb.blank?
 
       Activity.create! do |a|
