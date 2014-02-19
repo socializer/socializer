@@ -26,7 +26,7 @@ module Socializer
     def append_to_activity_stream
       # REFACTOR: the activity_verb.blank? and object_ids.blank? checks shouldn't be needed
       #           since the record should be invalid without them.
-      return if activity_verb.blank? || object_ids.blank?
+      return if activity_verb.blank?
 
       Activity.create! do |a|
         a.target_id          = activity_target_id if activity_target_id.present?
@@ -34,7 +34,7 @@ module Socializer
         a.activity_object_id = guid
         a.verb               = Verb.find_or_create_by(name: activity_verb)
 
-        a.add_audience(object_ids)
+        a.add_audience(object_ids) if object_ids.present?
       end
     end
   end
