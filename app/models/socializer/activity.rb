@@ -36,6 +36,26 @@ module Socializer
       @target ||= activitable_target.activitable
     end
 
+    # Add an audience to the activity
+    #
+    # @param object_ids [Array<Integer>] List of audiences to target
+    def add_audience(object_ids)
+      public  = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+      circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+
+      # REFACTOR: remove duplication
+      object_ids.split(',').each do |object_id|
+        if object_id == public || object_id == circles
+          audiences.build(privacy_level: object_id)
+        else
+          audiences.build do |a|
+            a.privacy_level = :limited
+            a.activity_object_id = object_id
+          end
+        end
+      end
+    end
+
     # Selects the activities that either the person made, that is public from a person in
     # one of his circle, or that is shared to one of the circles he is part of.
     #

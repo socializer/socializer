@@ -70,17 +70,14 @@ module Socializer
       # REFACTOR : check for validation?
       return unless object_ids.present? && actor_id.present?
 
-      activity = Activity.new do |a|
+      Activity.create! do |a|
         a.actor_id = actor_id
         a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: 'share')
 
         a.build_activity_field(content: content) if content
+        a.add_audience(object_ids)
       end
-
-      add_audience_to_activity(activity, object_ids)
-
-      activity.save!
     end
 
     def increment_unread_notifications_count
