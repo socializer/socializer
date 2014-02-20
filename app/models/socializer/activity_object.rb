@@ -52,32 +52,33 @@ module Socializer
     end
 
     def like!(person)
-      success = create_activity(person.activity_object.id, 'like')
-      increment_like_count if success
+      public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+      actor_id = person.activity_object.id
+      results  = create_activity(actor_id: actor_id, verb: 'like', object_ids: public)
+      increment_like_count if results[:success]
+      results
     end
 
     def unlike!(person)
-      success = create_activity(person.activity_object.id, 'unlike')
-      decrement_like_count if success
+      public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+      actor_id = person.activity_object.id
+      results  = create_activity(actor_id: actor_id, verb: 'unlike', object_ids: public)
+      decrement_like_count if  results[:success]
+      results
     end
 
     # Share the activity with an audience
     #
-    # @param actor_id [Integer] User who share the activity (current_user)
+    # @param actor_id [Integer] User who is sharing the activity (current_user)
     # @param object_ids [Array<Integer>] List of audiences to target
     # @param content [String] Text with the share
+    #
+    # @return [Hash]
     def share!(actor_id, object_ids, content)
       # REFACTOR : check for validation?
       return unless object_ids.present? && actor_id.present?
 
-      Activity.create! do |a|
-        a.actor_id = actor_id
-        a.activity_object_id = id
-        a.verb = Verb.find_or_create_by(name: 'share')
-
-        a.build_activity_field(content: content) if content
-        a.add_audience(object_ids)
-      end
+      create_activity(actor_id, 'share', object_ids, content: content)
     end
 
     def increment_unread_notifications_count
@@ -86,16 +87,26 @@ module Socializer
 
     private
 
-    def create_activity(actor_id, verb)
-      activity = Activity.new do |a|
+    # REFACTOR: This should be used by ObjectTypeBase append_to_activity_stream as well.
+    #
+    # @param actor_id [Integer] User who is sharing the activity (current_user)
+    # @param verb [String] Verb for the activity
+    # @param object_ids [Array<Integer>] List of audiences to target
+    # @param content [String] Text with the share
+    #
+    # @return [Hash]
+    def create_activity(actor_id: actor_id, verb: verb, object_ids: object_ids, content: nil)
+      activity = Activity.create! do |a|
         a.actor_id = actor_id
         a.activity_object_id = id
         a.verb = Verb.find_or_create_by(name: verb)
 
-        a.audiences.build(privacy_level: :public)
+        # a.audiences.build(privacy_level: :public)
+        a.build_activity_field(content: content) if content
+        a.add_audience(object_ids)
       end
 
-      activity.save!
+      { success: activity.persisted?, activity: activity }
     end
 
     def increment_like_count
