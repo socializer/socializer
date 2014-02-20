@@ -78,7 +78,7 @@ module Socializer
       # REFACTOR : check for validation?
       return unless object_ids.present? && actor_id.present?
 
-      create_activity(actor_id, 'share', object_ids, content: content)
+      create_activity(actor_id: actor_id, verb: 'share', object_ids: object_ids, content: content)
     end
 
     def increment_unread_notifications_count
@@ -95,7 +95,7 @@ module Socializer
     # @param content [String] Text with the share
     #
     # @return [Hash]
-    def create_activity(actor_id: actor_id, verb: verb, object_ids: object_ids, content: nil)
+    def create_activity(actor_id:, verb:, object_ids:, content: nil)
       activity = Activity.create! do |a|
         a.actor_id = actor_id
         a.activity_object_id = id
