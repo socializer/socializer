@@ -8,7 +8,7 @@ module Socializer
 
       has_one :activity_object, as: :activitable, dependent: :destroy
 
-      before_create :create_activity_object
+      before_create :activity_object_builder
       after_create  :append_to_activity_stream
 
     end
@@ -19,7 +19,7 @@ module Socializer
 
     protected
 
-    def create_activity_object
+    def activity_object_builder
       build_activity_object
     end
 
