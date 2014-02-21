@@ -55,7 +55,8 @@ module Socializer
       public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
       actor_id = person.activity_object.id
       results  = create_activity(actor_id: actor_id, verb: 'like', object_ids: public)
-      increment_like_count if results[:success]
+
+      increment_like_count if results.success?
       results
     end
 
@@ -63,7 +64,8 @@ module Socializer
       public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
       actor_id = person.activity_object.id
       results  = create_activity(actor_id: actor_id, verb: 'unlike', object_ids: public)
-      decrement_like_count if  results[:success]
+
+      decrement_like_count if results.success?
       results
     end
 
@@ -106,7 +108,7 @@ module Socializer
         a.add_audience(object_ids)
       end
 
-      { success: activity.persisted?, activity: activity }
+      OpenStruct.new(activity: activity, success?: activity.persisted?)
     end
 
     def increment_like_count
