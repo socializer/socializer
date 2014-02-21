@@ -66,8 +66,7 @@ module Socializer
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
     def self.stream(provider:, actor_id:, viewer_id:)
       viewer_id = Person.find(viewer_id).guid
-
-      query = build_query(viewer_id)
+      query     = build_query(viewer_id: viewer_id)
 
       case provider
       when nil
@@ -101,9 +100,7 @@ module Socializer
 
     private
 
-    def self.build_query(viewer_id)
-      fail 'viewer_id cannot be nil.' if viewer_id.nil?
-
+    def self.build_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
       verbs_of_interest = Verb.where { name.in(verbs_of_interest) }
@@ -131,7 +128,7 @@ module Socializer
       # TODO: Convert this to squeel
 
       # Retrieve the author's unique identifier
-      #subquery = ActivityObject.select { id }.joins{ activitable(Person) }
+      # subquery = ActivityObject.select { id }.joins{ activitable(Person) }
       subquery = 'SELECT socializer_activity_objects.id ' \
                  'FROM socializer_activity_objects ' \
                  'INNER JOIN socializer_people ' \
