@@ -39,7 +39,7 @@ module Socializer
     # Use callbacks to share common setup or constraints between actions.
     def set_likable_and_activity
       @likable = ActivityObject.find(params[:id])
-      @activity = @likable.activitable
+      @activity = @likable.activitable.decorate
     end
 
     # # Never trust parameters from the scary internet, only allow the white list through.
