@@ -96,7 +96,7 @@ module Socializer
     # @param object_ids [Array<Integer>] List of audiences to target
     # @param content [String] Text with the share
     #
-    # @return [Hash]
+    # @return [OpenStruct]
     def create_activity(actor_id:, verb:, object_ids:, content: nil)
       activity = Activity.create! do |a|
         a.actor_id = actor_id
