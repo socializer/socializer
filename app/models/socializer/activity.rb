@@ -64,13 +64,7 @@ module Socializer
     # * <tt>options[:viewer_id]</tt> - who wants to see the activity stream
     #
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
-    def self.stream(options = {})
-      options.assert_valid_keys(:provider, :actor_id, :viewer_id)
-
-      provider  = options.delete(:provider)
-      actor_uid = options.delete(:actor_id)
-      viewer_id = options.delete(:viewer_id)
-
+    def self.stream(provider:, actor_id:, viewer_id:)
       viewer_id = Person.find(viewer_id).guid
 
       query = build_query(viewer_id)
