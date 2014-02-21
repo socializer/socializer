@@ -64,7 +64,7 @@ module Socializer
     # * <tt>options[:viewer_id]</tt> - who wants to see the activity stream
     #
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
-    def self.stream(provider:, actor_id:, viewer_id:)
+    def self.stream(provider:, actor_uid:, viewer_id:)
       viewer_id = Person.find(viewer_id).guid
       query     = build_query(viewer_id: viewer_id)
 
