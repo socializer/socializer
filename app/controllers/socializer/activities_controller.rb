@@ -5,6 +5,8 @@ module Socializer
     def index
       @activities = Activity.stream(provider: params[:provider], actor_id: params[:id], viewer_id: current_user.id).decorate
       @current_id = nil
+      @title = 'Activity stream'
+
       if params[:provider] == 'circles'
         @circle = Circle.find(params[:id])
         @title = @circle.name
@@ -17,8 +19,6 @@ module Socializer
         @group = Group.find(params[:id])
         @title = @group.name
         @current_id = @group.guid
-      else
-        @title = 'Activity stream'
       end
     end
 
