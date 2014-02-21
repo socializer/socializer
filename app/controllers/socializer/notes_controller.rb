@@ -9,9 +9,11 @@ module Socializer
     end
 
     def create
-      @note = create_note
-      @activity = Activity.find_by(activity_object_id: @note.guid)
-      Notification.create_for_activity(@activity)
+      @note     = create_note
+      @activity = Activity.find_by(activity_object_id: @note.guid).decorate
+
+      Notification.create_for_activity(@activity.model)
+
       respond_to do |format|
         format.js
       end
