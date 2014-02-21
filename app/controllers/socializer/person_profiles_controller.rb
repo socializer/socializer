@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_profile, only: [:update, :destroy]
 
     def create
-      @person_profile = current_user.adresses.build(params[:person_profile])
+      @person_profile = current_user.profiles.build(params[:person_profile])
       @person_profile.save!
       redirect_to current_user
     end

@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_contribution, only: [:update, :destroy]
 
     def create
-      @person_contribution = current_user.adresses.build(params[:person_contribution])
+      @person_contribution = current_user.contributions.build(params[:person_contribution])
       @person_contribution.save!
       redirect_to current_user
     end

@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_place, only: [:update, :destroy]
 
     def create
-      @person_place = current_user.adresses.build(params[:person_place])
+      @person_place = current_user.places.build(params[:person_place])
       @person_place.save!
       redirect_to current_user
     end

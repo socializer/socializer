@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_employment, only: [:update, :destroy]
 
     def create
-      @person_employment = current_user.adresses.build(params[:person_employment])
+      @person_employment = current_user.employments.build(params[:person_employment])
       @person_employment.save!
       redirect_to current_user
     end

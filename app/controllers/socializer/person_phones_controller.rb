@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_phone, only: [:update, :destroy]
 
     def create
-      @person_phone = current_user.adresses.build(params[:person_phone])
+      @person_phone = current_user.phones.build(params[:person_phone])
       @person_phone.save!
       redirect_to current_user
     end

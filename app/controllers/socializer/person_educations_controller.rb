@@ -4,7 +4,7 @@ module Socializer
     before_action :set_person_education, only: [:update, :destroy]
 
     def create
-      @person_education = current_user.adresses.build(params[:person_education])
+      @person_education = current_user.educations.build(params[:person_education])
       @person_education.save!
       redirect_to current_user
     end
