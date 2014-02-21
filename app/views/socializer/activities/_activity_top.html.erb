@@ -4,7 +4,7 @@
   <span class='separator'></span>
 
   <%# Time elapsed %>
-  <%= link_to time_ago(activity.created_at), stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
+  <%= link_to activity.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: "unimportant-link" %>
 
   <%# List of audiences %>
   <!-- FIXME: Displays duplicates -->

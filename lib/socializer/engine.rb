@@ -1,5 +1,6 @@
 require 'coffee-rails'
 require 'sass/rails'
+require 'draper'
 require 'enumerize'
 require 'omniauth'
 require 'omniauth-identity'
