@@ -137,6 +137,7 @@ module Socializer
       # TODO: Convert this to squeel
 
       # Retrieve the author's unique identifier
+      #subquery = ActivityObject.select { id }.joins{ activitable(Person) }
       subquery = 'SELECT socializer_activity_objects.id ' \
                  'FROM socializer_activity_objects ' \
                  'INNER JOIN socializer_people ' \
@@ -155,6 +156,7 @@ module Socializer
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
+      # limited_circle_id_sql = Circle.select { id }.joins{ activity_object.audiences }
       limited_circle_id_sql = 'SELECT socializer_circles.id ' \
                               'FROM socializer_circles ' \
                               'INNER JOIN socializer_activity_objects ' \
