@@ -11,7 +11,7 @@
 </p>
 <input type="hidden" name="share[activity_id]" id="share[activity_id]" value="<%= activity_object.id %>">
 <ul>
-  <li><%= render activity_object.activitable %></li>
+  <li><%= render activity_object.activitable.decorate %></li>
 </ul>
 <p>
   <input type="submit" value="Share" />
