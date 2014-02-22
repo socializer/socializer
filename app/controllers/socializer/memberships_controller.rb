@@ -4,13 +4,13 @@ module Socializer
     before_action :set_membership, only: [:approve, :confirm, :decline]
 
     def create
-      @group = Group.find(params[:membership][:group_id])
+      @group = Group.find_by(id: params[:membership][:group_id])
       @group.join(current_user)
       redirect_to @group
     end
 
     def destroy
-      @membership = current_user.memberships.find(params[:id])
+      @membership = current_user.memberships.find_by(id: params[:id])
       @group = @membership.group
       @group.leave(current_user)
       redirect_to @group
@@ -22,8 +22,8 @@ module Socializer
     end
 
     def invite
-      invited_user = Person.find(params[:user_id])
-      group = Group.find(params[:group_id])
+      invited_user = Person.find_by(id: params[:user_id])
+      group = Group.find_by(id: params[:group_id])
       group.invite(invited_user)
       redirect_to group
     end
@@ -41,7 +41,7 @@ module Socializer
     private
 
     def set_membership
-      @membership = Membership.find(params[:id])
+      @membership = Membership.find_by(id: params[:id])
     end
   end
 end

@@ -6,7 +6,7 @@ module Socializer
     # REFACTOR: should handle activity/tooltip as well as people likes
     # Used to display the Like tooltip
     def index
-      activity = Activity.find(params[:id])
+      activity = Activity.find_by(id: params[:id])
       @object_ids = []
 
       activity.activity_object.likes.each do |person|
@@ -38,7 +38,7 @@ module Socializer
 
     # Use callbacks to share common setup or constraints between actions.
     def set_likable_and_activity
-      @likable = ActivityObject.find(params[:id])
+      @likable = ActivityObject.find_by(id: params[:id])
       @activity = @likable.activitable.decorate
     end
 

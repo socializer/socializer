@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_contribution
-      @person_contribution = current_user.contributions.find(params[:id])
+      @person_contribution = current_user.contributions.find_by(id: params[:id])
     end
   end
 end

@@ -31,7 +31,7 @@ module Socializer
     end
 
     def show
-      @group = Group.find(params[:id])
+      @group = Group.find_by(id: params[:id])
       @membership = Membership.find_by(group_id: @group.id)
     end
 
@@ -65,7 +65,7 @@ module Socializer
     private
 
     def set_group
-      @group = current_user.groups.find(params[:id])
+      @group = current_user.groups.find_by(id: params[:id])
     end
   end
 end

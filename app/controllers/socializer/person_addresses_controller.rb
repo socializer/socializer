@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_address
-      @person_address = current_user.addresses.find(params[:id])
+      @person_address = current_user.addresses.find_by(id: params[:id])
     end
   end
 end

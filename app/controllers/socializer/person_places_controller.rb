@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_place
-      @person_place = current_user.places.find(params[:id])
+      @person_place = current_user.places.find_by(id: params[:id])
     end
   end
 end

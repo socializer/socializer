@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_education
-      @person_education = current_user.educations.find(params[:id])
+      @person_education = current_user.educations.find_by(id: params[:id])
     end
   end
 end

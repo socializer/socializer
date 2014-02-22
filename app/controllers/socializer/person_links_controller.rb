@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_link
-      @person_link = current_user.links.find(params[:id])
+      @person_link = current_user.links.find_by(id: params[:id])
     end
   end
 end

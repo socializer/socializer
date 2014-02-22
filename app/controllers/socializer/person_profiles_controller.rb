@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_profile
-      @person_profile = current_user.profiles.find(params[:id])
+      @person_profile = current_user.profiles.find_by(id: params[:id])
     end
   end
 end

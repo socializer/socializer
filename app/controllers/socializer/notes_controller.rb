@@ -38,7 +38,7 @@ module Socializer
     private
 
     def set_note
-      @note = current_user.activity_object.notes.find(params[:id])
+      @note = current_user.activity_object.notes.find_by(id: params[:id])
     end
 
     def create_note

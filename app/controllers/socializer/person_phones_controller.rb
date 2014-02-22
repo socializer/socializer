@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_phone
-      @person_phone = current_user.phones.find(params[:id])
+      @person_phone = current_user.phones.find_by(id: params[:id])
     end
   end
 end

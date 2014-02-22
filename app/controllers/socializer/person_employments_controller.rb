@@ -22,7 +22,7 @@ module Socializer
     private
 
     def set_person_employment
-      @person_employment = current_user.employments.find(params[:id])
+      @person_employment = current_user.employments.find_by(id: params[:id])
     end
   end
 end

@@ -32,7 +32,7 @@ module Socializer
     private
 
     def set_person
-      @person = Person.find(params[:id])
+      @person = Person.find_by(id: params[:id])
     end
   end
 end

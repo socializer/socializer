@@ -32,7 +32,7 @@ module Socializer
     private
 
     def set_comment
-      @comment = current_user.comments.find(params[:id])
+      @comment = current_user.comments.find_by(id: params[:id])
     end
   end
 end

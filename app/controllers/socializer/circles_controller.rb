@@ -49,7 +49,7 @@ module Socializer
     private
 
     def set_circle
-      @circle = current_user.circles.find(params[:id])
+      @circle = current_user.circles.find_by(id: params[:id])
     end
   end
 end

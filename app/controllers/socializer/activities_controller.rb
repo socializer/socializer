@@ -8,15 +8,15 @@ module Socializer
       @title = 'Activity stream'
 
       if params[:provider] == 'circles'
-        @circle = Circle.find(params[:id])
+        @circle = Circle.find_by(id: params[:id])
         @title = @circle.name
         @current_id = @circle.guid
       elsif params[:provider] == 'people'
-        @person = Person.find(params[:id])
+        @person = Person.find_by(id: params[:id])
         @title = @person.display_name
         @current_id = @person.guid
       elsif params[:provider] == 'groups'
-        @group = Group.find(params[:id])
+        @group = Group.find_by(id: params[:id])
         @title = @group.name
         @current_id = @group.guid
       end
@@ -75,7 +75,7 @@ module Socializer
     end
 
     def destroy
-      @activity = Activity.find(params[:id])
+      @activity = Activity.find_by(id: params[:id])
       @activity_guid = @activity.guid
       @activity.destroy
       respond_to do |format|

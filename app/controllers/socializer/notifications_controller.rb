@@ -8,7 +8,7 @@ module Socializer
     end
 
     def show
-      n = Notification.find(params[:id])
+      n = Notification.find_by(id: params[:id])
       read_notification(n) unless n.read?
       redirect_to stream_path(provider: :activities, id: n.activity.id)
     end

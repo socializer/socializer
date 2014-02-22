@@ -65,7 +65,7 @@ module Socializer
     #
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
     def self.stream(provider:, actor_uid:, viewer_id:)
-      viewer_id = Person.find(viewer_id).guid
+      viewer_id = Person.find_by(id: viewer_id).guid
       query     = build_query(viewer_id: viewer_id)
 
       case provider
@@ -78,7 +78,7 @@ module Socializer
         query.where { id.eq(activity_id) }.uniq
       when 'people'
         # this is a user profile. display everything about him that you are allowed to see
-        person_id = Person.find(actor_uid).guid
+        person_id = Person.find_by(id: actor_uid).guid
         query.where { actor_id.eq(person_id) }.uniq
       when 'circles'
         # FIXME: Should display notes even if circle has no members and the owner is viewing it.
@@ -90,7 +90,7 @@ module Socializer
         query.where { actor_id.in(followed_sql) }.uniq
       when 'groups'
         # this is a group. display everything that was posted to this group as audience
-        group_id = Group.find(actor_uid).guid
+        group_id = Group.find_by(id: actor_uid).guid
         # query.where(audiences: {activity_object_id: group_id}).uniq
         query.where { audiences.activity_object_id.eq(group_id) }.uniq
       else
