@@ -1,6 +1,6 @@
 <%= render 'socializer/people/menu', person: @person %>
 <ul class="activities">
 <% @likes.each do |activity| %>
-  <%= render activity.object %>
+  <%= render activity.object.decorate %>
 <% end %>
 </ul>

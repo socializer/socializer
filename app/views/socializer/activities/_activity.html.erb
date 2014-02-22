@@ -13,7 +13,7 @@
 
   <%# Render comments %>
   <ul>
-    <% activity.comments.each do |subactivity| %>
+    <% activity.comments.decorate.each do |subactivity| %>
 
       <li><%= render subactivity %></li>
 

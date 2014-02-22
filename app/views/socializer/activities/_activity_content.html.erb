@@ -5,7 +5,8 @@
 
 <% elsif activity.activitable_object.comment? %>
 
-  <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %><span class='separator'></span><%= activity.object.content %></div>
+<!-- FIXME: activity.object conflicts with draper. object is reserved -->
+  <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %><span class='separator'></span><%= activity.model.object.content %></div>
 
 <% elsif activity.activitable_object.activity? %>
 
