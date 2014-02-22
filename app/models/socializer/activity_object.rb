@@ -76,11 +76,13 @@ module Socializer
     # @param content [String] Text with the share
     #
     # @return [OpenStruct]
-    def share!(actor_id, object_ids, content)
+    def share!(actor_id:, object_ids:, content)
       # REFACTOR : check for validation?
-      return unless object_ids.present? && actor_id.present?
-
-      create_activity(actor_id: actor_id, verb: 'share', object_ids: object_ids, content: content)
+      ActivityCreator.create!(actor_id: actor_id,
+                              activity_object_id: id,
+                              verb: 'share',
+                              object_ids: object_ids,
+                              content: content)
     end
 
     def increment_unread_notifications_count
@@ -89,7 +91,7 @@ module Socializer
 
     private
 
-    # Create the activity for like, unlike, and share.
+    # Create the activity for like and unlike.
     #
     # @param actor_id [Integer] User who is sharing the activity (current_user)
     # @param verb [String] Verb for the activity
@@ -103,17 +105,6 @@ module Socializer
                               verb: verb,
                               object_ids: object_ids,
                               content: content)
-      # activity = Activity.create! do |a|
-      #   a.actor_id = actor_id
-      #   a.activity_object_id = id
-      #   a.verb = Verb.find_or_create_by(name: verb)
-      #
-      #   # a.audiences.build(privacy_level: :public)
-      #   a.build_activity_field(content: content) if content.present?
-      #   a.add_audience(object_ids)
-      # end
-      #
-      # OpenStruct.new(activity: activity, success?: activity.persisted?)
     end
 
     def increment_like_count
