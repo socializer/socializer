@@ -89,7 +89,7 @@ module Socializer
 
     private
 
-    # REFACTOR: This should be used by ObjectTypeBase append_to_activity_stream as well.
+    # Create the activity for like, unlike, and share.
     #
     # @param actor_id [Integer] User who is sharing the activity (current_user)
     # @param verb [String] Verb for the activity
@@ -98,17 +98,22 @@ module Socializer
     #
     # @return [OpenStruct]
     def create_activity(actor_id:, verb:, object_ids:, content: nil)
-      activity = Activity.create! do |a|
-        a.actor_id = actor_id
-        a.activity_object_id = id
-        a.verb = Verb.find_or_create_by(name: verb)
-
-        # a.audiences.build(privacy_level: :public)
-        a.build_activity_field(content: content) if content
-        a.add_audience(object_ids)
-      end
-
-      OpenStruct.new(activity: activity, success?: activity.persisted?)
+      ActivityCreator.create!(actor_id: actor_id,
+                              activity_object_id: id,
+                              verb: verb,
+                              object_ids: object_ids,
+                              content: content)
+      # activity = Activity.create! do |a|
+      #   a.actor_id = actor_id
+      #   a.activity_object_id = id
+      #   a.verb = Verb.find_or_create_by(name: verb)
+      #
+      #   # a.audiences.build(privacy_level: :public)
+      #   a.build_activity_field(content: content) if content.present?
+      #   a.add_audience(object_ids)
+      # end
+      #
+      # OpenStruct.new(activity: activity, success?: activity.persisted?)
     end
 
     def increment_like_count
