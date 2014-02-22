@@ -23,7 +23,7 @@ module Socializer
     end
 
     def audience
-      activities = Activity.stream(provider: 'activities', actor_id: params[:id], viewer_id: current_user.id)
+      activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
 
       @object_ids = []
       is_public = false
