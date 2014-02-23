@@ -52,18 +52,14 @@ module Socializer
     end
 
     def like!(person)
-      public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-      actor_id = person.activity_object.id
-      results  = create_activity(actor_id: actor_id, verb: 'like', object_ids: public)
+      results  = create_like_unlike_activity(actor: person, verb: 'like')
 
       increment_like_count if results.success?
       results
     end
 
     def unlike!(person)
-      public   = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-      actor_id = person.activity_object.id
-      results  = create_activity(actor_id: actor_id, verb: 'unlike', object_ids: public)
+      results  = create_like_unlike_activity(actor: person, verb: 'unlike')
 
       decrement_like_count if results.success?
       results
@@ -76,7 +72,7 @@ module Socializer
     # @param content [String] Text with the share
     #
     # @return [OpenStruct]
-    def share!(actor_id:, object_ids:, content)
+    def share!(actor_id:, object_ids:, content: nil)
       # REFACTOR : check for validation?
       ActivityCreator.create!(actor_id: actor_id,
                               activity_object_id: id,
@@ -93,18 +89,17 @@ module Socializer
 
     # Create the activity for like and unlike.
     #
-    # @param actor_id [Integer] User who is sharing the activity (current_user)
+    # @param actor [Person] User who is sharing the activity (current_user)
     # @param verb [String] Verb for the activity
-    # @param object_ids [Array<Integer>] List of audiences to target
-    # @param content [String] Text with the share
     #
     # @return [OpenStruct]
-    def create_activity(actor_id:, verb:, object_ids:, content: nil)
-      ActivityCreator.create!(actor_id: actor_id,
+    def create_like_unlike_activity(actor:, verb:)
+      public = Socializer::Audience.privacy_level.find_value(:public).value.to_s
+
+      ActivityCreator.create!(actor_id: actor.activity_object.id,
                               activity_object_id: id,
                               verb: verb,
-                              object_ids: object_ids,
-                              content: content)
+                              object_ids: public)
     end
 
     def increment_like_count
