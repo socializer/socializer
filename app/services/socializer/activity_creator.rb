@@ -10,6 +10,8 @@ module Socializer
     # @param content [String] Text with the share
     #
     # @return [OpenStruct]
+    # REFACTOR: allow block syntax as well as arguments
+    # def self.create!(*args, &block) - similar to ActiveRecord
     def self.create!(actor_id:, activity_object_id:, target_id: nil, verb:, object_ids: nil, content: nil)
       activity = Activity.create! do |a|
         a.actor_id           = actor_id
