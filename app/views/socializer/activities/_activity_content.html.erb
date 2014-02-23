@@ -9,7 +9,7 @@
 
 <% elsif activity.activitable_object.activity? %>
 
-  <div class="activity-content"><%= activity.activity_field.content %></div>
+  <div class="activity-content"><%= activity.activity_field_content %></div>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
   <div class="activity-subcontent"><%= link_to activity.model.object.actor.display_name, stream_path(provider: :people, id: activity.model.object.actor.id) %> originally shared this <%= link_to(activity.model.object.class.name.demodulize.downcase, stream_path(provider: :activities, id: activity.model.object.id)) %>:</div>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->

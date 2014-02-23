@@ -20,6 +20,8 @@ module Socializer
 
     validates :verb, presence: true
 
+    delegate :content, to: :activity_field, prefix: true, allow_nil: true
+
     def comments
       @comments ||= children.joins(:activitable_object).where { activitable_object.activitable_type.eq('Socializer::Comment') }
     end
