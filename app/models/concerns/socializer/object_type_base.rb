@@ -19,12 +19,13 @@ module Socializer
 
     protected
 
+    # REFACTOR: remove the before_create callback. Move the callback to the controller(s)?
     def activity_object_builder
       build_activity_object
     end
 
     def append_to_activity_stream
-      # REFACTOR: remove the after_create callback
+      # REFACTOR: remove the after_create callback. Move the callback to the controller(s)?
       #           the `return if activity_verb.blank?` guard is needed to block the create! method when
       #           creating shares, likes, unlikes, etc
 
@@ -35,16 +36,6 @@ module Socializer
                               target_id: activity_target_id,
                               verb: activity_verb,
                               object_ids: object_ids)
-      # return if activity_verb.blank?
-      #
-      # Activity.create! do |a|
-      #   a.target_id          = activity_target_id if activity_target_id.present?
-      #   a.actor_id           = author_id
-      #   a.activity_object_id = guid
-      #   a.verb               = Verb.find_or_create_by(name: activity_verb)
-      #
-      #   a.add_audience(object_ids) if object_ids.present?
-      # end
     end
   end
 end
