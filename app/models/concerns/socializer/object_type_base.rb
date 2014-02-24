@@ -20,15 +20,16 @@ module Socializer
     protected
 
     # REFACTOR: remove the before_create callback. Move the callback to the controller(s)?
+    #           Create a Collaborating Object?
     def activity_object_builder
       build_activity_object
     end
 
+    # REFACTOR: remove the after_create callback. Move the callback to the controller(s)?
+    #           Create a Collaborating Object
     def append_to_activity_stream
-      # REFACTOR: remove the after_create callback. Move the callback to the controller(s)?
-      #           the `return if activity_verb.blank?` guard is needed to block the create! method when
-      #           creating shares, likes, unlikes, etc
-
+      # the `return if activity_verb.blank?` guard is needed to block the create! method when
+      # creating shares, likes, unlikes, etc
       return if activity_verb.blank?
 
       ActivityCreator.create!(actor_id: author_id,
