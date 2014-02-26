@@ -8,6 +8,7 @@ module Socializer
     end
 
     private
+    
     # @param [DateTime] created_at
     # @param [DateTime] updated_at
     # @param [Hash] options
