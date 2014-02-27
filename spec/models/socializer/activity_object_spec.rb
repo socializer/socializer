@@ -93,15 +93,7 @@ module Socializer
       expect(activity_object).to respond_to(:likes)
     end
 
-    it '#like!' do
-      expect(activity_object).to respond_to(:like!)
-    end
-
-    it '#unlike!' do
-      expect(activity_object).to respond_to(:unlike!)
-    end
-
-    context 'when an object liked' do
+    context 'when an object is liked' do
       let(:activity_object) { create(:socializer_activity_object) }
       let(:liking_person) { create(:socializer_person) }
 
@@ -114,6 +106,18 @@ module Socializer
       it { expect(activity_object.like_count).to eq(1) }
       it { expect(liking_person.likes.count.size).to eq(1) }
       it { expect(liking_person.likes? activity_object).to be_true }
+
+      context 'when an object is unliked' do
+        before do
+          activity_object.unlike! liking_person
+          activity_object.reload
+          liking_person.reload
+        end
+
+        it { expect(activity_object.like_count).to eq(0) }
+        it { expect(liking_person.likes.count.size).to eq(0) }
+        it { expect(liking_person.likes? activity_object).to be_false }
+      end
     end
 
     context 'when an object is shared' do
