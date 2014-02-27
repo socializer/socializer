@@ -8,8 +8,6 @@ module Socializer
       let(:created_at) { activity.created_at.to_time.utc }
       let(:updated_at) { activity.updated_at.to_time.utc }
 
-      it { expect(decorated_activity).to respond_to(:created_at_time_ago) }
-
       context 'when created_at and updated_at are equal' do
         let(:time_tag) do
           %Q(<time data-time-ago="moment.js" datetime="#{created_at.iso8601}" title="#{created_at.to_s(:short)}">#{created_at.strftime('%B %e, %Y %l:%M%P')}</time>)
