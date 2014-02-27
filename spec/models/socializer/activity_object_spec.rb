@@ -101,8 +101,37 @@ module Socializer
       expect(activity_object).to respond_to(:unlike!)
     end
 
-    it '#share!' do
-      expect(activity_object).to respond_to(:share!)
+    context 'when an object liked' do
+      let(:activity_object) { create(:socializer_activity_object) }
+      let(:liking_person) { create(:socializer_person) }
+
+      before do
+        activity_object.like! liking_person
+        activity_object.reload
+        liking_person.reload
+      end
+
+      it { expect(activity_object.like_count).to eq(1) }
+      it { expect(liking_person.likes.count.size).to eq(1) }
+      it { expect(liking_person.likes? activity_object).to be_true }
+    end
+
+    context 'when an object is shared' do
+      let(:activity_object) { create(:socializer_activity_object) }
+      let(:actor) { create(:socializer_person) }
+      let(:object_ids) { Socializer::Audience.privacy_level.find_value(:public).value.to_s }
+      let(:results) { activity_object.share!(actor_id: actor.guid, object_ids: object_ids, content: 'Share') }
+
+      it { expect(results.success?).to eq(true) }
+      it { expect(results.activity.actor_id).to eq(actor.guid) }
+      it { expect(results.activity.activity_object_id).to eq(activity_object.id) }
+      it { expect(results.activity.verb.name).to eq('share') }
+      it { expect(results.activity.activity_field_content).to eq('Share') }
+
+      context 'with no content' do
+        let(:results) { activity_object.share!(actor_id: actor, object_ids: object_ids, content: nil) }
+        it { expect(results.activity.activity_field_content).to eq(nil) }
+      end
     end
 
     %w(Person Activity Note Comment Group Circle).each do |type|
