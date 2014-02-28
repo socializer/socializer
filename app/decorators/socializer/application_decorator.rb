@@ -1,17 +1,21 @@
 module Socializer
   class ApplicationDecorator < Draper::Decorator
-    # @param [Hash] options
+    # Returns an HTML time tag
     #
-    # @return [String] An HTML time tag
+    # @param options [Hash]
+    #
+    # @return [String]
     def created_at_time_ago(options = {})
       time_ago(created_at: model.created_at, updated_at: model.updated_at, options: options)
     end
 
     private
 
-    # @param [DateTime] created_at
-    # @param [DateTime] updated_at
-    # @param [Hash] options
+    # Builds an HTML time tag
+    #
+    # @param created_at [DateTime]
+    # @param updated_at [DateTime]
+    # @param options [Hash]
     #
     # @return [String] An HTML time tag
     def time_ago(created_at:, updated_at:, options: {})
@@ -27,10 +31,12 @@ module Socializer
     end
 
     # TODO: make sure that note, comment, etc is edited the ActivityObject is touched as well
+    # Creates the title/tooltip. If the model has been updated, it returns a multiline string.
+    # If not, it returns the created_at value
     #
-    # @param [DateTime] created_at
-    # @param [DateTime] updated_at
-    # @param [Object] format
+    # @param created_at [DateTime]
+    # @param updated_at [DateTime]
+    # @param format [Symbol]
     #
     # @return [String]
     def created_updated_tooltip(created_at: time, updated_at:, format: :short)
