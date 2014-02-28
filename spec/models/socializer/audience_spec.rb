@@ -26,8 +26,10 @@ module Socializer
 
     it { expect(enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public)) }
 
-    it '#object' do
-      expect(audience).to respond_to(:object)
+    context '#object' do
+      let(:activitable) { audience.activity_object.activitable }
+      it { expect(audience.object).to be_a(activitable.class) }
+      it { expect(audience.object).to eq(activitable) }
     end
   end
 end
