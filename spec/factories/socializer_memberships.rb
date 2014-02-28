@@ -2,5 +2,9 @@
 
 FactoryGirl.define do
   factory :socializer_membership, class: Socializer::Membership do
+    active true
+    association :group, factory: :socializer_group
+    # association :activity_member, factory: :socializer_activity_object
+    # association :activity_member, factory: :socializer_activity_object_memberships
   end
 end
