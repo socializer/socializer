@@ -61,36 +61,40 @@ module Socializer
       expect(activity_object).to respond_to(:scope)
     end
 
-    it '#like_count' do
-      expect(activity_object).to respond_to(:like_count)
-    end
-
-    it '#note?' do
-      expect(activity_object).to respond_to(:note?)
-    end
-
-    it '#activity?' do
-      expect(activity_object).to respond_to(:activity?)
-    end
-
-    it '#comment?' do
-      expect(activity_object).to respond_to(:comment?)
-    end
-
-    it '#person?' do
-      expect(activity_object).to respond_to(:person?)
-    end
-
-    it '#group?' do
-      expect(activity_object).to respond_to(:group?)
-    end
-
-    it '#circle?' do
-      expect(activity_object).to respond_to(:circle?)
-    end
-
     it '#likes' do
       expect(activity_object).to respond_to(:likes)
+    end
+
+    context 'check activitable_type predicates' do
+      context '#activity?' do
+        let(:activity_object) { create(:socializer_activity_object_activity) }
+        it { expect(activity_object.activity?).to be_true }
+      end
+
+      context '#circle?' do
+        let(:activity_object) { create(:socializer_activity_object_circle) }
+        it { expect(activity_object.circle?).to be_true }
+      end
+
+      context '#comment?' do
+        let(:activity_object) { create(:socializer_activity_object_comment) }
+        it { expect(activity_object.comment?).to be_true }
+      end
+
+      context '#group?' do
+        let(:activity_object) { create(:socializer_activity_object_group) }
+        it { expect(activity_object.group?).to be_true }
+      end
+
+      context '#note?' do
+        let(:activity_object) { create(:socializer_activity_object) }
+        it { expect(activity_object.note?).to be_true }
+      end
+
+      context '#person?' do
+        let(:activity_object) { create(:socializer_activity_object_person) }
+        it { expect(activity_object.person?).to be_true }
+      end
     end
 
     context 'when an object is liked' do
