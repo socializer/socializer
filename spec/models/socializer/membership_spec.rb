@@ -8,24 +8,33 @@ module Socializer
       expect(membership).to be_valid
     end
 
-    it '#member' do
-      expect(membership).to respond_to(:member)
+    context 'mass assignment' do
+      it { expect(membership).to allow_mass_assignment_of(:group_id) }
     end
 
-    it '#group' do
-      expect(membership).to respond_to(:group)
+    context 'relationships' do
+      it { expect(membership).to belong_to(:group) }
+      it { expect(membership).to belong_to(:activity_member) }
+      # it { expect(membership).to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
     end
 
-    it '#approve!' do
-      expect(membership).to respond_to(:approve!)
+    context '#member' do
+      it { expect(membership).to respond_to(:member) }
+      # let(:activitable) { membership.activity_member.activitable }
+      # it { expect(membership.member).to be_a(activitable.class) }
+      # it { expect(membership.member).to eq(activitable) }
     end
 
-    it '#confirm!' do
-      expect(membership).to respond_to(:confirm!)
+    context '#approve!' do
+      it { expect(membership).to respond_to(:approve!) }
     end
 
-    it '#decline!' do
-      expect(membership).to respond_to(:decline!)
+    context '#confirm!' do
+      it { expect(membership).to respond_to(:confirm!) }
+    end
+
+    context '#decline!' do
+      it { expect(membership).to respond_to(:decline!) }
     end
 
     context 'when approved' do
