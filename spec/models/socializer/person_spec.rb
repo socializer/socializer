@@ -9,6 +9,7 @@ module Socializer
     end
 
     context 'relationships' do
+      it { expect(person).to have_one(:activity_object) }
       it { expect(person).to have_many(:authentications) }
       it { expect(person).to have_many(:addresses) }
       it { expect(person).to have_many(:contributions) }
@@ -27,20 +28,32 @@ module Socializer
       expect(person).to respond_to(:services)
     end
 
-    it '#circles' do
-      expect(person).to respond_to(:circles)
+    context '#circles' do
+      let(:person) { build(:socializer_person_circles) }
+      let(:circles) { person.activity_object.circles }
+      it { expect(person.circles).to be_a(circles.class) }
+      it { expect(person.circles).to eq(circles) }
     end
 
-    it '#comments' do
-      expect(person).to respond_to(:comments)
+    context '#comments' do
+      let(:person) { build(:socializer_person_comments) }
+      let(:comments) { person.activity_object.comments }
+      it { expect(person.comments).to be_a(comments.class) }
+      it { expect(person.comments).to eq(comments) }
     end
 
-    it '#notes' do
-      expect(person).to respond_to(:notes)
+    context '#groups' do
+      let(:person) { build(:socializer_person_groups) }
+      let(:groups) { person.activity_object.groups }
+      it { expect(person.groups).to be_a(groups.class) }
+      it { expect(person.groups).to eq(groups) }
     end
 
-    it '#groups' do
-      expect(person).to respond_to(:groups)
+    context '#notes' do
+      let(:person) { build(:socializer_person_notes) }
+      let(:notes) { person.activity_object.notes }
+      it { expect(person.notes).to be_a(notes.class) }
+      it { expect(person.notes).to eq(notes) }
     end
 
     it '#memberships' do
