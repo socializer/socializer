@@ -24,8 +24,8 @@ module Socializer
       expect(Socializer::Person).to respond_to(:create_with_omniauth)
     end
 
-    it '#services' do
-      expect(person).to respond_to(:services)
+    context '#services' do
+      it { expect(person).to respond_to(:services) }
     end
 
     context '#circles' do
@@ -101,14 +101,18 @@ module Socializer
     end
 
     context '#add_default_circle' do
-      let(:person) { create(:socializer_person_circles) }
+      let(:person) { build(:socializer_person_circles) }
+      let(:circles) { person.activity_object.circles }
 
       before do
         person.add_default_circle
       end
 
-      # TODO: Should test that circles includes Friends, Family, etc.
       it { expect(person.activity_object.circles).to have(4).items }
+      it { expect(circles.find_by(name: 'Friends').name).to eq('Friends') }
+      it { expect(circles.find_by(name: 'Family').name).to eq('Family') }
+      it { expect(circles.find_by(name: 'Acquaintances').name).to eq('Acquaintances') }
+      it { expect(circles.find_by(name: 'Following').name).to eq('Following') }
     end
   end
 end
