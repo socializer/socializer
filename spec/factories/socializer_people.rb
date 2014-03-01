@@ -5,5 +5,21 @@ FactoryGirl.define do
     sequence(:display_name) { |n| "name#{n}" }
     sequence(:email) { |n| "name#{n}@example.com" }
     avatar_provider 'GRAVATAR'
+
+    factory :socializer_person_circles, class: Socializer::Person do
+      association :activity_object, factory: :socializer_activity_object_circle
+    end
+
+    factory :socializer_person_comments, class: Socializer::Person do
+      association :activity_object, factory: :socializer_activity_object_comment
+    end
+
+    factory :socializer_person_groups, class: Socializer::Person do
+      association :activity_object, factory: :socializer_activity_object_group
+    end
+
+    factory :socializer_person_notes, class: Socializer::Person do
+      association :activity_object, factory: :socializer_activity_object
+    end
   end
 end
