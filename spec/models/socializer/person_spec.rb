@@ -99,5 +99,16 @@ module Socializer
         expect(build(:socializer_person, avatar_provider: p)).to be_invalid
       end
     end
+
+    context '#add_default_circle' do
+      let(:person) { create(:socializer_person_circles) }
+
+      before do
+        person.add_default_circle
+      end
+
+      # TODO: Should test that circles includes Friends, Family, etc.
+      it { expect(person.activity_object.circles).to have(4).items }
+    end
   end
 end
