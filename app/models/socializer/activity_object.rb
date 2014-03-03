@@ -23,7 +23,11 @@ module Socializer
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
 
-    # define a class macro for setting comparison with activitable_type
+    # Create predicate methods for comparing the activitable_type
+    #
+    # @param  *args [Array] The activitable_type(s)
+    #
+    # @return [Object] The predicate method
     def self.attribute_type_of(*args)
       args.each do |type|
         define_method("#{type}?") { activitable_type == "Socializer::#{type.capitalize}" }
@@ -51,6 +55,14 @@ module Socializer
       people
     end
 
+     # Like the ActivityObject
+    #
+    # @example
+    #   @likable.like!(current_user) unless current_user.likes?(@likable)
+    #
+    # @param person [Socializer::Person] The person who is liking the activity (current_user)
+    #
+    # @return [OpenStruct]
     def like!(person)
       results  = create_like_unlike_activity(actor: person, verb: 'like')
 
@@ -58,6 +70,14 @@ module Socializer
       results
     end
 
+    # Unlike the ActivityObject
+    #
+    # @example
+    #   @likable.unlike!(current_user) if current_user.likes?(@likable)
+    #
+    # @param person [Socializer::Person] The person who is unliking the activity (current_user)
+    #
+    # @return [OpenStruct]
     def unlike!(person)
       results  = create_like_unlike_activity(actor: person, verb: 'unlike')
 
@@ -89,7 +109,7 @@ module Socializer
 
     # Create the activity for like and unlike.
     #
-    # @param actor [Person] User who is sharing the activity (current_user)
+    # @param actor [Person] User who is liking/unliking the activity (current_user)
     # @param verb [String] Verb for the activity
     #
     # @return [OpenStruct]
