@@ -88,7 +88,7 @@ module Socializer
 
       if avatar_provider_array.include?(avatar_provider)
         provider = avatar_provider.downcase
-        authentications.where(provider: provider).first.try(:image_url)
+        authentications.find_by(provider: provider).try(:image_url)
       else
         return if email.blank?
         "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
