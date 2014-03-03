@@ -61,11 +61,14 @@ module Socializer
     # Selects the activities that either the person made, that is public from a person in
     # one of his circle, or that is shared to one of the circles he is part of.
     #
-    # * <tt>options[:provider]</tt>  - <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>, <tt>groups</tt>
-    # * <tt>options[:actor_id]</tt>  - unique identifier of the previously typed provider
-    # * <tt>options[:viewer_id]</tt> - who wants to see the activity stream
-    #
+    # @example
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
+    #
+    # @param  provider: nil [String] <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>, <tt>groups</tt>
+    # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.stream(provider: nil, actor_uid:, viewer_id:)
       viewer_id = Person.find_by(id: viewer_id).guid
       query     = build_query(viewer_id: viewer_id)

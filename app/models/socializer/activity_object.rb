@@ -55,7 +55,7 @@ module Socializer
       people
     end
 
-     # Like the ActivityObject
+    # Like the ActivityObject
     #
     # @example
     #   @likable.like!(current_user) unless current_user.likes?(@likable)
