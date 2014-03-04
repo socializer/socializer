@@ -12,13 +12,20 @@
 
 $(document).ready(function() {
   // Replace default titles on images with link by qTip tooltips
-  $('a img[title]').qtip({
+  $('a img[title!=""]').qtip({
     style: {
-      classes: 'qtip-tipsy'
+      classes: 'qtip-todc-bootstrap',
+      tip: {
+        width: 12
+      }
+    },
+    show: {
+      solo: true
     },
     position: {
       my: 'top center',
-      at: 'bottom center'
+      at: 'bottom center',
+      viewport: $(window)
     }
   });
 });

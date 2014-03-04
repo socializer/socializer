@@ -10,12 +10,15 @@
         url: jQueryElement.attr('href')
 
     style:
-      classes: 'qtip-tipsy'
+      classes: 'qtip-todc-bootstrap'
+      tip:
+        width: 12
 
     position:
       my: 'top center'
       at: 'bottom center'
       effect: false
+      viewport: $(window)
 
     show:
       event: 'click'

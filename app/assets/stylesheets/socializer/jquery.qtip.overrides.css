@@ -1,0 +1,107 @@
+/**
+ * TODC Bootstrap style.
+ *
+ * Tested with IE 8, IE 9, Chrome 18, Firefox 9, Opera 11.
+ * Does not work with IE 7.
+ */
+.qtip-todc-bootstrap {
+	/** Taken from Bootstrap body */
+	font-size: 13px;
+	line-height: 18px;
+	color: 333;
+
+	/** Taken from Bootstrap .popover */
+	padding: 1px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 2px;
+	   -moz-border-radius: 2px;
+          border-radius: 2px;
+	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	   -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	   -moz-background-clip: padding;
+	        background-clip: padding-box;
+}
+
+	.qtip-todc-bootstrap .qtip-titlebar {
+		/** Taken from Bootstrap .popover-title */
+		padding: 10px;
+		margin: 0;
+		font-size: 13px;
+		font-weight: normal;
+		line-height: 18px;
+		background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+		-webkit-border-radius: 0;
+		   -moz-border-radius: 0;
+		        border-radius: 0;
+	}
+
+		.qtip-todc-bootstrap .qtip-titlebar .qtip-close {
+			/**
+			 * Overrides qTip2:
+			 * .qtip-titlebar .qtip-close{
+			 *   [...]
+			 *   right: 4px;
+			 *   top: 50%;
+			 *   [...]
+			 *   border-style: solid;
+			 * }
+			 */
+			right: 11px;
+			top: 45%;
+			border-style: none;
+		}
+
+	.qtip-todc-bootstrap .qtip-content {
+		/** Taken from Bootstrap .popover-content */
+		padding: 10px;
+/*    white-space: pre-wrap;*/
+	}
+
+	.qtip-todc-bootstrap .qtip-icon {
+		/**
+		 * Overrides qTip2:
+		 * .qtip-default .qtip-icon {
+		 *   border-color: #CCC;
+		 *   background: #F1F1F1;
+		 *   color: #777;
+		 * }
+		 */
+		background: transparent;
+	}
+
+		.qtip-todc-bootstrap .qtip-icon .ui-icon {
+			/**
+			 * Overrides qTip2:
+			 * .qtip-icon .ui-icon{
+			 *   width: 18px;
+			 *   height: 14px;
+			 * }
+			 */
+			width: auto;
+			height: auto;
+
+			/* Taken from Bootstrap .close */
+			float: right;
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 18px;
+			color: #000000;
+			text-shadow: 0 1px 0 #ffffff;
+			opacity: 0.2;
+			filter: alpha(opacity=20);
+		}
+
+		.qtip-todc-bootstrap .qtip-icon .ui-icon:hover {
+			/* Taken from Bootstrap .close:hover */
+			color: #000000;
+			text-decoration: none;
+			cursor: pointer;
+			opacity: 0.4;
+			filter: alpha(opacity=40);
+		}
