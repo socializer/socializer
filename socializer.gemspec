@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('bcrypt-ruby',          '~> 3.1.2')
   spec.add_dependency('draper',               '~> 1.3.0')
   spec.add_dependency('elasticsearch-rails',  '~> 0.1.0')
-  spec.add_dependency('enumerize',            '~> 0.7.0')
+  spec.add_dependency('enumerize',            '~> 0.8.0')
   spec.add_dependency('omniauth',             '~> 1.2.1')
   spec.add_dependency('omniauth-identity',    '~> 1.1.1')
   spec.add_dependency('omniauth-facebook',    '~> 1.6.0')
