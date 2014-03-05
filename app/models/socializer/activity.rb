@@ -42,8 +42,9 @@ module Socializer
     #
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
-      public  = Socializer::Audience.privacy_level.find_value(:public).value.to_s
-      circles = Socializer::Audience.privacy_level.find_value(:circles).value.to_s
+      privacy_level = Socializer::Audience.privacy_level
+      public        = privacy_level.find_value(:public).value.to_s
+      circles       = privacy_level.find_value(:circles).value.to_s
 
       # REFACTOR: remove duplication
       object_ids.split(',').each do |object_id|
@@ -111,9 +112,10 @@ module Socializer
       verbs_of_interest = Verb.where { name.in(verbs_of_interest) }
 
       # privacy_levels
-      privacy_public  = Audience.privacy_level.find_value(:public).value
-      privacy_circles = Audience.privacy_level.find_value(:circles).value
-      privacy_limited = Audience.privacy_level.find_value(:limited).value
+      privacy_level   = Socializer::Audience.privacy_level
+      privacy_public  = privacy_level.find_value(:public).value
+      privacy_circles = privacy_level.find_value(:circles).value
+      privacy_limited = privacy_level.find_value(:limited).value
 
       query = joins { audiences }.where { verb_id.in(verbs_of_interest) }.where { target_id.eq(nil) }
 
