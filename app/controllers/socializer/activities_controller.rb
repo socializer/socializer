@@ -3,22 +3,27 @@ module Socializer
     before_action :authenticate_user!
 
     def index
-      @activities = Activity.stream(provider: params[:provider], actor_uid: params[:id], viewer_id: current_user.id).decorate
-      @current_id = nil
-      @title = 'Activity stream'
+      id       = params.fetch(:id) { nil }
+      provider = params.fetch(:provider) { nil }
 
-      if params[:provider] == 'circles'
-        @circle = Circle.find_by(id: params[:id])
-        @title = @circle.name
+      @activities = Activity.stream(provider: provider, actor_uid: id, viewer_id: current_user.id).decorate
+
+      case provider
+      when 'circles'
+        @circle     = Circle.find_by(id: id)
+        @title      = @circle.name
         @current_id = @circle.guid
-      elsif params[:provider] == 'people'
-        @person = Person.find_by(id: params[:id])
-        @title = @person.display_name
+      when 'people'
+        @person     = Person.find_by(id: id)
+        @title      = @person.display_name
         @current_id = @person.guid
-      elsif params[:provider] == 'groups'
-        @group = Group.find_by(id: params[:id])
-        @title = @group.name
+      when 'groups'
+        @group      = Group.find_by(id: id)
+        @title      = @group.name
         @current_id = @group.guid
+      else
+        @current_id = nil
+        @title      = 'Activity stream'
       end
     end
 
