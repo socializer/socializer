@@ -1,8 +1,8 @@
 module Socializer
   class SessionsController < ApplicationController
     def create
-      auth = request.env['omniauth.auth']
-      user_auth = Authentication.where(provider: auth.provider, uid: auth.uid).first
+      auth      = request.env['omniauth.auth']
+      user_auth = Authentication.find_by(provider: auth.provider, uid: auth.uid)
 
       if user_auth.nil?
         add_authentication(auth) if signed_in?
