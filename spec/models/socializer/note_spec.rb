@@ -8,8 +8,12 @@ module Socializer
       expect(note).to be_valid
     end
 
-    it '#content' do
-      expect(note).to respond_to(:content)
+    context 'mass assignment' do
+      it { expect(note).to allow_mass_assignment_of(:content) }
+    end
+
+    context 'relationships' do
+      it { expect(note).to belong_to(:activity_author) }
     end
 
     it '#author' do
