@@ -61,10 +61,6 @@ module Socializer
       expect(activity_object).to respond_to(:scope)
     end
 
-    it '#likes' do
-      expect(activity_object).to respond_to(:likes)
-    end
-
     context 'check activitable_type predicates' do
       context '#activity?' do
         let(:activity_object) { build(:socializer_activity_object_activity) }
@@ -108,6 +104,7 @@ module Socializer
       end
 
       it { expect(activity_object.like_count).to eq(1) }
+      it { expect(activity_object.likes.size).to eq(1) }
       it { expect(liking_person.likes.count.size).to eq(1) }
       it { expect(liking_person.likes? activity_object).to be_true }
 
@@ -119,6 +116,7 @@ module Socializer
         end
 
         it { expect(activity_object.like_count).to eq(0) }
+        it { expect(activity_object.likes.size).to eq(0) }
         it { expect(liking_person.likes.count.size).to eq(0) }
         it { expect(liking_person.likes? activity_object).to be_false }
       end
@@ -142,14 +140,24 @@ module Socializer
       end
     end
 
+    context '#increment_unread_notifications_count' do
+      let(:activity_object) do
+        create(:socializer_activity_object)
+      end
+
+      before do
+        activity_object.increment_unread_notifications_count
+        activity_object.reload
+      end
+
+      it { expect(activity_object.unread_notifications_count).to eq(1) }
+    end
     %w(Person Activity Note Comment Group Circle).each do |type|
 
       it sprintf('is type of %s', type) do
         activity_object.activitable_type = "Socializer::#{type}"
         expect(activity_object.send("#{type.downcase}?")).to be_true
       end
-
     end
-
   end
 end

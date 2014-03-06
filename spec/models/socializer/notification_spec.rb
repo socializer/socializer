@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module Socializer
   describe Notification do
-
     # Define a person for common testd instead of build one for each
     let(:notification) { build(:socializer_notification) }
 
@@ -23,6 +22,5 @@ module Socializer
       it { expect(notification).to validate_presence_of(:activity_id) }
       it { expect(notification).to validate_presence_of(:activity_object_id) }
     end
-
   end
 end
