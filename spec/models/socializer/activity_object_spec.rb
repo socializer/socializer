@@ -44,7 +44,7 @@ module Socializer
       end
 
       it { expect(liked_activity_object.like_count).to eq(1) }
-      # it { expect(liked_activity_object.likes.size).to eq(1) }
+      it { expect(liked_activity_object.likes.size).to eq(1) }
 
       context 'and unliked' do
         before do
@@ -53,7 +53,7 @@ module Socializer
         end
 
         it { expect(liked_activity_object.like_count).to eq(0) }
-        # it { expect(liked_activity_object.likes.size).to eq(0) }
+        it { expect(liked_activity_object.likes.size).to eq(0) }
       end
     end
 
@@ -152,6 +152,7 @@ module Socializer
 
       it { expect(activity_object.unread_notifications_count).to eq(1) }
     end
+
     %w(Person Activity Note Comment Group Circle).each do |type|
 
       it sprintf('is type of %s', type) do
