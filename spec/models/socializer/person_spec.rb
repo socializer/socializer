@@ -25,7 +25,14 @@ module Socializer
     end
 
     context '#services' do
-      it { expect(person).to respond_to(:services) }
+      it do
+        person = create(:socializer_person, avatar_provider: 'FACEBOOK')
+        person.authentications.create(provider: 'facebook', image_url: "http://facebook.com")
+
+        expect(person.services.to_sql).to include("!= 'Identity'")
+        expect(person.services.count).to eq(1)
+        expect(person.services.find_by(provider: 'facebook').provider).to eq('facebook')
+      end
     end
 
     context '#circles' do
