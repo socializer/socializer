@@ -12,7 +12,7 @@
 
 $(document).ready(function() {
   // Replace default titles on images with link by qTip tooltips
-  $('a img[title!=""]').qtip({
+  $('a [title!=""]').qtip({
     style: {
       classes: 'qtip-todc-bootstrap',
       tip: {
