@@ -1,5 +1,5 @@
 <% if current_user?(person) %>
-<p style="float: right;"><%= link_to image_tag("socializer/icons/Edit.png", width: 50, title: "Edit your profile"), edit_person_path(current_user) %></p>
+<p style="float: right;"><%= link_to(content_tag(:span, nil, class: 'icon icon-pencil icon-2x', title: 'Edit your profile'), edit_person_path(current_user)) %></p>
 <% end %>
 <h1><%= person.display_name %></h1>
 <p class="content-header-bar">

@@ -1,11 +1,11 @@
 <h1><%= t('.welcome') %></h1>
 <h2><%= t('.sub_heading') %></h2>
 <p>
-  <%= link_to image_tag("socializer/auth_buttons/facebook_32.png"), signin_path(:facebook) %>
-  <%= link_to image_tag("socializer/auth_buttons/twitter_32.png"), signin_path(:twitter) %>
-  <%= link_to image_tag("socializer/auth_buttons/linkedin_32.png"), signin_path(:linkedin) %>
-  <%= link_to image_tag("socializer/auth_buttons/yahoo_32.png"), signin_path(:yahoo) %>
-  <%= link_to image_tag("socializer/auth_buttons/google_32.png"), signin_path(:google) %>
+  <%= link_to(content_tag(:span, nil, class:'icon icon-facebook icon-2x'), signin_path(:facebook)) %>
+  <%= link_to(content_tag(:span, nil, class:'icon icon-twitter icon-2x'), signin_path(:twitter)) %>
+  <%= link_to(content_tag(:span, nil, class:'icon icon-linked-in icon-2x'), signin_path(:linkedin)) %>
+  <%= link_to(content_tag(:span, nil, class:'icon icon-yahoo icon-2x'), signin_path(:yahoo)) %>
+  <%= link_to(content_tag(:span, nil, class:'icon icon-google icon-2x'), signin_path(:google)) %>
 </p>
 <p>
   <strong><%= t('.local_account_query')%></strong>

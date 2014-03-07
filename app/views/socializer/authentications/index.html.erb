@@ -1,8 +1,9 @@
 <%= render 'menu' %>
 <% @authentications.each do |authentication| %>
 <div style="text-align: center; margin: 10px 10px 10px 0; padding: 15px 0; border: 1px solid #ccc; background-color: #dedede; width: 150px; float: left;">
-  <%= image_tag "socializer/auth_buttons/" + authentication.provider.camelize.downcase + "_64.png" %><br>
-<%= authentication.uid %><br>
-<%= link_to t('.unbind'), authentication, method: :delete %>
+  <%= content_tag(:span, nil, class: "icon icon-#{authentication.provider.downcase} icon-2x") %>
+  <%= authentication.provider.downcase if authentication.provider.downcase == 'identity' %><br>
+  <%= authentication.uid %><br>
+  <%= link_to t('.unbind'), authentication, method: :delete %>
 </div>
 <% end %>

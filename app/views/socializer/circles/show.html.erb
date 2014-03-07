@@ -1,4 +1,4 @@
-<p style="float: right;"><%= link_to image_tag("socializer/icons/Edit.png", width: 50, title: "#{t('.edit_this_circle')}"), edit_circle_path(@circle) %></p>
+<p style="float: right;"><%= link_to(content_tag(:span, nil, class: 'icon icon-pencil icon-2x', title: "#{t('.edit_this_circle')}"), edit_circle_path(@circle)) %></p>
 <%= render 'menu' %>
 <h2><%= @circle.name %></h2>
 <p class="field-info"><%= @circle.content %></p>
