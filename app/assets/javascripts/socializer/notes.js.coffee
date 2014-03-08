@@ -30,7 +30,7 @@
       prePopulate: prepopulate
 
     $('.token-input-list').hide()  if (current_id?) and (title is '')
-    $('#new_note .action-button').show 'fast'
+    $('#new_note .action-button').show()
 
 jQuery ->
   controller_name = $('body').data('controller')
