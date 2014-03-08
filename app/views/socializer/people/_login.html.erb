@@ -1,11 +1,11 @@
 <h1><%= t('.welcome') %></h1>
 <h2><%= t('.sub_heading') %></h2>
 <p>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-facebook fa-2x fa-fw'), signin_path(:facebook)) %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-twitter fa-2x fa-fw'), signin_path(:twitter)) %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-linkedin fa-2x fa-fw'), signin_path(:linkedin)) %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-yahoo fa-2x fa-fw'), signin_path(:yahoo)) %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-google fa-2x fa-fw'), signin_path(:google)) %>
+  <%= link_to(content_tag(:span, nil, class:'fa fa-facebook fa-2x fa-fw', title: 'Facebook'), signin_path(:facebook)) %>
+  <%= link_to(content_tag(:span, nil, class:'fa fa-twitter fa-2x fa-fw', title: 'Twitter'), signin_path(:twitter)) %>
+  <%= link_to(content_tag(:span, nil, class:'fa fa-linkedin fa-2x fa-fw', title: 'LinkedIn'), signin_path(:linkedin)) %>
+  <%= link_to(content_tag(:span, nil, class:'fa fa-yahoo fa-2x fa-fw', title: 'Yahoo'), signin_path(:yahoo)) %>
+  <%= link_to(content_tag(:span, nil, class:'fa fa-google fa-2x fa-fw', title: 'Google'), signin_path(:google)) %>
 </p>
 <p>
   <strong><%= t('.local_account_query')%></strong>
