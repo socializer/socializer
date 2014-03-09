@@ -1,5 +1,5 @@
-<div id="page-header">
-  <div id="inner-header">
+<header id="page-header">
+  <nav id="inner-header">
     <%= link_to(content_tag(:span, nil, class: 'fa fa-home fa-3x', title: "#{t('.home')}"),              root_path) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-user fa-3x', title: "#{t('.profile')}"),           stream_path(provider: :people, id: current_user.id)) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-3x', title: "#{t('.circles')}"), circles_contacts_path) %>
@@ -7,5 +7,5 @@
     <%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-3x', title: "#{t('.groups')}"),           groups_memberships_path) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-bell-alt fa-3x', title: "#{t('.notifications')}"), notifications_path) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-off fa-3x', title: "#{t('.signout')}"),            signout_path, method: :delete, style: "float: right;") %>
-  </div>
-</div>
+  </nav>
+</header>

@@ -12,22 +12,21 @@
     <%= render 'layouts/socializer/header' %>
     <div id="outer-page">
 
-      <div id="stream-column">
+      <aside id="stream-column">
       <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
         <%= render 'socializer/people/card', person: @person %>
       <% else %>
         <%= render 'socializer/activities/stream_list' %>
       <% end %>
-      </div>
+      </aside>
 
       <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
 
-      <div id="page-content" style="width: 558px;">
+      <section id="page-content" style="width: 558px;">
         <%= yield %>
-      </div>
+      </section>
 
-      <div id="contextual-column">
-
+      <aside id="contextual-column">
         <% if params[:provider] == 'circles' %>
           <%= render 'socializer/circles/card', circle: @circle, title: @title %>
         <% elsif params[:provider] == 'groups' %>
@@ -35,14 +34,13 @@
         <% elsif params[:provider].nil? %>
           <%= render 'socializer/activities/stream_card' %>
         <% end %>
-
-      </div>
+      </aside>
 
       <% else %>
 
-      <div id="page-content" style="width: 758px;">
+      <section id="page-content" style="width: 758px;">
         <%= yield %>
-      </div>
+      </section>
 
       <% end %>
     </div>
