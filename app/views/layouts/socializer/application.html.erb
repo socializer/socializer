@@ -2,17 +2,17 @@
 <html>
   <head>
     <title>Socializer</title>
-    <%= stylesheet_link_tag    "socializer/application" %>
-    <%#= stylesheet_link_tag    "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"%>
+    <%= stylesheet_link_tag    'socializer/application' %>
+    <%#= stylesheet_link_tag    '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css'%>
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>", data-locale="<%= I18n.locale %>" >
 
     <% if signed_in? %>
     <%= render 'layouts/socializer/header' %>
-    <div id="outer-page">
+    <div id='outer-page'>
 
-      <aside id="stream-column">
+      <aside id='stream-column'>
       <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
         <%= render 'socializer/people/card', person: @person %>
       <% else %>
@@ -22,11 +22,11 @@
 
       <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
 
-      <section id="page-content" style="width: 558px;">
+      <section id='page-content' style='width: 558px;'>
         <%= yield %>
       </section>
 
-      <aside id="contextual-column">
+      <aside id='contextual-column'>
         <% if params[:provider] == 'circles' %>
           <%= render 'socializer/circles/card', circle: @circle, title: @title %>
         <% elsif params[:provider] == 'groups' %>
@@ -38,7 +38,7 @@
 
       <% else %>
 
-      <section id="page-content" style="width: 758px;">
+      <section id='page-content' style='width: 758px;'>
         <%= yield %>
       </section>
 
@@ -46,12 +46,12 @@
     </div>
 
     <% else %>
-    <div id="outer-page">
+    <div id='outer-page'>
       <%= render 'socializer/people/login' %>
     </div>
     <% end %>
 
-    <%= javascript_include_tag "socializer/application" %>
-    <%#= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" %>
+    <%= javascript_include_tag 'socializer/application' %>
+    <%#= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js %>
   </body>
 </html>
