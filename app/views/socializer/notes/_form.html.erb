@@ -6,9 +6,14 @@
   <%# end %>
 
   <%= simple_form_for(Socializer::Note.new, remote: true) do |f| %>
-    <%= f.text_area :content, class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" %>
-    <%= f.input :object_ids, label: false, input_html: { data: { path: j(audiences_path), title: j(@title), current_id: @current_id } } %>
-    <%= f.button :submit, t('.share'), class: 'action-button' %>
+    <%= content_tag(:div, class: 'form-inputs') do %>
+      <%= f.input :content, label: false, input_html: { class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" } %>
+      <%= f.input :object_ids, label: false, input_html: { data: { path: j(audiences_path), title: j(@title), current_id: @current_id } } %>
+    <% end %>
+
+    <%= content_tag(:div, class: "form-actions") do %>
+      <%= f.button :submit, t('.share'), class: 'action-button' %>
+    <% end %>
   <% end %>
 
 </div>
