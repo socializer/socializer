@@ -1,12 +1,16 @@
-<%= form_for(person_address) do |form| %>
-<p class="field-title"><%= form.label :category %></p>            <p class="field-value"><%= form.select :category, Socializer::PersonAddress.category.options %></p>
-<p class="field-title"><%= form.label :label %></p>               <p class="field-value"><%= form.text_field :label %></p>
-<p class="field-title"><%= form.label :line1 %></p>               <p class="field-value"><%= form.text_field :line1 %></p>
-<p class="field-title"><%= form.label :line2 %></p>               <p class="field-value"><%= form.text_field :line2 %></p>
-<p class="field-title"><%= form.label :city %></p>                <p class="field-value"><%= form.text_field :city %></p>
-<p class="field-title"><%= form.label :postal_code_or_zip %></p>  <p class="field-value"><%= form.text_field :postal_code_or_zip %></p>
-<p class="field-title"><%= form.label :province_or_state %></p>   <p class="field-value"><%= form.text_field :province_or_state %></p>
-<p class="field-title"><%= form.label :country %></p>             <p class="field-value"><%= form.text_field :country %></p>
+<%= simple_form_for(person_address) do |f| %>
+  <%= content_tag(:div, class: 'form-inputs') do %>
+    <%= f.input :category, input_html: { autofocus: true } %>
+    <%= f.input :label %>
+    <%= f.input :line1 %>
+    <%= f.input :line2 %>
+    <%= f.input :city %>
+    <%= f.input :postal_code_or_zip %>
+    <%= f.input :province_or_state %>
+    <%= f.input :country %>
+  <% end %>
 
-<p class="field-title"></p>                                       <p class="field-value"><%= form.submit t('.submit'), class: "action-button" %></p>
+  <%= content_tag(:div, class: 'form-actions') do %>
+    <%= f.button :submit, t('.submit'), class: 'action-button' %>
+  <% end %>
 <% end %>

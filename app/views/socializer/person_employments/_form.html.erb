@@ -1,10 +1,14 @@
-<%= form_for(person_employment) do |form| %>
-<p class="field-title"><%= form.label :employer_name %></p>       <p class="field-value"><%= form.text_field :employer_name %></p>
-<p class="field-title"><%= form.label :job_title %></p>           <p class="field-value"><%= form.text_field :job_title %></p>
-<p class="field-title"><%= form.label :start %></p>               <p class="field-value"><%= form.date_field :start %></p>
-<p class="field-title"><%= form.label :end %></p>                 <p class="field-value"><%= form.date_field :end %></p>
-<p class="field-title"><%= form.label :current %></p>             <p class="field-value"><%= form.check_box :current %></p>
-<p class="field-title"><%= form.label :job_description %></p>     <p class="field-value"><%= form.text_area :job_description %></p>
+<%= simple_form_for(person_employment) do |f| %>
+  <%= content_tag(:div, class: 'form-inputs') do %>
+    <%= f.input :employer_name, input_html: { autofocus: true } %>
+    <%= f.input :job_title %>
+    <%= f.input :start %>
+    <%= f.input :end %>
+    <%= f.input :current %>
+    <%= f.input :job_description %>
+  <% end %>
 
-<p class="field-title"></p>                                       <p class="field-value"><%= form.submit t('.submit'), class: "action-button" %></p>
+  <%= content_tag(:div, class: 'form-actions') do %>
+    <%= f.button :submit, t('.submit'), class: 'action-button' %>
+  <% end %>
 <% end %>

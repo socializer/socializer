@@ -1,8 +1,11 @@
-<%= form_for(comment) do |form| %>
 <h1>Comment activity</h1>
-<div style="padding: 0px 20px;">
-  <%= form.text_area :content, rows: 5, style: "width: 706px; margin-bottom: 5px; padding: 5px; resize: none;" %>
-  <%= form.hidden_field :activity_target_id, value: params[:id] %>
-  <%= form.submit t('.submit'), class: "action-button" %>
-</div>
+<%= simple_form_for(comment) do |f| %>
+  <%= content_tag(:div, class: 'form-inputs') do %>
+    <%= f.input :content, label: false, input_html: { autofocus: true } %>
+    <%= f.input :activity_target_id,  as: :hidden, input_html: { value: params[:id] } %>
+  <% end %>
+
+  <%= content_tag(:div, class: 'form-actions') do %>
+    <%= f.button :submit, t('.submit'), class: 'action-button' %>
+  <% end %>
 <% end %>

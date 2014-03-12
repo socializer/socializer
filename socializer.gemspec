@@ -20,6 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency('rails',                '4.0.3')
   spec.add_dependency('jquery-rails')
+  # Added 'jquery-ui-rails' for drag and drop
+  spec.add_dependency('jquery-ui-rails')
   spec.add_dependency('sass-rails')
   spec.add_dependency('coffee-rails')
   spec.add_dependency('uglifier')
@@ -33,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-linkedin',    '~> 0.1.0')
   spec.add_dependency('omniauth-openid',      '~> 1.0.1')
   spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
+  spec.add_dependency('simple_form',          '~> 3.0.1')
   spec.add_dependency('squeel',               '~> 1.1.0')
 
   spec.add_development_dependency('bundler',              '~> 1.5.0')

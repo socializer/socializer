@@ -6,6 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
 //= require_tree .
 //= require moment/moment
 //= require moment/langs

@@ -1,3 +1,5 @@
+# Added 'jquery-ui-rails' for drag and drop
+require 'jquery/ui/rails'
 require 'coffee-rails'
 require 'sass/rails'
 require 'draper'
@@ -8,6 +10,8 @@ require 'omniauth-facebook'
 require 'omniauth-linkedin'
 require 'omniauth-openid'
 require 'omniauth-twitter'
+
+require 'simple_form'
 
 module Socializer
   class Engine < Rails::Engine
