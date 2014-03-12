@@ -1,3 +1,5 @@
+# Added 'jquery-ui-rails' for drag and drop
+require 'jquery/ui/rails'
 require 'coffee-rails'
 require 'sass/rails'
 require 'draper'
