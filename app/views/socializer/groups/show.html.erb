@@ -2,12 +2,17 @@
 <h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
 
 <% if @group.member?(current_user) %>
-<%= link_to t('.leave'), @membership, method: :delete %>
+  <%= link_to t('.leave'), @membership, method: :delete %>
 <% else %>
-<%= form_for current_user.memberships.build(group_id: @group.id) do |f| %>
-  <%= f.hidden_field :group_id %>
-  <%= f.submit t('.join') %>
-<% end %>
+  <%= simple_form_for(current_user.memberships.build(group_id: @group.id)) do |f| %>
+    <%= content_tag(:div, class: 'form-inputs') do %>
+      <%= f.input :group_id,  as: :hidden %>
+    <% end %>
+
+    <%= content_tag(:div, class: 'form-actions') do %>
+      <%= f.button :submit, t('.join'), class: 'action-button' %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <h2>Members</h2>
