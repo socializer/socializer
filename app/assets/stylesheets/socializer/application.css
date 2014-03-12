@@ -162,9 +162,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 html, body
 {
-	margin: 0;
-	padding: 0;
-	font-family: Arial;
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
 
 }
 
@@ -181,40 +181,40 @@ p { padding: 10px 0; }
 
 #page-header
 {
-	border-bottom: 1px solid #ddd;
-	padding: 15px 0 5px;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0 5px;
   text-align: center;
-	background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 #inner-header
 {
-	width: 960px;
-	margin: 0 auto;
+  width: 960px;
+  margin: 0 auto;
 }
 
 #page-header .fa
 {
-	padding: 0 15px;
+  padding: 0 15px;
 }
 a > .fa { color: #000}
 a > .fa:hover { color: #999; }
 
 #page-content
 {
-	float: left;
-	padding: 0;
-	border-left: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+  float: left;
+  padding: 0;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 #page-content h1,
 #page-content h2 {
-	padding: 0 20px;
+  padding: 0 20px;
 }
 
 #page-content h3 {
-	padding: 20px 20px 0 20px;
+  padding: 20px 20px 0 20px;
 }
 
 #stream-column {
@@ -258,28 +258,28 @@ a > .fa:hover { color: #999; }
 
 .content-header-bar
 {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	background-color: #efefef;
-	padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #efefef;
+  padding: 10px 20px;
 }
 
 .content-header-bar a
 {
-	text-decoration: none;
-	font-weight: bold;
-	padding-right: 20px;
-	color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  padding-right: 20px;
+  color: #000;
 }
 
 .content-header-bar a:hover
 {
-	color: #aaa;
+  color: #aaa;
 }
 
 .content-header-bar .current
 {
-	color: #a00;
+  color: #a00;
 }
 
 .action-button, .action-button:link, .action-button:active, .action-button:visited, .action-button:hover {
