@@ -27,47 +27,50 @@ module Socializer
       end
     end
 
+    # TODO: Cleanup the commented out code
     def audience
-      activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
+      activity = Activity.find_by(id: params[:id])
+
+      # activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
 
       @object_ids = []
       is_public = false
 
-      activities.each do |activity|
-        activity.audiences.each do |audience|
-          # In case of CIRCLES audience, add each contacts of every circles
-          # of the actor of the activity.
-          if audience.privacy_level.public?
-            @object_ids.push audience.privacy_level
-            is_public = true
-          elsif audience.privacy_level.circles?
-            activity.actor.circles.each do |circle|
-              circle.activity_contacts.each do |contact|
-                @object_ids.push contact
-              end
+      # activities.each do |activity|
+      activity.audiences.each do |audience|
+        # In case of CIRCLES audience, add each contacts of every circles
+        # of the actor of the activity.
+        if audience.privacy_level.public?
+          @object_ids.push audience.privacy_level
+          is_public = true
+        elsif audience.privacy_level.circles?
+          activity.actor.circles.each do |circle|
+            circle.activity_contacts.each do |contact|
+              @object_ids.push contact
+            end
+          end
+        else
+          if audience.activity_object.activitable_type == 'Socializer::Circle'
+            # In the case of LIMITED audience, then go through all the audience
+            # circles and add contacts from those circles in the list of allowed
+            # audience.
+            audience.activity_object.activitable.activity_contacts.each do |contact|
+              @object_ids.push contact
             end
           else
-            if audience.activity_object.activitable_type == 'Socializer::Circle'
-              # In the case of LIMITED audience, then go through all the audience
-              # circles and add contacts from those circles in the list of allowed
-              # audience.
-              audience.activity_object.activitable.activity_contacts.each do |contact|
-                @object_ids.push contact
-              end
-            else
-              # Otherwise, the target audience is either a group or a person,
-              # which means we can add it as it is in the audience list.
-              @object_ids.push audience.activity_object
-            end
+            # Otherwise, the target audience is either a group or a person,
+            # which means we can add it as it is in the audience list.
+            @object_ids.push audience.activity_object
           end
         end
       end
+      # end
 
       unless is_public
-        activities.each do |activity|
-          # The actor of the activity is always part of the audience.
-          @object_ids.push activity.activitable_actor
-        end
+        # activities.each do |activity|
+        # The actor of the activity is always part of the audience.
+        @object_ids.push activity.activitable_actor
+        # end
       end
 
       # Remove any duplicates from the list. It can happen when, for example, someone
