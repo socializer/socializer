@@ -2,7 +2,9 @@ require 'spec_helper'
 
 module Socializer
   describe SharesController do
-    pending "add test for action #create to #{__FILE__}"
+    describe 'action #create' do
+      it 'is a pending example'
+    end
 
     # Create a user
     let(:user) { create(:socializer_person) }
