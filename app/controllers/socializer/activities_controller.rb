@@ -7,23 +7,17 @@ module Socializer
       provider = params.fetch(:provider) { nil }
 
       @activities = Activity.stream(provider: provider, actor_uid: id, viewer_id: current_user.id).decorate
+      @current_id = nil
+      @title      = 'Activity stream'
 
-      case provider
-      when 'circles'
-        @circle     = Circle.find_by(id: id)
-        @title      = @circle.name
-        @current_id = @circle.guid
-      when 'people'
-        @person     = Person.find_by(id: id)
-        @title      = @person.display_name
-        @current_id = @person.guid
-      when 'groups'
-        @group      = Group.find_by(id: id)
-        @title      = @group.name
-        @current_id = @group.guid
-      else
-        @current_id = nil
-        @title      = 'Activity stream'
+      if %w( circles people groups ).include?(provider)
+        variable    = provider.singularize
+        value       = "Socializer::#{variable.classify}".constantize.find_by(id: id)
+        @title      = value.name if value.respond_to?(:name)
+        @title      = value.display_name if value.respond_to?(:display_name)
+        @current_id = value.guid
+
+        instance_variable_set("@#{variable}", value)
       end
     end
 
