@@ -42,20 +42,11 @@ module Socializer
     #
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
-      privacy_level = Socializer::Audience.privacy_level
-      public        = privacy_level.find_value(:public).value.to_s
-      circles       = privacy_level.find_value(:circles).value.to_s
+      limited = Socializer::Audience.privacy_level.find_value(:limited).value.to_s
 
-      # REFACTOR: remove duplication
-      object_ids.split(',').each do |object_id|
-        if object_id == public || object_id == circles
-          audiences.build(privacy_level: object_id)
-        else
-          audiences.build do |a|
-            a.privacy_level = :limited
-            a.activity_object_id = object_id
-          end
-        end
+      object_ids.each do |object_id|
+        audience = audiences.build(privacy_level: object_id)
+        audience.activity_object_id = object_id if object_id == limited
       end
     end
 
