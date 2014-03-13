@@ -154,7 +154,8 @@ module Socializer
     end
 
     %w(Person Activity Note Comment Group Circle).each do |type|
-      it sprintf('is type of %s', type) do
+      # it format('is type of %s', type) do
+      it "is type of #{type}" do
         activity_object.activitable_type = "Socializer::#{type}"
         expect(activity_object.send("#{type.downcase}?")).to be_true
       end
