@@ -1,7 +1,7 @@
 module Socializer
   module ApplicationHelper
     def signin_path(provider)
-      "/auth/#{provider.to_s}"
+      "/auth/#{provider}"
     end
 
     def current_user?(user)
