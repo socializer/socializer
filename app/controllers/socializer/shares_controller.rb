@@ -8,10 +8,11 @@ module Socializer
     end
 
     def create
-      activity_object = ActivityObject.find_by(id: params[:share][:activity_id])
+      share = params[:share]
+      activity_object = ActivityObject.find_by(id: share[:activity_id])
       activity_object.share!(actor_id: current_user.guid,
-                             object_ids: params[:share][:object_ids],
-                             content: params[:share][:content])
+                             object_ids: share[:object_ids].split(','),
+                             content: share[:content])
 
       redirect_to stream_path
     end
