@@ -125,7 +125,7 @@ module Socializer
     context 'when an object is shared' do
       let(:activity_object) { create(:socializer_activity_object) }
       let(:actor) { create(:socializer_person) }
-      let(:object_ids) { Socializer::Audience.privacy_level.find_value(:public).value.to_s }
+      let(:object_ids) { Socializer::Audience.privacy_level.find_value(:public).value.to_s.split(',') }
       let(:results) { activity_object.share!(actor_id: actor.guid, object_ids: object_ids, content: 'Share') }
 
       it { expect(results.success?).to eq(true) }
