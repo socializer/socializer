@@ -5,4 +5,9 @@
 jQuery ->
   if $('body').data('controller') == 'shares'
     url = $('#share_object_ids').data('path')
-    $('#share_object_ids').tokenInput(url, { minChars: 0 })
+    prepopulate = null
+
+    $('#share_object_ids').tokenInput url,
+      minChars: 0
+      preventDuplicates: true
+      prePopulate: prepopulate
