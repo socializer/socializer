@@ -50,7 +50,7 @@ module Socializer
             end
           end
         else
-          if audience.activity_object.activitable_type == 'Socializer::Circle'
+          if audience.activity_object.circle?
             # In the case of LIMITED audience, then go through all the audience
             # circles and add contacts from those circles in the list of allowed
             # audience.
