@@ -11,15 +11,7 @@ module Socializer
       @current_id = nil
       @title      = 'Activity stream'
 
-      if %w( circles people groups ).include?(provider)
-        variable    = provider.singularize
-        value       = "Socializer::#{variable.classify}".constantize.find_by(id: id)
-        @title      = value.name if value.respond_to?(:name)
-        @title      = value.display_name if value.respond_to?(:display_name)
-        @current_id = value.guid
-
-        instance_variable_set("@#{variable}", value)
-      end
+      add_provider_variables(provider.singularize) if %w( circles people groups ).include?(provider)
     end
 
     # TODO: Cleanup the commented out code
@@ -93,6 +85,15 @@ module Socializer
 
     def set_activity
       @activity = Activity.find_by(id: params[:id])
+    end
+
+    def add_provider_variables(provider)
+      value       = "Socializer::#{provider.classify}".constantize.find_by(id: id)
+      @title      = value.name if value.respond_to?(:name)
+      @title      = value.display_name if value.respond_to?(:display_name)
+      @current_id = value.guid
+
+      instance_variable_set("@#{provider}", value)
     end
   end
 end
