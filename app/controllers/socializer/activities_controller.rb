@@ -1,6 +1,7 @@
 module Socializer
   class ActivitiesController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_activity, only: [:audience, :destroy]
 
     def index
       id       = params.fetch(:id) { nil }
@@ -23,7 +24,7 @@ module Socializer
 
     # TODO: Cleanup the commented out code
     def audience
-      activity = Activity.find_by(id: params[:id])
+      @activity = Activity.find_by(id: params[:id])
 
       # activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
 
@@ -31,7 +32,7 @@ module Socializer
       is_public = false
 
       # activities.each do |activity|
-      activity.audiences.each do |audience|
+      @activity.audiences.each do |audience|
         # In case of CIRCLES audience, add each contacts of every circles
         # of the actor of the activity.
         if audience.privacy_level.public?
@@ -60,12 +61,15 @@ module Socializer
       end
       # end
 
-      unless is_public
-        # activities.each do |activity|
-        # The actor of the activity is always part of the audience.
-        @object_ids.push activity.activitable_actor
-        # end
-      end
+      # The actor of the activity is always part of the audience.
+      @object_ids.push @activity.activitable_actor unless is_public
+
+      # unless is_public
+      #   activities.each do |activity|
+      #     # The actor of the activity is always part of the audience.
+      #     @object_ids.push activity.activitable_actor
+      #   end
+      # end
 
       # Remove any duplicates from the list. It can happen when, for example, someone
       # post a message to itself.
@@ -77,12 +81,18 @@ module Socializer
     end
 
     def destroy
-      @activity = Activity.find_by(id: params[:id])
       @activity_guid = @activity.guid
       @activity.destroy
+
       respond_to do |format|
         format.js
       end
+    end
+
+    private
+
+    def set_activity
+      @activity = Activity.find_by(id: params[:id])
     end
   end
 end
