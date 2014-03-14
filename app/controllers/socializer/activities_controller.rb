@@ -31,7 +31,7 @@ module Socializer
           @object_ids.push audience.privacy_level
           is_public = true
         elsif audience.privacy_level.circles?
-          activity.actor.circles.each do |circle|
+          @activity.actor.circles.each do |circle|
             circle.activity_contacts.each do |contact|
               @object_ids.push contact
             end
