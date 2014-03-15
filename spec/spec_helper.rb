@@ -30,7 +30,6 @@ require 'capybara/rails'
 require 'factory_girl_rails'
 require 'database_cleaner'
 require 'shoulda-matchers'
-require 'squeel'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 

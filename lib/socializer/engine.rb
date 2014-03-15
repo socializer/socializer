@@ -10,8 +10,8 @@ require 'omniauth-facebook'
 require 'omniauth-linkedin'
 require 'omniauth-openid'
 require 'omniauth-twitter'
-
 require 'simple_form'
+require 'squeel'
 
 module Socializer
   class Engine < Rails::Engine
