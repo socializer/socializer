@@ -16,8 +16,6 @@ module Socializer
 
     # TODO: Cleanup the commented out code
     def audience
-      @activity = Activity.find_by(id: params[:id])
-
       # activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
 
       @object_ids = []
