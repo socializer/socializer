@@ -14,56 +14,8 @@ module Socializer
       add_provider_variables(provider.singularize, id) if %w( circles people groups ).include?(provider)
     end
 
-    # TODO: Cleanup the commented out code
     def audience
-      # activities = Activity.stream(provider: 'activities', actor_uid: params[:id], viewer_id: current_user.id)
-
-      @object_ids = []
-      is_public = false
-
-      # activities.each do |activity|
-      @activity.audiences.each do |audience|
-        # In case of CIRCLES audience, add each contacts of every circles
-        # of the actor of the activity.
-        if audience.privacy_level.public?
-          @object_ids.push audience.privacy_level
-          is_public = true
-        elsif audience.privacy_level.circles?
-          @activity.actor.circles.each do |circle|
-            circle.activity_contacts.each do |contact|
-              @object_ids.push contact
-            end
-          end
-        else
-          if audience.activity_object.circle?
-            # In the case of LIMITED audience, then go through all the audience
-            # circles and add contacts from those circles in the list of allowed
-            # audience.
-            audience.activity_object.activitable.activity_contacts.each do |contact|
-              @object_ids.push contact
-            end
-          else
-            # Otherwise, the target audience is either a group or a person,
-            # which means we can add it as it is in the audience list.
-            @object_ids.push audience.activity_object
-          end
-        end
-      end
-      # end
-
-      # The actor of the activity is always part of the audience.
-      @object_ids.push @activity.activitable_actor unless is_public
-
-      # unless is_public
-      #   activities.each do |activity|
-      #     # The actor of the activity is always part of the audience.
-      #     @object_ids.push activity.activitable_actor
-      #   end
-      # end
-
-      # Remove any duplicates from the list. It can happen when, for example, someone
-      # post a message to itself.
-      @object_ids.uniq!
+      build_audience
 
       respond_to do |format|
         format.html { render layout: false if request.xhr? }
@@ -92,6 +44,50 @@ module Socializer
       @current_id = value.guid
 
       instance_variable_set("@#{provider}", value)
+    end
+
+    # REFACTOR: Move out of the controller.
+    def build_audience
+      @object_ids = []
+
+      @activity.audiences.each do |audience|
+        add_audience_object_ids(audience)
+      end
+
+      # The actor of the activity is always part of the audience.
+      @object_ids.push @activity.activitable_actor unless @object_ids.include?('public')
+
+      # Remove any duplicates from the list. It can happen when, for example, someone
+      # post a message to itself.
+      @object_ids.uniq!
+    end
+
+    # REFACTOR: Move with build_audience and simplify
+    def add_audience_object_ids(audience)
+      # In case of CIRCLES audience, add each contacts of every circles
+      # of the actor of the activity.
+      if audience.privacy_level.public?
+        @object_ids.push audience.privacy_level
+      elsif audience.privacy_level.circles?
+        @activity.actor.circles.each do |circle|
+          circle.activity_contacts.each do |contact|
+            @object_ids.push contact
+          end
+        end
+      else
+        if audience.activity_object.circle?
+          # In the case of LIMITED audience, then go through all the audience
+          # circles and add contacts from those circles in the list of allowed
+          # audience.
+          audience.activity_object.activitable.activity_contacts.each do |contact|
+            @object_ids.push contact
+          end
+        else
+          # Otherwise, the target audience is either a group or a person,
+          # which means we can add it as it is in the audience list.
+          @object_ids.push audience.activity_object
+        end
+      end
     end
   end
 end
