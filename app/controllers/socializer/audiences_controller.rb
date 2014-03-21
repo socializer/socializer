@@ -17,17 +17,10 @@ module Socializer
         groups  = groups.where { name.like(query_value) }
       end
 
-      privacy_level         = Socializer::Audience.privacy_level
-      privacy_level_public  = privacy_level.find_value(:public)
-      privacy_level_circles = rivacy_level.find_value(:circles)
-
-      privacy_public  = { id: privacy_level_public.value, name: privacy_level_public.text }
-      privacy_circles = { id: privacy_level_circles.value, name: privacy_level_circles.text }
-
       audiences = []
 
-      audiences << privacy_public
-      audiences << privacy_circles
+      audiences << Audience.privacy_level_hash(:public)
+      audiences << Audience.privacy_level_hash(:circles)
       audiences.concat(people)
       audiences.concat(circles)
       audiences.concat(groups)
