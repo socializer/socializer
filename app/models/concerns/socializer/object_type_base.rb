@@ -10,7 +10,12 @@ module Socializer
 
       before_create :activity_object_builder
       after_create  :append_to_activity_stream
+    end
 
+    module ClassMethods
+      def guids
+        joins(:activity_object).select(activity_object: :id)
+      end
     end
 
     def guid
