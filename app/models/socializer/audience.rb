@@ -23,7 +23,7 @@ module Socializer
     #
     # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy_level
     #
-    # @return [Hash] Using the example you will get {id: 1, name: 'Public'}
+    # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
     def self.privacy_level_hash(privacy_symbol)
       privacy_symbol = privacy_symbol.downcase.to_sym
       privacy_level  = Socializer::Audience.privacy_level
