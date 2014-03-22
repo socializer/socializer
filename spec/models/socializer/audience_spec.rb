@@ -31,5 +31,12 @@ module Socializer
       it { expect(audience.object).to be_a(activitable.class) }
       it { expect(audience.object).to eq(activitable) }
     end
+
+    context 'privacy_level_hash should return a hash' do
+      let(:public_hash) { { id: 1, name: 'Public' } }
+      it { expect(Audience.privacy_level_hash(:public)).to eq(public_hash) }
+      it { expect(Audience.privacy_level_hash('Public')).to eq(public_hash) }
+      it { expect(Audience.privacy_level_hash(:circles)).to_not eq(public_hash) }
+    end
   end
 end
