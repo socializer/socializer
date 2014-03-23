@@ -11,7 +11,7 @@
     <%= render 'layouts/socializer/header' %>
     <div id='outer-page'>
 
-      <aside id='stream-column'>
+      <aside id='stream-column' role='complementary'>
       <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
         <%= render 'socializer/people/card', person: @person %>
       <% else %>
@@ -21,11 +21,11 @@
 
       <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
 
-      <section id='page-content' style='width: 558px;'>
+      <main id='page-content' role='main' style='width: 558px;'>
         <%= yield %>
-      </section>
+      </main>
 
-      <aside id='contextual-column'>
+      <aside id='contextual-column' role='complementary'>
         <% if params[:provider] == 'circles' %>
           <%= render 'socializer/circles/card', circle: @circle, title: @title %>
         <% elsif params[:provider] == 'groups' %>
@@ -37,9 +37,9 @@
 
       <% else %>
 
-      <section id='page-content' style='width: 758px;'>
+      <main id='page-content' role='main' style='width: 758px;'>
         <%= yield %>
-      </section>
+      </main>
 
       <% end %>
     </div>
@@ -49,6 +49,9 @@
       <%= render 'socializer/people/login' %>
     </div>
     <% end %>
+
+    <footer role='contentinfo'>
+    </footer>
 
     <%= javascript_include_tag 'socializer/application' %>
   </body>

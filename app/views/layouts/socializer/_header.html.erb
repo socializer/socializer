@@ -1,5 +1,5 @@
-<header id="page-header">
-  <nav id="inner-header">
+<header id='page-header' role='banner'>
+  <nav id='inner-header'>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-home fa-3x', title: "#{t('.home')}"),              root_path) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-user fa-3x', title: "#{t('.profile')}"),           stream_path(provider: :people, id: current_user.id)) %>
     <%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-3x', title: "#{t('.circles')}"), circles_contacts_path) %>
