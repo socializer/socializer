@@ -12,9 +12,13 @@ module Socializer
       if query.present? && query.size > 0
         query_value = "%#{query}%"
 
-        people  = Person.select(:display_name).guids.where(Person.arel_table[:display_name].matches(query_value))
-        circles = circles.where(Circle.arel_table[:name].matches(query_value))
-        groups  = groups.where(Group.arel_table[:name].matches(query_value))
+        person_name = Person.arel_table[:display_name]
+        circle_name = Circle.arel_table[:name]
+        group_name  = Group.arel_table[:name]
+
+        people  = Person.select(:display_name).guids.where(person_name.matches(query_value))
+        circles = circles.where(circle_name.matches(query_value))
+        groups  = groups.where(group_name.matches(query_value))
         # people  = Person.select(:display_name).guids.where { display_name.like(query_value) }
         # circles = circles.where { name.like(query_value) }
         # groups  = groups.where { name.like(query_value) }
