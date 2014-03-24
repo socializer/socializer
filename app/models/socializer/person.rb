@@ -28,7 +28,7 @@ module Socializer
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
     def services
-      @services ||= authentications.where { provider.not_eq('Identity') }
+      @services ||= authentications.where.not(provider: 'Identity')
     end
 
     def circles
@@ -60,26 +60,26 @@ module Socializer
     end
 
     def contact_of
-      @contact_of ||= Circle.joins { ties }.where { ties.contact_id.eq my { guid } }.map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins(:ties).where(ties: { contact_id: guid }).map { |circle| circle.author }.uniq
     end
 
     def likes
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins { verb }.where { actor_id.eq(activity_obj_id) & target_id.eq(nil) & verb.name.in(verbs_of_interest) }
-      @likes ||= query.group { activity_object_id }.having('COUNT(1) % 2 == 1')
+      query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(verb: { name: verbs_of_interest })
+      @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
     def likes?(object)
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins { verb }.where { activity_object_id.eq(object.id) & actor_id.eq(activity_obj_id) & verb.name.in(verbs_of_interest) }
+      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(verb: { name: verbs_of_interest })
       query.count.odd?
     end
 
     def pending_memberships_invites
       privacy_private = Group.privacy_level.find_value(:private).value
-      @pending_memberships_invites ||= Membership.joins { group }.where { member_id.eq(my { guid }) & active.eq(false) & group.privacy_level.eq(privacy_private) }
+      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
     end
 
     # TODO: avatar_url - clean this up
