@@ -3,8 +3,25 @@ module Socializer
     before_action :authenticate_user!
 
     def index
-      query     = params.fetch(:q) { nil }
+      query   = params.fetch(:q) { nil }
+      results = user_audience_list(current_user, query)
 
+      audiences = []
+
+      audiences << Audience.privacy_level_hash(:public)
+      audiences << Audience.privacy_level_hash(:circles)
+      audiences.concat(results.people)
+      audiences.concat(results.circles)
+      audiences.concat(results.groups)
+
+      respond_to do |format|
+        format.json { render json: audiences }
+      end
+    end
+
+    private
+
+    def user_audience_list(current_user, query)
       people  = []
       circles = current_user.circles.select(:name).guids
       groups  = current_user.groups.select(:name).guids
@@ -24,17 +41,7 @@ module Socializer
         # groups  = groups.where { name.like(query_value) }
       end
 
-      audiences = []
-
-      audiences << Audience.privacy_level_hash(:public)
-      audiences << Audience.privacy_level_hash(:circles)
-      audiences.concat(people)
-      audiences.concat(circles)
-      audiences.concat(groups)
-
-      respond_to do |format|
-        format.json { render json: audiences }
-      end
+      OpenStruct.new(people: people, circles: circles, groups: groups)
     end
   end
 end
