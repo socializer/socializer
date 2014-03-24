@@ -132,7 +132,7 @@ module Socializer
                  'INNER JOIN socializer_people ' \
                  'ON socializer_activity_objects.activitable_id = socializer_people.id ' \
                  'WHERE socializer_people.id = socializer_activities.actor_id'
-debugger
+
       Circle.select { id }.where { author_id.in(`#{subquery}`) }
     end
 
@@ -152,7 +152,7 @@ debugger
                               'ON socializer_circles.id = socializer_activity_objects.activitable_id ' \
                                   "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " \
                               'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
-debugger
+
       # Retrieve all the contacts (people) that are part of those circles
       Tie.select { contact_id }.where { circle_id.in(`#{limited_circle_id_sql}`) }
 
