@@ -100,7 +100,6 @@ module Socializer
     def self.build_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
-      verbs_of_interest = Verb.where(name: verbs_of_interest)
 
       # privacy_levels
       privacy_level   = Socializer::Audience.privacy_level
@@ -108,7 +107,7 @@ module Socializer
       privacy_circles = privacy_level.find_value(:circles).value
       privacy_limited = privacy_level.find_value(:limited).value
 
-      query = joins(:audiences).where(verb_id: verbs_of_interest, target_id: nil)
+      query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
 
       query.where { (audiences.privacy_level == privacy_public) |
         ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
