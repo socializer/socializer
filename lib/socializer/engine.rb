@@ -2,6 +2,7 @@
 require 'jquery/ui/rails'
 require 'coffee-rails'
 require 'sass/rails'
+require 'bootstrap-sass'
 require 'draper'
 require 'enumerize'
 require 'omniauth'
