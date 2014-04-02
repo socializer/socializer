@@ -18,6 +18,9 @@ RegexpLiteral:
   Exclude:
     - '*.gemspec'
 
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+
 # TODO: Clean these up
 
 # Needed for squeel
