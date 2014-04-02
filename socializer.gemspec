@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('simple_form',          '~> 3.0.1')
   spec.add_dependency('squeel',               '~> 1.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.5.0')
+  spec.add_development_dependency('bundler',              '~> 1.6.0')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.8')
   spec.add_development_dependency('rspec-rails',          '~> 2.14.0')
@@ -52,5 +52,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('shoulda-matchers',     '~> 2.5.0')
   spec.add_development_dependency('database_cleaner',     '~> 1.2.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.0')
-  spec.add_development_dependency('rubocop',              '~> 0.19.0')
+  spec.add_development_dependency('rubocop',              '~> 0.20.0')
 end
