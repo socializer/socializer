@@ -27,36 +27,34 @@ module Socializer
       end
     end
 
-    class << self
-      # Class methods - Private
-
-      private
-
-      def create_notification(activity, contact_id)
-        notification = Notification.new do |n|
-          n.activity = activity
-          n.activity_object = ActivityObject.find_by(id: contact_id)
-        end
-
-        notification.save!
+    # Class methods - Private
+    def create_notification(activity, contact_id)
+      notification = Notification.new do |n|
+        n.activity = activity
+        n.activity_object = ActivityObject.find_by(id: contact_id)
       end
 
-      def get_potential_contact_id(activity_id)
-        # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
-        Tie.select { contact_id }
-           .joins  { circle.activity_object.audiences }
-           .where  { circle.activity_object.audiences.activity_id.eq(activity_id) }
-           .flatten.uniq
-      end
-
-      def person_in_circle?(parent_contact_id, child_contact_id)
-        # ActivityObject.id = parent_contact_id
-        # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
-        ActivityObject.select { id }
-                      .joins  { circles.ties }
-                      .where  { id.eq(parent_contact_id) & circles.ties.contact_id.eq(child_contact_id) }
-                      .first.present?
-      end
+      notification.save!
     end
+    private_class_method :create_notification
+
+    def get_potential_contact_id(activity_id)
+      # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
+      Tie.select { contact_id }
+         .joins  { circle.activity_object.audiences }
+         .where  { circle.activity_object.audiences.activity_id.eq(activity_id) }
+         .flatten.uniq
+    end
+    private_class_method :get_potential_contact_id
+
+    def person_in_circle?(parent_contact_id, child_contact_id)
+      # ActivityObject.id = parent_contact_id
+      # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
+      ActivityObject.select { id }
+                    .joins  { circles.ties }
+                    .where  { id.eq(parent_contact_id) & circles.ties.contact_id.eq(child_contact_id) }
+                    .first.present?
+    end
+    private_class_method :person_in_circle
   end
 end

@@ -95,82 +95,82 @@ module Socializer
       end
     end
 
-    class << self
-      # Class methods - Private
+    # Class Methods - Private
+    def self.build_query(viewer_id:)
+      # for an activity to be interesting, it must correspond to one of these verbs
+      verbs_of_interest = %w(post share)
 
-      private
+      # privacy_levels
+      privacy_level   = Socializer::Audience.privacy_level
+      privacy_public  = privacy_level.find_value(:public).value
+      privacy_circles = privacy_level.find_value(:circles).value
+      privacy_limited = privacy_level.find_value(:limited).value
 
-      def build_query(viewer_id:)
-        # for an activity to be interesting, it must correspond to one of these verbs
-        verbs_of_interest = %w(post share)
+      query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
 
-        # privacy_levels
-        privacy_level   = Socializer::Audience.privacy_level
-        privacy_public  = privacy_level.find_value(:public).value
-        privacy_circles = privacy_level.find_value(:circles).value
-        privacy_limited = privacy_level.find_value(:limited).value
+      query.where { (audiences.privacy_level == privacy_public) |
+        ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
+        ((audiences.privacy_level == privacy_limited) & (
+          `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
+          audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
+          audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
+        )) |
+        (actor_id == viewer_id) }
+    end
+    private_class_method :build_query
 
-        query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
+    # Audience : CIRCLES
+    # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
+    def self.build_circles_subquery
+      # TODO: Convert this to squeel
 
-        query.where { (audiences.privacy_level == privacy_public) |
-          ((audiences.privacy_level == privacy_circles) & `#{viewer_id}`.in(my { build_circles_subquery })) |
-          ((audiences.privacy_level == privacy_limited) & (
-            `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
-            audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
-            audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
-          )) |
-          (actor_id == viewer_id) }
-      end
+      # Retrieve the author's unique identifier
+      # subquery = ActivityObject.select { id }.joins{ activitable(Person) }
+      subquery = 'SELECT socializer_activity_objects.id ' \
+                 'FROM socializer_activity_objects ' \
+                 'INNER JOIN socializer_people ' \
+                 'ON socializer_activity_objects.activitable_id = socializer_people.id ' \
+                 'WHERE socializer_people.id = socializer_activities.actor_id'
 
-      # Audience : CIRCLES
-      # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
-      def build_circles_subquery
-        # TODO: Convert this to squeel
+      Circle.select { id }.where { author_id.in(`#{subquery}`) }
+    end
+    private_class_method :build_circles_subquery
 
-        # Retrieve the author's unique identifier
-        # subquery = ActivityObject.select { id }.joins{ activitable(Person) }
-        subquery = 'SELECT socializer_activity_objects.id ' \
-                   'FROM socializer_activity_objects ' \
-                   'INNER JOIN socializer_people ' \
-                   'ON socializer_activity_objects.activitable_id = socializer_people.id ' \
-                   'WHERE socializer_people.id = socializer_activities.actor_id'
+    # Audience : LIMITED
+    # Ensure that the audience is LIMITED and then make sure that the viewer is either
+    # part of a circle that is the target audience, or that the viewer is part of
+    # a group that is the target audience, or that the viewer is the target audience.
+    def self.build_limited_circle_subquery(viewer_id)
+      # TODO: Convert this to squeel
 
-        Circle.select { id }.where { author_id.in(`#{subquery}`) }
-      end
+      # Retrieve the circle's unique identifier related to the audience (when the audience
+      # is not a circle, this query will simply return nothing)
+      # limited_circle_id_sql = Circle.select(:id).joins(activity_object: :audiences)
+      limited_circle_id_sql = 'SELECT socializer_circles.id ' \
+                              'FROM socializer_circles ' \
+                              'INNER JOIN socializer_activity_objects ' \
+                              'ON socializer_circles.id = socializer_activity_objects.activitable_id ' \
+                                  "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " \
+                              'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
 
-      # Audience : LIMITED
+      # Retrieve all the contacts (people) that are part of those circles
+      Tie.select { contact_id }.where { circle_id.in(`#{limited_circle_id_sql}`) }
+
       # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # part of a circle that is the target audience, or that the viewer is part of
       # a group that is the target audience, or that the viewer is the target audience.
-      def build_limited_circle_subquery(viewer_id)
-        # TODO: Convert this to squeel
-
-        # Retrieve the circle's unique identifier related to the audience (when the audience
-        # is not a circle, this query will simply return nothing)
-        # limited_circle_id_sql = Circle.select(:id).joins(activity_object: :audiences)
-        limited_circle_id_sql = 'SELECT socializer_circles.id ' \
-                                'FROM socializer_circles ' \
-                                'INNER JOIN socializer_activity_objects ' \
-                                'ON socializer_circles.id = socializer_activity_objects.activitable_id ' \
-                                    "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " \
-                                'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
-
-        # Retrieve all the contacts (people) that are part of those circles
-        Tie.select { contact_id }.where { circle_id.in(`#{limited_circle_id_sql}`) }
-
-        # Ensure that the audience is LIMITED and then make sure that the viewer is either
-        # part of a circle that is the target audience, or that the viewer is part of
-        # a group that is the target audience, or that the viewer is the target audience.
-        # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
-      end
-
-      def build_limited_group_subquery(viewer_id)
-        ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
-      end
-
-      def build_limited_viewer_subquery(viewer_id)
-        "( #{viewer_id} )"
-      end
+      # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
     end
+    private_class_method :build_limited_circle_subquery
+
+    def self.build_limited_group_subquery(viewer_id)
+      ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
+    end
+    private_class_method :build_limited_group_subquery
+
+    def self.build_limited_viewer_subquery(viewer_id)
+      "( #{viewer_id} )"
+    end
+    private_class_method :build_limited_viewer_subquery
   end
 end
