@@ -1,11 +1,11 @@
 AllCops:
   # Include gemspec and Rakefile
-  Includes:
+  Include:
     - '*.gemspec'
     - Rakefile
     - config.ru
     - db/migrate/**
-  Excludes:
+  Exclude:
     - bin/**
     - spec/dummy/**
     - spec/internal/**
