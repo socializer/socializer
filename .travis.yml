@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 # bundler_args: --without development
-before_install: gem install bundler
+# before_install: gem install bundler
 before_script:
   - bundle exec rake dummy:app --trace
   - bundle exec rake app:db:migrate --trace
