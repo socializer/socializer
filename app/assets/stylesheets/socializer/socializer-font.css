@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'socializer';
-  src: url('socializer.eot?11571156');
-  src: url('socializer.eot?11571156#iefix') format('embedded-opentype'),
-       url('socializer.woff?11571156') format('woff'),
-       url('socializer.ttf?11571156') format('truetype'),
-       url('socializer.svg?11571156#socializer') format('svg');
+  src: url('socializer.eot?70334359');
+  src: url('socializer.eot?70334359#iefix') format('embedded-opentype'),
+       url('socializer.woff?70334359') format('woff'),
+       url('socializer.ttf?70334359') format('truetype'),
+       url('socializer.svg?70334359#socializer') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -177,10 +177,12 @@
   color: #ffffff;
 }
 
-.fa-user:before { content: '\e808'; } /* '' */
+.fa-search:before { content: '\e814'; } /* '' */
 .fa-yahoo:before { content: '\e821'; } /* '' */
+.fa-users:before { content: '\e809'; } /* '' */
 .fa-picture:before { content: '\e80a'; } /* '' */
 .fa-camera:before { content: '\e80b'; } /* '' */
+.fa-cancel:before { content: '\e812'; } /* '' */
 .fa-home:before { content: '\e811'; } /* '' */
 .fa-link:before { content: '\e810'; } /* '' */
 .fa-lock:before { content: '\e81c'; } /* '' */
@@ -191,7 +193,7 @@
 .fa-pencil:before { content: '\e80e'; } /* '' */
 .fa-bell-alt:before { content: '\e817'; } /* '' */
 .fa-location:before { content: '\e81b'; } /* '' */
-.fa-users:before { content: '\e809'; } /* '' */
+.fa-user:before { content: '\e808'; } /* '' */
 .fa-calendar:before { content: '\e80d'; } /* '' */
 .fa-angle-left:before { content: '\e800'; } /* '' */
 .fa-angle-right:before { content: '\e801'; } /* '' */
@@ -203,6 +205,7 @@
 .fa-linkedin:before { content: '\e81d'; } /* '' */
 .fa-twitter:before { content: '\e81e'; } /* '' */
 .fa-youtube-play:before { content: '\e80f'; } /* '' */
+.fa-air:before { content: '\e813'; } /* '' */
 .fa-google-circles:before { content: '\e804'; } /* '' */
 .fa-google:before { content: '\e820'; } /* '' */
 .fa-cog:before { content: '\e818'; } /* '' */
