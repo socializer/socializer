@@ -12,11 +12,6 @@
         <%= link_to('Socializer', root_path, class: 'navbar-brand') %>
       </div>
 
-      <ul class='nav navbar-nav'>
-        <li><%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-fw', title: "#{t('.circles')}"), circles_contacts_path) %></li>
-        <li><%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-fw', title: "#{t('.groups')}"),           groups_memberships_path) %></li>
-      </ul>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class='collapse navbar-collapse' id='topbar-collapse-1'>
         <div class='col-sm-6'>

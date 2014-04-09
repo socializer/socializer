@@ -19,7 +19,7 @@
       <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
         <%= render 'socializer/people/card', person: @person %>
       <% else %>
-        <%= render 'socializer/activities/stream_list' %>
+        <%= render 'socializer/shared/main_navigation' %>
       <% end %>
       </aside>
 
