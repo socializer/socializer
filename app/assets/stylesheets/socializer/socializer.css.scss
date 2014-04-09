@@ -63,6 +63,11 @@ body > main {
     margin-top: -4px;
     margin-bottom: -2px;
   }
+
+  .search-form {
+    @extend .navbar-form;
+    margin-left: -15px;
+  }
 }
 
 .toolbar {
