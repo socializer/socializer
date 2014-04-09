@@ -1,0 +1,75 @@
+@import "variables";
+@import "bootstrap/mixins";
+@import "bootstrap-custom";
+
+// Core variables and mixins
+@import "mixins";
+
+// Core CSS
+
+// Components
+@import "components/navbar";
+@import "components/masthead";
+@import "components/toolbar";
+
+// Components w/ JavaScript
+
+
+// body { @extend .container; }
+body {
+  padding-top: 100px !important; // TODO: Remove !important
+}
+
+// body > header { @extend .page-header;
+//   p { @extend .lead; }
+// }
+
+body > main {
+  @include make-row;
+  // nav {
+  //   @extend .col-lg-3;
+  //   ul {
+  //     @extend .list-group;
+  //     li {
+  //       @extend .list-group-item;
+  //     }
+  //   }
+  // }
+}
+
+#stream-column {
+  @include make-lg-column(2);
+}
+#page-content {
+  @include make-lg-column(7);
+}
+#contextual-column {
+  @include make-lg-column(3);
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+.topbar {
+  @extend .navbar;
+  @extend .navbar-default;
+  @extend .navbar-fixed-top;
+  @extend .navbar-masthead;
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-bottom: -2px;
+  }
+}
+
+.toolbar {
+  @extend .navbar;
+  @extend .navbar-default;
+  @extend .navbar-fixed-top;
+  @extend .navbar-toolbar;
+  top: 45px;
+
+}
