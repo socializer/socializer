@@ -83,7 +83,7 @@ a:hover, a:active { outline: none; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
-ul, ol { margin-left: 2em; }
+/*ul, ol { margin-left: 2em; }*/
 ol { list-style-type: decimal; }
 
 /* Remove margins for navigation lists */
@@ -210,7 +210,7 @@ a > .fa:hover { color: #999; }
   padding: 20px 20px 0 20px;
 }
 
-#stream-column {
+/*#stream-column {
   float: left;
   width: 190px;
   padding-right: 10px;
@@ -240,7 +240,7 @@ a > .fa:hover { color: #999; }
 #stream-column #groups-stream-list li,
 #stream-column #circles-stream-list li {
   padding: 2px 0;
-}
+}*/
 
 #contextual-column
 {
