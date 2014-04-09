@@ -1,4 +1,4 @@
-<ul class='list-group'>
-  <li class="list-group-item"><%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-fw') + t('.circles'), circles_contacts_path) %></li>
-  <li class="list-group-item"><%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-fw') + t('.groups'),            groups_memberships_path) %></li>
-</ul>
+<div class='list-group'>
+  <%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-fw') + t('.circles'), circles_contacts_path, class: 'list-group-item') %>
+  <%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-fw') + t('.groups'),           groups_memberships_path, class: 'list-group-item') %>
+</div>
