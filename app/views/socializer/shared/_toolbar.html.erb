@@ -16,14 +16,18 @@
       <div class='collapse navbar-collapse bs-example-toolbar-collapse-1'>
         <ul class='nav navbar-nav'>
           <!-- TODO; Add translations -->
-          <li class='active'><%= link_to('All', stream_path) %><li>
+          <li class="<%= 'active' if current_page?(stream_path) %>"><%= link_to('All', stream_path) %><li>
 
           <% list = current_user.circles + current_user.memberships %>
 
           <!-- REFACTOR: Remove duplication -->
           <% list[0..2].each do |item| %>
-            <li><%= link_to(item.name, stream_path(provider: :circles, id: item.id)) if item.class.name == 'Socializer::Circle' %></li>
-            <li><%= link_to(item.group.name, stream_path(provider: :groups, id: item.group.id)) if item.class.name == 'Socializer::Membership' %></li>
+            <% if item.class.name == 'Socializer::Circle' %>
+              <li class="<%= 'active' if current_page?(stream_path(provider: :circles, id: item.id)) %>"><%= link_to(item.name, stream_path(provider: :circles, id: item.id)) %></li>
+            <% end %>
+            <% if item.class.name == 'Socializer::Membership' %>
+              <li class="<%= 'active' if current_page?(stream_path(provider: :groups, id: item.group.id)) %>"><%= link_to(item.group.name, stream_path(provider: :groups, id: item.group.id)) %></li>
+            <% end %>
           <% end %>
 
           <li class='dropdown'>
