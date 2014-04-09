@@ -1,0 +1,44 @@
+<nav class='toolbar' role='navigation'>
+  <div class='container'>
+    <div class='row'>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class='navbar-header col-sm-2'>
+        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.bs-example-toolbar-collapse-1'>
+          <span class='sr-only'>Toggle navigation</span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>
+        <a href='#' class='navbar-brand'><span class='fa fa-home fa-fw'></span>Home</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class='collapse navbar-collapse bs-example-toolbar-collapse-1'>
+        <ul class='nav navbar-nav'>
+          <!-- TODO; Add translations -->
+          <li class='active'><%= link_to('All', stream_path) %><li>
+
+          <% list = current_user.circles + current_user.memberships %>
+
+          <!-- REFACTOR: Remove duplication -->
+          <% list[0..2].each do |item| %>
+            <li><%= link_to(item.name, stream_path(provider: :circles, id: item.id)) if item.class.name == 'Socializer::Circle' %></li>
+            <li><%= link_to(item.group.name, stream_path(provider: :groups, id: item.group.id)) if item.class.name == 'Socializer::Membership' %></li>
+          <% end %>
+
+          <li class='dropdown'>
+            <%= link_to("More #{content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')}".html_safe, nil, class: 'dropdown-toggle', data: { toggle: 'dropdown' }) %>
+            <ul class='dropdown-menu'>
+              <% list[3..(list.size)].each do |item| %>
+                <!-- REFACTOR: Remove duplication -->
+                <li><%= link_to(item.name, stream_path(provider: :circles, id: item.id)) if item.class.name == 'Socializer::Circle' %></li>
+                <li><%= link_to(item.group.name, stream_path(provider: :groups, id: item.group.id)) if item.class.name == 'Socializer::Membership' %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to('Explore') %><li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</nav><!-- /.navbar-toolbar -->
