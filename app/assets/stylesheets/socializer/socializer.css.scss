@@ -11,6 +11,8 @@
 @import "components/navbar";
 @import "components/masthead";
 @import "components/toolbar";
+@import "components/navbar-common";
+@import "components/list-group";
 
 // Components w/ JavaScript
 
@@ -76,5 +78,4 @@ body > main {
   @extend .navbar-fixed-top;
   @extend .navbar-toolbar;
   top: 45px;
-
 }
