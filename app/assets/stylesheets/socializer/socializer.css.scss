@@ -19,7 +19,7 @@
 
 // body { @extend .container; }
 body {
-  padding-top: 100px !important; // TODO: Remove !important
+  padding-top: 100px; // TODO: Remove !important
 }
 
 // body > header { @extend .page-header;
@@ -27,7 +27,7 @@ body {
 // }
 
 body > main {
-  @include make-row;
+  // @include make-row;
   // nav {
   //   @extend .col-lg-3;
   //   ul {
