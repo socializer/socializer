@@ -14,47 +14,49 @@
     </header>
 
     <div class="container">
+      <div class="row">
 
-      <aside id='stream-column' role='complementary'>
-      <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
-        <%= render 'socializer/people/card', person: @person %>
-      <% else %>
-        <%= render 'socializer/shared/main_navigation' %>
-      <% end %>
-      </aside>
-
-      <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
-
-      <main id='page-content' role='main'>
-        <%= yield %>
-      </main>
-
-      <aside id='contextual-column' role='complementary'>
-        <% if params[:provider] == 'circles' %>
-          <%= render 'socializer/circles/card', circle: @circle, title: @title %>
-        <% elsif params[:provider] == 'groups' %>
-          <%= render 'socializer/groups/card', group: @group, title: @title %>
-        <% elsif params[:provider].nil? %>
-          <%= render 'socializer/activities/stream_card' %>
+        <aside id='stream-column' role='complementary'>
+        <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
+          <%= render 'socializer/people/card', person: @person %>
+        <% else %>
+          <%= render 'socializer/shared/main_navigation' %>
         <% end %>
-      </aside>
+        </aside>
+
+        <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
+
+        <main id='page-content' role='main'>
+          <%= yield %>
+        </main>
+
+        <aside id='contextual-column' role='complementary'>
+          <% if params[:provider] == 'circles' %>
+            <%= render 'socializer/circles/card', circle: @circle, title: @title %>
+          <% elsif params[:provider] == 'groups' %>
+            <%= render 'socializer/groups/card', group: @group, title: @title %>
+          <% elsif params[:provider].nil? %>
+            <%= render 'socializer/activities/stream_card' %>
+          <% end %>
+        </aside>
+
+        <% else %>
+
+        <main id='page-content' role='main'>
+          <%= yield %>
+        </main>
+
+        <% end %>
 
       <% else %>
-
-      <main id='page-content' role='main'>
-        <%= yield %>
-      </main>
-
+        <main id='page-content' role='main'>
+          <%= render 'socializer/people/login' %>
+        </main>
       <% end %>
 
-    <% else %>
-      <main id='page-content' role='main'>
-        <%= render 'socializer/people/login' %>
-      </main>
-    <% end %>
-
-      <footer role='contentinfo'>
-      </footer>
+        <footer role='contentinfo'>
+        </footer>
+      </div><!-- /.row -->
     </div><!-- /.container -->
 
     <%= javascript_include_tag 'socializer/application' %>
