@@ -40,13 +40,13 @@ body > main {
 }
 
 #stream-column {
-  @include make-lg-column(2);
+  @include make-sm-column(2);
 }
 #page-content {
-  @include make-lg-column(7);
+  @include make-sm-column(7);
 }
 #contextual-column {
-  @include make-lg-column(3);
+  @include make-sm-column(3);
 
   @media (max-width: $screen-xs-max) {
     display: none;

@@ -14,7 +14,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class='collapse navbar-collapse' id='topbar-collapse-1'>
-        <div class='col-sm-6'>
+        <div class='col-sm-7'>
           <form class='search-form' role='search'>
             <div class='input-group'>
               <input class='form-control' type='search' placeholder='Search'>
@@ -24,30 +24,32 @@
             </div>
           </form>
         </div>
-        <ul class='nav navbar-nav navbar-right'>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
-              <%= image_tag(current_user.avatar_url, class: 'avatar')%>
-              <%= current_user.display_name %>
-              <span class='fa fa-angle-down fa-fw'></span>
-            </a>
-            <ul class='dropdown-menu'>
-              <li><%= link_to(t('.profile'), stream_path(provider: :people, id: current_user.id)) %></li>
-              <li><%= link_to(t('.authentications'), authentications_path) %></li>
-              <li class='divider'></li>
-              <li><%= link_to(t('.signout'), signout_path, method: :delete) %></li>
-            </ul>
-          </li>
-          <li>
-            <!-- TODO: Show a list of notifications -->
-            <!-- TODO: Only add label-danger when new notifications -->
-            <%= link_to(notifications_path) do %>
-              <span class='label label-danger' style='font-size: 100%'>
-                <%= current_user.activity_object.unread_notifications_count %>
-              </span>
-            <% end %>
-          </li>
-        </ul>
+        <div class='col-sm-3'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li class='dropdown'>
+              <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
+                <%= image_tag(current_user.avatar_url, class: 'avatar')%>
+                <%= current_user.display_name %>
+                <span class='fa fa-angle-down fa-fw'></span>
+              </a>
+              <ul class='dropdown-menu'>
+                <li><%= link_to(t('.profile'), stream_path(provider: :people, id: current_user.id)) %></li>
+                <li><%= link_to(t('.authentications'), authentications_path) %></li>
+                <li class='divider'></li>
+                <li><%= link_to(t('.signout'), signout_path, method: :delete) %></li>
+              </ul>
+            </li>
+            <li>
+              <!-- TODO: Show a list of notifications -->
+              <!-- TODO: Only add label-danger when new notifications -->
+              <%= link_to(notifications_path) do %>
+                <span class='label label-danger' style='font-size: 100%'>
+                  <%= current_user.activity_object.unread_notifications_count %>
+                </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.row -->
   </div><!-- /.container -->
