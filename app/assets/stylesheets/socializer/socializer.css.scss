@@ -57,6 +57,7 @@ body > main {
   @extend .navbar-default;
   @extend .navbar-fixed-top;
   @extend .navbar-masthead;
+  z-index: $zindex-masthead-fixed;
 
   .avatar {
     width: 24px;
@@ -78,4 +79,5 @@ body > main {
   @extend .navbar-fixed-top;
   @extend .navbar-toolbar;
   top: 45px;
+  z-index: $zindex-toolbar-fixed;
 }
