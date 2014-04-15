@@ -81,3 +81,26 @@ body > main {
   top: 45px;
   z-index: $zindex-toolbar-fixed;
 }
+
+article h1 {
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 12px;
+
+  small {
+    font-size: 12px;
+  }
+}
+article h2 {
+  font-size: 15px;
+  line-height: 18px;
+}
+article footer {
+  border-top-width: 0;
+  margin-top: 15px;
+  padding: 0;
+
+  p {
+    margin-bottom: 9px;
+  }
+}
