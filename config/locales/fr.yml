@@ -5,7 +5,7 @@ fr:
         tooltip_public: 'Anyone can see this'
         time_format: 'depuis %s'
       stream_card:
-        header: 'In your circles'
+        header: 'In my circles'
       stream_list:
         streams: 'Streams'
 

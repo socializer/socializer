@@ -1,4 +1,4 @@
-<h3><%= t('.header') %></h3>
+<h3><%= t('.header') + " (#{current_user.contacts.count})" %></h3>
 <ul class="small-contact-list">
   <% current_user.contacts.each do |contact| %>
     <li><%= link_to image_tag(contact.avatar_url), stream_path(provider: :people, id: contact.id) %></li>
