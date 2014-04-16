@@ -53,13 +53,13 @@ ul.activities a.unimportant-link
 	color: #aaa;
 }
 
-ul.activities a
+ul.activities > a
 {
 	color: #00a;
 	text-decoration: none;
 }
 
-ul.activities a:hover
+ul.activities > a:hover
 {
 	text-decoration: underline;
 }

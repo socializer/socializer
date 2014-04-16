@@ -1,0 +1,35 @@
+.media,
+.media-body {
+  overflow: visible;
+}
+.media {
+  margin-top: 15px;
+
+  // &:first-child {
+  //   margin-top: 0px;
+  // }
+}
+.media-body {
+  display: table-cell;
+  width: 9999px;
+}
+.media-body-footer {
+  margin: 10px -15px 5px;
+  padding: 5px 15px 1px;
+  border-top: 1px solid #ccc;
+}
+.media-body-attachment {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.media-comments {
+  margin: 0 -15px;
+  padding: 9px;
+  background-color: #F1F1F1;
+  border-top: 1px solid #E5E5E5;
+  box-shadow: none;
+
+  h1 {
+    margin-top: 8px;
+  }
+}
