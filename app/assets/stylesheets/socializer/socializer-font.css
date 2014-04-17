@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'socializer';
-  src: url('socializer.eot?70334359');
-  src: url('socializer.eot?70334359#iefix') format('embedded-opentype'),
-       url('socializer.woff?70334359') format('woff'),
-       url('socializer.ttf?70334359') format('truetype'),
-       url('socializer.svg?70334359#socializer') format('svg');
+  src: url('socializer.eot?73707264');
+  src: url('socializer.eot?73707264#iefix') format('embedded-opentype'),
+       url('socializer.woff?73707264') format('woff'),
+       url('socializer.ttf?73707264') format('truetype'),
+       url('socializer.svg?73707264#socializer') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -177,8 +177,13 @@
   color: #ffffff;
 }
 
-.fa-search:before { content: '\e814'; } /* '' */
+.fa-thumbs-o-up:before { content: '\e815'; } /* '' */
 .fa-yahoo:before { content: '\e821'; } /* '' */
+.fa-comments-o:before { content: '\e822'; } /* '' */
+.fa-thumbs-up:before { content: '\e805'; } /* '' */
+.fa-thumbs-down:before { content: '\e806'; } /* '' */
+.fa-search:before { content: '\e814'; } /* '' */
+.fa-user:before { content: '\e808'; } /* '' */
 .fa-users:before { content: '\e809'; } /* '' */
 .fa-picture:before { content: '\e80a'; } /* '' */
 .fa-camera:before { content: '\e80b'; } /* '' */
@@ -187,13 +192,11 @@
 .fa-link:before { content: '\e810'; } /* '' */
 .fa-lock:before { content: '\e81c'; } /* '' */
 .fa-flag:before { content: '\e80c'; } /* '' */
-.fa-thumbs-up:before { content: '\e805'; } /* '' */
-.fa-thumbs-down:before { content: '\e806'; } /* '' */
-.fa-forward:before { content: '\e819'; } /* '' */
+.fa-share:before { content: '\e819'; } /* '' */
 .fa-pencil:before { content: '\e80e'; } /* '' */
-.fa-bell-alt:before { content: '\e817'; } /* '' */
+.fa-thumbs-o-down:before { content: '\e816'; } /* '' */
 .fa-location:before { content: '\e81b'; } /* '' */
-.fa-user:before { content: '\e808'; } /* '' */
+.fa-cog:before { content: '\e818'; } /* '' */
 .fa-calendar:before { content: '\e80d'; } /* '' */
 .fa-angle-left:before { content: '\e800'; } /* '' */
 .fa-angle-right:before { content: '\e801'; } /* '' */
@@ -208,4 +211,4 @@
 .fa-air:before { content: '\e813'; } /* '' */
 .fa-google-circles:before { content: '\e804'; } /* '' */
 .fa-google:before { content: '\e820'; } /* '' */
-.fa-cog:before { content: '\e818'; } /* '' */
+.fa-bell-alt:before { content: '\e817'; } /* '' */
