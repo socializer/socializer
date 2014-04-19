@@ -126,7 +126,8 @@ module Socializer
         ((audiences.privacy_level.eq(privacy_limited)) & (
           `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
           audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
-          audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
+          # audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
+          audiences.activity_object_id.in(viewer_id)
         )) |
         (actor_id.eq(viewer_id)) }
     end
@@ -198,9 +199,10 @@ module Socializer
     end
     private_class_method :build_limited_group_subquery
 
-    def self.build_limited_viewer_subquery(viewer_id)
-      "( #{viewer_id} )"
-    end
-    private_class_method :build_limited_viewer_subquery
+    # TODO: Remove old/unused code
+    # def self.build_limited_viewer_subquery(viewer_id)
+    #   "( #{viewer_id} )"
+    # end
+    # private_class_method :build_limited_viewer_subquery
   end
 end
