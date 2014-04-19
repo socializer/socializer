@@ -32,5 +32,7 @@ module Socializer
     context 'validations' do
       it { expect(activity).to validate_presence_of(:verb) }
     end
+
+    it { should delegate_method(:activity_field_content).to(:activity_field).as(:content) }
   end
 end
