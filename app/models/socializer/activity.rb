@@ -22,6 +22,16 @@ module Socializer
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
 
+    # Returns true if activity has comments
+    #
+    # @example
+    #   activity.comments?
+    #
+    # @return [TrueClass, FalseClass]
+    def comments?
+      comments.present?
+    end
+
     def comments
       @comments ||= children.joins(:activitable_object).where(activitable_object: { activitable_type: 'Socializer::Comment' })
     end
