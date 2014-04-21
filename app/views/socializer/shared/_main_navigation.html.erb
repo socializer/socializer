@@ -1,15 +1,15 @@
 <ul class="list-group">
 <!--   <li class="list-group-header">List header</li> -->
   <li class="list-group-item <%= 'active' if current_page?(stream_path) %>">
-    <%= link_to(content_tag(:span, nil, class: 'fa fa-home fa-fws fa-fw') + t('.home'), stream_path) %>
+    <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-home') + t('.home'), stream_path) %>
   </li>
   <li class="list-group-item <%= 'active' if current_page?(stream_path(provider: :people, id: current_user.id)) %>">
-    <%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-fws fa-fw') + t('.profile'), stream_path(provider: :people, id: current_user.id)) %>
+    <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-users') + t('.profile'), stream_path(provider: :people, id: current_user.id)) %>
   </li>
   <li class="list-group-item <%= 'active' if current_page?(circles_contacts_path) %>">
-    <%= link_to(content_tag(:span, nil, class: 'fa fa-google-circles fa-fw') + t('.circles'), circles_contacts_path) %>
+    <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-google-circles') + t('.circles'), circles_contacts_path) %>
   </li>
   <li class="list-group-item <%= 'active' if current_page?(groups_memberships_path) %>">
-    <%= link_to(content_tag(:span, nil, class: 'fa fa-users fa-fw') + t('.groups'), groups_memberships_path) %>
+    <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-users') + t('.groups'), groups_memberships_path) %>
   </li>
 </ul>
