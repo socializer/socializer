@@ -85,6 +85,11 @@ body > main {
   z-index: $zindex-toolbar-fixed;
 }
 
+article {
+  @extend .panel;
+  @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-heading-bg);
+  padding: 15px;
+}
 article h1 {
   font-size: ($font-size-large + 1);
   line-height: 20px;
