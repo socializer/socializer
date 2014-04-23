@@ -1,24 +1,24 @@
 <% if activity.activitable_object.note? %>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-  <div class="activity-content"><%= activity.model.object.content %></div>
+  <p><%= activity.model.object.content %></p>
 
 <% elsif activity.activitable_object.comment? %>
 
 <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-  <div class="activity-content"><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %><span class='separator'></span><%= activity.model.object.content %></div>
+  <p><%= link_to activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id) %><span class='separator'></span><%= activity.model.object.content %></p>
 
 <% elsif activity.activitable_object.activity? %>
 
-  <div class="activity-content"><%= activity.activity_field_content %></div>
+  <p><%= activity.activity_field_content %></p>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-  <div class="activity-subcontent"><%= link_to activity.model.object.actor.display_name, stream_path(provider: :people, id: activity.model.object.actor.id) %> originally shared this <%= link_to(activity.model.object.class.name.demodulize.downcase, stream_path(provider: :activities, id: activity.model.object.id)) %>:</div>
+  <p><%= link_to activity.model.object.actor.display_name, stream_path(provider: :people, id: activity.model.object.actor.id) %> originally shared this <%= link_to(activity.model.object.class.name.demodulize.downcase, stream_path(provider: :activities, id: activity.model.object.id)) %>:</p>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-  <div class="activity-subcontent"><%=  activity.model.object.object.content %></div>
+  <p><%=  activity.model.object.object.content %></p>
 
 <% else %>
 
-  <div class="activity-content">
+  <p>
     <%= activity.activitable_object.activitable_type %>
-  </div>
+  </p>
 
 <% end %>
