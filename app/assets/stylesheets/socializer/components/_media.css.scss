@@ -68,7 +68,8 @@ $media-font-size-h1: ($font-size-base + 2);
   }
 
   p {
-    margin-bottom: .5em;
+    // margin-bottom: .5em;
+    white-space: pre-wrap;
   }
 }
 
