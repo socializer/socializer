@@ -11,7 +11,7 @@
 
   <p><%= activity.activity_field_content %></p>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-  <p><%= link_to activity.model.object.actor.display_name, stream_path(provider: :people, id: activity.model.object.actor.id) %> originally shared this <%= link_to(activity.model.object.class.name.demodulize.downcase, stream_path(provider: :activities, id: activity.model.object.id)) %>:</p>
+  <p><%= link_to(activity.model.object.actor.display_name, stream_path(provider: :people, id: activity.model.object.actor.id)) %> <%= link_to('originally shared:', stream_path(provider: :activities, id: activity.model.object.id)) %></p>
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
   <p><%=  activity.model.object.object.content %></p>
 
