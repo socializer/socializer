@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'socializer';
-  src: url('socializer.eot?73707264');
-  src: url('socializer.eot?73707264#iefix') format('embedded-opentype'),
-       url('socializer.woff?73707264') format('woff'),
-       url('socializer.ttf?73707264') format('truetype'),
-       url('socializer.svg?73707264#socializer') format('svg');
+  src: url('socializer.eot?43335316');
+  src: url('socializer.eot?43335316#iefix') format('embedded-opentype'),
+       url('socializer.woff?43335316') format('woff'),
+       url('socializer.ttf?43335316') format('truetype'),
+       url('socializer.svg?43335316#socializer') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -192,6 +192,7 @@
 .fa-link:before { content: '\e810'; } /* '' */
 .fa-lock:before { content: '\e81c'; } /* '' */
 .fa-flag:before { content: '\e80c'; } /* '' */
+.fa-reply:before { content: '\e823'; } /* '' */
 .fa-share:before { content: '\e819'; } /* '' */
 .fa-pencil:before { content: '\e80e'; } /* '' */
 .fa-thumbs-o-down:before { content: '\e816'; } /* '' */
@@ -208,6 +209,7 @@
 .fa-linkedin:before { content: '\e81d'; } /* '' */
 .fa-twitter:before { content: '\e81e'; } /* '' */
 .fa-youtube-play:before { content: '\e80f'; } /* '' */
+.fa-angle-down-big:before { content: '\e824'; } /* '' */
 .fa-air:before { content: '\e813'; } /* '' */
 .fa-google-circles:before { content: '\e804'; } /* '' */
 .fa-google:before { content: '\e820'; } /* '' */
