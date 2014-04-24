@@ -1,0 +1,40 @@
+<article class='media media-sm' data-activityid="<%= comment.guid %>">
+  <section class='media-object'>
+    <%= link_to(image_tag(comment.actor.avatar_url), comment.actor) %>
+  </section>
+
+  <section class='media-body'>
+    <header>
+      <div class='btn-group pull-right'>
+        <a href='#' data-toggle='dropdown' class='btn btn-xs btn-transparent dropdown-toggle'>
+          <span class='fa fa-angle-down fa-lg'></span>
+        </a>
+        <ul class='dropdown-menu'>
+          <li><%= link_to('Edit', edit_comment_path(comment.model.object)) if comment.actor == current_user %></li>
+          <li><%= link_to('Delete', comment.model.object, method: :delete, remote: true) if comment.actor == current_user %></li>
+        </ul>
+      </div>
+      <div class='pull-right'>
+        <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted') %>
+
+        <% if current_user.likes?(comment.activity_object) %>
+          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{comment.activity_object.like_count if comment.activity_object.like_count > 0}".html_safe, stream_unlike_path(comment.activity_object), method: :delete, remote: true, class: 'text-danger', title: 'Unlike') %>
+        <% else %>
+          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{comment.activity_object.like_count if comment.activity_object.like_count > 0}".html_safe, stream_like_path(comment.activity_object), method: :post, remote: true, class: 'text-muted', title: 'Like') %>
+        <% end %>
+
+        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted') %>
+        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted') %>
+      </div>
+
+      <h1>
+        <%= link_to(comment.actor.display_name, stream_path(provider: :people, id: comment.actor.id)) %>
+        <small class='text-muted'> -
+          <%= link_to(comment.created_at_time_ago, stream_path(provider: :activities, id: comment.id), class: 'text-muted') %>
+        </small>
+      </h1>
+    </header>
+
+    <p><%= comment.model.object.content %></p>
+  </section>
+</article>
