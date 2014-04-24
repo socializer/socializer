@@ -1,23 +1,90 @@
-<li data-activityid="<%= activity.guid %>">
+<article class='media panel panel-default' data-activityid="<%= activity.guid %>">
+  <section class='media-object'>
+    <%= link_to(image_tag(activity.actor.avatar_url), activity.actor) %>
+  </section>
+
+  <section class='media-body'>
+    <header>
+      <div class='btn-group pull-right'>
+        <a href='#' data-toggle='dropdown' class='btn btn-xs btn-transparent dropdown-toggle'>
+          <span class='fa fa-angle-down fa-lg'></span>
+        </a>
+        <ul class='dropdown-menu'>
+          <li><%= link_to('Edit', edit_note_path(activity.model.object)) if activity.actor == current_user %></li>
+          <li><%= link_to('Delete', activity.model.object, method: :delete, remote: true) if activity.actor == current_user %></li>
+        </ul>
+      </div>
+
+      <h1>
+        <%= link_to(activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id)) %>
+        <small class='text-muted'> -
+          <%= link_to(activity.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: 'text-muted') %> -
+          <!-- FIXME: Displays duplicates -->
+          <% activity.audiences.uniq.each do |audience| %>
+            <% if audience.privacy_level.public? %>
+                <%= link_to(audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip_public')}") %>
+            <% else %>
+              <%= link_to('Limited', stream_audience_path(activity), class: 'tooltip text-muted') %>
+            <% end %>
+          <% end %>
+        </small>
+      </h1>
+    </header>
+
+    <%= render 'socializer/activities/activity_content', activity: activity %>
+
+    <footer class='media-body-footer'>
+      <div class='btn-group'>
+        <%# Like / Unlike button %>
+        <% if current_user.likes?(activity.activity_object) %>
+          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{activity.activity_object.like_count if activity.activity_object.like_count > 0}".html_safe, stream_unlike_path(activity.activity_object), method: :delete, remote: true, class: 'btn btn-danger', title: 'Unlike') %>
+        <% else %>
+          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{activity.activity_object.like_count if activity.activity_object.like_count > 0}".html_safe, stream_like_path(activity.activity_object), method: :post, remote: true, class: 'btn btn-default', title: 'Like') %>
+        <% end %>
+
+        <%# Comment button %>
+        <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-comments-o'), stream_comment_path(activity), class: 'btn btn-default', title: 'Comment') %>
+        <% end %>
+
+        <%# Share button %>
+        <%# TODO: Need a Share count %>
+        <% if activity.activitable_object.note?  %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-share'), new_stream_share_path(activity.activity_object), class: 'btn btn-default', title: 'Share') %>
+        <% end %>
+      </div>
+    </footer>
+
+    <% if activity.comments? %>
+    <section class='media-comments'>
+      <% activity.comments.decorate.each do |comment| %>
+        <%= render 'socializer/comments/comment', comment: comment %>
+      <% end %>
+    </section>
+    <% end %>
+  </section>
+</article>
+
+<!-- <li data-activityid="<%= activity.guid %>">
 
   <%# Activity top (for notes and activities) %>
-  <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
+  <%# if activity.activitable_object.note? || activity.activitable_object.activity? %>
 
-    <%= render 'socializer/activities/activity_top', activity: activity %>
+    <%#= render 'socializer/activities/activity_top', activity: activity %>
 
-  <% end %>
+  <%# end %>
 
-  <%= render 'socializer/activities/activity_content', activity: activity %>
+  <%#= render 'socializer/activities/activity_content', activity: activity %>
 
-  <%= render 'socializer/activities/activity_bottom', activity: activity %>
+  <%#= render 'socializer/activities/activity_bottom', activity: activity %>
 
   <%# Render comments %>
   <ul>
-    <% activity.comments.decorate.each do |subactivity| %>
+    <%# activity.comments.decorate.each do |subactivity| %>
 
-      <li><%= render subactivity %></li>
+      <li><%#= render subactivity %></li>
 
-    <% end %>
+    <%# end %>
   </ul>
 
-</li>
+</li> -->
