@@ -35,13 +35,13 @@
       <span class='separator'></span>
       <%= link_to "Delete", activity.model.object, method: :delete, remote: true %> -->
 
-    <% elsif activity.activitable_object.comment? %>
+    <%# elsif activity.activitable_object.comment? %>
 
-      <span class='separator'></span>
-      <%= link_to "Edit", edit_comment_path(activity.object) %>
+<!--       <span class='separator'></span> -->
+      <%#= link_to "Edit", edit_comment_path(activity.object) %>
 
-      <span class='separator'></span>
-      <%= link_to "Delete", activity.object, method: :delete, remote: true %>
+<!--       <span class='separator'></span> -->
+      <%#= link_to "Delete", activity.object, method: :delete, remote: true %>
 
     <% elsif activity.activitable_object.activity? %>
 
