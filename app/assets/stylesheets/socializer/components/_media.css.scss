@@ -7,6 +7,7 @@ $media-image-width: 48px;
 $media-image-width-sm: 32px;
 $media-gutter: 10px;
 $media-font-size-h1: ($font-size-base + 2);
+$media-font-size-h2: $font-size-base;
 
 .media {
   display: table;
@@ -55,7 +56,8 @@ $media-font-size-h1: ($font-size-base + 2);
 .media-body {
   width: 100%;
 
-  h1 {
+  h1,
+  h2 {
     font-size: $media-font-size-h1;
     margin-bottom: .5em;
 
@@ -65,6 +67,11 @@ $media-font-size-h1: ($font-size-base + 2);
         color: lighten($gray-dark, 20%);
       }
     }
+  }
+
+  h2 {
+    font-size: $media-font-size-h2;
+    margin-top: 5px;
   }
 
   p {
@@ -93,10 +100,12 @@ $media-font-size-h1: ($font-size-base + 2);
   padding: 10px 0;
   border-top: 1px solid #ccc;
 }
-// .media-body-attachment {
-//   border-top: 1px solid #ccc;
-//   padding-top: 10px;
-// }
+
+.media-body-attachment {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
 .media-comments {
   // margin: 0 -15px;
   padding: 10px;
