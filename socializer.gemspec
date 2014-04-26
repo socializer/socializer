@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-linkedin',    '~> 0.1.0')
   spec.add_dependency('omniauth-openid',      '~> 1.0.1')
   spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
-  spec.add_dependency('simple_form',          '~> 3.0.1')
+  spec.add_dependency('simple_form',          '~> 3.1.0.rc1')
   spec.add_dependency('squeel',               '~> 1.1.0')
 
   spec.add_development_dependency('bundler',              '~> 1.6.0')
