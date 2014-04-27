@@ -83,7 +83,7 @@
 
 .action-button, .action-button:link, .action-button:active, .action-button:visited, .action-button:hover {
   /* styling */
-  border: 1px solid #003399;
+/*  border: 1px solid #003399;
 
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -94,24 +94,24 @@
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 
-  background-color: #4B92B6;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#4B92B6), to(#006699)); /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(top, #4B92B6, #006699); /* Chrome 10+, Saf5.1+ */
-  background-image:    -moz-linear-gradient(top, #4B92B6, #006699); /* FF3.6 */
-  background-image:     -ms-linear-gradient(top, #4B92B6, #006699); /* IE10 */
-  background-image:      -o-linear-gradient(top, #4B92B6, #006699); /* Opera 11.10+ */
-  background-image:         linear-gradient(top, #4B92B6, #006699);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4B92B6', EndColorStr='#006699');
+  background-color: #4B92B6;*/
+/*  background-image: -webkit-gradient(linear, left top, left bottom, from(#4B92B6), to(#006699)); /* Saf4+, Chrome */*/
+/*  background-image: -webkit-linear-gradient(top, #4B92B6, #006699); /* Chrome 10+, Saf5.1+ */*/
+/*  background-image:    -moz-linear-gradient(top, #4B92B6, #006699); /* FF3.6 */*/
+/*  background-image:     -ms-linear-gradient(top, #4B92B6, #006699); /* IE10 */*/
+/*  background-image:      -o-linear-gradient(top, #4B92B6, #006699); /* Opera 11.10+ */*/
+/*  background-image:         linear-gradient(top, #4B92B6, #006699);*/
+/*  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4B92B6', EndColorStr='#006699');*/
 
   /* dimensions */
-  padding: 8px 12px;
+/*  padding: 8px 12px;
   margin: 0;
-  display: block;
+  display: block;*/
 
   /* text formatting */
-  color: #fff !important;
+/*  color: #fff !important;
   font-weight: bold;
   font-size: 9pt;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: uppercase;*/
 }
