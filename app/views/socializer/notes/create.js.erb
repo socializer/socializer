@@ -5,7 +5,7 @@ if (window.location.href.indexOf('message') > 0) {
   // TODO: Note - create.js.erb - no need to re-render the partial when using the resetNoteForm function.
   //        If re-rendering is preferred, some modifications should be made to resetNoteForm
   //        replace instance variable with local variable may change things
-  // $('.note-form').replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');
+  // $('.new_note').replaceWith('<%= escape_javascript(render 'socializer/notes/form') %>');
   resetNoteForm();
   addTimeAgoSupport();
   addTooltipSupport( $('.tooltip', '.activities') );
