@@ -1,3 +1,5 @@
+@import "variables";
+
 /*
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
@@ -63,15 +65,14 @@ ul.activities > a:hover
 {
 	text-decoration: underline;
 }
-
-.note-content-field
+textarea.note-content-field
 {
-	width: 506px;
-	height: 16px;
+	width: 100%;
+	height: $input-height-base;
 	resize: none;
-	border: 1px solid #ccc;
-	margin-bottom: 5px;
-	padding: 5px;
+	// border: 1px solid #ccc;
+/*	margin-bottom: 5px;*/
+  // padding: $padding-base-vertical $padding-base-horizontal;
 }
 
 ul.activities .separator
