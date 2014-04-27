@@ -1,12 +1,8 @@
-<div class="note-form" style='padding: 0px 20px;'>
-  <%= simple_form_for(Socializer::Note.new, remote: true) do |f| %>
-    <%= content_tag(:div, class: 'form-inputs') do %>
-      <%= f.input :content, label: false, input_html: { class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" } %>
-      <%= f.input :object_ids, label: false, input_html: { data: { path: j(audiences_path), title: j(@title), current_id: @current_id } } %>
-    <% end %>
+<div class='well well-sm'>
+  <%= simple_form_for(Socializer::Note.new, html: { remote: true }) do |f| %>
+    <%= f.input :content, label: false, input_html: { class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" } %>
+    <%= f.input :object_ids, label: false, input_html: { data: { path: j(audiences_path), title: j(@title), current_id: @current_id } } %>
 
-    <%= content_tag(:div, class: "form-actions") do %>
-      <%= f.button :submit, t('.share'), class: 'action-button' %>
-    <% end %>
+    <%= f.button :submit, t('.share'), class: 'action-button' %>
   <% end %>
 </div>
