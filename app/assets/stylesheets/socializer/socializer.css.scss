@@ -74,6 +74,14 @@ body > main {
   .search-form {
     @extend .navbar-form;
     margin-left: -15px;
+
+    > .input-group {
+      width: 100%;
+
+      > .input-group-btn {
+        width: 0;
+      }
+    }
   }
 }
 
