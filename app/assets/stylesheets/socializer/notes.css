@@ -3,7 +3,7 @@
   They will automatically be included in application.css.
 */
 
-#note_content:-moz-placeholder,
+/*#note_content:-moz-placeholder,
 #note_content::-moz-placeholder {
   font-style: italic;
   color: #aaa;
@@ -18,4 +18,4 @@
 #note_content::-webkit-input-placeholder {
   font-style: italic;
   color: #aaa;
-}
+}*/
