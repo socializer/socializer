@@ -1,12 +1,8 @@
 <%= render 'menu' %>
 
 <%= simple_form_for(circle) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :name, input_html: { autofocus: true } %>
-    <%= f.input :content %>
-  <% end %>
+  <%= f.input :name, input_html: { autofocus: true } %>
+  <%= f.input :content %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, t('.submit'), class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, t('.submit'), class: 'btn-primary action-button' %>
 <% end %>
