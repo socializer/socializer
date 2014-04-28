@@ -1,0 +1,18 @@
+<article class='media panel panel-default <%= panel_class %>' data-activity-id='<%= notification.activity.guid %>'>
+  <section class='media-object'>
+    <%= link_to(image_tag(notification.activity.actor.avatar_url), notification.activity.actor) %>
+  </section>
+
+  <section class='media-body'>
+    <header>
+      <h1>
+        <%= link_to(notification.activity.actor.display_name, stream_path(provider: :people, id: notification.activity.actor.id)) %>
+        <small class='text-muted'> -
+          <%= link_to(notification.created_at_time_ago, stream_path(provider: :activities, id: notification.activity.id), class: 'text-muted') %>
+        </small>
+      </h1>
+    </header>
+
+    <p><%= "has #{notification.activity.verb.name}" + (' a note' if notification.activity.activitable_object.note?) %></p>
+  </section>
+</article>

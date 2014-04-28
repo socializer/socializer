@@ -2,7 +2,7 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-ul.notification-list {
+/*ul.notification-list {
   list-style-type: none;
   margin: 0px 50px;
 }
@@ -15,17 +15,17 @@ ul.notification-list {
 .notification-list li img {
   width: 40px;
   height: 40px;
-}
+}*/
 
-.not-displayed {
-  background-color: #FFF9D7; /* lightyellow */
-}
+/*.not-displayed {*/
+/*  background-color: #FFF9D7; /* lightyellow */*/
+/*}*/
 
-.not-read {
-  background-color: #F4F6F9; /* lightblue */
-}
+/*.not-read {*/
+/*  background-color: #F4F6F9; /* lightblue */*/
+/*}*/
 
-.lfloat {
+/*.lfloat {
   float: left;
 }
 
@@ -43,4 +43,4 @@ ul.notification-list {
   color: black;
   font-size: 0.8em;
   margin-top: 10px;
-}
+}*/

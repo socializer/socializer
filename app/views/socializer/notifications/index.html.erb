@@ -1,36 +1,55 @@
 <h1><%= t('.header') %></h1>
 
-<ul class="notification-list">
+<section class='notifications'>
   <% index_notification = 0 %>
 
-  <% @notifications.each do |n| %>
+  <% @notifications.each do |notification| %>
 
     <%
+      index_notification += 1
+      # panel_class, bg_class = 'panel-warning', 'bg-warning' unless notification.read
+      # panel_class, bg_class = 'panel-success', 'bg-success' if index_notification <= current_user.activity_object.unread_notifications_count
+      panel_class = 'panel-warning' unless notification.read
+      panel_class = 'panel-success' if index_notification <= current_user.activity_object.unread_notifications_count
+    %>
+
+    <%#= render notification, classname: classname, bg_class: bg_class %>
+    <%= render notification, panel_class: panel_class %>
+  <% end %>
+  <%#= render @notifications %>
+</section>
+
+<!-- <ul class="notification-list"> -->
+  <%# index_notification = 0 %>
+
+  <%# @notifications.each do |n| %>
+
+     <%#
       index_notification += 1
       classname = 'not-read' unless n.read
       classname = 'not-displayed' if index_notification <= current_user.activity_object.unread_notifications_count
     %>
-    <li class="<%= classname %>">
+<!--     <li class="<%#= classname %>">
 
-      <a href="<%= notification_url(n.id) %>">
+      <a href="<%#= notification_url(n.id) %>">
 
         <div class="lfloat">
-          <%= image_tag(n.activity.actor.avatar_url, title: n.activity.actor.display_name) %>
+          <%#= image_tag(n.activity.actor.avatar_url, title: n.activity.actor.display_name) %>
         </div>
 
         <div class="notification-body">
           <div>
-            <span class="person-name"><%= n.activity.actor.display_name %></span>
-            <span><%= 'has %s ' % n.activity.verb.name %></span>
-            <span><%= 'a note' if n.activity.activitable_object.note? %></span>
+            <span class="person-name"><%#= n.activity.actor.display_name %></span>
+            <span><%#= 'has %s ' % n.activity.verb.name %></span>
+            <span><%#= 'a note' if n.activity.activitable_object.note? %></span>
           </div>
-          <div class="time-elapsed"><%=  n.created_at_time_ago %></div>
+          <div class="time-elapsed"><%#=  n.created_at_time_ago %></div>
         </div>
 
       </a>
       <div class="clearfix"></div>
-    </li>
+    </li> -->
 
-<% end %>
+<%# end %>
 
-</ul>
+<!-- </ul> -->
