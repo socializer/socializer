@@ -1,31 +1,27 @@
 <%= simple_form_for(person) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :display_name, input_html: { autofocus: true } %>
-    <%= f.input :email %>
-    <%= f.input :language, collection: [['English', 'en'], ['Français', 'fr']] %>
-    <%= f.input :avatar_provider, collection: [['Twitter', 'TWITTER'], ['Facebook', 'FACEBOOK'], ['Linked In', 'LINKEDIN'], ['Gravatar', 'GRAVATAR']] %>
+  <%= f.input :display_name, input_html: { autofocus: true } %>
+  <%= f.input :email %>
+  <%= f.input :language, collection: [['English', 'en'], ['Français', 'fr']] %>
+  <%= f.input :avatar_provider, collection: [['Twitter', 'TWITTER'], ['Facebook', 'FACEBOOK'], ['Linked In', 'LINKEDIN'], ['Gravatar', 'GRAVATAR']] %>
 
-    <%= f.input :tagline %>
-    <%= f.input :introduction %>
-    <%= f.input :bragging_rights %>
+  <%= f.input :tagline %>
+  <%= f.input :introduction %>
+  <%= f.input :bragging_rights %>
 
-    <%= f.input :occupation %>
-    <%= f.input :skills %>
+  <%= f.input :occupation %>
+  <%= f.input :skills %>
 
-    <%= f.input :gender %>
+  <%= f.input :gender %>
 
-    <%= f.label :looking_for %>
-    <%= f.input :looking_for_friends %>
-    <%= f.input :looking_for_dating %>
-    <%= f.input :looking_for_relationship %>
-    <%= f.input :looking_for_networking %>
+  <%= f.label :looking_for %>
+  <%= f.input :looking_for_friends %>
+  <%= f.input :looking_for_dating %>
+  <%= f.input :looking_for_relationship %>
+  <%= f.input :looking_for_networking %>
 
-    <%= f.input :birthdate, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 13,  order: [:month, :day, :year] %>
-    <%= f.input :relationship %>
-    <%= f.input :other_names %>
-  <% end %>
+  <%= f.input :birthdate, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 13,  order: [:month, :day, :year] %>
+  <%= f.input :relationship %>
+  <%= f.input :other_names %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, class: 'btn-primary action-button' %>
 <% end %>
