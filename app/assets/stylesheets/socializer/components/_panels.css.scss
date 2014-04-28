@@ -11,6 +11,25 @@
   border-bottom-width: 2px;
   border-radius: $panel-border-radius;
   @include box-shadow(none);
+
+  &.bg-primary {
+    @extend .bg-primary;
+  }
+  &.bg-success {
+     @extend .bg-success;
+   }
+  &.bg-info {
+    @extend .bg-info;
+  }
+  &.bg-warning {
+    @extend .bg-warning;
+  }
+  &.bg-danger {
+     @extend .bg-danger;
+   }
+  &.bg-muted {
+    @extend .bg-muted;
+  }
 }
 
 // Panel contents
