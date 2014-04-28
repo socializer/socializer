@@ -1,0 +1,32 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Emphasis & misc
+// -------------------------
+
+mark,
+.mark {
+  background-color: $state-warning-bg;
+}
+
+// Contextual emphasis
+@include text-emphasis-variant('.text-primary', $brand-primary);
+
+@include text-emphasis-variant('.text-warning', $state-warning-text);
+
+// Contextual backgrounds
+// For now we'll leave these alongside the text classes until v4 when we can
+// safely shift things around (per SemVer rules).
+.bg-primary {
+  // Given the contrast here, this is the only class to have its color inverted
+  // automatically.
+  color: #fff;
+}
+
+@include bg-variant('.bg-primary', $brand-primary);
+
+@include bg-variant('.bg-warning', $state-warning-bg);
+
+@include bg-variant('.bg-muted', #f5f5f5);
