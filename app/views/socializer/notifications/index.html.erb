@@ -7,14 +7,12 @@
 
     <%
       index_notification += 1
-      # panel_class, bg_class = 'panel-warning', 'bg-warning' unless notification.read
-      # panel_class, bg_class = 'panel-success', 'bg-success' if index_notification <= current_user.activity_object.unread_notifications_count
-      panel_class = 'panel-warning' unless notification.read
-      panel_class = 'panel-success' if index_notification <= current_user.activity_object.unread_notifications_count
+      classname = 'panel-default'
+      classname = 'panel-warning bg-warning' unless notification.read
+      classname = 'panel-success bg-success' if index_notification <= current_user.activity_object.unread_notifications_count
     %>
 
-    <%#= render notification, classname: classname, bg_class: bg_class %>
-    <%= render notification, panel_class: panel_class %>
+    <%= render notification, classname: classname %>
   <% end %>
   <%#= render @notifications %>
 </section>
