@@ -1,19 +1,45 @@
 <%= render 'menu' %>
-<ul class="large-group-list">
-<% @memberships.each do |membership| %>
-  <li>
-    <div class="group-card <%= membership.group.privacy_level %>">
-      <%= link_to membership.group do %>
-        <div class="group-info">
-          <span class="group-name"><%= membership.group.name %></span>
-          <span class="group-member-count"><%= membership.group.members.count %> members</span>
-          <span class="group-privacy-level"><%= membership.group.privacy_level %></span>
+
+<div class='row'>
+  <% @memberships.each do |membership| %>
+    <%
+      classname = 'panel-default'
+      classname = 'panel-warning' if membership.group.restricted?
+      classname = 'panel-danger' if membership.group.private?
+    %>
+    <div class='col-sm-4'>
+      <div class='panel <%=classname %>'>
+        <div class='panel-body'>
+          <%= link_to(membership.group) do %>
+            <p class="lead"><%= membership.group.name %></p>
+            <p class='text-muted'>
+              <%= membership.group.members.count %> members - <%= membership.group.privacy_level.titlecase %>
+              <br>
+              TODO: need a posts count
+            </p>
+            <%= link_to(t('.leave'), membership, method: :delete, class: 'btn btn-default') %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- <ul class="large-group-list"> -->
+<%# @memberships.each do |membership| %>
+<!--   <li>
+    <div class="group-card <%#= membership.group.privacy_level %>">
+      <%#= link_to membership.group do %>
+        <div class="group-info">
+          <span class="group-name"><%#= membership.group.name %></span>
+          <span class="group-member-count"><%#= membership.group.members.count %> members</span>
+          <span class="group-privacy-level"><%#= membership.group.privacy_level %></span>
+        </div>
+      <%# end %>
       <div class="group-actions">
-        <%= link_to t('.leave'), membership, method: :delete %>
+        <%#= link_to t('.leave'), membership, method: :delete %>
       </div>
     </div>
   </li>
-<% end %>
-</ul>
+<%# end %>
+</ul> -->

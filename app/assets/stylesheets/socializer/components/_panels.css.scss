@@ -12,6 +12,10 @@
   border-radius: $panel-border-radius;
   @include box-shadow(none);
 
+  a {
+    color: $text-color
+  }
+
   &.bg-primary {
     @extend .bg-primary;
   }
