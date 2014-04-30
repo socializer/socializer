@@ -12,6 +12,7 @@
   border-radius: $panel-border-radius;
   @include box-shadow(none);
 
+  // TODO: Fix this it's to broad
   a {
     color: $text-color;
   }
