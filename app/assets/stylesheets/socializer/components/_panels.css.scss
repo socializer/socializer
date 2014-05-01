@@ -13,7 +13,7 @@
   @include box-shadow(none);
 
   // TODO: Fix this it's to broad
-  a {
+  a > .lead {
     color: $text-color;
   }
 
