@@ -12,10 +12,12 @@
       <%= render 'socializer/shared/topbar' %>
       <%= render 'socializer/shared/toolbar' %>
     </header>
+    <% end %>
 
     <div class="container">
       <div class="row">
 
+      <% if signed_in? %>
         <aside id='stream-column' role='complementary'>
         <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
           <%= render 'socializer/people/card', person: @person %>
