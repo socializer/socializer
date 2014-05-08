@@ -92,18 +92,18 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
 }
 
 
-.btn-adn           { @include btn-social(#d87a68); }
-.btn-bitbucket     { @include btn-social(#205081); }
-.btn-dropbox       { @include btn-social(#1087dd); }
+// .btn-adn           { @include btn-social(#d87a68); }
+// .btn-bitbucket     { @include btn-social(#205081); }
+// .btn-dropbox       { @include btn-social(#1087dd); }
 .btn-facebook      { @include btn-social(#3b5998); }
-.btn-flickr        { @include btn-social(#ff0084); }
-.btn-foursquare    { @include btn-social(#0072b1); }
-.btn-github        { @include btn-social(#444444); }
+// .btn-flickr        { @include btn-social(#ff0084); }
+// .btn-foursquare    { @include btn-social(#0072b1); }
+// .btn-github        { @include btn-social(#444444); }
 .btn-google        { @include btn-social(#4d90fe); }
-.btn-google-plus   { @include btn-social(#dd4b39); }
-.btn-instagram     { @include btn-social(#3f729b); }
+// .btn-google-plus   { @include btn-social(#dd4b39); }
+// .btn-instagram     { @include btn-social(#3f729b); }
 .btn-linkedin      { @include btn-social(#007bb6); }
-.btn-tumblr        { @include btn-social(#2c4762); }
+// .btn-tumblr        { @include btn-social(#2c4762); }
 .btn-twitter       { @include btn-social(#55acee); }
-.btn-vk            { @include btn-social(#587ea3); }
+// .btn-vk            { @include btn-social(#587ea3); }
 .btn-yahoo         { @include btn-social(#2d18a1); }
