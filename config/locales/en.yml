@@ -38,6 +38,9 @@ en:
         submit: 'Comment'
 
     groups:
+      index:
+        header: 'Discover groups'
+        new_group: 'New group'
       form:
         submit: 'Save changes'
       menu:
