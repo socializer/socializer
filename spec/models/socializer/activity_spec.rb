@@ -34,5 +34,8 @@ module Socializer
     end
 
     it { should delegate_method(:activity_field_content).to(:activity_field).as(:content) }
+
+    # TODO: Test activity.comments? == true
+    it { expect(activity.comments?).to eq(false) }
   end
 end
