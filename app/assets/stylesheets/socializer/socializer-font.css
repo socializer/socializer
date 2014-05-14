@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'socializer';
-  src: url('socializer.eot?43335316');
-  src: url('socializer.eot?43335316#iefix') format('embedded-opentype'),
-       url('socializer.woff?43335316') format('woff'),
-       url('socializer.ttf?43335316') format('truetype'),
-       url('socializer.svg?43335316#socializer') format('svg');
+  src: url('socializer.eot?28134370');
+  src: url('socializer.eot?28134370#iefix') format('embedded-opentype'),
+       url('socializer.woff?28134370') format('woff'),
+       url('socializer.ttf?28134370') format('truetype'),
+       url('socializer.svg?28134370#socializer') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -106,9 +106,11 @@
 }
 @keyframes spin {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
@@ -178,10 +180,12 @@
 }
 
 .fa-thumbs-o-up:before { content: '\e815'; } /* '' */
-.fa-yahoo:before { content: '\e821'; } /* '' */
-.fa-comments-o:before { content: '\e822'; } /* '' */
-.fa-thumbs-up:before { content: '\e805'; } /* '' */
-.fa-thumbs-down:before { content: '\e806'; } /* '' */
+.fa-google-circles:before { content: '\e804'; } /* '' */
+.fa-comments-o:before { content: '\e821'; } /* '' */
+.fa-thumbs-up :before { content: '\e822'; } /* '' */
+.fa-thumbs-down :before { content: '\e820'; } /* '' */
+.fa-yahoo:before { content: '\e805'; } /* '' */
+.fa-google:before { content: '\e806'; } /* '' */
 .fa-search:before { content: '\e814'; } /* '' */
 .fa-user:before { content: '\e808'; } /* '' */
 .fa-users:before { content: '\e809'; } /* '' */
@@ -194,8 +198,9 @@
 .fa-flag:before { content: '\e80c'; } /* '' */
 .fa-reply:before { content: '\e823'; } /* '' */
 .fa-share:before { content: '\e819'; } /* '' */
-.fa-pencil:before { content: '\e80e'; } /* '' */
 .fa-thumbs-o-down:before { content: '\e816'; } /* '' */
+.fa-bell:before { content: '\e825'; } /* '' */
+.fa-bell-alt:before { content: '\e817'; } /* '' */
 .fa-location:before { content: '\e81b'; } /* '' */
 .fa-cog:before { content: '\e818'; } /* '' */
 .fa-calendar:before { content: '\e80d'; } /* '' */
@@ -211,6 +216,4 @@
 .fa-youtube-play:before { content: '\e80f'; } /* '' */
 .fa-angle-down-big:before { content: '\e824'; } /* '' */
 .fa-air:before { content: '\e813'; } /* '' */
-.fa-google-circles:before { content: '\e804'; } /* '' */
-.fa-google:before { content: '\e820'; } /* '' */
-.fa-bell-alt:before { content: '\e817'; } /* '' */
+.fa-pencil:before { content: '\e80e'; } /* '' */
