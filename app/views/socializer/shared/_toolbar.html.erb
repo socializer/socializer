@@ -9,7 +9,7 @@
           <span class='icon-bar'></span>
           <span class='icon-bar'></span>
         </button>
-        <a href='#' class='navbar-brand'><span class='fa fa-home fa-fw'></span>Home</a>
+        <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-home') + t('.home'), root_path, class: 'navbar-brand') %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
