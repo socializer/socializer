@@ -49,6 +49,7 @@ body > main {
 
 #stream-column {
   @include make-sm-column(2);
+  margin-top: 15px;
 }
 #page-content {
   @include make-sm-column(7);
