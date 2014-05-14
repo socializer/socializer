@@ -87,14 +87,17 @@ en:
       form:
         content_label: 'Would you like to say something along with the sharing of this activity?'
 
-  layouts:
-    socializer:
-      header:
+    shared:
+      main_navigation:
         home: 'Home'
         profile: 'Profile'
         circles: 'Circles'
-        authentications: 'Authentications'
         groups: 'Groups'
+
+  layouts:
+    socializer:
+      header:
+        authentications: 'Authentications'
         notifications: 'Notifications'
         signout: 'Signout'
 

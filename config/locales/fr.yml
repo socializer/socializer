@@ -84,14 +84,17 @@ fr:
       form:
         content_label: 'Voulez-vous ajouter un commentaire avec le partage de cette activité?'
 
-  layouts:
-    socializer:
-      header:
+    shared:
+      main_navigation:
         home: 'Accueil'
         profile: 'Profil'
         circles: 'Cercles'
-        authentications: 'Authentifications'
         groups: 'Groupes'
+
+  layouts:
+    socializer:
+      header:
+        authentications: 'Authentifications'
         notifications: 'Notifications'
         signout: 'Déconnexion'
 
