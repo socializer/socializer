@@ -1,3 +1,7 @@
+<% content_for :toolbar do %>
+  <%= render 'toolbar', person: @person %>
+<% end %>
+
 <%= render 'socializer/people/menu', person: @person %>
 <ul class="activities">
 <% @likes.each do |activity| %>
