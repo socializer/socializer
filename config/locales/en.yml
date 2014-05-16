@@ -52,6 +52,9 @@ en:
         pending_invites: 'Pending invites'
         my_groups: 'My groups'
         create_new_group: 'Create new group'
+      toolbar:
+        groups: 'Groups'
+        my_groups: 'My groups'
       memberships:
         leave: 'leave'
       ownerships:

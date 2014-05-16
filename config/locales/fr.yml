@@ -49,6 +49,9 @@ fr:
         pending_invites: 'Invitations en attente'
         my_groups: 'Mes groupes'
         create_new_group: 'Créer un nouveau groupe'
+      toolbar:
+        groups: 'Groupes'
+        my_groups: 'Mes groupes'
       memberships:
         leave: 'quitter'
       ownerships:
