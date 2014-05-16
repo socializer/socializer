@@ -50,7 +50,7 @@ en:
         your_groups: 'Your groups'
         memberships: 'Memberships'
         pending_invites: 'Pending invites'
-        groups_you_own: 'Groups you own'
+        my_groups: 'My groups'
         create_new_group: 'Create new group'
       memberships:
         leave: 'leave'
