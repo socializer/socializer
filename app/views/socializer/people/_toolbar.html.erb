@@ -1,0 +1,30 @@
+<nav class='toolbar' role='navigation'>
+  <div class='container'>
+    <div class='row'>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class='navbar-header col-sm-2'>
+        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#toolbar-collapse-1'>
+          <span class='sr-only'>Toggle navigation</span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>
+        <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-user') + t('.profile'), stream_path(provider: :people, id: current_user.id), class: 'navbar-brand') %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
+        <div class='col-sm-7'>
+          <ul class='nav navbar-nav'>
+            <!-- TODO; Add translations -->
+            <!-- TODO; Find a better home for Edit -->
+            <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to('About', person) %></li>
+            <li class="<%= 'active' if current_page?(stream_path(provider: :people, id: person.id)) %>"><%= link_to('Stream', stream_path(provider: :people, id: person.id)) %></li>
+            <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to('Likes', person_likes_path(person)) %></li>
+            <li class=''><%= link_to("#{content_tag(:span, nil, class: 'fa fa-pencil fa-fw')} Edit".html_safe, edit_person_path(current_user), title: 'Edit your profile') %></li>
+          </ul>
+        </div><!-- /.col-sm-7 -->
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</nav><!-- /.navbar-toolbar -->
