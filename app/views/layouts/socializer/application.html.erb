@@ -34,7 +34,7 @@
           <% elsif params[:provider] == 'groups' %>
             <%= render 'socializer/groups/sidebar', group: @group, title: @title %>
           <% elsif params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
-            <%= render 'socializer/people/card', person: @person %>
+            <%= render 'socializer/people/sidebar', person: @person %>
           <% elsif params[:provider].nil? %>
             <%= render 'socializer/activities/stream_card' %>
           <% end %>
