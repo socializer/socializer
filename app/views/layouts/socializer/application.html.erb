@@ -30,7 +30,7 @@
 
         <aside id='contextual-column' role='complementary'>
           <% if params[:provider] == 'circles' %>
-            <%= render 'socializer/circles/card', circle: @circle, title: @title %>
+            <%= render 'socializer/circles/sidebar', circle: @circle, title: @title %>
           <% elsif params[:provider] == 'groups' %>
             <%= render 'socializer/groups/sidebar', group: @group, title: @title %>
           <% elsif params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
