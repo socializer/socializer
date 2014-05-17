@@ -67,6 +67,9 @@ fr:
           other: 'You belong to %{count} groups'
         leave: 'quitter'
       ownerships:
+        header:
+          one: 'You own 1 group'
+          other: 'You own %{count} groups'
         edit: 'éditer'
         delete: 'supprimer'
       pending_invites:

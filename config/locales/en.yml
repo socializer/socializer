@@ -70,6 +70,9 @@ en:
           other: 'You belong to %{count} groups'
         leave: 'leave'
       ownerships:
+        header:
+          one: 'You own 1 group'
+          other: 'You own %{count} groups'
         edit: 'edit'
         delete: 'delete'
       pending_invites:
