@@ -19,11 +19,7 @@
 
       <% if signed_in? %>
         <aside id='stream-column' role='complementary'>
-        <% if params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
-          <%= render 'socializer/people/card', person: @person %>
-        <% else %>
           <%= render 'socializer/shared/main_navigation' %>
-        <% end %>
         </aside>
 
         <% if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
@@ -37,6 +33,8 @@
             <%= render 'socializer/circles/card', circle: @circle, title: @title %>
           <% elsif params[:provider] == 'groups' %>
             <%= render 'socializer/groups/card', group: @group, title: @title %>
+          <% elsif params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
+            <%= render 'socializer/people/card', person: @person %>
           <% elsif params[:provider].nil? %>
             <%= render 'socializer/activities/stream_card' %>
           <% end %>
