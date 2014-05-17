@@ -65,6 +65,9 @@ en:
         groups: 'Groups'
         my_groups: 'My groups'
       memberships:
+        header:
+          one: 'You belong to 1 group'
+          other: 'You belong to %{count} groups'
         leave: 'leave'
       ownerships:
         edit: 'edit'

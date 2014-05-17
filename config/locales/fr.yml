@@ -62,6 +62,9 @@ fr:
         groups: 'Groupes'
         my_groups: 'Mes groupes'
       memberships:
+        header:
+          one: 'You belong to 1 group'
+          other: 'You belong to %{count} groups'
         leave: 'quitter'
       ownerships:
         edit: 'éditer'
