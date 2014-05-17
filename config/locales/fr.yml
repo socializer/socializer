@@ -69,6 +69,10 @@ fr:
       pending_invites:
         decline: 'refuser'
         confirm: 'confirmer'
+      restricted:
+        header:
+          one: '1 restricted group'
+          other: '%{count} restricted groups'
       show:
         leave: 'quitter'
         join: 'joindre'
