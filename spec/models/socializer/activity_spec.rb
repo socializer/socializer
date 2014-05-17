@@ -33,7 +33,7 @@ module Socializer
       it { expect(activity).to validate_presence_of(:verb) }
     end
 
-    it { should delegate_method(:activity_field_content).to(:activity_field).as(:content) }
+    it { expect(activity).to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
 
     # TODO: Test activity.comments? == true
     it { expect(activity.comments?).to eq(false) }
