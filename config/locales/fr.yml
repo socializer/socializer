@@ -32,6 +32,8 @@ fr:
         delete: 'delete'
       show:
         edit_this_circle: 'Edit this circle'
+      find_people:
+        header: 'Suggestions'
 
     comments:
       form:
