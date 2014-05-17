@@ -2,7 +2,7 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<h1><%= t('.header', count: current_user.contact_of.size) %></h1>
+<h1><%= t('.header', count: current_user.contact_of.count) %></h1>
 
 <ul class="large-contact-list">
 <% current_user.contact_of.each do |contact| %>
