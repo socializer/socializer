@@ -20,12 +20,17 @@ fr:
     circles:
       form:
         submit: 'Save changes'
+      toolbar:
+        find: 'Find people'
+        added_you: 'Have you in circles'
+        your_circles: 'Your circles'
+        new: 'Create circle'
       menu:
         header: 'Your circles'
-        in_your_circles: 'People in your circles'
-        added_you: 'People who have added you'
-        find: 'Find new people'
-        new: 'Create new circle'
+        your_circles: 'Your circles'
+        added_you: 'Have you in circles'
+        find: 'Find people'
+        new: 'Create circle'
       index:
         new: 'Create a new circle'
         edit: 'edit'
