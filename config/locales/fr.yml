@@ -69,6 +69,10 @@ fr:
       pending_invites:
         decline: 'refuser'
         confirm: 'confirmer'
+      joinable:
+        header:
+          one: '1 joinable group'
+          other: '%{count} joinable groups'
       public:
         header:
           one: '1 public group'

@@ -2,6 +2,8 @@
   <%= render 'toolbar' %>
 <% end %>
 
+<h1><%= t('.header', count: Socializer::Group.joinable.count) %></h1>
+
 <%= render 'menu' %>
 <ul class="large-group-list">
 <% @groups.each do |group| %>

@@ -72,6 +72,10 @@ en:
       pending_invites:
         decline: 'decline'
         confirm: 'confirm'
+      joinable:
+        header:
+          one: '1 joinable group'
+          other: '%{count} joinable groups'
       public:
         header:
           one: '1 public group'
