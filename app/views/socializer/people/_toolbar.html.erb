@@ -21,8 +21,10 @@
             <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to('About', person) %></li>
             <li class="<%= 'active' if current_page?(stream_path(provider: :people, id: person.id)) %>"><%= link_to('Stream', stream_path(provider: :people, id: person.id)) %></li>
             <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to('Likes', person_likes_path(person)) %></li>
-            <li class=''><%= link_to("#{content_tag(:span, nil, class: 'fa fa-pencil fa-fw')} Edit".html_safe, edit_person_path(current_user), title: 'Edit your profile') %></li>
           </ul>
+          <div class="btn-group pull-right">
+            <%= link_to(t('.edit'), edit_person_path(current_user), class: 'btn btn-primary', title: "#{t('.tooltip.edit')}") %>
+          </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.row -->

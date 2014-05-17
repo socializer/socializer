@@ -113,6 +113,10 @@ fr:
         local_account_query: "Vous n'utilisez pas ces services?"
         create_account: 'Créer un compte'
         login: 'Connexion'
+      toolbar:
+        edit: 'Edit'
+        tooltip:
+          edit: 'Edit your profile'
 
     shares:
       form:

@@ -116,6 +116,10 @@ en:
         local_account_query: "Don't use these services?"
         create_account: 'Create an account'
         login: 'Login'
+      toolbar:
+        edit: 'Edit'
+        tooltip:
+          edit: 'Edit your profile'
 
     shares:
       form:
