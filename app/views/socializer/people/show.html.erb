@@ -2,7 +2,8 @@
   <%= render 'toolbar', person: @person %>
 <% end %>
 
-<%= render 'socializer/people/menu', person: @person %>
+<h1><%= @person.display_name %></h1>
+
 <p class="field-title">Name</p>                <p class="field-value"><%= @person.display_name %></p>
 
 <div>

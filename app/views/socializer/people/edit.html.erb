@@ -2,5 +2,5 @@
   <%= render 'toolbar', person: @person %>
 <% end %>
 
-<%= render 'socializer/people/menu', person: @person %>
+<h1><%= @person.display_name %></h1>
 <%= render 'form', person: @person %>
