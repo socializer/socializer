@@ -35,6 +35,8 @@ en:
         edit_this_circle: 'Edit this circle'
       find_people:
         header: 'Suggestions'
+      contacts:
+        header: 'Your circles'
 
     comments:
       form:
