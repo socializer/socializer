@@ -18,7 +18,7 @@
           <ul class='nav navbar-nav'>
             <!-- TODO; Add translations -->
             <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to('All', groups_path) %><li>
-            <li class="<%= 'active' if current_page?(groups_ownerships_path) %>"><%= link_to("#{t('.my_groups')} ( #{current_user.groups.size.to_s})".html_safe, groups_ownerships_path) %></li>
+            <li class="<%= 'active' if current_page?(groups_ownerships_path) %>"><%= link_to(t('.my_groups'), groups_ownerships_path) %></li>
 
             <li class='dropdown'>
               <%= link_to("More #{content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')}".html_safe, nil, class: 'dropdown-toggle', data: { toggle: 'dropdown' }) %>
