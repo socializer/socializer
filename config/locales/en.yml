@@ -35,6 +35,10 @@ en:
         edit_this_circle: 'Edit this circle'
       find_people:
         header: 'Suggestions'
+      contact_of:
+        header:
+          one: '1 person'
+          other: '%{count} people'
       contacts:
         header: 'Your circles'
 
