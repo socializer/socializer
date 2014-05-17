@@ -1,8 +1,15 @@
 <% if params[:provider] == 'people' %>
 
-  <%= render 'socializer/people/menu', person: @person %>
+  <% content_for :toolbar do %>
+    <%= render 'socializer/people/toolbar', person: @person %>
+  <% end %>
+
 
 <% else %>
+
+  <% content_for :toolbar do %>
+    <%= render 'socializer/shared/toolbar' %>
+  <% end %>
 
   <h1><%= @title %></h1>
 
