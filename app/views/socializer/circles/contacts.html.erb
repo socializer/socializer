@@ -1,3 +1,7 @@
+<% content_for :toolbar do %>
+  <%= render 'toolbar' %>
+<% end %>
+
 <%= render 'menu' %>
 <ul class="large-contact-list">
 <% current_user.contacts.each do |contact| %>

@@ -1,3 +1,7 @@
+<% content_for :toolbar do %>
+  <%= render 'toolbar' %>
+<% end %>
+
 <p style="float: right;"><%= link_to(content_tag(:span, nil, class: 'fa fa-pencil fa-2x fa-fw', title: "#{t('.edit_this_circle')}"), edit_circle_path(@circle)) %></p>
 <%= render 'menu' %>
 <h2><%= @circle.name %></h2>
