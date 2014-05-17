@@ -10,7 +10,6 @@
     <% if signed_in? %>
     <header role='banner'>
       <%= render 'socializer/shared/topbar' %>
-      <%#= render 'socializer/shared/toolbar' %>
       <%= yield :toolbar %>
     </header>
     <% end %>
