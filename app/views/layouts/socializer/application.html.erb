@@ -32,7 +32,7 @@
           <% if params[:provider] == 'circles' %>
             <%= render 'socializer/circles/card', circle: @circle, title: @title %>
           <% elsif params[:provider] == 'groups' %>
-            <%= render 'socializer/groups/card', group: @group, title: @title %>
+            <%= render 'socializer/groups/sidebar', group: @group, title: @title %>
           <% elsif params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
             <%= render 'socializer/people/card', person: @person %>
           <% elsif params[:provider].nil? %>
