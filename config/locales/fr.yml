@@ -70,6 +70,9 @@ fr:
         edit: 'éditer'
         delete: 'supprimer'
       pending_invites:
+        header:
+          one: 'You have 1 pending invite'
+          other: 'You have %{count} pending invites'
         decline: 'refuser'
         confirm: 'confirmer'
       joinable:
