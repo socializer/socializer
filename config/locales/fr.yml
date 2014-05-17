@@ -18,6 +18,7 @@ fr:
         unbind: 'unbind'
 
     circles:
+      header: 'Your circles'
       form:
         submit: 'Save changes'
       toolbar:
