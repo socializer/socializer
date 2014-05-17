@@ -26,7 +26,7 @@ fr:
         find: 'Find people'
         added_you: 'Have you in circles'
         your_circles: 'Your circles'
-        new: 'Create circle'
+        new: 'New circle'
       index:
         new: 'Create a new circle'
         edit: 'edit'
@@ -61,6 +61,7 @@ fr:
       toolbar:
         groups: 'Groupes'
         my_groups: 'Mes groupes'
+        new: 'New group'
       memberships:
         header:
           one: 'You belong to 1 group'

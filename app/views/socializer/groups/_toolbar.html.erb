@@ -27,6 +27,7 @@
               </ul>
             </li>
             <li><%= link_to('Explore') %><li>
+            <li class="<%= 'active' if current_page?(new_group_path) %>"><%= link_to(t('.new'), new_group_path) %></li>
           </ul>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->
