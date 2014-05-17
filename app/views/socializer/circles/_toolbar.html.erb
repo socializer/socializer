@@ -21,8 +21,10 @@
             <li class="<%= 'active' if current_page?(circles_find_people_path) %>"><%= link_to(t('.find'), circles_find_people_path) %></li>
             <li class="<%= 'active' if current_page?(circles_contact_of_path) %>"><%= link_to(t('.added_you'), circles_contact_of_path) %></li>
             <li class="<%= 'active' if current_page?(circles_contacts_path) %>"><%= link_to(t('.your_circles'), circles_contacts_path) %></li>
-            <li class="<%= 'active' if current_page?(new_circle_path) %>"><%= link_to(t('.new'), new_circle_path) %></li>
           </ul>
+          <div class="btn-group pull-right">
+            <%= link_to(t('.new'), new_circle_path, class: 'btn btn-primary') %>
+          </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.row -->
