@@ -72,6 +72,10 @@ en:
       pending_invites:
         decline: 'decline'
         confirm: 'confirm'
+      public:
+        header:
+          one: '1 public group'
+          other: '%{count} public groups'
       restricted:
         header:
           one: '1 restricted group'
