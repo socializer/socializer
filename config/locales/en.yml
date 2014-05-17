@@ -63,7 +63,7 @@ en:
         create_new_group: 'Create new group'
       toolbar:
         groups: 'Groups'
-        my_groups: 'My groups'
+        your_groups: 'Your groups'
         new: 'New group'
       memberships:
         header:

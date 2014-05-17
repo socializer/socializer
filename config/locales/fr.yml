@@ -60,7 +60,7 @@ fr:
         create_new_group: 'Créer un nouveau groupe'
       toolbar:
         groups: 'Groupes'
-        my_groups: 'Mes groupes'
+        your_groups: 'Vos groupes'
         new: 'New group'
       memberships:
         header:
