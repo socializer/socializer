@@ -22,6 +22,7 @@ fr:
       form:
         submit: 'Save changes'
       toolbar:
+        circles: 'Circles'
         find: 'Find people'
         added_you: 'Have you in circles'
         your_circles: 'Your circles'
