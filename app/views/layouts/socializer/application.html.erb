@@ -36,7 +36,7 @@
           <% elsif params[:provider] == 'people' || params[:controller] == 'socializer/people' %>
             <%= render 'socializer/people/sidebar', person: @person %>
           <% elsif params[:provider].nil? %>
-            <%= render 'socializer/activities/stream_card' %>
+            <%= render 'socializer/activities/sidebar' %>
           <% end %>
         </aside>
 
