@@ -1,0 +1,19 @@
+<div class='col-sm-6 col-md-4'>
+  <div class='panel panel-default'>
+    <div class='panel-body'>
+      <%= link_to(group) do %>
+        <p class="lead"><%= group.name %></p>
+        <p class='text-muted'>
+          <%= group.members.count %> members - <%= group.privacy_level.titlecase %>
+          <br>
+          TODO: need a posts count
+        </p>
+        <!-- FIXME: fix the join path -->
+        <%= link_to(t('.join'), group, class: 'btn btn-default') %>
+        <%= link_to(t('.leave'), group, method: :delete, class: 'btn btn-default') %>
+        <%= link_to(t('.edit'), edit_group_path(group), class: 'btn btn-default') %>
+        <%= link_to(t('.delete'), group, method: :delete, class: 'btn btn-default') %>
+      <% end %>
+    </div><!-- /.panel-body -->
+  </div><!-- /.panel -->
+</div><!-- /.col-* -->
