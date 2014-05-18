@@ -2,7 +2,6 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<%= render 'menu' %>
 <h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
 
 <% if @group.member?(current_user) %>

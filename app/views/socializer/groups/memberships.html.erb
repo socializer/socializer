@@ -4,8 +4,6 @@
 
 <h1><%= t('.header', count: current_user.memberships.count) %></h1>
 
-<%= render 'menu' %>
-
 <div class='row'>
   <% @memberships.each do |membership| %>
     <%

@@ -4,7 +4,6 @@
 
 <h1><%= t('.header', count: current_user.groups.count) %></h1>
 
-<%= render 'menu' %>
 <ul class="large-group-list">
 <% @ownerships.each do |group| %>
   <li>

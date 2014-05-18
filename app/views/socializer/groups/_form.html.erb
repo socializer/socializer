@@ -2,8 +2,6 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<%= render 'menu' %>
-
 <%= simple_form_for(group) do |f| %>
   <%= f.input :name, input_html: { autofocus: true } %>
   <%= f.input :privacy_level %>
