@@ -4,6 +4,12 @@
 
 <h1><%= t('.header', count: current_user.pending_memberships_invites.count) %></h1>
 
+<div class='row'>
+  <% @pending_invites.each do |membership| %>
+    <%= render partial: 'card', locals: { group: membership.group } %>
+  <% end %>
+</div>
+
 <ul class="large-group-list">
 <% @pending_invites.each do |membership| %>
   <li>

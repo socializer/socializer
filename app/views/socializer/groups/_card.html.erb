@@ -8,12 +8,15 @@
           <br>
           TODO: need a posts count
         </p>
-        <!-- FIXME: limit these actions -->
+        <!-- TODO: limit these actions -->
         <!-- FIXME: fix the join path -->
         <%= link_to(t('.join'), group, class: 'btn btn-default') %>
         <%= link_to(t('.leave'), group, method: :delete, class: 'btn btn-default') %>
         <%= link_to(t('.edit'), edit_group_path(group), class: 'btn btn-default') %>
         <%= link_to(t('.delete'), group, method: :delete, class: 'btn btn-default') %>
+        <!-- TODO: limit these actions - pending -->
+        <%= link_to t('.decline'), decline_membership_path(membership), method: :post %> |
+        <%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>
       <% end %>
     </div><!-- /.panel-body -->
   </div><!-- /.panel -->
