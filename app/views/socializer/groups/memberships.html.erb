@@ -6,6 +6,8 @@
 
 <div class='row'>
   <% @memberships.each do |membership| %>
+    <%= render partial: 'card', locals: { group: membership.group } %>
+
     <%
       classname = 'panel-default'
       classname = 'panel-warning' if membership.group.restricted?
