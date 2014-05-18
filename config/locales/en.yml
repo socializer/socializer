@@ -64,7 +64,12 @@ en:
       toolbar:
         groups: 'Groups'
         your_groups: 'Your groups'
+        memberships: 'Memberships'
+        pending_invites: 'Pending invites'
         new: 'New group'
+        public: 'Public'
+        restricted: 'Restricted'
+        joinable: 'Joinable'
       memberships:
         header:
           one: 'You belong to 1 group'
