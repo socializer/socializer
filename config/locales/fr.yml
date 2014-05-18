@@ -122,6 +122,8 @@ fr:
         edit: 'Edit'
         tooltip:
           edit: 'Edit your profile'
+      sidebar:
+        send_message: 'Send a message'
 
     shares:
       form:

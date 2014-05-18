@@ -7,7 +7,7 @@
 </p>
 
 <p>
-  <%= link_to('Send a message', person_message_path(person), class: 'btn btn-primary') %>
+  <%= link_to(t('.send_message'), person_message_path(person), class: 'btn btn-primary') %>
 </p>
 
 <p>In <%= person.display_name %>'s circles (<%= person.contacts.size %>):</p>
