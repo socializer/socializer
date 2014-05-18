@@ -4,6 +4,10 @@
 
 <h1><%= t('.header', count: Socializer::Group.joinable.count) %></h1>
 
+<div class='row'>
+  <%= render partial: 'card', collection: @groups, as: :group %>
+</div><!-- /.row -->
+
 <ul class="large-group-list">
 <% @groups.each do |group| %>
   <li>
