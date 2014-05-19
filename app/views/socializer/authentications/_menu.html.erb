@@ -1,5 +1,0 @@
-<h1><%= t('.header') %></h1>
-<p class="content-header-bar">
-<%= link_to t('.services') + " (" + current_user.services.size.to_s + ")", authentications_path, class: (params[:action] == 'index' ? "current" : nil) %>
-<%= link_to t('.add_service'), new_authentication_path, class: (params[:action] == 'new' ? "current" : nil) %>
-</p>

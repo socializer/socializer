@@ -10,10 +10,6 @@ en:
         streams: 'Streams'
 
     authentications:
-      menu:
-        header: 'Authentications'
-        services: 'Bound services'
-        add_service: 'Add a new service'
       toolbar:
         authentications: 'Authentications'
         new: 'New'
@@ -24,6 +20,8 @@ en:
         header:
           one: '1 bound service'
           other: '%{count} bound services'
+      new:
+        header: 'Add a new service'
 
     circles:
       header: 'Your circles'

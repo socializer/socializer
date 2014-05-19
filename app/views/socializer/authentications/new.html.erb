@@ -2,7 +2,8 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<%= render 'menu' %>
+<h1><%= t('.header') %></h1>
+
 <p>
   <%= link_to(content_tag(:span, nil, class:'fa fa-facebook fa-2x fa-fw', title: 'Facebook'), signin_path(:facebook)) %>
   <%= link_to(content_tag(:span, nil, class:'fa fa-twitter fa-2x fa-fw', title: 'Twitter'), signin_path(:twitter)) %>
