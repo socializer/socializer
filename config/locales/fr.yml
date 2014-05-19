@@ -14,6 +14,8 @@ fr:
         header: 'Authentications'
         services: 'Bound services'
         add_service: 'Add a new service'
+      toolbar:
+        authentications: 'Authentications'
       index:
         unbind: 'unbind'
 

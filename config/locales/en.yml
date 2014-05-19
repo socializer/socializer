@@ -14,8 +14,16 @@ en:
         header: 'Authentications'
         services: 'Bound services'
         add_service: 'Add a new service'
+      toolbar:
+        authentications: 'Authentications'
+        new: 'New'
+        tooltip:
+          new: 'Add a new service'
       index:
         unbind: 'unbind'
+        header:
+          one: '1 bound service'
+          other: '%{count} bound services'
 
     circles:
       header: 'Your circles'

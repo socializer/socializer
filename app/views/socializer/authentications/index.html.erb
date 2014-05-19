@@ -1,3 +1,9 @@
+<% content_for :toolbar do %>
+  <%= render 'toolbar' %>
+<% end %>
+
+<h1><%= t('.header', count: current_user.services.count) %></h1>
+
 <%= render 'menu' %>
 
 <div class='row'>

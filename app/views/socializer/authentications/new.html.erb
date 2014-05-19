@@ -1,3 +1,7 @@
+<% content_for :toolbar do %>
+  <%= render 'toolbar' %>
+<% end %>
+
 <%= render 'menu' %>
 <p>
   <%= link_to(content_tag(:span, nil, class:'fa fa-facebook fa-2x fa-fw', title: 'Facebook'), signin_path(:facebook)) %>
