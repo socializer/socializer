@@ -120,6 +120,9 @@ en:
         header: 'Send a message'
 
     notifications:
+      toolbar:
+        notifications: 'Notifications'
+        all: 'All'
       index:
         header: 'Notifications'
 
