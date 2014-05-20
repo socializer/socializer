@@ -1,15 +1,15 @@
 <ul class="list-group">
 <!--   <li class="list-group-header">List header</li> -->
-  <li class="list-group-item <%= 'active' if current_page?(stream_path) %>">
+  <li class="list-group-item <%= 'active' if controller_name == 'activities' %>">
     <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-home') + t('.home'), stream_path) %>
   </li>
-  <li class="list-group-item <%= 'active' if current_page?(stream_path(provider: :people, id: current_user.id)) %>">
+  <li class="list-group-item <%= 'active' if controller_name == 'people' || params[:provider] == 'people' %>">
     <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-user') + t('.profile'), stream_path(provider: :people, id: current_user.id)) %>
   </li>
-  <li class="list-group-item <%= 'active' if current_page?(circles_contacts_path) %>">
+  <li class="list-group-item <%= 'active' if controller_name == 'circles' %>">
     <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-google-circles') + t('.circles'), circles_contacts_path) %>
   </li>
-  <li class="list-group-item <%= 'active' if current_page?(groups_path) %>">
+  <li class="list-group-item <%= 'active' if controller_name == 'groups' %>">
     <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-users') + t('.groups'), groups_path) %>
   </li>
 </ul>
