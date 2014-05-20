@@ -16,6 +16,8 @@ fr:
         new: 'New'
         tooltip:
           new: 'Add a new service'
+      authentication:
+        unbind: 'Unbind'
       index:
         unbind: 'unbind'
         header:
@@ -149,6 +151,10 @@ fr:
         profile: 'Profil'
         circles: 'Cercles'
         groups: 'Groupes'
+      topbar:
+        profile: 'Profile'
+        authentications: 'Authentications'
+        signout: 'Signout'
 
   layouts:
     socializer:
