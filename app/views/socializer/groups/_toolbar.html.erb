@@ -17,7 +17,7 @@
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
             <!-- TODO; Add translations -->
-            <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to('All', groups_path) %><li>
+            <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to(t('.all'), groups_path) %><li>
             <li class="<%= 'active' if current_page?(groups_ownerships_path) %>"><%= link_to(t('.your_groups'), groups_ownerships_path) %></li>
             <li class="<%= 'active' if current_page?(groups_memberships_path) %>"><%= link_to(t('.memberships'), groups_memberships_path) %></li>
             <li class="<%= 'active' if current_page?(groups_pending_invites_path) %>"><%= link_to(t('.pending_invites'), groups_pending_invites_path) %></li>

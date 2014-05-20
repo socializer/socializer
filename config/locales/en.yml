@@ -11,6 +11,7 @@ en:
 
     authentications:
       toolbar:
+        all: 'All'
         authentications: 'Authentications'
         new: 'New'
         tooltip:
@@ -28,6 +29,7 @@ en:
       form:
         submit: 'Save changes'
       toolbar:
+        all: 'All'
         circles: 'Circles'
         find: 'Find people'
         added_you: 'Have you in circles'
@@ -68,6 +70,7 @@ en:
         my_groups: 'My groups'
         create_new_group: 'Create new group'
       toolbar:
+        all: 'All'
         groups: 'Groups'
         your_groups: 'Your groups'
         memberships: 'Memberships'
@@ -128,6 +131,7 @@ en:
         create_account: 'Create an account'
         login: 'Login'
       toolbar:
+        all: 'All'
         edit: 'Edit'
         tooltip:
           edit: 'Edit your profile'

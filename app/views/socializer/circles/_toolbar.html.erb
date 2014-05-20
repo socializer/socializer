@@ -17,7 +17,7 @@
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
             <!-- TODO; Add translations -->
-            <li class="<%= 'active' if current_page?(circles_path) %>"><%= link_to('All', circles_path) %><li>
+            <li class="<%= 'active' if current_page?(circles_path) %>"><%= link_to(t('.all'), circles_path) %><li>
             <li class="<%= 'active' if current_page?(circles_find_people_path) %>"><%= link_to(t('.find'), circles_find_people_path) %></li>
             <li class="<%= 'active' if current_page?(circles_contact_of_path) %>"><%= link_to(t('.added_you'), circles_contact_of_path) %></li>
             <li class="<%= 'active' if current_page?(circles_contacts_path) %>"><%= link_to(t('.your_circles'), circles_contacts_path) %></li>
