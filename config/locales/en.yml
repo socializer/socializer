@@ -11,8 +11,8 @@ en:
 
     authentications:
       toolbar:
-        all: 'All'
         authentications: 'Authentications'
+        all: 'All'
         new: 'New'
         tooltip:
           new: 'Add a new service'
@@ -29,8 +29,8 @@ en:
       form:
         submit: 'Save changes'
       toolbar:
-        all: 'All'
         circles: 'Circles'
+        all: 'All'
         find: 'Find people'
         added_you: 'Have you in circles'
         your_circles: 'Your circles'
@@ -70,8 +70,8 @@ en:
         my_groups: 'My groups'
         create_new_group: 'Create new group'
       toolbar:
-        all: 'All'
         groups: 'Groups'
+        all: 'All'
         your_groups: 'Your groups'
         memberships: 'Memberships'
         pending_invites: 'Pending invites'
