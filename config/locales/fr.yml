@@ -131,6 +131,7 @@ fr:
         create_account: 'Créer un compte'
         login: 'Connexion'
       toolbar:
+        profile: 'Profile'
         all: 'All'
         edit: 'Edit'
         tooltip:
