@@ -4,11 +4,11 @@ AllCops:
     - '*.gemspec'
     - Rakefile
     - config.ru
-    - db/migrate/**
+    - db/migrate/**/*
   Exclude:
     - bin/**
-    - spec/dummy/**
-    - spec/internal/**
+    - spec/dummy/**/*
+    - spec/internal/**/*
 
   # By default, the rails cops are not run. Override in project or home
   # directory .rubocop.yml files, or by giving the -R/--rails option.
