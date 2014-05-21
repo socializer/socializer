@@ -92,9 +92,8 @@ module Socializer
     end
 
     def deny_delete_if_members
-      if memberships.count > 0
-        fail 'Cannot delete a group that has members in it.'
-      end
+      return unless memberships.count > 0
+      fail 'Cannot delete a group that has members in it.'
     end
   end
 end
