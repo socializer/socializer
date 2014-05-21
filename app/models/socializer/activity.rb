@@ -118,8 +118,9 @@ module Socializer
 
       query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
 
-      # activity = Activity.arel_table
-      # audience = Audience.arel_table
+      # # The arel_table method is technically private since it is marked :nodoc
+      # activity ||= Activity.arel_table
+      # audience ||= Audience.arel_table
       #
       # # TODO: Test: Generate the same SQL as below
       # query.where(audience[:privacy_level].eq(privacy_public)
@@ -150,8 +151,9 @@ module Socializer
       # TODO: Remove old code
 
       # Retrieve the author's unique identifier
-      person   = Person.arel_table
-      ao       = ActivityObject.arel_table
+      # The arel_table method is technically private since it is marked :nodoc
+      person   ||= Person.arel_table
+      ao       ||= ActivityObject.arel_table
       join     = ao.join(person).on(person[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Person.name)))
       subquery = ActivityObject.select(:id).joins(join.join_sql)
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
@@ -198,9 +200,10 @@ module Socializer
     private_class_method :build_limited_circle_subquery
 
     def self.build_limited_group_subquery(viewer_id)
-      ao         = ActivityObject.arel_table
-      membership = Membership.arel_table
-      group      = Group.arel_table
+      # The arel_table method is technically private since it is marked :nodoc
+      ao         ||= ActivityObject.arel_table
+      membership ||= Membership.arel_table
+      group      ||= Group.arel_table
       join       = ao.join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
                      .join(membership).on(membership[:group_id].eq(group[:id]))
 

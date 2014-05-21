@@ -29,9 +29,10 @@ module Socializer
       if query.present? && query.size > 0
         query_value = "%#{query}%"
 
-        person_name = Person.arel_table[:display_name]
-        circle_name = Circle.arel_table[:name]
-        group_name  = Group.arel_table[:name]
+        # The arel_table method is technically private since it is marked :nodoc
+        person_name ||= Person.arel_table[:display_name]
+        circle_name ||= Circle.arel_table[:name]
+        group_name  ||= Group.arel_table[:name]
 
         people  = Person.select(:display_name).guids.where(person_name.matches(query_value))
         circles = circles.where(circle_name.matches(query_value))
