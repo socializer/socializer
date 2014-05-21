@@ -171,10 +171,10 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
-    def self.build_limited_circle_subquery(viewer_id)
-      # TODO: Verify this works correcly
-      # TODO: Remove old code
-
+    # def self.build_limited_circle_subquery(viewer_id)
+    # TODO: Remove old code
+    # TODO: Verify this works correcly
+    def self.build_limited_circle_subquery
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       subquery = Circle.select(:id).joins(activity_object: :audiences)
