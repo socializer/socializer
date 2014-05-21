@@ -39,9 +39,9 @@ module Socializer
 
     def self.get_potential_contact_id(activity_id)
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
-      Tie.select { contact_id }
-         .joins  { circle.activity_object.audiences }
-         .where  { circle.activity_object.audiences.activity_id.eq(activity_id) }
+      Tie.select(:contact_id)
+         .joins(circle: { activity_object: :audiences })
+         .where(circle: { activity_object: { audiences: { activity_id: activity_id } } })
          .flatten.uniq
     end
     private_class_method :get_potential_contact_id
