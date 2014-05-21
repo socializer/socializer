@@ -4,7 +4,7 @@ en:
       activity_top:
         tooltip_public: 'Anyone can see this'
         time_format: '%s ago'
-      stream_card:
+      sidebar:
         header: 'In my circles'
       stream_list:
         streams: 'Streams'
