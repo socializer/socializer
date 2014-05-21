@@ -49,9 +49,9 @@ module Socializer
     def self.person_in_circle?(parent_contact_id, child_contact_id)
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
-      ActivityObject.select { id }
-                    .joins  { circles.ties }
-                    .where  { id.eq(parent_contact_id) & circles.ties.contact_id.eq(child_contact_id) }
+      ActivityObject.select(:id)
+                    .joins(circles: :ties)
+                    .where(id: parent_contact_id, circles: { ties: { contact_id: child_contact_id } })
                     .first.present?
     end
     private_class_method :person_in_circle?
