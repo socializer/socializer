@@ -20,10 +20,9 @@ module Socializer
       # Get all ties related to the audience of the activity
       potential_contact_id = get_potential_contact_id(activity.id)
       potential_contact_id.each do |t|
+        next unless person_in_circle?(t.contact_id, activity.activitable_actor.id)
         # If the contact has the author of the activity in one of his circle.
-        if person_in_circle?(t.contact_id, activity.activitable_actor.id)
-          create_notification(activity, t.contact_id)
-        end
+        create_notification(activity, t.contact_id)
       end
     end
 
