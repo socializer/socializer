@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe PersonContribution, :type => :model do
+  describe PersonContribution, type: :model do
     let(:person_contribution) { build(:socializer_person_contribution) }
 
     it 'has a valid factory' do

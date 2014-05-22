@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Notification, :type => :model do
+  describe Notification, type: :model do
     # Define a person for common testd instead of build one for each
     let(:notification) { build(:socializer_notification) }
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Tie, :type => :model do
+  describe Tie, type: :model do
     let(:tie) { build(:socializer_tie) }
 
     it 'has a valid factory' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe LikesController, :type => :controller do
+  describe LikesController, type: :controller do
 
     # Create a user and a activity
     let(:user) { create(:socializer_person) }

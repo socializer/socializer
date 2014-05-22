@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe SharesController, :type => :controller do
+  describe SharesController, type: :controller do
     describe 'action #create' do
       it 'is a pending example'
     end
