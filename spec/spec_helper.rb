@@ -20,7 +20,7 @@ require 'capybara/rspec'
 # Combustion.initialize! :active_record, :action_controller , :action_view #, :sprockets
 
 require 'rspec/rails'
-require 'rspec/autorun'
+# require 'rspec/autorun'
 
 require 'capybara/rails'
 # require 'capybara/cucumber'
