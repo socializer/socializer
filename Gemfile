@@ -17,7 +17,7 @@ end
 
 group :development, :test do
   gem 'debugger'
-  gem 'rspec-rails', '~> 2.99.0.rc1'
+  gem 'rspec-rails', '~> 3.0.0.rc1'
   gem 'capybara'
   gem 'rails-dummy'
 end
