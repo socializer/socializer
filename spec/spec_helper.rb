@@ -37,6 +37,19 @@ ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, 'spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
+  # TODO: remove this after 3 is released and type: x is in place for all types
+  # rspec-rails 3 will no longer automatically infer an example group's spec type
+  # from the file location. You can explicitly opt-in to this feature using this
+  # snippet:
+  #
+  # RSpec.configure do |config|
+  #  config.infer_spec_type_from_file_location!
+  # end
+  #
+  # If you wish to manually label spec types via metadata you can safely ignore
+  # this warning and continue upgrading to RSpec 3 without addressing it.
+  # config.infer_spec_type_from_file_location!
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
