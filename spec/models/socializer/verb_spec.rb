@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Verb do
+  describe Verb, :type => :model do
     let(:verb) { build(:socializer_verb) }
 
     it 'has a valid factory' do

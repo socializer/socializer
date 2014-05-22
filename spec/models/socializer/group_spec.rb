@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Group do
+  describe Group, :type => :model do
     let(:group) { build(:socializer_group) }
 
     it 'has a valid factory' do
@@ -74,11 +74,11 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(public_group.privacy_level.public?).to be_true
+        expect(public_group.privacy_level.public?).to be_truthy
       end
 
       it 'member? is false' do
-        expect(public_group.member?(person)).to be_false
+        expect(public_group.member?(person)).to be_falsey
       end
 
       context 'and a person joins it' do
@@ -88,11 +88,11 @@ module Socializer
         end
 
         it 'creates an active membership' do
-          expect(@membership.active).to be_true
+          expect(@membership.active).to be_truthy
         end
 
         it 'member? is true' do
-          expect(public_group.member?(person)).to be_true
+          expect(public_group.member?(person)).to be_truthy
         end
 
         it 'has 1 member' do
@@ -133,7 +133,7 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(restricted_group.privacy_level.restricted?).to be_true
+        expect(restricted_group.privacy_level.restricted?).to be_truthy
       end
 
       context 'and a person joins it' do
@@ -143,7 +143,7 @@ module Socializer
         end
 
         it 'creates an inactive membership' do
-          expect(@membership.active).to be_false
+          expect(@membership.active).to be_falsey
         end
       end
     end
@@ -161,7 +161,7 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(private_group.privacy_level.private?).to be_true
+        expect(private_group.privacy_level.private?).to be_truthy
       end
 
       it 'cannot be joined' do
@@ -175,7 +175,7 @@ module Socializer
         end
 
         it 'creates an inactive membership' do
-          expect(@membership.active).to be_false
+          expect(@membership.active).to be_falsey
         end
       end
     end
@@ -189,7 +189,7 @@ module Socializer
       end
 
       it 'creates an inactive membership' do
-        expect(@membership.active).to be_false
+        expect(@membership.active).to be_falsey
       end
     end
 

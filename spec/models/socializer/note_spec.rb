@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Note do
+  describe Note, :type => :model do
     let(:note) { build(:socializer_note) }
 
     it 'has a valid factory' do

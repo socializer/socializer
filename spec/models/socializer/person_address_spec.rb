@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe PersonAddress do
+  describe PersonAddress, :type => :model do
     let(:person_address) { build(:socializer_person_address) }
 
     it 'has a valid factory' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe GroupLink do
+  describe GroupLink, :type => :model do
     let(:group_link) { build(:socializer_group_link) }
 
     it 'has a valid factory' do

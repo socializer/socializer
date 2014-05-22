@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Comment do
+  describe Comment, :type => :model do
     let(:comment) { build(:socializer_comment) }
 
     it 'has a valid factory' do

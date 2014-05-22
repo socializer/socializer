@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Membership do
+  describe Membership, :type => :model do
     let(:membership) { build(:socializer_membership) }
 
     it 'has a valid factory' do
@@ -45,7 +45,7 @@ module Socializer
       end
 
       it 'becomes active' do
-        expect(inactive_membership.active).to be_true
+        expect(inactive_membership.active).to be_truthy
       end
     end
 
@@ -57,7 +57,7 @@ module Socializer
       end
 
       it 'becomes active' do
-        expect(inactive_membership.active).to be_true
+        expect(inactive_membership.active).to be_truthy
       end
     end
 

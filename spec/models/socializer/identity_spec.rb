@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Identity do
+  describe Identity, :type => :model do
     let(:identity) { build(:socializer_identity) }
 
     it 'has a valid factory' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Authentication do
+  describe Authentication, :type => :model do
     let(:authentication) { build(:socializer_authentication) }
 
     it 'has a valid factory' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Person do
+  describe Person, :type => :model do
     let(:person) { build(:socializer_person) }
 
     it 'has a valid factory' do
@@ -130,7 +130,7 @@ module Socializer
         person.add_default_circle
       end
 
-      it { expect(person.activity_object.circles).to have(4).items }
+      it { expect(person.activity_object.circles.size).to eq(4) }
       it { expect(circles.find_by(name: 'Friends').name).to eq('Friends') }
       it { expect(circles.find_by(name: 'Family').name).to eq('Family') }
       it { expect(circles.find_by(name: 'Acquaintances').name).to eq('Acquaintances') }

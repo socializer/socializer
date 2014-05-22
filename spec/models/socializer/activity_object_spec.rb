@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe ActivityObject do
+  describe ActivityObject, :type => :model do
     let(:activity_object) { build(:socializer_activity_object) }
 
     it 'has a valid factory' do
@@ -64,32 +64,32 @@ module Socializer
     context 'check activitable_type predicates' do
       context '#activity?' do
         let(:activity_object) { build(:socializer_activity_object_activity) }
-        it { expect(activity_object.activity?).to be_true }
+        it { expect(activity_object.activity?).to be_truthy }
       end
 
       context '#circle?' do
         let(:activity_object) { build(:socializer_activity_object_circle) }
-        it { expect(activity_object.circle?).to be_true }
+        it { expect(activity_object.circle?).to be_truthy }
       end
 
       context '#comment?' do
         let(:activity_object) { build(:socializer_activity_object_comment) }
-        it { expect(activity_object.comment?).to be_true }
+        it { expect(activity_object.comment?).to be_truthy }
       end
 
       context '#group?' do
         let(:activity_object) { build(:socializer_activity_object_group) }
-        it { expect(activity_object.group?).to be_true }
+        it { expect(activity_object.group?).to be_truthy }
       end
 
       context '#note?' do
         let(:activity_object) { build(:socializer_activity_object) }
-        it { expect(activity_object.note?).to be_true }
+        it { expect(activity_object.note?).to be_truthy }
       end
 
       context '#person?' do
         let(:activity_object) { build(:socializer_activity_object_person) }
-        it { expect(activity_object.person?).to be_true }
+        it { expect(activity_object.person?).to be_truthy }
       end
     end
 
@@ -106,7 +106,7 @@ module Socializer
       it { expect(activity_object.like_count).to eq(1) }
       it { expect(activity_object.likes.size).to eq(1) }
       it { expect(liking_person.likes.count.size).to eq(1) }
-      it { expect(liking_person.likes? activity_object).to be_true }
+      it { expect(liking_person.likes? activity_object).to be_truthy }
 
       context 'when an object is unliked' do
         before do
@@ -118,7 +118,7 @@ module Socializer
         it { expect(activity_object.like_count).to eq(0) }
         it { expect(activity_object.likes.size).to eq(0) }
         it { expect(liking_person.likes.count.size).to eq(0) }
-        it { expect(liking_person.likes? activity_object).to be_false }
+        it { expect(liking_person.likes? activity_object).to be_falsey }
       end
     end
 
@@ -157,7 +157,7 @@ module Socializer
       # it format('is type of %s', type) do
       it "is type of #{type}" do
         activity_object.activitable_type = "Socializer::#{type}"
-        expect(activity_object.send("#{type.downcase}?")).to be_true
+        expect(activity_object.send("#{type.downcase}?")).to be_truthy
       end
     end
   end

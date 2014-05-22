@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe LikesController do
+  describe LikesController, :type => :controller do
 
     # Create a user and a activity
     let(:user) { create(:socializer_person) }
@@ -27,7 +27,7 @@ module Socializer
 
     # Make sure that the note is not liked before liking it.
     it 'should not likes the note before liking it' do
-      expect(user.likes?(note_activity.activity_object)).to be_false
+      expect(user.likes?(note_activity.activity_object)).to be_falsey
     end
 
     describe 'GET #create' do
@@ -35,7 +35,7 @@ module Socializer
       before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
       it 'should likes the note after liking it' do
-        expect(user.likes?(note_activity.activity_object)).to be_true
+        expect(user.likes?(note_activity.activity_object)).to be_truthy
       end
     end
 
@@ -46,7 +46,7 @@ module Socializer
       before { post :destroy, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
       it 'should not likes the note anymore' do
-        expect(user.likes?(note_activity.activity_object)).to be_false
+        expect(user.likes?(note_activity.activity_object)).to be_falsey
       end
     end
 
