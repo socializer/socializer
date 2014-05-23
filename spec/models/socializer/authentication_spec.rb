@@ -9,13 +9,13 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(authentication).to allow_mass_assignment_of(:provider) }
-      it { expect(authentication).to allow_mass_assignment_of(:uid) }
-      it { expect(authentication).to allow_mass_assignment_of(:image_url) }
+      it { is_expected.to allow_mass_assignment_of(:provider) }
+      it { is_expected.to allow_mass_assignment_of(:uid) }
+      it { is_expected.to allow_mass_assignment_of(:image_url) }
     end
 
     context 'relationships' do
-      it { expect(authentication).to belong_to(:person) }
+      it { is_expected.to belong_to(:person) }
     end
 
     context 'when last authentication for a person' do

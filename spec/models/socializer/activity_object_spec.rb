@@ -9,29 +9,29 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(activity_object).to allow_mass_assignment_of(:scope) }
-      it { expect(activity_object).to allow_mass_assignment_of(:object_ids) }
-      it { expect(activity_object).to allow_mass_assignment_of(:activitable_id) }
-      it { expect(activity_object).to allow_mass_assignment_of(:activitable_type) }
-      it { expect(activity_object).to allow_mass_assignment_of(:like_count) }
-      it { expect(activity_object).to allow_mass_assignment_of(:unread_notifications_count) }
-      it { expect(activity_object).to allow_mass_assignment_of(:object_ids) }
+      it { is_expected.to allow_mass_assignment_of(:scope) }
+      it { is_expected.to allow_mass_assignment_of(:object_ids) }
+      it { is_expected.to allow_mass_assignment_of(:activitable_id) }
+      it { is_expected.to allow_mass_assignment_of(:activitable_type) }
+      it { is_expected.to allow_mass_assignment_of(:like_count) }
+      it { is_expected.to allow_mass_assignment_of(:unread_notifications_count) }
+      it { is_expected.to allow_mass_assignment_of(:object_ids) }
     end
 
     context 'relationships' do
-      it { expect(activity_object).to belong_to(:activitable) }
-      it { expect(activity_object).to have_many(:notifications) }
-      it { expect(activity_object).to have_many(:audiences) }
-      it { expect(activity_object).to have_many(:activities).through(:audiences) }
-      it { expect(activity_object).to have_many(:actor_activities) }
-      it { expect(activity_object).to have_many(:object_activities) }
-      it { expect(activity_object).to have_many(:target_activities) }
-      it { expect(activity_object).to have_many(:notes) }
-      it { expect(activity_object).to have_many(:comments) }
-      it { expect(activity_object).to have_many(:groups) }
-      it { expect(activity_object).to have_many(:circles) }
-      it { expect(activity_object).to have_many(:ties) }
-      it { expect(activity_object).to have_many(:memberships).conditions(active: true) }
+      it { is_expected.to belong_to(:activitable) }
+      it { is_expected.to have_many(:notifications) }
+      it { is_expected.to have_many(:audiences) }
+      it { is_expected.to have_many(:activities).through(:audiences) }
+      it { is_expected.to have_many(:actor_activities) }
+      it { is_expected.to have_many(:object_activities) }
+      it { is_expected.to have_many(:target_activities) }
+      it { is_expected.to have_many(:notes) }
+      it { is_expected.to have_many(:comments) }
+      it { is_expected.to have_many(:groups) }
+      it { is_expected.to have_many(:circles) }
+      it { is_expected.to have_many(:ties) }
+      it { is_expected.to have_many(:memberships).conditions(active: true) }
     end
 
     context 'when liked' do
@@ -57,9 +57,7 @@ module Socializer
       end
     end
 
-    it '#scope' do
-      expect(activity_object).to respond_to(:scope)
-    end
+    it { is_expected.to respond_to(:scope) }
 
     context 'check activitable_type predicates' do
       context '#activity?' do

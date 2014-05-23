@@ -9,18 +9,19 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(audience).to allow_mass_assignment_of(:activity_id) }
-      it { expect(audience).to allow_mass_assignment_of(:privacy_level) }
+      it { is_expected.to allow_mass_assignment_of(:activity_id) }
+      it { is_expected.to allow_mass_assignment_of(:privacy_level) }
     end
 
     context 'relationships' do
-      it { expect(audience).to belong_to(:activity) }
-      it { expect(audience).to belong_to(:activity_object) }
+      it { is_expected.to belong_to(:activity) }
+      it { is_expected.to belong_to(:activity_object) }
     end
 
     context 'validations' do
-      it { expect(audience).to validate_presence_of(:privacy_level) }
-      # it { expect(audience).to validate_presence_of(:activity_id) }
+      it { is_expected.to validate_presence_of(:privacy_level) }
+      # it { is_expected.to validate_presence_of(:activity_id) }
+      # it { is_expected.to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
       # it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
     end
 

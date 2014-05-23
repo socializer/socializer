@@ -9,19 +9,19 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(circle).to allow_mass_assignment_of(:name) }
-      it { expect(circle).to allow_mass_assignment_of(:content) }
+      it { is_expected.to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:content) }
     end
 
     context 'relationships' do
-      it { expect(circle).to belong_to(:activity_author) }
-      it { expect(circle).to have_many(:ties) }
-      it { expect(circle).to have_many(:activity_contacts).through(:ties) }
+      it { is_expected.to belong_to(:activity_author) }
+      it { is_expected.to have_many(:ties) }
+      it { is_expected.to have_many(:activity_contacts).through(:ties) }
     end
 
     context 'validations' do
-      it { expect(circle).to validate_presence_of(:name) }
-      it { expect(create(:socializer_circle, name: 'Family')).to validate_uniqueness_of(:name).scoped_to(:author_id) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
     context 'when adding a contact' do
@@ -46,8 +46,6 @@ module Socializer
       end
     end
 
-    it '#author' do
-      expect(circle).to respond_to(:author)
-    end
+    it { is_expected.to respond_to(:author) }
   end
 end

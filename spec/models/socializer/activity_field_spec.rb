@@ -9,17 +9,17 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(activity_field).to allow_mass_assignment_of(:content) }
-      it { expect(activity_field).to allow_mass_assignment_of(:activity) }
+      it { is_expected.to allow_mass_assignment_of(:content) }
+      it { is_expected.to allow_mass_assignment_of(:activity) }
     end
 
     context 'relationships' do
-      it { expect(activity_field).to belong_to(:activity) }
+      it { is_expected.to belong_to(:activity) }
     end
 
     context 'validations' do
-      it { expect(activity_field).to validate_presence_of(:content) }
-      it { expect(activity_field).to validate_presence_of(:activity) }
+      it { is_expected.to validate_presence_of(:content) }
+      it { is_expected.to validate_presence_of(:activity) }
     end
   end
 end
