@@ -9,16 +9,16 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(verb).to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:name) }
     end
 
     context 'relationships' do
-      it { expect(verb).to have_many(:activities) }
+      it { is_expected.to have_many(:activities) }
     end
 
     context 'validations' do
-      it { expect(verb).to validate_presence_of(:name) }
-      it { expect(create(:socializer_verb, name: 'post')).to validate_uniqueness_of(:name) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_uniqueness_of(:name) }
     end
   end
 end
