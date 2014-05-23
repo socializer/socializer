@@ -9,16 +9,16 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(person_address).to allow_mass_assignment_of(:line1) }
-      it { expect(person_address).to allow_mass_assignment_of(:line2) }
-      it { expect(person_address).to allow_mass_assignment_of(:city) }
-      it { expect(person_address).to allow_mass_assignment_of(:postal_code_or_zip) }
-      it { expect(person_address).to allow_mass_assignment_of(:province_or_state) }
-      it { expect(person_address).to allow_mass_assignment_of(:country) }
+      it { is_expected.to allow_mass_assignment_of(:line1) }
+      it { is_expected.to allow_mass_assignment_of(:line2) }
+      it { is_expected.to allow_mass_assignment_of(:city) }
+      it { is_expected.to allow_mass_assignment_of(:postal_code_or_zip) }
+      it { is_expected.to allow_mass_assignment_of(:province_or_state) }
+      it { is_expected.to allow_mass_assignment_of(:country) }
     end
 
     context 'relationships' do
-      it { expect(person_address).to belong_to(:person) }
+      it { is_expected.to belong_to(:person) }
     end
 
     it { expect(enumerize(:category).in(:home, :work).with_default(:home)) }
