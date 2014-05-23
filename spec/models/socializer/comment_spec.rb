@@ -8,12 +8,7 @@ module Socializer
       expect(comment).to be_valid
     end
 
-    it '#content' do
-      expect(comment).to respond_to(:content)
-    end
-
-    it '#author' do
-      expect(comment).to respond_to(:author)
-    end
+    it { is_expected.to respond_to(:content) }
+    it { is_expected.to respond_to(:author) }
   end
 end

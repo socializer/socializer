@@ -9,17 +9,17 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(group_link).to allow_mass_assignment_of(:label) }
-      it { expect(group_link).to allow_mass_assignment_of(:url) }
+      it { is_expected.to allow_mass_assignment_of(:label) }
+      it { is_expected.to allow_mass_assignment_of(:url) }
     end
 
     context 'relationships' do
-      it { expect(group_link).to belong_to(:group) }
+      it { is_expected.to belong_to(:group) }
     end
 
     context 'validations' do
-      it { expect(group_link).to validate_presence_of(:label) }
-      it { expect(group_link).to validate_presence_of(:url) }
+      it { is_expected.to validate_presence_of(:label) }
+      it { is_expected.to validate_presence_of(:url) }
     end
   end
 end

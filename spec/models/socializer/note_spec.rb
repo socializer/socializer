@@ -9,15 +9,13 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(note).to allow_mass_assignment_of(:content) }
+      it { is_expected.to allow_mass_assignment_of(:content) }
     end
 
     context 'relationships' do
-      it { expect(note).to belong_to(:activity_author) }
+      it { is_expected.to belong_to(:activity_author) }
     end
 
-    it '#author' do
-      expect(note).to respond_to(:author)
-    end
+    it { is_expected.to respond_to(:author) }
   end
 end

@@ -9,15 +9,15 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(group_category).to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:name) }
     end
 
     context 'relationships' do
-      it { expect(group_category).to belong_to(:group) }
+      it { is_expected.to belong_to(:group) }
     end
 
     context 'validations' do
-      it { expect(group_category).to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:name) }
     end
   end
 end

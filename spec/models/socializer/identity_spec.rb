@@ -9,24 +9,19 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(identity).to allow_mass_assignment_of(:name) }
-      it { expect(identity).to allow_mass_assignment_of(:email) }
-      it { expect(identity).to allow_mass_assignment_of(:password) }
-      it { expect(identity).to allow_mass_assignment_of(:password_confirmation) }
+      it { is_expected.to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:email) }
+      it { is_expected.to allow_mass_assignment_of(:password) }
+      it { is_expected.to allow_mass_assignment_of(:password_confirmation) }
     end
 
     context 'validations' do
-      it { expect(identity).to validate_presence_of(:name) }
-      it { expect(identity).to validate_presence_of(:email) }
-      it { expect(create(:socializer_identity)).to validate_uniqueness_of(:email) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:email) }
+      it { is_expected.to validate_uniqueness_of(:email) }
     end
 
-    it '#password' do
-      expect(identity).to respond_to(:password)
-    end
-
-    it '#password_confirmation' do
-      expect(identity).to respond_to(:password_confirmation)
-    end
+    it { is_expected.to respond_to(:password) }
+    it { is_expected.to respond_to(:password_confirmation) }
   end
 end

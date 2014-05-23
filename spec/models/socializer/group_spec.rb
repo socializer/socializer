@@ -9,53 +9,38 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(group).to allow_mass_assignment_of(:name) }
-      it { expect(group).to allow_mass_assignment_of(:privacy_level) }
-      it { expect(group).to allow_mass_assignment_of(:author_id) }
+      it { is_expected.to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:privacy_level) }
+      it { is_expected.to allow_mass_assignment_of(:author_id) }
     end
 
     context 'relationships' do
-      it { expect(group).to belong_to(:activity_author) }
-      it { expect(group).to have_many(:memberships) }
-      it { expect(group).to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
-      it { expect(group).to have_many(:links) }
-      it { expect(group).to have_many(:categories) }
+      it { is_expected.to belong_to(:activity_author) }
+      it { is_expected.to have_many(:memberships) }
+      it { is_expected.to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
+      it { is_expected.to have_many(:links) }
+      it { is_expected.to have_many(:categories) }
     end
 
     context 'validations' do
       # TODO: Update factory to include relationshp
-      # it { expect(group).to validate_presence_of(:activity_author) }
-      it { expect(group).to validate_presence_of(:author_id) }
-      it { expect(group).to validate_presence_of(:name) }
-      it { expect(group).to validate_presence_of(:privacy_level) }
+      # it { is_expected.to validate_presence_of(:activity_author) }
+      it { is_expected.to validate_presence_of(:author_id) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:privacy_level) }
+      # TODO: Use is_expected syntax
+      # it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
       it { expect(create(:socializer_group)).to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
     it { expect(enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public)) }
 
-    it '#author' do
-      expect(group).to respond_to(:author)
-    end
-
-    it '#members' do
-      expect(group).to respond_to(:members)
-    end
-
-    it '#join' do
-      expect(group).to respond_to(:join)
-    end
-
-    it '#invite' do
-      expect(group).to respond_to(:invite)
-    end
-
-    it '#leave' do
-      expect(group).to respond_to(:leave)
-    end
-
-    it '#member?' do
-      expect(group).to respond_to(:member?)
-    end
+    it { is_expected.to respond_to(:author) }
+    it { is_expected.to respond_to(:members) }
+    it { is_expected.to respond_to(:join) }
+    it { is_expected.to respond_to(:invite) }
+    it { is_expected.to respond_to(:leave) }
+    it { is_expected.to respond_to(:member?) }
 
     context 'when group is public' do
       let(:public_group) { create(:socializer_group, privacy_level: 1) }

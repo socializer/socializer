@@ -9,32 +9,32 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(membership).to allow_mass_assignment_of(:group_id) }
+      it { is_expected.to allow_mass_assignment_of(:group_id) }
     end
 
     context 'relationships' do
-      it { expect(membership).to belong_to(:group) }
-      it { expect(membership).to belong_to(:activity_member) }
-      # it { expect(membership).to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
+      it { is_expected.to belong_to(:group) }
+      it { is_expected.to belong_to(:activity_member) }
+      # it { is_expected.to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
     end
 
     context '#member' do
-      it { expect(membership).to respond_to(:member) }
+      it { is_expected.to respond_to(:member) }
       # let(:activitable) { membership.activity_member.activitable }
       # it { expect(membership.member).to be_a(activitable.class) }
       # it { expect(membership.member).to eq(activitable) }
     end
 
     context '#approve!' do
-      it { expect(membership).to respond_to(:approve!) }
+      it { is_expected.to respond_to(:approve!) }
     end
 
     context '#confirm!' do
-      it { expect(membership).to respond_to(:confirm!) }
+      it { is_expected.to respond_to(:confirm!) }
     end
 
     context '#decline!' do
-      it { expect(membership).to respond_to(:decline!) }
+      it { is_expected.to respond_to(:decline!) }
     end
 
     context 'when approved' do
