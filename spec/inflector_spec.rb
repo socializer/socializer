@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActiveSupport::Inflector::Inflections do
+RSpec.describe ActiveSupport::Inflector::Inflections do
   context 'singularize' do
     it 'should  return the singular form of a word' do
       expect('ties'.singularize(:en)).to eq('tie')
