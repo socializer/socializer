@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Membership, type: :model do
+  RSpec.describe Membership, type: :model do
     let(:membership) { build(:socializer_membership) }
 
     it 'has a valid factory' do

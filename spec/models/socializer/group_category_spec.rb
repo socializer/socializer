@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe GroupCategory, type: :model do
+  RSpec.describe GroupCategory, type: :model do
     let(:group_category) { build(:socializer_group_category) }
 
     it 'has a valid factory' do

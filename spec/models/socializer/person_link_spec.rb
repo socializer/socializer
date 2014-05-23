@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe PersonLink, type: :model do
+  RSpec.describe PersonLink, type: :model do
     let(:person_link) { build(:socializer_person_link) }
 
     it 'has a valid factory' do

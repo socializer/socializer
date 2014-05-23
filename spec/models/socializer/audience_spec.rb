@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Audience, type: :model do
+  RSpec.describe Audience, type: :model do
     let(:audience) { build(:socializer_audience) }
 
     it 'has a valid factory' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe ActivityObject, type: :model do
+  RSpec.describe ActivityObject, type: :model do
     let(:activity_object) { build(:socializer_activity_object) }
 
     it 'has a valid factory' do

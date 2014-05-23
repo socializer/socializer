@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe Circle, type: :model do
+  RSpec.describe Circle, type: :model do
     let(:circle) { build(:socializer_circle) }
 
     it 'has a valid factory' do
