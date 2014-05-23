@@ -39,6 +39,8 @@ Dir[File.join(ENGINE_RAILS_ROOT, 'spec/support/**/*.rb')].each { |f| require f }
 # ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  config.disable_monkey_patching!
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -68,7 +70,7 @@ RSpec.configure do |config|
   # You can disable this behaviour by removing the line below, and instead
   # explictly tag your specs with their type, e.g.:
   #
-  #     describe UsersController, :type => :controller do
+  #     RSpec.describe UsersController, :type => :controller do
   #       # ...
   #     end
   #
