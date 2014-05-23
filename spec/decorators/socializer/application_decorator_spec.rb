@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Socializer
-  describe ApplicationDecorator, type: :decorator do
+  RSpec.describe ApplicationDecorator, type: :decorator do
     context 'created_at_time_ago' do
       let(:activity) { create(:socializer_activity) }
       let(:decorated_activity) { ActivityDecorator.new(activity) }
