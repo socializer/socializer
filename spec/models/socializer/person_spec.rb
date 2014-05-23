@@ -29,15 +29,16 @@ module Socializer
     end
 
     context 'relationships' do
-      it { expect(person).to have_one(:activity_object) }
-      it { expect(person).to have_many(:authentications) }
-      it { expect(person).to have_many(:addresses) }
-      it { expect(person).to have_many(:contributions) }
-      it { expect(person).to have_many(:educations) }
-      it { expect(person).to have_many(:employments) }
-      it { expect(person).to have_many(:links) }
-      it { expect(person).to have_many(:phones) }
-      it { expect(person).to have_many(:places) }
+      it { is_expected.to have_one(:activity_object) }
+      it { is_expected.to have_many(:authentications) }
+      it { is_expected.to have_many(:addresses) }
+      it { is_expected.to have_many(:contributions) }
+      it { is_expected.to have_many(:educations) }
+      it { is_expected.to have_many(:employments) }
+      it { is_expected.to have_many(:links) }
+      it { is_expected.to have_many(:phones) }
+      it { is_expected.to have_many(:places) }
+    end
 
     context 'validations' do
       it { is_expected.to ensure_inclusion_of(:avatar_provider).in_array(%w(TWITTER FACEBOOK LINKEDIN GRAVATAR)) }

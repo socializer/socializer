@@ -9,16 +9,14 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { expect(tie).to allow_mass_assignment_of(:contact_id) }
+      it { is_expected.to allow_mass_assignment_of(:contact_id) }
     end
 
     context 'relationships' do
-      it { expect(tie).to belong_to(:circle) }
-      it { expect(tie).to belong_to(:activity_contact) }
+      it { is_expected.to belong_to(:circle) }
+      it { is_expected.to belong_to(:activity_contact) }
     end
 
-    it '#contact' do
-      expect(tie).to respond_to(:contact)
-    end
+    it { is_expected.to respond_to(:contact) }
   end
 end
