@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 module Socializer
-  describe NotificationDecorator do
+  describe NotificationDecorator, type: :decorator do
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 module Socializer
-  describe ActivityDecorator do
+  describe ActivityDecorator, type: :decorator do
   end
 end
