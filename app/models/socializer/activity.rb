@@ -127,7 +127,7 @@ module Socializer
       #      .or(audience[:privacy_level].eq(privacy_circles)
       #      .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_circles_subquery.arel)))
       #      .or(audience[:privacy_level].eq(privacy_limited)
-      #        .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_limited_circle_subquery(viewer_id).arel))
+      #        .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_limited_circle_subquery.arel))
       #        .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id).arel))
       #        .or(audience[:activity_object_id].in(viewer_id)))
       #      .or(activity[:actor_id].eq(viewer_id)))
