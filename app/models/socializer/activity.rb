@@ -79,15 +79,15 @@ module Socializer
       case provider
       when nil
         # this is your dashboard. display everything about people in circles and yourself.
-        query.uniq
+        query.distinct
       when 'activities'
         # we only want to display a single activity. make sure the viewer is allowed to do so.
         activity_id = actor_uid
-        query.where(id: activity_id).uniq
+        query.where(id: activity_id).distinct
       when 'people'
         # this is a user profile. display everything about him that you are allowed to see
         person_id = Person.find_by(id: actor_uid).guid
-        query.where(actor_id: person_id).uniq
+        query.where(actor_id: person_id).distinct
       when 'circles'
         # FIXME: Should display notes even if circle has no members and the owner is viewing it.
         #        Notes still don't show after adding people to the circles.
@@ -95,11 +95,11 @@ module Socializer
         circles_sql  = Circle.select(:id).where(id: actor_uid, author_id: viewer_id)
         followed_sql = Tie.select(:contact_id).where(circle_id: circles_sql)
 
-        query.where(actor_id: followed_sql).uniq
+        query.where(actor_id: followed_sql).distinct
       when 'groups'
         # this is a group. display everything that was posted to this group as audience
         group_id = Group.find_by(id: actor_uid).guid
-        query.where(audiences: { activity_object_id: group_id }).uniq
+        query.where(audiences: { activity_object_id: group_id }).distinct
       else
         fail 'Unknown stream provider.'
       end
