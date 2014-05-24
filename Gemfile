@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gemspec
 
+# TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
+gem 'squeel', github: 'kiela/squeel'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -20,14 +20,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency('rails',                '4.0.5')
+  spec.add_dependency('rails',                '4.1.1')
   spec.add_dependency('jquery-rails')
   # Added 'jquery-ui-rails' for drag and drop
   spec.add_dependency('jquery-ui-rails')
-  spec.add_dependency('sass-rails')
-  spec.add_dependency('coffee-rails')
-  spec.add_dependency('uglifier')
-  spec.add_dependency('bcrypt',               '~> 3.1.2')
+  spec.add_dependency('sass-rails',           '~> 4.0.3')
+  spec.add_dependency('coffee-rails',         '~> 4.0.0')
+  spec.add_dependency('uglifier',             '>= 1.3.0')
+  spec.add_dependency('bcrypt',               '~> 3.1.7')
   spec.add_dependency('bootstrap-sass',       '~> 3.1.1.0')
   spec.add_dependency('draper',               '~> 1.3.0')
   spec.add_dependency('elasticsearch-rails',  '~> 0.1.0')
