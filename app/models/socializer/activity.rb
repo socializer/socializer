@@ -135,7 +135,8 @@ module Socializer
       query.where { (audiences.privacy_level.eq(privacy_public)) |
         ((audiences.privacy_level.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
         ((audiences.privacy_level.eq(privacy_limited)) & (
-          `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
+          # `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
+          `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
           audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
           # audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
           audiences.activity_object_id.in(viewer_id)
