@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency('rails',                '4.1.1')
+  spec.add_dependency('rails',                '4.1.2.rc1')
   spec.add_dependency('jquery-rails')
   # Added 'jquery-ui-rails' for drag and drop
   spec.add_dependency('jquery-ui-rails')
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('bcrypt',               '~> 3.1.7')
   spec.add_dependency('bootstrap-sass',       '~> 3.1.1.0')
   spec.add_dependency('draper',               '~> 1.3.0')
-  spec.add_dependency('elasticsearch-rails',  '~> 0.1.0')
+  spec.add_dependency('elasticsearch-rails',  '~> 0.1.2')
   spec.add_dependency('enumerize',            '~> 0.8.0')
   spec.add_dependency('omniauth',             '~> 1.2.1')
   spec.add_dependency('omniauth-identity',    '~> 1.1.1')
@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-openid',      '~> 1.0.1')
   spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
   spec.add_dependency('simple_form',          '~> 3.1.0.rc1')
-  spec.add_dependency('squeel',               '~> 1.1.0')
+  # spec.add_dependency('squeel',               '~> 1.1.0')
 
   spec.add_development_dependency('bundler',              '~> 1.6.0')
   spec.add_development_dependency('rake')
