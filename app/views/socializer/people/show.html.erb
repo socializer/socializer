@@ -4,124 +4,224 @@
 
 <h1><%= @person.display_name %></h1>
 
-<p class="field-title">Name</p>                <p class="field-value"><%= @person.display_name %></p>
+<section class='form-horizontal'>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Name</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.display_name %></p>
+    </div>
+  </div>
 
-<div>
-<h2>Story</h2>
-<p class="field-title">Tagline</p>             <p class="field-value"><%= @person.tagline %></p>
-<p class="field-title">Introduction</p>        <p class="field-value"><%= @person.introduction %></p>
-<p class="field-title">Bragging rights</p>     <p class="field-value"><%= @person.bragging_rights %></p>
-</div>
+  <h2>Story</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Tagline</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.tagline %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Introduction</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.introduction %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Bragging rights</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.bragging_rights %></p>
+    </div>
+  </div>
 
-<h2>Work</h2>
+  <h2>Work</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Occupation</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.occupation %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Skills</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.skills %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Employment</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.employments.each do |employment| %>
+        <li class="form-control-static">
+          <%= employment.employer_name %><br>
+          <%= employment.job_title %><br>
+          <%= employment.job_description %><br>
+          <%= employment.start.to_s(:long_ordinal) %> -
+          <% if employment.current? %>
+            present
+          <% else %>
+            <%= employment.end.to_s(:long_ordinal) %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<p class="field-title">Occupation</p>          <p class="field-value"><%= @person.occupation %></p>
-<p class="field-title">Skills</p>              <p class="field-value"><%= @person.skills %></p>
+  <h2>Education</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Education</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.educations.each do |education| %>
+        <li class="form-control-static">
+          <%= education.school_name %><br>
+          <%= education.major_or_field_of_study %><br>
+          <%= education.start.to_s(:long_ordinal) %> -
+          <% if education.current? %>
+            present
+          <% else %>
+            <%= education.end.to_s(:long_ordinal) %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<ul>
-<% current_user.employments.each do |employment| %>
-  <li>
-    <%= employment.employer_name %><br>
-    <%= employment.job_description %>,
-    <%= employment.start.to_s %> -
-    <% if employment.current? %>
-      present
-    <% else %>
-      <%= employment.end.to_s %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+  <h2>Places</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Places</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.places.each do |place| %>
+        <li class="form-control-static">
+          <%= place.city_name %><br>
+          <% if place.current? %>
+            present
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<h2>Education</h2>
+  <h2>Other profiles</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Profiles</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.profiles.each do |profile| %>
+        <li class="form-control-static">
+          <%= link_to(profile.label, profile.url) %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<ul>
-<% current_user.educations.each do |education| %>
-  <li>
-    <%= education.school_name %><br>
-    <%= education.major_or_field_of_study %>,
-    <%= education.start.to_s %> -
-    <% if education.current? %>
-      present
-    <% else %>
-      <%= education.end.to_s %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+  <h2>Contributions</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Contributions</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.contributions.each do |contribution| %>
+        <li class="form-control-static">
+          <%= link_to(contribution.label, contribution.url) %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<h2>Places</h2>
+  <h2>Links</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Links</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.links.each do |link| %>
+        <li class="form-control-static">
+          <%= link_to(link.label, link.url) %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<ul>
-<% current_user.places.each do |place| %>
-  <li><%= place.city_name %></li>
-<% end %>
-</ul>
+  <h2>Basic information</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Gender</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.gender.titleize %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Birthdate</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.birthdate.to_date.to_s(:long_ordinal) %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Relationship</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.relationship.titleize %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Other names</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.other_names %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Looking for</label>
+    <div class="col-sm-9">
+       <p class="form-control-static">
+         <% if @person.looking_for_friends %>Friends<br><% end %>
+         <% if @person.looking_for_dating %>Dating<br><% end %>
+         <% if @person.looking_for_relationship %>Relationship<br><% end %>
+         <% if @person.looking_for_networking %>Networking<% end %>
+       </p>
+    </div>
+  </div>
 
-<h2>Links</h2>
 
-<h3>Other profiles</h3>
+  <h2>Contact information</h2>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-9">
+      <p class="form-control-static"><%= @person.email %></p>
+    </div>
+  </div>
 
-<ul>
-<% current_user.profiles.each do |profile| %>
-  <li><%= link_to profile.label, profile.url %></li>
-<% end %>
-</ul>
+  <h3>Addresses</h3>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Addresses</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.addresses.each do |address| %>
+        <li class="form-control-static">
+          <%= address.line1 %><br>
+          <% if address.line2? %>
+            <%= address.line2 %><br>
+          <% end %>
+          <%= "#{address.city}, #{address.province_or_state} #{address.postal_code_or_zip}".html_safe %><br>
+          <%= address.country %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 
-<h3>Contributions</h3>
-
-<ul>
-<% current_user.contributions.each do |contribution| %>
-  <li><%= link_to contribution.label, contribution.url %></li>
-<% end %>
-</ul>
-
-<h3>Links</h3>
-
-<ul>
-<% current_user.links.each do |link| %>
-  <li><%= link_to link.label, link.url %></li>
-<% end %>
-</ul>
-
-<h2>Basic information</h2>
-
-<p class="field-title">Gender</p>              <p class="field-value"><%= @person.gender %></p>
-<p class="field-title">Looking for</p>         <div class="field-value" style="padding: 10px 0;">
-                                                 <ul>
-                                                   <% if @person.looking_for_friends %><li>Friends</li><% end %>
-                                                   <% if @person.looking_for_dating %><li>Dating</li><% end %>
-                                                   <% if @person.looking_for_relationship %><li>Relationship</li><% end %>
-                                                   <% if @person.looking_for_networking %><li>Networking</li><% end %>
-                                                 </ul>
-                                               </div>
-<p class="field-title">Birthdate</p>           <p class="field-value"><%= @person.birthdate %></p>
-<p class="field-title">Relationship</p>        <p class="field-value"><%= @person.relationship %></p>
-<p class="field-title">Other names</p>         <p class="field-value"><%= @person.other_names %></p>
-
-<h2>Contact information</h2>
-
-<p class="field-title">Email</p>               <p class="field-value"><%= @person.email %></p>
-
-<h3>Addresses</h3>
-
-<ul>
-<% current_user.addresses.each do |address| %>
-  <li>
-    <%= address.line1 %><br>
-    <%= address.line2 %><br>
-    <%= address.city %>, <%= address.province_or_state %>, <%= address.postal_code_or_zip %><br>
-    <%= address.country %>
-  </li>
-<% end %>
-</ul>
-
-<h3>Phones</h3>
-
-<ul>
-<% current_user.phones.each do |phone| %>
-  <li>
-    <%= phone.label %> : <%= phone.number %>
-  </li>
-<% end %>
-</ul>
+  <h3>Phones</h3>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Phones</label>
+    <div class="col-sm-9">
+      <ul class='list-unstyled'>
+      <% @person.phones.each do |phone| %>
+        <li class="form-control-static">
+          <%= "#{phone.label} : #{phone.number}".html_safe %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</section>
