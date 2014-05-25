@@ -3,6 +3,7 @@ class CreateSocializerPersonAddresses < ActiveRecord::Migration
     create_table :socializer_person_addresses do |t|
       t.integer  :person_id, null: false
       t.integer  :category
+      # TODO: What's label for
       t.integer  :label
       t.string   :line1
       t.string   :line2

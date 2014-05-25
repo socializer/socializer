@@ -21,6 +21,7 @@ class CreateSocializerPeople < ActiveRecord::Migration
       t.boolean  :looking_for_dating
       t.boolean  :looking_for_relationship
       t.boolean  :looking_for_networking
+      # TODO: convert to date
       t.datetime :birthdate
       t.integer  :relationship
       t.string   :other_names
