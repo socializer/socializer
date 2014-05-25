@@ -2,7 +2,7 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-.field-title
+/*.field-title
 {
 	float: left;
 	width: 160px;
@@ -11,14 +11,14 @@
 	color: #aaa;
 	min-height: 17px;
 }
-
-.field-value
+*/
+/*.field-value
 {
 	float: left;
 	width: 568px;
 	min-height: 17px;
 }
-
+*/
 .field-info {
 	color: #666;
 	padding: 0 20px;
