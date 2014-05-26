@@ -33,7 +33,7 @@ module Socializer
     end
 
     def comments
-      @comments ||= children.joins(:activitable_object).where(activitable_object: { activitable_type: 'Socializer::Comment' })
+      @comments ||= children.joins(:activitable_object).where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
     end
 
     def actor
@@ -116,7 +116,11 @@ module Socializer
       privacy_circles = privacy_level.find_value(:circles).value
       privacy_limited = privacy_level.find_value(:limited).value
 
-      query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
+      query = joins(:audiences, :verb).where(socializer_verbs: { name: verbs_of_interest }, target_id: nil)
+      # Alternate syntax:
+      # query = joins(:audiences, :verb).where(verb: Verb.where(name: verbs_of_interest), target_id: nil)
 
       # # The arel_table method is technically private since it is marked :nodoc
       # activity ||= Activity.arel_table

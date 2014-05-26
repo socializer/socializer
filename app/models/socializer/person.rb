@@ -66,20 +66,31 @@ module Socializer
     def likes
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(verb: { name: verbs_of_interest })
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(verb: { name: verbs_of_interest })
+      query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(socializer_verbs: { name: verbs_of_interest })
+      # Alternate syntax:
+      # query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(verb: Verb.where(name: verbs_of_interest))
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
     def likes?(object)
       activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(verb: { name: verbs_of_interest })
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(verb: { name: verbs_of_interest })
+      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(socializer_verbs: { name: verbs_of_interest })
+      # Alternate syntax:
+      # query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(verb: Verb.where(name: verbs_of_interest))
       query.count.odd?
     end
 
     def pending_memberships_invites
       privacy_private = Group.privacy_level.find_value(:private).value
-      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
+      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, socializer_groups: { privacy_level: privacy_private })
+      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: Group.where(privacy_level: privacy_private))
     end
 
     # CLEANUP: avatar_url - clean this up
