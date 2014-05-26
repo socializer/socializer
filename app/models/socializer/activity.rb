@@ -33,6 +33,8 @@ module Socializer
     end
 
     def comments
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # @comments ||= children.joins(:activitable_object).where(activity_objects: { activitable_type: 'Socializer::Comment' })
       @comments ||= children.joins(:activitable_object).where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
     end
 
@@ -99,6 +101,8 @@ module Socializer
       when 'groups'
         # this is a group. display everything that was posted to this group as audience
         group_id = Group.find_by(id: actor_uid).guid
+        # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+        # query.where(audiences: { activity_object_id: group_id }).distinct
         query.where(socializer_audiences: { activity_object_id: group_id }).distinct
       else
         fail 'Unknown stream provider.'
