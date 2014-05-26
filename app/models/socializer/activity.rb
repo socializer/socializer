@@ -99,7 +99,7 @@ module Socializer
       when 'groups'
         # this is a group. display everything that was posted to this group as audience
         group_id = Group.find_by(id: actor_uid).guid
-        query.where(audiences: { activity_object_id: group_id }).distinct
+        query.where(socializer_audiences: { activity_object_id: group_id }).distinct
       else
         fail 'Unknown stream provider.'
       end
