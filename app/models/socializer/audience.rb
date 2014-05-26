@@ -26,8 +26,7 @@ module Socializer
     # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
     def self.privacy_level_hash(privacy_symbol)
       privacy_symbol = privacy_symbol.downcase.to_sym
-      privacy_level  = Socializer::Audience.privacy_level
-      privacy        = privacy_level.find_value(privacy_symbol)
+      privacy        = Audience.privacy_level.find_value(privacy_symbol)
 
       { id: privacy.value, name: privacy.text }
     end
