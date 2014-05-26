@@ -60,7 +60,7 @@ module Socializer
     end
 
     def contact_of
-      @contact_of ||= Circle.joins(:ties).where(ties: { contact_id: guid }).map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid }).map { |circle| circle.author }.uniq
     end
 
     def likes
