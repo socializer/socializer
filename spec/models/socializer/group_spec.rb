@@ -95,8 +95,8 @@ module Socializer
           end
 
           it 'has 0 member' do
-          expect(public_group.members.size).to eq(0)
-        end
+            expect(public_group.members.size).to eq(0)
+          end
         end
       end
     end
