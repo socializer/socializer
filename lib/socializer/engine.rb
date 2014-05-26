@@ -12,7 +12,8 @@ require 'omniauth-linkedin'
 require 'omniauth-openid'
 require 'omniauth-twitter'
 require 'simple_form'
-require 'squeel'
+# TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
+# require 'squeel'
 
 module Socializer
   class Engine < Rails::Engine

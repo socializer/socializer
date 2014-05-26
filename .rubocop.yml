@@ -26,13 +26,15 @@ SingleSpaceBeforeFirstArg:
 
 # TODO: Clean these up
 
+# TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
 # Needed for squeel
-BlockAlignment:
-  Enabled: false
+# BlockAlignment:
+#   Enabled: false
 
+# TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
 # Needed for squeel
-Blocks:
-  Enabled: false
+# Blocks:
+#   Enabled: false
 
 Documentation:
   Enabled: false
