@@ -122,30 +122,30 @@ module Socializer
       # Alternate syntax:
       # query = joins(:audiences, :verb).where(verb: Verb.where(name: verbs_of_interest), target_id: nil)
 
-      # # The arel_table method is technically private since it is marked :nodoc
-      # activity ||= Activity.arel_table
-      # audience ||= Audience.arel_table
-      #
-      # # TODO: Test: Generate the same SQL as below
-      # query.where(audience[:privacy_level].eq(privacy_public)
-      #      .or(audience[:privacy_level].eq(privacy_circles)
-      #      .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_circles_subquery.arel)))
-      #      .or(audience[:privacy_level].eq(privacy_limited)
-      #        .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_limited_circle_subquery.arel))
-      #        .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id).arel))
-      #        .or(audience[:activity_object_id].in(viewer_id)))
-      #      .or(activity[:actor_id].eq(viewer_id)))
+      # The arel_table method is technically private since it is marked :nodoc
+      activity ||= Activity.arel_table
+      audience ||= Audience.arel_table
 
-      query.where { (audiences.privacy_level.eq(privacy_public)) |
-        ((audiences.privacy_level.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
-        ((audiences.privacy_level.eq(privacy_limited)) & (
-          # `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
-          `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
-          audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
-          # audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
-          audiences.activity_object_id.in(viewer_id)
-        )) |
-        (actor_id.eq(viewer_id)) }
+      # TODO: Test: Generate the same SQL as below
+      query.where(audience[:privacy_level].eq(privacy_public)
+           .or(audience[:privacy_level].eq(privacy_circles)
+           .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_circles_subquery.arel)))
+           .or(audience[:privacy_level].eq(privacy_limited)
+             .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_limited_circle_subquery.arel))
+             .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id).arel))
+             .or(audience[:activity_object_id].in(viewer_id)))
+           .or(activity[:actor_id].eq(viewer_id)))
+
+      # query.where { (audiences.privacy_level.eq(privacy_public)) |
+      #   ((audiences.privacy_level.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
+      #   ((audiences.privacy_level.eq(privacy_limited)) & (
+      #     # `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
+      #     `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
+      #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
+      #     # audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
+      #     audiences.activity_object_id.in(viewer_id)
+      #   )) |
+      #   (actor_id.eq(viewer_id)) }
     end
     private_class_method :build_query
 
