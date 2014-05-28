@@ -10,8 +10,25 @@
 
 <p><%= @circle.content %></p>
 <h3>Contacts (<%= @circle.ties.count %>)</h3>
-<ul class="large-contact-list">
-<% @circle.ties.each do |tie| %>
-<li><%= link_to image_tag(tie.contact.avatar_url, width: 40, height: 40, title: tie.contact.display_name), stream_path(provider: :people, id: tie.contact.id) %> (<%= link_to "delete", tie, method: :delete %>)</li>
-<% end %>
-</ul>
+
+<div class='row'>
+  <% @circle.ties.each do |tie| %>
+    <!-- TODO: Create a partial -->
+    <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= tie.contact.guid %>', data-person-name='<%= tie.contact.display_name %>'>
+      <article class='media panel panel-default'>
+        <section class='media-object'>
+          <%= link_to(image_tag(tie.contact.avatar_url), tie.contact) %>
+        </section>
+
+        <section class='media-body'>
+            <h1>
+              <%= link_to(tie.contact.display_name, stream_path(provider: :people, id: tie.contact.id)) %>
+            </h1>
+            <!-- TODO: Translations -->
+            <!-- TODO: Add a prompt for the delete -->
+            <%= link_to('Delete', tie, method: :delete, class: 'btn btn-xs btn-danger', title: "Remove #{tie.contact.display_name} from #{@circle.name}") %>
+        </section>
+      </article>
+    </div>
+  <% end %>
+</div>
