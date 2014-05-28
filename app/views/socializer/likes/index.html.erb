@@ -1,5 +1,19 @@
-<ul>
-<% @object_ids.each do |object| %>
-  <li><%= object.activitable.display_name %></li>
-<% end %>
-</ul>
+<h1>Liked by</h1>
+
+<div class='row'>
+  <% @object_ids.each do |object| %>
+    <div class='col-sm-6 col-md-4'>
+      <article class='media panel panel-default'>
+        <section class='media-object'>
+          <%= link_to(image_tag(object.activitable.avatar_url), object.activitable) %>
+        </section>
+
+        <section class='media-body'>
+            <h1>
+              <%= link_to(object.activitable.display_name, stream_path(provider: :people, id: object.activitable.id)) %>
+            </h1>
+        </section>
+      </article>
+    </div>
+  <% end %>
+</div>
