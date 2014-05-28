@@ -7,10 +7,10 @@
   $('.droppable').droppable drop: (event, ui) ->
     circle = $('a', this)
     person = ui.draggable
-    circle_id = circle.attr('data-object-id')
-    person_id = person.attr('data-object-id')
+    circle_id = circle.data('object-id')
+    person_id = person.data('object-id')
     circle_name = circle.text()
-    person_name = $('img', person).attr('oldtitle')
+    person_name = person.data('person-name')
     circle_tie_count = $('.circle-tie-count', this)
 
     $.post('/ties',
