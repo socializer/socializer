@@ -8,7 +8,7 @@
   <%= @circle.name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.edit_this_circle')}") %>
 </h2>
 
-<p class="field-info"><%= @circle.content %></p>
+<p><%= @circle.content %></p>
 <h3>Contacts (<%= @circle.ties.count %>)</h3>
 <ul class="large-contact-list">
 <% @circle.ties.each do |tie| %>
