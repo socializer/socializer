@@ -50,6 +50,9 @@
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
 }
+.circle.droppable-hover {
+  background-color: red;
+}
 
 .circle-info-message {
 	padding: 10px 20px;
