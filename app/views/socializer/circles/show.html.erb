@@ -5,7 +5,7 @@
 <h1><%= t('socializer.circles.header') %></h1>
 
 <h2>
-  <%= @circle.name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.edit_this_circle')}") %>
+  <%= @circle.name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.tooltip.edit')}") %>
 </h2>
 
 <p><%= @circle.content %></p>
