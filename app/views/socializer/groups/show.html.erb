@@ -5,8 +5,9 @@
 <h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
 
 <% if @group.member?(current_user) %>
+  <!-- TODO: Translations -->
   <!-- TODO: Add a prompt for the delete -->
-  <%= link_to t('.leave'), @membership, method: :delete, class: 'btn btn-danger' %>
+  <%= link_to(t('.leave'), @membership, method: :delete, class: 'btn btn-danger', title: "Remove #{current_user.display_name} from #{@group.name}") %>
 <% else %>
   <%= simple_form_for(current_user.memberships.build(group_id: @group.id)) do |f| %>
     <%= f.input :group_id,  as: :hidden %>
