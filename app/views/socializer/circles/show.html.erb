@@ -24,8 +24,7 @@
             <h1>
               <%= link_to(tie.contact.display_name, stream_path(provider: :people, id: tie.contact.id)) %>
             </h1>
-            <!-- TODO: Add a prompt for the delete -->
-            <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.name)}") %>
+            <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.name)}", data: { confirm: "#{t('.confirm')}" }) %>
         </section>
       </article>
     </div>

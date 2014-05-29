@@ -42,6 +42,7 @@ fr:
         edit: 'edit'
         delete: 'delete'
       show:
+        confirm: 'Are you sure?'
         delete: 'Delete'
         tooltip:
           delete: 'Remove %{display_name} from %{circle_name}'
@@ -111,6 +112,7 @@ fr:
           one: '1 restricted group'
           other: '%{count} restricted groups'
       show:
+        confirm: 'Are you sure?'
         invite: 'Invite'
         leave: 'quitter'
         join: 'joindre'
