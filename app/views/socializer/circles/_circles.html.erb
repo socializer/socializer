@@ -1,6 +1,10 @@
+<!-- TODO: use layout level flash message area -->
+<div class='circle-info-message alert alert-success'></div>
+
+<!-- TODO: use the grid -->
+<!-- TODO: check Google+ for circle styles -->
 <ul class="large-contact-list">
 <% current_user.circles.each do |circle| %>
   <li class="droppable circle"><%= link_to circle.name, circle, data: { object_id: circle.id } %><br>(<span class="circle-tie-count"><%= circle.ties.count %></span>)</li>
 <% end %>
 </ul>
-<div class="circle-info-message"></div>

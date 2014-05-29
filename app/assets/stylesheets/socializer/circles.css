@@ -55,15 +55,15 @@
 }
 
 .circle-info-message {
-	padding: 10px 20px;
+/*	padding: 10px 20px;
 	text-align: center;
 	border: 4px solid #c6d880;
 	background: #e6efc2;
 	color: #264409;
-	font-weight: bold;
+	font-weight: bold;*/
 	display: none;
-	clear: both;
-	margin: 20px;
+/*	clear: both;
+	margin: 20px;*/
 }
 
 .droppable.circle a:link, .droppable.circle a:active, .droppable.circle a:visited {
