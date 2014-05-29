@@ -111,8 +111,8 @@ en:
           one: '1 restricted group'
           other: '%{count} restricted groups'
       show:
-        leave: 'leave'
-        join: 'join'
+        leave: 'Leave'
+        join: 'Join'
 
     notes:
       form:
