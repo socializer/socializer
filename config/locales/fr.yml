@@ -42,7 +42,10 @@ fr:
         edit: 'edit'
         delete: 'delete'
       show:
-        edit_this_circle: 'Edit this circle'
+        delete: 'Delete'
+        tooltip:
+          delete: 'Remove %{display_name} from %{circle_name}'
+          edit: 'Edit this circle'
       find_people:
         header: 'Suggestions'
       contact_of:
@@ -108,8 +111,12 @@ fr:
           one: '1 restricted group'
           other: '%{count} restricted groups'
       show:
+        invite: 'Invite'
         leave: 'quitter'
         join: 'joindre'
+        tooltip:
+          invite: 'Invite %{display_name} to join %{group_name}'
+          leave: 'Remove %{display_name} from %{group_name}'
 
     notes:
       form:
