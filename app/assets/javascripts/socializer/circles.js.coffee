@@ -3,7 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @setup = ->
-  $('.draggable').draggable revert: true
+  $('.draggable').draggable
+    revert: true
+    zIndex: 2500
+
   $('.droppable').droppable
     hoverClass: 'droppable-hover'
     drop: (event, ui) ->
