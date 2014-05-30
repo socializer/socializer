@@ -27,7 +27,7 @@ $circle-default-border:             #dcdcdc;
   &:hover,
   &.droppable-hover {
     background-color: darken($circle-default-bg, 10%);
-    transition: all 0.2s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
   }
 
   a {
