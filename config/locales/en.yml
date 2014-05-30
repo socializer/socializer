@@ -1,8 +1,14 @@
 en:
   socializer:
     activities:
+      # TODO: Do we still need this?
       activity_top:
-        tooltip_public: 'Anyone can see this'
+        tooltip:
+          public: 'Anyone can see this'
+        time_format: '%s ago'
+      activity:
+        tooltip:
+          public: 'Anyone can see this'
         time_format: '%s ago'
       sidebar:
         header: 'In my circles'

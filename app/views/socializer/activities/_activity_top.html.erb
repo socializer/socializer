@@ -23,7 +23,7 @@
     <span class='separator'></span>
 
     <% if audience.privacy_level.public? %>
-        <%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "#{t('.tooltip_public')}" %>
+        <%= link_to audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip unimportant-link', title: "#{t('.tooltip.public')}" %>
     <% else %>
       <%= link_to "Limited", stream_audience_path(activity), class: 'tooltip unimportant-link' %>
     <% end %>
