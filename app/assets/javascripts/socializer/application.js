@@ -13,22 +13,28 @@
 //= require moment/moment
 //= require moment/langs
 
-$(document).ready(function() {
+$(document).ready(function () {
   // Replace default titles on images with link by qTip tooltips
-  $('a [title!=""], a[title!=""]').qtip({
-    style: {
-      classes: 'qtip-todc-bootstrap',
-      tip: {
-        width: 12
+  $('a [title!=""], a[title!=""], [data-content!=""], [data-title!=""]').each(function () {
+    $(this).qtip({
+      content: {
+        text: $(this).data('content') || true,
+        title: $(this).data('title') || false
+      },
+      style: {
+        classes: 'qtip-todc-bootstrap',
+        tip: {
+          width: 12
+        }
+      },
+      show: {
+        solo: true
+      },
+      position: {
+        my: 'top center',
+        at: 'bottom center',
+        viewport: $(window)
       }
-    },
-    show: {
-      solo: true
-    },
-    position: {
-      my: 'top center',
-      at: 'bottom center',
-      viewport: $(window)
-    }
-  });
-});
+    })
+  })
+})
