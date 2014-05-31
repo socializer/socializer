@@ -170,6 +170,9 @@ fr:
         profile: 'Profile'
         authentications: 'Authentications'
         signout: 'Signout'
+      toolbar:
+        home: 'Accueil'
+        all: 'All'
 
   layouts:
     socializer:

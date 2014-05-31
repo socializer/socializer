@@ -173,6 +173,9 @@ en:
         profile: 'Profile'
         authentications: 'Authentications'
         signout: 'Signout'
+      toolbar:
+        home: 'Home'
+        all: 'All'
 
   layouts:
     socializer:
