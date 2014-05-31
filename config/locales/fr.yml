@@ -67,6 +67,10 @@ fr:
         header: 'Your circles'
 
     comments:
+      edit:
+        header: 'Edit comment'
+      new:
+        header: 'New Comment'
       form:
         submit: 'Comment'
 

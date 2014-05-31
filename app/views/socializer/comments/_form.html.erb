@@ -1,4 +1,3 @@
-<h1>Comment activity</h1>
 <%= simple_form_for(comment) do |f| %>
   <%= f.input :content, label: false, input_html: { autofocus: true } %>
   <%= f.input :activity_target_id,  as: :hidden, input_html: { value: params[:id] } %>
