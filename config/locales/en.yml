@@ -172,6 +172,8 @@ en:
         send_message: 'Send a message'
 
     shares:
+      new:
+        header: 'Share this post'
       form:
         content_label: 'Would you like to say something along with the sharing of this activity?'
 

@@ -169,6 +169,8 @@ fr:
         send_message: 'Send a message'
 
     shares:
+      new:
+        header: 'Share this post'
       form:
         content_label: 'Voulez-vous ajouter un commentaire avec le partage de cette activité?'
 
