@@ -7,15 +7,15 @@ module Socializer
     end
 
     def public
-      @groups = Socializer::Group.public
+      @groups = Group.public
     end
 
     def restricted
-      @groups = Socializer::Group.restricted
+      @groups = Group.restricted
     end
 
     def joinable
-      @groups = Socializer::Group.joinable
+      @groups = Group.joinable
     end
 
     def memberships

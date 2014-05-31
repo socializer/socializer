@@ -3,7 +3,7 @@ require 'digest/md5'
 module Socializer
   class Person < ActiveRecord::Base
     extend Enumerize
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 }, default: :gravatar, predicates: true, scope: true
 

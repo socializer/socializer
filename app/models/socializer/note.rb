@@ -1,6 +1,6 @@
 module Socializer
   class Note < ActiveRecord::Base
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     attr_accessible :content
 

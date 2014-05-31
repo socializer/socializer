@@ -1,6 +1,6 @@
 module Socializer
   class Activity < ActiveRecord::Base
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     default_scope { order(created_at: :desc) }
 
@@ -53,7 +53,7 @@ module Socializer
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
       object_ids = object_ids.split(',') if object_ids.class == Fixnum || object_ids.class == String
-      limited    = Socializer::Audience.privacy_level.find_value(:limited).value.to_s
+      limited    = Audience.privacy_level.find_value(:limited).value.to_s
 
       object_ids.each do |object_id|
         audience = audiences.build(privacy_level: object_id)
@@ -111,7 +111,7 @@ module Socializer
       verbs_of_interest = %w(post share)
 
       # privacy_levels
-      privacy_level   = Socializer::Audience.privacy_level
+      privacy_level   = Audience.privacy_level
       privacy_public  = privacy_level.find_value(:public).value
       privacy_circles = privacy_level.find_value(:circles).value
       privacy_limited = privacy_level.find_value(:limited).value

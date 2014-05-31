@@ -1,6 +1,6 @@
 module Socializer
   class Comment < ActiveRecord::Base
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     attr_accessible :content
 

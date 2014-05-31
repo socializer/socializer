@@ -1,7 +1,7 @@
 module Socializer
   class Group < ActiveRecord::Base
     extend Enumerize
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     enumerize :privacy_level, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 

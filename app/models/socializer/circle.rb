@@ -1,6 +1,6 @@
 module Socializer
   class Circle < ActiveRecord::Base
-    include Socializer::ObjectTypeBase
+    include ObjectTypeBase
 
     attr_accessible :name, :content
 
