@@ -47,6 +47,10 @@ fr:
         new: 'Create a new circle'
         edit: 'edit'
         delete: 'delete'
+      edit:
+        header: 'Edit %{name}'
+      new:
+        header: 'New Circle'
       show:
         confirm: 'Are you sure?'
         delete: 'Delete'
@@ -88,6 +92,10 @@ fr:
         public: 'Publiques'
         restricted: 'Restreints'
         joinable: 'Joingables'
+      edit:
+        header: 'Edit %{name}'
+      new:
+        header: 'New Group'
       memberships:
         header:
           one: 'You belong to 1 group'
