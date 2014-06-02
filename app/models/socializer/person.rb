@@ -82,7 +82,7 @@ module Socializer
       @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
     end
 
-    # TODO: avatar_url - clean this up
+    # CLEANUP: avatar_url - clean this up
     def avatar_url
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
 

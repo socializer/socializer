@@ -149,7 +149,7 @@ module Socializer
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
     def self.build_circles_subquery
       # TODO: Verify this works correcly
-      # TODO: Remove old code
+      # CLEANUP: Remove old code
 
       # Retrieve the author's unique identifier
       # The arel_table method is technically private since it is marked :nodoc
@@ -174,7 +174,7 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
-    # TODO: Remove old code
+    # CLEANUP: Remove old code
     # TODO: Verify this works correcly
     # def self.build_limited_circle_subquery(viewer_id)
     def self.build_limited_circle_subquery

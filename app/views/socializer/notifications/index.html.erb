@@ -20,39 +20,3 @@
   <% end %>
   <%#= render @notifications %>
 </section>
-
-<!-- TODO: Clean-up -->
-<!-- <ul class="notification-list"> -->
-  <%# index_notification = 0 %>
-
-  <%# @notifications.each do |n| %>
-
-     <%#
-      index_notification += 1
-      classname = 'not-read' unless n.read
-      classname = 'not-displayed' if index_notification <= current_user.activity_object.unread_notifications_count
-    %>
-<!--     <li class="<%#= classname %>">
-
-      <a href="<%#= notification_url(n.id) %>">
-
-        <div class="lfloat">
-          <%#= image_tag(n.activity.actor.avatar_url, title: n.activity.actor.display_name) %>
-        </div>
-
-        <div class="notification-body">
-          <div>
-            <span class="person-name"><%#= n.activity.actor.display_name %></span>
-            <span><%#= 'has %s ' % n.activity.verb.name %></span>
-            <span><%#= 'a note' if n.activity.activitable_object.note? %></span>
-          </div>
-          <div class="time-elapsed"><%#=  n.created_at_time_ago %></div>
-        </div>
-
-      </a>
-      <div class="clearfix"></div>
-    </li> -->
-
-<%# end %>
-
-<!-- </ul> -->
