@@ -10,7 +10,7 @@ module Socializer
 
     def make_sure_its_not_the_last_one
       return unless person.authentications.count == 1
-      # FIXME: authentication - This is not be a good user experience.
+      # FIXME: authentication - This is not a good user experience.
       #       If the user clicks 'unbind' on their last authentication they will get an error.
       #       A flash notice should be set and the user should be able to continue on.
       fail 'Cannot delete the last authentication available.'
