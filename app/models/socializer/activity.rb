@@ -213,7 +213,7 @@ module Socializer
     end
     private_class_method :build_limited_group_subquery
 
-    # TODO: Remove old/unused code
+    # CLEANUP: Remove old/unused code
     # def self.build_limited_viewer_subquery(viewer_id)
     #   "( #{viewer_id} )"
     # end

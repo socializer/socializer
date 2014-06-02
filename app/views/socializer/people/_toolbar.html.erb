@@ -17,7 +17,6 @@
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
             <!-- TODO: Add translations -->
-            <!-- TODO: Find a better home for Edit -->
             <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to('About', person) %></li>
             <li class="<%= 'active' if current_page?(stream_path(provider: :people, id: person.id)) %>"><%= link_to('Stream', stream_path(provider: :people, id: person.id)) %></li>
             <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to('Likes', person_likes_path(person)) %></li>
