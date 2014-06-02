@@ -16,10 +16,9 @@
       <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
-            <!-- TODO: Add translations -->
-            <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to('About', person) %></li>
-            <li class="<%= 'active' if current_page?(stream_path(provider: :people, id: person.id)) %>"><%= link_to('Stream', stream_path(provider: :people, id: person.id)) %></li>
-            <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to('Likes', person_likes_path(person)) %></li>
+            <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to(t('.about'), person) %></li>
+            <li class="<%= 'active' if current_page?(stream_path(provider: :people, id: person.id)) %>"><%= link_to(t('.stream'), stream_path(provider: :people, id: person.id)) %></li>
+            <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to(t('.likes'), person_likes_path(person)) %></li>
           </ul>
           <div class="btn-group pull-right">
             <%= link_to(t('.edit'), edit_person_path(current_user), class: 'btn btn-primary', title: "#{t('.tooltip.edit')}") %>

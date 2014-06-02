@@ -164,8 +164,11 @@ en:
         login: 'Login'
       toolbar:
         profile: 'Profile'
+        about: 'About'
         all: 'All'
         edit: 'Edit'
+        likes: 'Likes'
+        stream: 'Stream'
         tooltip:
           edit: 'Edit your profile'
       sidebar:
