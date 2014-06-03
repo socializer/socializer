@@ -6,7 +6,7 @@
 
 <div class='row'>
   <% @memberships.each do |membership| %>
-    <%= render partial: 'card', locals: { group: membership.group } %>
+    <%= render 'card', group: membership.group %>
 
     <%
       classname = 'panel-default'
