@@ -31,6 +31,9 @@ $(document).ready(function () {
         solo: true
       },
       position: {
+        adjust: {
+          method: 'shift'
+        },
         my: 'top center',
         at: 'bottom center',
         viewport: $(window)
