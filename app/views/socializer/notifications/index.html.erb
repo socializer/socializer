@@ -12,7 +12,7 @@
     <%
       index_notification += 1
       classname = 'panel-default'
-      classname = 'panel-warning bg-warning' unless notification.read
+      classname = 'panel-default bg-muted' if notification.read
       classname = 'panel-success bg-success' if index_notification <= current_user.activity_object.unread_notifications_count
     %>
 
