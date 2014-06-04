@@ -34,6 +34,13 @@
    }
   &.bg-muted {
     @extend .bg-muted;
+    @extend .text-muted;
+    h1 {
+      @extend .text-muted;
+      > a {
+        @extend .text-muted;
+      }
+    }
   }
 }
 
