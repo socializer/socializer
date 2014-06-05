@@ -72,16 +72,14 @@ module Socializer
     end
 
     def likes
-      activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins(:verb).where(actor_id: activity_obj_id).where(target_id: nil).where(verb: { name: verbs_of_interest })
+      query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).where(verb: { name: verbs_of_interest })
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
     def likes?(object)
-      activity_obj_id   = activity_object.id
       verbs_of_interest = %w(like unlike)
-      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_obj_id).where(verb: { name: verbs_of_interest })
+      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).where(verb: { name: verbs_of_interest })
       query.count.odd?
     end
 
