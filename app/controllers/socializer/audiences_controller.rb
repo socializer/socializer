@@ -14,28 +14,11 @@ module Socializer
     private
 
     def user_audience_list(current_user, query)
-      people  = query.blank? ? [] : person_audience_list_query(query)
-      circles = circles_audience_list_query(current_user, query)
-      groups  = groups_audience_list_query(current_user, query)
+      people  = query.blank? ? [] : Person.audience_list(query)
+      circles = Circle.audience_list(current_user, query)
+      groups  = Group.audience_list(current_user, query)
 
       build_audience_list_array(OpenStruct.new(people: people, circles: circles, groups: groups))
-    end
-
-    def person_audience_list_query(query)
-      return if query.blank?
-      @people ||= Person.select(:display_name).guids.where(Person.arel_table[:display_name].matches("%#{query}%"))
-    end
-
-    def circles_audience_list_query(current_user, query)
-      @circles ||= current_user.circles.select(:name).guids
-      return @circles if query.blank?
-      @circles ||= @circles.where(Circle.arel_table[:name].matches("%#{query}%"))
-    end
-
-    def groups_audience_list_query(current_user, query)
-      @groups ||= current_user.groups.select(:name).guids
-      return @groups if query.blank?
-      @groups  ||= @groups.where(Group.arel_table[:name].matches("%#{query}%"))
     end
 
     def build_audience_list_array(audience_list)
