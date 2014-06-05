@@ -48,6 +48,15 @@ module Socializer
       expect(Socializer::Person).to respond_to(:create_with_omniauth)
     end
 
+    context '.audience_list' do
+      it { expect { Person.audience_list }.to raise_error(ArgumentError) }
+      it { expect(Person.audience_list(nil)).to eq(nil) }
+      it do
+        create(:socializer_person)
+        expect(Person.audience_list('n').first.display_name).to include('name')
+      end
+    end
+
     context '#services' do
       it do
         person = create(:socializer_person, avatar_provider: 'FACEBOOK')
