@@ -34,6 +34,23 @@ module Socializer
       @people ||= select(:display_name).guids.where(arel_table[:display_name].matches("%#{query}%"))
     end
 
+    def self.create_with_omniauth(auth)
+      create! do |user|
+        user.display_name = auth.info.name
+        user.email = auth.info.email
+        image_url = auth.info.image
+
+        if image_url.nil?
+          image_url = ''
+          user.avatar_provider = 'GRAVATAR'
+        else
+          user.avatar_provider = auth.provider.upcase
+        end
+
+        user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
+      end
+    end
+
     # Instance Methods
     def services
       @services ||= authentications.where.not(provider: 'Identity')
@@ -103,23 +120,6 @@ module Socializer
       activity_object.circles.create!(name: 'Family',        content: 'Your close and extended family, with as many or as few in-laws as you want.')
       activity_object.circles.create!(name: 'Acquaintances', content: "A good place to stick people you've met but aren't particularly close to.")
       activity_object.circles.create!(name: 'Following',     content: "People you don't know personally, but whose posts you find interesting.")
-    end
-
-    def self.create_with_omniauth(auth)
-      create! do |user|
-        user.display_name = auth.info.name
-        user.email = auth.info.email
-        image_url = auth.info.image
-
-        if image_url.nil?
-          image_url = ''
-          user.avatar_provider = 'GRAVATAR'
-        else
-          user.avatar_provider = auth.provider.upcase
-        end
-
-        user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
-      end
     end
 
     private
