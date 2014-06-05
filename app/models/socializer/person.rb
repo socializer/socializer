@@ -82,27 +82,14 @@ module Socializer
       @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
     end
 
-    # CLEANUP: avatar_url - clean this up
     def avatar_url
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
 
       if avatar_provider_array.include?(avatar_provider)
-        provider = avatar_provider.downcase
-        authentications.find_by(provider: provider).try(:image_url)
+        social_avatar_url(avatar_provider.downcase)
       else
-        return if email.blank?
-        "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
+        gravatar_url
       end
-
-      # if avatar_provider == 'FACEBOOK'
-      #   authentications.where(provider: 'facebook')[0].image_url if authentications.where(provider: 'facebook')[0].present?
-      # elsif avatar_provider == 'TWITTER'
-      #   authentications.where(provider: 'twitter')[0].image_url if authentications.where(provider: 'twitter')[0].present?
-      # elsif avatar_provider == 'LINKEDIN'
-      #   authentications.where(provider: 'linkedin')[0].image_url if authentications.where(provider: 'linkedin')[0].present?
-      # else
-      #   "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}" if email.present?
-      # end
     end
 
     def add_default_circle
@@ -127,6 +114,18 @@ module Socializer
 
         user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
       end
+    end
+
+    private
+
+    def social_avatar_url(provider)
+      authentication = authentications.find_by(provider: provider)
+      authentication.image_url if authentication.present?
+    end
+
+    def gravatar_url
+      return if email.blank?
+      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
     end
   end
 end
