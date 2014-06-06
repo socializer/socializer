@@ -55,7 +55,7 @@ module Socializer
       end
 
       # The actor of the activity is always part of the audience.
-      @object_ids.push @activity.activitable_actor unless @object_ids.include?('public')
+      @object_ids << @activity.activitable_actor unless @object_ids.include?('public')
 
       # Remove any duplicates from the list. It can happen when, for example, someone
       # post a message to itself.
@@ -67,11 +67,11 @@ module Socializer
       # In case of CIRCLES audience, add each contacts of every circles
       # of the actor of the activity.
       if audience.privacy_level.public?
-        @object_ids.push audience.privacy_level
+        @object_ids << audience.privacy_level
       elsif audience.privacy_level.circles?
         @activity.actor.circles.each do |circle|
           circle.activity_contacts.each do |contact|
-            @object_ids.push contact
+            @object_ids << contact
           end
         end
       else
@@ -80,12 +80,12 @@ module Socializer
           # circles and add contacts from those circles in the list of allowed
           # audience.
           audience.activity_object.activitable.activity_contacts.each do |contact|
-            @object_ids.push contact
+            @object_ids << contact
           end
         else
           # Otherwise, the target audience is either a group or a person,
           # which means we can add it as it is in the audience list.
-          @object_ids.push audience.activity_object
+          @object_ids << audience.activity_object
         end
       end
     end

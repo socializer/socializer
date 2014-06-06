@@ -40,7 +40,7 @@ module Socializer
     # TODO: Rename this method to liked_by
     def likes
       people = []
-      query  =  Activity.joins(:verb).where(activity_object_id: id)
+      query  = Activity.joins(:verb).where(activity_object_id: id)
 
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
       # activities_likes = query.where(verb: { name: 'like' })
@@ -48,7 +48,7 @@ module Socializer
       # Alternate syntax:
       # activities_likes = query.where(verb: Verb.where(name: 'like'))
       activities_likes.each do |activity|
-        people.push activity.actor
+        people << activity.actor
       end
 
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes

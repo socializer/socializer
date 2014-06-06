@@ -10,7 +10,7 @@ module Socializer
       @object_ids = []
 
       activity.activity_object.likes.each do |person|
-        @object_ids.push person.activity_object
+        @object_ids << person.activity_object
       end
 
       respond_to do |format|
