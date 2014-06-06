@@ -49,6 +49,9 @@ module Socializer
       context 'current user but no query' do
         let(:current_user) { create(:socializer_person) }
         it { expect { Group.audience_list(current_user) }.to raise_error(ArgumentError) }
+        # TODO: Test return values
+        it { expect(Group.audience_list(current_user, nil)).to be_kind_of(ActiveRecord::AssociationRelation) }
+        it { expect(Group.audience_list(current_user, 't')).to be_kind_of(ActiveRecord::AssociationRelation) }
       end
     end
 
