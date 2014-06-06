@@ -31,9 +31,21 @@ module Socializer
       it 'is a pending example'
       it { expect { Audience.audience_list }.to raise_error(ArgumentError) }
 
-      context 'current user but no query' do
+      context 'current user' do
         let(:current_user) { create(:socializer_person) }
-        it { expect { Audience.audience_list(current_user) }.to raise_error(ArgumentError) }
+        let(:circles) { create(:socializer_person_circles) }
+        let(:groups) { create(:socializer_person_groups) }
+
+        # TODO: Test return values
+        context 'but no query' do
+          it { expect { Audience.audience_list(current_user) }.to raise_error(ArgumentError) }
+          it { expect(Audience.audience_list(current_user, nil)).to be_kind_of(Array) }
+        end
+
+        # TODO: Test return values
+        context 'with query' do
+          it { expect(Audience.audience_list(current_user, 'n')).to be_kind_of(Array) }
+        end
       end
     end
 
