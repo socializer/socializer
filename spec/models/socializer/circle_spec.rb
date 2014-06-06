@@ -24,6 +24,16 @@ module Socializer
       it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
+    context '.audience_list' do
+      it 'is a pending example'
+      it { expect { Circle.audience_list }.to raise_error(ArgumentError) }
+
+      context 'current user but no query' do
+        let(:current_user) { create(:socializer_person) }
+        it { expect { Circle.audience_list(current_user) }.to raise_error(ArgumentError) }
+      end
+    end
+
     context 'when adding a contact' do
       let(:circle_with_contacts) { create(:socializer_circle) }
 

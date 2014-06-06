@@ -27,6 +27,16 @@ module Socializer
 
     it { expect(enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public)) }
 
+    context '.audience_list' do
+      it 'is a pending example'
+      it { expect { Audience.audience_list }.to raise_error(ArgumentError) }
+
+      context 'current user but no query' do
+        let(:current_user) { create(:socializer_person) }
+        it { expect { Audience.audience_list(current_user) }.to raise_error(ArgumentError) }
+      end
+    end
+
     context '#object' do
       let(:activitable) { audience.activity_object.activitable }
       it { expect(audience.object).to be_a(activitable.class) }
