@@ -40,11 +40,11 @@ module Socializer
     # TODO: Rename this method to liked_by
     def likes
       people = []
-      query  =  Activity.joins(:verb).where(activity_object_id: id)
+      query  = Activity.joins(:verb).where(activity_object_id: id)
 
       activities_likes = query.where(verb: { name: 'like' })
       activities_likes.each do |activity|
-        people.push activity.actor
+        people << activity.actor
       end
 
       activities_unlikes = query.where(verb: { name: 'unlike' })
