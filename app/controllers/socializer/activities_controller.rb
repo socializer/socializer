@@ -66,26 +66,28 @@ module Socializer
     def add_audience_object_ids(audience)
       # In case of CIRCLES audience, add each contacts of every circles
       # of the actor of the activity.
-      if audience.privacy_level.public?
-        @object_ids << audience.privacy_level
-      elsif audience.privacy_level.circles?
+      privacy_level = audience.privacy_level
+      if privacy_level.public?
+        @object_ids << privacy_level
+      elsif privacy_level.circles?
         @activity.actor.circles.each do |circle|
           circle.activity_contacts.each do |contact|
             @object_ids << contact
           end
         end
       else
-        if audience.activity_object.circle?
+        activity_object = audience.activity_object
+        if activity_object.circle?
           # In the case of LIMITED audience, then go through all the audience
           # circles and add contacts from those circles in the list of allowed
           # audience.
-          audience.activity_object.activitable.activity_contacts.each do |contact|
+          activity_object.activitable.activity_contacts.each do |contact|
             @object_ids << contact
           end
         else
           # Otherwise, the target audience is either a group or a person,
           # which means we can add it as it is in the audience list.
-          @object_ids << audience.activity_object
+          @object_ids << activity_object
         end
       end
     end
