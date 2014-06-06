@@ -42,6 +42,16 @@ module Socializer
     it { is_expected.to respond_to(:leave) }
     it { is_expected.to respond_to(:member?) }
 
+    context '.audience_list' do
+      it 'is a pending example'
+      it { expect { Group.audience_list }.to raise_error(ArgumentError) }
+
+      context 'current user but no query' do
+        let(:current_user) { create(:socializer_person) }
+        it { expect { Group.audience_list(current_user) }.to raise_error(ArgumentError) }
+      end
+    end
+
     context 'when group is public' do
       let(:public_group) { create(:socializer_group, privacy_level: 1) }
       let(:person) { create(:socializer_person) }
