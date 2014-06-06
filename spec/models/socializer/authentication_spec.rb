@@ -21,6 +21,8 @@ module Socializer
     context 'when last authentication for a person' do
       let(:last_authentication) { create(:socializer_authentication) }
 
+      it { expect(last_authentication.person.authentications.count).to eq(1) }
+
       it 'cannot be deleted' do
         expect { last_authentication.destroy }.to raise_error
       end
