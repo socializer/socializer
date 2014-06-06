@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_comment, class: Socializer::Comment do
+    content 'This is a comment'
+    association :activity_author, factory: :socializer_activity_object_person
   end
 end
