@@ -18,11 +18,11 @@ module Socializer
       # Visit the new page
       before { get :new, id: note.activity_object.id, use_route: :socializer }
 
-      it 'should return an activity object' do
+      it 'return an activity object' do
         expect(assigns(:activity_object)).to eq(note.activity_object)
       end
 
-      it 'should return an share object' do
+      it 'return an share object' do
         expect(assigns(:share)).to eq(note)
       end
     end

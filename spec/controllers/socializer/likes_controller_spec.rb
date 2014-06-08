@@ -15,18 +15,18 @@ module Socializer
       [:create, :destroy].each do |action|
         before { post action, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
-        it 'should set likable for action #{action}' do
+        it 'set likable for action #{action}' do
           expect(assigns(:likable)).to eq(note_activity.activity_object)
         end
 
-        it 'should set activity for action #{action}' do
+        it 'set activity for action #{action}' do
           expect(assigns(:activity)).to eq(note_activity)
         end
       end
     end
 
     # Make sure that the note is not liked before liking it.
-    it 'should not likes the note before liking it' do
+    it 'no likes for the note before liking it' do
       expect(user.likes?(note_activity.activity_object)).to be_falsey
     end
 
@@ -34,7 +34,7 @@ module Socializer
       # Create a like
       before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
-      it 'should likes the note after liking it' do
+      it 'likes the note after liking it' do
         expect(user.likes?(note_activity.activity_object)).to be_truthy
       end
     end
@@ -45,7 +45,7 @@ module Socializer
       # Destroy the like
       before { post :destroy, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
 
-      it 'should not likes the note anymore' do
+      it 'does not like the note anymore' do
         expect(user.likes?(note_activity.activity_object)).to be_falsey
       end
     end
@@ -56,11 +56,11 @@ module Socializer
       # Get the people ou like the activity
       before { get :index,  id: note_activity.id, format: :html, use_route: :socializer }
 
-      it 'should return people' do
+      it 'return people' do
         expect(assigns(:object_ids)).to be_present
       end
 
-      it 'should return the user who like the activity' do
+      it 'return the user who like the activity' do
         expect(assigns(:object_ids)).to include(user.activity_object)
       end
     end
