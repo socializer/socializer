@@ -57,6 +57,18 @@ module Socializer
       end
     end
 
+    context '#audience_list' do
+      let(:person) { build(:socializer_person_circles) }
+      it { expect { person.audience_list }.to raise_error(ArgumentError) }
+      it { expect { person.audience_list(:cricles) }.to raise_error(ArgumentError) }
+
+      # TODO: Test return values
+      it { expect(person.audience_list(:circles, nil)).to be_kind_of(ActiveRecord::AssociationRelation) }
+      it { expect(person.audience_list(:circles, 'f')).to be_kind_of(ActiveRecord::AssociationRelation) }
+
+      it { expect(person.audience_list(:unknown, nil)).to eq(nil) }
+    end
+
     context '#services' do
       it do
         person = create(:socializer_person, avatar_provider: 'FACEBOOK')
