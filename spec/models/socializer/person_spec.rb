@@ -116,12 +116,16 @@ module Socializer
       expect(person).to respond_to(:received_notifications)
     end
 
-    it '#contacts' do
-      expect(person).to respond_to(:contacts)
+    context '#contacts' do
+      let(:person) { build(:socializer_person_circles) }
+      # TODO: Test return values
+      it { expect(person.contacts).to be_kind_of(Array) }
     end
 
-    it '#contact_of' do
-      expect(person).to respond_to(:contact_of)
+    context '#contact_of' do
+      let(:person) { build(:socializer_person_circles) }
+      # TODO: Test return values
+      it { expect(person.contact_of).to be_kind_of(Array) }
     end
 
     it '#likes' do
