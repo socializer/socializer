@@ -24,19 +24,6 @@ module Socializer
       it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
     end
 
-    context '.audience_list' do
-      it 'is a pending example'
-      it { expect { Circle.audience_list }.to raise_error(ArgumentError) }
-
-      context 'current user but no query' do
-        let(:current_user) { create(:socializer_person) }
-        it { expect { Circle.audience_list(current_user) }.to raise_error(ArgumentError) }
-        # TODO: Test return values
-        it { expect(Circle.audience_list(current_user, nil)).to be_kind_of(ActiveRecord::AssociationRelation) }
-        it { expect(Circle.audience_list(current_user, 't')).to be_kind_of(ActiveRecord::AssociationRelation) }
-      end
-    end
-
     context 'author' do
       it 'is a pending example'
       # it { expect(circle.author).to be_kind_of(Socializer::Person) }
