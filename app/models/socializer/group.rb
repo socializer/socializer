@@ -27,12 +27,6 @@ module Socializer
     # Named Scopes
 
     # Class Methods
-    def self.audience_list(current_user, query)
-      @groups ||= current_user.groups.select(:name).guids
-      return @groups if query.blank?
-      @groups  ||= @groups.where(Group.arel_table[:name].matches("%#{query}%"))
-    end
-
     def self.public
       Group.with_privacy_level(:public)
     end
