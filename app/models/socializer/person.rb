@@ -31,7 +31,7 @@ module Socializer
     # Class Methods
     def self.audience_list(query)
       return if query.blank?
-      @people ||= select(:display_name).guids.where(arel_table[:display_name].matches("%#{query}%"))
+      select(:display_name).guids.where(arel_table[:display_name].matches("%#{query}%"))
     end
 
     def self.create_with_omniauth(auth)
@@ -52,6 +52,28 @@ module Socializer
     end
 
     # Instance Methods
+
+    # [audience_list description]
+    #
+    # @example
+    #   current_user.audience_list(:circles, nil)
+    #   current_user.audience_list('circles', nil)
+    #
+    # @param type [Symbol/String] [description]
+    # @param query [String] [description]
+    #
+    # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
+    def audience_list(type, query)
+      type = type.to_s.downcase.pluralize
+      return unless respond_to?(type)
+
+      result = send(type).select(:name).guids
+      return result if query.blank?
+
+      klass = "Socializer::#{type.classify}".constantize
+      result.where(klass.arel_table[:name].matches("%#{query}%"))
+    end
+
     def services
       @services ||= authentications.where.not(provider: 'Identity')
     end

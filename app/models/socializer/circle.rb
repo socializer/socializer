@@ -14,11 +14,6 @@ module Socializer
     validates :name, presence: true, uniqueness: { scope: :author_id }
 
     # Class Methods
-    def self.audience_list(current_user, query)
-      @circles ||= current_user.circles.select(:name).guids
-      return @circles if query.blank?
-      @circles ||= @circles.where(Circle.arel_table[:name].matches("%#{query}%"))
-    end
 
     # Instance Methods
     def author

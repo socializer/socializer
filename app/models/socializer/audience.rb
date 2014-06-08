@@ -17,8 +17,8 @@ module Socializer
     # Class Methods
     def self.audience_list(current_user, query)
       people  = query.blank? ? [] : Person.audience_list(query)
-      circles = Circle.audience_list(current_user, query)
-      groups  = Group.audience_list(current_user, query)
+      circles = current_user.audience_list(:circles, query)
+      groups  = current_user.audience_list(:groups, query)
 
       build_audience_list_array(OpenStruct.new(people: people, circles: circles, groups: groups))
     end
