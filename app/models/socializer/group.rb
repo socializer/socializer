@@ -27,18 +27,31 @@ module Socializer
     # Named Scopes
 
     # Class Methods
+
+    # Return all groups with a privacy_level of public
+    #
+    # @return [ActiveRecord::Relation]
     def self.public
       Group.with_privacy_level(:public)
     end
 
+    # Return all groups with a privacy_level of restricted
+    #
+    # @return [ActiveRecord::Relation]
     def self.restricted
       Group.with_privacy_level(:restricted)
     end
 
+    # Return all groups with a privacy_level of private
+    #
+    # @return [ActiveRecord::Relation]
     def self.private
       Group.with_privacy_level(:private)
     end
 
+    # Return all groups with a privacy_level of public or restricted
+    #
+    # @return [ActiveRecord::Relation]
     def self.joinable
       Group.with_privacy_level(:public, :restricted)
     end
