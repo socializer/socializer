@@ -80,8 +80,9 @@ module Socializer
           expect(public_group.member?(person)).to be_truthy
         end
 
-        it 'has 1 member' do
-          expect(public_group.members.size).to eq(1)
+        # The factory adds a person to the public group by default
+        it 'has 2 members' do
+          expect(public_group.members.size).to eq(2)
         end
 
         context 'and leaving' do
@@ -94,9 +95,10 @@ module Socializer
             expect(@membership).to be_nil
           end
 
-          it 'has 0 member' do
-          expect(public_group.members.size).to eq(0)
-        end
+          # The factory adds a person to the public group by default
+          it 'has 1 member' do
+            expect(public_group.members.size).to eq(1)
+          end
         end
       end
     end
