@@ -38,5 +38,10 @@ module Socializer
 
     # TODO: Test activity.comments? == true
     it { expect(activity.comments?).to eq(false) }
+
+    # TODO: Test return values
+    it { expect(activity.actor).to be_kind_of(Socializer::Person) }
+    it { expect(activity.object).to be_kind_of(Socializer::Note) }
+    it { expect(activity.target).to be_kind_of(Socializer::Group) }
   end
 end
