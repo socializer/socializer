@@ -55,7 +55,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
@@ -81,16 +81,19 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    # DatabaseCleaner.strategy = :transaction
-    # DatabaseCleaner.clean_with(:truncation)
+    # DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-    DatabaseCleaner.clean
+    # DatabaseCleaner.clean
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
+    # DatabaseCleaner.clean_with(:truncation)
   end
 end
