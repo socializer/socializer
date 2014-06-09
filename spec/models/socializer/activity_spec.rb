@@ -43,5 +43,20 @@ module Socializer
     it { expect(activity.actor).to be_kind_of(Socializer::Person) }
     it { expect(activity.object).to be_kind_of(Socializer::Note) }
     it { expect(activity.target).to be_kind_of(Socializer::Group) }
+
+    context '.stream' do
+      let(:activity_object_person) { build(:socializer_activity_object_person) }
+      let(:activity_object_group) { build(:socializer_activity_object_group) }
+      let(:person) { activity_object_person.activitable }
+      let(:group) { activity_object_group.activitable }
+
+      it { expect { Activity.stream }.to raise_error(ArgumentError) }
+      it { expect(Activity.stream(actor_uid: nil, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.stream(provider: 'activities', actor_uid: 1, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.stream(provider: 'people', actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.stream(provider: 'circles', actor_uid: 1, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.stream(provider: 'groups', actor_uid: group.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect { Activity.stream(provider: 'unknown', actor_uid: 1, viewer_id: person.id) }.to raise_error(RuntimeError) }
+    end
   end
 end
