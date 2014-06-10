@@ -17,6 +17,7 @@ module Socializer
       it { is_expected.to belong_to(:activity_contact) }
     end
 
-    it { is_expected.to respond_to(:contact) }
+    # TODO: Test return values
+    it { expect(tie.contact).to be_kind_of(Socializer::Person) }
   end
 end
