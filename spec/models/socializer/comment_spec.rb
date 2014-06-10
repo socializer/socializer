@@ -10,5 +10,8 @@ module Socializer
 
     it { is_expected.to respond_to(:content) }
     it { is_expected.to respond_to(:author) }
+
+    # TODO: Test return values
+    it { expect(comment.author).to be_kind_of(Socializer::Person) }
   end
 end
