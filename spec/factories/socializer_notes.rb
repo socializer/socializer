@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :socializer_note, class: Socializer::Note do
-    author_id 1
+    association :activity_author, factory: :socializer_activity_object_person
   end
 end
