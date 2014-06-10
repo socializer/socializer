@@ -16,6 +16,7 @@ module Socializer
       it { is_expected.to belong_to(:activity_author) }
     end
 
-    it { is_expected.to respond_to(:author) }
+    # TODO: Test return values
+    it { expect(note.author).to be_kind_of(Socializer::Person) }
   end
 end

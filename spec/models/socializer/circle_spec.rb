@@ -25,8 +25,8 @@ module Socializer
     end
 
     context 'author' do
-      it 'is a pending example'
-      # it { expect(circle.author).to be_kind_of(Socializer::Person) }
+      # TODO: Test return values
+      it { expect(circle.author).to be_kind_of(Socializer::Person) }
     end
 
     context 'when adding a contact' do
