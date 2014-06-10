@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 module Socializer
   RSpec.describe Activity, type: :model do
@@ -50,6 +50,7 @@ module Socializer
       let(:person) { activity_object_person.activitable }
       let(:group) { activity_object_group.activitable }
 
+      # TODO: Test return values
       it { expect { Activity.stream }.to raise_error(ArgumentError) }
       it { expect(Activity.stream(actor_uid: nil, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
       it { expect(Activity.stream(provider: 'activities', actor_uid: 1, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }

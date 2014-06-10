@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 module Socializer
   RSpec.describe Circle, type: :model do
