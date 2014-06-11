@@ -53,7 +53,7 @@ module Socializer
     #
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
-      object_ids = object_ids.split(',') if object_ids.class == Fixnum || object_ids.class == String
+      object_ids = object_ids.split(',') if %w(Fixnum String).include?(object_ids.class.name)
       limited    = Audience.privacy_level.find_value(:limited).value.to_s
 
       object_ids.each do |object_id|
