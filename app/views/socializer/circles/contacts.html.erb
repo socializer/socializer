@@ -5,22 +5,7 @@
 <h1><%= t('.header') %></h1>
 
 <div class='row'>
-  <% current_user.contacts.each do |contact| %>
-    <!-- TODO: Create a partial -->
-    <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= contact.guid %>', data-person-name='<%= contact.display_name %>'>
-      <article class='media panel panel-default'>
-        <section class='media-object'>
-          <%= link_to(image_tag(contact.avatar_url), contact) %>
-        </section>
-
-        <section class='media-body'>
-            <h1>
-              <%= link_to(contact.display_name, stream_path(provider: :people, id: contact.id)) %>
-            </h1>
-        </section>
-      </article>
-    </div>
-  <% end %>
+  <%= render partial: 'socializer/people/mini_card', collection: current_user.contacts, as: :person %>
 </div>
 
 <%= render 'circles' %>

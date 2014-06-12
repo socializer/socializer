@@ -1,0 +1,14 @@
+<!-- TODO: This partial will need to account for actions passed in-->
+<div class='col-sm-6 col-md-4 draggable', data-object-id='<%= person.guid %>', data-person-name='<%= person.display_name %>'>
+  <article class='media panel panel-default'>
+    <section class='media-object'>
+      <%= link_to(image_tag(person.avatar_url), person) %>
+    </section>
+
+    <section class='media-body'>
+        <h1>
+          <%= link_to(person.display_name, stream_path(provider: :people, id: person.id)) %>
+        </h1>
+    </section>
+  </article>
+</div>

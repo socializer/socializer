@@ -16,20 +16,8 @@
 <h2>Members</h2>
 <div class='row'>
   <% @group.memberships.each do |membership| %>
-    <!-- TODO: Create a partial -->
-    <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= membership.member.guid %>', data-person-name='<%= membership.member.display_name %>'>
-      <article class='media panel panel-default'>
-        <section class='media-object'>
-          <%= link_to(image_tag(membership.member.avatar_url), membership.member) %>
-        </section>
-
-        <section class='media-body'>
-            <h1>
-              <%= link_to(membership.member.display_name, stream_path(provider: :people, id: membership.member.id)) %>
-            </h1>
-        </section>
-      </article>
-    </div>
+    <!-- TODO: The owner should be able to remove members -->
+    <%= render partial: 'socializer/people/mini_card', object: membership.member, as: :person %>
   <% end %>
 </div>
 
@@ -37,7 +25,7 @@
   <h2>Invite members</h2>
   <div class='row'>
     <% Socializer::Person.all.each do |user| %>
-      <!-- TODO: Create a partial -->
+      <!-- TODO: Create a partial or use people/mini_card. The partial will need to account for actions -->
       <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= user.guid %>', data-person-name='<%= user.display_name %>'>
         <article class='media panel panel-default'>
           <section class='media-object'>
