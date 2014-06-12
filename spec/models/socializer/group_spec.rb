@@ -23,9 +23,7 @@ module Socializer
     end
 
     context 'validations' do
-      # TODO: Update factory to include relationshp
-      # it { is_expected.to validate_presence_of(:activity_author) }
-      it { is_expected.to validate_presence_of(:author_id) }
+      it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:privacy_level) }
       # TODO: Use is_expected syntax
