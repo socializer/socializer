@@ -16,8 +16,8 @@ module Socializer
     has_many :categories, class_name: 'GroupCategory', foreign_key: 'group_id', dependent: :destroy
 
     # Validations
-    validates :author_id, presence: true
     validates :name, presence: true, uniqueness: { scope: :author_id }
+    validates :activity_author, presence: true
     validates :privacy_level, presence: true
 
     # Callbacks
