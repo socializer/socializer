@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :socializer_person_education, class: Socializer::PersonEducation do
-    person_id 1
+    association :person, factory: :socializer_person
   end
 end

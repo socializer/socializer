@@ -4,5 +4,8 @@ module Socializer
 
     # Relationships
     belongs_to :person
+
+    # Validations
+    validates :person, presence: true
   end
 end

@@ -21,5 +21,8 @@ module Socializer
       it { is_expected.to belong_to(:person) }
     end
 
+    context 'validations' do
+      it { is_expected.to validate_presence_of(:person) }
+    end
   end
 end
