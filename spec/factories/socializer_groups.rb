@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :socializer_group, class: Socializer::Group do
-    sequence(:name) { |n| "Public group#{n}" }
-    privacy_level 1
+    sequence(:name) { |n| "Public group #{n}" }
+    privacy_level :public
     association :activity_author, factory: :socializer_activity_object_person
   end
 end
