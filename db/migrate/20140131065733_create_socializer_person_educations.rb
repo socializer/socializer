@@ -5,10 +5,8 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration
       # TODO: change school_name to name
       t.string   :school_name
       t.string   :major_or_field_of_study
-      # TODO: change start to started_on - more inline with Rails conventions
       t.date     :started_on
-      # TODO: change end to ended_on - more inline with Rails conventions
-      t.date     :end
+      t.date     :ended_on
       t.boolean  :current
       # TODO: change courses_description to description
       t.text     :courses_description

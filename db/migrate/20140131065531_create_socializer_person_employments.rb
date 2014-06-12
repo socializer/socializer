@@ -7,8 +7,7 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration
       # TODO: change job_title to title
       t.string   :job_title
       t.date     :started_on
-      # TODO: change end to ended_on - more inline with Rails conventions
-      t.date     :end
+      t.date     :ended_on
       t.boolean  :current
       # TODO: change job_description to description
       t.text     :job_description

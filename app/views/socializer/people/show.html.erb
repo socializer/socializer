@@ -58,7 +58,7 @@
           <% if employment.current? %>
             present
           <% else %>
-            <%= employment.end.to_s(:long_ordinal) %>
+            <%= employment.ended_on.to_s(:long_ordinal) %>
           <% end %>
         </li>
       <% end %>
@@ -79,7 +79,7 @@
           <% if education.current? %>
             present
           <% else %>
-            <%= education.end.to_s(:long_ordinal) %>
+            <%= education.ended_on.to_s(:long_ordinal) %>
           <% end %>
         </li>
       <% end %>
