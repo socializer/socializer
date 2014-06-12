@@ -18,8 +18,10 @@ module Socializer
     end
 
     context 'validations' do
+      it { is_expected.to validate_presence_of(:category) }
       it { is_expected.to validate_presence_of(:label) }
       it { is_expected.to validate_presence_of(:number) }
+      it { is_expected.to validate_presence_of(:person) }
     end
 
     it { expect(enumerize(:category).in(:home, :work).with_default(:home)) }

@@ -10,7 +10,9 @@ module Socializer
     belongs_to :person
 
     # Validations
+    validates :category, presence: true
     validates :label, presence: true
     validates :number, presence: true
+    validates :person, presence: true
   end
 end
