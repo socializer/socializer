@@ -26,9 +26,10 @@ module Socializer
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:privacy_level) }
-      # TODO: Use is_expected syntax
-      # it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
-      it { expect(create(:socializer_group)).to validate_uniqueness_of(:name).scoped_to(:author_id) }
+      it 'check uniqueness of name' do
+        create(:socializer_group)
+        is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive
+      end
     end
 
     it { expect(enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public)) }
