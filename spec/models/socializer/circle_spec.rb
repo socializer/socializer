@@ -21,7 +21,7 @@ module Socializer
 
     context 'validations' do
       it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id) }
+      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive }
     end
 
     context 'author' do

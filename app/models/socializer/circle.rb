@@ -11,7 +11,7 @@ module Socializer
     has_many   :activity_contacts, through: :ties
 
     # Validations
-    validates :name, presence: true, uniqueness: { scope: :author_id }
+    validates :name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
 
     # Class Methods
 
