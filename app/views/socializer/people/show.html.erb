@@ -54,7 +54,7 @@
           <%= employment.employer_name %><br>
           <%= employment.job_title %><br>
           <%= employment.job_description %><br>
-          <%= employment.start.to_s(:long_ordinal) %> -
+          <%= employment.started_on.to_s(:long_ordinal) %> -
           <% if employment.current? %>
             present
           <% else %>
@@ -75,7 +75,7 @@
         <li class="form-control-static">
           <%= education.school_name %><br>
           <%= education.major_or_field_of_study %><br>
-          <%= education.start.to_s(:long_ordinal) %> -
+          <%= education.started_on.to_s(:long_ordinal) %> -
           <% if education.current? %>
             present
           <% else %>

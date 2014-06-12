@@ -11,7 +11,7 @@ module Socializer
     context 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:school_name) }
       it { is_expected.to allow_mass_assignment_of(:major_or_field_of_study) }
-      it { is_expected.to allow_mass_assignment_of(:start) }
+      it { is_expected.to allow_mass_assignment_of(:started_on) }
       it { is_expected.to allow_mass_assignment_of(:end) }
       it { is_expected.to allow_mass_assignment_of(:current) }
       it { is_expected.to allow_mass_assignment_of(:courses_description) }
