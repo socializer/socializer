@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_person_address, class: Socializer::PersonAddress do
-    person_id 1
-    category 1
+    category :home
+    association :person, factory: :socializer_person
   end
 end

@@ -8,5 +8,9 @@ module Socializer
 
     # Relationships
     belongs_to :person
+
+    # Validations
+    validates :category, presence: true
+    validates :person, presence: true
   end
 end

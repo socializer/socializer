@@ -20,6 +20,7 @@ module Socializer
 
     context 'validations' do
       it { is_expected.to validate_presence_of(:label) }
+      it { is_expected.to validate_presence_of(:person) }
       it { is_expected.to validate_presence_of(:url) }
     end
 

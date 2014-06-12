@@ -21,7 +21,11 @@ module Socializer
       it { is_expected.to belong_to(:person) }
     end
 
-    it { expect(enumerize(:category).in(:home, :work).with_default(:home)) }
+    context 'validations' do
+      it { is_expected.to validate_presence_of(:category) }
+      it { is_expected.to validate_presence_of(:person) }
+    end
 
+    it { expect(enumerize(:category).in(:home, :work).with_default(:home)) }
   end
 end

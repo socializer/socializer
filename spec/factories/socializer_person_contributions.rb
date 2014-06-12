@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :socializer_person_contribution, class: Socializer::PersonContribution do
-    person_id 1
     label 'test'
     url 'http://test.org'
+    association :person, factory: :socializer_person
   end
 end

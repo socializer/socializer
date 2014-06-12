@@ -7,5 +7,6 @@ module Socializer
 
     # Validations
     validates :city_name, presence: true
+    validates :person, presence: true
   end
 end

@@ -7,6 +7,7 @@ module Socializer
 
     # Validations
     validates :label, presence: true
+    validates :person, presence: true
     validates :url, presence: true
   end
 end
