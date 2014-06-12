@@ -6,6 +6,7 @@ module Socializer
     belongs_to :group
 
     # Validations
+    validates :group, presence: true
     validates :label, presence: true
     validates :url, presence: true
   end

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_group_category, class: Socializer::GroupCategory do
-    group_id 1
     name 'category'
+    association :group, factory: :socializer_group
   end
 end
