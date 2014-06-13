@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-openid',      '~> 1.0.1')
   spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
   spec.add_dependency('simple_form',          '~> 3.1.0.rc1')
-  # TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
+  # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
   # spec.add_dependency('squeel',               '~> 1.1.0')
 
   spec.add_development_dependency('bundler',              '~> 1.6.0')

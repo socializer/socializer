@@ -12,7 +12,7 @@ require 'omniauth-linkedin'
 require 'omniauth-openid'
 require 'omniauth-twitter'
 require 'simple_form'
-# TODO: Remove once we're satisfied with the ARel solution or supported version of squeel is released
+# CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
 # require 'squeel'
 
 module Socializer

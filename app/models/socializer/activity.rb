@@ -111,7 +111,7 @@ module Socializer
     end
 
     # Class Methods - Private
-    # TODO: Remove old/unused code
+    # CLEANUP: Remove old/unused code
     def self.build_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
