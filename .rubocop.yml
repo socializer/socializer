@@ -39,9 +39,6 @@ SingleSpaceBeforeFirstArg:
 Documentation:
   Enabled: false
 
-Encoding:
-  Enabled: false
-
 LineLength:
   # Max: 120
   Enabled: false
