@@ -129,7 +129,6 @@ module Socializer
       # query = joins(:audiences, :verb).where(verb: Verb.where(name: verbs_of_interest), target_id: nil)
 
       # The arel_table method is technically private since it is marked :nodoc
-      activity ||= Activity.arel_table
       audience ||= Audience.arel_table
 
       # TODO: Test: Generate the same SQL as below
@@ -140,7 +139,7 @@ module Socializer
              .and(Arel::SqlLiteral.new("#{viewer_id}").in(build_limited_circle_subquery.arel))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id).arel))
              .or(audience[:activity_object_id].in(viewer_id)))
-           .or(activity[:actor_id].eq(viewer_id)))
+           .or(arel_table[:actor_id].eq(viewer_id)))
 
       # query.where { (audiences.privacy_level.eq(privacy_public)) |
       #   ((audiences.privacy_level.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
