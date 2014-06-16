@@ -25,13 +25,13 @@ module Socializer
     end
 
     def add_contact(contact_id)
-      @tie = ties.build(contact_id: contact_id)
-      @tie.save
+      tie = ties.build(contact_id: contact_id)
+      tie.save
     end
 
     def remove_contact(contact_id)
-      @tie = ties.find_by(contact_id: contact_id)
-      @tie.destroy
+      tie = ties.find_by(contact_id: contact_id)
+      tie.destroy
     end
   end
 end
