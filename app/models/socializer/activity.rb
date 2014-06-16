@@ -85,8 +85,7 @@ module Socializer
         query.distinct
       when 'activities'
         # we only want to display a single activity. make sure the viewer is allowed to do so.
-        activity_id = actor_uid
-        query.where(id: activity_id).distinct
+        query.where(id: actor_uid).distinct
       when 'people'
         # this is a user profile. display everything about him that you are allowed to see
         person_id = Person.find_by(id: actor_uid).guid
