@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('uglifier',             '>= 1.3.0')
   spec.add_dependency('bcrypt',               '~> 3.1.7')
   spec.add_dependency('bootstrap-sass',       '~> 3.1.1.0')
-  spec.add_dependency('draper',               '~> 1.3.0')
+  spec.add_dependency('draper',               '~> 1.3.1')
   spec.add_dependency('elasticsearch-rails',  '~> 0.1.2')
   spec.add_dependency('enumerize',            '~> 0.8.0')
   spec.add_dependency('omniauth',             '~> 1.2.1')
