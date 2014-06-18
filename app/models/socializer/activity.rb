@@ -213,10 +213,16 @@ module Socializer
       ao         ||= ActivityObject.arel_table
       membership ||= Membership.arel_table
       group      ||= Group.arel_table
-      join       = ao.join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
-                     .join(membership).on(membership[:group_id].eq(group[:id]))
 
-      ActivityObject.select(:id).joins(join.join_sql).where(membership[:member_id].eq(viewer_id)).arel
+      ao.project(ao[:id]).join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
+                         .join(membership).on(membership[:group_id].eq(group[:id]))
+                         .where(membership[:member_id].eq(viewer_id))
+
+      # CLEANUP: Remove old code
+      # join       = ao.join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
+      #                .join(membership).on(membership[:group_id].eq(group[:id])).join_sql
+
+      # ActivityObject.select(:id).joins(join).where(membership[:member_id].eq(viewer_id)).arel
       # ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :build_limited_group_subquery
