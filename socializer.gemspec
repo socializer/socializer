@@ -20,17 +20,17 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency('rails',                '4.1.2.rc1')
+  spec.add_dependency('rails',                '4.1.2.rc2')
   spec.add_dependency('jquery-rails')
   # Added 'jquery-ui-rails' for drag and drop
   spec.add_dependency('jquery-ui-rails')
   spec.add_dependency('sass-rails',           '~> 4.0.3')
   spec.add_dependency('coffee-rails',         '~> 4.0.0')
-  spec.add_dependency('uglifier',             '>= 1.3.0')
+  spec.add_dependency('uglifier',             '>= 2.5.1')
   spec.add_dependency('bcrypt',               '~> 3.1.7')
   spec.add_dependency('bootstrap-sass',       '~> 3.1.1.0')
   spec.add_dependency('draper',               '~> 1.3.1')
-  spec.add_dependency('elasticsearch-rails',  '~> 0.1.2')
+  spec.add_dependency('elasticsearch-rails',  '~> 0.1.4')
   spec.add_dependency('enumerize',            '~> 0.8.0')
   spec.add_dependency('omniauth',             '~> 1.2.1')
   spec.add_dependency('omniauth-identity',    '~> 1.1.1')
@@ -42,10 +42,10 @@ Gem::Specification.new do |spec|
   # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
   # spec.add_dependency('squeel',               '~> 1.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.6.0')
+  spec.add_development_dependency('bundler',              '~> 1.6.3')
   spec.add_development_dependency('rake')
-  spec.add_development_dependency('sqlite3',              '~> 1.3.8')
-  spec.add_development_dependency('rspec-rails',          '~> 3.0.0')
+  spec.add_development_dependency('sqlite3',              '~> 1.3.9')
+  spec.add_development_dependency('rspec-rails',          '~> 3.0.1')
   spec.add_development_dependency('brakeman',             '~> 2.6.0')
   # spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',             '~> 2.3.0')
