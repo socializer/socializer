@@ -134,7 +134,7 @@ module Socializer
       # TODO: Test: Generate the same SQL as below
       query.where(audience[:privacy_level].eq(privacy_public)
            .or(audience[:privacy_level].eq(privacy_circles)
-           .and(viewer_literal.in(build_circles_subquery)))
+             .and(viewer_literal.in(build_circles_subquery)))
            .or(audience[:privacy_level].eq(privacy_limited)
              .and(viewer_literal.in(build_limited_circle_subquery))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
