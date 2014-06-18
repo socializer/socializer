@@ -164,8 +164,7 @@ module Socializer
       # The arel_table method is technically private since it is marked :nodoc
       person   ||= Person.arel_table
       ao       ||= ActivityObject.arel_table
-      join     = ao.join(person).on(person[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Person.name)))
-      subquery = ActivityObject.select(:id).joins(join.join_sql)
+      subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Person.name)))
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
       Circle.select(:id).where(author_id: subquery)
 
