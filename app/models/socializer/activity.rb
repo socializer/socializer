@@ -134,10 +134,10 @@ module Socializer
       # TODO: Test: Generate the same SQL as below
       query.where(audience[:privacy_level].eq(privacy_public)
            .or(audience[:privacy_level].eq(privacy_circles)
-           .and(viewer_literal.in(build_circles_subquery.arel)))
+           .and(viewer_literal.in(build_circles_subquery)))
            .or(audience[:privacy_level].eq(privacy_limited)
-             .and(viewer_literal.in(build_limited_circle_subquery.arel))
-             .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id).arel))
+             .and(viewer_literal.in(build_limited_circle_subquery))
+             .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
              .or(audience[:activity_object_id].in(viewer_id)))
            .or(arel_table[:actor_id].eq(viewer_id)))
 
@@ -166,7 +166,7 @@ module Socializer
       ao       ||= ActivityObject.arel_table
       subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Person.name)))
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
-      Circle.select(:id).where(author_id: subquery)
+      Circle.select(:id).where(author_id: subquery).arel
 
       # subquery = 'SELECT socializer_activity_objects.id ' \
       #            'FROM socializer_activity_objects ' \
@@ -189,7 +189,7 @@ module Socializer
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       subquery = Circle.select(:id).joins(activity_object: :audiences)
-      Tie.select(:contact_id).where(circle_id: subquery)
+      Tie.select(:contact_id).where(circle_id: subquery).arel
 
       # limited_circle_id_sql = 'SELECT socializer_circles.id ' \
       #                         'FROM socializer_circles ' \
@@ -216,7 +216,7 @@ module Socializer
       join       = ao.join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
                      .join(membership).on(membership[:group_id].eq(group[:id]))
 
-      ActivityObject.select(:id).joins(join.join_sql).where(membership[:member_id].eq(viewer_id))
+      ActivityObject.select(:id).joins(join.join_sql).where(membership[:member_id].eq(viewer_id)).arel
       # ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :build_limited_group_subquery
