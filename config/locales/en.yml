@@ -1,216 +1,207 @@
+---
 en:
   socializer:
     activities:
       activity:
         tooltip:
-          public: 'Anyone can see this'
-        time_format: '%s ago'
+          public: Anyone can see this
+        time_format: "%s ago"
       sidebar:
-        header: 'In my circles'
+        header: In my circles
       stream_list:
-        streams: 'Streams'
-
+        streams: Streams
     authentications:
       toolbar:
-        authentications: 'Authentications'
-        all: 'All'
-        new: 'New'
+        authentications: Authentications
+        all: All
+        new: New
         tooltip:
-          new: 'Add a new service'
+          new: Add a new service
       authentication:
-        unbind: 'Unbind'
+        unbind: Unbind
       index:
-        unbind: 'unbind'
+        unbind: unbind
         header:
-          one: '1 bound service'
-          other: '%{count} bound services'
+          one: 1 bound service
+          other: "%{count} bound services"
       new:
-        header: 'Add a new service'
-
+        header: Add a new service
     circles:
-      header: 'Your circles'
+      header: Your circles
       form:
-        submit: 'Save changes'
+        submit: Save changes
       toolbar:
-        circles: 'Circles'
-        all: 'All'
-        find: 'Find people'
-        added_you: 'Have you in circles'
-        your_circles: 'Your circles'
-        new: 'New circle'
+        circles: Circles
+        all: All
+        find: Find people
+        added_you: Have you in circles
+        your_circles: Your circles
+        new: New circle
       index:
-        new: 'Create a new circle'
-        edit: 'edit'
-        delete: 'delete'
+        new: Create a new circle
+        edit: edit
+        delete: delete
       edit:
-        header: 'Edit %{name}'
+        header: Edit %{name}
       new:
-        header: 'New Circle'
+        header: New Circle
       show:
-        confirm: 'Are you sure?'
-        delete: 'Delete'
+        confirm: Are you sure?
+        delete: Delete
         tooltip:
-          delete: 'Remove %{display_name} from %{circle_name}'
-          edit: 'Edit this circle'
+          delete: Remove %{display_name} from %{circle_name}
+          edit: Edit this circle
       find_people:
-        header: 'Suggestions'
+        header: Suggestions
       contact_of:
         header:
-          one: '1 person'
-          other: '%{count} people'
+          one: 1 person
+          other: "%{count} people"
       contacts:
-        header: 'Your circles'
-
+        header: Your circles
     comments:
       edit:
-        header: 'Edit comment'
+        header: Edit comment
       new:
-        header: 'New Comment'
+        header: New Comment
       form:
-        submit: 'Comment'
-
+        submit: Comment
     groups:
       card:
-        confirm: 'Confirm'
-        decline: 'Decline'
-        delete: 'Delete'
-        edit: 'Edit'
-        join: 'Join'
-        leave: 'Leave'
+        confirm: Confirm
+        decline: Decline
+        delete: Delete
+        edit: Edit
+        join: Join
+        leave: Leave
       index:
-        header: 'Discover groups'
-        new_group: 'New group'
+        header: Discover groups
+        new_group: New group
       form:
-        submit: 'Save changes'
+        submit: Save changes
       menu:
-        public: 'Public groups'
-        restricted: 'Restricted groups'
-        joinable: 'Joinable groups'
-        your_groups: 'Your groups'
-        memberships: 'Memberships'
-        pending_invites: 'Pending invites'
-        my_groups: 'My groups'
-        create_new_group: 'Create new group'
+        public: Public groups
+        restricted: Restricted groups
+        joinable: Joinable groups
+        your_groups: Your groups
+        memberships: Memberships
+        pending_invites: Pending invites
+        my_groups: My groups
+        create_new_group: Create new group
       toolbar:
-        groups: 'Groups'
-        all: 'All'
-        your_groups: 'Your groups'
-        memberships: 'Memberships'
-        pending_invites: 'Pending invites'
-        new: 'New group'
-        public: 'Public'
-        restricted: 'Restricted'
-        joinable: 'Joinable'
+        groups: Groups
+        all: All
+        your_groups: Your groups
+        memberships: Memberships
+        pending_invites: Pending invites
+        new: New group
+        public: Public
+        restricted: Restricted
+        joinable: Joinable
       edit:
-        header: 'Edit %{name}'
+        header: Edit %{name}
       new:
-        header: 'New Group'
+        header: New Group
       memberships:
         header:
-          one: 'You belong to 1 group'
-          other: 'You belong to %{count} groups'
-        leave: 'leave'
+          one: You belong to 1 group
+          other: You belong to %{count} groups
+        leave: leave
       ownerships:
         header:
-          one: 'You own 1 group'
-          other: 'You own %{count} groups'
-        edit: 'edit'
-        delete: 'delete'
+          one: You own 1 group
+          other: You own %{count} groups
+        edit: edit
+        delete: delete
       pending_invites:
         header:
-          one: 'You have 1 pending invite'
-          other: 'You have %{count} pending invites'
-        decline: 'decline'
-        confirm: 'confirm'
+          one: You have 1 pending invite
+          other: You have %{count} pending invites
+        decline: decline
+        confirm: confirm
       joinable:
         header:
-          one: '1 joinable group'
-          other: '%{count} joinable groups'
+          one: 1 joinable group
+          other: "%{count} joinable groups"
       public:
         header:
-          one: '1 public group'
-          other: '%{count} public groups'
+          one: 1 public group
+          other: "%{count} public groups"
       restricted:
         header:
-          one: '1 restricted group'
-          other: '%{count} restricted groups'
+          one: 1 restricted group
+          other: "%{count} restricted groups"
       show:
-        confirm: 'Are you sure?'
-        invite: 'Invite'
-        leave: 'Leave'
-        join: 'Join'
+        confirm: Are you sure?
+        invite: Invite
+        leave: Leave
+        join: Join
         tooltip:
-          invite: 'Invite %{display_name} to join %{group_name}'
-          leave: 'Remove %{display_name} from %{group_name}'
-
+          invite: Invite %{display_name} to join %{group_name}
+          leave: Remove %{display_name} from %{group_name}
     notes:
       form:
-        share_placeholder: 'Share anything with anyone...'
-        share: 'Share'
+        share_placeholder: Share anything with anyone...
+        share: Share
       new:
-        header: 'Send a message'
-
+        header: Send a message
     notifications:
       toolbar:
-        notifications: 'Notifications'
-        all: 'All'
+        notifications: Notifications
+        all: All
       index:
-        header: 'Notifications'
-
+        header: Notifications
     people:
       login:
-        welcome: 'Welcome to Socializer'
-        sub_heading: 'You can login using the following services'
-        local_account_query: "Don't use these services?"
-        create_account: 'Create an account'
-        login: 'Login'
+        welcome: Welcome to Socializer
+        sub_heading: You can login using the following services
+        local_account_query: Don't use these services?
+        create_account: Create an account
+        login: Login
       toolbar:
-        profile: 'Profile'
-        about: 'About'
-        all: 'All'
-        edit: 'Edit'
-        likes: 'Likes'
-        stream: 'Stream'
+        profile: Profile
+        about: About
+        all: All
+        edit: Edit
+        likes: Likes
+        stream: Stream
         tooltip:
-          edit: 'Edit your profile'
+          edit: Edit your profile
       sidebar:
-        send_message: 'Send a message'
-
+        send_message: Send a message
     shares:
       new:
-        header: 'Share this post'
+        header: Share this post
       form:
-        content_label: 'Would you like to say something along with the sharing of this activity?'
-
+        content_label: Would you like to say something along with the sharing of this
+          activity?
     shared:
       main_navigation:
-        home: 'Home'
-        profile: 'Profile'
-        circles: 'Circles'
-        groups: 'Groups'
+        home: Home
+        profile: Profile
+        circles: Circles
+        groups: Groups
       topbar:
-        profile: 'Profile'
-        authentications: 'Authentications'
-        signout: 'Signout'
+        profile: Profile
+        authentications: Authentications
+        signout: Signout
       toolbar:
-        home: 'Home'
-        all: 'All'
-
+        home: Home
+        all: All
   layouts:
     socializer:
       header:
-        authentications: 'Authentications'
-        notifications: 'Notifications'
-        signout: 'Signout'
-
+        authentications: Authentications
+        notifications: Notifications
+        signout: Signout
   enumerize:
     socializer/group:
       privacy_level:
-        public: 'Public'
-        restricted: 'Restricted'
-        private: 'Private'
+        public: Public
+        restricted: Restricted
+        private: Private
     socializer/audience:
       privacy_level:
-        public: 'Public'
-        circles: 'Circles'
-        limited: 'Limited'
+        public: Public
+        circles: Circles
+        limited: Limited

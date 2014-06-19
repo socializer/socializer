@@ -1,373 +1,355 @@
+---
 fr:
   socializer:
     activities:
       activity:
         tooltip:
-          public: 'Anyone can see this'
-        time_format: 'depuis %s'
+          public: Anyone can see this
+        time_format: depuis %s
       sidebar:
-        header: 'In my circles'
+        header: In my circles
       stream_list:
-        streams: 'Streams'
-
+        streams: Streams
     authentications:
       toolbar:
-        authentications: 'Authentications'
-        all: 'All'
-        new: 'New'
+        authentications: Authentications
+        all: All
+        new: New
         tooltip:
-          new: 'Add a new service'
+          new: Add a new service
       authentication:
-        unbind: 'Unbind'
+        unbind: Unbind
       index:
-        unbind: 'unbind'
+        unbind: unbind
         header:
-          one: '1 bound service'
-          other: '%{count} bound services'
+          one: 1 bound service
+          other: "%{count} bound services"
       new:
-        header: 'Add a new service'
-
+        header: Add a new service
     circles:
-      header: 'Your circles'
+      header: Your circles
       form:
-        submit: 'Save changes'
+        submit: Save changes
       toolbar:
-        circles: 'Circles'
-        all: 'All'
-        find: 'Find people'
-        added_you: 'Have you in circles'
-        your_circles: 'Your circles'
-        new: 'New circle'
+        circles: Circles
+        all: All
+        find: Find people
+        added_you: Have you in circles
+        your_circles: Your circles
+        new: New circle
       index:
-        new: 'Create a new circle'
-        edit: 'edit'
-        delete: 'delete'
+        new: Create a new circle
+        edit: edit
+        delete: delete
       edit:
-        header: 'Edit %{name}'
+        header: Edit %{name}
       new:
-        header: 'New Circle'
+        header: New Circle
       show:
-        confirm: 'Are you sure?'
-        delete: 'Delete'
+        confirm: Are you sure?
+        delete: Delete
         tooltip:
-          delete: 'Remove %{display_name} from %{circle_name}'
-          edit: 'Edit this circle'
+          delete: Remove %{display_name} from %{circle_name}
+          edit: Edit this circle
       find_people:
-        header: 'Suggestions'
+        header: Suggestions
       contact_of:
         header:
-          one: '1 person'
-          other: '%{count} people'
+          one: 1 person
+          other: "%{count} people"
       contacts:
-        header: 'Your circles'
-
+        header: Your circles
     comments:
       edit:
-        header: 'Edit comment'
+        header: Edit comment
       new:
-        header: 'New Comment'
+        header: New Comment
       form:
-        submit: 'Comment'
-
+        submit: Comment
     groups:
       card:
-        confirm: 'Confirm'
-        decline: 'Decline'
-        delete: 'Delete'
-        edit: 'Edit'
-        join: 'Join'
-        leave: 'Leave'
+        confirm: Confirm
+        decline: Decline
+        delete: Delete
+        edit: Edit
+        join: Join
+        leave: Leave
       index:
-        header: 'Discover groups'
-        new_group: 'New group'
+        header: Discover groups
+        new_group: New group
       form:
-        submit: 'Save changes'
+        submit: Save changes
       menu:
-        public: 'Groupes publiques'
-        restricted: 'Groupes restreints'
-        joinable: 'Groupes joingables'
-        your_groups: 'Vos groupes'
-        memberships: 'Adhésions'
-        pending_invites: 'Invitations en attente'
-        my_groups: 'Mes groupes'
-        create_new_group: 'Créer un nouveau groupe'
+        public: Groupes publiques
+        restricted: Groupes restreints
+        joinable: Groupes joingables
+        your_groups: Vos groupes
+        memberships: Adhésions
+        pending_invites: Invitations en attente
+        my_groups: Mes groupes
+        create_new_group: Créer un nouveau groupe
       toolbar:
-        groups: 'Groupes'
-        all: 'All'
-        your_groups: 'Vos groupes'
-        memberships: 'Adhésions'
-        pending_invites: 'Invitations en attente'
-        new: 'New group'
-        public: 'Publiques'
-        restricted: 'Restreints'
-        joinable: 'Joingables'
+        groups: Groupes
+        all: All
+        your_groups: Vos groupes
+        memberships: Adhésions
+        pending_invites: Invitations en attente
+        new: New group
+        public: Publiques
+        restricted: Restreints
+        joinable: Joingables
       edit:
-        header: 'Edit %{name}'
+        header: Edit %{name}
       new:
-        header: 'New Group'
+        header: New Group
       memberships:
         header:
-          one: 'You belong to 1 group'
-          other: 'You belong to %{count} groups'
-        leave: 'quitter'
+          one: You belong to 1 group
+          other: You belong to %{count} groups
+        leave: quitter
       ownerships:
         header:
-          one: 'You own 1 group'
-          other: 'You own %{count} groups'
-        edit: 'éditer'
-        delete: 'supprimer'
+          one: You own 1 group
+          other: You own %{count} groups
+        edit: "éditer"
+        delete: supprimer
       pending_invites:
         header:
-          one: 'You have 1 pending invite'
-          other: 'You have %{count} pending invites'
-        decline: 'refuser'
-        confirm: 'confirmer'
+          one: You have 1 pending invite
+          other: You have %{count} pending invites
+        decline: refuser
+        confirm: confirmer
       joinable:
         header:
-          one: '1 joinable group'
-          other: '%{count} joinable groups'
+          one: 1 joinable group
+          other: "%{count} joinable groups"
       public:
         header:
-          one: '1 public group'
-          other: '%{count} public groups'
+          one: 1 public group
+          other: "%{count} public groups"
       restricted:
         header:
-          one: '1 restricted group'
-          other: '%{count} restricted groups'
+          one: 1 restricted group
+          other: "%{count} restricted groups"
       show:
-        confirm: 'Are you sure?'
-        invite: 'Invite'
-        leave: 'quitter'
-        join: 'joindre'
+        confirm: Are you sure?
+        invite: Invite
+        leave: quitter
+        join: joindre
         tooltip:
-          invite: 'Invite %{display_name} to join %{group_name}'
-          leave: 'Remove %{display_name} from %{group_name}'
-
+          invite: Invite %{display_name} to join %{group_name}
+          leave: Remove %{display_name} from %{group_name}
     notes:
       form:
-        share_placeholder: 'Partagez tout ce que vous voulez avec qui vous voulez...'
-        share: 'Partager'
+        share_placeholder: Partagez tout ce que vous voulez avec qui vous voulez...
+        share: Partager
       new:
-        header: 'Envoyer un message'
-
+        header: Envoyer un message
     notifications:
       toolbar:
-        notifications: 'Notifications'
-        all: 'All'
+        notifications: Notifications
+        all: All
       index:
-        header: 'Notifications'
-
+        header: Notifications
     people:
       login:
-        welcome: 'Bienvenue sur Socializer'
-        sub_heading: 'Vous pouvez vous connecter en utilisant les services suivants'
-        local_account_query: "Vous n'utilisez pas ces services?"
-        create_account: 'Créer un compte'
-        login: 'Connexion'
+        welcome: Bienvenue sur Socializer
+        sub_heading: Vous pouvez vous connecter en utilisant les services suivants
+        local_account_query: Vous n'utilisez pas ces services?
+        create_account: Créer un compte
+        login: Connexion
       toolbar:
-        profile: 'Profile'
-        about: 'About'
-        all: 'All'
-        edit: 'Edit'
-        likes: 'Likes'
-        stream: 'Stream'
+        profile: Profile
+        about: About
+        all: All
+        edit: Edit
+        likes: Likes
+        stream: Stream
         tooltip:
-          edit: 'Edit your profile'
+          edit: Edit your profile
       sidebar:
-        send_message: 'Send a message'
-
+        send_message: Send a message
     shares:
       new:
-        header: 'Share this post'
+        header: Share this post
       form:
-        content_label: 'Voulez-vous ajouter un commentaire avec le partage de cette activité?'
-
+        content_label: Voulez-vous ajouter un commentaire avec le partage de cette
+          activité?
     shared:
       main_navigation:
-        home: 'Accueil'
-        profile: 'Profil'
-        circles: 'Cercles'
-        groups: 'Groupes'
+        home: Accueil
+        profile: Profil
+        circles: Cercles
+        groups: Groupes
       topbar:
-        profile: 'Profile'
-        authentications: 'Authentications'
-        signout: 'Signout'
+        profile: Profile
+        authentications: Authentications
+        signout: Signout
       toolbar:
-        home: 'Accueil'
-        all: 'All'
-
+        home: Accueil
+        all: All
   layouts:
     socializer:
       header:
-        authentications: 'Authentifications'
-        notifications: 'Notifications'
-        signout: 'Déconnexion'
-
+        authentications: Authentifications
+        notifications: Notifications
+        signout: Déconnexion
   enumerize:
     socializer/group:
       privacy_level:
-        public: 'Public'
-        restricted: 'Restreint'
-        private: 'Privé'
+        public: Public
+        restricted: Restreint
+        private: Privé
     socializer/audience:
       privacy_level:
-        public: 'Publique'
-        circles: 'Cercles'
-        limited: 'Limitée'
-
-# French translations for Ruby on Rails
-# by Christian Lescuyer (christian@flyingcoders.com)
-# contributors:
-#  - Sebastien Grosjean - ZenCocoon.com
-#  - Bruno Michel - http://github.com/nono
-#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-# Emended by Benjamin des Gachons and Patrick Chew : <http://www.fitima.org/docs/fiche.pdf>
-
+        public: Publique
+        circles: Cercles
+        limited: Limitée
   date:
     abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
     abbr_month_names:
-      - ~
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
+    - 
+    - jan.
+    - fév.
+    - mar.
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
     day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
     formats:
       default: "%d/%m/%Y"
       short: "%e %b"
       long: "%e %B %Y"
     month_names:
-      - ~
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
+    - 
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   datetime:
     distance_in_words:
       about_x_hours:
-        one:   "environ une heure"
-        other: "environ %{count} heures"
+        one: environ une heure
+        other: environ %{count} heures
       about_x_months:
-        one:   "environ un mois"
-        other: "environ %{count} mois"
+        one: environ un mois
+        other: environ %{count} mois
       about_x_years:
-        one:   "environ un an"
-        other: "environ %{count} ans"
+        one: environ un an
+        other: environ %{count} ans
       almost_x_years:
-        one:   "presqu'un an"
-        other: "presque %{count} ans"
-      half_a_minute: "une demi-minute"
+        one: presqu'un an
+        other: presque %{count} ans
+      half_a_minute: une demi-minute
       less_than_x_minutes:
-        zero:  "moins d'une minute"
-        one:   "moins d'une minute"
-        other: "moins de %{count} minutes"
+        zero: moins d'une minute
+        one: moins d'une minute
+        other: moins de %{count} minutes
       less_than_x_seconds:
-        zero:  "moins d'une seconde"
-        one:   "moins d'une seconde"
-        other: "moins de %{count} secondes"
+        zero: moins d'une seconde
+        one: moins d'une seconde
+        other: moins de %{count} secondes
       over_x_years:
-        one:   "plus d'un an"
-        other: "plus de %{count} ans"
+        one: plus d'un an
+        other: plus de %{count} ans
       x_days:
-        one:   "1 jour"
+        one: 1 jour
         other: "%{count} jours"
       x_minutes:
-        one:   "1 minute"
+        one: 1 minute
         other: "%{count} minutes"
       x_months:
-        one:   "1 mois"
+        one: 1 mois
         other: "%{count} mois"
       x_seconds:
-        one:   "1 seconde"
+        one: 1 seconde
         other: "%{count} secondes"
     prompts:
-      day:    "Jour"
-      hour:   "Heure"
-      minute: "Minute"
-      month:  "Mois"
-      second: "Seconde"
-      year:   "Année"
-  errors: &errors
+      day: Jour
+      hour: Heure
+      minute: Minute
+      month: Mois
+      second: Seconde
+      year: Année
+  errors:
     format: "%{attribute} %{message}"
-    messages: &errors_messages
-      accepted: "doit être accepté(e)"
-      blank: "doit être rempli(e)"
-      present: "doit être vide"
-      confirmation: "ne concorde pas avec la confirmation"
-      empty: "doit être rempli(e)"
-      equal_to: "doit être égal à %{count}"
-      even: "doit être pair"
-      exclusion: "n'est pas disponible"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
-      inclusion: "n'est pas inclus(e) dans la liste"
-      invalid: "n'est pas valide"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      not_a_number: "n'est pas un nombre"
-      not_an_integer: "doit être un nombre entier"
-      odd: "doit être impair"
-      record_invalid: "La validation a échoué : %{errors}"
+    messages:
+      accepted: doit être accepté(e)
+      blank: doit être rempli(e)
+      present: doit être vide
+      confirmation: ne concorde pas avec la confirmation
+      empty: doit être rempli(e)
+      equal_to: doit être égal à %{count}
+      even: doit être pair
+      exclusion: n'est pas disponible
+      greater_than: doit être supérieur à %{count}
+      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+      inclusion: n'est pas inclus(e) dans la liste
+      invalid: n'est pas valide
+      less_than: doit être inférieur à %{count}
+      less_than_or_equal_to: doit être inférieur ou égal à %{count}
+      not_a_number: n'est pas un nombre
+      not_an_integer: doit être un nombre entier
+      odd: doit être impair
+      record_invalid: 'La validation a échoué : %{errors}'
       restrict_dependent_destroy:
-        one: "Suppression impossible: un autre enregistrement est lié"
-        many: "Suppression impossible: d'autres enregistrements sont liés"
-      taken: "n'est pas disponible"
+        one: 'Suppression impossible: un autre enregistrement est lié'
+        many: 'Suppression impossible: d''autres enregistrements sont liés'
+      taken: n'est pas disponible
       too_long:
-        one: "est trop long (pas plus d'un caractère)"
-        other: "est trop long (pas plus de %{count} caractères)"
+        one: est trop long (pas plus d'un caractère)
+        other: est trop long (pas plus de %{count} caractères)
       too_short:
-        one: "est trop court (au moins un caractère)"
-        other: "est trop court (au moins %{count} caractères)"
+        one: est trop court (au moins un caractère)
+        other: est trop court (au moins %{count} caractères)
       wrong_length:
-        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
-        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
-      other_than: "doit être différent de %{count}"
-    template: &errors_template
-      body: "Veuillez vérifier les champs suivants : "
+        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+      other_than: doit être différent de %{count}
+    template:
+      body: 'Veuillez vérifier les champs suivants : '
       header:
-        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+        one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   helpers:
     select:
-      prompt: "Veuillez sélectionner"
+      prompt: Veuillez sélectionner
     submit:
-      create: "Créer un(e) %{model}"
-      submit: "Enregistrer ce(tte) %{model}"
-      update: "Modifier ce(tte) %{model}"
+      create: Créer un(e) %{model}
+      submit: Enregistrer ce(tte) %{model}
+      update: Modifier ce(tte) %{model}
   number:
     currency:
       format:
@@ -388,14 +370,14 @@ fr:
       decimal_units:
         format: "%n %u"
         units:
-          billion: "milliard"
-          million: "million"
-          quadrillion: "million de milliards"
-          thousand: "millier"
-          trillion: "billion"
-          unit: ""
+          billion: milliard
+          million: million
+          quadrillion: million de milliards
+          thousand: millier
+          trillion: billion
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 2
         significant: true
         strip_insignificant_zeros: true
@@ -403,35 +385,110 @@ fr:
         format: "%n %u"
         units:
           byte:
-            one:   "octet"
-            other: "octets"
-          gb: "Go"
-          kb: "ko"
-          mb: "Mo"
-          tb: "To"
+            one: octet
+            other: octets
+          gb: Go
+          kb: ko
+          mb: Mo
+          tb: To
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   support:
     array:
       last_word_connector: " et "
       two_words_connector: " et "
       words_connector: ", "
   time:
-    am: 'am'
+    am: am
     formats:
       default: "%d %B %Y %H:%M:%S"
       long: "%A %d %B %Y %H:%M"
       short: "%d %b %H:%M"
-    pm: 'pm'
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+    pm: pm
   activemodel:
     errors:
-      <<: *errors
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: doit être accepté(e)
+        blank: doit être rempli(e)
+        present: doit être vide
+        confirmation: ne concorde pas avec la confirmation
+        empty: doit être rempli(e)
+        equal_to: doit être égal à %{count}
+        even: doit être pair
+        exclusion: n'est pas disponible
+        greater_than: doit être supérieur à %{count}
+        greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+        inclusion: n'est pas inclus(e) dans la liste
+        invalid: n'est pas valide
+        less_than: doit être inférieur à %{count}
+        less_than_or_equal_to: doit être inférieur ou égal à %{count}
+        not_a_number: n'est pas un nombre
+        not_an_integer: doit être un nombre entier
+        odd: doit être impair
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          one: 'Suppression impossible: un autre enregistrement est lié'
+          many: 'Suppression impossible: d''autres enregistrements sont liés'
+        taken: n'est pas disponible
+        too_long:
+          one: est trop long (pas plus d'un caractère)
+          other: est trop long (pas plus de %{count} caractères)
+        too_short:
+          one: est trop court (au moins un caractère)
+          other: est trop court (au moins %{count} caractères)
+        wrong_length:
+          one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+          other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+        other_than: doit être différent de %{count}
+      template:
+        body: 'Veuillez vérifier les champs suivants : '
+        header:
+          one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+          other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   activerecord:
     errors:
-      <<: *errors
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: doit être accepté(e)
+        blank: doit être rempli(e)
+        present: doit être vide
+        confirmation: ne concorde pas avec la confirmation
+        empty: doit être rempli(e)
+        equal_to: doit être égal à %{count}
+        even: doit être pair
+        exclusion: n'est pas disponible
+        greater_than: doit être supérieur à %{count}
+        greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+        inclusion: n'est pas inclus(e) dans la liste
+        invalid: n'est pas valide
+        less_than: doit être inférieur à %{count}
+        less_than_or_equal_to: doit être inférieur ou égal à %{count}
+        not_a_number: n'est pas un nombre
+        not_an_integer: doit être un nombre entier
+        odd: doit être impair
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          one: 'Suppression impossible: un autre enregistrement est lié'
+          many: 'Suppression impossible: d''autres enregistrements sont liés'
+        taken: n'est pas disponible
+        too_long:
+          one: est trop long (pas plus d'un caractère)
+          other: est trop long (pas plus de %{count} caractères)
+        too_short:
+          one: est trop court (au moins un caractère)
+          other: est trop court (au moins %{count} caractères)
+        wrong_length:
+          one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+          other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+        other_than: doit être différent de %{count}
+      template:
+        body: 'Veuillez vérifier les champs suivants : '
+        header:
+          one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+          other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
