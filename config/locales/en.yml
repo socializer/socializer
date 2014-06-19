@@ -194,14 +194,3 @@ en:
         authentications: Authentications
         notifications: Notifications
         signout: Signout
-  enumerize:
-    socializer/group:
-      privacy_level:
-        public: Public
-        restricted: Restricted
-        private: Private
-    socializer/audience:
-      privacy_level:
-        public: Public
-        circles: Circles
-        limited: Limited

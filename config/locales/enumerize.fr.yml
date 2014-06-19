@@ -1,0 +1,13 @@
+---
+fr:
+  enumerize:
+    socializer/group:
+      privacy_level:
+        public: Public
+        restricted: Restreint
+        private: Privé
+    socializer/audience:
+      privacy_level:
+        public: Publique
+        circles: Cercles
+        limited: Limitée
