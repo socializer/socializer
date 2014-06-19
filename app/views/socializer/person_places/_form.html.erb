@@ -1,10 +1,6 @@
 <%= simple_form_for(person_place) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :city_name, input_html: { autofocus: true } %>
-    <%= f.input :current %>
-  <% end %>
+  <%= f.input :city_name, input_html: { autofocus: true } %>
+  <%= f.input :current %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, t('.submit'), class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, class: 'btn-primary action-button' %>
 <% end %>

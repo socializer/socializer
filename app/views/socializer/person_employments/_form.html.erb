@@ -1,14 +1,10 @@
 <%= simple_form_for(person_employment) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :employer_name, input_html: { autofocus: true } %>
-    <%= f.input :job_title %>
-    <%= f.input :started_on %>
-    <%= f.input :ended_on %>
-    <%= f.input :current %>
-    <%= f.input :job_description %>
-  <% end %>
+  <%= f.input :employer_name, input_html: { autofocus: true } %>
+  <%= f.input :job_title %>
+  <%= f.input :started_on %>
+  <%= f.input :ended_on %>
+  <%= f.input :current %>
+  <%= f.input :job_description %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, t('.submit'), class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, class: 'btn-primary action-button' %>
 <% end %>

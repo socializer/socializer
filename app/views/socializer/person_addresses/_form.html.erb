@@ -1,16 +1,12 @@
 <%= simple_form_for(person_address) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :category, input_html: { autofocus: true } %>
-    <%= f.input :label %>
-    <%= f.input :line1 %>
-    <%= f.input :line2 %>
-    <%= f.input :city %>
-    <%= f.input :postal_code_or_zip %>
-    <%= f.input :province_or_state %>
-    <%= f.input :country %>
-  <% end %>
+  <%= f.input :category, input_html: { autofocus: true } %>
+  <%= f.input :label %>
+  <%= f.input :line1 %>
+  <%= f.input :line2 %>
+  <%= f.input :city %>
+  <%= f.input :postal_code_or_zip %>
+  <%= f.input :province_or_state %>
+  <%= f.input :country %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, t('.submit'), class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, class: 'btn-primary action-button' %>
 <% end %>

@@ -1,14 +1,10 @@
 <%= simple_form_for(person_education) do |f| %>
-  <%= content_tag(:div, class: 'form-inputs') do %>
-    <%= f.input :school_name, input_html: { autofocus: true } %>
-    <%= f.input :major_or_field_of_study %>
-    <%= f.input :started_on %>
-    <%= f.input :ended_on %>
-    <%= f.input :current %>
-    <%= f.input :courses_description %>
-  <% end %>
+  <%= f.input :school_name, input_html: { autofocus: true } %>
+  <%= f.input :major_or_field_of_study %>
+  <%= f.input :started_on %>
+  <%= f.input :ended_on %>
+  <%= f.input :current %>
+  <%= f.input :courses_description %>
 
-  <%= content_tag(:div, class: 'form-actions') do %>
-    <%= f.button :submit, t('.submit'), class: 'action-button' %>
-  <% end %>
+  <%= f.button :submit, class: 'btn-primary action-button' %>
 <% end %>
