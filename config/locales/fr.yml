@@ -5,14 +5,11 @@ fr:
       activity:
         tooltip:
           public: Anyone can see this
-        time_format: depuis %s
       sidebar:
         header: In my circles
-      stream_list:
-        streams: Streams
     authentications:
       toolbar:
-        authentications: Authentications
+        authentications: Authentifications
         all: All
         new: New
         tooltip:
@@ -20,7 +17,6 @@ fr:
       authentication:
         unbind: Unbind
       index:
-        unbind: unbind
         header:
           one: 1 bound service
           other: "%{count} bound services"
@@ -76,18 +72,8 @@ fr:
         leave: Leave
       index:
         header: Discover groups
-        new_group: New group
       form:
         submit: Save changes
-      menu:
-        public: Groupes publiques
-        restricted: Groupes restreints
-        joinable: Groupes joingables
-        your_groups: Vos groupes
-        memberships: Adhésions
-        pending_invites: Invitations en attente
-        my_groups: Mes groupes
-        create_new_group: Créer un nouveau groupe
       toolbar:
         groups: Groupes
         all: All
@@ -161,7 +147,6 @@ fr:
       toolbar:
         profile: Profile
         about: About
-        all: All
         edit: Edit
         likes: Likes
         stream: Stream
@@ -183,17 +168,11 @@ fr:
         groups: Groupes
       topbar:
         profile: Profile
-        authentications: Authentications
-        signout: Signout
+        authentications: Authentifications
+        signout: Déconnexion
       toolbar:
         home: Accueil
         all: All
-  layouts:
-    socializer:
-      header:
-        authentications: Authentifications
-        notifications: Notifications
-        signout: Déconnexion
   date:
     abbr_day_names:
     - dim
@@ -204,7 +183,7 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    - 
+    -
     - jan.
     - fév.
     - mar.
@@ -230,7 +209,7 @@ fr:
       short: "%e %b"
       long: "%e %B %Y"
     month_names:
-    - 
+    -
     - janvier
     - février
     - mars

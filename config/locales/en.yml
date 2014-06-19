@@ -5,11 +5,8 @@ en:
       activity:
         tooltip:
           public: Anyone can see this
-        time_format: "%s ago"
       sidebar:
         header: In my circles
-      stream_list:
-        streams: Streams
     authentications:
       toolbar:
         authentications: Authentications
@@ -20,7 +17,6 @@ en:
       authentication:
         unbind: Unbind
       index:
-        unbind: unbind
         header:
           one: 1 bound service
           other: "%{count} bound services"
@@ -76,18 +72,8 @@ en:
         leave: Leave
       index:
         header: Discover groups
-        new_group: New group
       form:
         submit: Save changes
-      menu:
-        public: Public groups
-        restricted: Restricted groups
-        joinable: Joinable groups
-        your_groups: Your groups
-        memberships: Memberships
-        pending_invites: Pending invites
-        my_groups: My groups
-        create_new_group: Create new group
       toolbar:
         groups: Groups
         all: All
@@ -161,7 +147,6 @@ en:
       toolbar:
         profile: Profile
         about: About
-        all: All
         edit: Edit
         likes: Likes
         stream: Stream
@@ -188,9 +173,3 @@ en:
       toolbar:
         home: Home
         all: All
-  layouts:
-    socializer:
-      header:
-        authentications: Authentications
-        notifications: Notifications
-        signout: Signout
