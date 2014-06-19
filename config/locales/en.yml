@@ -70,6 +70,13 @@ en:
         submit: 'Comment'
 
     groups:
+      card:
+        confirm: 'Confirm'
+        decline: 'Decline'
+        delete: 'Delete'
+        edit: 'Edit'
+        join: 'Join'
+        leave: 'Leave'
       index:
         header: 'Discover groups'
         new_group: 'New group'
