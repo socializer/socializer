@@ -8,17 +8,12 @@ module Socializer
     end
 
     def show
-      n = Notification.find_by(id: params[:id])
-      read_notification(n) if n.unread?
+      notification = Notification.find_by(id: params[:id])
+      notification.read! if notification.unread?
       redirect_to stream_path(provider: :activities, id: n.activity.id)
     end
 
     private
-
-    def read_notification(notification)
-      notification.read = true
-      notification.save!
-    end
 
     def reset_unread_notifications
       return unless current_user.activity_object.unread_notifications_count > 0

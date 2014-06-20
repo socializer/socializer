@@ -28,6 +28,13 @@ module Socializer
 
     # Instance methods
 
+    # Marks the notification as read
+    #
+    # @return [boolean]
+    def read!
+      update!(read: true)
+    end
+
     # Is the notification unread?
     #
     # @return [boolean]
@@ -46,7 +53,7 @@ module Socializer
     end
     private_class_method :create_notification
 
-    # FIXME: Move to Tie
+    # FIXME: Move to Tie or Activity
     def self.get_potential_contact_id(activity_id)
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.select(:contact_id)
