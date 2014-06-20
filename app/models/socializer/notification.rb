@@ -26,6 +26,15 @@ module Socializer
       end
     end
 
+    # Instance methods
+
+    # Is the notification unread?
+    #
+    # @return [boolean]
+    def unread?
+      !read
+    end
+
     # Class methods - Private
     def self.create_notification(activity, contact_id)
       notification = Notification.new do |n|
@@ -53,7 +62,7 @@ module Socializer
     end
     private_class_method :get_potential_contact_id
 
-    # FIXME: Move to ActivityObject
+    # FIXME: Move to ActivityObject or Circle
     def self.person_in_circle?(parent_contact_id, child_contact_id)
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
