@@ -56,7 +56,7 @@ module Socializer
     end
 
     context 'privacy_hash returns a hash' do
-      let(:public_hash) { { id: 1, name: 'Public' } }
+      let(:public_hash) { { id: 'public', name: 'Public' } }
       it { expect(Audience.privacy_hash(:public)).to be_a(Hash) }
       it { expect(Audience.privacy_hash(:public)).to eq(public_hash) }
       it { expect(Audience.privacy_hash('Public')).to eq(public_hash) }
