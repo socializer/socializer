@@ -2,7 +2,7 @@ module Socializer
   class Audience < ActiveRecord::Base
     extend Enumerize
 
-    enumerize :privacy_level, in: { public: 1, circles: 2, limited: 3 }, default: :public, predicates: true, scope: true
+    enumerize :privacy_level, in:  %w(public circles limited), default: :public, predicates: true, scope: true
 
     attr_accessible :activity_id, :privacy_level
 
@@ -33,7 +33,7 @@ module Socializer
     # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
     def self.privacy_level_hash(privacy_symbol)
       privacy_symbol = privacy_symbol.downcase.to_sym
-      privacy        = Audience.privacy_level.find_value(privacy_symbol)
+      privacy        = Audience.privacy.find_value(privacy_symbol)
 
       { id: privacy.value, name: privacy.text }
     end

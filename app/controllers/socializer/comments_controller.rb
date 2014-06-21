@@ -10,7 +10,7 @@ module Socializer
     def create
       @comment = current_user.comments.build(params[:comment])
       @comment.activity_verb = 'add'
-      @comment.privacy = Audience.privacy_level.find_value(:public)
+      @comment.privacy = Audience.privacy.find_value(:public)
       @comment.save!
       redirect_to stream_path
     end

@@ -22,8 +22,8 @@
           <%= link_to(activity.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.uniq.each do |audience| %>
-            <% if audience.privacy_level.public? %>
-                <%= link_to(audience.privacy_level.text, stream_audience_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip.public')}") %>
+            <% if audience.privacy.public? %>
+                <%= link_to(audience.privacy.text, stream_audience_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip.public')}") %>
             <% else %>
               <%= link_to('Limited', stream_audience_path(activity), class: 'tooltip text-muted') %>
             <% end %>
