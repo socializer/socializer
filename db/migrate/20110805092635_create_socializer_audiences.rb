@@ -3,7 +3,7 @@ class CreateSocializerAudiences < ActiveRecord::Migration
     create_table :socializer_audiences do |t|
       t.integer  :activity_id, null: false
       t.integer  :activity_object_id
-      t.integer  :privacy, null: false
+      t.string   :privacy, null: false
 
       t.timestamps
     end
