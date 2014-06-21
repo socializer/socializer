@@ -3,8 +3,8 @@ module Socializer
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor   :activity_verb, :privacy, :object_ids, :activity_target_id
-      attr_accessible :activity_verb, :privacy, :object_ids, :author_id, :activity_target_id
+      attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
+      attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
       has_one :activity_object, as: :activitable, dependent: :destroy
 

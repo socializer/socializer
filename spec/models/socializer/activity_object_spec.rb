@@ -9,7 +9,7 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { is_expected.to allow_mass_assignment_of(:privacy) }
+      it { is_expected.to allow_mass_assignment_of(:scope) }
       it { is_expected.to allow_mass_assignment_of(:object_ids) }
       it { is_expected.to allow_mass_assignment_of(:activitable_id) }
       it { is_expected.to allow_mass_assignment_of(:activitable_type) }
@@ -57,7 +57,7 @@ module Socializer
       end
     end
 
-    it { is_expected.to respond_to(:privacy) }
+    it { is_expected.to respond_to(:scope) }
 
     context 'check activitable_type predicates' do
       context '#activity?' do

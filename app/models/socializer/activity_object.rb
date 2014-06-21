@@ -1,7 +1,7 @@
 module Socializer
   class ActivityObject < ActiveRecord::Base
-    attr_accessor :privacy, :object_ids
-    attr_accessible :privacy, :object_ids, :activitable_id, :activitable_type, :like_count, :unread_notifications_count
+    attr_accessor :scope, :object_ids
+    attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count, :unread_notifications_count
 
     belongs_to :activitable, polymorphic: true
 
