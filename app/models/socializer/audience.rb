@@ -26,12 +26,12 @@ module Socializer
     # Returns a [Hash] containing the value and text for the privacy level
     #
     # @example
-    #   privacy_level_hash(:public)
+    #   privacy_hash(:public)
     #
     # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy_level
     #
     # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
-    def self.privacy_level_hash(privacy_symbol)
+    def self.privacy_hash(privacy_symbol)
       privacy_symbol = privacy_symbol.downcase.to_sym
       privacy        = Audience.privacy.find_value(privacy_symbol)
 
@@ -47,8 +47,8 @@ module Socializer
     def self.build_audience_list_array(audience_list)
       audiences = []
 
-      audiences << Audience.privacy_level_hash(:public)
-      audiences << Audience.privacy_level_hash(:circles)
+      audiences << Audience.privacy_hash(:public)
+      audiences << Audience.privacy_hash(:circles)
       audiences.concat(audience_list.people)
       audiences.concat(audience_list.circles)
       audiences.concat(audience_list.groups)
