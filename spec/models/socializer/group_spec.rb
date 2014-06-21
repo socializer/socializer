@@ -118,7 +118,7 @@ module Socializer
         expect(Socializer::Group.joinable.size).to eq(1)
       end
 
-      it 'is has the right privacy level' do
+      it 'has the right privacy level' do
         expect(restricted_group.privacy.restricted?).to be_truthy
       end
 
