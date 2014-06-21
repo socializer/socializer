@@ -10,7 +10,7 @@ module Socializer
 
     context 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:activity_id) }
-      it { is_expected.to allow_mass_assignment_of(:privacy_level) }
+      it { is_expected.to allow_mass_assignment_of(:privacy) }
     end
 
     context 'relationships' do
@@ -19,13 +19,13 @@ module Socializer
     end
 
     context 'validations' do
-      it { is_expected.to validate_presence_of(:privacy_level) }
+      it { is_expected.to validate_presence_of(:privacy) }
       # it { is_expected.to validate_presence_of(:activity_id) }
       # it { is_expected.to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
       # it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
     end
 
-    it { expect(enumerize(:privacy_level).in(:public, :circles, :limited).with_default(:public)) }
+    it { expect(enumerize(:privacy).in(:public, :circles, :limited).with_default(:public)) }
 
     context '.audience_list' do
       it 'is a pending example'

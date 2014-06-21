@@ -115,11 +115,11 @@ module Socializer
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
-      # privacy_levels
-      privacy_level   = Audience.privacy_level
-      privacy_public  = privacy_level.find_value(:public).value
-      privacy_circles = privacy_level.find_value(:circles).value
-      privacy_limited = privacy_level.find_value(:limited).value
+      # privacy levels
+      privacy         = Audience.privacy
+      privacy_public  = privacy.find_value(:public).value
+      privacy_circles = privacy.find_value(:circles).value
+      privacy_limited = privacy.find_value(:limited).value
 
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
       # query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
@@ -132,18 +132,18 @@ module Socializer
       viewer_literal ||= Arel::SqlLiteral.new("#{viewer_id}")
 
       # TODO: Test: Generate the same SQL as below
-      query.where(audience[:privacy_level].eq(privacy_public)
-           .or(audience[:privacy_level].eq(privacy_circles)
+      query.where(audience[:privacy].eq(privacy_public)
+           .or(audience[:privacy].eq(privacy_circles)
              .and(viewer_literal.in(build_circles_subquery)))
-           .or(audience[:privacy_level].eq(privacy_limited)
+           .or(audience[:privacy].eq(privacy_limited)
              .and(viewer_literal.in(build_limited_circle_subquery))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
              .or(audience[:activity_object_id].in(viewer_id)))
            .or(arel_table[:actor_id].eq(viewer_id)))
 
-      # query.where { (audiences.privacy_level.eq(privacy_public)) |
-      #   ((audiences.privacy_level.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
-      #   ((audiences.privacy_level.eq(privacy_limited)) & (
+      # query.where { (audiences.privacy.eq(privacy_public)) |
+      #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
+      #   ((audiences.privacy.eq(privacy_limited)) & (
       #     # `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
       #     `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
       #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
@@ -204,7 +204,7 @@ module Socializer
       # # Ensure that the audience is LIMITED and then make sure that the viewer is either
       # # part of a circle that is the target audience, or that the viewer is part of
       # # a group that is the target audience, or that the viewer is the target audience.
-      # # limited_sql = Audience.with_privacy_level(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
+      # # limited_sql = Audience.with_privacy(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
     end
     private_class_method :build_limited_circle_subquery
 

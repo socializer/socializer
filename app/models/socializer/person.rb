@@ -133,11 +133,11 @@ module Socializer
     end
 
     def pending_memberships_invites
-      privacy_private = Group.privacy_level.find_value(:private).value
+      privacy_private = Group.privacy.find_value(:private).value
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy_level: privacy_private })
-      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, socializer_groups: { privacy_level: privacy_private })
-      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: Group.where(privacy_level: privacy_private))
+      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy: privacy_private })
+      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, socializer_groups: { privacy: privacy_private })
+      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: Group.where(privacy: privacy_private))
     end
 
     def avatar_url

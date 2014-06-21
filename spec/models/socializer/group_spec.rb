@@ -10,7 +10,7 @@ module Socializer
 
     context 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:name) }
-      it { is_expected.to allow_mass_assignment_of(:privacy_level) }
+      it { is_expected.to allow_mass_assignment_of(:privacy) }
       it { is_expected.to allow_mass_assignment_of(:author_id) }
     end
 
@@ -25,14 +25,14 @@ module Socializer
     context 'validations' do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to validate_presence_of(:privacy_level) }
+      it { is_expected.to validate_presence_of(:privacy) }
       it 'check uniqueness of name' do
         create(:socializer_group)
         is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive
       end
     end
 
-    it { expect(enumerize(:privacy_level).in(:public, :restricted, :private).with_default(:public)) }
+    it { expect(enumerize(:privacy).in(:public, :restricted, :private).with_default(:public)) }
 
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }
@@ -42,7 +42,7 @@ module Socializer
     it { is_expected.to respond_to(:member?) }
 
     context 'when group is public' do
-      let(:public_group) { create(:socializer_group, privacy_level: 1) }
+      let(:public_group) { create(:socializer_group, privacy: :public) }
       let(:person) { create(:socializer_person) }
 
       before do
@@ -58,7 +58,7 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(public_group.privacy_level.public?).to be_truthy
+        expect(public_group.privacy.public?).to be_truthy
       end
 
       it 'member? is false' do
@@ -103,7 +103,7 @@ module Socializer
     end
 
     context 'when group is restricted' do
-      let(:restricted_group) { create(:socializer_group, privacy_level: 2) }
+      let(:restricted_group) { create(:socializer_group, privacy: :restricted) }
       let(:person) { create(:socializer_person) }
 
       before do
@@ -119,7 +119,7 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(restricted_group.privacy_level.restricted?).to be_truthy
+        expect(restricted_group.privacy.restricted?).to be_truthy
       end
 
       context 'and a person joins it' do
@@ -135,7 +135,7 @@ module Socializer
     end
 
     context 'when group is private' do
-      let(:private_group) { create(:socializer_group, privacy_level: 3) }
+      let(:private_group) { create(:socializer_group, privacy: :private) }
       let(:person) { create(:socializer_person) }
 
       before do
@@ -147,7 +147,7 @@ module Socializer
       end
 
       it 'is has the right privacy level' do
-        expect(private_group.privacy_level.private?).to be_truthy
+        expect(private_group.privacy.private?).to be_truthy
       end
 
       it 'cannot be joined' do
@@ -180,7 +180,7 @@ module Socializer
     end
 
     context 'when having no member' do
-      let(:group_without_members) { create(:socializer_group, privacy_level: 3) }
+      let(:group_without_members) { create(:socializer_group, privacy: :private) }
 
       before do
         # the author is added as a member, so remove it first
@@ -193,7 +193,7 @@ module Socializer
     end
 
     context 'when having at least one member' do
-      let(:group_with_members) { create(:socializer_group, privacy_level: 3) }
+      let(:group_with_members) { create(:socializer_group, privacy: :private) }
 
       it 'cannot be deleted' do
         expect { group_with_members.destroy }.to raise_error

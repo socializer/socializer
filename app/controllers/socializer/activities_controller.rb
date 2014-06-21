@@ -66,10 +66,10 @@ module Socializer
     def add_audience_object_ids(audience)
       # In case of CIRCLES audience, add each contacts of every circles
       # of the actor of the activity.
-      privacy_level = audience.privacy
-      if privacy_level.public?
-        @object_ids << privacy_level
-      elsif privacy_level.circles?
+      privacy = audience.privacy
+      if privacy.public?
+        @object_ids << privacy
+      elsif privacy.circles?
         @activity.actor.circles.each do |circle|
           circle.activity_contacts.each do |contact|
             @object_ids << contact

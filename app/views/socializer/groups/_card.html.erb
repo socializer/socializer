@@ -4,7 +4,7 @@
       <%= link_to(group) do %>
         <p class="lead"><%= group.name %></p>
         <p class='text-muted'>
-          <%= group.members.count %> members - <%= group.privacy_level.titlecase %>
+          <%= group.members.count %> members - <%= group.privacy.titlecase %>
           <br>
           TODO: need a posts count
         </p>

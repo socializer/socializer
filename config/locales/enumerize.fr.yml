@@ -2,12 +2,12 @@
 fr:
   enumerize:
     socializer/group:
-      privacy_level:
+      privacy:
         public: Public
         restricted: Restreint
         private: Privé
     socializer/audience:
-      privacy_level:
+      privacy:
         public: Publique
         circles: Cercles
         limited: Limitée

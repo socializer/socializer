@@ -11,12 +11,12 @@
 <ul class="large-group-list">
 <% @groups.each do |group| %>
   <li>
-    <div class="group-card <%= group.privacy_level %>">
+    <div class="group-card <%= group.privacy %>">
       <%= link_to group do %>
         <div class="group-info">
           <span class="group-name"><%= group.name %></span>
           <span class="group-member-count"><%= group.members.count %> members</span>
-          <span class="group-privacy-level"><%= group.privacy_level %></span>
+          <span class="group-privacy-level"><%= group.privacy %></span>
         </div>
       <% end %>
     </div>

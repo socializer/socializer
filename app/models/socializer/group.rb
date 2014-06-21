@@ -3,9 +3,9 @@ module Socializer
     extend Enumerize
     include ObjectTypeBase
 
-    enumerize :privacy_level, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
+    enumerize :privacy, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 
-    attr_accessible :name, :privacy_level, :author_id
+    attr_accessible :name, :privacy, :author_id
 
     # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
@@ -18,7 +18,7 @@ module Socializer
     # Validations
     validates :activity_author, presence: true
     validates :name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
-    validates :privacy_level, presence: true
+    validates :privacy, presence: true
 
     # Callbacks
     after_create   :add_author_to_members
@@ -28,32 +28,32 @@ module Socializer
 
     # Class Methods
 
-    # Return all groups with a privacy_level of public
+    # Return all groups with a privacy of public
     #
     # @return [ActiveRecord::Relation]
     def self.public
-      Group.with_privacy_level(:public)
+      Group.with_privacy(:public)
     end
 
-    # Return all groups with a privacy_level of restricted
+    # Return all groups with a privacy of restricted
     #
     # @return [ActiveRecord::Relation]
     def self.restricted
-      Group.with_privacy_level(:restricted)
+      Group.with_privacy(:restricted)
     end
 
-    # Return all groups with a privacy_level of private
+    # Return all groups with a privacy of private
     #
     # @return [ActiveRecord::Relation]
     def self.private
-      Group.with_privacy_level(:private)
+      Group.with_privacy(:private)
     end
 
-    # Return all groups with a privacy_level of public or restricted
+    # Return all groups with a privacy of public or restricted
     #
     # @return [ActiveRecord::Relation]
     def self.joinable
-      Group.with_privacy_level(:public, :restricted)
+      Group.with_privacy(:public, :restricted)
     end
 
     # Instance Methods
@@ -68,9 +68,9 @@ module Socializer
     def join(person)
       membership = person.memberships.build(group_id: id)
 
-      if privacy_level.public?
+      if privacy.public?
         membership.active = true
-      elsif privacy_level.restricted?
+      elsif privacy.restricted?
         membership.active = false
       else
         fail 'Cannot self-join a private group, you need to be invited'

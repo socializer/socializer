@@ -2,9 +2,9 @@ module Socializer
   class Audience < ActiveRecord::Base
     extend Enumerize
 
-    enumerize :privacy_level, in:  %w(public circles limited), default: :public, predicates: true, scope: true
+    enumerize :privacy, in:  %w(public circles limited), default: :public, predicates: true, scope: true
 
-    attr_accessible :activity_id, :privacy_level
+    attr_accessible :activity_id, :privacy
 
     # Relationships
     belongs_to :activity
@@ -12,7 +12,7 @@ module Socializer
 
     # Validations
     # validates :activity_id, presence: true, uniqueness: { scope: :activity_object_id }
-    validates :privacy_level, presence: true
+    validates :privacy, presence: true
 
     # Class Methods
     def self.audience_list(current_user, query)
@@ -28,7 +28,7 @@ module Socializer
     # @example
     #   privacy_hash(:public)
     #
-    # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy_level
+    # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy
     #
     # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
     def self.privacy_hash(privacy_symbol)

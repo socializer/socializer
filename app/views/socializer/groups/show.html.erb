@@ -2,7 +2,7 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<h2><%= @group.name %> (<%= @group.privacy_level %>)</h2>
+<h2><%= @group.name %> (<%= @group.privacy %>)</h2>
 
 <% if @group.member?(current_user) %>
   <%= link_to(t('.leave'), @membership, method: :delete, class: 'btn btn-danger', title: "#{t('.tooltip.leave', display_name: current_user.display_name, group_name: @group.name)}", data: { confirm: "#{t('.confirm')}" }) %>
@@ -21,7 +21,7 @@
   <% end %>
 </div>
 
-<% if @group.privacy_level.private? %>
+<% if @group.privacy.private? %>
   <h2>Invite members</h2>
   <div class='row'>
     <% Socializer::Person.all.each do |user| %>
