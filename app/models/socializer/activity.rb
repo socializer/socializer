@@ -55,12 +55,14 @@ module Socializer
     #
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
-      object_ids = object_ids.split(',') if %w(Fixnum String).include?(object_ids.class.name)
-      limited    = Audience.privacy_level.find_value(:limited).value.to_s
+      object_ids  = object_ids.split(',') if %w(Fixnum String).include?(object_ids.class.name)
+      limited     = Audience.privacy.find_value(:limited).value
+      not_limited = %W(#{Audience.privacy.find_value(:public).value} #{Audience.privacy.find_value(:circles).value})
 
       object_ids.each do |object_id|
-        audience = audiences.build(privacy_level: object_id)
-        audience.activity_object_id = object_id if object_id == limited
+        privacy  = not_limited.include?(object_id) ? object_id : limited
+        audience = audiences.build(privacy: privacy)
+        audience.activity_object_id = object_id if privacy == limited
       end
     end
 
@@ -208,6 +210,7 @@ module Socializer
     end
     private_class_method :build_limited_circle_subquery
 
+    # TODO: Verify this works correcly
     def self.build_limited_group_subquery(viewer_id)
       # The arel_table method is technically private since it is marked :nodoc
       ao         ||= ActivityObject.arel_table
