@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   module ApplicationHelper
     def signin_path(provider)
