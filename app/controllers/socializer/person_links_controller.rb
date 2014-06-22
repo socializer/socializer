@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class PersonLinksController < ApplicationController
     before_action :authenticate_user!

@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class CirclesController < ApplicationController
     before_action :authenticate_user!
