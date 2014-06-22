@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class ApplicationDecorator < Draper::Decorator
     # Returns an HTML time tag

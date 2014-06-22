@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class ActivityDecorator < ApplicationDecorator
     # TODO: ActivityDecorator - be explicit about what is delegated
