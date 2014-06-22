@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class ActivityCreator
     # Creates an activity, adds the content and audience if needed.
