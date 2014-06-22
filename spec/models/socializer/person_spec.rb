@@ -171,12 +171,12 @@ module Socializer
       end
     end
 
-    context '#add_default_circle' do
+    context '#add_default_circles' do
       let(:person) { build(:socializer_person_circles) }
       let(:circles) { person.activity_object.circles }
 
       before do
-        person.add_default_circle
+        person.add_default_circles
       end
 
       it { expect(person.activity_object.circles.size).to eq(4) }
