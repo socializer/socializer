@@ -46,6 +46,13 @@ module Socializer
     end
 
     # Class methods - Private
+
+    # Create a notification for the given activity and contact
+    #
+    # @param activity [Socializer::Activity]
+    # @param contact_id [Socializer::Person]
+    #
+    # @return [Socializer::Notification]
     def self.create_notification(activity, contact_id)
       notification = Notification.new do |n|
         n.activity = activity
