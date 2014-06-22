@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class PersonContribution < ActiveRecord::Base
     attr_accessible :label, :url, :current

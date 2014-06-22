@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Authentication < ActiveRecord::Base
     attr_accessible :provider, :uid, :image_url

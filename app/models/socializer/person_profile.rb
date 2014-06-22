@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class PersonProfile < ActiveRecord::Base
     attr_accessible :label, :url

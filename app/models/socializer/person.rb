@@ -1,5 +1,8 @@
 require 'digest/md5'
 
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Person < ActiveRecord::Base
     extend Enumerize

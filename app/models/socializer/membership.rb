@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Membership < ActiveRecord::Base
     attr_accessible :group_id

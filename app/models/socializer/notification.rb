@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Notification < ActiveRecord::Base
     # Increment the number of unread notifications

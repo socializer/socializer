@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Comment < ActiveRecord::Base
     include ObjectTypeBase

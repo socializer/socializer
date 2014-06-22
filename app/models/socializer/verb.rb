@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Verb < ActiveRecord::Base
     attr_accessible :name

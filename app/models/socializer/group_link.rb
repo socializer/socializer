@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class GroupLink < ActiveRecord::Base
     attr_accessible :label, :url

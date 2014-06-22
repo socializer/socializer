@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Tie < ActiveRecord::Base
     attr_accessible :contact_id

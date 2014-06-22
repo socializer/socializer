@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class ActivityObject < ActiveRecord::Base
     attr_accessor :scope, :object_ids

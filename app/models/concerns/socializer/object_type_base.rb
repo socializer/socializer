@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   module ObjectTypeBase
     extend ActiveSupport::Concern

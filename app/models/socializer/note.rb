@@ -1,3 +1,6 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Note < ActiveRecord::Base
     include ObjectTypeBase
