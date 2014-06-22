@@ -15,6 +15,16 @@ module Socializer
     validates :privacy, presence: true
 
     # Class Methods
+
+    # Build the audience list that is used in the notes and shares forms
+    #
+    # @example
+    #   Audience.audience_list(current_user, query)
+    #
+    # @param current_user [Socializer::Person] The currently logged in user
+    # @param query [String] Used to filter the audience list. Can be nil
+    #
+    # @return [Array] [description]
     def self.audience_list(current_user, query)
       people  = query.blank? ? [] : Person.audience_list(query)
       circles = current_user.audience_list(:circles, query)

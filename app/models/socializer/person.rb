@@ -29,6 +29,16 @@ module Socializer
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
     # Class Methods
+
+    # Used to build Audience.audience_list
+    #
+    # @example
+    #   Person.audience_list(query)
+    #
+    # @param query [String] Used to filter the audience list
+    #
+    # @return [NilClass] If query is nil or '', nil is returned
+    # @return [ActiveRecord::Relation] If a query is provided the display_name and guid for all records that match the query
     def self.audience_list(query)
       return if query.blank?
       select(:display_name).guids.where(arel_table[:display_name].matches("%#{query}%"))
@@ -74,34 +84,58 @@ module Socializer
       result.where(klass.arel_table[:name].matches("%#{query}%"))
     end
 
+    # Collection of authentications that the use owns
+    #
+    # @return [Socializer::Authentication] Returns a collection of authentications
     def services
       @services ||= authentications.where.not(provider: 'Identity')
     end
 
+    # Collection of circles that the use owns
+    #
+    # @return [Socializer::Circle] Returns a collection of circles
     def circles
       @circles ||= activity_object.circles
     end
 
+    # Collection of comments that the use owns
+    #
+    # @return [Socializer::Comment] Returns a collection of comments
     def comments
       @comments ||= activity_object.comments
     end
 
+    # Collection of notes that the use owns
+    #
+    # @return [Socializer::Note] Returns a collection of notes
     def notes
       @notes ||= activity_object.notes
     end
 
+    # Collection of groups that the use owns
+    #
+    # @return [Socializer::Group] Returns a collection of groups
     def groups
       @groups ||= activity_object.groups
     end
 
+    # Collection of memberships that the use owns
+    #
+    # @return [Socializer::Membership] Returns a collection of memberships
     def memberships
       @memberships ||= activity_object.memberships
     end
 
+    # Collection of notifications that the use has received
+    #
+    # @return [Socializer::Notification] Returns a collection of notifications
     def received_notifications
       @notifications ||= activity_object.notifications
     end
 
+    # Collection of contacts for the user
+    #
+    # @return [Array] Returns a collection of contacts
     def contacts
       @contacts ||= circles.map { |c| c.contacts }.flatten.uniq
     end
@@ -112,6 +146,12 @@ module Socializer
       @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid }).map { |circle| circle.author }.uniq
     end
 
+    # A list of activities the user likes
+    #
+    # @example
+    #   current_user.likes
+    #
+    # @return [ActiveRecord::Relation]
     def likes
       verbs_of_interest = %w(like unlike)
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
@@ -122,6 +162,15 @@ module Socializer
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
+    # Checks if the person likes the object or not
+    #
+    # @example
+    #   current_user.likes?(object)
+    #
+    # @param object [type]
+    #
+    # @return [TrueClass] if the person likes the object
+    # @return [FalseClass] if the person does not like the object
     def likes?(object)
       verbs_of_interest = %w(like unlike)
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
