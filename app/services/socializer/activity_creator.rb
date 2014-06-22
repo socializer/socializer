@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Service object for creating and Socializer::Activity
+  #
   class ActivityCreator
     # Creates an activity, adds the content and audience if needed.
     #
