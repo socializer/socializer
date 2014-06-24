@@ -7,6 +7,8 @@ module Socializer
   #
   # Person model
   #
+  # Represents an individual person.
+  #
   class Person < ActiveRecord::Base
     extend Enumerize
     include ObjectTypeBase

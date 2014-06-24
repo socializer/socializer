@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Note model
+  #
+  # Represents a short-form text message.
+  #
   class Note < ActiveRecord::Base
     include ObjectTypeBase
 
