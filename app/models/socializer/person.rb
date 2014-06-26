@@ -216,6 +216,7 @@ module Socializer
       end
     end
 
+    # Add the default circles for the current person
     def add_default_circles
       activity_object.circles.create!(name: 'Friends',       content: 'Your real friends, the ones you feel comfortable sharing private details with.')
       activity_object.circles.create!(name: 'Family',        content: 'Your close and extended family, with as many or as few in-laws as you want.')
