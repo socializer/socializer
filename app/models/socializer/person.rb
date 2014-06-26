@@ -189,6 +189,9 @@ module Socializer
       query.count.odd?
     end
 
+    # Returns a collection of pending membership invites
+    #
+    # @return [Socializer::Membership] Returns a collection of memberships
     def pending_memberships_invites
       privacy_private = Group.privacy.find_value(:private).value
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
@@ -197,6 +200,12 @@ module Socializer
       # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: Group.where(privacy: privacy_private))
     end
 
+    # The location/url of the persons avatar
+    #
+    # @example
+    #   current_user.avatar_url
+    #
+    # @return [String]
     def avatar_url
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
 
