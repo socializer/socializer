@@ -13,7 +13,7 @@ module Socializer
     def show
       notification = Notification.find_by(id: params[:id])
       notification.read! if notification.unread?
-      redirect_to stream_path(provider: :activities, id: n.activity.id)
+      redirect_to stream_path(provider: :activities, id: notification.activity.id)
     end
 
     private
