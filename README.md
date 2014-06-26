@@ -3,6 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/socializer/socializer.png)](https://codeclimate.com/github/socializer/socializer)
 [![Dependency Status](https://gemnasium.com/socializer/socializer.png)](https://gemnasium.com/socializer/socializer)
 [![Gem Version](https://badge.fury.io/rb/socializer.png)](http://badge.fury.io/rb/socializer)
+[![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master)](http://inch-ci.org/github/socializer/socializer)
 
 # Important notice!
 
