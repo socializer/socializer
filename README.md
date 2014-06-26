@@ -5,6 +5,7 @@
 [![Dependency Status](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat)](https://gemnasium.com/socializer/socializer)
 [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer)
 [![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master)](http://inch-ci.org/github/socializer/socializer)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php)
 
 # Important notice!
 
