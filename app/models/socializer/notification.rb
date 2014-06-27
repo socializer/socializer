@@ -19,6 +19,12 @@ module Socializer
     validates :activity_object_id, presence: true
 
     # Class methods - Public
+
+    # Create notifications for the given activity
+    #
+    # @param activity [Socializer::Activity] the activity to create the notifications for
+    #
+    # @return [Array] an [Array] of [Socializer::Notification] objects
     def self.create_for_activity(activity)
       # Get all ties related to the audience of the activity
       potential_contact_id = get_potential_contact_id(activity.id)
