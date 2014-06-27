@@ -10,18 +10,6 @@ module Socializer
       @circles = current_user.circles
     end
 
-    def contacts
-      @circles = current_user.circles
-    end
-
-    def contact_of
-      @circles = current_user.circles
-    end
-
-    def find_people
-      @circles = current_user.circles
-    end
-
     def show
       @users = Person.all
     end
@@ -47,6 +35,18 @@ module Socializer
     def destroy
       @circle.destroy
       redirect_to circles_contacts_path
+    end
+
+    def contacts
+      @circles = current_user.circles
+    end
+
+    def contact_of
+      @circles = current_user.circles
+    end
+
+    def find_people
+      @circles = current_user.circles
     end
 
     private
