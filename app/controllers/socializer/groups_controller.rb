@@ -9,30 +9,6 @@ module Socializer
     def index
     end
 
-    def public
-      @groups = Group.public
-    end
-
-    def restricted
-      @groups = Group.restricted
-    end
-
-    def joinable
-      @groups = Group.joinable
-    end
-
-    def memberships
-      @memberships = current_user.memberships
-    end
-
-    def ownerships
-      @ownerships = current_user.groups
-    end
-
-    def pending_invites
-      @pending_invites = current_user.pending_memberships_invites
-    end
-
     def show
       @group = Group.find_by(id: params[:id])
       @membership = Membership.find_by(group_id: @group.id)
@@ -63,6 +39,30 @@ module Socializer
     def destroy
       @group.destroy
       redirect_to groups_path
+    end
+
+    def public
+      @groups = Group.public
+    end
+
+    def restricted
+      @groups = Group.restricted
+    end
+
+    def joinable
+      @groups = Group.joinable
+    end
+
+    def memberships
+      @memberships = current_user.memberships
+    end
+
+    def ownerships
+      @ownerships = current_user.groups
+    end
+
+    def pending_invites
+      @pending_invites = current_user.pending_memberships_invites
     end
 
     private
