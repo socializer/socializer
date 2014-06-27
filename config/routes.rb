@@ -44,7 +44,16 @@ Socializer::Engine.routes.draw do
     get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
   end
 
+  resources :activities,      only: [:index, :destroy]
+  resources :audiences,       only: [:index]
   resources :authentications, only: [:index, :show, :new, :destroy]
+  resources :circles
+  resources :comments,        only: [:new, :create, :edit, :update, :destroy]
+  resources :groups
+  resources :memberships,     only: [:create, :destroy]
+  resources :notes
+  resources :notifications,   only: [:index, :show]
+
   resources :people,          only: [:index, :show, :edit, :update] do
     resources :person_addresses,      only: [:create, :update, :destroy]
     resources :person_contributions,  only: [:create, :update, :destroy]
@@ -55,16 +64,8 @@ Socializer::Engine.routes.draw do
     resources :person_places,         only: [:create, :update, :destroy]
     resources :person_profiles,       only: [:create, :update, :destroy]
   end
-  resources :notes
-  resources :circles
-  resources :activities,      only: [:index, :destroy]
-  resources :comments,        only: [:new, :create, :edit, :update, :destroy]
-  resources :groups
-  resources :memberships,     only: [:create, :destroy]
-  resources :ties,            only: [:create, :destroy]
-  resources :notifications,   only: [:index, :show]
 
-  resources :audiences,       only: [:index]
+  resources :ties,            only: [:create, :destroy]
 
   root to: 'pages#index'
 
