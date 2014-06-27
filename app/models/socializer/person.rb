@@ -49,7 +49,8 @@ module Socializer
     # @return [ActiveRecord::Relation] If a query is provided the display_name and guid for all records that match the query
     def self.audience_list(query)
       return if query.blank?
-      select(:display_name).guids.where(arel_table[:display_name].matches("%#{query}%"))
+      # DISCUSS: Do we need display_name in the select?
+      select(:display_name, 'display_name AS name').guids.where(arel_table[:display_name].matches("%#{query}%"))
     end
 
     def self.create_with_omniauth(auth)
