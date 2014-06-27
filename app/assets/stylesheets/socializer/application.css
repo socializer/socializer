@@ -13,14 +13,15 @@
  *= require socializer/circles
  *= require socializer/general
  *= require socializer/groups
- *= require socializer/jquery.qtip
- *= require socializer/jquery.qtip.overrides
  *= require socializer/notes
  *= require socializer/notifications
  *= require socializer/persons
  *= require socializer/socializer-font
- *= require socializer/token-input
- */
+ *= require jquery.qtip
+ *= require jquery.qtip.overrides
+ *= require token-input
+ *= require select2/select2
+*/
 
 /*@import "simple_form";*/
 
