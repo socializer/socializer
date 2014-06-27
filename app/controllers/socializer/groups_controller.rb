@@ -6,18 +6,26 @@ module Socializer
     before_action :authenticate_user!
     before_action :set_group, only: [:edit, :update, :destroy]
 
+    # GET /groups
     def index
     end
 
+    # GET /groups/1
     def show
       @group = Group.find_by(id: params[:id])
       @membership = Membership.find_by(group_id: @group.id)
     end
 
+    # GET /groups/new
     def new
       @group = Group.new
     end
 
+    # GET /groups/1/edit
+    def edit
+    end
+
+    # POST /groups
     def create
       @group = current_user.groups.build(params[:group])
 
@@ -28,14 +36,13 @@ module Socializer
       end
     end
 
-    def edit
-    end
-
+    # PATCH/PUT /groups/1
     def update
       @group.update!(params[:group])
       redirect_to @group
     end
 
+    # DELETE /groups/1
     def destroy
       @group.destroy
       redirect_to groups_path
