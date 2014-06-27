@@ -55,11 +55,11 @@ Socializer::Engine.routes.draw do
     resources :person_places,         only: [:create, :update, :destroy]
     resources :person_profiles,       only: [:create, :update, :destroy]
   end
-  resources :notes,           only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :circles,         only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :notes
+  resources :circles
   resources :activities,      only: [:index, :destroy]
   resources :comments,        only: [:new, :create, :edit, :update, :destroy]
-  resources :groups,          only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :groups
   resources :memberships,     only: [:create, :destroy]
   resources :ties,            only: [:create, :destroy]
   resources :notifications,   only: [:index, :show]
