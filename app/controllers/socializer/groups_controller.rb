@@ -48,26 +48,32 @@ module Socializer
       redirect_to groups_path
     end
 
+    # GET /groups/public
     def public
       @groups = Group.public
     end
 
+    # GET /groups/restricted
     def restricted
       @groups = Group.restricted
     end
 
+    # GET /groups/joinable
     def joinable
       @groups = Group.joinable
     end
 
+    # GET /groups/memberships
     def memberships
       @memberships = current_user.memberships
     end
 
+    # GET /groups/ownerships
     def ownerships
       @ownerships = current_user.groups
     end
 
+    # GET /groups/pending_invites
     def pending_invites
       @pending_invites = current_user.pending_memberships_invites
     end
