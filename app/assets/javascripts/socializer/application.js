@@ -9,6 +9,8 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require_tree .
+//= require jquery.qtip
+//= require jquery.tokeninput
 //= require bootstrap/dropdown
 //= require moment/moment
 //= require moment/langs
