@@ -36,7 +36,7 @@ module Socializer
       build_audience_list_array(OpenStruct.new(people: people, circles: circles, groups: groups))
     end
 
-    # Returns a [Hash] containing the value and text for the privacy level
+    # Returns a {Hash} containing the value and text for the privacy level
     #
     # @example
     #   privacy_hash(:public)

@@ -192,7 +192,7 @@ module Socializer
 
     # Returns a collection of pending membership invites
     #
-    # @return [Socializer::Membership] Returns a collection of memberships
+    # @return [Socializer::Membership] Returns a collection of {Socializer:Membership memberships}
     def pending_memberships_invites
       privacy_private = Group.privacy.find_value(:private).value
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
