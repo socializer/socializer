@@ -14,7 +14,7 @@ module Socializer
       @comment = current_user.comments.build(params[:comment])
       @comment.activity_verb = 'add'
       # TODO: Is scope needed? Try commenting it out to see what happens
-      @comment.scope = Audience.privacy_level.find_value(:public)
+      @comment.scope = Audience.privacy.find_value(:public)
       @comment.save!
       redirect_to stream_path
     end
