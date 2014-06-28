@@ -39,6 +39,10 @@ module Socializer
 
     attribute_type_of :note, :activity, :comment, :person, :group, :circle
 
+    # A list of people that like this activity object
+    #
+    # @return [Array]
+    #
     # REFACTOR: DRY this up. Reduce database calls
     # TODO: Rename this method to liked_by
     def likes
