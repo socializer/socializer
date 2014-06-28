@@ -6,10 +6,12 @@ module Socializer
     before_action :authenticate_user!
     after_action :reset_unread_notifications, only: [:index]
 
+    # GET /notifications
     def index
       @notifications = current_user.received_notifications.decorate
     end
 
+    # GET /notifications/1
     def show
       notification = Notification.find_by(id: params[:id])
       notification.read! if notification.unread?
