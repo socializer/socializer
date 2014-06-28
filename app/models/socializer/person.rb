@@ -128,16 +128,16 @@ module Socializer
       @groups ||= activity_object.groups
     end
 
-    # Collection of memberships that the use owns
+    # Collection of {Socializer::Membership memberships} that the user owns
     #
-    # @return [Socializer::Membership] Returns a collection of memberships
+    # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def memberships
       @memberships ||= activity_object.memberships
     end
 
-    # Collection of notifications that the use has received
+    # Collection of {Socializer::Notification notifications} that the use has received
     #
-    # @return [Socializer::Notification] Returns a collection of notifications
+    # @return [Socializer::Notification] Returns a collection of {Socializer::Notification notifications}
     def received_notifications
       @notifications ||= activity_object.notifications
     end
