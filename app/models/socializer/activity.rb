@@ -38,14 +38,14 @@ module Socializer
 
     # Retreives the comments for an activity
     #
-    # @return [ActiveRecord::AssociationRelation] a collection of Socializer::Activity objects
+    # @return [ActiveRecord::AssociationRelation] a collection of {Socializer::Activity} objects
     def comments
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
       # @comments ||= children.joins(:activitable_object).where(activity_objects: { activitable_type: 'Socializer::Comment' })
       @comments ||= children.joins(:activitable_object).where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
     end
 
-    # The Socializer::Person that performed the activity.
+    # The {Socializer::Person} that performed the activity.
     #
     # @return [Socializer::Person]
     def actor
