@@ -93,37 +93,37 @@ module Socializer
       result.where(klass.arel_table[:name].matches("%#{query}%"))
     end
 
-    # Collection of authentications that the use owns
+    # Collection of {Socializer:Authentication authentications} that the user owns
     #
     # @return [Socializer::Authentication] Returns a collection of authentications
     def services
       @services ||= authentications.where.not(provider: 'Identity')
     end
 
-    # Collection of circles that the use owns
+    # Collection of {Socializer:Circle circles} that the user owns
     #
-    # @return [Socializer::Circle] Returns a collection of circles
+    # @return [Socializer::Circle] Returns a collection of {Socializer:Circle circles}
     def circles
       @circles ||= activity_object.circles
     end
 
-    # Collection of comments that the use owns
+    # Collection of {Socializer:Comment comments} that the user owns
     #
-    # @return [Socializer::Comment] Returns a collection of comments
+    # @return [Socializer::Comment] Returns a collection of {Socializer:Comment comments}
     def comments
       @comments ||= activity_object.comments
     end
 
-    # Collection of notes that the use owns
+    # Collection of {Socializer:Note notes} that the user owns
     #
-    # @return [Socializer::Note] Returns a collection of notes
+    # @return [Socializer::Note] Returns a collection of {Socializer:Note notes}
     def notes
       @notes ||= activity_object.notes
     end
 
-    # Collection of groups that the use owns
+    # Collection of {Socializer:Group groups} that the user owns
     #
-    # @return [Socializer::Group] Returns a collection of groups
+    # @return [Socializer::Group] Returns a collection of {Socializer:Group groups}
     def groups
       @groups ||= activity_object.groups
     end
@@ -135,7 +135,7 @@ module Socializer
       @memberships ||= activity_object.memberships
     end
 
-    # Collection of {Socializer::Notification notifications} that the use has received
+    # Collection of {Socializer::Notification notifications} that the user has received
     #
     # @return [Socializer::Notification] Returns a collection of {Socializer::Notification notifications}
     def received_notifications
@@ -190,7 +190,7 @@ module Socializer
       query.count.odd?
     end
 
-    # Returns a collection of pending membership invites
+    # Returns a collection of pending {Socializer:Membership memberships} invites
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer:Membership memberships}
     def pending_memberships_invites
