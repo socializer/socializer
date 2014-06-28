@@ -36,20 +36,33 @@ module Socializer
       comments.present?
     end
 
+    # Retreives the comments for an activity
+    #
+    # @return [ActiveRecord::AssociationRelation] a collection of Socializer::Activity objects
     def comments
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
       # @comments ||= children.joins(:activitable_object).where(activity_objects: { activitable_type: 'Socializer::Comment' })
       @comments ||= children.joins(:activitable_object).where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
     end
 
+    # The Socializer::Person that performed the activity.
+    #
+    # @return [Socializer::Person]
     def actor
       @actor ||= activitable_actor.activitable
     end
 
+    # The primary object of the activity.
+    #
+    # @return the activitable object
     def object
       @object ||= activitable_object.activitable
     end
 
+    # The target of the activity. The precise meaning of the activity target is dependent on the activities verb,
+    # but will often be the object the English preposition "to".
+    #
+    # @return the activitable target
     def target
       @target ||= activitable_target.activitable
     end
