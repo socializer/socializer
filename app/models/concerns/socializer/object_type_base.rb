@@ -15,7 +15,12 @@ module Socializer
       after_create  :append_to_activity_stream
     end
 
+    # Class methods
+    #
     module ClassMethods
+      # Joins the activity object and retrieves the activity_objects.id
+      #
+      # @return [ActiveRecord::Relation]
       def guids
         # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
         # joins(:activity_object).select(activity_object: :id)
