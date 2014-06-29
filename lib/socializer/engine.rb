@@ -19,9 +19,6 @@ module Socializer
   class Engine < Rails::Engine
     isolate_namespace Socializer
 
-    config.assets.paths << root.join('vendor', 'assets', 'images')
-    config.assets.paths << root.join('vendor', 'assets', 'stylesheets')
-
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: true,
