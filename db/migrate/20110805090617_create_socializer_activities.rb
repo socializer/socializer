@@ -1,8 +1,8 @@
 class CreateSocializerActivities < ActiveRecord::Migration
   def change
     create_table :socializer_activities do |t|
-      t.integer  :actor_id
-      t.integer  :activity_object_id
+      t.integer  :actor_id,           null: false
+      t.integer  :activity_object_id, null: false
       t.integer  :target_id
       t.integer  :verb_id
 

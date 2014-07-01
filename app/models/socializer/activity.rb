@@ -21,6 +21,8 @@ module Socializer
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
     has_many :notifications
 
+    validates :activitable_actor, presence: true
+    validates :activitable_object, presence: true
     validates :verb, presence: true
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true

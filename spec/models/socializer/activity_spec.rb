@@ -30,6 +30,8 @@ module Socializer
     end
 
     context 'validations' do
+      it { is_expected.to validate_presence_of(:activitable_actor) }
+      it { is_expected.to validate_presence_of(:activitable_object) }
       it { is_expected.to validate_presence_of(:verb) }
     end
 

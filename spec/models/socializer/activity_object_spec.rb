@@ -137,7 +137,7 @@ module Socializer
       it { expect(results.activity.activity_field_content).to eq('Share') }
 
       context 'with no content' do
-        let(:results) { activity_object.share!(actor_id: actor, object_ids: object_ids, content: nil) }
+        let(:results) { activity_object.share!(actor_id: actor.guid, object_ids: object_ids, content: nil) }
         it { expect(results.activity.activity_field_content).to eq(nil) }
       end
     end
