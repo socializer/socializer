@@ -9,6 +9,7 @@ module Socializer
 
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
 
+    # Relationships
     belongs_to :parent,             class_name: 'Activity',       foreign_key: 'target_id'
     belongs_to :activitable_actor,  class_name: 'ActivityObject', foreign_key: 'actor_id'
     belongs_to :activitable_object, class_name: 'ActivityObject', foreign_key: 'activity_object_id'
@@ -21,6 +22,8 @@ module Socializer
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
     has_many :notifications
 
+    # Validations
+    validates :activity_id, presence: true
     validates :activitable_actor, presence: true
     validates :activitable_object, presence: true
     validates :verb, presence: true

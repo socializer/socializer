@@ -17,8 +17,6 @@ module Socializer
     has_many :object_activities, class_name: 'Activity', foreign_key: 'activity_object_id', dependent: :destroy
     has_many :target_activities, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
 
-    # when the embedded object is an actor (person/group)
-    # it can be the owner of certain objects.
     has_many :notes,      foreign_key: 'author_id'
     has_many :comments,   foreign_key: 'author_id'
     has_many :groups,     foreign_key: 'author_id'
