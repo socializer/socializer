@@ -5,6 +5,7 @@ module Socializer
   class Membership < ActiveRecord::Base
     attr_accessible :group_id
 
+    # Relationships
     belongs_to :group
     belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id'
 

@@ -5,6 +5,7 @@ module Socializer
   class Authentication < ActiveRecord::Base
     attr_accessible :provider, :uid, :image_url
 
+    # Relationships
     belongs_to :person
 
     before_destroy :make_sure_its_not_the_last_one
