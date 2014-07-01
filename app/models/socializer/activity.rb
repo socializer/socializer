@@ -23,7 +23,6 @@ module Socializer
     has_many :notifications
 
     # Validations
-    validates :activity_id, presence: true
     validates :activitable_actor, presence: true
     validates :activitable_object, presence: true
     validates :verb, presence: true
