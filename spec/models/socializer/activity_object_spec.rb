@@ -34,6 +34,10 @@ module Socializer
       it { is_expected.to have_many(:memberships).conditions(active: true) }
     end
 
+    context 'validations' do
+      it { is_expected.to validate_presence_of(:activitable) }
+    end
+
     context 'when liked' do
       let(:liking_person) { create(:socializer_person) }
       let(:liked_activity_object) { create(:socializer_activity_object) }

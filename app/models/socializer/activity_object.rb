@@ -6,6 +6,7 @@ module Socializer
     attr_accessor :scope, :object_ids
     attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count, :unread_notifications_count
 
+    # Relationships
     belongs_to :activitable, polymorphic: true
 
     has_many :notifications
@@ -25,6 +26,9 @@ module Socializer
 
     has_many :ties,        foreign_key: 'contact_id'
     has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
+
+    # Validations
+    validates :activitable, presence: true
 
     # Create predicate methods for comparing the activitable_type
     #
