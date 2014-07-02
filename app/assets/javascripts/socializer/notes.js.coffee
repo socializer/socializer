@@ -13,7 +13,7 @@
       height: 100
     , 'fast'
 
-    audience_path = $('#note_object_ids').data('path')
+    audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')
     current_id = $('#note_object_ids').data('current-id')
     prepopulate = null

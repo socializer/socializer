@@ -4,7 +4,7 @@
 
 jQuery ->
   if $('body').data('controller') == 'shares'
-    audience_path = $('#share_object_ids').data('path')
+    audience_path = $('#share_object_ids').data('source')
     prepopulate = null
 
     $('#share_object_ids').tokenInput audience_path,
