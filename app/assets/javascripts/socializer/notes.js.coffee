@@ -28,6 +28,8 @@
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
+      resultsFormatter: (item) ->
+        "<li><span class='fa fa-fw fa-google-circles'></span> " + item.name + "</li>"
 
     $('.token-input-list').hide()  if (current_id?) and (title is '')
     $('#new_note .action-button').show()

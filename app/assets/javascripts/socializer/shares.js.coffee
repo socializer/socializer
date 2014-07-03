@@ -11,3 +11,5 @@ jQuery ->
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
+      resultsFormatter: (item) ->
+        "<li><span class='fa fa-fw fa-google-circles'></span> " + item.name + "</li>"
