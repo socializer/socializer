@@ -46,7 +46,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.9')
   spec.add_development_dependency('rspec-rails',          '~> 3.0.1')
-  spec.add_development_dependency('brakeman',             '~> 2.6.0')
+  spec.add_development_dependency('brakeman',             '~> 2.6.1')
   # spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',             '~> 2.3.0')
   spec.add_development_dependency('factory_girl_rails',   '~> 4.4.1')
@@ -55,5 +55,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('shoulda-matchers',     '~> 2.6.1')
   spec.add_development_dependency('database_cleaner',     '~> 1.3.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.4')
-  spec.add_development_dependency('rubocop',              '~> 0.24.0')
+  spec.add_development_dependency('rubocop',              '~> 0.24.1')
 end
