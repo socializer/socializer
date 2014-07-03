@@ -60,11 +60,12 @@ module Socializer
     def self.build_audience_list_array(audience_list)
       audiences = []
 
-      audiences << Audience.privacy_hash(:public)
-      audiences << Audience.privacy_hash(:circles)
-      audiences.concat(audience_list.people)
-      audiences.concat(audience_list.circles)
-      audiences.concat(audience_list.groups)
+      audiences << Audience.privacy_hash(:public).merge(icon: 'fa-globe')
+      audiences << Audience.privacy_hash(:circles).merge(icon: 'fa-google-circles')
+      # TODO: may use the avatar for the user
+      audiences.concat(audience_list.people.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-user') })
+      audiences.concat(audience_list.circles.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-google-circles') })
+      audiences.concat(audience_list.groups.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-users') })
     end
     private_class_method :build_audience_list_array
   end

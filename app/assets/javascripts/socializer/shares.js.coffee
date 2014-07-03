@@ -12,5 +12,4 @@ jQuery ->
       preventDuplicates: true
       prePopulate: prepopulate
       resultsFormatter: (item) ->
-        icon = (if item.name is 'Public' then 'fa-globe' else 'fa-google-circles')
         "<li><span class='fa fa-fw " + icon + "'></span> " + item.name + "</li>"
