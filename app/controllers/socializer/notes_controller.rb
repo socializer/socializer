@@ -12,8 +12,12 @@ module Socializer
     end
 
     def create
-      @note     = create_note
-      @activity = Activity.find_by(activity_object_id: @note.guid).decorate
+      note      = create_note
+      @activity = Activity.find_by(activity_object_id: note.guid).decorate
+
+      @note       = Note.new
+      @current_id = nil
+      @title      = 'Activity stream'
 
       Notification.create_for_activity(@activity.model)
 
