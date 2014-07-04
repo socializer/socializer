@@ -6,6 +6,7 @@
       <%= f.input :object_ids, label: false, input_html: { data: { source: j(audiences_path), title: j(title), current_id: current_id } } %>
 
       <%= f.button :submit, t('.share'), class: 'btn-success action-button' %>
+      <%= button_tag 'Cancel', class: 'btn btn-default', id: 'note_cancel', type: 'button' %>
     </div>
   <% end %>
 </div>

@@ -19,6 +19,9 @@ jQuery ->
   if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
     resetNoteForm(controller_action)
 
+    $('#note_cancel').on 'click', ->
+      resetNoteForm(controller_action)
+
     audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')
     current_id = $('#note_object_ids').data('current-id')
