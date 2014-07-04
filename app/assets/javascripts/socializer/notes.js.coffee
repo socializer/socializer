@@ -5,14 +5,19 @@
 @resetNoteForm = (controller_action) ->
   $('#note_content').removeAttr('style')
   $('#note_content').val('') if controller_action == 'index'
-  $('#note_object_ids').hide()
-  $('.token-input-list').hide()
-  $('#new_note .action-button').hide()
+  $('#note_actions').hide()
 
-  $('#note_content').one 'click focus', ->
+  $('#note_content').on 'click focus', ->
+    $('#note_actions').show()
     $(this).animate
       height: 100
     , 'fast'
+
+jQuery ->
+  controller_name = $('body').data('controller')
+  controller_action = $('body').data('action')
+  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
+    resetNoteForm(controller_action)
 
     audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')
@@ -33,10 +38,3 @@
         "<li><span class='fa fa-fw " + item.icon + "'></span> " + item.name + "</li>"
 
     $('.token-input-list').hide()  if (current_id isnt null) and (title is '') or (controller_action == 'edit')
-    $('#new_note .action-button').show()
-
-jQuery ->
-  controller_name = $('body').data('controller')
-  controller_action = $('body').data('action')
-  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
-    resetNoteForm(controller_action)
