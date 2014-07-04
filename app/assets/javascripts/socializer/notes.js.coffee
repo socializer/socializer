@@ -9,7 +9,7 @@
   $('.token-input-list').hide()
   $('#new_note .action-button').hide()
 
-  $('#note_content').one 'click', ->
+  $('#note_content').one 'click focus', ->
     $(this).animate
       height: 100
     , 'fast'
