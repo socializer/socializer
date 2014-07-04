@@ -38,5 +38,5 @@
 jQuery ->
   controller_name = $('body').data('controller')
   controller_action = $('body').data('action')
-  if controller_name == 'notes' || controller_name == 'activities'
+  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
     resetNoteForm(controller_action)

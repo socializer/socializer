@@ -30,6 +30,7 @@ module Socializer
 
     def message
       @current_id = @person.guid
+      @note = Note.new
     end
 
     private

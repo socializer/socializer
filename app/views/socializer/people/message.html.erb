@@ -5,5 +5,5 @@
 <h1>Send a message</h1>
 
 <div id="message_<%= dom_id(@person) %>">
-  <%= render 'socializer/notes/form' %>
+  <%= render 'socializer/notes/form', note: @note, title: @title, current_id: @current_id %>
 </div>
