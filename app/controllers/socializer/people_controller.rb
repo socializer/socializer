@@ -7,7 +7,7 @@ module Socializer
     before_action :set_person, only: [:show, :likes, :message]
 
     def index
-      @people = Person.all
+      @people = Person.all.decorate
     end
 
     def show
@@ -35,7 +35,7 @@ module Socializer
     private
 
     def set_person
-      @person = Person.find_by(id: params[:id])
+      @person = Person.find_by(id: params[:id]).decorate
     end
   end
 end
