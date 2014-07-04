@@ -13,6 +13,7 @@ module Socializer
       @activities = Activity.stream(provider: provider, actor_uid: id, viewer_id: current_user.id).decorate
       @current_id = nil
       @title      = 'Activity stream'
+      @note       = Note.new
 
       add_provider_variables(provider.singularize, id) if %w( circles people groups ).include?(provider)
     end

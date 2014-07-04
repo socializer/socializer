@@ -14,7 +14,7 @@
 
   <h1><%= @title %></h1>
 
-  <%= render 'socializer/notes/form', note: Socializer::Note.new, title: @title, current_id: @current_id %>
+  <%= render 'socializer/notes/form', note: @note, title: @title, current_id: @current_id %>
 
 <% end %>
 
