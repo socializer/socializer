@@ -1,5 +1,5 @@
 <div class='well well-sm'>
-  <%= simple_form_for(Socializer::Note.new, html: { remote: true }) do |f| %>
+  <%= simple_form_for(note, html: { remote: true }) do |f| %>
     <%= f.input :content, label: false, input_html: { class: 'note-content-field', placeholder: "#{t('.share_placeholder')}" } %>
     <%= f.input :object_ids, label: false, input_html: { data: { source: j(audiences_path), title: j(title), current_id: current_id } } %>
 

@@ -32,7 +32,7 @@
       resultsFormatter: (item) ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " + item.name + "</li>"
 
-    $('.token-input-list').hide()  if (current_id isnt null) and (title is '')
+    $('.token-input-list').hide()  if (current_id isnt null) and (title is '') or (controller_action == 'edit')
     $('#new_note .action-button').show()
 
 jQuery ->
