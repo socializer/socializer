@@ -2,8 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@resetNoteForm = ->
-  $('#note_content').removeAttr('style').val('')
+@resetNoteForm = (controller_action) ->
+  $('#note_content').removeAttr('style')
+  $('#note_content').val('') if controller_action == 'index'
   $('#note_object_ids').hide()
   $('.token-input-list').hide()
   $('#new_note .action-button').hide()
@@ -36,5 +37,6 @@
 
 jQuery ->
   controller_name = $('body').data('controller')
-  if controller_name == 'notes' || controller_name = 'activities'
-    resetNoteForm()
+  controller_action = $('body').data('action')
+  if controller_name == 'notes' || controller_name == 'activities'
+    resetNoteForm(controller_action)
