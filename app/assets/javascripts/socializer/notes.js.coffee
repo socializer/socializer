@@ -18,7 +18,7 @@
     current_id = $('#note_object_ids').data('current-id')
     prepopulate = null
 
-    if current_id?
+    if current_id isnt null
       prepopulate = [
         id: current_id
         name: title
@@ -31,7 +31,7 @@
       resultsFormatter: (item) ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " + item.name + "</li>"
 
-    $('.token-input-list').hide()  if (current_id?) and (title is '')
+    $('.token-input-list').hide()  if (current_id isnt null) and (title is '')
     $('#new_note .action-button').show()
 
 jQuery ->
