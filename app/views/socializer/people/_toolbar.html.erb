@@ -21,7 +21,7 @@
             <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to(t('.likes'), person_likes_path(person)) %></li>
           </ul>
           <div class="btn-group pull-right">
-            <%= link_to(t('.edit'), edit_person_path(current_user), class: 'btn btn-primary', title: "#{t('.tooltip.edit')}") if current_user == @person %>
+            <%= link_to(t('.edit'), edit_person_path(current_user), class: 'btn btn-primary', title: "#{t('.tooltip.edit')}") if current_user?(person) %>
           </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->

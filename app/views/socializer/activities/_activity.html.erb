@@ -10,9 +10,9 @@
           <span class='fa fa-angle-down fa-lg'></span>
         </a>
         <ul class='dropdown-menu'>
-          <li><%#= link_to('Edit', [:edit, activity.model.object]) if activity.actor == current_user %></li>
-          <li><%= link_to('Edit', edit_note_path(activity.model.object)) if activity.actor == current_user %></li>
-          <li><%= link_to('Delete', activity.model.object, method: :delete, remote: true) if activity.actor == current_user %></li>
+          <li><%#= link_to('Edit', [:edit, activity.model.object]) if current_user?(activity.actor) %></li>
+          <li><%= link_to('Edit', edit_note_path(activity.model.object)) if current_user?(activity.actor) %></li>
+          <li><%= link_to('Delete', activity.model.object, method: :delete, remote: true) if current_user?(activity.actor) %></li>
         </ul>
       </div>
 
