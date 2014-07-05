@@ -17,9 +17,7 @@ module Socializer
       update_attribute(:active, true)
     end
 
-    def confirm!
-      update_attribute(:active, true)
-    end
+    alias_method :confirm!, :approve!
 
     def decline!
       destroy
