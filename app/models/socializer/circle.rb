@@ -28,8 +28,7 @@ module Socializer
     end
 
     def add_contact(contact_id)
-      tie = ties.build(contact_id: contact_id)
-      tie.save
+      ties.create!(contact_id: contact_id)
     end
 
     def remove_contact(contact_id)
