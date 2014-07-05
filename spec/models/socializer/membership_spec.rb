@@ -10,6 +10,7 @@ module Socializer
 
     context 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:group_id) }
+      it { is_expected.to allow_mass_assignment_of(:active) }
     end
 
     context 'relationships' do
