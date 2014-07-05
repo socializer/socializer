@@ -16,7 +16,6 @@
       <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
-            <!-- TODO; Add translations -->
             <li class="<%= 'active' if current_page?(stream_path) %>"><%= link_to(t('.all'), stream_path) %><li>
 
             <% list = current_user.circles + current_user.memberships %>

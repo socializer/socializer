@@ -110,7 +110,6 @@ module Socializer
     #
     # @return [OpenStruct]
     def share!(actor_id:, object_ids:, content: nil)
-      # REFACTOR : check for validation?
       ActivityCreator.create!(actor_id: actor_id,
                               activity_object_id: id,
                               verb: 'share',
