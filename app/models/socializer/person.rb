@@ -83,7 +83,7 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
     def audience_list(type, query)
-      type = type.to_s.downcase.pluralize
+      type = type.to_s.tableize
       return unless respond_to?(type)
 
       result = send(type).select(:name).guids
