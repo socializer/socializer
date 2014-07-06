@@ -4,10 +4,10 @@
 <hr>
 
 <div class='row'>
-  <% current_user.circles.each do |circle| %>
+  <% current_user.circles.decorate.each do |circle| %>
     <div class='col-sm-6 col-md-3'>
       <div class='circle droppable'>
-        <%= link_to(circle.name, circle, data: { object_id: circle.id, title: "#{pluralize(circle.ties.count, 'person')} in this circle", content: "#{circle.content}" }) %>
+        <%= link_to(circle.name, circle, data: { object_id: circle.id, title: "#{circle.ties_count} in this circle", content: "#{circle.content}" }) %>
         <br>
         <span class="circle-tie-count"><%= circle.ties.count %></span>
       </div>

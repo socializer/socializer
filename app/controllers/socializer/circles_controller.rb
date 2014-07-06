@@ -8,12 +8,12 @@ module Socializer
 
     # GET /circles
     def index
-      @circles = current_user.circles
+      @circles = current_user.circles.decorate
     end
 
     # GET /circles/1
     def show
-      @users = Person.all
+      @users = Person.all.decorate
     end
 
     # GET /circles/new
@@ -46,23 +46,23 @@ module Socializer
 
     # GET /circles/contacts
     def contacts
-      @circles = current_user.circles
+      @circles = current_user.circles.decorate
     end
 
     # GET /circles/contact_of
     def contact_of
-      @circles = current_user.circles
+      @circles = current_user.circles.decorate
     end
 
     # GET /circles/find_people
     def find_people
-      @circles = current_user.circles
+      @circles = current_user.circles.decorate
     end
 
     private
 
     def set_circle
-      @circle = current_user.circles.find_by(id: params[:id])
+      @circle = current_user.circles.find_by(id: params[:id]).decorate
     end
   end
 end
