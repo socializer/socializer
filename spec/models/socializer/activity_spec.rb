@@ -39,7 +39,9 @@ module Socializer
     it { is_expected.to delegate_method(:verb_name).to(:verb).as(:name) }
 
     # TODO: Test activity.comments? == true
-    it { expect(activity.comments?).to eq(false) }
+    context '#comments' do
+      it { expect(activity.comments?).to eq(false) }
+    end
 
     # TODO: Test return values
     it { expect(activity.actor).to be_kind_of(Socializer::Person) }
