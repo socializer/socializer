@@ -1,5 +1,5 @@
 module Socializer
-  class PersonDecorator < ApplicationDecorator
+  class CircleDecorator < Draper::Decorator
     delegate_all
 
     # Define presentation-specific methods here. Helpers are accessed through
@@ -11,8 +11,8 @@ module Socializer
     #     end
     #   end
 
-    def birthday
-      model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
+    def ties_count
+      helpers.pluralize(model.ties.count, 'person')
     end
   end
 end
