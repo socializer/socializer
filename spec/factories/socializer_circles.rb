@@ -13,7 +13,6 @@ FactoryGirl.define do
 
       after :create do |circle, evaluator|
         create_list :socializer_tie, evaluator.number_of_ties, circle: circle
-        # create :socializer_tie, circle: circle
       end
     end
   end
