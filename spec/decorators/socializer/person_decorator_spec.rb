@@ -44,7 +44,7 @@ module Socializer
         it { expect(result).to have_link('More', href: '#') }
         it { expect(result).to have_selector('li', count: li_count) }
         it { expect(result).to have_selector('li.dropdown') }
-        it { expect(result).to have_selector('a.dropdown-toggle') }
+        it { expect(result).to have_selector("a.dropdown-toggle [data-toggle='dropdown']") }
         it { expect(result).to have_selector('ul.dropdown-menu') }
       end
 
@@ -67,7 +67,7 @@ module Socializer
         it { expect(result).to have_link('More', href: '#') }
         it { expect(result).to have_selector('li', count: li_count) }
         it { expect(result).to have_selector('li.dropdown') }
-        it { expect(result).to have_selector('a.dropdown-toggle') }
+        it { expect(result).to have_selector("a.dropdown-toggle [data-toggle='dropdown']") }
         it { expect(result).to have_selector('ul.dropdown-menu') }
       end
     end
