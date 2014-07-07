@@ -6,8 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.draggable
-//= require jquery.ui.droppable
+//= require jquery-ui/draggable
+//= require jquery-ui/droppable
 //= require_tree .
 //= require jquery.qtip
 //= require jquery.tokeninput
