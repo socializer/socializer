@@ -32,6 +32,7 @@ module Socializer
         end
 
         let(:result) { decorated_person.toolbar_stream_links }
+        let(:li_count) { person.circles.count + 1 }
 
         it { expect(result.html_safe?).to be true }
         it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
@@ -41,6 +42,7 @@ module Socializer
         it { expect(result).not_to have_link('Group', href: '/stream/groups/1') }
 
         it { expect(result).to have_link('More', href: '#') }
+        it { expect(result).to have_selector('li', count: li_count) }
         it { expect(result).to have_selector('li.dropdown') }
         it { expect(result).to have_selector('a.dropdown-toggle') }
         it { expect(result).to have_selector('ul.dropdown-menu') }
@@ -53,6 +55,7 @@ module Socializer
         end
 
         let(:result) { decorated_person.toolbar_stream_links }
+        let(:li_count) { person.circles.count + person.groups.count + 1 }
 
         it { expect(result.html_safe?).to be true }
         it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
@@ -62,6 +65,7 @@ module Socializer
         it { expect(result).to have_link('Group', href: '/stream/groups/1') }
 
         it { expect(result).to have_link('More', href: '#') }
+        it { expect(result).to have_selector('li', count: li_count) }
         it { expect(result).to have_selector('li.dropdown') }
         it { expect(result).to have_selector('a.dropdown-toggle') }
         it { expect(result).to have_selector('ul.dropdown-menu') }
