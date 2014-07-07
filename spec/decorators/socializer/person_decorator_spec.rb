@@ -31,9 +31,7 @@ module Socializer
           person.add_default_circles
         end
 
-        let(:result) do
-          decorated_person.toolbar_stream_links
-        end
+        let(:result) { decorated_person.toolbar_stream_links }
 
         it { expect(result.html_safe?).to be true }
         it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
@@ -54,9 +52,7 @@ module Socializer
           create(:socializer_group, author_id: person.id, name: 'Group')
         end
 
-        let(:result) do
-          decorated_person.toolbar_stream_links
-        end
+        let(:result) { decorated_person.toolbar_stream_links }
 
         it { expect(result.html_safe?).to be true }
         it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
