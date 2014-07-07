@@ -42,9 +42,9 @@ module Socializer
 
     def dropdown_link
       icon = helpers.content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')
-      # TODO: add a translation for More
       helpers.link_to('#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }) do
-        "More #{icon}".html_safe
+        # TODO: should be able to use relative keys
+        "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
     end
 

@@ -173,6 +173,7 @@ fr:
       toolbar:
         home: Accueil
         all: All
+        more: More
   date:
     abbr_day_names:
     - dim
