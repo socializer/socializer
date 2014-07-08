@@ -43,7 +43,7 @@ module Socializer
     def dropdown_link
       icon = helpers.content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')
       helpers.link_to('#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }) do
-        # TODO: should be able to use relative keys
+        # TODO: should be able to use relative keys. Doesn't work in test
         "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
     end
