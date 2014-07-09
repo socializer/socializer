@@ -1,5 +1,4 @@
-<!-- [![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat)](https://travis-ci.org/socializer/socializer) -->
-[![Build Status](https://travis-ci.org/socializer/socializer.svg?branch=master)](https://travis-ci.org/socializer/socializer)
+[![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://img.shields.io/coveralls/socializer/socializer.svg?style=flat)](https://coveralls.io/r/socializer/socializer?branch=master)
 [![Code Climate](https://img.shields.io/codeclimate/github/socializer/socializer.png?style=flat)](https://codeclimate.com/github/socializer/socializer)
 [![Dependency Status](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat)](https://gemnasium.com/socializer/socializer)
