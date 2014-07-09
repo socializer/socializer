@@ -22,7 +22,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'rails-dummy'
+  gem 'rails-dummy', github: 'acmetech/rails-dummy'
 end
 
 # add these gems to help with the transition to Rails 4:
