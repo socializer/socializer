@@ -21,19 +21,22 @@ module Socializer
 
       html = []
       html << toolbar_links(list[0..2])
-
-      html << helpers.content_tag(:li, class: 'dropdown') do
-        dropdown_link +
-
-        helpers.content_tag(:ul, class: 'dropdown-menu') do
-          toolbar_links(list[3..(list.size)])
-        end
-      end
+      html << toolbar_dropdown(list[3..(list.size)])
 
       html.join.html_safe
     end
 
     private
+
+    def toolbar_dropdown(list)
+      helpers.content_tag(:li, class: 'dropdown') do
+        dropdown_link +
+
+        helpers.content_tag(:ul, class: 'dropdown-menu') do
+          toolbar_links(list)
+        end
+      end
+    end
 
     def dropdown_link
       icon = helpers.content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')
