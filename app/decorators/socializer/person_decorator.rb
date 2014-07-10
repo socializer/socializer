@@ -20,18 +20,13 @@ module Socializer
       return if list.blank?
 
       html = []
-
-      list[0..2].map do |item|
-        html << toolbar_link(item)
-      end.join.html_safe
+      html << toolbar_links(list[0..2])
 
       html << helpers.content_tag(:li, class: 'dropdown') do
         dropdown_link +
 
         helpers.content_tag(:ul, class: 'dropdown-menu') do
-          list[3..(list.size)].map do |item|
-            toolbar_link(item)
-          end.join.html_safe
+          toolbar_links(list[3..(list.size)])
         end
       end
 
@@ -46,6 +41,12 @@ module Socializer
         # TODO: should be able to use relative keys. Doesn't work in test
         "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
+    end
+
+    def toolbar_links(list)
+      list.map do |item|
+        toolbar_link(item)
+      end.join.html_safe
     end
 
     def toolbar_link(item)
