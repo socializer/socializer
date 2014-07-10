@@ -59,14 +59,13 @@ module Socializer
     end
 
     def toolbar_link(item)
-      item       = item.group if item.class.name == 'Socializer::Membership'
-      provider   = item.class.name.demodulize.tableize.to_sym
+      item       = item.group if item.is_a?(Socializer::Membership)
       item_id    = item.id
-      item_name  = item.name
+      provider   = item.class.name.demodulize.tableize.to_sym
       class_name = 'active' if helpers.current_page?(helpers.stream_path(provider: provider, id: item_id))
 
       helpers.content_tag(:li) do
-        helpers.link_to(item_name, helpers.stream_path(provider: provider, id: item_id), class: class_name)
+        helpers.link_to(item.name, helpers.stream_path(provider: provider, id: item_id), class: class_name)
       end
     end
   end
