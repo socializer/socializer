@@ -11,10 +11,16 @@ module Socializer
     #     end
     #   end
 
+    # Format the birthdate attribute
+    #
+    # @return [String]
     def birthday
       model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
     end
 
+    # Builds the links for the shared toolbar
+    #
+    # @return [String] the html needed to display the toolbar links
     def toolbar_stream_links
       list = model.circles + model.memberships
       return if list.blank?
