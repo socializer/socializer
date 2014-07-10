@@ -59,18 +59,10 @@ module Socializer
     end
 
     def toolbar_link(item)
-      if item.class.name == 'Socializer::Circle'
-        provider = :circles
-        item_id  = item.id
-        item_name = item.name
-      end
-
-      if item.class.name == 'Socializer::Membership'
-        provider  = :groups
-        item_id   = item.group.id
-        item_name = item.group.name
-      end
-
+      item       = item.group if item.class.name == 'Socializer::Membership'
+      provider   = item.class.name.demodulize.tableize.to_sym
+      item_id    = item.id
+      item_name  = item.name
       class_name = 'active' if helpers.current_page?(helpers.stream_path(provider: provider, id: item_id))
 
       helpers.content_tag(:li) do
