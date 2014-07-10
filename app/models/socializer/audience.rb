@@ -60,13 +60,20 @@ module Socializer
     def self.build_audience_list_array(audience_list)
       audiences = []
 
-      audiences << Audience.privacy_hash(:public).merge(icon: 'fa-globe')
-      audiences << Audience.privacy_hash(:circles).merge(icon: 'fa-google-circles')
+      audiences << merge_icon(Audience.privacy_hash(:public), 'fa-globe')
+      audiences << merge_icon(Audience.privacy_hash(:circles), 'fa-google-circles')
+
       # TODO: may use the avatar for the user
-      audiences.concat(audience_list.people.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-user') })
-      audiences.concat(audience_list.circles.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-google-circles') })
-      audiences.concat(audience_list.groups.to_a.map { |h| h.serializable_hash.merge(icon: 'fa-users') })
+      audiences.concat(merge_icon(audience_list.people, 'fa-user'))
+      audiences.concat(merge_icon(audience_list.circles, 'fa-google-circles'))
+      audiences.concat(merge_icon(audience_list.groups, 'fa-users'))
     end
     private_class_method :build_audience_list_array
+
+    def self.merge_icon(list, icon)
+      return list.merge(icon: icon) if list.is_a?(Hash)
+      list = list.to_a unless list.is_a?(Array)
+      list.map { |i| i.serializable_hash.merge(icon: icon) }
+    end
   end
 end
