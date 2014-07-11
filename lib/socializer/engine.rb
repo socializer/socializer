@@ -15,6 +15,9 @@ require 'simple_form'
 # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
 # require 'squeel'
 
+#
+# Namespace for the Socializer engine
+#
 module Socializer
   class Engine < Rails::Engine
     isolate_namespace Socializer
