@@ -44,7 +44,6 @@ module Socializer
     def set_provider_variables(provider, id)
       value       = "Socializer::#{provider.classify}".constantize.find_by(id: id)
       @title      = value.name if value.respond_to?(:name)
-      @title      = value.display_name if value.respond_to?(:display_name)
       @current_id = value.guid
 
       instance_variable_set("@#{provider}", value)
