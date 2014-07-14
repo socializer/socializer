@@ -56,7 +56,7 @@ module Socializer
       @object_ids = []
 
       @activity.audiences.each do |audience|
-        add_audience_object_ids(audience)
+        set_audience_object_ids(audience)
       end
 
       # The actor of the activity is always part of the audience.
@@ -68,7 +68,7 @@ module Socializer
     end
 
     # REFACTOR: Move with build_audience and simplify
-    def add_audience_object_ids(audience)
+    def set_audience_object_ids(audience)
       # In case of CIRCLES audience, add each contacts of every circles
       # of the actor of the activity.
       privacy = audience.privacy
