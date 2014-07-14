@@ -114,6 +114,13 @@ module Socializer
       @comments ||= activity_object.comments
     end
 
+    # Returns the display_name for the person.
+    #
+    # @return [String]
+    def name
+      display_name
+    end
+
     # Collection of {Socializer::Note notes} that the user owns
     #
     # @return [Socializer::Note] Returns a collection of {Socializer::Note notes}
