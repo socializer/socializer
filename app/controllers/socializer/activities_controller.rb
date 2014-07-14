@@ -84,17 +84,16 @@ module Socializer
         end
       else
         activity_object = audience.activity_object
-        if activity_object.circle?
-          # In the case of LIMITED audience, then go through all the audience
-          # circles and add contacts from those circles in the list of allowed
-          # audience.
-          activity_object.activitable.activity_contacts.each do |contact|
-            @object_ids << contact
-          end
-        else
-          # Otherwise, the target audience is either a group or a person,
-          # which means we can add it as it is in the audience list.
-          @object_ids << activity_object
+
+        # The target audience is either a group or a person,
+        # which means we can add it as it is in the audience list.
+        return @object_ids << activity_object unless activity_object.circle?
+
+        # In the case of LIMITED audience, then go through all the audience
+        # circles and add contacts from those circles in the list of allowed
+        # audience.
+        activity_object.activitable.activity_contacts.each do |contact|
+          @object_ids << contact
         end
       end
     end
