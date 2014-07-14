@@ -15,7 +15,7 @@ module Socializer
       @title      = 'Activity stream'
       @note       = Note.new
 
-      set_provider_variables(provider.singularize, id) if %w( circles people groups ).include?(provider)
+      set_provider_variables(provider, id)
     end
 
     def audience
@@ -42,11 +42,13 @@ module Socializer
     end
 
     def set_provider_variables(provider, id)
+      return unless %w( circles people groups ).include?(provider)
+
       value       = "Socializer::#{provider.classify}".constantize.find_by(id: id)
       @title      = value.name if value.respond_to?(:name)
       @current_id = value.guid
 
-      instance_variable_set("@#{provider}", value)
+      instance_variable_set("@#{provider.singularize}", value)
     end
 
     # REFACTOR: Move out of the controller.
