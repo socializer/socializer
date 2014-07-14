@@ -72,9 +72,11 @@ module Socializer
       # In case of CIRCLES audience, add each contacts of every circles
       # of the actor of the activity.
       privacy = audience.privacy
-      if privacy.public?
+
+      case privacy
+      when privacy.public?
         @object_ids << privacy
-      elsif privacy.circles?
+      when privacy.circles?
         @activity.actor.circles.each do |circle|
           circle.activity_contacts.each do |contact|
             @object_ids << contact
