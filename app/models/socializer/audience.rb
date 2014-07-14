@@ -73,7 +73,8 @@ module Socializer
     def self.merge_icon(list, icon)
       return list.merge(icon: icon) if list.is_a?(Hash)
       list = list.to_a unless list.is_a?(Array)
-      list.map { |i| i.serializable_hash.merge(icon: icon) }
+      list.map { |item| item.serializable_hash.merge(icon: icon) }
     end
+    private_class_method :merge_icon
   end
 end
