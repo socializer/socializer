@@ -1,16 +1,10 @@
+# Socializer [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer)
+
 [![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://img.shields.io/coveralls/socializer/socializer.svg?style=flat)](https://coveralls.io/r/socializer/socializer?branch=master)
 [![Code Climate](https://img.shields.io/codeclimate/github/socializer/socializer.png?style=flat)](https://codeclimate.com/github/socializer/socializer)
 [![Dependency Status](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat)](https://gemnasium.com/socializer/socializer)
-[![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer)
-[![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php)
 [![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master)](http://inch-ci.org/github/socializer/socializer)
-
-# Important notice!
-
-Socializer is **not ready for production** yet. It's a work in progress. If you would like to get involved, fork and work! Or contact me at dominic.goulet@icloud.com.
-
-# Socializer
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
 on what really matters.
@@ -19,6 +13,10 @@ It is designed based on the Wikipedia definition of [social networks](http://en.
 and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes, it may look like a Google+ clone, but Google did a
 great job implementing the social network definition. And yes, it does a lot less than Google+, we don't have
 400 developers on the project.
+
+## Important notice!
+
+Socializer is **not ready for production** yet. It's a work in progress. If you would like to get involved, fork and work! Or contact me at dominic.goulet@icloud.com.
 
 ## Core concepts
 
