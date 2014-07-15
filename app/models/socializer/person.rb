@@ -45,10 +45,10 @@ module Socializer
     #
     # @param query [String] Used to filter the audience list
     #
-    # @return [NilClass] If query is nil or '', nil is returned
+    # @return [ActiveRecord::NullRelation] If query is nil or '', Person.none is returned
     # @return [ActiveRecord::Relation] If a query is provided the display_name and guid for all records that match the query
     def self.audience_list(query)
-      return if query.blank?
+      return none if query.blank?
       # DISCUSS: Do we need display_name in the select?
       select(:display_name, 'display_name AS name').guids.where(arel_table[:display_name].matches("%#{query}%"))
     end

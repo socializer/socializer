@@ -50,7 +50,7 @@ module Socializer
 
     context '.audience_list' do
       it { expect { Person.audience_list }.to raise_error(ArgumentError) }
-      it { expect(Person.audience_list(nil)).to eq(nil) }
+      it { expect(Person.audience_list(nil)).to eq(Person.none) }
       it do
         create(:socializer_person)
         expect(Person.audience_list('n').first.display_name).to include('name')
