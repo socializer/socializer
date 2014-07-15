@@ -66,7 +66,7 @@ module Socializer
       it { expect(person.audience_list(:circles, nil)).to be_kind_of(ActiveRecord::AssociationRelation) }
       it { expect(person.audience_list(:circles, 'f')).to be_kind_of(ActiveRecord::AssociationRelation) }
 
-      it { expect(person.audience_list(:unknown, nil)).to eq(nil) }
+      it { expect(person.audience_list(:unknown, nil)).to eq(Person.none) }
     end
 
     context '#services' do
