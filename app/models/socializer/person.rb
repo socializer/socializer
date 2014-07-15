@@ -171,11 +171,8 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def likes
       verbs_of_interest = %w(like unlike)
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).where(verb: { name: verbs_of_interest })
-      query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).where(socializer_verbs: { name: verbs_of_interest })
-      # Alternate syntax:
-      # query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).where(verb: Verb.where(name: verbs_of_interest))
+
+      query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).merge(Verb.by_name(verbs_of_interest))
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
@@ -190,11 +187,8 @@ module Socializer
     # @return [FalseClass] if the person does not like the object
     def likes?(object)
       verbs_of_interest = %w(like unlike)
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).where(verb: { name: verbs_of_interest })
-      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).where(socializer_verbs: { name: verbs_of_interest })
-      # Alternate syntax:
-      # query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).where(verb: Verb.where(name: verbs_of_interest))
+
+      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).merge(Verb.by_name(verbs_of_interest))
       query.count.odd?
     end
 

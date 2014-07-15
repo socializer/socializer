@@ -51,20 +51,13 @@ module Socializer
       people = []
       query  = Activity.joins(:verb).where(activity_object_id: id)
 
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # activities_likes = query.where(verb: { name: 'like' })
-      activities_likes = query.where(socializer_verbs: { name: 'like' })
-      # Alternate syntax:
-      # activities_likes = query.where(verb: Verb.where(name: 'like'))
+      activities_likes   = query.merge(Verb.by_name('like'))
+      activities_unlikes = query.merge(Verb.by_name('unlike'))
+
       activities_likes.each do |activity|
         people << activity.actor
       end
 
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # activities_unlikes = query.where(verb: { name: 'unlike' })
-      activities_unlikes = query.where(socializer_verbs: { name: 'unlike' })
-      # Alternate syntax:
-      # activities_unlikes = query.where(verb: Verb.where(name: 'unlike'))
       activities_unlikes.each do |activity|
         people.delete_at people.index(activity.actor)
       end

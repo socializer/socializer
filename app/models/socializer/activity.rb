@@ -143,11 +143,7 @@ module Socializer
       privacy_circles = privacy.find_value(:circles).value
       privacy_limited = privacy.find_value(:limited).value
 
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # query = joins(:audiences, :verb).where(verb: { name: verbs_of_interest }, target_id: nil)
-      query = joins(:audiences, :verb).where(socializer_verbs: { name: verbs_of_interest }, target_id: nil)
-      # Alternate syntax:
-      # query = joins(:audiences, :verb).where(verb: Verb.where(name: verbs_of_interest), target_id: nil)
+      query = joins(:audiences, :verb).merge(Verb.by_name(verbs_of_interest)).where(target_id: nil)
 
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
