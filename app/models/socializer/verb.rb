@@ -10,5 +10,8 @@ module Socializer
 
     # Validations
     validates :name, presence: true, uniqueness: true
+
+    # Named Scopes
+    scope :by_name, -> name { where(name: name) }
   end
 end

@@ -20,5 +20,22 @@ module Socializer
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_uniqueness_of(:name) }
     end
+
+    context 'scopes' do
+      context 'by_name' do
+        before { create(:socializer_verb, name: 'post') }
+        let(:result) { Verb.by_name('post') }
+
+        it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        it { expect(result.first.name).to eq('post') }
+
+        context 'when the name is not found' do
+          let(:result) { Verb.by_name('none') }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.present?).to be(false) }
+        end
+      end
+    end
   end
 end
