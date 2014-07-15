@@ -81,6 +81,7 @@ module Socializer
     # @param type [Symbol/String] [description]
     # @param query [String] [description]
     #
+    # @return [ActiveRecord::NullRelation] Person.none is returned if type is unknown
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
     def audience_list(type, query)
       type = type.to_s.tableize
