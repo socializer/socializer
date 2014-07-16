@@ -196,11 +196,7 @@ module Socializer
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def pending_memberships_invites
-      privacy_private = Group.privacy.find_value(:private).value
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: { privacy: privacy_private })
-      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, socializer_groups: { privacy: privacy_private })
-      # @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false, group: Group.where(privacy: privacy_private))
+      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false).merge(Group.with_privacy(:private))
     end
 
     # The location/url of the persons avatar
