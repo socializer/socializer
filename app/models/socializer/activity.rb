@@ -162,10 +162,8 @@ module Socializer
       # query.where { (audiences.privacy.eq(privacy_public)) |
       #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
       #   ((audiences.privacy.eq(privacy_limited)) & (
-      #     # `#{viewer_id}`.in(my { build_limited_circle_subquery(viewer_id) }) |
       #     `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
       #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
-      #     # audiences.activity_object_id.in(my { build_limited_viewer_subquery(viewer_id) })
       #     audiences.activity_object_id.in(viewer_id)
       #   )) |
       #   (actor_id.eq(viewer_id)) }
@@ -238,18 +236,8 @@ module Socializer
                          .where(membership[:member_id].eq(viewer_id))
 
       # CLEANUP: Remove old code
-      # join       = ao.join(group).on(group[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Group.name)))
-      #                .join(membership).on(membership[:group_id].eq(group[:id])).join_sql
-
-      # ActivityObject.select(:id).joins(join).where(membership[:member_id].eq(viewer_id)).arel
       # ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :build_limited_group_subquery
-
-    # CLEANUP: Remove old/unused code
-    # def self.build_limited_viewer_subquery(viewer_id)
-    #   "( #{viewer_id} )"
-    # end
-    # private_class_method :build_limited_viewer_subquery
   end
 end
