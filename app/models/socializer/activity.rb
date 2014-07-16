@@ -132,8 +132,9 @@ module Socializer
     end
 
     # Class Methods - Private
-    # CLEANUP: Remove old/unused code
     def self.build_query(viewer_id:)
+      # CLEANUP: Remove old/unused code
+
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
@@ -198,34 +199,19 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
-    # CLEANUP: Remove old code
     # TODO: Verify this works correcly
-    # def self.build_limited_circle_subquery(viewer_id)
     def self.build_limited_circle_subquery
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       subquery = Circle.select(:id).joins(activity_object: :audiences)
       Tie.select(:contact_id).where(circle_id: subquery).arel
-
-      # limited_circle_id_sql = 'SELECT socializer_circles.id ' \
-      #                         'FROM socializer_circles ' \
-      #                         'INNER JOIN socializer_activity_objects ' \
-      #                         'ON socializer_circles.id = socializer_activity_objects.activitable_id ' \
-      #                             "AND socializer_activity_objects.activitable_type = 'Socializer::Circle' " \
-      #                         'WHERE socializer_activity_objects.id = socializer_audiences.activity_object_id '
-      #
-      # # Retrieve all the contacts (people) that are part of those circles
-      # Tie.select { contact_id }.where { circle_id.in(`#{limited_circle_id_sql}`) }
-      #
-      # # Ensure that the audience is LIMITED and then make sure that the viewer is either
-      # # part of a circle that is the target audience, or that the viewer is part of
-      # # a group that is the target audience, or that the viewer is the target audience.
-      # # limited_sql = Audience.with_privacy(:limited).where{(`"#{viewer_id}"`.in(actor_circles_sql)) | (activity_object_id.in(limited_groups_sql)) | (activity_object_id.eq(viewer_id))}
     end
     private_class_method :build_limited_circle_subquery
 
-    # TODO: Verify this works correcly
     def self.build_limited_group_subquery(viewer_id)
+      # TODO: Verify this works correcly
+      # CLEANUP: Remove old code
+
       # The arel_table method is technically private since it is marked :nodoc
       ao         ||= ActivityObject.arel_table
       membership ||= Membership.arel_table
@@ -235,7 +221,6 @@ module Socializer
                          .join(membership).on(membership[:group_id].eq(group[:id]))
                          .where(membership[:member_id].eq(viewer_id))
 
-      # CLEANUP: Remove old code
       # ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :build_limited_group_subquery
