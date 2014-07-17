@@ -14,7 +14,7 @@ end
 group :test do
   gem 'cucumber-rails', '~> 1.4.1', require: false
   gem 'database_cleaner'
-  gem 'simplecov', '~> 0.8.2', require: false
+  gem 'simplecov', '~> 0.9.0', require: false
   gem 'coveralls', require: false
 end
 
