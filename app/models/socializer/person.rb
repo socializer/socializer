@@ -36,6 +36,9 @@ module Socializer
     # Validations
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
+    # Aliases
+    alias_attribute :name, :display_name
+
     # Class Methods
 
     # Used to build Audience.audience_list
@@ -113,13 +116,6 @@ module Socializer
     # @return [Socializer::Comment] Returns a collection of {Socializer::Comment comments}
     def comments
       @comments ||= activity_object.comments
-    end
-
-    # Returns the display_name for the person.
-    #
-    # @return [String]
-    def name
-      display_name
     end
 
     # Collection of {Socializer::Note notes} that the user owns

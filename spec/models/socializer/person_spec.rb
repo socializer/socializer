@@ -101,6 +101,16 @@ module Socializer
       it { expect(person.groups).to eq(groups) }
     end
 
+    context 'display_name' do
+      it 'is aliased as name' do
+        person.display_name = 'Set DisplayName'
+        expect(person.name).to eq('Set DisplayName')
+
+        person.name = 'Set Name'
+        expect(person.display_name).to eq('Set Name')
+      end
+    end
+
     context '#notes' do
       let(:person) { build(:socializer_person_notes) }
       let(:notes) { person.activity_object.notes }
