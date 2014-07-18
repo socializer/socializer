@@ -2,7 +2,7 @@ require 'rails_helper'
 include Socializer::Engine.routes.url_helpers
 
 module Socializer
-  RSpec.describe PersonDecorator, :draper_with_helpers, type: :decorator do
+  RSpec.describe PersonDecorator, type: :decorator do
     let(:person) { build(:socializer_person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
