@@ -14,5 +14,45 @@ module Socializer
     #     end
     #   end
 
+    # Builds the like or unlike link
+    #
+    # @param current_user [Socializer::Person]
+    #
+    # @return [String] the html needed to display the like/unlike link
+    def link_to_like_or_unlike(current_user)
+      return unless current_user
+
+      content   = like_or_unlike_content(model)
+      variables = like_or_unlike_variables(current_user)
+
+      helpers.link_to(content, variables.path, method: variables.verb, remote: true, class: variables.link_class, title: variables.tooltip)
+    end
+
+    private
+
+    def like_or_unlike_content(activity_object)
+      content = helpers.content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')
+      content += "#{activity_object.like_count}".html_safe if activity_object.like_count > 0
+      content
+    end
+
+    def like_or_unlike_variables(current_user)
+      return variables_if_user_likes if current_user.likes?(model)
+      variables_if_user_does_not_like
+    end
+
+    def variables_if_user_likes
+      path       = helpers.stream_unlike_path(model)
+      link_class = 'btn btn-danger'
+
+      OpenStruct.new(path: path, verb: :delete, link_class: link_class, tooltip: 'Unlike')
+    end
+
+    def variables_if_user_does_not_like
+      path       = helpers.stream_like_path(model)
+      link_class = 'btn btn-default'
+
+      OpenStruct.new(path: path, verb: :post, link_class: link_class, tooltip: 'Like')
+    end
   end
 end
