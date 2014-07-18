@@ -16,12 +16,8 @@
       </div>
       <div class='pull-right'>
         <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted') %>
-
-        <% if current_user.likes?(comment.activity_object) %>
-          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{comment.activity_object.like_count if comment.activity_object.like_count > 0}".html_safe, stream_unlike_path(comment.activity_object), method: :delete, remote: true, class: 'text-danger', title: 'Unlike') %>
-        <% else %>
-          <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')} #{comment.activity_object.like_count if comment.activity_object.like_count > 0}".html_safe, stream_like_path(comment.activity_object), method: :post, remote: true, class: 'text-muted', title: 'Like') %>
-        <% end %>
+        <%# Like / Unlike button %>
+        <%= comment.activity_object.decorate.link_to_like_or_unlike(current_user) %>
 
         <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted') %>
         <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted') %>
