@@ -1,4 +1,4 @@
-# Socializer [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer)
+# Socializer [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
 
 [![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://img.shields.io/coveralls/socializer/socializer.svg?style=flat)](https://coveralls.io/r/socializer/socializer?branch=master)
@@ -14,7 +14,7 @@ and the excellent spec from [activitystrea.ms](http://www.activitystrea.ms). Yes
 great job implementing the social network definition. And yes, it does a lot less than Google+, we don't have
 400 developers on the project.
 
-## Important notice!
+## Important notice
 
 Socializer is **not ready for production** yet. It's a work in progress. If you would like to get involved, fork and work! Or contact me at dominic.goulet@icloud.com.
 
