@@ -18,7 +18,7 @@ module Socializer
           let(:url) { stream_like_path(activity_object) }
 
           it { expect(result).to have_link('', href: url) }
-          it { expect(result).to have_selector("a.btn.btn-default [data-method='post'] [title='Like']") }
+          it { expect(result).to have_selector("a.btn.btn-default [data-method='post'] [title=#{t('socializer.shared.like')}]") }
         end
 
         context 'does like' do
@@ -26,7 +26,7 @@ module Socializer
           let(:url) { stream_unlike_path(activity_object) }
 
           it { expect(result).to have_link('', href: url) }
-          it { expect(result).to have_selector("a.btn.btn-danger [data-method='delete'] [title='Unlike']") }
+          it { expect(result).to have_selector("a.btn.btn-danger [data-method='delete'] [title=#{t('socializer.shared.unlike')}]") }
         end
       end
     end
