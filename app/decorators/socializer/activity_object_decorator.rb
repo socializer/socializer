@@ -45,14 +45,14 @@ module Socializer
       path       = helpers.stream_unlike_path(model)
       link_class = 'btn btn-danger'
 
-      OpenStruct.new(path: path, verb: :delete, link_class: link_class, tooltip: 'Unlike')
+      OpenStruct.new(path: path, verb: :delete, link_class: link_class, tooltip: helpers.t('socializer.shared.unlike'))
     end
 
     def variables_if_user_does_not_like
       path       = helpers.stream_like_path(model)
       link_class = 'btn btn-default'
 
-      OpenStruct.new(path: path, verb: :post, link_class: link_class, tooltip: 'Like')
+      OpenStruct.new(path: path, verb: :post, link_class: link_class, tooltip: helpers.t('socializer.shared.like'))
     end
   end
 end

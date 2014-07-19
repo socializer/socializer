@@ -161,6 +161,8 @@ fr:
         content_label: Voulez-vous ajouter un commentaire avec le partage de cette
           activité?
     shared:
+      like: 'Like'
+      unlike: 'Unlike'
       main_navigation:
         home: Accueil
         profile: Profil
