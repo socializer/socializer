@@ -21,7 +21,10 @@ module Socializer
 
     context 'validations' do
       it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive }
+      it 'check uniqueness of name' do
+        create(:socializer_circle)
+        is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive
+      end
     end
 
     context 'author' do
