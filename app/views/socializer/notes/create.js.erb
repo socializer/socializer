@@ -6,7 +6,7 @@ if (window.location.href.indexOf('message') > 0) {
   //        If re-rendering is preferred, some modifications should be made to resetNoteForm
   //        replace instance variable with local variable may change things
   // $('.new_note').replaceWith('<%= escape_javascript(render 'socializer/notes/form', note: @note, title: @title, current_id: @current_id) %>');
-  resetNoteForm();
+  resetNoteForm(true);
   addTimeAgoSupport();
   addTooltipSupport( $('.tooltip', '.activities') );
 }
