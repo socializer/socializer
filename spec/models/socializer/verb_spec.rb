@@ -9,7 +9,7 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { is_expected.to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:display_name) }
     end
 
     context 'relationships' do
@@ -17,8 +17,8 @@ module Socializer
     end
 
     context 'validations' do
-      it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to validate_uniqueness_of(:name) }
+      it { is_expected.to validate_presence_of(:display_name) }
+      it { is_expected.to validate_uniqueness_of(:display_name) }
     end
 
     context 'scopes' do

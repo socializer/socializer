@@ -3,13 +3,13 @@
 #
 module Socializer
   class Verb < ActiveRecord::Base
-    attr_accessible :name
+    attr_accessible :display_name
 
     # Relationships
     has_many :activities, inverse_of: :verb
 
     # Validations
-    validates :name, presence: true, uniqueness: true
+    validates :display_name, presence: true, uniqueness: true
 
     # Named Scopes
     scope :by_name, -> name { where(name: name) }
