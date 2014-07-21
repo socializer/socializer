@@ -8,7 +8,7 @@ module Socializer
 
     enumerize :privacy, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 
-    attr_accessible :name, :privacy, :author_id
+    attr_accessible :display_name, :privacy, :author_id
 
     # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
@@ -20,7 +20,7 @@ module Socializer
 
     # Validations
     validates :activity_author, presence: true
-    validates :name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
+    validates :display_name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
     validates :privacy, presence: true
 
     # Callbacks

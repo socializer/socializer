@@ -2,7 +2,7 @@
   <div class='panel panel-default'>
     <div class='panel-body'>
       <%= link_to(group) do %>
-        <p class="lead"><%= group.name %></p>
+        <p class="lead"><%= group.display_name %></p>
         <p class='text-muted'>
           <%= group.members.count %> members - <%= group.privacy.titlecase %>
           <br>

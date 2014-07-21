@@ -3,7 +3,7 @@
 <% end %>
 
 <%= simple_form_for(group) do |f| %>
-  <%= f.input :name, input_html: { autofocus: true } %>
+  <%= f.input :display_name, input_html: { autofocus: true } %>
   <%= f.input :privacy %>
 
   <%= f.button :submit, t('.submit'), class: 'btn-primary action-button' %>

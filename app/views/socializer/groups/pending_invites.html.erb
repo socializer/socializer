@@ -16,7 +16,7 @@
     <div class="group-card <%= membership.group.privacy %>">
       <%= link_to membership.group do %>
         <div class="group-info">
-          <span class="group-name"><%= membership.group.name %></span>
+          <span class="group-name"><%= membership.group.display_name %></span>
           <span class="group-member-count"><%= membership.group.members.count %> members</span>
           <span class="group-privacy-level"><%= membership.group.privacy %></span>
         </div>

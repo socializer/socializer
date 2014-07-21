@@ -9,7 +9,7 @@ module Socializer
     end
 
     context 'mass assignment' do
-      it { is_expected.to allow_mass_assignment_of(:name) }
+      it { is_expected.to allow_mass_assignment_of(:display_name) }
       it { is_expected.to allow_mass_assignment_of(:privacy) }
       it { is_expected.to allow_mass_assignment_of(:author_id) }
     end
@@ -24,11 +24,11 @@ module Socializer
 
     context 'validations' do
       it { is_expected.to validate_presence_of(:activity_author) }
-      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_presence_of(:privacy) }
-      it 'check uniqueness of name' do
+      it 'check uniqueness of display_name' do
         create(:socializer_group)
-        is_expected.to validate_uniqueness_of(:name).scoped_to(:author_id).case_insensitive
+        is_expected.to validate_uniqueness_of(:display_name).scoped_to(:author_id).case_insensitive
       end
     end
 
