@@ -28,7 +28,7 @@ module Socializer
     validates :verb, presence: true
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
-    delegate :name, to: :verb, prefix: true
+    delegate :display_name, to: :verb, prefix: true
 
     # Returns true if activity has comments
     #

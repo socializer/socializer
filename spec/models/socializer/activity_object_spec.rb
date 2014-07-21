@@ -133,7 +133,7 @@ module Socializer
       it { expect(results.success?).to eq(true) }
       it { expect(results.activity.actor_id).to eq(actor.guid) }
       it { expect(results.activity.activity_object_id).to eq(activity_object.id) }
-      it { expect(results.activity.verb.name).to eq('share') }
+      it { expect(results.activity.verb.display_name).to eq('share') }
       it { expect(results.activity.activity_field_content).to eq('Share') }
 
       context 'with no content' do

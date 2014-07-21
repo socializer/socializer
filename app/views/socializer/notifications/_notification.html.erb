@@ -13,6 +13,6 @@
       </h1>
     </header>
 
-    <p><%= "Shared with you: #{ notification.activity.object.content }" if notification.activity.activitable_object.note? && notification.activity.verb_name == 'post' %></p>
+    <p><%= "Shared with you: #{ notification.activity.object.content }" if notification.activity.activitable_object.note? && notification.activity.verb_display_name == 'post' %></p>
   </section>
 </article>

@@ -36,7 +36,7 @@ module Socializer
     end
 
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
-    it { is_expected.to delegate_method(:verb_name).to(:verb).as(:name) }
+    it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
 
     # TODO: Test activity.comments? == true
     context '#comments' do
