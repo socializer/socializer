@@ -2,10 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@resetNoteForm = (controller_action) ->
+@resetNoteForm = (reset_content = true) ->
   $('#note_content').removeAttr('style')
-  $('#note_content').val('') if controller_action == 'index'
-  $('#note_actions').hide()
+
+  if reset_content is true
+    $('#note_content').val('')
+    $('#note_actions').hide()
+
+  $('#note_object_ids').tokenInput 'clear'
 
   $('#note_content').on 'click focus', ->
     $('#note_actions').show()
@@ -16,11 +20,9 @@
 jQuery ->
   controller_name = $('body').data('controller')
   controller_action = $('body').data('action')
-  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
-    resetNoteForm(controller_action)
+  reset_content = if controller_action is 'edit' then false else true
 
-    $('#note_cancel').on 'click', ->
-      resetNoteForm(controller_action)
+  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
 
     audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')
@@ -41,3 +43,8 @@ jQuery ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " + item.name + "</li>"
 
     $('.token-input-list').hide()  if (current_id isnt null) and (title is '') or (controller_action == 'edit')
+
+    resetNoteForm(reset_content)
+
+    $('#note_cancel').on 'click', ->
+      resetNoteForm(reset_content)
