@@ -27,7 +27,7 @@ module Socializer
         let(:result) { Verb.by_display_name('post') }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-        it { expect(result.first.name).to eq('post') }
+        it { expect(result.first.display_name).to eq('post') }
 
         context 'when the name is not found' do
           let(:result) { Verb.by_display_name('none') }

@@ -180,10 +180,10 @@ module Socializer
       end
 
       it { expect(person.activity_object.circles.size).to eq(4) }
-      it { expect(circles.find_by(name: 'Friends').name).to eq('Friends') }
-      it { expect(circles.find_by(name: 'Family').name).to eq('Family') }
-      it { expect(circles.find_by(name: 'Acquaintances').name).to eq('Acquaintances') }
-      it { expect(circles.find_by(name: 'Following').name).to eq('Following') }
+      it { expect(circles.find_by(name: 'Friends').display_name).to eq('Friends') }
+      it { expect(circles.find_by(name: 'Family').display_name).to eq('Family') }
+      it { expect(circles.find_by(name: 'Acquaintances').display_name).to eq('Acquaintances') }
+      it { expect(circles.find_by(name: 'Following').display_name).to eq('Following') }
     end
   end
 end
