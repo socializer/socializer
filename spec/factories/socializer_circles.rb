@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_circle, class: Socializer::Circle do
-    sequence(:name) { |n| "Friends no#{n}" }
+    sequence(:display_name) { |n| "Friends no#{n}" }
     content 'This is some content'
     association :activity_author, factory: :socializer_activity_object_person
 

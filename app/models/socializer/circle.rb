@@ -5,7 +5,7 @@ module Socializer
   class Circle < ActiveRecord::Base
     include ObjectTypeBase
 
-    attr_accessible :name, :content
+    attr_accessible :display_name, :content
 
     # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
@@ -14,7 +14,7 @@ module Socializer
     has_many   :activity_contacts, through: :ties
 
     # Validations
-    validates :name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
+    validates :display_name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
 
     # Class Methods
 
