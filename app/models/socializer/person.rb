@@ -87,11 +87,11 @@ module Socializer
       type = type.to_s.tableize
       return Person.none unless respond_to?(type)
 
-      result = send(type).select(:name).guids
+      result = send(type).select(:display_name).guids
       return result if query.blank?
 
       klass = "Socializer::#{type.classify}".constantize
-      result.where(klass.arel_table[:name].matches("%#{query}%"))
+      result.where(klass.arel_table[:display_name].matches("%#{query}%"))
     end
 
     # Collection of {Socializer::Authentication authentications} that the user owns

@@ -65,7 +65,7 @@ module Socializer
       class_name = 'active' if helpers.current_page?(helpers.stream_path(provider: provider, id: item_id))
 
       helpers.content_tag(:li) do
-        helpers.link_to(item.name, helpers.stream_path(provider: provider, id: item_id), class: class_name)
+        helpers.link_to(item.display_name, helpers.stream_path(provider: provider, id: item_id), class: class_name)
       end
     end
   end
