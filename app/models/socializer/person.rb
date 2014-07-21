@@ -36,9 +36,6 @@ module Socializer
     # Validations
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
-    # Aliases
-    alias_attribute :name, :display_name
-
     # Class Methods
 
     # Used to build Audience.audience_list
