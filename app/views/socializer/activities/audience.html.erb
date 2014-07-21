@@ -1,19 +1,9 @@
 <ul class="list-unstyled">
   <% @object_ids.each do |object| %>
-
     <% if object == 'public' %>
-
       <li>Anyone can see this</li>
-
-    <% elsif object.person? %>
-
-      <li><%= object.activitable.display_name %></li>
-
     <% else %>
-
-      <li><%= object.activitable.name %></li>
-
+      <li><%= object.activitable.display_name %></li>
     <% end %>
-
   <% end %>
 </ul>
