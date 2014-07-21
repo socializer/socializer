@@ -50,7 +50,7 @@ module Socializer
     def self.audience_list(query)
       return none if query.blank?
       # DISCUSS: Do we need display_name in the select?
-      select(:display_name, 'display_name AS name').guids.where(arel_table[:display_name].matches("%#{query}%"))
+      select(:display_name, "#{table_name}.display_name AS name").guids.where(arel_table[:display_name].matches("%#{query}%"))
     end
 
     def self.create_with_omniauth(auth)
