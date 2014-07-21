@@ -144,7 +144,7 @@ module Socializer
       privacy_circles = privacy.find_value(:circles).value
       privacy_limited = privacy.find_value(:limited).value
 
-      query = joins(:audiences, :verb).merge(Verb.by_name(verbs_of_interest)).where(target_id: nil)
+      query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).where(target_id: nil)
 
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table

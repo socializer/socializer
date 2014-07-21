@@ -22,15 +22,15 @@ module Socializer
     end
 
     context 'scopes' do
-      context 'by_name' do
-        before { create(:socializer_verb, name: 'post') }
-        let(:result) { Verb.by_name('post') }
+      context 'by_display_name' do
+        before { create(:socializer_verb, display_name: 'post') }
+        let(:result) { Verb.by_display_name('post') }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.first.name).to eq('post') }
 
         context 'when the name is not found' do
-          let(:result) { Verb.by_name('none') }
+          let(:result) { Verb.by_display_name('none') }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.present?).to be(false) }

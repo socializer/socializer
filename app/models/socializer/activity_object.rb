@@ -51,8 +51,8 @@ module Socializer
       people = []
       query  = Activity.joins(:verb).where(activity_object_id: id)
 
-      activities_likes   = query.merge(Verb.by_name('like'))
-      activities_unlikes = query.merge(Verb.by_name('unlike'))
+      activities_likes   = query.merge(Verb.by_display_name('like'))
+      activities_unlikes = query.merge(Verb.by_display_name('unlike'))
 
       activities_likes.each do |activity|
         people << activity.actor
