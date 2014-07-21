@@ -160,6 +160,7 @@ module Socializer
              .or(audience[:activity_object_id].in(viewer_id)))
            .or(arel_table[:actor_id].eq(viewer_id)))
 
+      # # rubocop:disable Lint/BlockAlignment, Style/Blocks
       # query.where { (audiences.privacy.eq(privacy_public)) |
       #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
       #   ((audiences.privacy.eq(privacy_limited)) & (
@@ -168,6 +169,7 @@ module Socializer
       #     audiences.activity_object_id.in(viewer_id)
       #   )) |
       #   (actor_id.eq(viewer_id)) }
+      # # rubocop:enable Lint/BlockAlignment, Style/Blocks
     end
     private_class_method :build_query
 

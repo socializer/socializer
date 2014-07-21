@@ -25,19 +25,7 @@ RegexpLiteral:
 SingleSpaceBeforeFirstArg:
   Enabled: false
 
-# CLEANUP: Clean these up
-
-# CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
-# Needed for squeel
-# BlockAlignment:
-#   Enabled: false
-
-# CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
-# Needed for squeel
-# Blocks:
-#   Enabled: false
-
-Documentation:
+Style/Documentation:
   Enabled: false
 
 LineLength:
