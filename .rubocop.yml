@@ -15,22 +15,23 @@ AllCops:
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: true
 
-AlignHash:
+Style/AlignHash:
   Exclude:
     - 'config/initializers/simple_form.rb'
-RegexpLiteral:
+
+Style/RegexpLiteral:
   Exclude:
     - '*.gemspec'
 
-SingleSpaceBeforeFirstArg:
+Style/SingleSpaceBeforeFirstArg:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-LineLength:
+Style/LineLength:
   # Max: 120
   Enabled: false
 
-MethodLength:
+Style/MethodLength:
   Enabled: false
