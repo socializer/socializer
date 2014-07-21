@@ -87,7 +87,9 @@ module Socializer
       type = type.to_s.tableize
       return Person.none unless respond_to?(type)
 
-      result = send(type).select(:display_name).guids
+      type_class = send(type)
+      # DISCUSS: Do we need display_name in the select?
+      result     = type_class.select(:display_name, "#{type_class.table_name}.display_name AS name").guids
       return result if query.blank?
 
       klass = "Socializer::#{type.classify}".constantize
