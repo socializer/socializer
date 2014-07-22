@@ -62,12 +62,12 @@ module Socializer
     #
     # @return [Socializer::Notification]
     def self.create_notification(activity, contact_id)
-      notification = Notification.new do |notification|
+      object = Notification.new do |notification|
         notification.activity = activity
         notification.activity_object = ActivityObject.find_by(id: contact_id)
       end
 
-      notification.save!
+      object.save!
     end
     private_class_method :create_notification
 

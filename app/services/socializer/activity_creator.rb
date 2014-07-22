@@ -17,17 +17,17 @@ module Socializer
     #
     # @return [OpenStruct]
     def self.create!(actor_id:, activity_object_id:, target_id: nil, verb:, object_ids: nil, content: nil)
-      activity = Activity.create! do |a|
-        a.actor_id           = actor_id
-        a.activity_object_id = activity_object_id
-        a.target_id          = target_id if target_id.present?
-        a.verb               = Verb.find_or_create_by(display_name: verb)
+      object = Activity.create! do |activity|
+        activity.actor_id           = actor_id
+        activity.activity_object_id = activity_object_id
+        activity.target_id          = target_id if target_id.present?
+        activity.verb               = Verb.find_or_create_by(display_name: verb)
 
-        a.build_activity_field(content: content) if content.present?
-        a.add_audience(object_ids) if object_ids.present?
+        activity.build_activity_field(content: content) if content.present?
+        activity.add_audience(object_ids) if object_ids.present?
       end
 
-      OpenStruct.new(activity: activity, success?: activity.persisted?)
+      OpenStruct.new(activity: object, success?: object.persisted?)
     end
   end
 end
