@@ -19,6 +19,9 @@ module Socializer
     # @param current_user [Socializer::Person]
     #
     # @return [String] the html needed to display the like/unlike link
+
+    # TODO: Need to take into account the like/unlike for comments. Need to be able to pass the style in for the btn
+    #       and the icon
     def link_to_like_or_unlike(current_user)
       return unless current_user
 
