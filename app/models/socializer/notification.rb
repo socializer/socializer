@@ -3,9 +3,6 @@
 #
 module Socializer
   class Notification < ActiveRecord::Base
-    # Increment the number of unread notifications
-    after_save { activity_object.increment_unread_notifications_count }
-
     default_scope { order(created_at: :desc) }
 
     attr_accessible :read
@@ -17,6 +14,10 @@ module Socializer
     # Validations
     validates :activity_id, presence: true
     validates :activity_object_id, presence: true
+
+    # Callbacks
+    # Increment the number of unread notifications
+    after_save { activity_object.increment_unread_notifications_count }
 
     # Class methods - Public
 
