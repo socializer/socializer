@@ -17,7 +17,7 @@
       <div class='pull-right'>
         <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted') %>
         <%# Like / Unlike button %>
-        <%= comment.activity_object.decorate.link_to_like_or_unlike(current_user) %>
+        <%= comment.activity_object.decorate.link_to_like_or_unlike(current_user: current_user) %>
 
         <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted') %>
         <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted') %>

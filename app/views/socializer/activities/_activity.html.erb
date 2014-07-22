@@ -37,7 +37,7 @@
     <footer class='media-body-footer'>
       <div class='btn-group'>
         <%# Like / Unlike button %>
-        <%= activity.activity_object.decorate.link_to_like_or_unlike(current_user) %>
+        <%= activity.activity_object.decorate.link_to_like_or_unlike(current_user: current_user) %>
 
         <%# Comment button %>
         <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
