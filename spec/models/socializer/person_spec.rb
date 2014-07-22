@@ -142,10 +142,10 @@ module Socializer
 
     context '#avatar_url' do
       it 'when the provider is Facebook, LinkedIn, or Twitter' do
-        %w( FACEBOOK LINKEDIN TWITTER ).each do |p|
-          person = create(:socializer_person, avatar_provider: p)
-          person.authentications.create(provider: p.downcase, image_url: "http://#{p.downcase}.com")
-          expect(person.avatar_url).to include(p.downcase)
+        %w( FACEBOOK LINKEDIN TWITTER ).each do |provider|
+          person = create(:socializer_person, avatar_provider: provider)
+          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com")
+          expect(person.avatar_url).to include(provider.downcase)
         end
       end
 
@@ -160,14 +160,14 @@ module Socializer
     end
 
     it 'accepts known avatar_provider' do
-      %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |p|
-        expect(build(:socializer_person, avatar_provider: p)).to be_valid
+      %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |provider|
+        expect(build(:socializer_person, avatar_provider: provider)).to be_valid
       end
     end
 
     it 'rejects unknown avatar_provider' do
-      %w( IDENTITY TEST DUMMY OTHER ).each do |p|
-        expect(build(:socializer_person, avatar_provider: p)).to be_invalid
+      %w( IDENTITY TEST DUMMY OTHER ).each do |provider|
+        expect(build(:socializer_person, avatar_provider: provider)).to be_invalid
       end
     end
 
