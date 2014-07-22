@@ -16,7 +16,7 @@ module Socializer
 
     # Builds the like or unlike link
     #
-    # @param current_user [Socializer::Person]
+    # @param current_user: [Socializer::Person]
     #
     # @return [String] the html needed to display the like/unlike link
 
