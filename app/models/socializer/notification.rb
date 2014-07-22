@@ -29,10 +29,11 @@ module Socializer
     def self.create_for_activity(activity)
       # Get all ties related to the audience of the activity
       potential_contact_id = get_potential_contact_id(activity.id)
-      potential_contact_id.each do |t|
-        next unless person_in_circle?(t.contact_id, activity.activitable_actor.id)
+
+      potential_contact_id.each do |tie|
+        next unless person_in_circle?(tie.contact_id, activity.activitable_actor.id)
         # If the contact has the author of the activity in one of his circle.
-        create_notification(activity, t.contact_id)
+        create_notification(activity, tie.contact_id)
       end
     end
 
@@ -61,9 +62,9 @@ module Socializer
     #
     # @return [Socializer::Notification]
     def self.create_notification(activity, contact_id)
-      notification = Notification.new do |n|
-        n.activity = activity
-        n.activity_object = ActivityObject.find_by(id: contact_id)
+      notification = Notification.new do |notification|
+        notification.activity = activity
+        notification.activity_object = ActivityObject.find_by(id: contact_id)
       end
 
       notification.save!
