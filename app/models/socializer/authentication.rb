@@ -8,6 +8,7 @@ module Socializer
     # Relationships
     belongs_to :person
 
+    # Callbacks
     before_destroy :make_sure_its_not_the_last_one
 
     private
