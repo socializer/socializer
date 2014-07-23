@@ -193,7 +193,7 @@ module Socializer
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false).merge(Group.with_privacy(:private))
+      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false).merge(Group.private)
     end
 
     # The location/url of the persons avatar
