@@ -36,6 +36,16 @@ module Socializer
       build_audience_list_array(OpenStruct.new(people: people, circles: circles, groups: groups))
     end
 
+    # This method is a shorthand for the enumerize find_value(value).value method(s)
+    #
+    # @param privacy: [String]
+    # @param privacy: [Symbol]
+    #
+    # @return [String]
+    def self.privacy_value(privacy:)
+      self.privacy.find_value(privacy).value
+    end
+
     # Returns a {Hash} containing the value and text for the privacy level
     #
     # @example
