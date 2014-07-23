@@ -14,14 +14,6 @@
           <li><%= link_to('Delete', comment.model.object, method: :delete, remote: true) if current_user?(comment.actor) %></li>
         </ul>
       </div>
-      <div class='pull-right'>
-        <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted') %>
-        <%# Like / Unlike button %>
-        <%= comment.activity_object.decorate.link_to_like_or_unlike(current_user: current_user) %>
-
-        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted') %>
-        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted') %>
-      </div>
 
       <h1>
         <%= link_to(comment.actor.display_name, stream_path(provider: :people, id: comment.actor.id)) %>
@@ -32,5 +24,15 @@
     </header>
 
     <p><%= comment.model.object.content %></p>
+
+    <footer class='media-body-footer'>
+      <div class='btn-group'>
+        <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted') %>
+        <%# Like / Unlike button %>
+        <%= comment.activity_object.decorate.link_to_like_or_unlike(current_user: current_user) %>
+        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted') %>
+        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted') %>
+      </div>
+    </footer>
   </section>
 </article>
