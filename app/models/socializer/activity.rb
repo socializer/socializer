@@ -76,8 +76,9 @@ module Socializer
     # @param object_ids [Array<Integer>] List of audiences to target
     def add_audience(object_ids)
       object_ids  = object_ids.split(',') if %w(Fixnum String).include?(object_ids.class.name)
-      limited     = Audience.privacy.find_value(:limited).value
-      not_limited = %W(#{Audience.privacy.find_value(:public).value} #{Audience.privacy.find_value(:circles).value})
+      privacy     = Audience.privacy
+      limited     = privacy.find_value(:limited).value
+      not_limited = %W(#{privacy.find_value(:public).value} #{privacy.find_value(:circles).value})
 
       object_ids.each do |object_id|
         privacy  = not_limited.include?(object_id) ? object_id : limited
