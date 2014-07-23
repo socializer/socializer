@@ -149,12 +149,13 @@ module Socializer
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
       viewer_literal ||= Arel::SqlLiteral.new("#{viewer_id}")
+      privacy_field  ||= audience[:privacy]
 
       # TODO: Test: Generate the same SQL as below
-      query.where(audience[:privacy].eq(privacy_public)
-           .or(audience[:privacy].eq(privacy_circles)
+      query.where(privacy_field.eq(privacy_public)
+           .or(privacy_field.eq(privacy_circles)
              .and(viewer_literal.in(build_circles_subquery)))
-           .or(audience[:privacy].eq(privacy_limited)
+           .or(privacy_field.eq(privacy_limited)
              .and(viewer_literal.in(build_limited_circle_subquery))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
              .or(audience[:activity_object_id].in(viewer_id)))
