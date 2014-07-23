@@ -62,7 +62,6 @@ module Socializer
         image_url = auth_info.image
 
         if image_url.nil?
-          image_url = ''
           user.avatar_provider = 'GRAVATAR'
         else
           user.avatar_provider = auth.provider.upcase
