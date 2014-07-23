@@ -41,6 +41,11 @@ module Socializer
     it { is_expected.to respond_to(:leave) }
     it { is_expected.to respond_to(:member?) }
 
+    context '.privacy_value' do
+      it { expect { Group.privacy_value(privacy: :none) }.to raise_error(NoMethodError) }
+      it { expect(Group.privacy_value(privacy: :public)).to eq(Group.privacy.find_value(:public).value) }
+    end
+
     context 'when group is public' do
       let(:public_group) { create(:socializer_group, privacy: :public) }
       let(:person) { create(:socializer_person) }

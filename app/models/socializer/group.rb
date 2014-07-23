@@ -31,7 +31,6 @@ module Socializer
 
     # Class Methods
 
-
     # This method is a shorthand for the enumerize find_value(value).value method(s)
     #
     # @param privacy: [String]
