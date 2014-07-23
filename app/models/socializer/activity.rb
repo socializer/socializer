@@ -140,10 +140,9 @@ module Socializer
       verbs_of_interest = %w(post share)
 
       # privacy levels
-      privacy         = Audience.privacy
-      privacy_public  = privacy.find_value(:public).value
-      privacy_circles = privacy.find_value(:circles).value
-      privacy_limited = privacy.find_value(:limited).value
+      privacy_public  = Audience.privacy_value(privacy: :public)
+      privacy_circles = Audience.privacy_value(privacy: :circles)
+      privacy_limited = Audience.privacy_value(privacy: :limited)
 
       query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).where(target_id: nil)
 
