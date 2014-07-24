@@ -17,9 +17,6 @@ module Socializer
     # Builds the like or unlike link
     #
     # @return [String] the html needed to display the like/unlike link
-
-    # TODO: Need to take into account the like/unlike for comments. Need to be able to pass the style in for the btn
-    #       and the icon
     def link_to_like_or_unlike
       return unless helpers.current_user
 
@@ -38,22 +35,18 @@ module Socializer
     end
 
     def like_or_unlike_variables
-      return variables_if_user_likes if helpers.current_user.likes?(model)
-      variables_if_user_does_not_like
-    end
+      return like_or_unlike_openstruct unless helpers.current_user.likes?(model)
 
-    def variables_if_user_likes
       path       = helpers.stream_unlike_path(model)
-      link_class = 'btn btn-danger'
+      link_class = 'btn-danger'
+      tooltip    = 'unlike'
+      verb       = :delete
 
-      OpenStruct.new(path: path, verb: :delete, link_class: link_class, tooltip: helpers.t('socializer.shared.unlike'))
+      like_or_unlike_openstruct(path: path, verb: verb, link_class: link_class, tooltip: tooltip)
     end
 
-    def variables_if_user_does_not_like
-      path       = helpers.stream_like_path(model)
-      link_class = 'btn btn-default'
-
-      OpenStruct.new(path: path, verb: :post, link_class: link_class, tooltip: helpers.t('socializer.shared.like'))
+    def like_or_unlike_openstruct(path: helpers.stream_like_path(model), verb: :post, link_class: 'btn-default', tooltip: 'like')
+      OpenStruct.new(path: path, verb: verb, link_class: "btn #{link_class}", tooltip: helpers.t("socializer.shared.#{tooltip}"))
     end
   end
 end
