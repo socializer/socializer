@@ -7,12 +7,21 @@ module Socializer
 
     context 'link_to_like_or_unlike' do
       context 'to return nil when no current_user' do
-        it { expect(decorated_activity_object.link_to_like_or_unlike(current_user: nil)).to eq(nil) }
+        before do
+          allow(helper).to receive(:current_user).and_return(nil)
+        end
+
+        it { expect(decorated_activity_object.link_to_like_or_unlike).to eq(nil) }
       end
 
       context 'with current_user' do
-        let(:person) { create(:socializer_person) }
-        let(:result) { decorated_activity_object.link_to_like_or_unlike(current_user: person) }
+        before do
+          person = create(:socializer_person)
+          allow(helper).to receive(:current_user).and_return(person)
+        end
+
+        let(:person) { Person.first }
+        let(:result) { decorated_activity_object.link_to_like_or_unlike }
 
         context 'does not like' do
           let(:url) { stream_like_path(activity_object) }
