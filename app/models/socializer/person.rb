@@ -60,12 +60,7 @@ module Socializer
         user.display_name = auth_info.name
         user.email = auth_info.email
         image_url = auth_info.image
-
-        if image_url.blank?
-          user.avatar_provider = 'GRAVATAR'
-        else
-          user.avatar_provider = auth.provider.upcase
-        end
+        user.avatar_provider = image_url.blank? ? 'GRAVATAR' : auth.provider.upcase
 
         user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
       end
@@ -93,7 +88,7 @@ module Socializer
       result     = type_class.select(:display_name, "#{type_class.table_name}.display_name AS name").guids
       return result if query.blank?
 
-      klass = "Socializer::#{type.classify}".constantize
+      klass = type_class.name.constantize
       result.where(klass.arel_table[:display_name].matches("%#{query}%"))
     end
 
