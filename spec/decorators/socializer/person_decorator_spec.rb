@@ -48,6 +48,11 @@ module Socializer
         let(:result) { decorated_person.image_tag_avatar(alt: 'Different Text') }
         it { expect(result).to have_selector("img [alt='Different Text'] [src*=gravatar]") }
       end
+
+      context 'with the title argument' do
+        let(:result) { decorated_person.image_tag_avatar(title: 'Title Text') }
+        it { expect(result).to have_selector("img [alt='Avatar'] [src*=gravatar] [title='Title Text']") }
+      end
     end
 
     context 'toolbar_stream_links' do

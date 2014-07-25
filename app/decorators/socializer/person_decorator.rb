@@ -25,8 +25,8 @@ module Socializer
     # @param alt: 'Avatar' [String]
     #
     # @return [String]  An HTML image tag
-    def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar')
-      helpers.image_tag(model.avatar_url, size: size, class: css_class, alt: alt)
+    def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar', title: nil)
+      helpers.image_tag(model.avatar_url, size: size, class: css_class, alt: alt, title: title)
     end
 
     # Builds the links for the shared toolbar
