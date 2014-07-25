@@ -18,6 +18,38 @@ module Socializer
       end
     end
 
+    context 'image_tag_avatar' do
+      let(:person) { create(:socializer_person) }
+      let(:decorated_person) { PersonDecorator.new(person) }
+
+      context 'with no image_url' do
+        let(:result) { decorated_person.image_tag_avatar }
+        it { expect(result).to have_selector('img [alt=Avatar] [src*=gravatar]') }
+      end
+
+      context 'with the size argument' do
+        context 'with Width x Height' do
+          let(:result) { decorated_person.image_tag_avatar(size: '50x100') }
+          it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [width='50'] [height='100']") }
+        end
+
+        context 'with number' do
+          let(:result) { decorated_person.image_tag_avatar(size: '100') }
+          it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [width='100'] [height='100']") }
+        end
+      end
+
+      context 'with css class' do
+        let(:result) { decorated_person.image_tag_avatar(css_class: 'img') }
+        it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [class='img']") }
+      end
+
+      context 'with the alt argument' do
+        let(:result) { decorated_person.image_tag_avatar(alt: 'Different Text') }
+        it { expect(result).to have_selector("img [alt='Different Text'] [src*=gravatar]") }
+      end
+    end
+
     context 'toolbar_stream_links' do
       let(:person) { create(:socializer_person) }
       let(:decorated_person) { PersonDecorator.new(person) }

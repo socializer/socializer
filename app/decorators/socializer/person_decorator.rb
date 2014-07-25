@@ -18,6 +18,17 @@ module Socializer
       model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
     end
 
+    # Creates an image tag for the persons avatar
+    #
+    # @param size: nil [String]
+    # @param class: nil [String]
+    # @param alt: 'Avatar' [String]
+    #
+    # @return [String]  An HTML image tag
+    def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar')
+      helpers.image_tag(model.avatar_url, size: size, class: css_class, alt: alt)
+    end
+
     # Builds the links for the shared toolbar
     #
     # @return [String] the html needed to display the toolbar links
