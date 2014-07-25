@@ -2,8 +2,7 @@
 <ul class="small-contact-list">
   <% current_user.contacts.each do |contact| %>
     <li>
-      <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4, /activities/_sidebar 6 -->
-      <%= link_to(contact.decorate.image_tag_avatar(title: contact.display_name), stream_path(provider: :people, id: contact.id)) %>
+      <%= contact.decorate.link_to_avatar %>
     </li>
   <% end %>
 </ul>
