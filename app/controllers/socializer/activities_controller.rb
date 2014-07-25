@@ -44,7 +44,7 @@ module Socializer
     def set_provider_variables(provider, id)
       return unless %w( circles people groups ).include?(provider)
 
-      value       = "Socializer::#{provider.classify}".constantize.find_by(id: id)
+      value       = "Socializer::#{provider.classify}".constantize.find_by(id: id).decorate
       @title      = value.display_name if value.respond_to?(:display_name)
       @current_id = value.guid
 
