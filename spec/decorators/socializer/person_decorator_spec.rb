@@ -25,6 +25,7 @@ module Socializer
       context 'with no image_url' do
         let(:result) { decorated_person.image_tag_avatar }
         it { expect(result).to have_selector('img [alt=Avatar] [src*=gravatar]') }
+        it { expect(result).to include(person.avatar_url) }
       end
 
       context 'with the size argument' do
