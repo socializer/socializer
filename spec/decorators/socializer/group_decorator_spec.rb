@@ -1,4 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe GroupDecorator do
+module Socializer
+  RSpec.describe GroupDecorator do
+  end
 end
