@@ -3,7 +3,7 @@
 </h3>
 
 <p>
-  <%= image_tag(person.avatar_url, size: '190x190', class: 'img-responsive') %>
+  <%= person.image_tag_avatar(size:'190x190', css_class: 'img-responsive') %>
 </p>
 
 <p>
@@ -13,15 +13,15 @@
 <p>In <%= person.display_name %>'s circles (<%= person.contacts.size %>):</p>
 <ul class='small-contact-list'>
   <% person.contacts.each do |contact| %>
-  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4 -->
-  <li><%= link_to image_tag(contact.avatar_url, title: contact.display_name), stream_path(provider: :people, id: contact.id) %>
+  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4, /activities/_sidebar 6 -->
+  <li><%= link_to(contact.decorate.image_tag_avatar(title: contact.display_name), stream_path(provider: :people, id: contact.id)) %>
   <% end %>
 </ul>
 
 <p>Have <%= person.display_name %> in circles (<%= person.contact_of.size %>):</p>
 <ul class='small-contact-list'>
   <% person.contact_of.each do |person| %>
-  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4 -->
-  <li><%= link_to image_tag(person.avatar_url, title: person.display_name), stream_path(provider: :people, id: person.id) %>
+  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4, /activities/_sidebar 6 -->
+  <li><%= link_to(person.decorate.image_tag_avatar(title: person.display_name), stream_path(provider: :people, id: person.id)) %>
   <% end %>
 </ul>

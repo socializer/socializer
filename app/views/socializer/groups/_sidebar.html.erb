@@ -1,7 +1,7 @@
 <h3><%= title %></h3>
 <ul class="small-contact-list">
 <% group.members.each do |member| %>
-  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4 -->
-  <li><%= link_to image_tag(member.avatar_url, title: member.display_name), stream_path(provider: :people, id: member.id) %>
+  <!-- DUPLICATION: /people/_sidebar 16, 24, /groups/_sidebar 4, /activities/_sidebar 6 -->
+  <li><%= link_to(member.decorate.image_tag_avatar(title: member.display_name), stream_path(provider: :people, id: member.id)) %>
 <% end %>
 </ul>
