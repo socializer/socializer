@@ -29,6 +29,13 @@ module Socializer
       helpers.image_tag(model.avatar_url, size: size, class: css_class, alt: alt, title: title)
     end
 
+    # Creates a link to the persons profile with their avatar as the content
+    #
+    # @return [String] An HTML a tag
+    def link_to_avatar
+      helpers.link_to(image_tag_avatar(title: model.display_name), helpers.stream_path(provider: :people, id: model.id))
+    end
+
     # Builds the links for the shared toolbar
     #
     # @return [String] the html needed to display the toolbar links

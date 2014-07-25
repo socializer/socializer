@@ -55,6 +55,15 @@ module Socializer
       end
     end
 
+    context 'link_to_avatar' do
+      let(:person) { create(:socializer_person) }
+      let(:decorated_person) { PersonDecorator.new(person) }
+      let(:result) { decorated_person.link_to_avatar }
+
+      it { expect(result).to have_link('', href: helpers.stream_path(provider: :people, id: person.id)) }
+      it { expect(result).to include(decorated_person.image_tag_avatar(title: decorated_person.display_name)) }
+    end
+
     context 'toolbar_stream_links' do
       let(:person) { create(:socializer_person) }
       let(:decorated_person) { PersonDecorator.new(person) }
