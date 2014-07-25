@@ -14,7 +14,7 @@ module Socializer
     # Format the birthdate attribute
     #
     # @return [String]
-    def birthday
+    def birthdate
       model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
     end
 

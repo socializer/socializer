@@ -8,13 +8,13 @@ module Socializer
 
     context 'birthdate' do
       context 'not specified' do
-        it { expect(decorated_person.birthday).to be nil }
+        it { expect(decorated_person.birthdate).to be nil }
       end
 
       context 'specified' do
         let(:person) { build(:socializer_person, birthdate: Time.now - 10.years) }
 
-        it { expect(decorated_person.birthday).to eq(person.birthdate.to_s(:long_ordinal)) }
+        it { expect(decorated_person.birthdate).to eq(person.birthdate.to_s(:long_ordinal)) }
       end
     end
 
