@@ -21,7 +21,7 @@ module Socializer
     # Creates an image tag for the persons avatar
     #
     # @param size: nil [String]
-    # @param class: nil [String]
+    # @param css_class: nil [String]
     # @param alt: 'Avatar' [String]
     # @param title: nil [String]
     #
