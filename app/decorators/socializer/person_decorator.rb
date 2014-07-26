@@ -23,6 +23,7 @@ module Socializer
     # @param size: nil [String]
     # @param class: nil [String]
     # @param alt: 'Avatar' [String]
+    # @param title: nil [String]
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar', title: nil)
