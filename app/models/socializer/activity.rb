@@ -139,12 +139,12 @@ module Socializer
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
+      query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).where(target_id: nil)
+
       # privacy levels
       privacy_public  = Audience.privacy_value(privacy: :public)
       privacy_circles = Audience.privacy_value(privacy: :circles)
       privacy_limited = Audience.privacy_value(privacy: :limited)
-
-      query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).where(target_id: nil)
 
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
