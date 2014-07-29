@@ -79,7 +79,8 @@ module Socializer
          .where(socializer_audiences: { activity_id: activity_id })
          .flatten.uniq
 
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      #        joins/includes
       # Tie.select(:contact_id)
       #    .joins(circle: { activity_object: :audiences })
       #    .where(circle: { activity_object: { audiences: { activity_id: activity_id } } })
@@ -96,7 +97,8 @@ module Socializer
                     .where(id: parent_contact_id, socializer_ties: { contact_id: child_contact_id })
                     .present?
 
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      #        joins/includes
       # ActivityObject.select(:id)
       #               .joins(circles: :ties)
       #               .where(id: parent_contact_id, circles: { ties: { contact_id: child_contact_id } })
