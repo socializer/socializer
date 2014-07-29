@@ -44,9 +44,12 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] a collection of {Socializer::Activity} objects
     def comments
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
-      # @comments ||= children.joins(:activitable_object).where(activity_objects: { activitable_type: 'Socializer::Comment' })
-      @comments ||= children.joins(:activitable_object).where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      #        joins/includes
+      # @comments ||= children.joins(:activitable_object)
+      #                       .where(activity_objects: { activitable_type: 'Socializer::Comment' })
+      @comments ||= children.joins(:activitable_object)
+                            .where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
     end
 
     # The {Socializer::Person} that performed the activity.
@@ -93,7 +96,8 @@ module Socializer
     # @example
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
     #
-    # @param  provider: nil [String] <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>, <tt>groups</tt>
+    # @param  provider: nil [String] <tt>nil</tt>, <tt>activities</tt>, <tt>people</tt>, <tt>circles</tt>,
+    #                                <tt>groups</tt>
     # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #
@@ -121,7 +125,8 @@ module Socializer
     # this is a group. display everything that was posted to this group as audience
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      #        joins/includes
       # query.where(audiences: { activity_object_id: group_id }).distinct
       build_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
     end
@@ -184,7 +189,8 @@ module Socializer
       # The arel_table method is technically private since it is marked :nodoc
       person   ||= Person.arel_table
       ao       ||= ActivityObject.arel_table
-      subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id]).and(ao[:activitable_type].eq(Person.name)))
+      subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id])
+                     .and(ao[:activitable_type].eq(Person.name)))
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
       Circle.select(:id).where(author_id: subquery).arel
 
@@ -225,7 +231,8 @@ module Socializer
                          .join(membership).on(membership[:group_id].eq(group[:id]))
                          .where(membership[:member_id].eq(viewer_id))
 
-      # ActivityObject.select { id }.joins { activitable(Group).memberships }.where { socializer_memberships.member_id.eq(viewer_id) }
+      # ActivityObject.select { id }.joins { activitable(Group).memberships }
+      #               .where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :build_limited_group_subquery
   end
