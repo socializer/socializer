@@ -23,7 +23,10 @@ module Socializer
       content   = like_or_unlike_content
       variables = like_or_unlike_variables
 
-      helpers.link_to(content, variables.path, method: variables.verb, remote: true, class: variables.link_class, title: variables.tooltip)
+      helpers.link_to(content, variables.path, method: variables.verb,
+                                               remote: true,
+                                               class: variables.link_class,
+                                               title: variables.tooltip)
     end
 
     private
@@ -46,7 +49,8 @@ module Socializer
     end
 
     def like_or_unlike_openstruct(path: helpers.stream_like_path(model), verb: :post, link_class: 'btn-default', tooltip: 'like')
-      OpenStruct.new(path: path, verb: verb, link_class: "btn #{link_class}", tooltip: helpers.t("socializer.shared.#{tooltip}"))
+      tooltip = helpers.t("socializer.shared.#{tooltip}")
+      OpenStruct.new(path: path, verb: verb, link_class: "btn #{link_class}", tooltip: tooltip)
     end
   end
 end
