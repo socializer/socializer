@@ -13,14 +13,25 @@ module Socializer
     extend Enumerize
     include ObjectTypeBase
 
-    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 }, default: :gravatar, predicates: true, scope: true
+    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 },
+    #                             default: :gravatar, predicates: true, scope: true
 
     attr_accessible :display_name, :email, :language, :avatar_provider, :tagline, :introduction, :bragging_rights,
                     :occupation, :skills, :gender, :looking_for_friends, :looking_for_dating, :looking_for_relationship,
                     :looking_for_networking, :birthdate, :relationship, :other_names
 
     enumerize :gender, in: { unknown: 0, female: 1, male: 2 }, default: :unknown, predicates: true, scope: true
-    enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2, engaged: 3, married: 4, complicated: 5, open: 6, widowed: 7, domestic: 8, civil: 9 }, default: :unknown, predicates: true, scope: true
+    enumerize :relationship, in: { unknown: 0,
+                                   single: 1,
+                                   relationship: 2,
+                                   engaged: 3,
+                                   married: 4,
+                                   complicated: 5,
+                                   open: 6,
+                                   widowed: 7,
+                                   domestic: 8,
+                                   civil: 9 },
+                             default: :unknown, predicates: true, scope: true
 
     # Relationships
     has_many :authentications
@@ -46,11 +57,14 @@ module Socializer
     # @param query [String] Used to filter the audience list
     #
     # @return [ActiveRecord::NullRelation] If query is nil or '', Person.none is returned
-    # @return [ActiveRecord::Relation] If a query is provided the display_name and guid for all records that match the query
+    # @return [ActiveRecord::Relation] If a query is provided the display_name and guid
+    # for all records that match the query
     def self.audience_list(query)
       return none if query.blank?
       # DISCUSS: Do we need display_name in the select?
-      select(:display_name, "#{table_name}.display_name AS name").guids.where(arel_table[:display_name].matches("%#{query}%"))
+      select(:display_name, "#{table_name}.display_name AS name").guids
+        .where(arel_table[:display_name]
+        .matches("%#{query}%"))
     end
 
     def self.create_with_omniauth(auth)
@@ -149,9 +163,11 @@ module Socializer
     end
 
     def contact_of
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying joins/includes
+      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      #        joins/includes
       # @contact_of ||= Circle.joins(:ties).where(ties: { contact_id: guid }).map { |circle| circle.author }.uniq
-      @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid }).map { |circle| circle.author }.uniq
+      @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid })
+                            .map { |circle| circle.author }.uniq
     end
 
     # A list of activities the user likes
@@ -163,7 +179,11 @@ module Socializer
     def likes
       verbs_of_interest = %w(like unlike)
 
-      query = Activity.joins(:verb).where(actor_id: activity_object.id).where(target_id: nil).merge(Verb.by_display_name(verbs_of_interest))
+      query = Activity.joins(:verb)
+                      .where(actor_id: activity_object.id)
+                      .where(target_id: nil)
+                      .merge(Verb.by_display_name(verbs_of_interest))
+
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
     end
 
@@ -179,7 +199,11 @@ module Socializer
     def likes?(object)
       verbs_of_interest = %w(like unlike)
 
-      query = Activity.joins(:verb).where(activity_object_id: object.id).where(actor_id: activity_object.id).merge(Verb.by_display_name(verbs_of_interest))
+      query = Activity.joins(:verb)
+                      .where(activity_object_id: object.id)
+                      .where(actor_id: activity_object.id)
+                      .merge(Verb.by_display_name(verbs_of_interest))
+
       query.count.odd?
     end
 
@@ -187,7 +211,9 @@ module Socializer
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.joins(:group).where(member_id: guid, active: false).merge(Group.private)
+      @pending_memberships_invites ||= Membership.joins(:group)
+                                                 .where(member_id: guid, active: false)
+                                                 .merge(Group.private)
     end
 
     # The location/url of the persons avatar
@@ -208,10 +234,17 @@ module Socializer
 
     # Add the default circles for the current person
     def add_default_circles
-      circles.create!(display_name: 'Friends',       content: 'Your real friends, the ones you feel comfortable sharing private details with.')
-      circles.create!(display_name: 'Family',        content: 'Your close and extended family, with as many or as few in-laws as you want.')
-      circles.create!(display_name: 'Acquaintances', content: "A good place to stick people you've met but aren't particularly close to.")
-      circles.create!(display_name: 'Following',     content: "People you don't know personally, but whose posts you find interesting.")
+      circles.create!(display_name: 'Friends',
+                      content: 'Your real friends, the ones you feel comfortable sharing private details with.')
+
+      circles.create!(display_name: 'Family',
+                      content: 'Your close and extended family, with as many or as few in-laws as you want.')
+
+      circles.create!(display_name: 'Acquaintances',
+                      content: "A good place to stick people you've met but aren't particularly close to.")
+
+      circles.create!(display_name: 'Following',
+                      content: "People you don't know personally, but whose posts you find interesting.")
     end
 
     private
