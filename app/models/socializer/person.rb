@@ -250,7 +250,8 @@ module Socializer
     private
 
     def social_avatar_url(provider)
-      authentications.find_by(provider: provider).try(:image_url)
+      auth = authentications.by_provider(provider).first
+      auth.image_url if auth.present?
     end
 
     def gravatar_url
