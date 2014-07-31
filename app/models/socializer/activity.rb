@@ -159,7 +159,7 @@ module Socializer
       # TODO: Test: Generate the same SQL as below
       query.where(privacy_field.eq(privacy_public)
            .or(privacy_field.eq(privacy_circles)
-             .and(viewer_literal.in(build_circles_subquery)))
+             .and(viewer_literal.in(circles_subquery)))
            .or(privacy_field.eq(privacy_limited)
              .and(viewer_literal.in(build_limited_circle_subquery))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
@@ -168,7 +168,7 @@ module Socializer
 
       # # rubocop:disable Lint/BlockAlignment, Style/Blocks
       # query.where { (audiences.privacy.eq(privacy_public)) |
-      #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { build_circles_subquery })) |
+      #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { circles_subquery })) |
       #   ((audiences.privacy.eq(privacy_limited)) & (
       #     `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
       #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
@@ -181,7 +181,7 @@ module Socializer
 
     # Audience : CIRCLES
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
-    def self.build_circles_subquery
+    def self.circles_subquery
       # TODO: Verify this works correcly
       # CLEANUP: Remove old code
 
@@ -202,7 +202,7 @@ module Socializer
       #
       # Circle.select { id }.where { author_id.in(`#{subquery}`) }
     end
-    private_class_method :build_circles_subquery
+    private_class_method :circles_subquery
 
     # Audience : LIMITED
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
