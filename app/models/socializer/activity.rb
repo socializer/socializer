@@ -153,8 +153,8 @@ module Socializer
 
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
-      viewer_literal ||= Arel::SqlLiteral.new("#{viewer_id}")
       privacy_field  ||= audience[:privacy]
+      viewer_literal ||= Arel::SqlLiteral.new("#{viewer_id}")
 
       # TODO: Test: Generate the same SQL as below
       query.where(privacy_field.eq(privacy_public)
@@ -162,7 +162,7 @@ module Socializer
              .and(viewer_literal.in(circles_subquery)))
            .or(privacy_field.eq(privacy_limited)
              .and(viewer_literal.in(limited_circle_subquery))
-             .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
+             .or(audience[:activity_object_id].in(limited_group_subquery(viewer_id)))
              .or(audience[:activity_object_id].in(viewer_id)))
            .or(arel_table[:actor_id].eq(viewer_id)))
 
@@ -171,7 +171,7 @@ module Socializer
       #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { circles_subquery })) |
       #   ((audiences.privacy.eq(privacy_limited)) & (
       #     `#{viewer_id}`.in(my { limited_circle_subquery }) |
-      #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
+      #     audiences.activity_object_id.in(my { limited_group_subquery(viewer_id) }) |
       #     audiences.activity_object_id.in(viewer_id)
       #   )) |
       #   (actor_id.eq(viewer_id)) }
@@ -218,7 +218,7 @@ module Socializer
     end
     private_class_method :limited_circle_subquery
 
-    def self.build_limited_group_subquery(viewer_id)
+    def self.limited_group_subquery(viewer_id)
       # TODO: Verify this works correcly
       # CLEANUP: Remove old code
 
@@ -234,6 +234,6 @@ module Socializer
       # ActivityObject.select { id }.joins { activitable(Group).memberships }
       #               .where { socializer_memberships.member_id.eq(viewer_id) }
     end
-    private_class_method :build_limited_group_subquery
+    private_class_method :limited_group_subquery
   end
 end
