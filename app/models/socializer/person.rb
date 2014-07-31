@@ -226,7 +226,7 @@ module Socializer
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
 
       if avatar_provider_array.include?(avatar_provider)
-        social_avatar_url(avatar_provider.downcase)
+        social_avatar_url(avatar_provider)
       else
         gravatar_url
       end
