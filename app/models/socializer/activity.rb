@@ -103,9 +103,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.stream(provider: nil, actor_uid:, viewer_id:)
-      viewer_id = Person.find_by(id: viewer_id).guid
-      return stream_query(viewer_id: viewer_id).distinct if provider.blank?
-      public_send("#{provider.singularize}_stream", actor_uid: actor_uid, viewer_id: viewer_id)
+      person_id = Person.find_by(id: viewer_id).guid
+      return stream_query(viewer_id: person_id).distinct if provider.blank?
+      public_send("#{provider.singularize}_stream", actor_uid: actor_uid, viewer_id: person_id)
     end
 
     # we only want to display a single activity. make sure the viewer is allowed to do so.

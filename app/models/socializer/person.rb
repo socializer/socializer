@@ -94,10 +94,10 @@ module Socializer
     # @return [ActiveRecord::NullRelation] Person.none is returned if type is unknown
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
     def audience_list(type, query)
-      type = type.to_s.tableize
-      return Person.none unless respond_to?(type)
+      tableized_type = type.to_s.tableize
+      return Person.none unless respond_to?(tableized_type)
 
-      type_class = public_send(type)
+      type_class = public_send(tableized_type)
       # DISCUSS: Do we need display_name in the select?
       result     = type_class.select(:display_name, "#{type_class.table_name}.display_name AS name").guids
       return result if query.blank?
