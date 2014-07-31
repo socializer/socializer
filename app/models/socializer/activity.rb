@@ -161,7 +161,7 @@ module Socializer
            .or(privacy_field.eq(privacy_circles)
              .and(viewer_literal.in(circles_subquery)))
            .or(privacy_field.eq(privacy_limited)
-             .and(viewer_literal.in(build_limited_circle_subquery))
+             .and(viewer_literal.in(limited_circle_subquery))
              .or(audience[:activity_object_id].in(build_limited_group_subquery(viewer_id)))
              .or(audience[:activity_object_id].in(viewer_id)))
            .or(arel_table[:actor_id].eq(viewer_id)))
@@ -170,7 +170,7 @@ module Socializer
       # query.where { (audiences.privacy.eq(privacy_public)) |
       #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { circles_subquery })) |
       #   ((audiences.privacy.eq(privacy_limited)) & (
-      #     `#{viewer_id}`.in(my { build_limited_circle_subquery }) |
+      #     `#{viewer_id}`.in(my { limited_circle_subquery }) |
       #     audiences.activity_object_id.in(my { build_limited_group_subquery(viewer_id) }) |
       #     audiences.activity_object_id.in(viewer_id)
       #   )) |
@@ -208,7 +208,7 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
-    def self.build_limited_circle_subquery
+    def self.limited_circle_subquery
       # TODO: Verify this works correcly
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
@@ -216,7 +216,7 @@ module Socializer
       subquery = Circle.select(:id).joins(activity_object: :audiences)
       Tie.select(:contact_id).where(circle_id: subquery).arel
     end
-    private_class_method :build_limited_circle_subquery
+    private_class_method :limited_circle_subquery
 
     def self.build_limited_group_subquery(viewer_id)
       # TODO: Verify this works correcly
