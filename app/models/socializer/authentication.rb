@@ -8,6 +8,9 @@ module Socializer
     # Relationships
     belongs_to :person
 
+    # Named Scopes
+    scope :by_provider, -> provider { where(provider: provider.downcase) }
+
     # Callbacks
     before_destroy :make_sure_its_not_the_last_one
 
