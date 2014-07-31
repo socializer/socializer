@@ -104,13 +104,13 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.stream(provider: nil, actor_uid:, viewer_id:)
       viewer_id = Person.find_by(id: viewer_id).guid
-      return build_query(viewer_id: viewer_id).distinct if provider.blank?
+      return stream_query(viewer_id: viewer_id).distinct if provider.blank?
       public_send("#{provider.singularize}_stream", actor_uid: actor_uid, viewer_id: viewer_id)
     end
 
     # we only want to display a single activity. make sure the viewer is allowed to do so.
     def self.activity_stream(actor_uid:, viewer_id:)
-      build_query(viewer_id: viewer_id).where(id: actor_uid).distinct
+      stream_query(viewer_id: viewer_id).where(id: actor_uid).distinct
     end
 
     # FIXME: Should display notes even if circle has no members and the owner is viewing it.
@@ -119,7 +119,7 @@ module Socializer
       circles  = Circle.select(:id).where(id: actor_uid, author_id: viewer_id)
       followed = Tie.select(:contact_id).where(circle_id: circles)
 
-      build_query(viewer_id: viewer_id).where(actor_id: followed).distinct
+      stream_query(viewer_id: viewer_id).where(actor_id: followed).distinct
     end
 
     # this is a group. display everything that was posted to this group as audience
@@ -128,17 +128,17 @@ module Socializer
       # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
       #        joins/includes
       # query.where(audiences: { activity_object_id: group_id }).distinct
-      build_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
+      stream_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
     end
 
     # this is a user profile. display everything about him that you are allowed to see
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      build_query(viewer_id: viewer_id).where(actor_id: person_id).distinct
+      stream_query(viewer_id: viewer_id).where(actor_id: person_id).distinct
     end
 
     # Class Methods - Private
-    def self.build_query(viewer_id:)
+    def self.stream_query(viewer_id:)
       # CLEANUP: Remove old/unused code
 
       # for an activity to be interesting, it must correspond to one of these verbs
@@ -177,7 +177,7 @@ module Socializer
       #   (actor_id.eq(viewer_id)) }
       # # rubocop:enable Lint/BlockAlignment, Style/Blocks
     end
-    private_class_method :build_query
+    private_class_method :stream_query
 
     # Audience : CIRCLES
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
