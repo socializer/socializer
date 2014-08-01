@@ -2,12 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'      # For RailsPanel
-end
-
 group :test do
   gem 'cucumber-rails', '~> 1.4.1', require: false
   gem 'database_cleaner'
