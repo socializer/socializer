@@ -119,6 +119,7 @@ en:
           other: "%{count} restricted groups"
       show:
         confirm: Are you sure?
+        edit: Edit
         invite: Invite
         leave: Leave
         join: Join
