@@ -2,9 +2,15 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<h2><%= @group.display_name %> (<%= @group.privacy %>)</h2>
+<h2>
+  <div class="pull-right">
+    <%= link_to(t('.edit'), edit_group_path(@group), class: 'btn btn-primary') if current_user?(@group.author) %>
+  </div>
+  <%= @group.display_name %> (<%= @group.privacy %>)
+</h2>
 <p class='lead'><%= @group.tagline %></p>
 <p><%= @group.about %></p>
+<hr>
 
 <% if @group.member?(current_user) %>
   <%= link_to(t('.leave'), @membership, method: :delete, class: 'btn btn-danger', title: "#{t('.tooltip.leave', display_name: current_user.display_name, group_name: @group.display_name)}", data: { confirm: "#{t('.confirm')}" }) %>
