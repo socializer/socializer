@@ -74,24 +74,6 @@ module Socializer
       @target ||= activitable_target.activitable
     end
 
-    # Add an audience to the activity
-    #
-    # @param object_ids [Array<Integer>] List of audiences to target
-    def add_audience(object_ids)
-      object_ids  = object_ids.split(',') if %w(Fixnum String).include?(object_ids.class.name)
-      privacy     = Audience.privacy
-      limited     = Audience.privacy_value(privacy: :limited)
-      not_limited = %W(#{Audience.privacy_value(privacy: :public)} #{Audience.privacy_value(privacy: :circles)})
-
-      object_ids.each do |object_id|
-        privacy  = not_limited.include?(object_id) ? object_id : limited
-        audience = audiences.build(privacy: privacy)
-        audience.activity_object_id = object_id if privacy == limited
-      end
-    end
-
-    # Selects the activities that either the person made, that is public from a person in
-    # one of his circle, or that is shared to one of the circles he is part of.
     #
     # @example
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)

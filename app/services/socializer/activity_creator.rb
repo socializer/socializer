@@ -24,10 +24,27 @@ module Socializer
         activity.verb               = Verb.find_or_create_by(display_name: verb)
 
         activity.build_activity_field(content: content) if content.present?
-        activity.add_audience(object_ids) if object_ids.present?
+        add_audience_to_activity(activity: activity, audience_ids: object_ids) if object_ids.present?
       end
 
       OpenStruct.new(activity: object, success?: object.persisted?)
+    end
+
+    # Add an audience to the activity
+    #
+    # @param activity: [Socializer::Activity] The activity to add the audience to
+    # @param object_ids [Array<Integer>] List of audiences to target
+    def self.add_audience_to_activity(activity:, audience_ids:)
+      audience_ids = audience_ids.split(',') if %w(Fixnum String).include?(audience_ids.class.name)
+      privacy      = Audience.privacy
+      limited      = Audience.privacy_value(privacy: :limited)
+      not_limited  = %W(#{Audience.privacy_value(privacy: :public)} #{Audience.privacy_value(privacy: :circles)})
+
+      audience_ids.each do |audience_id|
+        privacy  = not_limited.include?(audience_id) ? audience_id : limited
+        audience = activity.audiences.build(privacy: privacy)
+        audience.activity_object_id = audience_id if privacy == limited
+      end
     end
   end
 end
