@@ -62,9 +62,9 @@ module Socializer
     def self.audience_list(query)
       return none if query.blank?
       # DISCUSS: Do we need display_name in the select?
-      select(:display_name, "#{table_name}.display_name AS name").guids
-        .where(arel_table[:display_name]
-        .matches("%#{query}%"))
+      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
+      # to simplify this to: type_class.select(:name).guids
+      select(:display_name, "#{table_name}.display_name AS name").guids.display_name_like(query: "%#{query}%")
     end
 
     def self.create_with_omniauth(auth)
@@ -80,9 +80,18 @@ module Socializer
       end
     end
 
+    # Find all records where display_name is like 'query'
+    #
+    # @param query: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.display_name_like(query:)
+      where(arel_table[:display_name].matches(query))
+    end
+
     # Instance Methods
 
-    # [audience_list description]
+    # Build the audience list for the current user with the passed in type and query
     #
     # @example
     #   current_user.audience_list(:circles, nil)
@@ -99,11 +108,12 @@ module Socializer
 
       type_class = public_send(tableized_type)
       # DISCUSS: Do we need display_name in the select?
+      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
+      # to simplify this to: type_class.select(:name).guids
       result     = type_class.select(:display_name, "#{type_class.table_name}.display_name AS name").guids
       return result if query.blank?
 
-      klass = type_class.name.constantize
-      result.where(klass.arel_table[:display_name].matches("%#{query}%"))
+      result.display_name_like(query: "%#{query}%")
     end
 
     # Collection of {Socializer::Authentication authentications} that the user owns

@@ -22,7 +22,7 @@ module Socializer
     # Build the audience list that is used in the notes and shares forms
     #
     # @example
-    #   Audience.audience_list(current_user, query)
+    # Audience.audience_list(current_user, query)
     #
     # @param current_user [Socializer::Person] The currently logged in user
     # @param query [String] Used to filter the audience list. Can be nil

@@ -18,6 +18,15 @@ module Socializer
 
     # Class Methods
 
+    # Find all records where display_name is like 'query'
+    #
+    # @param query: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.display_name_like(query:)
+      where(arel_table[:display_name].matches(query))
+    end
+
     # Instance Methods
     def author
       @author ||= activity_author.activitable

@@ -31,6 +31,15 @@ module Socializer
 
     # Class Methods
 
+    # Find all records where display_name is like 'query'
+    #
+    # @param query: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.display_name_like(query:)
+      where(arel_table[:display_name].matches(query))
+    end
+
     # This method is a shorthand for the enumerize find_value(value).value method(s)
     #
     # @param privacy: [String]
