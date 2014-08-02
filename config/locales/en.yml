@@ -162,8 +162,8 @@ en:
         content_label: Would you like to say something along with the sharing of this
           activity?
     shared:
-      like: 'Like'
-      unlike: 'Unlike'
+      like: Like
+      unlike: Unlike
       main_navigation:
         home: Home
         profile: Profile
