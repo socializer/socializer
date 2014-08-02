@@ -74,6 +74,8 @@ module Socializer
       @target ||= activitable_target.activitable
     end
 
+    # Selects the activities that either the person owns, that are public from a person in
+    # one of his circles, or that are shared to one of the circles he is part of.
     #
     # @example
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
