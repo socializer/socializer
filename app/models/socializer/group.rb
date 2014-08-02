@@ -8,7 +8,7 @@ module Socializer
 
     enumerize :privacy, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
 
-    attr_accessible :display_name, :privacy, :author_id
+    attr_accessible :display_name, :privacy, :author_id, :tagline, :about
 
     # Relationships
     belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'

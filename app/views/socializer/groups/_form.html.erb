@@ -5,6 +5,8 @@
 <%= simple_form_for(group) do |f| %>
   <%= f.input :display_name, input_html: { autofocus: true } %>
   <%= f.input :privacy %>
+  <%= f.input :tagline %>
+  <%= f.input :about %>
 
   <%= f.button :submit, t('.submit'), class: 'btn-primary action-button' %>
 <% end %>
