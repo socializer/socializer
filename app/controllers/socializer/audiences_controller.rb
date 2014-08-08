@@ -7,7 +7,7 @@ module Socializer
 
     def index
       query     = params.fetch(:q) { nil }
-      audiences = Audience.audience_list(current_user, query)
+      audiences = AudienceList.new(person: current_user, query: query).perform
 
       respond_to do |format|
         format.json { render json: audiences }
