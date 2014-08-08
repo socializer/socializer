@@ -37,32 +37,18 @@ module Socializer
     #
     # @return [Array]
     def perform
-      # people  = @query.blank? ? [] : Person.audience_list(@query)
-      # circles = @person.audience_list(:circles, @query)
-      # groups  = @person.audience_list(:groups, @query)
-
-      # build_audience_list_array(people: people, circles: circles, groups: groups)
-
-      # people  = person_list
-      # circles = circle_list
-      # groups  = group_list
-
-      build_audience_list_array(people: person_list, circles: circle_list, groups: group_list)
-    end
-
-    private
-
-    def build_audience_list_array(people:, circles:, groups:)
       audiences = []
 
       audiences << merge_icon(privacy_hash(:public), 'fa-globe')
       audiences << merge_icon(privacy_hash(:circles), 'fa-google-circles')
 
       # TODO: may use the avatar for the user
-      audiences.concat(merge_icon(people, 'fa-user'))
-      audiences.concat(merge_icon(circles, 'fa-google-circles'))
-      audiences.concat(merge_icon(groups, 'fa-users'))
+      audiences.concat(merge_icon(person_list, 'fa-user'))
+      audiences.concat(merge_icon(circle_list, 'fa-google-circles'))
+      audiences.concat(merge_icon(group_list, 'fa-users'))
     end
+
+    private
 
     # Build the list of groups based on the person and the query if present.
     #
@@ -106,8 +92,8 @@ module Socializer
       # DISCUSS: Do we need display_name in the select?
       # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
       # to simplify this to: Person.select(:name).guids
-      Person.select(:display_name, "#{Person.table_name}.display_name AS name")
-            .guids.display_name_like(query: "%#{@query}%")
+      Person.select(:display_name, "#{Person.table_name}.display_name AS name").guids
+            .display_name_like(query: "%#{@query}%")
     end
 
     # Returns a {Hash} containing the value and text for the privacy level
