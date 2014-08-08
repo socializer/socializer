@@ -27,28 +27,6 @@ module Socializer
 
     it { expect(enumerize(:privacy).in(:public, :circles, :limited).with_default(:public)) }
 
-    context '.audience_list' do
-      it 'is a pending example'
-      it { expect { Audience.audience_list }.to raise_error(ArgumentError) }
-
-      context 'current user' do
-        let(:current_user) { create(:socializer_person) }
-        let(:circles) { create(:socializer_person_circles) }
-        let(:groups) { create(:socializer_person_groups) }
-
-        # TODO: Test return values
-        context 'but no query' do
-          it { expect { Audience.audience_list(current_user) }.to raise_error(ArgumentError) }
-          it { expect(Audience.audience_list(current_user, nil)).to be_kind_of(Array) }
-        end
-
-        # TODO: Test return values
-        context 'with query' do
-          it { expect(Audience.audience_list(current_user, 'n')).to be_kind_of(Array) }
-        end
-      end
-    end
-
     context '.privacy_value' do
       it { expect { Audience.privacy_value(privacy: :none) }.to raise_error(NoMethodError) }
       it { expect(Audience.privacy_value(privacy: :public)).to eq(Audience.privacy.find_value(:public).value) }
@@ -58,14 +36,6 @@ module Socializer
       let(:activitable) { audience.activity_object.activitable }
       it { expect(audience.object).to be_a(activitable.class) }
       it { expect(audience.object).to eq(activitable) }
-    end
-
-    context 'privacy_hash returns a hash' do
-      let(:public_hash) { { id: 'public', name: 'Public' } }
-      it { expect(Audience.privacy_hash(:public)).to be_a(Hash) }
-      it { expect(Audience.privacy_hash(:public)).to eq(public_hash) }
-      it { expect(Audience.privacy_hash('Public')).to eq(public_hash) }
-      it { expect(Audience.privacy_hash(:circles)).to_not eq(public_hash) }
     end
   end
 end
