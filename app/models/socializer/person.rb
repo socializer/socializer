@@ -49,24 +49,6 @@ module Socializer
 
     # Class Methods
 
-    # Used to build Audience.audience_list
-    #
-    # @example
-    #   Person.audience_list(query)
-    #
-    # @param query [String] Used to filter the audience list
-    #
-    # @return [ActiveRecord::NullRelation] If query is nil or '', Person.none is returned
-    # @return [ActiveRecord::Relation] If a query is provided the display_name and guid
-    # for all records that match the query
-    def self.audience_list(query)
-      return none if query.blank?
-      # DISCUSS: Do we need display_name in the select?
-      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
-      # to simplify this to: type_class.select(:name).guids
-      select(:display_name, "#{table_name}.display_name AS name").guids.display_name_like(query: "%#{query}%")
-    end
-
     def self.create_with_omniauth(auth)
       auth_info = auth.info
 
@@ -90,31 +72,6 @@ module Socializer
     end
 
     # Instance Methods
-
-    # Build the audience list for the current user with the passed in type and query
-    #
-    # @example
-    #   current_user.audience_list(:circles, nil)
-    #   current_user.audience_list('circles', nil)
-    #
-    # @param type [Symbol/String] [description]
-    # @param query [String] [description]
-    #
-    # @return [ActiveRecord::NullRelation] Person.none is returned if type is unknown
-    # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
-    def audience_list(type, query)
-      tableized_type = type.to_s.tableize
-      return Person.none unless respond_to?(tableized_type)
-
-      type_class = public_send(tableized_type)
-      # DISCUSS: Do we need display_name in the select?
-      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
-      # to simplify this to: type_class.select(:name).guids
-      result     = type_class.select(:display_name, "#{type_class.table_name}.display_name AS name").guids
-      return result if query.blank?
-
-      result.display_name_like(query: "%#{query}%")
-    end
 
     # Collection of {Socializer::Authentication authentications} that the user owns
     #
