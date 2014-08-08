@@ -17,6 +17,20 @@ module Socializer
       @query  = query
     end
 
+    # Class Methods
+
+    # Create the audience list
+    #
+    # @param person: [Socializer:Person] the person to build the list for
+    # @param query: nil [String] Used to filter the audience list.
+    #
+    # @return [Array]
+    def self.perform(person:, query: nil)
+      AudienceList.new(person: person, query: query).perform
+    end
+
+    # Instance Methods
+
     # Create the audience list
     #
     # @return [Array]
