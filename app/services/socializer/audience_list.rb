@@ -13,6 +13,8 @@ module Socializer
     #
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
+      fail(ArgumentError, 'person can not be blank') if person.blank?
+
       @person = person
       @query  = query
     end
