@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('enumerize',            '~> 0.8.0')
   spec.add_dependency('omniauth',             '~> 1.2.2')
   spec.add_dependency('omniauth-identity',    '~> 1.1.1')
-  spec.add_dependency('omniauth-facebook',    '~> 1.6.0')
+  spec.add_dependency('omniauth-facebook',    '~> 2.0.0')
   spec.add_dependency('omniauth-linkedin',    '~> 0.2.0')
   spec.add_dependency('omniauth-openid',      '~> 1.0.1')
   spec.add_dependency('omniauth-twitter',     '~> 1.0.1')
