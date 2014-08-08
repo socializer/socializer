@@ -42,7 +42,7 @@ module Socializer
       circles = @person.audience_list(:circles, @query)
       groups  = @person.audience_list(:groups, @query)
 
-      build_audience_list_array(OpenStruct.new(people: people, circles: circles, groups: groups))
+      build_audience_list_array(people: people, circles: circles, groups: groups)
     end
 
     private
@@ -62,16 +62,16 @@ module Socializer
       { id: privacy.value, name: privacy.text }
     end
 
-    def build_audience_list_array(audience_list)
+    def build_audience_list_array(people:, circles:, groups:)
       audiences = []
 
       audiences << merge_icon(privacy_hash(:public), 'fa-globe')
       audiences << merge_icon(privacy_hash(:circles), 'fa-google-circles')
 
       # TODO: may use the avatar for the user
-      audiences.concat(merge_icon(audience_list.people, 'fa-user'))
-      audiences.concat(merge_icon(audience_list.circles, 'fa-google-circles'))
-      audiences.concat(merge_icon(audience_list.groups, 'fa-users'))
+      audiences.concat(merge_icon(people, 'fa-user'))
+      audiences.concat(merge_icon(circles, 'fa-google-circles'))
+      audiences.concat(merge_icon(groups, 'fa-users'))
     end
 
     def merge_icon(list, icon)
