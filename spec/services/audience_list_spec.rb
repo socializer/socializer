@@ -23,11 +23,13 @@ module Socializer
       let(:groups) { create(:socializer_person_groups) }
 
       context 'with no query' do
-        it { expect(AudienceList.new(person: person, query: nil).perform).to be_kind_of(Array) }
+        let(:audience_list) { AudienceList.new(person: person, query: nil).perform }
+        it { expect(audience_list).to be_kind_of(Array) }
       end
 
       context 'with query' do
-        it { expect(AudienceList.new(person: person, query: 'n').perform).to be_kind_of(Array) }
+        let(:audience_list) { AudienceList.new(person: person, query: 'n').perform }
+        it { expect(audience_list).to be_kind_of(Array) }
       end
     end
   end
