@@ -24,12 +24,26 @@ module Socializer
 
       context 'with no query' do
         let(:audience_list) { AudienceList.new(person: person, query: nil).perform }
+
         it { expect(audience_list).to be_kind_of(Array) }
+
+        it 'has the :id, :name, and :icon keys' do
+          audience_list.each do |item|
+            expect(item.keys).to include(:id, :name, :icon)
+          end
+        end
       end
 
       context 'with query' do
         let(:audience_list) { AudienceList.new(person: person, query: 'n').perform }
+
         it { expect(audience_list).to be_kind_of(Array) }
+
+        it 'has the :id, :name, and :icon keys' do
+          audience_list.each do |item|
+            expect(item.keys).to include(:id, :name, :icon)
+          end
+        end
       end
     end
   end
