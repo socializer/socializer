@@ -18,9 +18,11 @@ module Socializer
     #       check items in the returned array: icons, circles, groups
     context '.perform' do
       it 'is a pending example'
-      let(:person) { create(:socializer_person) }
-      let(:circles) { create(:socializer_person_circles) }
-      let(:groups) { create(:socializer_person_groups) }
+      let(:person) { build(:socializer_person_circles) }
+
+      before do
+        person.add_default_circles
+      end
 
       context 'with no query' do
         let(:audience_list) { AudienceList.new(person: person, query: nil).perform }
