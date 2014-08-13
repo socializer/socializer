@@ -34,6 +34,9 @@ module Socializer
             expect(item.keys).to include(:id, :name, :icon)
           end
         end
+
+        it { expect(audience_list.first).to include(id: 'public', name: 'Public') }
+        it { expect(audience_list.second).to include(id: 'circles', name: 'Circles') }
       end
 
       context 'with query' do
@@ -46,6 +49,9 @@ module Socializer
             expect(item.keys).to include(:id, :name, :icon)
           end
         end
+
+        it { expect(audience_list.first).to include(id: 'public', name: 'Public') }
+        it { expect(audience_list.second).to include(id: 'circles', name: 'Circles') }
       end
     end
   end
