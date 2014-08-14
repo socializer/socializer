@@ -35,7 +35,7 @@ module Socializer
     # @return [Object] The predicate method
     def self.attribute_type_of(*args)
       args.each do |type|
-        define_method("#{type}?") { activitable_type == "Socializer::#{type.capitalize}" }
+        define_method("#{type}?") { activitable_type == "Socializer::#{type.to_s.classify}" }
       end
     end
 
