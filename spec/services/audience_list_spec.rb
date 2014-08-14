@@ -14,8 +14,6 @@ module Socializer
       end
     end
 
-    # TODO: Implement more specific tests
-    #       check items in the returned array: icons, circles, groups
     context '.perform' do
       it 'is a pending example'
       let(:person) { build(:socializer_person_circles) }
@@ -37,12 +35,21 @@ module Socializer
 
         it { expect(audience_list.first).to include(id: 'public', name: 'Public') }
         it { expect(audience_list.second).to include(id: 'circles', name: 'Circles') }
+
+        it 'contains the persons circles' do
+          circles = []
+          circles << 'Public' << 'Circles'
+          circles.concat(person.circles.pluck(:display_name))
+
+          expect(audience_list.all? { |item| circles.include?(item[:name]) }).to be true
+        end
       end
 
       context 'with query' do
-        let(:audience_list) { AudienceList.new(person: person, query: 'n').perform }
+        let(:audience_list) { AudienceList.new(person: person, query: 'friends').perform }
 
         it { expect(audience_list).to be_kind_of(Array) }
+        it { expect(audience_list.count).to eq(3) }
 
         it 'has the :id, :name, and :icon keys' do
           audience_list.each do |item|
@@ -52,6 +59,14 @@ module Socializer
 
         it { expect(audience_list.first).to include(id: 'public', name: 'Public') }
         it { expect(audience_list.second).to include(id: 'circles', name: 'Circles') }
+
+        it 'contains the persons circles' do
+          circles = []
+          circles << 'Public' << 'Circles'
+          circles.concat(person.circles.where(display_name: 'Friends').pluck(:display_name))
+
+          expect(audience_list.all? { |item| circles.include?(item[:name]) }).to be true
+        end
       end
     end
   end
