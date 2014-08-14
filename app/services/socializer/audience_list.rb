@@ -54,10 +54,7 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid
     def circle_list
-      # DISCUSS: Do we need display_name in the select?
-      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
-      # to simplify this to: Circle.select(:name).guids
-      result = @person.circles.select(:display_name, "#{Circle.table_name}.display_name AS name").guids
+      result = @person.circles.select(Circle.arel_table[:display_name].as('name')).guids
       return result if @query.blank?
 
       result.display_name_like(query: "%#{@query}%")
@@ -67,10 +64,7 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid
     def group_list
-      # DISCUSS: Do we need display_name in the select?
-      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
-      # to simplify this to: Group.select(:name).guids
-      result = @person.groups.select(:display_name, "#{Group.table_name}.display_name AS name").guids
+      result = @person.groups.select(Group.arel_table[:display_name].as('name')).guids
       return result if @query.blank?
 
       result.display_name_like(query: "%#{@query}%")
@@ -89,10 +83,7 @@ module Socializer
     # for all records that match the query
     def person_list
       return Person.none if @query.blank?
-      # DISCUSS: Do we need display_name in the select?
-      # Could always add 'alias_attribute :name, :display_name' to the Circle and Group models
-      # to simplify this to: Person.select(:name).guids
-      Person.select(:display_name, "#{Person.table_name}.display_name AS name").guids
+      Person.select(Person.arel_table[:display_name].as('name')).guids
             .display_name_like(query: "%#{@query}%")
     end
 
