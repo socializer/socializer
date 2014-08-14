@@ -54,7 +54,9 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid
     def circle_list
-      result = @person.circles.select(Circle.arel_table[:display_name].as('name')).guids
+      display_name_alias = Circle.arel_table[:display_name].as('name')
+
+      result = @person.circles.select(display_name_alias).guids
       return result if @query.blank?
 
       result.display_name_like(query: "%#{@query}%")
@@ -64,7 +66,9 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] Returns the name and guid
     def group_list
-      result = @person.groups.select(Group.arel_table[:display_name].as('name')).guids
+      display_name_alias = Group.arel_table[:display_name].as('name')
+
+      result = @person.groups.select(display_name_alias).guids
       return result if @query.blank?
 
       result.display_name_like(query: "%#{@query}%")
@@ -83,7 +87,8 @@ module Socializer
     # for all records that match the query
     def person_list
       return Person.none if @query.blank?
-      Person.select(Person.arel_table[:display_name].as('name')).guids
+      display_name_alias = Person.arel_table[:display_name].as('name')
+      Person.select(display_name_alias).guids
             .display_name_like(query: "%#{@query}%")
     end
 
