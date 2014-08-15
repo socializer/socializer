@@ -44,31 +44,25 @@ module Socializer
 
       # TODO: may use the avatar for the user
       audiences.concat(merge_icon(person_list, 'fa-user'))
-      audiences.concat(merge_icon(circle_list, 'fa-google-circles'))
-      audiences.concat(merge_icon(group_list, 'fa-users'))
+      audiences.concat(merge_icon(audience_list(type: :circles), 'fa-google-circles'))
+      audiences.concat(merge_icon(audience_list(type: :groups), 'fa-users'))
     end
 
     private
 
-    # Build the list of groups based on the person and the query if present.
+    # Build the audience list for @person with the passed in type and @query
     #
-    # @return [ActiveRecord::AssociationRelation] Returns the name and guid
-    def circle_list
-      display_name_alias = Circle.arel_table[:display_name].as('name')
-
-      result = @person.circles.select(display_name_alias).guids
-      return result if @query.blank?
-
-      result.display_name_like(query: "%#{@query}%")
-    end
-
-    # Build the list of groups based on the person and the query if present.
+    # @param type [Symbol/String]
     #
-    # @return [ActiveRecord::AssociationRelation] Returns the name and guid
-    def group_list
-      display_name_alias = Group.arel_table[:display_name].as('name')
+    # @return [ActiveRecord::NullRelation] Person.none is returned if type is unknown
+    # @return [ActiveRecord::AssociationRelation] Returns the name and guid of the passed in type
+    def audience_list(type:)
+      tableized_type = type.to_s.tableize
+      return Person.none unless @person.respond_to?(tableized_type)
 
-      result = @person.groups.select(display_name_alias).guids
+      query  = @person.public_send(tableized_type)
+      result = select_display_name_alias_and_guids(query: query)
+
       return result if @query.blank?
 
       result.display_name_like(query: "%#{@query}%")
@@ -87,9 +81,8 @@ module Socializer
     # for all records that match the query
     def person_list
       return Person.none if @query.blank?
-      display_name_alias = Person.arel_table[:display_name].as('name')
-      Person.select(display_name_alias).guids
-            .display_name_like(query: "%#{@query}%")
+      result = select_display_name_alias_and_guids(query: Person)
+      result.display_name_like(query: "%#{@query}%")
     end
 
     # Returns a {Hash} containing the value and text for the privacy level
@@ -105,6 +98,12 @@ module Socializer
       privacy        = Audience.privacy.find_value(privacy_symbol)
 
       { id: privacy.value, name: privacy.text }
+    end
+
+    def select_display_name_alias_and_guids(query:)
+      klass              = query.base_class
+      display_name_alias = klass.arel_table[:display_name].as('name')
+      query.select(display_name_alias).guids
     end
   end
 end
