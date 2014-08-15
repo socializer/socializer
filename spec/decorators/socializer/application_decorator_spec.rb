@@ -11,7 +11,7 @@ module Socializer
       context 'when created_at and updated_at are equal' do
         let(:result) { decorated_activity.created_at_time_ago }
         let(:time_tag) do
-          %Q(<time data-time-ago="moment.js" datetime="#{created_at.iso8601}" title="#{created_at.to_s(:short)}">#{created_at.strftime('%B %e, %Y %l:%M%P')}</time>)
+          %(<time data-time-ago="moment.js" datetime="#{created_at.iso8601}" title="#{created_at.to_s(:short)}">#{created_at.strftime('%B %e, %Y %l:%M%P')}</time>)
         end
 
         it { expect(result).to eq(time_tag) }
@@ -25,7 +25,7 @@ module Socializer
 
         let(:result) { decorated_activity.created_at_time_ago }
         let(:time_tag) do
-          %Q(<time data-time-ago="moment.js" datetime="#{created_at.iso8601}" title="#{created_at.to_s(:short)}&#10;(edited #{updated_at.to_s(:short)})">#{created_at.strftime('%B %e, %Y %l:%M%P')}</time>)
+          %(<time data-time-ago="moment.js" datetime="#{created_at.iso8601}" title="#{created_at.to_s(:short)}&#10;(edited #{updated_at.to_s(:short)})">#{created_at.strftime('%B %e, %Y %l:%M%P')}</time>)
         end
 
         it { expect(result).to eq(time_tag) }
