@@ -29,9 +29,9 @@ Style/SingleSpaceBeforeFirstArg:
 Style/Documentation:
   Enabled: false
 
-Style/LineLength:
+Metrics/LineLength:
   # Max: 120
   Enabled: false
 
-Style/MethodLength:
+Metrics/MethodLength:
   Enabled: false
