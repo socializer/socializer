@@ -103,11 +103,11 @@ module Socializer
     #
     # @return [OpenStruct]
     def share!(actor_id:, object_ids:, content: nil)
-      ActivityCreator.create!(actor_id: actor_id,
-                              activity_object_id: id,
-                              verb: 'share',
-                              object_ids: object_ids,
-                              content: content)
+      ActivityCreator.new(actor_id: actor_id,
+                          activity_object_id: id,
+                          verb: 'share',
+                          object_ids: object_ids,
+                          content: content).perform
     end
 
     def increment_unread_notifications_count
@@ -125,10 +125,10 @@ module Socializer
     def create_like_unlike_activity(actor:, verb:)
       public = Audience.privacy_value(privacy: :public).split(',')
 
-      ActivityCreator.create!(actor_id: actor.activity_object.id,
-                              activity_object_id: id,
-                              verb: verb,
-                              object_ids: public)
+      ActivityCreator.new(actor_id: actor.activity_object.id,
+                          activity_object_id: id,
+                          verb: verb,
+                          object_ids: public).perform
     end
 
     def increment_like_count

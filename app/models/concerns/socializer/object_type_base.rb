@@ -51,11 +51,11 @@ module Socializer
       # creating shares, likes, unlikes, etc
       return if activity_verb.blank?
 
-      ActivityCreator.create!(actor_id: author_id,
-                              activity_object_id: guid,
-                              target_id: activity_target_id,
-                              verb: activity_verb,
-                              object_ids: object_ids)
+      ActivityCreator.new(actor_id: author_id,
+                          activity_object_id: guid,
+                          target_id: activity_target_id,
+                          verb: activity_verb,
+                          object_ids: object_ids).perform
     end
   end
 end
