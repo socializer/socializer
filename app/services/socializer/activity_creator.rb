@@ -57,5 +57,7 @@ module Socializer
       OpenStruct.new(activity: object, success?: object.persisted?)
     end
 
+    # Define the RecordInvlaid class
+    class RecordInvalid < StandardError; end
   end
 end
