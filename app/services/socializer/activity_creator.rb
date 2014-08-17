@@ -19,13 +19,6 @@ module Socializer
 
     # Creates an activity, adds the content and audience if needed.
     #
-    # @param actor_id [Integer]
-    # @param activity_object_id [Integer]
-    # @param target_id [Integer]
-    # @param verb [String] Verb for the activity
-    # @param object_ids [Array<Integer>] List of audiences to target
-    # @param content [String] Text with the share
-    #
     # @return [OpenStruct]
     def perform
       create_activity
