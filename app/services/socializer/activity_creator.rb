@@ -57,8 +57,5 @@ module Socializer
       # TODO: Do we need this? what returns if create fails? Add tests
       OpenStruct.new(activity: object, success?: object.persisted?)
     end
-
-    # Define the RecordInvlaid class
-    class RecordInvalid < StandardError; end
   end
 end
