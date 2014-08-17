@@ -15,7 +15,6 @@ module Socializer
     end
 
     context '.perform' do
-      it 'is a pending example'
       let(:person) { build(:socializer_person_circles) }
 
       before do
