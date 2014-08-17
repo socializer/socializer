@@ -28,17 +28,7 @@ module Socializer
     #
     # @return [OpenStruct]
     def perform
-      object = Activity.create! do |activity|
-        activity.actor_id           = actor_id
-        activity.activity_object_id = activity_object_id
-        activity.target_id          = target_id if target_id.present?
-        activity.verb               = Verb.find_or_create_by(display_name: verb)
-
-        activity.build_activity_field(content: content) if content.present?
-        add_audience_to_activity(activity: activity, audience_ids: object_ids) if object_ids.present?
-      end
-
-      OpenStruct.new(activity: object, success?: object.persisted?)
+      create_activity
     end
 
     private
@@ -58,5 +48,21 @@ module Socializer
         audience.activity_object_id = audience_id if privacy == limited
       end
     end
+
+    def create_activity
+      object = Activity.create! do |activity|
+        activity.actor_id           = actor_id
+        activity.activity_object_id = activity_object_id
+        activity.target_id          = target_id if target_id.present?
+        activity.verb               = Verb.find_or_create_by(display_name: verb)
+
+        activity.build_activity_field(content: content) if content.present?
+        add_audience_to_activity(activity: activity, audience_ids: object_ids) if object_ids.present?
+      end
+
+      # TODO: Do we need this? what returns if create fails? Add tests
+      OpenStruct.new(activity: object, success?: object.persisted?)
+    end
+
   end
 end
