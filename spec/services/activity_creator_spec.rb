@@ -13,8 +13,8 @@ module Socializer
     end
 
     context '.perform' do
-      context 'with no required attributes it should raise ActivityCreator::RecordInvalid' do
-        it { expect { ac.perform }.to raise_error(ActivityCreator::RecordInvalid) }
+      context 'with no required attributes it should raise RecordInvalid' do
+        it { expect { ac.perform }.to raise_error(RecordInvalid) }
       end
 
       context 'with the required attributes' do
