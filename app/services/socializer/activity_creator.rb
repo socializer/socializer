@@ -21,6 +21,7 @@ module Socializer
     #
     # @return [OpenStruct]
     def perform
+      fail(RecordInvalid, "Validation failed: #{errors.full_messages.to_sentence}") unless valid?
       create_activity
     end
 
