@@ -3,7 +3,7 @@
 #
 module Socializer
   #
-  # Service object for creating and Socializer::Activity
+  # Service object for creating a Socializer::Activity
   #
   class ActivityCreator
     include ActiveModel::Model
