@@ -10,6 +10,10 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id'
 
+    # Validations
+    validates :activity_author, presence: true
+    validates :content, presence: true
+
     def author
       @author ||= activity_author.activitable
     end
