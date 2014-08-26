@@ -44,7 +44,7 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] a collection of {Socializer::Activity} objects
     def comments
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
       #        joins/includes
       # @comments ||= children.joins(:activitable_object)
       #                       .where(activity_objects: { activitable_type: 'Socializer::Comment' })
@@ -109,7 +109,7 @@ module Socializer
     # this is a group. display everything that was posted to this group as audience
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
-      # FIXME: Rails 4.2 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
+      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
       #        joins/includes
       # query.where(audiences: { activity_object_id: group_id }).distinct
       stream_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
