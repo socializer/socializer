@@ -2,6 +2,7 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe LikesController, type: :controller do
+    routes { Socializer::Engine.routes }
 
     # Create a user and a activity
     let(:user) { create(:socializer_person) }
@@ -13,7 +14,7 @@ module Socializer
     describe 'Set likable and activity' do
       # Verify that the likable variable is set before create and destroy action
       [:create, :destroy].each do |action|
-        before { post action, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
+        before { post action, id: note_activity.activity_object.id, format: :js }
 
         it 'set likable for action #{action}' do
           expect(assigns(:likable)).to eq(note_activity.activity_object)
@@ -32,7 +33,7 @@ module Socializer
 
     describe 'GET #create' do
       # Create a like
-      before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
+      before { post :create, id: note_activity.activity_object.id, format: :js }
 
       it 'likes the note after liking it' do
         expect(user.likes?(note_activity.activity_object)).to be_truthy
@@ -41,9 +42,9 @@ module Socializer
 
     describe 'GET #destroy' do
       # Create a like
-      before { post :create,  id: note_activity.activity_object.id, format: :js, use_route: :socializer }
+      before { post :create,  id: note_activity.activity_object.id, format: :js }
       # Destroy the like
-      before { post :destroy, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
+      before { post :destroy, id: note_activity.activity_object.id, format: :js }
 
       it 'does not like the note anymore' do
         expect(user.likes?(note_activity.activity_object)).to be_falsey
@@ -52,9 +53,9 @@ module Socializer
 
     describe 'GET #index' do
       # Create a like
-      before { post :create, id: note_activity.activity_object.id, format: :js, use_route: :socializer }
+      before { post :create, id: note_activity.activity_object.id, format: :js }
       # Get the people ou like the activity
-      before { get :index,  id: note_activity.id, format: :html, use_route: :socializer }
+      before { get :index,  id: note_activity.id, format: :html }
 
       it 'return people' do
         expect(assigns(:object_ids)).to be_present

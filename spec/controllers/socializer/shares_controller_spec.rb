@@ -2,6 +2,8 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe SharesController, type: :controller do
+    routes { Socializer::Engine.routes }
+
     describe 'action #create' do
       it 'is a pending example'
     end
@@ -16,7 +18,7 @@ module Socializer
 
     describe 'GET #new' do
       # Visit the new page
-      before { get :new, id: note.activity_object.id, use_route: :socializer }
+      before { get :new, id: note.activity_object.id }
 
       it 'return an activity object' do
         expect(assigns(:activity_object)).to eq(note.activity_object)
