@@ -138,7 +138,7 @@ module Socializer
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
       privacy_field  ||= audience[:privacy]
-      viewer_literal ||= Arel::SqlLiteral.new("#{viewer_id}")
+      viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
 
       # TODO: Test: Generate the same SQL as below
       query.where(privacy_field.eq(privacy_public)
