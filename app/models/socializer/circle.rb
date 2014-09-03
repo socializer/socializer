@@ -33,7 +33,7 @@ module Socializer
     end
 
     def contacts
-      @contacts ||= activity_contacts.map { |ec| ec.activitable }
+      @contacts ||= activity_contacts.map(&:activitable)
     end
 
     def add_contact(contact_id)

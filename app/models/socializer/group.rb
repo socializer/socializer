@@ -84,7 +84,7 @@ module Socializer
     end
 
     def members
-      @members ||= activity_members.map { |em| em.activitable }
+      @members ||= activity_members.map(&:activitable)
     end
 
     def join(person)
