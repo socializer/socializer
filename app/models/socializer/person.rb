@@ -132,9 +132,8 @@ module Socializer
     def contact_of
       # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
       #        joins/includes
-      # @contact_of ||= Circle.joins(:ties).where(ties: { contact_id: guid }).map { |circle| circle.author }.uniq
-      @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid })
-                            .map { |circle| circle.author }.uniq
+      # @contact_of ||= Circle.joins(:ties).where(ties: { contact_id: guid }).map(&:author).uniq
+      @contact_of ||= Circle.joins(:ties).where(socializer_ties: { contact_id: guid }).map(&:author).uniq
     end
 
     # A list of activities the user likes
