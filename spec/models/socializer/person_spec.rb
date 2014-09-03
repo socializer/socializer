@@ -41,7 +41,7 @@ module Socializer
     end
 
     context 'validations' do
-      it { is_expected.to ensure_inclusion_of(:avatar_provider).in_array(%w(TWITTER FACEBOOK LINKEDIN GRAVATAR)) }
+      it { is_expected.to validate_inclusion_of(:avatar_provider).in_array(%w(TWITTER FACEBOOK LINKEDIN GRAVATAR)) }
     end
 
     it '.create_with_omniauth' do
