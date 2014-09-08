@@ -74,7 +74,7 @@ Don't forget to migrate your database:
 The todo list is as follows :
 * Finish core components (people, circles, groups, notes, comments)
 * Complete the activity stream (activities, audience)
-* Add notifications (notify a person when an activity affects him directly)
+* Add notifications (notify a person when an activity affects them directly)
 * Add interaction with other networking sites (authentications)
 * Add a search feature (to find people, groups and notes)
 * Create a comprehensive html structure that can easily be templated in host applications

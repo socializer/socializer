@@ -75,7 +75,7 @@ module Socializer
     end
 
     # Selects the activities that either the person owns, that are public from a person in
-    # one of his circles, or that are shared to one of the circles he is part of.
+    # one of their circles, or that are shared to one of the circles they are part of.
     #
     # @example
     #   Activity.stream(provider: nil, actor_id: current_user.id, viewer_id: current_user.id)
@@ -115,7 +115,7 @@ module Socializer
       stream_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
     end
 
-    # this is a user profile. display everything about him that you are allowed to see
+    # this is a user profile. display everything about them that you are allowed to see
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
       stream_query(viewer_id: viewer_id).where(actor_id: person_id).distinct
