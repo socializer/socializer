@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency('rails',                '~> 4.1.6.rc1')
+  spec.add_dependency('rails',                '~> 4.1.6.rc2')
   spec.add_dependency('jquery-rails')
   # Added 'jquery-ui-rails' for drag and drop
   spec.add_dependency('jquery-ui-rails')
@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
   # spec.add_dependency('squeel',               '~> 1.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.7.0')
+  spec.add_development_dependency('bundler',              '~> 1.7.2')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.9')
   spec.add_development_dependency('rspec-rails',          '~> 3.1.0')
@@ -50,7 +50,7 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',             '~> 2.4.1')
   spec.add_development_dependency('factory_girl_rails',   '~> 4.4.1')
-  spec.add_development_dependency('i18n-tasks',           '~> 0.7.4')
+  spec.add_development_dependency('i18n-tasks',           '~> 0.7.5')
   spec.add_development_dependency('inch',                 '~> 0.4.10')
   spec.add_development_dependency('shoulda-matchers',     '~> 2.7.0')
   spec.add_development_dependency('database_cleaner',     '~> 1.3.0')
