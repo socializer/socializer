@@ -12,7 +12,7 @@
       datetime = $(this).attr('datetime')
       locale   = $('body').data('locale')
 
-      moment.lang locale
+      moment.locale locale
 
       $(this).text moment(datetime).fromNow()
 
