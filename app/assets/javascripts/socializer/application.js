@@ -12,8 +12,7 @@
 //= require jquery.qtip
 //= require jquery.tokeninput
 //= require bootstrap/dropdown
-//= require moment/moment
-//= require moment/langs
+//= require moment/moment-with-locales
 
 $(document).ready(function () {
   // Replace default titles on images with link by qTip tooltips
