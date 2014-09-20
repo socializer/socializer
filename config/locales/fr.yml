@@ -4,6 +4,7 @@ fr:
     model:
       created: "%{model} was successfully created."
       updated: "%{model} was successfully updated."
+      shared: "%{model} was successfully shared."
     activities:
       activity:
         tooltip:
