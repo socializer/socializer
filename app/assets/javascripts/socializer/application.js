@@ -11,6 +11,7 @@
 //= require_tree .
 //= require jquery.qtip
 //= require jquery.tokeninput
+//= require bootstrap/transition
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require moment/moment-with-locales
