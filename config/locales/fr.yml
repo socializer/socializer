@@ -1,6 +1,9 @@
 ---
 fr:
   socializer:
+    model:
+      created: "%{model} was successfully created."
+      updated: "%{model} was successfully updated."
     activities:
       activity:
         tooltip:
