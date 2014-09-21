@@ -19,6 +19,8 @@ module Socializer
 
     def update
       current_user.update!(params[:person])
+
+      flash[:notice] = t('socializer.model.updated', model: 'Person')
       redirect_to current_user
     end
 
