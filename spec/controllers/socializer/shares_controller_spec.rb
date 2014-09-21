@@ -4,10 +4,6 @@ module Socializer
   RSpec.describe SharesController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    describe 'action #create' do
-      it 'is a pending example'
-    end
-
     # Create a user
     let(:user) { create(:socializer_person) }
     # Setting the current user
@@ -29,7 +25,8 @@ module Socializer
       end
     end
 
-    describe 'GET #create' do
+    describe 'POST #create' do
+      it 'is a pending example'
     end
   end
 end
