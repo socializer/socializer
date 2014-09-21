@@ -23,13 +23,6 @@
       ).success ->
         tie_count = parseInt(circle_tie_count.html()) + 1
         circle_tie_count.html tie_count.toString()
-        text = person_name + ' was added to your ' + circle_name + ' circle.'
-        $('.circle-info-message').html text
-        $('.circle-info-message').show()
-        setTimeout (->
-          $('.circle-info-message').hide()
-          return
-        ), 5000
         return
 
       return

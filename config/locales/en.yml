@@ -5,6 +5,8 @@ en:
       create: "%{model} was successfully created."
       update: "%{model} was successfully updated."
       share: "%{model} was successfully shared."
+      tie:
+        create: "%{person_name} was added to your %{circle_name} circle."
     activities:
       activity:
         tooltip:

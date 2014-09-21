@@ -7,8 +7,14 @@ module Socializer
 
     def create
       @circle = Circle.find_by(id: params[:tie][:circle_id])
-      @circle.add_contact(params[:tie][:contact_id])
-      redirect_to @circle
+      tie = @circle.add_contact(params[:tie][:contact_id])
+
+      flash[:notice] = t('socializer.model.tie.create', person_name: tie.contact.display_name, circle_name: @circle.display_name)
+
+      respond_to do |format|
+        # format.html { redirect_to @circle }
+        format.js
+      end
     end
 
     def destroy
