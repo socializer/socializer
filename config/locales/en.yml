@@ -7,6 +7,7 @@ en:
       share: "%{model} was successfully shared."
       tie:
         create: "%{person_name} was added to your %{circle_name} circle."
+        destroy: "%{person_name} was removed from your %{circle_name} circle."
     activities:
       activity:
         tooltip:
