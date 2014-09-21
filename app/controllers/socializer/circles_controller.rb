@@ -30,7 +30,7 @@ module Socializer
       @circle = current_user.circles.build(params[:circle])
       @circle.save!
 
-      flash[:notice] = t('socializer.model.created', model: 'Circle')
+      flash[:notice] = t('socializer.model.create', model: 'Circle')
       redirect_to circles_contacts_path
     end
 
@@ -38,7 +38,7 @@ module Socializer
     def update
       @circle.update!(params[:circle])
 
-      flash[:notice] = t('socializer.model.updated', model: 'Circle')
+      flash[:notice] = t('socializer.model.update', model: 'Circle')
       redirect_to @circle
     end
 

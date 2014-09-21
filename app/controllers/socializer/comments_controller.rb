@@ -17,7 +17,7 @@ module Socializer
       @comment.scope = Audience.privacy.find_value(:public)
       @comment.save!
 
-      flash[:notice] = t('socializer.model.created', model: 'Comment')
+      flash[:notice] = t('socializer.model.create', model: 'Comment')
       redirect_to stream_path
     end
 
@@ -27,7 +27,7 @@ module Socializer
     def update
       @comment.update!(params[:comment])
 
-      flash[:notice] = t('socializer.model.updated', model: 'Comment')
+      flash[:notice] = t('socializer.model.update', model: 'Comment')
       redirect_to stream_path
     end
 

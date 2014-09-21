@@ -21,7 +21,7 @@ module Socializer
 
       Notification.create_for_activity(@activity.model)
 
-      flash[:notice] = t('socializer.model.created', model: 'Note')
+      flash[:notice] = t('socializer.model.create', model: 'Note')
 
       respond_to do |format|
         format.js
@@ -34,7 +34,7 @@ module Socializer
     def update
       @note.update!(params[:note])
 
-      flash[:notice] = t('socializer.model.updated', model: 'Note')
+      flash[:notice] = t('socializer.model.update', model: 'Note')
       redirect_to stream_path
     end
 

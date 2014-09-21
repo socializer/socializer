@@ -30,7 +30,7 @@ module Socializer
       @group = current_user.groups.build(params[:group])
 
       if @group.save
-        flash[:notice] = t('socializer.model.created', model: 'Group')
+        flash[:notice] = t('socializer.model.create', model: 'Group')
         redirect_to @group
       else
         render :new
@@ -41,7 +41,7 @@ module Socializer
     def update
       @group.update!(params[:group])
 
-      flash[:notice] = t('socializer.model.updated', model: 'Group')
+      flash[:notice] = t('socializer.model.update', model: 'Group')
       redirect_to @group
     end
 

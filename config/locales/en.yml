@@ -2,9 +2,9 @@
 en:
   socializer:
     model:
-      created: "%{model} was successfully created."
-      updated: "%{model} was successfully updated."
-      shared: "%{model} was successfully shared."
+      create: "%{model} was successfully created."
+      update: "%{model} was successfully updated."
+      share: "%{model} was successfully shared."
     activities:
       activity:
         tooltip:
