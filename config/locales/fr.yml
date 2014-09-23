@@ -1,13 +1,6 @@
 ---
 fr:
   socializer:
-    model:
-      create: "%{model} was successfully created."
-      update: "%{model} was successfully updated."
-      share: "%{model} was successfully shared."
-      tie:
-        create: "%{person_name} was added to your %{circle_name} circle."
-        destroy: "%{person_name} was removed from your %{circle_name} circle."
     activities:
       activity:
         tooltip:
@@ -15,12 +8,6 @@ fr:
       sidebar:
         header: In my circles
     authentications:
-      toolbar:
-        authentications: Authentifications
-        all: All
-        new: New
-        tooltip:
-          new: Add a new service
       authentication:
         unbind: Unbind
       index:
@@ -29,23 +16,30 @@ fr:
           other: "%{count} bound services"
       new:
         header: Add a new service
-    circles:
-      header: Your circles
-      form:
-        submit: Save changes
       toolbar:
-        circles: Circles
         all: All
-        find: Find people
-        added_you: Have you in circles
-        your_circles: Your circles
-        new: New circle
-      index:
-        new: Create a new circle
-        edit: edit
-        delete: delete
+        authentications: Authentifications
+        new: New
+        tooltip:
+          new: Add a new service
+    circles:
+      contact_of:
+        header:
+          one: 1 person
+          other: "%{count} people"
+      contacts:
+        header: Your circles
       edit:
         header: Edit %{name}
+      find_people:
+        header: Suggestions
+      form:
+        submit: Save changes
+      header: Your circles
+      index:
+        delete: delete
+        edit: edit
+        new: Create a new circle
       new:
         header: New Circle
       show:
@@ -54,21 +48,20 @@ fr:
         tooltip:
           delete: Remove %{display_name} from %{circle_name}
           edit: Edit this circle
-      find_people:
-        header: Suggestions
-      contact_of:
-        header:
-          one: 1 person
-          other: "%{count} people"
-      contacts:
-        header: Your circles
+      toolbar:
+        added_you: Have you in circles
+        all: All
+        circles: Circles
+        find: Find people
+        new: New circle
+        your_circles: Your circles
     comments:
       edit:
         header: Edit comment
-      new:
-        header: New Comment
       form:
         submit: Comment
+      new:
+        header: New Comment
     groups:
       card:
         confirm: Confirm
@@ -77,45 +70,35 @@ fr:
         edit: Edit
         join: Join
         leave: Leave
-      index:
-        header: Discover groups
-      form:
-        submit: Save changes
-      toolbar:
-        groups: Groupes
-        all: All
-        your_groups: Vos groupes
-        memberships: Adhésions
-        pending_invites: Invitations en attente
-        new: New group
-        public: Publiques
-        restricted: Restreints
-        joinable: Joingables
       edit:
         header: Edit %{name}
-      new:
-        header: New Group
+      form:
+        submit: Save changes
+      index:
+        header: Discover groups
+      joinable:
+        header:
+          one: 1 joinable group
+          other: "%{count} joinable groups"
       memberships:
         header:
           one: You belong to 1 group
           other: You belong to %{count} groups
         leave: quitter
+      new:
+        header: New Group
       ownerships:
+        delete: supprimer
+        edit: "éditer"
         header:
           one: You own 1 group
           other: You own %{count} groups
-        edit: "éditer"
-        delete: supprimer
       pending_invites:
+        confirm: confirmer
+        decline: refuser
         header:
           one: You have 1 pending invite
           other: You have %{count} pending invites
-        decline: refuser
-        confirm: confirmer
-      joinable:
-        header:
-          one: 1 joinable group
-          other: "%{count} joinable groups"
       public:
         header:
           one: 1 public group
@@ -128,59 +111,76 @@ fr:
         confirm: Are you sure?
         edit: Edit
         invite: Invite
-        leave: quitter
         join: joindre
+        leave: quitter
         tooltip:
           invite: Invite %{display_name} to join %{group_name}
           leave: Remove %{display_name} from %{group_name}
+      toolbar:
+        all: All
+        groups: Groupes
+        joinable: Joingables
+        memberships: Adhésions
+        new: New group
+        pending_invites: Invitations en attente
+        public: Publiques
+        restricted: Restreints
+        your_groups: Vos groupes
+    model:
+      create: "%{model} was successfully created."
+      share: "%{model} was successfully shared."
+      tie:
+        create: "%{person_name} was added to your %{circle_name} circle."
+        destroy: "%{person_name} was removed from your %{circle_name} circle."
+      update: "%{model} was successfully updated."
     notes:
       form:
-        share_placeholder: Partagez tout ce que vous voulez avec qui vous voulez...
         share: Partager
+        share_placeholder: Partagez tout ce que vous voulez avec qui vous voulez...
       new:
         header: Envoyer un message
     notifications:
-      toolbar:
-        notifications: Notifications
-        all: All
       index:
         header: Notifications
+      toolbar:
+        all: All
+        notifications: Notifications
     people:
       login:
-        welcome: Bienvenue sur Socializer
-        sub_heading: Vous pouvez vous connecter en utilisant les services suivants
-        local_account_query: Vous n'utilisez pas ces services?
         create_account: Créer un compte
+        local_account_query: Vous n'utilisez pas ces services?
         login: Connexion
+        sub_heading: Vous pouvez vous connecter en utilisant les services suivants
+        welcome: Bienvenue sur Socializer
+      sidebar:
+        send_message: Send a message
       toolbar:
-        profile: Profile
         about: About
         edit: Edit
         likes: Likes
+        profile: Profile
         stream: Stream
         tooltip:
           edit: Edit your profile
-      sidebar:
-        send_message: Send a message
+    shared:
+      like: Like
+      main_navigation:
+        circles: Cercles
+        groups: Groupes
+        home: Accueil
+        profile: Profil
+      toolbar:
+        all: All
+        home: Accueil
+        more: More
+      topbar:
+        authentications: Authentifications
+        profile: Profile
+        signout: Déconnexion
+      unlike: Unlike
     shares:
-      new:
-        header: Share this post
       form:
         content_label: Voulez-vous ajouter un commentaire avec le partage de cette
           activité?
-    shared:
-      like: Like
-      unlike: Unlike
-      main_navigation:
-        home: Accueil
-        profile: Profil
-        circles: Cercles
-        groups: Groupes
-      topbar:
-        profile: Profile
-        authentications: Authentifications
-        signout: Déconnexion
-      toolbar:
-        home: Accueil
-        all: All
-        more: More
+      new:
+        header: Share this post
