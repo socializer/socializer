@@ -49,7 +49,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('brakeman',             '~> 2.6.2')
   # spec.add_development_dependency('cucumber-rails',     '~> 1.4.0')
   spec.add_development_dependency('capybara',             '~> 2.4.1')
-  spec.add_development_dependency('factory_girl_rails',   '~> 4.4.1')
+  spec.add_development_dependency('factory_girl_rails',   '~> 4.5.0')
   spec.add_development_dependency('i18n-tasks',           '~> 0.7.7')
   spec.add_development_dependency('inch',                 '~> 0.5.2')
   spec.add_development_dependency('shoulda-matchers',     '~> 2.7.0')
