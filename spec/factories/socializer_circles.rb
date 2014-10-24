@@ -7,7 +7,7 @@ FactoryGirl.define do
     association :activity_author, factory: :socializer_activity_object_person
 
     trait :with_ties do
-      ignore do
+      transient do
         number_of_ties 1
       end
 
