@@ -12,7 +12,7 @@ module Socializer
       end
 
       context 'specified' do
-        let(:person) { build(:socializer_person, birthdate: Time.now - 10.years) }
+        let(:person) { build(:socializer_person, birthdate: Time.zone.now - 10.years) }
 
         it { expect(decorated_person.birthdate).to eq(person.birthdate.to_s(:long_ordinal)) }
       end

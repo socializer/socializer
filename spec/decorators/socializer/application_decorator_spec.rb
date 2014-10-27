@@ -19,7 +19,7 @@ module Socializer
 
       context 'when created_at and updated_at are different' do
         before do
-          decorated_activity.created_at = Time.now - 1.hour
+          decorated_activity.created_at = Time.zone.now - 1.hour
           decorated_activity.save!
         end
 
