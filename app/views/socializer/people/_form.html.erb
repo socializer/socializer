@@ -19,7 +19,7 @@
   <%= f.input :looking_for_relationship, label: 'Relationship' %>
   <%= f.input :looking_for_networking, label: 'Networking' %>
 
-  <%= f.input :birthdate, start_year: Date.today.year - 90, end_year: Date.today.year - 13,  order: [:month, :day, :year] %>
+  <%= f.input :birthdate, start_year: Time.zone.today.year - 90, end_year: Time.zone.today.year - 13,  order: [:month, :day, :year] %>
   <%= f.input :relationship %>
   <%= f.input :other_names %>
 
