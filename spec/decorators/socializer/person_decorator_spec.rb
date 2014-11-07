@@ -24,35 +24,35 @@ module Socializer
 
       context 'with no image_url' do
         let(:result) { decorated_person.image_tag_avatar }
-        it { expect(result).to have_selector('img [alt=Avatar] [src*=gravatar]') }
+        it { expect(result).to have_selector('img[alt=Avatar][src*=gravatar]') }
         it { expect(result).to include(person.avatar_url) }
       end
 
       context 'with the size argument' do
         context 'with Width x Height' do
           let(:result) { decorated_person.image_tag_avatar(size: '50x100') }
-          it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [width='50'] [height='100']") }
+          it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][width='50'][height='100']") }
         end
 
         context 'with number' do
           let(:result) { decorated_person.image_tag_avatar(size: '100') }
-          it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [width='100'] [height='100']") }
+          it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][width='100'][height='100']") }
         end
       end
 
       context 'with css class' do
         let(:result) { decorated_person.image_tag_avatar(css_class: 'img') }
-        it { expect(result).to have_selector("img [alt=Avatar] [src*=gravatar] [class='img']") }
+        it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][class='img']") }
       end
 
       context 'with the alt argument' do
         let(:result) { decorated_person.image_tag_avatar(alt: 'Different Text') }
-        it { expect(result).to have_selector("img [alt='Different Text'] [src*=gravatar]") }
+        it { expect(result).to have_selector("img[alt='Different Text'][src*=gravatar]") }
       end
 
       context 'with the title argument' do
         let(:result) { decorated_person.image_tag_avatar(title: 'Title Text') }
-        it { expect(result).to have_selector("img [alt='Avatar'] [src*=gravatar] [title='Title Text']") }
+        it { expect(result).to have_selector("img[alt='Avatar'][src*=gravatar][title='Title Text']") }
       end
     end
 
@@ -92,7 +92,7 @@ module Socializer
         # TODO: Should be able to use t('.more')
         it { expect(result).to have_link(t('socializer.shared.toolbar.more'), href: '#') }
         it { expect(result).to have_selector('li.dropdown') }
-        it { expect(result).to have_selector("a.dropdown-toggle [data-toggle='dropdown']") }
+        it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
         it { expect(result).to have_selector('ul.dropdown-menu') }
       end
 
@@ -116,7 +116,7 @@ module Socializer
         # TODO: Should be able to use t('.more')
         it { expect(result).to have_link(t('socializer.shared.toolbar.more'), href: '#') }
         it { expect(result).to have_selector('li.dropdown') }
-        it { expect(result).to have_selector("a.dropdown-toggle [data-toggle='dropdown']") }
+        it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
         it { expect(result).to have_selector('ul.dropdown-menu') }
       end
     end
