@@ -188,6 +188,8 @@ $input-color:                    $gray;
 $input-border:                   #d9d9d9;
 //** `<input>` border radius
 $input-border-radius:            $border-radius-small;
+//** Large `.form-control` border radius
+$input-border-radius-large: $border-radius-large !default;
 //** Small `.form-control` border radius
 $input-border-radius-small: $border-radius-small !default;
 
