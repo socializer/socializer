@@ -188,6 +188,9 @@ $input-color:                    $gray;
 $input-border:                   #d9d9d9;
 //** `<input>` border radius
 $input-border-radius:            $border-radius-small;
+//** Small `.form-control` border radius
+$input-border-radius-small: $border-radius-small !default;
+
 //** Border color for inputs on focus
 $input-border-focus:             $brand-primary;
 
