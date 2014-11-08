@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'socializer/version'
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = '~> 2.1.2'
+  spec.required_ruby_version = '~> 2.1.3'
 
   spec.name          = 'socializer'
   spec.version       = Socializer::VERSION
