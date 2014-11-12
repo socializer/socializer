@@ -18,7 +18,7 @@ module Socializer
       let(:person) { build(:socializer_person_circles) }
 
       before do
-        person.add_default_circles
+        AddDefaultCircles.perform(person: person)
       end
 
       context 'with no query' do

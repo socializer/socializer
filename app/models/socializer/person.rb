@@ -198,21 +198,6 @@ module Socializer
       end
     end
 
-    # Add the default circles for the current person
-    def add_default_circles
-      circles.create!(display_name: 'Friends',
-                      content: 'Your real friends, the ones you feel comfortable sharing private details with.')
-
-      circles.create!(display_name: 'Family',
-                      content: 'Your close and extended family, with as many or as few in-laws as you want.')
-
-      circles.create!(display_name: 'Acquaintances',
-                      content: "A good place to stick people you've met but aren't particularly close to.")
-
-      circles.create!(display_name: 'Following',
-                      content: "People you don't know personally, but whose posts you find interesting.")
-    end
-
     private
 
     def social_avatar_url(provider)

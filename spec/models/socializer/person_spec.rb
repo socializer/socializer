@@ -149,20 +149,5 @@ module Socializer
         expect(build(:socializer_person, avatar_provider: provider)).to be_invalid
       end
     end
-
-    context '#add_default_circles' do
-      let(:person) { build(:socializer_person_circles) }
-      let(:circles) { person.activity_object.circles }
-
-      before do
-        person.add_default_circles
-      end
-
-      it { expect(person.activity_object.circles.size).to eq(4) }
-      it { expect(circles.first.display_name).to eq('Friends') }
-      it { expect(circles.second.display_name).to eq('Family') }
-      it { expect(circles.third.display_name).to eq('Acquaintances') }
-      it { expect(circles.fourth.display_name).to eq('Following') }
-    end
   end
 end

@@ -75,7 +75,7 @@ module Socializer
 
       context 'with circles and no memberships' do
         before do
-          person.add_default_circles
+          AddDefaultCircles.perform(person: person)
         end
 
         let(:result) { decorated_person.toolbar_stream_links }
@@ -98,7 +98,7 @@ module Socializer
 
       context 'with no circles, but with memberships' do
         before do
-          person.add_default_circles
+          AddDefaultCircles.perform(person: person)
           create(:socializer_group, author_id: person.id, display_name: 'Group')
         end
 
