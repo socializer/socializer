@@ -8,8 +8,7 @@ module Socializer
   class AddDefaultCircles
     # Initializer
     #
-    # @param person: [Socializer:Person] the person to build the list for
-    # @param query: nil [String] Used to filter the audience list.
+    # @param person: [Socializer:Person] the person to create the default circles for
     #
     # @return [Socializer:AddDefaultCircles] returns an instance of AddDefaultCircles
     def initialize(person:)
