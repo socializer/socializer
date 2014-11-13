@@ -11,6 +11,23 @@ module Socializer
     #     end
     #   end
 
+    # The location/url of the persons avatar
+    #
+    # @example
+    #   current_user.avatar_url
+    #
+    # @return [String]
+    #
+    def avatar_url
+      avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
+
+      if avatar_provider_array.include?(avatar_provider)
+        social_avatar_url(avatar_provider)
+      else
+        gravatar_url
+      end
+    end
+
     # Format the birthdate attribute
     #
     # @return [String]
@@ -27,7 +44,7 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar', title: nil)
-      helpers.image_tag(model.avatar_url, size: size, class: css_class, alt: alt, title: title)
+      helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt, title: title)
     end
 
     # Creates a link to the persons profile with their avatar as the content
@@ -52,6 +69,16 @@ module Socializer
     end
 
     private
+
+    def social_avatar_url(provider)
+      auth = authentications.by_provider(provider).first
+      auth.image_url if auth.present?
+    end
+
+    def gravatar_url
+      return if email.blank?
+      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
+    end
 
     def toolbar_dropdown(list)
       helpers.content_tag(:li, class: 'dropdown') do

@@ -119,25 +119,6 @@ module Socializer
       expect(person).to respond_to(:pending_memberships_invites)
     end
 
-    context '#avatar_url' do
-      it 'when the provider is Facebook, LinkedIn, or Twitter' do
-        %w( FACEBOOK LINKEDIN TWITTER ).each do |provider|
-          person = create(:socializer_person, avatar_provider: provider)
-          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com")
-          expect(person.avatar_url).to include(provider.downcase)
-        end
-      end
-
-      context 'when the provider is gravatar' do
-        it { expect(person.avatar_url).to include('http://www.gravatar.com/avatar/') }
-
-        context 'with a blank email' do
-          let(:person) { build(:socializer_person, email: nil) }
-          it { expect(person.avatar_url).to eq(nil) }
-        end
-      end
-    end
-
     it 'accepts known avatar_provider' do
       %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |provider|
         expect(build(:socializer_person, avatar_provider: provider)).to be_valid

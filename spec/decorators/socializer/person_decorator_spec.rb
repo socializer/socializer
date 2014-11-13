@@ -6,6 +6,28 @@ module Socializer
     let(:person) { build(:socializer_person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
+    context '#avatar_url' do
+      it 'when the provider is Facebook, LinkedIn, or Twitter' do
+        %w( FACEBOOK LINKEDIN TWITTER ).each do |provider|
+          person = create(:socializer_person, avatar_provider: provider)
+          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com")
+          decorated_person = PersonDecorator.new(person)
+
+          expect(decorated_person.avatar_url).to include(provider.downcase)
+        end
+      end
+
+      context 'when the provider is gravatar' do
+        it { expect(decorated_person.avatar_url).to include('http://www.gravatar.com/avatar/') }
+
+        context 'with a blank email' do
+          let(:person) { build(:socializer_person, email: nil) }
+          let(:decorated_person) { PersonDecorator.new(person) }
+          it { expect(decorated_person.avatar_url).to eq(nil) }
+        end
+      end
+    end
+
     context 'birthdate' do
       context 'not specified' do
         it { expect(decorated_person.birthdate).to be nil }
@@ -25,7 +47,7 @@ module Socializer
       context 'with no image_url' do
         let(:result) { decorated_person.image_tag_avatar }
         it { expect(result).to have_selector('img[alt=Avatar][src*=gravatar]') }
-        it { expect(result).to include(person.avatar_url) }
+        it { expect(result).to include(decorated_person.avatar_url) }
       end
 
       context 'with the size argument' do
