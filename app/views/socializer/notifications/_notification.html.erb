@@ -1,6 +1,6 @@
 <article class='media panel <%= classname %>' data-activity-id='<%= notification.activity.guid %>'>
   <section class='media-object'>
-    <%= link_to(image_tag(notification.activity.actor.avatar_url), notification.activity.actor) %>
+    <%= link_to(image_tag(notification.activity.actor.decorate.avatar_url), notification.activity.actor) %>
   </section>
 
   <section class='media-body'>

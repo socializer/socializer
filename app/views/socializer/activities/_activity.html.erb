@@ -1,6 +1,6 @@
 <article class='media panel panel-default' data-activityid="<%= activity.guid %>">
   <section class='media-object'>
-    <%= link_to(image_tag(activity.actor.avatar_url), activity.actor) %>
+    <%= link_to(image_tag(activity.actor.decorate.avatar_url), activity.actor) %>
   </section>
 
   <section class='media-body'>

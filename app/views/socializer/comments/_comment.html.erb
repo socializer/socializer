@@ -1,6 +1,6 @@
 <article class='media media-sm' data-activityid="<%= comment.guid %>">
   <section class='media-object'>
-    <%= link_to(image_tag(comment.actor.avatar_url), comment.actor) %>
+    <%= link_to(image_tag(comment.actor.decorate.avatar_url), comment.actor) %>
   </section>
 
   <section class='media-body'>

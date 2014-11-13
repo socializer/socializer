@@ -32,7 +32,7 @@
 <% if @group.privacy.private? %>
   <h2>Invite members</h2>
   <div class='row'>
-    <% Socializer::Person.all.each do |user| %>
+    <% Socializer::Person.all.decorate.each do |user| %>
       <!-- TODO: Create a partial or use people/mini_card. The partial will need to account for actions -->
       <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= user.guid %>', data-person-name='<%= user.display_name %>'>
         <article class='media panel panel-default'>
