@@ -59,6 +59,7 @@ $media-font-size-h2: $font-size-base;
   h1,
   h2 {
     font-size: $media-font-size-h1;
+    margin-top: .2em;
     margin-bottom: .5em;
 
     a {
@@ -117,6 +118,6 @@ $media-font-size-h2: $font-size-base;
   box-shadow: none;
 
   h1 {
-    margin-top: 8px;
+    margin-top: .1em;
   }
 }
