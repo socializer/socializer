@@ -40,7 +40,7 @@ module Socializer
       comments.present?
     end
 
-    # Retreives the comments for an activity
+    # Retrieves the comments for an activity
     #
     # @return [ActiveRecord::AssociationRelation] a collection of {Socializer::Activity} objects
     def comments
@@ -166,7 +166,7 @@ module Socializer
     # Audience : CIRCLES
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
     def self.circles_subquery
-      # TODO: Verify this works correcly
+      # TODO: Verify this works correctly
       # CLEANUP: Remove old code
 
       # Retrieve the author's unique identifier
@@ -193,7 +193,7 @@ module Socializer
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
     def self.limited_circle_subquery
-      # TODO: Verify this works correcly
+      # TODO: Verify this works correctly
 
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
@@ -203,7 +203,7 @@ module Socializer
     private_class_method :limited_circle_subquery
 
     def self.limited_group_subquery(viewer_id)
-      # TODO: Verify this works correcly
+      # TODO: Verify this works correctly
       # CLEANUP: Remove old code
 
       # The arel_table method is technically private since it is marked :nodoc
