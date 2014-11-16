@@ -16,11 +16,11 @@ module Socializer
       [:create, :destroy].each do |action|
         before { post action, id: note_activity.activity_object.id, format: :js }
 
-        it 'set likable for action #{action}' do
+        it "set likable for action #{action}" do
           expect(assigns(:likable)).to eq(note_activity.activity_object)
         end
 
-        it 'set activity for action #{action}' do
+        it "set activity for action #{action}" do
           expect(assigns(:activity)).to eq(note_activity)
         end
       end
