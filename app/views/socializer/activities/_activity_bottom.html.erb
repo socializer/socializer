@@ -2,9 +2,9 @@
 
   <%# Like / Unlike button %>
   <% if current_user.likes?(activity.activity_object) %>
-    <%= link_to "Unlike", stream_unlike_path(activity.activity_object), method: :delete, remote: true %>
+    <%= link_to 'Unlike', stream_unlike_path(activity.activity_object), method: :delete, remote: true %>
   <% else %>
-    <%= link_to "Like", stream_like_path(activity.activity_object), method: :post, remote: true %>
+    <%= link_to 'Like', stream_like_path(activity.activity_object), method: :post, remote: true %>
   <% end %>
 
   <%# Number of likes %>
@@ -15,13 +15,13 @@
   <%# Comment button %>
   <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
     <span class='separator'></span>
-    <%= link_to "Comment", stream_comment_path(activity) %>
+    <%= link_to 'Comment', stream_comment_path(activity) %>
   <% end %>
 
   <%# Share button %>
   <% if activity.activitable_object.note?  %>
     <span class='separator'></span>
-    <%= link_to "Share", new_stream_share_path(activity.activity_object) %>
+    <%= link_to 'Share', new_stream_share_path(activity.activity_object) %>
   <% end %>
 
   <%# Edit and Delete buttons %>
@@ -46,7 +46,7 @@
     <% elsif activity.activitable_object.activity? %>
 
       <span class='separator'></span>
-      <%= link_to "Delete", activity, method: :delete, remote: true %>
+      <%= link_to 'Delete', activity, method: :delete, remote: true %>
 
     <% end %>
 

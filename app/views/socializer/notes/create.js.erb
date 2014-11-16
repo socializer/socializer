@@ -1,7 +1,7 @@
 if (window.location.href.indexOf('message') > 0) {
   window.location.href = '<%= stream_path %>';
 } else {
-  $('#content').prepend('<%= escape_javascript(render "socializer/shared/flash") %>');
+  $('#content').prepend('<%= escape_javascript(render 'socializer/shared/flash') %>');
   $('<% flash.discard %>')
 
   $('.activities').prepend('<%= escape_javascript(render @activity) %>');
