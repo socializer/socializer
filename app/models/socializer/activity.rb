@@ -174,7 +174,7 @@ module Socializer
       person   ||= Person.arel_table
       ao       ||= ActivityObject.arel_table
       subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id])
-                     .and(ao[:activitable_type].eq(Person.name)))
+                     .and(ao[:activitable_type].eq(Person.name))).to_sql
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
       Circle.select(:id).where(author_id: subquery).arel
 
