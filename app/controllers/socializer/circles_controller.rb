@@ -13,7 +13,8 @@ module Socializer
 
     # GET /circles/1
     def show
-      @users = Person.all.decorate
+      # CLEANUP: does not appear to be needed
+      # @users = Person.all.decorate
     end
 
     # GET /circles/new
