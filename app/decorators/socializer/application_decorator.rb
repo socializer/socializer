@@ -46,7 +46,7 @@ module Socializer
         created_at
       else
         # add `white-space: pre-wrap;` to .qtip-content
-        "#{created_at}&#10;(edited #{updated_at})".html_safe
+        "#{created_at} (edited #{updated_at})".html_safe
       end
     end
   end
