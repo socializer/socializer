@@ -10,6 +10,7 @@
           <span class='fa fa-angle-down fa-lg'></span>
         </a>
         <ul class='dropdown-menu'>
+          <!-- FIXME: activity.object conflicts with draper. object is reserved -->
           <li><%#= link_to('Edit', [:edit, activity.model.object]) if current_user?(activity.actor) %></li>
           <li><%= link_to('Edit', edit_note_path(activity.model.object)) if current_user?(activity.actor) %></li>
           <li><%= link_to('Delete', activity.model.object, method: :delete, remote: true) if current_user?(activity.actor) %></li>
@@ -19,7 +20,8 @@
       <h1>
         <%= link_to(activity.actor.display_name, stream_path(provider: :people, id: activity.actor.id)) %>
         <small class='text-muted'> -
-          <%= link_to(activity.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: 'text-muted') %> -
+          <!-- FIXME: activity.object conflicts with draper. object is reserved -->
+          <%= link_to(activity.model.object.decorate.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.uniq.each do |audience| %>
             <% if audience.privacy.public? %>
