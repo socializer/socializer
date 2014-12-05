@@ -3,6 +3,7 @@
 #
 module Socializer
   class Notification < ActiveRecord::Base
+    # TODO: Remove default_scope. Prevents the Rails 4.2 adequate record caching
     default_scope { order(created_at: :desc) }
 
     attr_accessible :read

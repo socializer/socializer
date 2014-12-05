@@ -5,6 +5,7 @@ module Socializer
   class Activity < ActiveRecord::Base
     include ObjectTypeBase
 
+    # TODO: Remove default_scope. Prevents the Rails 4.2 adequate record caching
     default_scope { order(created_at: :desc) }
 
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
