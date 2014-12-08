@@ -3,18 +3,44 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @addTimeAgoSupport = ->
-  # Use moment.js to mimic the Rails time time_ago_in_words helper
+  # Use moment.js to mimic Google+
   $('time').each ->
     timeago  = $(this).data('time-ago')
 
     # This could also be timeago?, but this is more explicit
-    if timeago is "moment.js"
-      datetime = $(this).attr('datetime')
+    if timeago is 'moment.js'
       locale   = $('body').data('locale')
-
       moment.locale locale
 
-      $(this).text moment(datetime).fromNow()
+      datetime = moment($(this).attr('datetime'))
+
+      $(this).text distance_of_time(datetime)
+
+distance_of_time = (past_date) ->
+  past_date ?= 0
+  today = moment()
+  days_difference = today.diff(past_date, 'days')
+
+  moment.locale 'en',
+    calendar:
+      sameDay: "LT"
+      nextDay: '[Tomorrow] LT'
+      nextWeek: 'll'
+      lastDay: '[Yesterday] LT'
+      lastWeek: 'll'
+      sameElse: 'll'
+
+  moment.locale 'fr',
+    calendar:
+      sameDay: "LT"
+      nextDay: '[Demain] LT'
+      nextWeek: 'll'
+      lastDay: '[Hier] LT'
+      lastWeek: 'll'
+      sameElse: 'll'
+
+  moment(past_date).calendar()
+
 
 @addTooltipSupport = (jQueryElement) ->
   jQueryElement.qtip
