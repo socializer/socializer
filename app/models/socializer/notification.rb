@@ -3,9 +3,6 @@
 #
 module Socializer
   class Notification < ActiveRecord::Base
-    # TODO: Remove default_scope. Prevents the Rails 4.2 adequate record caching
-    default_scope { order(created_at: :desc) }
-
     attr_accessible :read
 
     # Relationships
@@ -15,6 +12,9 @@ module Socializer
     # Validations
     validates :activity_id, presence: true
     validates :activity_object_id, presence: true
+
+    # Named Scopes
+    scope :newest_first, -> { order(created_at: :desc) }
 
     # Callbacks
     # Increment the number of unread notifications

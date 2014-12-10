@@ -119,7 +119,7 @@ module Socializer
     #
     # @return [Socializer::Notification] Returns a collection of {Socializer::Notification notifications}
     def received_notifications
-      @notifications ||= activity_object.notifications
+      @notifications ||= activity_object.notifications.newest_first
     end
 
     # Collection of contacts for the user

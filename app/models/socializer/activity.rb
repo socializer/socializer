@@ -5,9 +5,6 @@ module Socializer
   class Activity < ActiveRecord::Base
     include ObjectTypeBase
 
-    # TODO: Remove default_scope. Prevents the Rails 4.2 adequate record caching
-    default_scope { order(created_at: :desc) }
-
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
 
     # Relationships
@@ -27,6 +24,9 @@ module Socializer
     validates :activitable_actor, presence: true
     validates :activitable_object, presence: true
     validates :verb, presence: true
+
+    # Named Scopes
+    scope :newest_first, -> { order(created_at: :desc) }
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
     delegate :display_name, to: :verb, prefix: true
@@ -89,7 +89,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.stream(provider: nil, actor_uid:, viewer_id:)
       person_id = Person.find_by(id: viewer_id).guid
-      return stream_query(viewer_id: person_id).distinct if provider.blank?
+      return stream_query(viewer_id: person_id).newest_first.distinct if provider.blank?
       public_send("#{provider.singularize}_stream", actor_uid: actor_uid, viewer_id: person_id)
     end
 
