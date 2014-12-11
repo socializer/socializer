@@ -1,5 +1,4 @@
 Socializer::Engine.routes.draw do
-
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   match '/auth/failure' => 'sessions#failure', via: [:get, :post]
   match '/signin' => 'sessions#new', as: :signin,  via: :get
@@ -68,5 +67,4 @@ Socializer::Engine.routes.draw do
   resources :ties,            only: [:create, :destroy]
 
   root to: 'pages#index'
-
 end
