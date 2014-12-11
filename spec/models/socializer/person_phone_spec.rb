@@ -25,6 +25,5 @@ module Socializer
     end
 
     it { expect(enumerize(:category).in(:home, :work).with_default(:home)) }
-
   end
 end

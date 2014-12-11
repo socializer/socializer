@@ -73,6 +73,5 @@ module Socializer
         expect { inactive_membership.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
-
   end
 end

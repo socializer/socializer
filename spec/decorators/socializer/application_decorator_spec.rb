@@ -15,7 +15,6 @@ module Socializer
         it { expect(result).to have_selector("time[datetime='#{created_at.iso8601}']") }
         it { expect(result).to have_selector("time[title='#{created_at.to_s(:short)}']") }
         it { expect(result).to have_selector('time[data-time-ago="moment.js"]') }
-
       end
 
       context 'when created_at and updated_at are different' do

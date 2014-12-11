@@ -204,6 +204,5 @@ module Socializer
         expect { group_with_members.destroy }.to raise_error
       end
     end
-
   end
 end

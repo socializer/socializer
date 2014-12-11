@@ -23,6 +23,5 @@ module Socializer
       it { is_expected.to validate_presence_of(:person) }
       it { is_expected.to validate_presence_of(:url) }
     end
-
   end
 end
