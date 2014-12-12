@@ -54,14 +54,14 @@ Socializer::Engine.routes.draw do
   resources :notifications,   only: [:index, :show]
 
   resources :people,          only: [:index, :show, :edit, :update] do
-    resources :person_addresses,      only: [:create, :update, :destroy]
-    resources :person_contributions,  only: [:create, :update, :destroy]
-    resources :person_educations,     only: [:create, :update, :destroy]
-    resources :person_employments,    only: [:create, :update, :destroy]
-    resources :person_links,          only: [:create, :update, :destroy]
-    resources :person_phones,         only: [:create, :update, :destroy]
-    resources :person_places,         only: [:create, :update, :destroy]
-    resources :person_profiles,       only: [:create, :update, :destroy]
+    resources :addresses,      only: [:create, :update, :destroy], controller: 'people/addresses'
+    resources :contributions,  only: [:create, :update, :destroy], controller: 'people/contributions'
+    resources :educations,     only: [:create, :update, :destroy], controller: 'people/educations'
+    resources :employments,    only: [:create, :update, :destroy], controller: 'people/employments'
+    resources :links,          only: [:create, :update, :destroy], controller: 'people/links'
+    resources :phones,         only: [:create, :update, :destroy], controller: 'people/phones'
+    resources :places,         only: [:create, :update, :destroy], controller: 'people/places'
+    resources :profiles,       only: [:create, :update, :destroy], controller: 'people/profiles'
   end
 
   resources :ties,            only: [:create, :destroy]
