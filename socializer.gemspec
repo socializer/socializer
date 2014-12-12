@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('bootstrap-sass',       '~> 3.3.1.0')
   spec.add_dependency('draper',               '~> 1.4.0')
   spec.add_dependency('elasticsearch-rails',  '~> 0.1.6')
-  spec.add_dependency('enumerize',            '~> 0.8.0')
+  spec.add_dependency('enumerize',            '~> 0.9.0')
   spec.add_dependency('omniauth',             '~> 1.2.2')
   spec.add_dependency('omniauth-identity',    '~> 1.1.1')
   spec.add_dependency('omniauth-facebook',    '~> 2.0.0')
