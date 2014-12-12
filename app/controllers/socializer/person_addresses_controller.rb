@@ -2,7 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  class PersonAddressesController < ApplicationController
+  class AddressesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_person_address, only: [:update, :destroy]
 
