@@ -95,7 +95,7 @@ module Socializer
 
     # we only want to display a single activity. make sure the viewer is allowed to do so.
     def self.activity_stream(actor_uid:, viewer_id:)
-      stream_query(viewer_id: viewer_id).where(id: actor_uid).distinct
+      stream_query(viewer_id: viewer_id).where(socializer_activities: { id: actor_uid }).distinct
     end
 
     # FIXME: Should display notes even if circle has no members and the owner is viewing it.
@@ -104,7 +104,7 @@ module Socializer
       circles  = Circle.select(:id).where(id: actor_uid, author_id: viewer_id)
       followed = Tie.select(:contact_id).where(circle_id: circles)
 
-      stream_query(viewer_id: viewer_id).where(actor_id: followed).distinct
+      stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: followed }).distinct
     end
 
     # this is a group. display everything that was posted to this group as audience
@@ -119,7 +119,7 @@ module Socializer
     # this is a user profile. display everything about them that you are allowed to see
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id: viewer_id).where(actor_id: person_id).distinct
+      stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: person_id }).distinct
     end
 
     # Class Methods - Private
