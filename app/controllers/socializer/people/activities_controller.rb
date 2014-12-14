@@ -7,7 +7,7 @@ module Socializer
       before_action :authenticate_user!
 
       def index
-        id          = params.fetch(:id) { nil }
+        id          = params.fetch(:person_id) { nil }
         @person     = Person.find_by(id: id).decorate
         @title      = @person.display_name
         @current_id = @person.guid
