@@ -4,8 +4,9 @@ Socializer::Engine.routes.draw do
   match '/signin' => 'sessions#new', as: :signin,  via: :get
   match '/signout' => 'sessions#destroy', as: :signout, via: [:get, :delete]
 
+  get '/stream' => 'activities#index', as: :stream
+
   scope '/stream' do
-    get    '(/:provider/:id)' => 'activities#index', as: :stream
     get    '/activities/:id/audience' => 'activities#audience', as: :stream_audience
     get    '/activities/:id/likes' => 'likes#index', as: :stream_likes
     post   '/activities/:id/like' => 'likes#create', as: :stream_like
