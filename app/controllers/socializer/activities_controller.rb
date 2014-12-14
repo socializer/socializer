@@ -14,8 +14,6 @@ module Socializer
       @current_id = nil
       @title      = 'Activity stream'
       @note       = Note.new
-
-      set_provider_variables(provider, id)
     end
 
     def audience
@@ -39,16 +37,6 @@ module Socializer
 
     def set_activity
       @activity = Activity.find_by(id: params[:id])
-    end
-
-    def set_provider_variables(provider, id)
-      return unless %w( circles people groups ).include?(provider)
-
-      value       = "Socializer::#{provider.classify}".constantize.find_by(id: id).decorate
-      @title      = value.display_name if value.respond_to?(:display_name)
-      @current_id = value.guid
-
-      instance_variable_set("@#{provider.singularize}", value)
     end
 
     # REFACTOR: Move out of the controller.
