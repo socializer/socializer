@@ -33,7 +33,7 @@
                 <span class='fa fa-angle-down fa-fw'></span>
               </a>
               <ul class='dropdown-menu'>
-                <li><%= link_to(t('.profile'), stream_path(provider: :people, id: current_user.id)) %></li>
+                <li><%= link_to(t('.profile'), person_activities_path(person_id: current_user.id)) %></li>
                 <li><%= link_to(t('.authentications'), authentications_path) %></li>
                 <li class='divider'></li>
                 <li><%= link_to(t('.signout'), signout_path, method: :delete) %></li>

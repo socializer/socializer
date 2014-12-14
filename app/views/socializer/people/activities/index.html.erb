@@ -1,0 +1,9 @@
+<% content_for :toolbar do %>
+  <%= render 'socializer/people/toolbar', person: @person %>
+<% end %>
+
+<h1><%= @person.display_name %></h1>
+
+<section class='activities'>
+  <%= render @activities %>
+</section>

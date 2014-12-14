@@ -42,7 +42,7 @@
 
           <section class='media-body'>
               <h1>
-                <%= link_to(user.display_name, stream_path(provider: :people, id: user.id)) %>
+                <%= link_to(user.display_name, person_activities_path(person_id: user.id)) %>
               </h1>
               <%= link_to(t('.invite'), invite_membership_path(group_id: @group, user_id: user), class: 'btn btn-xs btn-success', title: "#{t('.tooltip.invite', display_name: user.display_name, group_name: @group.display_name)}") %>
           </section>

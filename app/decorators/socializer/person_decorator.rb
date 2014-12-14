@@ -51,7 +51,7 @@ module Socializer
     #
     # @return [String] An HTML a tag
     def link_to_avatar
-      helpers.link_to(image_tag_avatar(title: model.display_name), helpers.stream_path(provider: :people, id: model.id))
+      helpers.link_to(image_tag_avatar(title: model.display_name), helpers.person_activities_path(person_id: model.id))
     end
 
     # Builds the links for the shared toolbar
@@ -107,11 +107,10 @@ module Socializer
     def toolbar_link(item)
       item       = item.group if item.is_a?(Socializer::Membership)
       item_id    = item.id
-      provider   = item.class.name.demodulize.tableize.to_sym
-      class_name = 'active' if helpers.current_page?(helpers.stream_path(provider: provider, id: item_id))
+      class_name = 'active' if helpers.current_page?(helpers.person_activities_path(person_id: item_id))
 
       helpers.content_tag(:li) do
-        helpers.link_to(item.display_name, helpers.stream_path(provider: provider, id: item_id), class: class_name)
+        helpers.link_to(item.display_name, helpers.person_activities_path(person_id: item_id), class: class_name)
       end
     end
   end

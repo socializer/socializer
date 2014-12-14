@@ -22,7 +22,7 @@
 
         <section class='media-body'>
             <h1>
-              <%= link_to(tie.contact.display_name, stream_path(provider: :people, id: tie.contact.id)) %>
+              <%= link_to(tie.contact.display_name, person_activities_path(person_id: tie.contact.id)) %>
             </h1>
             <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.display_name)}", data: { confirm: "#{t('.confirm')}" }) %>
         </section>

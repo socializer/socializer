@@ -7,7 +7,7 @@
 
     <section class='media-body'>
         <h1>
-          <%= link_to(person.display_name, stream_path(provider: :people, id: person.id)) %>
+          <%= link_to(person.display_name, person_activities_path(person_id: person.id)) %>
         </h1>
     </section>
   </article>
