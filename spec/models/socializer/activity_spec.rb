@@ -56,12 +56,11 @@ module Socializer
 
       # TODO: Test return values
       it { expect { Activity.stream }.to raise_error(ArgumentError) }
-      it { expect(Activity.stream(actor_uid: nil, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.stream(provider: 'activities', actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.stream(provider: 'people', actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.stream(provider: 'circles', actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.stream(provider: 'groups', actor_uid: group.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect { Activity.stream(provider: 'unknown', actor_uid: person.id, viewer_id: person.id) }.to raise_error(NoMethodError) }
+      it { expect(Activity.stream(viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.activity_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.circle_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.group_stream(actor_uid: group.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(Activity.person_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
     end
   end
 end
