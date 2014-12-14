@@ -6,6 +6,14 @@ FactoryGirl.define do
     sequence(:email) { |n| "name#{n}@example.com" }
     avatar_provider 'GRAVATAR'
 
+    trait :english do
+      language 'en'
+    end
+
+    trait :french do
+      language 'fr'
+    end
+
     factory :socializer_person_circles, class: Socializer::Person do
       association :activity_object, factory: :socializer_activity_object_circle
     end
