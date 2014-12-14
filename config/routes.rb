@@ -52,7 +52,11 @@ Socializer::Engine.routes.draw do
   end
 
   resources :comments,        only: [:new, :create, :edit, :update, :destroy]
-  resources :groups
+
+  resources :groups do
+    resources :activities, only: [:index], controller: 'groups/activities'
+  end
+
   resources :memberships,     only: [:create, :destroy]
   resources :notes
   resources :notifications,   only: [:index, :show]
