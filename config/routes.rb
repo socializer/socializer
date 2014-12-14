@@ -43,7 +43,10 @@ Socializer::Engine.routes.draw do
     get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
   end
 
-  resources :activities,      only: [:index, :destroy]
+  resources :activities,   only: [:index, :destroy] do
+    resources :activities, only: [:index], controller: 'activities/activities'
+  end
+
   resources :audiences,       only: [:index]
   resources :authentications, only: [:index, :show, :new, :destroy]
 

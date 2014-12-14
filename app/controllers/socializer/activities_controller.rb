@@ -10,7 +10,7 @@ module Socializer
       id       = params.fetch(:id) { nil }
       provider = params.fetch(:provider) { nil }
 
-      @activities = Activity.stream(provider: provider, actor_uid: id, viewer_id: current_user.id).decorate
+      @activities = Activity.stream(actor_uid: id, viewer_id: current_user.id).decorate
       @current_id = nil
       @title      = 'Activity stream'
       @note       = Note.new

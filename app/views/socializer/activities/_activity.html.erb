@@ -21,7 +21,7 @@
         <%= link_to(activity.actor.display_name, person_activities_path(person_id: activity.actor.id)) %>
         <small class='text-muted'> -
           <!-- FIXME: activity.object conflicts with draper. object is reserved -->
-          <%= link_to(activity.model.object.decorate.created_at_time_ago, stream_path(provider: :activities, id: activity.id), class: 'text-muted') %> -
+          <%= link_to(activity.model.object.decorate.created_at_time_ago, activity_activities_path(activity_id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.uniq.each do |audience| %>
             <% if audience.privacy.public? %>

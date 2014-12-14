@@ -18,7 +18,7 @@
       <h1>
         <%= link_to(comment.actor.display_name, person_activities_path(person_id: comment.actor.id)) %>
         <small class='text-muted'> -
-          <%= link_to(comment.created_at_time_ago, stream_path(provider: :activities, id: comment.id), class: 'text-muted') %>
+          <%= link_to(comment.created_at_time_ago, activity_activities_path(activity_id: comment.id), class: 'text-muted') %>
         </small>
       </h1>
     </header>

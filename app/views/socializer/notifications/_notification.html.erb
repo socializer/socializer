@@ -8,7 +8,7 @@
       <h1>
         <%= link_to(notification.activity.actor.display_name, person_activities_path(person_id: notification.activity.actor.id)) %>
         <small class='text-muted'> -
-          <%= link_to(notification.created_at_time_ago, stream_path(provider: :activities, id: notification.activity.id), class: 'text-muted') %>
+          <%= link_to(notification.created_at_time_ago, activity_activities_path(activity_id: notification.activity.id), class: 'text-muted') %>
         </small>
       </h1>
     </header>
