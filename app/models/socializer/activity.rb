@@ -87,7 +87,7 @@ module Socializer
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
-    def self.stream(actor_uid:, viewer_id:)
+    def self.stream(viewer_id:)
       person_id = Person.find_by(id: viewer_id).guid
       stream_query(viewer_id: person_id).newest_first.distinct
     end

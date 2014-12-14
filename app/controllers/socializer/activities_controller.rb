@@ -7,10 +7,7 @@ module Socializer
     before_action :set_activity, only: [:audience, :destroy]
 
     def index
-      id       = params.fetch(:id) { nil }
-      provider = params.fetch(:provider) { nil }
-
-      @activities = Activity.stream(actor_uid: id, viewer_id: current_user.id).decorate
+      @activities = Activity.stream(viewer_id: current_user.id).decorate
       @current_id = nil
       @title      = 'Activity stream'
       @note       = Note.new
