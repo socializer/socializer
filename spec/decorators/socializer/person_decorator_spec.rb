@@ -104,11 +104,11 @@ module Socializer
         let(:li_count) { person.circles.count + 1 }
 
         it { expect(result.html_safe?).to be true }
-        it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
-        it { expect(result).to have_link('Family', href: '/stream/circles/2') }
-        it { expect(result).to have_link('Acquaintances', href: '/stream/circles/3') }
-        it { expect(result).to have_link('Following', href: '/stream/circles/4') }
-        it { expect(result).not_to have_link('Group', href: '/stream/groups/1') }
+        it { expect(result).to have_link('Friends', href: '/circles/1/activities') }
+        it { expect(result).to have_link('Family', href: '/circles/2/activities') }
+        it { expect(result).to have_link('Acquaintances', href: '/circles/3/activities') }
+        it { expect(result).to have_link('Following', href: '/circles/4/activities') }
+        it { expect(result).not_to have_link('Group', href: '/groups/1/activities') }
 
         it { expect(result).to have_selector('li', count: li_count) }
         # TODO: Should be able to use t('.more')
@@ -128,11 +128,11 @@ module Socializer
         let(:li_count) { person.circles.count + person.groups.count + 1 }
 
         it { expect(result.html_safe?).to be true }
-        it { expect(result).to have_link('Friends', href: '/stream/circles/1') }
-        it { expect(result).to have_link('Family', href: '/stream/circles/2') }
-        it { expect(result).to have_link('Acquaintances', href: '/stream/circles/3') }
-        it { expect(result).to have_link('Following', href: '/stream/circles/4') }
-        it { expect(result).to have_link('Group', href: '/stream/groups/1') }
+        it { expect(result).to have_link('Friends', href: '/circles/1/activities') }
+        it { expect(result).to have_link('Family', href: '/circles/2/activities') }
+        it { expect(result).to have_link('Acquaintances', href: '/circles/3/activities') }
+        it { expect(result).to have_link('Following', href: '/circles/4/activities') }
+        it { expect(result).to have_link('Group', href: '/groups/1/activities') }
 
         it { expect(result).to have_selector('li', count: li_count) }
         # TODO: Should be able to use t('.more')

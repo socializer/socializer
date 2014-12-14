@@ -106,11 +106,12 @@ module Socializer
 
     def toolbar_link(item)
       item       = item.group if item.is_a?(Socializer::Membership)
-      item_id    = item.id
-      class_name = 'active' if helpers.current_page?(helpers.person_activities_path(person_id: item_id))
+      url_prefix = item.class.name.demodulize.downcase
+      url        = helpers.public_send("#{url_prefix}_activities_path", item.id)
+      class_name = 'active' if helpers.current_page?(url)
 
       helpers.content_tag(:li) do
-        helpers.link_to(item.display_name, helpers.person_activities_path(person_id: item_id), class: class_name)
+        helpers.link_to(item.display_name, url, class: class_name)
       end
     end
   end
