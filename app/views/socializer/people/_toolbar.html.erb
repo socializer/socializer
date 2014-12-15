@@ -18,7 +18,7 @@
           <ul class='nav navbar-nav'>
             <li class="<%= 'active' if current_page?(person) | current_page?(edit_person_path(person)) %>"><%= link_to(t('.about'), person) %></li>
             <li class="<%= 'active' if current_page?(person_activities_path(person_id: person.id)) %>"><%= link_to(t('.stream'), person_activities_path(person_id: person.id)) %></li>
-            <li class="<%= 'active' if current_page?(person_likes_path(person)) %>"><%= link_to(t('.likes'), person_likes_path(person)) %></li>
+            <li class="<%= 'active' if current_page?(likes_person_path(person)) %>"><%= link_to(t('.likes'), likes_person_path(person)) %></li>
           </ul>
           <div class="btn-group pull-right">
             <%= link_to(t('.edit'), edit_person_path(current_user), class: 'btn btn-primary', title: "#{t('.tooltip.edit')}") if current_user?(person) %>

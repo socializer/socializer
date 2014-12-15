@@ -23,12 +23,6 @@ Socializer::Engine.routes.draw do
     post '/:id/decline' => 'memberships#decline', as: :decline_membership
   end
 
-  scope '/people' do
-    get '/:id/likes' => 'people#likes', as: :person_likes
-    # get '/:person_id/likes' => 'likes#index', as: :person_likes
-    get '/:id/message' => 'people#message', as: :person_message
-  end
-
   scope '/groups' do
     get '/public' => 'groups#public', as: 'groups_public'
     get '/restricted' => 'groups#restricted', as: 'groups_restricted'
@@ -47,6 +41,7 @@ Socializer::Engine.routes.draw do
 
   resources :circles do
     resources :activities, only: [:index], controller: 'circles/activities'
+
     collection do
       get 'contacts'
       get 'contact_of'
@@ -74,6 +69,11 @@ Socializer::Engine.routes.draw do
     resources :phones,         only: [:create, :update, :destroy], controller: 'people/phones'
     resources :places,         only: [:create, :update, :destroy], controller: 'people/places'
     resources :profiles,       only: [:create, :update, :destroy], controller: 'people/profiles'
+
+    member do
+      get 'likes'
+      get 'message'
+    end
   end
 
   resources :ties,            only: [:create, :destroy]
