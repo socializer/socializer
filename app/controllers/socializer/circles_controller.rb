@@ -32,7 +32,7 @@ module Socializer
       @circle.save!
 
       flash[:notice] = t('socializer.model.create', model: 'Circle')
-      redirect_to circles_contacts_path
+      redirect_to contacts_circles_path
     end
 
     # PATCH/PUT /circles/1
@@ -46,7 +46,7 @@ module Socializer
     # DELETE /circles/1
     def destroy
       @circle.destroy
-      redirect_to circles_contacts_path
+      redirect_to contacts_circles_path
     end
 
     # GET /circles/contacts

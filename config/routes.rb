@@ -29,12 +29,6 @@ Socializer::Engine.routes.draw do
     get '/:id/message' => 'people#message', as: :person_message
   end
 
-  scope '/circles' do
-    get '/contacts' => 'circles#contacts', as: :circles_contacts
-    get '/contact_of' => 'circles#contact_of', as: :circles_contact_of
-    get '/find_people' => 'circles#find_people', as: :circles_find_people
-  end
-
   scope '/groups' do
     get '/public' => 'groups#public', as: 'groups_public'
     get '/restricted' => 'groups#restricted', as: 'groups_restricted'
@@ -53,6 +47,11 @@ Socializer::Engine.routes.draw do
 
   resources :circles do
     resources :activities, only: [:index], controller: 'circles/activities'
+    collection do
+      get 'contacts'
+      get 'contact_of'
+      get 'find_people'
+    end
   end
 
   resources :comments,        only: [:new, :create, :edit, :update, :destroy]

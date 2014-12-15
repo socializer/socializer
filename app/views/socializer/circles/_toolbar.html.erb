@@ -18,9 +18,9 @@
           <ul class='nav navbar-nav'>
             <!-- TODO; Add translations -->
             <li class="<%= 'active' if current_page?(circles_path) %>"><%= link_to(t('.all'), circles_path) %><li>
-            <li class="<%= 'active' if current_page?(circles_find_people_path) %>"><%= link_to(t('.find'), circles_find_people_path) %></li>
-            <li class="<%= 'active' if current_page?(circles_contact_of_path) %>"><%= link_to(t('.added_you'), circles_contact_of_path) %></li>
-            <li class="<%= 'active' if current_page?(circles_contacts_path) %>"><%= link_to(t('.your_circles'), circles_contacts_path) %></li>
+            <li class="<%= 'active' if current_page?(find_people_circles_path ) %>"><%= link_to(t('.find'), find_people_circles_path ) %></li>
+            <li class="<%= 'active' if current_page?(contact_of_circles_path) %>"><%= link_to(t('.added_you'), contact_of_circles_path) %></li>
+            <li class="<%= 'active' if current_page?(contacts_circles_path ) %>"><%= link_to(t('.your_circles'), contacts_circles_path ) %></li>
           </ul>
           <div class="btn-group pull-right">
             <%= link_to(t('.new'), new_circle_path, class: 'btn btn-primary') %>
