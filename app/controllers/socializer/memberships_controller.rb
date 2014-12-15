@@ -38,7 +38,7 @@ module Socializer
 
     def decline
       @membership.decline!
-      redirect_to groups_pending_invites_path
+      redirect_to pending_invites_groups_path
     end
 
     private

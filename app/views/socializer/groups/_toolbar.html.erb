@@ -18,16 +18,16 @@
           <ul class='nav navbar-nav'>
             <!-- TODO; Add translations -->
             <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to(t('.all'), groups_path) %><li>
-            <li class="<%= 'active' if current_page?(groups_ownerships_path) %>"><%= link_to(t('.your_groups'), groups_ownerships_path) %></li>
-            <li class="<%= 'active' if current_page?(groups_memberships_path) %>"><%= link_to(t('.memberships'), groups_memberships_path) %></li>
-            <li class="<%= 'active' if current_page?(groups_pending_invites_path) %>"><%= link_to(t('.pending_invites'), groups_pending_invites_path) %></li>
+            <li class="<%= 'active' if current_page?(ownerships_groups_path) %>"><%= link_to(t('.your_groups'), ownerships_groups_path) %></li>
+            <li class="<%= 'active' if current_page?(memberships_groups_path) %>"><%= link_to(t('.memberships'), memberships_groups_path) %></li>
+            <li class="<%= 'active' if current_page?(pending_invites_groups_path) %>"><%= link_to(t('.pending_invites'), pending_invites_groups_path) %></li>
 
             <li class='dropdown'>
               <%= link_to("More #{content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')}".html_safe, nil, class: 'dropdown-toggle', data: { toggle: 'dropdown' }) %>
               <ul class='dropdown-menu'>
-                <li class="<%= 'active' if current_page?(groups_public_path) %>"><%= link_to(t('.public'), groups_public_path) %></li>
-                <li class="<%= 'active' if current_page?(groups_restricted_path) %>"><%= link_to(t('.restricted'), groups_restricted_path) %></li>
-                <li class="<%= 'active' if current_page?(groups_joinable_path) %>"><%= link_to(t('.joinable'), groups_joinable_path) %></li>
+                <li class="<%= 'active' if current_page?(public_groups_path) %>"><%= link_to(t('.public'), public_groups_path) %></li>
+                <li class="<%= 'active' if current_page?(restricted_groups_path) %>"><%= link_to(t('.restricted'), restricted_groups_path) %></li>
+                <li class="<%= 'active' if current_page?(joinable_groups_path) %>"><%= link_to(t('.joinable'), joinable_groups_path) %></li>
               </ul>
             </li>
             <li><%= link_to('Explore') %><li>

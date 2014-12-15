@@ -23,15 +23,6 @@ Socializer::Engine.routes.draw do
     post '/:id/decline' => 'memberships#decline', as: :decline_membership
   end
 
-  scope '/groups' do
-    get '/public' => 'groups#public', as: 'groups_public'
-    get '/restricted' => 'groups#restricted', as: 'groups_restricted'
-    get '/joinable' => 'groups#joinable', as: 'groups_joinable'
-    get '/memberships' => 'groups#memberships', as: 'groups_memberships'
-    get '/ownerships' => 'groups#ownerships', as: 'groups_ownerships'
-    get '/pending_invites' => 'groups#pending_invites', as: 'groups_pending_invites'
-  end
-
   resources :activities,   only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
   end
@@ -53,6 +44,15 @@ Socializer::Engine.routes.draw do
 
   resources :groups do
     resources :activities, only: [:index], controller: 'groups/activities'
+
+    collection do
+      get 'joinable'
+      get 'memberships'
+      get 'ownerships'
+      get 'pending_invites'
+      get 'public'
+      get 'restricted'
+    end
   end
 
   resources :memberships,     only: [:create, :destroy]
