@@ -17,10 +17,7 @@ Socializer::Engine.routes.draw do
   end
 
   scope '/memberships' do
-    post '/:id/approve' => 'memberships#approve', as: :approve_membership
     get  '/:group_id/invite/:user_id' => 'memberships#invite', as: :invite_membership
-    post '/:id/confirm' => 'memberships#confirm', as: :confirm_membership
-    post '/:id/decline' => 'memberships#decline', as: :decline_membership
   end
 
   resources :activities,   only: [:index, :destroy] do
@@ -55,7 +52,14 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :memberships,     only: [:create, :destroy]
+  resources :memberships,     only: [:create, :destroy] do
+    member do
+      post 'approve', as: :approve
+      post 'confirm', as: :confirm
+      post 'decline', as: :decline
+    end
+  end
+
   resources :notes
   resources :notifications,   only: [:index, :show]
 
