@@ -16,10 +16,6 @@ Socializer::Engine.routes.draw do
     get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
   end
 
-  scope '/memberships' do
-    get  '/:group_id/invite/:user_id' => 'memberships#invite', as: :invite_membership
-  end
-
   resources :activities,   only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
   end
@@ -49,6 +45,10 @@ Socializer::Engine.routes.draw do
       get 'pending_invites'
       get 'public'
       get 'restricted'
+    end
+
+    member do
+      post 'invite/:user_id' => 'groups#invite', as: :invite_to
     end
   end
 
