@@ -24,13 +24,6 @@ module Socializer
       redirect_to @membership.group
     end
 
-    def invite
-      invited_user = Person.find_by(id: params[:user_id])
-      group = Group.find_by(id: params[:group_id])
-      group.invite(invited_user)
-      redirect_to group
-    end
-
     def confirm
       @membership.confirm!
       redirect_to @membership.group
