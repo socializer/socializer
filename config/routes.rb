@@ -18,7 +18,7 @@ Socializer::Engine.routes.draw do
   resources :activities,   only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
 
-    # TODO: Prefer this or resources with only?
+    # TODO: For single action prefer this or resources with only?
     member do
       get 'audience', controller: 'activities/audiences', action: 'index'
     end
