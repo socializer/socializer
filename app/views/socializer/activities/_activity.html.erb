@@ -25,9 +25,9 @@
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.uniq.each do |audience| %>
             <% if audience.privacy.public? %>
-                <%= link_to(audience.privacy.text, stream_audience_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip.public')}") %>
+                <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip.public')}") %>
             <% else %>
-              <%= link_to(audience.privacy.text, stream_audience_path(activity), class: 'tooltip text-muted') %>
+              <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %>
             <% end %>
           <% end %>
         </small>
