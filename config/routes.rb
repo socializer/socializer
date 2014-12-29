@@ -20,7 +20,7 @@ Socializer::Engine.routes.draw do
 
     # TODO: For single action prefer this or resources with only?
     member do
-      get 'audience', controller: 'activities/audiences', action: 'index'
+      get 'audience' => 'activities/audiences#index'
     end
   end
 
