@@ -24,7 +24,7 @@ module Socializer
         let(:result) { decorated_activity_object.link_to_like_or_unlike }
 
         context 'does not like' do
-          let(:url) { stream_like_path(activity_object) }
+          let(:url) { like_activity_path (activity_object) }
           let(:selector) { "a.btn.btn-default[data-method='post'][title=#{t('socializer.shared.like')}]" }
 
           it { expect(result).to have_link('', href: url) }
@@ -33,7 +33,7 @@ module Socializer
 
         context 'does like' do
           before { activity_object.like!(person) }
-          let(:url) { stream_unlike_path(activity_object) }
+          let(:url) { unlike_activity_path(activity_object) }
           let(:selector) { "a.btn.btn-danger[data-method='delete'][title=#{t('socializer.shared.unlike')}]" }
 
           it { expect(result).to have_link('', href: url) }

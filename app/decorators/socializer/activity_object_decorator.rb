@@ -40,7 +40,7 @@ module Socializer
     def like_or_unlike_variables
       return like_or_unlike_openstruct unless helpers.current_user.likes?(model)
 
-      path       = helpers.stream_unlike_path(model)
+      path       = helpers.unlike_activity_path(model)
       link_class = 'btn-danger'
       tooltip    = 'unlike'
       verb       = :delete
@@ -48,7 +48,7 @@ module Socializer
       like_or_unlike_openstruct(path: path, verb: verb, link_class: link_class, tooltip: tooltip)
     end
 
-    def like_or_unlike_openstruct(path: helpers.stream_like_path(model), verb: :post, link_class: 'btn-default', tooltip: 'like')
+    def like_or_unlike_openstruct(path: helpers.like_activity_path(model), verb: :post, link_class: 'btn-default', tooltip: 'like')
       tooltip = helpers.t("socializer.shared.#{tooltip}")
       OpenStruct.new(path: path, verb: verb, link_class: "btn #{link_class}", tooltip: tooltip)
     end

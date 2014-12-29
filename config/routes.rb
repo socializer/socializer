@@ -7,9 +7,6 @@ Socializer::Engine.routes.draw do
   get '/stream' => 'activities#index', as: :stream
 
   scope '/stream' do
-    get    '/activities/:id/likes' => 'likes#index', as: :stream_likes
-    post   '/activities/:id/like' => 'likes#create', as: :stream_like
-    delete '/activities/:id/unlike' => 'likes#destroy', as: :stream_unlike
     get    '/activities/:id/share' => 'shares#new', as: :new_stream_share
     post   '/activities/:id/share' => 'shares#create', as: :stream_shares
     get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
@@ -18,9 +15,11 @@ Socializer::Engine.routes.draw do
   resources :activities,   only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
 
-    # TODO: For single action prefer this or resources with only?
     member do
       get 'audience' => 'activities/audiences#index'
+      get 'likes' => 'activities/likes#index'
+      post 'like' => 'activities/likes#create'
+      delete 'unlike' => 'activities/likes#destroy'
     end
   end
 

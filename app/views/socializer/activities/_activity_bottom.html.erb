@@ -2,14 +2,14 @@
 
   <%# Like / Unlike button %>
   <% if current_user.likes?(activity.activity_object) %>
-    <%= link_to 'Unlike', stream_unlike_path(activity.activity_object), method: :delete, remote: true %>
+    <%= link_to 'Unlike', unlike_activity_path(activity.activity_object), method: :delete, remote: true %>
   <% else %>
-    <%= link_to 'Like', stream_like_path(activity.activity_object), method: :post, remote: true %>
+    <%= link_to 'Like', like_activity_path (activity.activity_object), method: :post, remote: true %>
   <% end %>
 
   <%# Number of likes %>
   <% if activity.activity_object.like_count > 0 %>
-    (<%= link_to activity.activity_object.like_count, stream_likes_path(activity), class: 'tooltip' %>)
+    (<%= link_to activity.activity_object.like_count, likes_activity_path(activity), class: 'tooltip' %>)
   <% end %>
 
   <%# Comment button %>
