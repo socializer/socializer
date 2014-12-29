@@ -7,8 +7,6 @@ Socializer::Engine.routes.draw do
   get '/stream' => 'activities#index', as: :stream
 
   scope '/stream' do
-    get    '/activities/:id/share' => 'shares#new', as: :new_stream_share
-    post   '/activities/:id/share' => 'shares#create', as: :stream_shares
     get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
   end
 
@@ -16,10 +14,17 @@ Socializer::Engine.routes.draw do
     resources :activities, only: [:index], controller: 'activities/activities'
 
     member do
+      # Audiences
       get 'audience' => 'activities/audiences#index'
+
+      # Likes
       get 'likes' => 'activities/likes#index'
       post 'like' => 'activities/likes#create'
       delete 'unlike' => 'activities/likes#destroy'
+
+      # Shares
+      get 'share' => 'activities/shares#new', as: 'new_share'
+      post 'share' => 'activities/shares#create', as: 'create_share'
     end
   end
 

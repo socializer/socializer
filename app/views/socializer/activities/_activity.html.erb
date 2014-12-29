@@ -49,7 +49,7 @@
         <%# Share button %>
         <%# TODO: Need a Share count %>
         <% if activity.activitable_object.note?  %>
-          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-share'), new_stream_share_path(activity.activity_object), class: 'btn btn-default', title: 'Share') %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-share'), new_share_activity_path(activity.activity_object), class: 'btn btn-default', title: 'Share') %>
         <% end %>
       </div>
     </footer>

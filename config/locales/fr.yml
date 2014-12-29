@@ -7,6 +7,12 @@ fr:
           public: Anyone can see this
       sidebar:
         header: In my circles
+      shares:
+        form:
+          content_label: Voulez-vous ajouter un commentaire avec le partage de cette
+            activité?
+        new:
+          header: Share this post
     authentications:
       authentication:
         unbind: Unbind
@@ -178,9 +184,3 @@ fr:
         profile: Profile
         signout: Déconnexion
       unlike: Unlike
-    shares:
-      form:
-        content_label: Voulez-vous ajouter un commentaire avec le partage de cette
-          activité?
-      new:
-        header: Share this post

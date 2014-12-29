@@ -21,7 +21,7 @@
   <%# Share button %>
   <% if activity.activitable_object.note?  %>
     <span class='separator'></span>
-    <%= link_to 'Share', new_stream_share_path(activity.activity_object) %>
+    <%= link_to 'Share', new_share_activity_path(activity.activity_object) %>
   <% end %>
 
   <%# Edit and Delete buttons %>

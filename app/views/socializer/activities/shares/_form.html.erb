@@ -1,4 +1,4 @@
-<%= form_tag stream_shares_path(share), role: 'form' do %>
+<%= form_tag create_share_activity_path(share), role: 'form' do %>
   <div class='form-group'>
     <%= label_tag('share[content]', t('.content_label')) %>
     <%= text_area_tag('share[content]', nil, rows: 5, class: 'form-control', id: 'share[content]') %>

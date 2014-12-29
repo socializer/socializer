@@ -7,6 +7,12 @@ en:
           public: Anyone can see this
       sidebar:
         header: In my circles
+      shares:
+        form:
+          content_label: Would you like to say something along with the sharing of this
+            activity?
+        new:
+          header: Share this post
     authentications:
       authentication:
         unbind: Unbind
@@ -178,9 +184,3 @@ en:
         profile: Profile
         signout: Signout
       unlike: Unlike
-    shares:
-      form:
-        content_label: Would you like to say something along with the sharing of this
-          activity?
-      new:
-        header: Share this post
