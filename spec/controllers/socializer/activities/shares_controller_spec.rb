@@ -24,10 +24,29 @@ module Socializer
         it 'return an share object' do
           expect(assigns(:share)).to eq(note)
         end
+
+        it 'renders the :new template' do
+          expect(response).to render_template :new
+        end
       end
 
       describe 'POST #create' do
-        it 'is a pending example'
+        context 'with valid attributes' do
+          let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(',') }
+
+          it 'redirects to circles#contacts' do
+            post :create, share: { content: '', object_ids: object_ids, activity_id: note.activity_object.id }, id: note
+            expect(response).to redirect_to stream_path
+          end
+        end
+
+        context 'with invalid attributes' do
+          it 'is a pending example'
+          # it 're-renders the :new template' do
+          #   post :create, invalid_attributes
+          #   expect(response).to render_template :new
+          # end
+        end
       end
     end
   end
