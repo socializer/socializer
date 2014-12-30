@@ -24,7 +24,7 @@ module Socializer
         let(:result) { decorated_activity_object.link_to_like_or_unlike }
 
         context 'does not like' do
-          let(:url) { like_activity_path (activity_object) }
+          let(:url) { like_activity_path(activity_object) }
           let(:selector) { "a.btn.btn-default[data-method='post'][title=#{t('socializer.shared.like')}]" }
 
           it { expect(result).to have_link('', href: url) }
