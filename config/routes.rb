@@ -7,7 +7,7 @@ Socializer::Engine.routes.draw do
   get '/stream' => 'activities#index', as: :stream
 
   scope '/stream' do
-    get    '/activities/:id/comment' => 'comments#new', as: :stream_comment
+    get '/activities/:id/comment' => 'comments#new', as: :stream_comment
   end
 
   resources :activities,   only: [:index, :destroy] do
@@ -56,7 +56,7 @@ Socializer::Engine.routes.draw do
     end
 
     member do
-      post 'invite/:user_id' => 'groups#invite', as: :invite_to
+      get 'invite/:user_id' => 'groups#invite', as: :invite_to
     end
   end
 

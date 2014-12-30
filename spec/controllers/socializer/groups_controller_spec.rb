@@ -227,7 +227,6 @@ module Socializer
         get :pending_invites
       end
 
-      # FIXME:
       it 'assigns @pending_invites' do
         expect(assigns(:pending_invites)).to match_array([])
       end
