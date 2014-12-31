@@ -67,10 +67,7 @@ module Socializer
     end
 
     describe '#member' do
-      it { is_expected.to respond_to(:member) }
-      # let(:activitable) { membership.activity_member.activitable }
-      # it { expect(membership.member).to be_a(activitable.class) }
-      # it { expect(membership.member).to eq(activitable) }
+      it { expect(membership.member).to eq(user) }
     end
 
     describe '#approve!' do
