@@ -2,7 +2,9 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe Membership, type: :model do
-    let(:membership) { build(:socializer_membership) }
+    let(:user) { create(:socializer_person) }
+    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
+    let(:membership) { create(:socializer_membership, activity_member: user.activity_object, group: group) }
 
     it 'has a valid factory' do
       expect(membership).to be_valid
