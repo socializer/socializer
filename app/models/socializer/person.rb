@@ -177,9 +177,7 @@ module Socializer
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.joins(:group)
-                                                 .where(member_id: guid, active: false)
-                                                 .merge(Group.private)
+      @pending_memberships_invites ||= Membership.inactive.by_person(guid).joins(:group).merge(Group.private)
     end
   end
 end
