@@ -71,49 +71,28 @@ module Socializer
     end
 
     describe '#approve!' do
-      it { is_expected.to respond_to(:approve!) }
+      let(:inactive_membership) { create(:socializer_membership, active: false) }
+
+      it 'becomes active' do
+        inactive_membership.approve!
+        expect(inactive_membership.active).to be_truthy
+      end
     end
 
     describe '#confirm!' do
-      it { is_expected.to respond_to(:confirm!) }
+      let(:inactive_membership) { create(:socializer_membership, active: false) }
+
+      it 'becomes active' do
+        inactive_membership.confirm!
+        expect(inactive_membership.active).to be_truthy
+      end
     end
 
     describe '#decline!' do
-      it { is_expected.to respond_to(:decline!) }
-    end
-
-    describe 'when approved' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
-
-      before do
-        inactive_membership.approve!
-      end
-
-      it 'becomes active' do
-        expect(inactive_membership.active).to be_truthy
-      end
-    end
-
-    describe 'when confirmed' do
-      let(:inactive_membership) { create(:socializer_membership, active: false) }
-
-      before do
-        inactive_membership.confirm!
-      end
-
-      it 'becomes active' do
-        expect(inactive_membership.active).to be_truthy
-      end
-    end
-
-    describe 'when declined' do
-      let(:inactive_membership) { create(:socializer_membership, active: false) }
-
-      before do
-        inactive_membership.decline!
-      end
 
       it 'no longer exists' do
+        inactive_membership.decline!
         expect { inactive_membership.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
