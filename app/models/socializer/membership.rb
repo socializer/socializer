@@ -9,6 +9,16 @@ module Socializer
     belongs_to :group
     belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id'
 
+    # Validations
+
+    # Named Scopes
+    scope :inactive, -> { where(active: false) }
+    scope :by_person, -> member_guid { where(member_id: member_guid) }
+
+    # Class Methods
+
+    # Instance Methods
+
     def member
       @member ||= activity_member.activitable
     end

@@ -21,6 +21,51 @@ module Socializer
       # it { is_expected.to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
     end
 
+    describe 'scopes' do
+      context 'inactive' do
+        context 'no inactive records' do
+          let(:result) { Membership.inactive }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.present?).to be false }
+        end
+
+        context 'inactive records' do
+          before { create(:socializer_membership, active: false) }
+          let(:result) { Membership.inactive }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.first.active).to be false }
+        end
+      end
+
+      context 'by_person' do
+        context 'person has no memberships' do
+          let(:user) { create(:socializer_person) }
+          let(:result) { Membership.by_person(user.guid) }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.present?).to be false }
+        end
+
+        context 'person has memberships' do
+          let(:result) { Membership.by_person(user.guid) }
+
+          before :each do
+            membership
+          end
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+
+          it 'has memberships' do
+            expect(result.present?).to be true
+            expect(result.first.group_id).to eq group.id
+            expect(result.first.member_id).to eq user.guid
+          end
+        end
+      end
+    end
+
     describe '#member' do
       it { is_expected.to respond_to(:member) }
       # let(:activitable) { membership.activity_member.activitable }
