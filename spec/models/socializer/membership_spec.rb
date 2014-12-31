@@ -8,37 +8,37 @@ module Socializer
       expect(membership).to be_valid
     end
 
-    context 'mass assignment' do
+    describe 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:group_id) }
       it { is_expected.to allow_mass_assignment_of(:active) }
     end
 
-    context 'relationships' do
+    describe 'relationships' do
       it { is_expected.to belong_to(:group) }
       it { is_expected.to belong_to(:activity_member) }
       # it { is_expected.to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
     end
 
-    context '#member' do
+    describe '#member' do
       it { is_expected.to respond_to(:member) }
       # let(:activitable) { membership.activity_member.activitable }
       # it { expect(membership.member).to be_a(activitable.class) }
       # it { expect(membership.member).to eq(activitable) }
     end
 
-    context '#approve!' do
+    describe '#approve!' do
       it { is_expected.to respond_to(:approve!) }
     end
 
-    context '#confirm!' do
+    describe '#confirm!' do
       it { is_expected.to respond_to(:confirm!) }
     end
 
-    context '#decline!' do
+    describe '#decline!' do
       it { is_expected.to respond_to(:decline!) }
     end
 
-    context 'when approved' do
+    describe 'when approved' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
 
       before do
@@ -50,7 +50,7 @@ module Socializer
       end
     end
 
-    context 'when confirmed' do
+    describe 'when confirmed' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
 
       before do
@@ -62,7 +62,7 @@ module Socializer
       end
     end
 
-    context 'when declined' do
+    describe 'when declined' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
 
       before do
