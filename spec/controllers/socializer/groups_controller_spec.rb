@@ -10,8 +10,8 @@ module Socializer
     let(:membership) { Membership.find_by(group_id: group.id) }
     # let(:note) { create(:socializer_note) }
     let(:privacy) { Socializer::Group.privacy.find_value(:public).value }
-    let(:valid_attributes) { { group: { author_id: user.activity_object.id, display_name: 'Test', privacy: privacy } } }
-    let(:invalid_attributes) { { group: { author_id: user.activity_object.id, display_name: '', privacy: nil } } }
+    let(:valid_attributes) { { group: { author_id: user.guid, display_name: 'Test', privacy: privacy } } }
+    let(:invalid_attributes) { { group: { author_id: user.guid, display_name: '', privacy: nil } } }
 
     # Setting the current user
     before { cookies[:user_id] = user.guid }

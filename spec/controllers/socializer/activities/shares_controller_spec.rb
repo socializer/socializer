@@ -15,7 +15,7 @@ module Socializer
 
       describe 'GET #new' do
         # Visit the new page
-        before { get :new, id: note.activity_object.id }
+        before { get :new, id: note.guid }
 
         it 'return an activity object' do
           expect(assigns(:activity_object)).to eq(note.activity_object)
@@ -35,7 +35,7 @@ module Socializer
           let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(',') }
 
           it 'redirects to circles#contacts' do
-            post :create, share: { content: '', object_ids: object_ids, activity_id: note.activity_object.id }, id: note
+            post :create, share: { content: '', object_ids: object_ids, activity_id: note.guid }, id: note
             expect(response).to redirect_to stream_path
           end
         end

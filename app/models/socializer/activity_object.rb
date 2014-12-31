@@ -125,7 +125,7 @@ module Socializer
     def create_like_unlike_activity(actor:, verb:)
       public = Audience.privacy_value(privacy: :public).split(',')
 
-      ActivityCreator.new(actor_id: actor.activity_object.id,
+      ActivityCreator.new(actor_id: actor.guid,
                           activity_object_id: id,
                           verb: verb,
                           object_ids: public).perform

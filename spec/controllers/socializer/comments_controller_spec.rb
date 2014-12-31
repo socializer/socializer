@@ -33,7 +33,7 @@ module Socializer
         end
 
         it 'redirects to activities#index' do
-          post :create, comment: { content: 'This is a comment', activity_target_id: note.activity_object.id }
+          post :create, comment: { content: 'This is a comment', activity_target_id: note.guid }
           expect(response).to redirect_to stream_path
         end
       end
