@@ -8,12 +8,13 @@ module Socializer
     attr_accessible :display_name, :content
 
     # Relationships
-    belongs_to :activity_author,  class_name: 'ActivityObject', foreign_key: 'author_id'
+    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id'
 
     has_many   :ties
     has_many   :activity_contacts, through: :ties
 
     # Validations
+    validates :activity_author, presence: true
     validates :display_name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
 
     # Class Methods

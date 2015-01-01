@@ -20,6 +20,7 @@ module Socializer
     end
 
     context 'validations' do
+      it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:display_name) }
       it 'check uniqueness of display_name' do
         create(:socializer_circle)
