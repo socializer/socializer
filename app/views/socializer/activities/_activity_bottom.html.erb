@@ -15,7 +15,7 @@
   <%# Comment button %>
   <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
     <span class='separator'></span>
-    <%= link_to 'Comment', stream_comment_path(activity) %>
+    <%= link_to 'Comment', comment_activity_path(activity) %>
   <% end %>
 
   <%# Share button %>

@@ -43,7 +43,7 @@
 
         <%# Comment button %>
         <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
-          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-comments-o'), stream_comment_path(activity), class: 'btn btn-default', title: 'Comment') %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-comments-o'), comment_activity_path(activity), class: 'btn btn-default', title: 'Comment') %>
         <% end %>
 
         <%# Share button %>

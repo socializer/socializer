@@ -5,10 +5,7 @@ Socializer::Engine.routes.draw do
   match '/signout' => 'sessions#destroy', as: :signout, via: [:get, :delete]
 
   get '/stream' => 'activities#index', as: :stream
-
-  scope '/stream' do
-    get '/activities/:id/comment' => 'comments#new', as: :stream_comment
-  end
+  get '/activities/:id/comment' => 'comments#new', as: :comment_activity
 
   resources :activities,   only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
