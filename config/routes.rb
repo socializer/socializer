@@ -7,7 +7,7 @@ Socializer::Engine.routes.draw do
   get '/stream' => 'activities#index', as: :stream
   get '/activities/:id/comment' => 'comments#new', as: :comment_activity
 
-  resources :activities,   only: [:index, :destroy] do
+  resources :activities, only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
 
     member do
@@ -38,7 +38,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :comments,        only: [:new, :create, :edit, :update, :destroy]
+  resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
   resources :groups do
     resources :activities, only: [:index], controller: 'groups/activities'
@@ -57,7 +57,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :memberships,     only: [:create, :destroy] do
+  resources :memberships, only: [:create, :destroy] do
     member do
       post 'approve', as: :approve
       post 'confirm', as: :confirm
@@ -66,9 +66,9 @@ Socializer::Engine.routes.draw do
   end
 
   resources :notes
-  resources :notifications,   only: [:index, :show]
+  resources :notifications, only: [:index, :show]
 
-  resources :people,          only: [:index, :show, :edit, :update] do
+  resources :people, only: [:index, :show, :edit, :update] do
     resources :activities,     only: [:index], controller: 'people/activities'
     resources :addresses,      only: [:create, :update, :destroy], controller: 'people/addresses'
     resources :contributions,  only: [:create, :update, :destroy], controller: 'people/contributions'
@@ -85,7 +85,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :ties,            only: [:create, :destroy]
+  resources :ties, only: [:create, :destroy]
 
   root to: 'pages#index'
 end
