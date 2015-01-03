@@ -57,14 +57,14 @@ module Socializer
     #
     # @return [Socializer::Person]
     def actor
-      @actor ||= activitable_actor.activitable
+      activitable_actor.activitable
     end
 
     # The primary object of the activity.
     #
     # @return the activitable object
     def object
-      @object ||= activitable_object.activitable
+      activitable_object.activitable
     end
 
     # The target of the activity. The precise meaning of the activity target is dependent on the activities verb,
@@ -72,7 +72,7 @@ module Socializer
     #
     # @return the activitable target
     def target
-      @target ||= activitable_target.activitable
+      activitable_target.activitable
     end
 
     # Selects the activities that either the person owns, that are public from a person in
