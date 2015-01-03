@@ -15,7 +15,7 @@ module Socializer
     validates :content, presence: true
 
     def author
-      @author ||= activity_author.activitable
+      activity_author.activitable
     end
   end
 end

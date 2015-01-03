@@ -80,11 +80,11 @@ module Socializer
 
     # Instance Methods
     def author
-      @author ||= activity_author.activitable
+      activity_author.activitable
     end
 
     def members
-      @members ||= activity_members.map(&:activitable)
+      activity_members.map(&:activitable)
     end
 
     def join(person)

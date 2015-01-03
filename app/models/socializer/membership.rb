@@ -20,7 +20,7 @@ module Socializer
     # Instance Methods
 
     def member
-      @member ||= activity_member.activitable
+      activity_member.activitable
     end
 
     def approve!

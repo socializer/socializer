@@ -30,11 +30,11 @@ module Socializer
 
     # Instance Methods
     def author
-      @author ||= activity_author.activitable
+      activity_author.activitable
     end
 
     def contacts
-      @contacts ||= activity_contacts.map(&:activitable)
+      activity_contacts.map(&:activitable)
     end
 
     def add_contact(contact_id)

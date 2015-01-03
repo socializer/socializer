@@ -10,7 +10,7 @@ module Socializer
     belongs_to :activity_contact, class_name: 'ActivityObject', foreign_key: 'contact_id'
 
     def contact
-      @contact ||= activity_contact.activitable
+      activity_contact.activitable
     end
   end
 end

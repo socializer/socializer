@@ -31,7 +31,7 @@ module Socializer
 
     # Instance Methods
     def object
-      @object ||= activity_object.activitable
+      activity_object.activitable
     end
   end
 end
