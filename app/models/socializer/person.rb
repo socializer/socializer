@@ -47,6 +47,14 @@ module Socializer
     # Validations
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
 
+    # Named Scopes
+
+    delegate :circles, to: :activity_object, allow_nil: true
+    delegate :comments, to: :activity_object, allow_nil: true
+    delegate :groups, to: :activity_object, allow_nil: true
+    delegate :notes, to: :activity_object, allow_nil: true
+    delegate :memberships, to: :activity_object, allow_nil: true
+
     # Class Methods
 
     def self.create_with_omniauth(auth)
@@ -78,41 +86,6 @@ module Socializer
     # @return [Socializer::Authentication] Returns a collection of {Socializer::Authentication authentications}
     def services
       @services ||= authentications.by_not_provider('Identity')
-    end
-
-    # Collection of {Socializer::Circle circles} that the user owns
-    #
-    # @return [Socializer::Circle] Returns a collection of {Socializer::Circle circles}
-    def circles
-      activity_object.circles
-    end
-
-    # Collection of {Socializer::Comment comments} that the user owns
-    #
-    # @return [Socializer::Comment] Returns a collection of {Socializer::Comment comments}
-    def comments
-      activity_object.comments
-    end
-
-    # Collection of {Socializer::Note notes} that the user owns
-    #
-    # @return [Socializer::Note] Returns a collection of {Socializer::Note notes}
-    def notes
-      activity_object.notes
-    end
-
-    # Collection of {Socializer::Group groups} that the user owns
-    #
-    # @return [Socializer::Group] Returns a collection of {Socializer::Group groups}
-    def groups
-      activity_object.groups
-    end
-
-    # Collection of {Socializer::Membership memberships} that the user owns
-    #
-    # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
-    def memberships
-      activity_object.memberships
     end
 
     # Collection of {Socializer::Notification notifications} that the user has received
