@@ -92,13 +92,26 @@ module Socializer
       stream_query(viewer_id: person_id).newest_first.distinct
     end
 
-    # we only want to display a single activity. make sure the viewer is allowed to do so.
+    # We only want to display a single activity. Make sure the viewer is allowed to do so.
+    #
+    # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.activity_stream(actor_uid:, viewer_id:)
       stream_query(viewer_id: viewer_id).where(socializer_activities: { id: actor_uid }).distinct
     end
 
+    # [self description]
+    #
+    # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
+    #
     # FIXME: Should display notes even if circle has no members and the owner is viewing it.
     #        Notes still don't show after adding people to the circles.
+    #
     def self.circle_stream(actor_uid:, viewer_id:)
       circles  = Circle.select(:id).where(socializer_circles: { id: actor_uid, author_id: viewer_id })
       followed = Tie.select(:contact_id).where(circle_id: circles)
@@ -106,7 +119,12 @@ module Socializer
       stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: followed }).distinct
     end
 
-    # this is a group. display everything that was posted to this group as audience
+    # This is a group. display everything that was posted to this group as audience
+    #
+    # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
       # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
@@ -115,13 +133,24 @@ module Socializer
       stream_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
     end
 
-    # this is a user profile. display everything about them that you are allowed to see
+    # This is a user profile. display everything about them that you are allowed to see
+    #
+    # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
       stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: person_id }).distinct
     end
 
     # Class Methods - Private
+
+    # [self description]
+    #
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.stream_query(viewer_id:)
       # CLEANUP: Remove old/unused code
 
@@ -165,6 +194,8 @@ module Socializer
 
     # Audience : CIRCLES
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
+    #
+    # @return [ActiveRecord::Relation]
     def self.circles_subquery
       # TODO: Verify this works correctly
       # CLEANUP: Remove old code
@@ -192,6 +223,8 @@ module Socializer
     # Ensure that the audience is LIMITED and then make sure that the viewer is either
     # part of a circle that is the target audience, or that the viewer is part of
     # a group that is the target audience, or that the viewer is the target audience.
+    #
+    # @return [ActiveRecord::Relation]
     def self.limited_circle_subquery
       # TODO: Verify this works correctly
 
@@ -202,6 +235,11 @@ module Socializer
     end
     private_class_method :limited_circle_subquery
 
+    # [self description]
+    #
+    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    #
+    # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
       # TODO: Verify this works correctly
       # CLEANUP: Remove old code
