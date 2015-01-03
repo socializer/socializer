@@ -77,7 +77,7 @@ module Socializer
     #
     # @return [Socializer::Authentication] Returns a collection of {Socializer::Authentication authentications}
     def services
-      @services ||= authentications.where.not(provider: 'Identity')
+      @services ||= authentications.by_not_provider('Identity')
     end
 
     # Collection of {Socializer::Circle circles} that the user owns

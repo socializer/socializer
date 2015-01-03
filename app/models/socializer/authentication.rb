@@ -10,6 +10,7 @@ module Socializer
 
     # Named Scopes
     scope :by_provider, -> provider { where(provider: provider.downcase) }
+    scope :by_not_provider, -> provider { where.not(provider: provider.downcase) }
 
     # Callbacks
     before_destroy :make_sure_its_not_the_last_one
