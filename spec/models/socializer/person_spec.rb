@@ -53,7 +53,7 @@ module Socializer
         person = create(:socializer_person, avatar_provider: 'FACEBOOK')
         person.authentications.create(provider: 'facebook', image_url: 'http://facebook.com')
 
-        expect(person.services.to_sql).to include("!= 'Identity'")
+        expect(person.services.to_sql).to include("!= 'identity'")
         expect(person.services.count).to eq(1)
         expect(person.services.find_by(provider: 'facebook').provider).to eq('facebook')
       end
