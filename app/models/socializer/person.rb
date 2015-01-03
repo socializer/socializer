@@ -84,35 +84,35 @@ module Socializer
     #
     # @return [Socializer::Circle] Returns a collection of {Socializer::Circle circles}
     def circles
-      @circles ||= activity_object.circles
+      activity_object.circles
     end
 
     # Collection of {Socializer::Comment comments} that the user owns
     #
     # @return [Socializer::Comment] Returns a collection of {Socializer::Comment comments}
     def comments
-      @comments ||= activity_object.comments
+      activity_object.comments
     end
 
     # Collection of {Socializer::Note notes} that the user owns
     #
     # @return [Socializer::Note] Returns a collection of {Socializer::Note notes}
     def notes
-      @notes ||= activity_object.notes
+      activity_object.notes
     end
 
     # Collection of {Socializer::Group groups} that the user owns
     #
     # @return [Socializer::Group] Returns a collection of {Socializer::Group groups}
     def groups
-      @groups ||= activity_object.groups
+      activity_object.groups
     end
 
     # Collection of {Socializer::Membership memberships} that the user owns
     #
     # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
     def memberships
-      @memberships ||= activity_object.memberships
+      activity_object.memberships
     end
 
     # Collection of {Socializer::Notification notifications} that the user has received
@@ -126,7 +126,7 @@ module Socializer
     #
     # @return [Array] Returns a collection of contacts
     def contacts
-      @contacts ||= circles.map(&:contacts).flatten.uniq
+      circles.map(&:contacts).flatten.uniq
     end
 
     def contact_of
