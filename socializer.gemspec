@@ -53,7 +53,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('i18n-tasks',           '~> 0.7.10')
   spec.add_development_dependency('inch',                 '~> 0.5.8')
   spec.add_development_dependency('shoulda-matchers',     '~> 2.8.0.rc1')
-  spec.add_development_dependency('database_cleaner',     '~> 1.3.0')
+  spec.add_development_dependency('database_cleaner',     '~> 1.4.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.4')
   spec.add_development_dependency('rubocop',              '~> 0.28.0')
 end
