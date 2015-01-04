@@ -102,7 +102,7 @@ module Socializer
       stream_query(viewer_id: viewer_id).where(socializer_activities: { id: actor_uid }).distinct
     end
 
-    # [self description]
+    # TODO: [self description]
     #
     # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
     # @param  viewer_id: [FixNum] who wants to see the activity stream
@@ -146,7 +146,7 @@ module Socializer
 
     # Class Methods - Private
 
-    # [self description]
+    # TODO: [self description]
     #
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #
@@ -235,7 +235,7 @@ module Socializer
     end
     private_class_method :limited_circle_subquery
 
-    # [self description]
+    # TODO: [self description]
     #
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #

@@ -25,6 +25,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
+  # TODO: Should the audiences controller be renamed to AudienceList?
   resources :audiences,       only: [:index]
   resources :authentications, only: [:index, :show, :new, :destroy]
 
@@ -38,6 +39,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
+  # Not a good idea to create comments that don't belong to something else
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
   resources :groups do
@@ -87,5 +89,7 @@ Socializer::Engine.routes.draw do
 
   resources :ties, only: [:create, :destroy]
 
+  # Example root that gets defined for a logged in user
+  # get '/' => 'activities#index', constraints: -> request { request.cookies.key?('user_id').present? }
   root to: 'pages#index'
 end
