@@ -35,7 +35,7 @@ module Socializer
       @note.update!(params[:note])
 
       flash[:notice] = t('socializer.model.update', model: 'Note')
-      redirect_to stream_path
+      redirect_to activities_path
     end
 
     def destroy

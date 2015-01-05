@@ -16,7 +16,7 @@
       <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
         <div class='col-sm-7'>
           <ul class='nav navbar-nav'>
-            <li class="<%= 'active' if current_page?(stream_path) %>"><%= link_to(t('.all'), stream_path) %><li>
+            <li class="<%= 'active' if current_page?(activities_path) %>"><%= link_to(t('.all'), activities_path) %><li>
             <%= current_user.toolbar_stream_links %>
             <li><%= link_to('Explore') %><li>
           </ul>

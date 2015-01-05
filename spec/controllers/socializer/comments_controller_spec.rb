@@ -34,7 +34,7 @@ module Socializer
 
         it 'redirects to activities#index' do
           post :create, comment: { content: 'This is a comment', activity_target_id: note.guid }
-          expect(response).to redirect_to stream_path
+          expect(response).to redirect_to activities_path
         end
       end
 
@@ -61,7 +61,7 @@ module Socializer
       context 'with valid attributes' do
         it 'redirects to activities#index' do
           patch :update, id: comment, comment: { content: 'This is a comment' }
-          expect(response).to redirect_to stream_path
+          expect(response).to redirect_to activities_path
         end
       end
 
@@ -78,7 +78,7 @@ module Socializer
 
       it 'redirects to activities#index' do
         delete :destroy, id: comment
-        expect(response).to redirect_to stream_path
+        expect(response).to redirect_to activities_path
       end
     end
   end

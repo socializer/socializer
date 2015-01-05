@@ -4,7 +4,6 @@ Socializer::Engine.routes.draw do
   match '/signin' => 'sessions#new', as: :signin,  via: :get
   match '/signout' => 'sessions#destroy', as: :signout, via: [:get, :delete]
 
-  get '/stream' => 'activities#index', as: :stream
   get '/activities/:id/comment' => 'comments#new', as: :comment_activity
 
   resources :activities, only: [:index, :destroy] do

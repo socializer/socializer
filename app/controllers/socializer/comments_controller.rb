@@ -18,7 +18,7 @@ module Socializer
       @comment.save!
 
       flash[:notice] = t('socializer.model.create', model: 'Comment')
-      redirect_to stream_path
+      redirect_to activities_path
     end
 
     def edit
@@ -28,12 +28,12 @@ module Socializer
       @comment.update!(params[:comment])
 
       flash[:notice] = t('socializer.model.update', model: 'Comment')
-      redirect_to stream_path
+      redirect_to activities_path
     end
 
     def destroy
       @comment.destroy
-      redirect_to stream_path
+      redirect_to activities_path
     end
 
     private

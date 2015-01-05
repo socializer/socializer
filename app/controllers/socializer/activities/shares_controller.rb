@@ -19,7 +19,7 @@ module Socializer
                                content: share[:content])
 
         flash[:notice] = t('socializer.model.share', model: activity_object.activitable_type.demodulize)
-        redirect_to stream_path
+        redirect_to activities_path
       end
     end
   end

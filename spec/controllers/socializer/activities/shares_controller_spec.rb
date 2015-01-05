@@ -36,7 +36,7 @@ module Socializer
 
           it 'redirects to circles#contacts' do
             post :create, share: { content: '', object_ids: object_ids, activity_id: note.guid }, id: note
-            expect(response).to redirect_to stream_path
+            expect(response).to redirect_to activities_path
           end
         end
 
