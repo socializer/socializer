@@ -57,11 +57,12 @@ module Socializer
 
     # Class Methods
 
-    # Creates a Socializer::Person with data provided by OmniAuth
+    # Creates a Socializer::Person with data provided by {https://github.com/intridea/omniauth/wiki OmniAuth}
     #
-    # @param auth [Hash] Authentication information provided by OmniAuth.
+    # @param auth [Hash] Authentication information provided by {https://github.com/intridea/omniauth/wiki OmniAuth}.
     #
-    # @see https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema for information auth parameter
+    # @see https://github.com/intridea/omniauth/wiki OmniAuth
+    # @see https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema OmniAuth Auth Hash Schema
     #
     # @return [Socializer::Person]
     def self.create_with_omniauth(auth)
