@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency('jquery-rails')
   # Added 'jquery-ui-rails' for drag and drop
   spec.add_dependency('jquery-ui-rails')
-  spec.add_dependency('sass-rails',           '~> 5.0.0')
+  spec.add_dependency('sass-rails',           '~> 5.0.1')
   spec.add_dependency('coffee-rails',         '~> 4.1.0')
-  spec.add_dependency('uglifier',             '>= 2.6.0')
+  spec.add_dependency('uglifier',             '>= 2.7.0')
   spec.add_dependency('bcrypt',               '~> 3.1.9')
   spec.add_dependency('bootstrap-sass',       '~> 3.3.1.0')
   spec.add_dependency('draper',               '~> 1.4.0')
@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
   # spec.add_dependency('squeel',               '~> 1.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.7.9')
+  spec.add_development_dependency('bundler',              '~> 1.7.11')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.10')
   spec.add_development_dependency('rspec-rails',          '~> 3.1.0')
