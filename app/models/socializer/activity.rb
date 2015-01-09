@@ -215,8 +215,7 @@ module Socializer
       #            'INNER JOIN socializer_people ' \
       #            'ON socializer_activity_objects.activitable_id = socializer_people.id ' \
       #            'WHERE socializer_people.id = socializer_activities.actor_id'
-      #
-      # Circle.select { id }.where { author_id.in(`#{subquery}`) }
+      # Circle.select { id }.where { author_id.in(subquery) }
     end
     private_class_method :circles_subquery
 
