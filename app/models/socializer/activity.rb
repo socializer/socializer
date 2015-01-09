@@ -242,7 +242,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
-      # TODO: Verify this works correctly
+      # TODO: Verify this works correctly - matches squeel
       # CLEANUP: Remove old code
 
       # The arel_table method is technically private since it is marked :nodoc
