@@ -197,17 +197,18 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.circles_subquery
-      # TODO: Verify this works correctly
+      # TODO: Verify this works correctly - matches squeel
       # CLEANUP: Remove old code
 
       # Retrieve the author's unique identifier
       # The arel_table method is technically private since it is marked :nodoc
+      circle   ||= Circle.arel_table
       person   ||= Person.arel_table
       ao       ||= ActivityObject.arel_table
       subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id])
-                     .and(ao[:activitable_type].eq(Person.name))).to_sql
+                     .and(ao[:activitable_type].eq(Person.name)))
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
-      Circle.select(:id).where(author_id: subquery).arel
+      circle.project(circle[:id]).where(circle[:author_id].in(subquery))
 
       # subquery = 'SELECT socializer_activity_objects.id ' \
       #            'FROM socializer_activity_objects ' \
