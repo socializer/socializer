@@ -152,6 +152,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.stream_query(viewer_id:)
+      # TODO: Verify this works correctly - matches squeel
       # CLEANUP: Remove old/unused code
 
       # for an activity to be interesting, it must correspond to one of these verbs
@@ -169,15 +170,14 @@ module Socializer
       privacy_field  ||= audience[:privacy]
       viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
 
-      # TODO: Test: Generate the same SQL as below
-      query.where(privacy_field.eq(privacy_public)
-           .or(privacy_field.eq(privacy_circles)
-             .and(viewer_literal.in(circles_subquery)))
-           .or(privacy_field.eq(privacy_limited)
-             .and(viewer_literal.in(limited_circle_subquery))
-             .or(audience[:activity_object_id].in(limited_group_subquery(viewer_id)))
-             .or(audience[:activity_object_id].in(viewer_id)))
-           .or(arel_table[:actor_id].eq(viewer_id)))
+      circles_grouping = audience.grouping(privacy_field.eq(privacy_circles).and(viewer_literal.in(circles_subquery)))
+      public_grouping  = audience.grouping(privacy_field.eq(privacy_public).or(circles_grouping))
+      limited_grouping = audience.grouping(privacy_field.eq(privacy_limited)
+                                  .and(viewer_literal.in(limited_circle_subquery)
+                                    .or(audience[:activity_object_id].in(limited_group_subquery(viewer_id)))
+                                  .or(audience[:activity_object_id].in(viewer_id))))
+
+      query.where(public_grouping.or(limited_grouping).or(arel_table[:actor_id].eq(viewer_id)))
 
       # # rubocop:disable Lint/BlockAlignment, Style/Blocks
       # query.where { (audiences.privacy.eq(privacy_public)) |
