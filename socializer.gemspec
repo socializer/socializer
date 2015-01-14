@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   # CLEANUP: Remove once we're satisfied with the ARel solution or supported version of squeel is released
   # spec.add_dependency('squeel',               '~> 1.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.7.11')
+  spec.add_development_dependency('bundler',              '~> 1.7.12')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.10')
   spec.add_development_dependency('rspec-rails',          '~> 3.1.0')
@@ -51,7 +51,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('capybara',             '~> 2.4.1')
   spec.add_development_dependency('factory_girl_rails',   '~> 4.5.0')
   spec.add_development_dependency('i18n-tasks',           '~> 0.7.10')
-  spec.add_development_dependency('inch',                 '~> 0.5.8')
+  spec.add_development_dependency('inch',                 '~> 0.5.10')
   spec.add_development_dependency('shoulda-matchers',     '~> 2.8.0.rc1')
   spec.add_development_dependency('database_cleaner',     '~> 1.4.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.4')
