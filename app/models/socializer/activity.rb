@@ -208,7 +208,7 @@ module Socializer
       subquery = ao.project(ao[:id]).join(person).on(person[:id].eq(ao[:activitable_id])
                      .and(ao[:activitable_type].eq(Person.name)))
       # subquery = ActivityObject.select { id }.joins { activitable(Person) }
-      circle.project(circle[:id]).where(circle[:author_id].in(subquery))
+      Circle.select(:id).where(circle[:author_id].in(subquery))
 
       # subquery = 'SELECT socializer_activity_objects.id ' \
       #            'FROM socializer_activity_objects ' \
