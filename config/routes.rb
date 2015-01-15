@@ -24,8 +24,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  # TODO: Should the audiences controller be renamed to AudienceList?
-  resources :audiences,       only: [:index]
+  resources :audience_lists,  only: [:index]
   resources :authentications, only: [:index, :show, :new, :destroy]
 
   resources :circles do
