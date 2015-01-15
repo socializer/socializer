@@ -6,7 +6,7 @@ class CreateSocializerAuthentications < ActiveRecord::Migration
       t.string   :uid
       t.string   :image_url
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -5,7 +5,7 @@ class CreateSocializerPersonPlaces < ActiveRecord::Migration
       t.string   :city_name
       t.boolean  :current
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -4,7 +4,7 @@ class CreateSocializerTies < ActiveRecord::Migration
       t.integer  :contact_id
       t.integer  :circle_id
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_ties, :contact_id

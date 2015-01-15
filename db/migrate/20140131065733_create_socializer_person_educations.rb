@@ -11,7 +11,7 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration
       # TODO: change courses_description to description
       t.text     :courses_description
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

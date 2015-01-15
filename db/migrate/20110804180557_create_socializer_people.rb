@@ -25,7 +25,7 @@ class CreateSocializerPeople < ActiveRecord::Migration
       t.integer  :relationship
       t.string   :other_names
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -5,7 +5,7 @@ class CreateSocializerIdentities < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
 
-      t.timestamps
+      t.timestamps null: false
     end
     add_index :socializer_identities, :email, unique: true
   end

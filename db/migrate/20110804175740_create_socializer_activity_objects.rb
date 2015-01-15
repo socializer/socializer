@@ -6,7 +6,7 @@ class CreateSocializerActivityObjects < ActiveRecord::Migration
       t.integer  :like_count,                 default: 0
       t.integer  :unread_notifications_count, default: 0
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_activity_objects, [:activitable_type, :activitable_id], name: 'index_socializer_activity_objects_on_activitable'

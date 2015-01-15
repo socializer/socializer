@@ -12,7 +12,7 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration
       # TODO: change job_description to description
       t.text     :job_description
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

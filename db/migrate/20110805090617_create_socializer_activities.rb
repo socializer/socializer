@@ -6,7 +6,7 @@ class CreateSocializerActivities < ActiveRecord::Migration
       t.integer  :target_id
       t.integer  :verb_id,            null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_activities, :actor_id

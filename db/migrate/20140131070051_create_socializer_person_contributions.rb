@@ -6,7 +6,7 @@ class CreateSocializerPersonContributions < ActiveRecord::Migration
       t.string   :url
       t.boolean  :current
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

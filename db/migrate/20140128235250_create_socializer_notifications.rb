@@ -5,7 +5,7 @@ class CreateSocializerNotifications < ActiveRecord::Migration
       t.integer :activity_object_id
       t.boolean :read,          default: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

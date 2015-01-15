@@ -5,7 +5,7 @@ class CreateSocializerMemberships < ActiveRecord::Migration
       t.integer  :member_id
       t.boolean  :active
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_memberships, :group_id

@@ -5,7 +5,7 @@ class CreateSocializerAudiences < ActiveRecord::Migration
       t.integer  :activity_object_id
       t.string   :privacy, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_audiences, [:activity_id, :activity_object_id], unique: true, name: 'index_socializer_audiences_on_activity_id__activity_object_id'

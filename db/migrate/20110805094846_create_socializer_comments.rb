@@ -4,7 +4,7 @@ class CreateSocializerComments < ActiveRecord::Migration
       t.integer  :author_id
       t.text     :content
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_comments, :author_id

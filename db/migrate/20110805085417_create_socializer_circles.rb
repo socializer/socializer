@@ -5,7 +5,7 @@ class CreateSocializerCircles < ActiveRecord::Migration
       t.string   :display_name, null: false
       t.text     :content
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :socializer_circles, :author_id

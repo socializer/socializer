@@ -5,7 +5,7 @@ class CreateSocializerPersonProfiles < ActiveRecord::Migration
       t.string   :label
       t.string   :url
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

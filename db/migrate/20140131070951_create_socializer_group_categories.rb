@@ -4,7 +4,7 @@ class CreateSocializerGroupCategories < ActiveRecord::Migration
       t.integer  :group_id,     null: false
       t.string   :display_name
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

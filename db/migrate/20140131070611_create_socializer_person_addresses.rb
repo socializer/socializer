@@ -12,7 +12,7 @@ class CreateSocializerPersonAddresses < ActiveRecord::Migration
       t.string   :province_or_state
       t.string   :country
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
