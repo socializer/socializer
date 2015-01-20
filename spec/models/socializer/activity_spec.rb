@@ -38,9 +38,21 @@ module Socializer
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
     it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
 
-    # TODO: Test activity.comments? == true
     context '#comments' do
       it { expect(activity.comments?).to eq(false) }
+
+      context 'to be true' do
+        let(:activity) { create(:socializer_activity) }
+        let(:scope) { Audience.privacy.find_value(:public) }
+        let(:comment_attributes) { { content: 'Comment', activity_target_id: activity.id, activity_verb: 'add', scope: scope } }
+        let(:actor) { activity.actor }
+
+        before :each do
+          actor.comments.create!(comment_attributes)
+        end
+
+        it { expect(activity.comments?).to eq(true) }
+      end
     end
 
     # TODO: Test return values
