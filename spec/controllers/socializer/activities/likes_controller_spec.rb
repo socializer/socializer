@@ -59,11 +59,11 @@ module Socializer
         before { get :index,  id: note_activity.id, format: :html }
 
         it 'return people' do
-          expect(assigns(:object_ids)).to be_present
+          expect(assigns(:people)).to be_present
         end
 
         it 'return the user who like the activity' do
-          expect(assigns(:object_ids)).to include(user.activity_object)
+          expect(assigns(:people)).to include(user)
         end
       end
     end
