@@ -56,21 +56,12 @@ module Socializer
     # REFACTOR: DRY this up. Reduce database calls
     # TODO: Rename this method to liked_by
     def likes
-      people = []
-      query  = Activity.joins(:verb).where(activity_object_id: id)
+      subquery = Activity.where(activity_object_id: id)
+      people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
+      likers   = people.merge(Verb.by_display_name('like'))
+      unlikers = people.select(:id).merge(Verb.by_display_name('unlike'))
 
-      activities_likes   = query.merge(Verb.by_display_name('like'))
-      activities_unlikes = query.merge(Verb.by_display_name('unlike'))
-
-      activities_likes.each do |activity|
-        people << activity.actor
-      end
-
-      activities_unlikes.each do |activity|
-        people.delete_at people.index(activity.actor)
-      end
-
-      people
+      likers.where.not(id: unlikers.pluck(:id))
     end
 
     # Like the ActivityObject
