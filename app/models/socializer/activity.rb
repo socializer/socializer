@@ -152,9 +152,6 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.stream_query(viewer_id:)
-      # TODO: Verify this works correctly - matches squeel
-      # CLEANUP: Remove old/unused code
-
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
@@ -178,17 +175,6 @@ module Socializer
                                   .or(audience[:activity_object_id].in(viewer_id))))
 
       query.where(public_grouping.or(limited_grouping).or(arel_table[:actor_id].eq(viewer_id)))
-
-      # # rubocop:disable Lint/BlockAlignment, Style/Blocks
-      # query.where { (audiences.privacy.eq(privacy_public)) |
-      #   ((audiences.privacy.eq(privacy_circles)) & `#{viewer_id}`.in(my { circles_subquery })) |
-      #   ((audiences.privacy.eq(privacy_limited)) & (
-      #     `#{viewer_id}`.in(my { limited_circle_subquery }) |
-      #     audiences.activity_object_id.in(my { limited_group_subquery(viewer_id) }) |
-      #     audiences.activity_object_id.in(viewer_id)
-      #   )) |
-      #   (actor_id.eq(viewer_id)) }
-      # # rubocop:enable Lint/BlockAlignment, Style/Blocks
     end
     private_class_method :stream_query
 
@@ -197,15 +183,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.circles_subquery
-      # TODO: Verify this works correctly - matches squeel
-      # CLEANUP: Remove old code
-
       # Retrieve the author's unique identifier
       subquery = ActivityObject.select(:id).joins(:person)
       Circle.select(:id).where(author_id: subquery).arel
-
-      # subquery = ActivityObject.select { id }.joins { activitable(Person) }
-      # Circle.select { id }.where { author_id.in(subquery) }
     end
     private_class_method :circles_subquery
 
@@ -231,15 +211,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
-      # TODO: Verify this works correctly - matches squeel
-      # CLEANUP: Remove old code
-
       ActivityObject.select(:id)
                     .joins(group: :memberships)
                     .where(socializer_memberships: { member_id: viewer_id }).arel
-
-      # ActivityObject.select { id }.joins { activitable(Group).memberships }
-      #               .where { socializer_memberships.member_id.eq(viewer_id) }
     end
     private_class_method :limited_group_subquery
   end

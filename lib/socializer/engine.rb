@@ -12,8 +12,6 @@ require 'omniauth-linkedin'
 require 'omniauth-openid'
 require 'omniauth-twitter'
 require 'simple_form'
-# CLEANUP: Remove once we're satisfied with the Arel solution or supported version of squeel is released
-# require 'squeel'
 
 #
 # Namespace for the Socializer engine
