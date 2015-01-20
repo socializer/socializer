@@ -234,7 +234,10 @@ module Socializer
       # TODO: Verify this works correctly - matches squeel
       # CLEANUP: Remove old code
 
-      ActivityObject.select(:id).joins(group: :memberships).where(socializer_memberships: { member_id: viewer_id })
+      # TODO: May need to add .arel
+      ActivityObject.select(:id)
+                    .joins(group: :memberships)
+                    .where(socializer_memberships: { member_id: viewer_id }).arel
 
       # ActivityObject.select { id }.joins { activitable(Group).memberships }
       #               .where { socializer_memberships.member_id.eq(viewer_id) }
