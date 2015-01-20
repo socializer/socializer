@@ -50,7 +50,7 @@ module Socializer
       # @comments ||= children.joins(:activitable_object)
       #                       .where(activity_objects: { activitable_type: 'Socializer::Comment' })
       @comments ||= children.joins(:activitable_object)
-                            .where(socializer_activity_objects: { activitable_type: 'Socializer::Comment' })
+                            .where(socializer_activity_objects: { activitable_type: Comment.name })
     end
 
     # The {Socializer::Person} that performed the activity.
