@@ -234,7 +234,6 @@ module Socializer
       # TODO: Verify this works correctly - matches squeel
       # CLEANUP: Remove old code
 
-      # TODO: May need to add .arel
       ActivityObject.select(:id)
                     .joins(group: :memberships)
                     .where(socializer_memberships: { member_id: viewer_id }).arel
