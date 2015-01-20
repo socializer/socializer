@@ -1,19 +1,5 @@
 <h1>Liked by</h1>
 
 <div class='row'>
-  <% @people.each do |person| %>
-    <div class='col-sm-6 col-md-4'>
-      <article class='media panel panel-default'>
-        <section class='media-object'>
-          <%= link_to(image_tag(person.decorate.avatar_url), person) %>
-        </section>
-
-        <section class='media-body'>
-            <h1>
-              <%= link_to(person.display_name, person_activities_path(person_id: person.id)) %>
-            </h1>
-        </section>
-      </article>
-    </div>
-  <% end %>
+  <%= render partial: 'socializer/people/mini_card', collection: @people, as: :person %>
 </div>
