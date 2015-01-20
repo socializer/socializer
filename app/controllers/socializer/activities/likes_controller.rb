@@ -10,11 +10,8 @@ module Socializer
       # Used to display the Like tooltip
       def index
         activity = Activity.find_by(id: params[:id])
-        @object_ids = []
 
-        activity.activity_object.likes.each do |person|
-          @object_ids << person.activity_object
-        end
+        @people = activity.activity_object.likes
 
         respond_to do |format|
           format.html { render layout: false if request.xhr? }
