@@ -196,8 +196,6 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.limited_circle_subquery
-      # TODO: Verify this works correctly
-
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       subquery = Circle.select(:id).joins(activity_object: :audiences)
