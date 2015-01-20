@@ -11,7 +11,7 @@ module Socializer
       def index
         activity = Activity.find_by(id: params[:id])
 
-        @people = activity.activity_object.likes
+        @people = activity.activity_object.liked_by
 
         respond_to do |format|
           format.html { render layout: false if request.xhr? }

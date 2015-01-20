@@ -48,7 +48,7 @@ module Socializer
       end
 
       it { expect(liked_activity_object.like_count).to eq(1) }
-      it { expect(liked_activity_object.likes.size).to eq(1) }
+      it { expect(liked_activity_object.liked_by.size).to eq(1) }
 
       context 'and unliked' do
         before do
@@ -57,7 +57,7 @@ module Socializer
         end
 
         it { expect(liked_activity_object.like_count).to eq(0) }
-        it { expect(liked_activity_object.likes.size).to eq(0) }
+        it { expect(liked_activity_object.liked_by.size).to eq(0) }
       end
     end
 
@@ -106,7 +106,7 @@ module Socializer
       end
 
       it { expect(activity_object.like_count).to eq(1) }
-      it { expect(activity_object.likes.size).to eq(1) }
+      it { expect(activity_object.liked_by.size).to eq(1) }
       it { expect(liking_person.likes.count.size).to eq(1) }
       it { expect(liking_person.likes? activity_object).to be_truthy }
 
@@ -118,7 +118,7 @@ module Socializer
         end
 
         it { expect(activity_object.like_count).to eq(0) }
-        it { expect(activity_object.likes.size).to eq(0) }
+        it { expect(activity_object.liked_by.size).to eq(0) }
         it { expect(liking_person.likes.count.size).to eq(0) }
         it { expect(liking_person.likes? activity_object).to be_falsey }
       end

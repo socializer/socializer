@@ -52,10 +52,7 @@ module Socializer
     # A list of people that like this activity object
     #
     # @return [Array]
-    #
-    # REFACTOR: DRY this up. Reduce database calls
-    # TODO: Rename this method to liked_by
-    def likes
+    def liked_by
       subquery = Activity.where(activity_object_id: id)
       people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
       likers   = people.merge(Verb.by_display_name('like'))
