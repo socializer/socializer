@@ -2,7 +2,7 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<h1><%= t('.header', count: current_user.pending_memberships_invites.count) %></h1>
+<h1><%= t('.header', count: @pending_invites.count) %></h1>
 
 <div class='row'>
   <% @pending_invites.each do |membership| %>

@@ -2,7 +2,7 @@
   <%= render 'toolbar' %>
 <% end %>
 
-<h1><%= t('.header', count: current_user.groups.count) %></h1>
+<h1><%= t('.header', count: @ownerships.count) %></h1>
 
 <div class='row'>
   <%= render partial: 'card', collection: @ownerships, as: :group %>
