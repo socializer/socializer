@@ -41,9 +41,9 @@ module Socializer
         privacy = audience.privacy
 
         case privacy
-        when privacy.public?
+        when 'public'
           @object_ids << privacy
-        when privacy.circles?
+        when 'circles'
           @activity.actor.circles.each do |circle|
             circle.activity_contacts.each do |contact|
               @object_ids << contact
