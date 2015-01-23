@@ -4,7 +4,7 @@ en:
     activities:
       activity:
         tooltip:
-          public: Anyone can see this
+          sharing: Sharing details
       audiences:
         index:
           tooltip:
