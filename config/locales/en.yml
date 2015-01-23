@@ -5,6 +5,10 @@ en:
       activity:
         tooltip:
           public: Anyone can see this
+      audiences:
+        index:
+          tooltip:
+            public: Anyone can see this
       sidebar:
         header: In my circles
       shares:

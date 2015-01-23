@@ -1,7 +1,7 @@
 <ul class="list-unstyled">
   <% @object_ids.each do |object| %>
     <% if object == 'public' %>
-      <li>Anyone can see this</li>
+      <li><%= t('.tooltip.public') %></li>
     <% else %>
       <li><%= object.activitable.display_name %></li>
     <% end %>
