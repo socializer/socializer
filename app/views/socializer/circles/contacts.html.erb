@@ -5,7 +5,7 @@
 <h1><%= t('.header') %></h1>
 
 <div class='row'>
-  <%= render partial: 'socializer/people/mini_card', collection: current_user.contacts, as: :person %>
+  <%= render partial: 'socializer/people/mini_card', collection: @contacts, as: :person %>
 </div>
 
 <hr>
