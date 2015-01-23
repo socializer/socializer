@@ -49,17 +49,14 @@ module Socializer
 
     # GET /circles/contacts
     def contacts
-      @circles = current_user.circles.decorate
     end
 
     # GET /circles/contact_of
     def contact_of
-      @circles = current_user.circles.decorate
     end
 
     # GET /circles/find_people
     def find_people
-      @circles = current_user.circles.decorate
     end
 
     private
