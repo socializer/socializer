@@ -23,12 +23,14 @@
           <!-- FIXME: activity.object conflicts with draper. object is reserved -->
           <%= link_to(activity.model.object.decorate.created_at_time_ago, activity_activities_path(activity_id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
+          <!-- REFACTOR: Create an audience_links decorator method for activity -->
           <% activity.audiences.uniq.each do |audience| %>
             <% if audience.privacy.public? %>
-                <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted', title: "#{t('.tooltip.public')}") %>
+                <% title = "#{t('.tooltip.public')}"  %>
             <% else %>
-              <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %>
+                <% title = nil  %>
             <% end %>
+            <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted', title: title) %>
           <% end %>
         </small>
       </h1>
