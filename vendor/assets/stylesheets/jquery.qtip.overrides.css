@@ -63,6 +63,10 @@
 /*    white-space: pre-wrap;*/
 	}
 
+  .qtip-todc-bootstrap .qtip-content > .list-unstyled {
+    margin-bottom: 0;
+  }
+
 	.qtip-todc-bootstrap .qtip-icon {
 		/**
 		 * Overrides qTip2:
