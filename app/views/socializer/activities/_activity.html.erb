@@ -24,9 +24,7 @@
           <%= link_to(activity.model.object.decorate.created_at_time_ago, activity_activities_path(activity_id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.uniq.each do |audience| %>
-            <!-- FIXME: display a tooltip on hover and something on click. either a tooltip or popover -->
-            <%#= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted', title: t('.tooltip.sharing')) %>
-            <%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %>
+            <span title='<%= t('.tooltip.sharing') %>'><%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %></span>
           <% end %>
         </small>
       </h1>
