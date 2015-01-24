@@ -59,9 +59,7 @@ module Socializer
           # In the case of LIMITED audience, then go through all the audience
           # circles and add contacts from those circles in the list of allowed
           # audience.
-          activity_object.activitable.activity_contacts.each do |contact|
-            @object_ids << contact
-          end
+          @object_ids.concat(activity_object.activitable.activity_contacts)
         end
       end
     end
