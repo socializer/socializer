@@ -8,6 +8,7 @@ module Socializer
 
       def index
         activity = Activity.find_by(id: params[:id])
+        @object_ids = []
 
         get_audience_for_activity(activity: activity)
 
@@ -20,7 +21,6 @@ module Socializer
 
       # REFACTOR: Move out of the controller.
       def get_audience_for_activity(activity:)
-        @object_ids = []
 
         activity.audiences.each do |audience|
           audience_object_ids(audience)
