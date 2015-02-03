@@ -57,12 +57,12 @@ module Socializer
 
           # The target audience is either a group or a person,
           # which means we can add it as it is in the audience list.
-          return @object_ids << activity_object unless activity_object.circle?
+          return @object_ids << activity_object.activitable.display_name unless activity_object.circle?
 
           # In the case of LIMITED audience, then go through all the audience
           # circles and add contacts from those circles in the list of allowed
           # audience.
-          @object_ids.concat(activity_object.activitable.activity_contacts)
+          @object_ids.concat(activity_object.activitable.activity_contacts.map(&:activitable).map(&:display_name))
         end
       end
     end
