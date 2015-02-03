@@ -47,12 +47,16 @@ module Socializer
         #   # @object_ids << t('.tooltip.public')
         #   @object_ids << privacy
         when 'circles'
-          @activity.actor.circles.each do |circle|
-            @object_ids.concat(circle.activity_contacts)
-            # circle.activity_contacts.each do |contact|
-            #   @object_ids << contact
-            # end
-          end
+          # TODO: Is privacy ever circles?
+          # FIXME: @activity isn't defined
+          byebug
+          # # TODO: Use a query if possible
+          # @activity.actor.circles.each do |circle|
+          #   @object_ids.concat(circle.activity_contacts)
+          #   # circle.activity_contacts.each do |contact|
+          #   #   @object_ids << contact
+          #   # end
+          # end
         else
           activity_object = audience.activity_object
 
