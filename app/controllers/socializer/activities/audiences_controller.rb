@@ -23,12 +23,12 @@ module Socializer
       def get_audience_for_activity(activity:)
         return @object_ids << t('.tooltip.public') if activity.audiences.any? { |audience| audience.privacy == 'public' }
 
+        # The actor of the activity is always part of the audience.
+        @object_ids << activity.activitable_actor.activitable.display_name
+
         activity.audiences.each do |audience|
           audience_object_ids(audience)
         end
-
-        # The actor of the activity is always part of the audience.
-        @object_ids << activity.activitable_actor unless @object_ids.include?('public')
 
         # Remove any duplicates from the list. It can happen when, for example, someone
         # post a message to itself.
