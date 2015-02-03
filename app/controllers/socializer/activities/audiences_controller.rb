@@ -21,7 +21,7 @@ module Socializer
 
       # REFACTOR: Move out of the controller.
       def get_audience_for_activity(activity:)
-        return @object_ids << t('.tooltip.public') if activity.audiences.any? { |audience| audience.privacy == 'public' }
+        return @object_ids << t('socializer.activities.audiences.index.tooltip.public') if activity.audiences.any? { |audience| audience.privacy == 'public' }
 
         # The actor of the activity is always part of the audience.
         @object_ids << activity.activitable_actor.activitable.display_name
