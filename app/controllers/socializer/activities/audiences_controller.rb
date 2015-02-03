@@ -48,9 +48,10 @@ module Socializer
         #   @object_ids << privacy
         when 'circles'
           @activity.actor.circles.each do |circle|
-            circle.activity_contacts.each do |contact|
-              @object_ids << contact
-            end
+            @object_ids.concat(circle.activity_contacts)
+            # circle.activity_contacts.each do |contact|
+            #   @object_ids << contact
+            # end
           end
         else
           activity_object = audience.activity_object
