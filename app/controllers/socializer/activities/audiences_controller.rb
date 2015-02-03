@@ -21,6 +21,7 @@ module Socializer
 
       # REFACTOR: Move out of the controller.
       def get_audience_for_activity(activity:)
+        return @object_ids << t('.tooltip.public') if activity.audiences.any? { |audience| audience.privacy == 'public' }
 
         activity.audiences.each do |audience|
           audience_object_ids(audience)
@@ -41,8 +42,10 @@ module Socializer
         privacy = audience.privacy
 
         case privacy
-        when 'public'
-          @object_ids << privacy
+        # when 'public'
+        #   # Assign value here rather than in the view
+        #   # @object_ids << t('.tooltip.public')
+        #   @object_ids << privacy
         when 'circles'
           @activity.actor.circles.each do |circle|
             circle.activity_contacts.each do |contact|
