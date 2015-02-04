@@ -14,8 +14,8 @@ module Socializer
     # queries. By using these relationships we no longer need to use Arel in those methods.
     # NOTE: These relationships will no longer be needed if rails provides a nice way to joins to a polymorphic
     #       relationship
-    belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: 'activitable_id'
     belongs_to :group,  -> { where(socializer_activity_objects: { activitable_type: Group.name }) }, foreign_key: 'activitable_id'
+    belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: 'activitable_id'
 
     has_many :notifications
     has_many :audiences # , dependent: :destroy
