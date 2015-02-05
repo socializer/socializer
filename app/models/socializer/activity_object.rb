@@ -52,13 +52,14 @@ module Socializer
     # A list of people that like this activity object
     #
     # @return [Array]
+    # FIXME:
     def liked_by
       subquery = Activity.where(activity_object_id: id)
       people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
       likers   = people.merge(Verb.by_display_name('like'))
-      unlikers = people.select(:id).merge(Verb.by_display_name('unlike'))
+      unlikers = people.merge(Verb.by_display_name('unlike')).pluck(:id)
 
-      likers.where.not(id: unlikers.pluck(:id))
+      likers.where.not(id: unlikers)
     end
 
     # Like the ActivityObject
