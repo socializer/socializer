@@ -67,7 +67,8 @@ module Socializer
           # In the case of LIMITED audience, then go through all the audience
           # circles and add contacts from those circles in the list of allowed
           # audience.
-          @object_ids.concat(activity_object.activitable.contacts.map(&:display_name))
+          subquery = activity_object.activitable.activity_contacts.pluck(:activitable_id)
+          @object_ids.concat(Person.where(id: subquery).pluck(:display_name))
         end
       end
     end
