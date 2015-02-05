@@ -52,14 +52,29 @@ module Socializer
     # A list of people that like this activity object
     #
     # @return [Array]
-    # FIXME:
+    # REFACTOR: DRY this up. Reduce database calls
     def liked_by
-      subquery = Activity.where(activity_object_id: id)
-      people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
-      likers   = people.merge(Verb.by_display_name('like'))
-      unlikers = people.merge(Verb.by_display_name('unlike')).pluck(:id)
+      # subquery = Activity.where(activity_object_id: id)
+      # people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
+      # likers   = people.merge(Verb.by_display_name('like'))
+      # unlikers = people.merge(Verb.by_display_name('unlike')).pluck(:id)
 
-      likers.where.not(id: unlikers)
+      # likers.where.not(id: unlikers)
+      people = []
+      query  = Activity.joins(:verb).where(activity_object_id: id)
+
+      activities_likes   = query.merge(Verb.by_display_name('like'))
+      activities_unlikes = query.merge(Verb.by_display_name('unlike'))
+
+      activities_likes.each do |activity|
+        people << activity.actor
+      end
+
+      activities_unlikes.each do |activity|
+        people.delete_at people.index(activity.actor)
+      end
+
+      people
     end
 
     # Like the ActivityObject
