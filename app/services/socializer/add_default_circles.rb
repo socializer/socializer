@@ -12,7 +12,6 @@ module Socializer
     #
     # @return [Socializer:AddDefaultCircles] returns an instance of AddDefaultCircles
     def initialize(person:)
-      fail(ArgumentError, 'person can not be blank') if person.blank?
 
       @person = person
     end
