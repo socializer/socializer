@@ -21,9 +21,11 @@ module Socializer
 
     describe '.perform' do
       let(:activity) { create(:socializer_activity) }
-      let(:audience_list) { ActivityAudienceList.new(activity: activity) }
+      let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
 
-      it { expect(audience_list.perform).to be_kind_of(Array) }
+      it { expect(audience_list).to be_kind_of(Array) }
+      it { expect(audience_list.size).to eq(1) }
+      it { expect(audience_list.first).to start_with('name') }
     end
   end
 end
