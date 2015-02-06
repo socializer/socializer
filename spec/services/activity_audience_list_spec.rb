@@ -20,6 +20,10 @@ module Socializer
     end
 
     describe '.perform' do
+      let(:activity) { create(:socializer_activity) }
+      let(:audience_list) { ActivityAudienceList.new(activity: activity) }
+
+      it { expect(audience_list.perform).to be_kind_of(Array) }
     end
   end
 end
