@@ -13,6 +13,7 @@ module Socializer
     #
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
+      fail(ArgumentError, "person must be an instance of 'Socializer:Person' not '#{person.class.name}'") unless person.is_a?(Socializer::Person)
 
       @person = person
       @query  = query

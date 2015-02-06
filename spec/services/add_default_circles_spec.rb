@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe AddDefaultCircles, type: :service do
-    context 'when the person argument is nil' do
+    describe 'when the person argument is nil' do
       context '.new should raise an ArgumentError' do
         let(:add_default_circles) { AddDefaultCircles.new(person: nil) }
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
@@ -12,6 +12,11 @@ module Socializer
         let(:add_default_circles) { AddDefaultCircles.perform(person: nil) }
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
+    end
+
+    describe 'when the person argument is the wrong type' do
+      let(:add_default_circles) { AddDefaultCircles.new(person: Activity.new) }
+      it { expect { add_default_circles }.to raise_error(ArgumentError) }
     end
 
     context '.perform' do

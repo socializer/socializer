@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe AudienceList, type: :service do
-    context 'when the person argument is nil' do
+    describe 'when the person argument is nil' do
       context '.new should raise an ArgumentError' do
         let(:audience_list) { AudienceList.new(person: nil, query: nil) }
         it { expect { audience_list }.to raise_error(ArgumentError) }
@@ -12,6 +12,11 @@ module Socializer
         let(:audience_list) { AudienceList.perform(person: nil, query: nil) }
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
+    end
+
+    describe 'when the person argument is the wrong type' do
+      let(:audience_list) { AudienceList.new(person: Activity.new) }
+      it { expect { audience_list }.to raise_error(ArgumentError) }
     end
 
     context '.perform' do
