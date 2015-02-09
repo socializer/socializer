@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-twitter',     '~> 1.1.0')
   spec.add_dependency('simple_form',          '~> 3.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.7.12')
+  spec.add_development_dependency('bundler',              '~> 1.7.13')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.10')
   spec.add_development_dependency('rspec-rails',          '~> 3.1.0')
@@ -52,6 +52,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('inch',                 '~> 0.5.10')
   spec.add_development_dependency('shoulda-matchers',     '~> 2.8.0')
   spec.add_development_dependency('database_cleaner',     '~> 1.4.0')
-  spec.add_development_dependency('rails_best_practices', '~> 1.15.5')
+  spec.add_development_dependency('rails_best_practices', '~> 1.15.6')
   spec.add_development_dependency('rubocop',              '~> 0.29.0')
 end
