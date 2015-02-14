@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :socializer_audience, class: Socializer::Audience do
     privacy :public
-    activity_id 1
+    association :activity, factory: :socializer_activity
     association :activity_object, factory: :socializer_activity_object
   end
 end
