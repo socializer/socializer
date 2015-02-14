@@ -53,5 +53,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('shoulda-matchers',     '~> 2.8.0')
   spec.add_development_dependency('database_cleaner',     '~> 1.4.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.6')
-  spec.add_development_dependency('rubocop',              '~> 0.29.0')
+  spec.add_development_dependency('rubocop',              '~> 0.29.1')
 end
