@@ -47,13 +47,16 @@ module Socializer
       limited_audience_list(activitable: audience.activity_object.activitable) if audience.limited?
     end
 
-      #   @object_ids.concat(circle.activity_contacts)
     def circles_audience_list
       # byebug
       # TODO: Use a query if possible
+      list = []
+        list.concat(circle.activity_contacts)
       #   # circle.activity_contacts.each do |contact|
       #   #   @object_ids << contact
       #   # end
+
+      list
     end
 
     # In the case of LIMITED audience, then go through all the audience
