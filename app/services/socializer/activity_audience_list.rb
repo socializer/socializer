@@ -51,10 +51,13 @@ module Socializer
       # byebug
       # TODO: Use a query if possible
       list = []
+
+      @activity.actor.circles.each do |circle|
         list.concat(circle.activity_contacts)
       #   # circle.activity_contacts.each do |contact|
       #   #   @object_ids << contact
       #   # end
+      end
 
       list
     end
