@@ -41,7 +41,6 @@ module Socializer
 
     private
 
-      activitable = audience.activity_object.activitable
     def audience_list(audience)
       return circles_audience_list if audience.circles?
 
