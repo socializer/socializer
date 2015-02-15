@@ -45,7 +45,7 @@ module Socializer
     def audience_list(audience)
       return circles_audience_list if audience.circles?
 
-      return build_limited_audience_list(activitable: activitable) if audience.limited?
+      limited_audience_list(activitable: audience.activity_object.activitable) if audience.limited?
     end
 
       byebug
@@ -63,7 +63,7 @@ module Socializer
     # In the case of LIMITED audience, then go through all the audience
     # circles and add contacts from those circles in the list of allowed
     # audience.
-    def build_limited_audience_list(activitable:)
+    def limited_audience_list(activitable:)
       # The target audience is either a group or a person,
       # which means we can add it as it is in the audience list.
       return [activitable.display_name] unless activitable.is_a?(Circle)
