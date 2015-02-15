@@ -53,6 +53,21 @@ module Socializer
           it { expect(audience_list.size).to eq(1) }
           it { expect(audience_list.first).to start_with('name') }
         end
+
+        context 'that is limited' do
+          before :each do
+            AddDefaultCircles.perform(person: person)
+          end
+
+          let(:family) { Circle.find_by(author_id: person.id, display_name: 'Family') }
+          let(:note) { person.activity_object.notes.create!(content: 'Test note', object_ids: [family.id], activity_verb: 'post') }
+          let(:activity) { Activity.find_by(activity_object_id: note.activity_object.id) }
+          let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+
+          it { expect(audience_list.size).to eq(1) }
+          it { expect(audience_list.first).to start_with('name') }
+        end
+      end
     end
   end
 end
