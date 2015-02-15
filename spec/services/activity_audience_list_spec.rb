@@ -20,12 +20,14 @@ module Socializer
     end
 
     describe '.perform' do
-      let(:activity) { create(:socializer_activity) }
-      let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+      context 'without an audience' do
+        let(:activity) { create(:socializer_activity) }
+        let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
 
-      it { expect(audience_list).to be_kind_of(Array) }
-      it { expect(audience_list.size).to eq(1) }
-      it { expect(audience_list.first).to start_with('name') }
+        it { expect(audience_list).to be_kind_of(Array) }
+        it { expect(audience_list.size).to eq(1) }
+        it { expect(audience_list.first).to start_with('name') }
+      end
     end
   end
 end
