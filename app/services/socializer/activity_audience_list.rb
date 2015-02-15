@@ -43,17 +43,17 @@ module Socializer
 
       activitable = audience.activity_object.activitable
     def audience_list(audience)
+      return circles_audience_list if audience.circles?
 
-      return build_circles_audience_list if audience.circles?
       return build_limited_audience_list(activitable: activitable) if audience.limited?
     end
 
-    def build_circles_audience_list
       byebug
       # TODO: Is privacy ever circles?
       # # TODO: Use a query if possible
       # @activity.actor.circles.each do |circle|
       #   @object_ids.concat(circle.activity_contacts)
+    def circles_audience_list
       #   # circle.activity_contacts.each do |contact|
       #   #   @object_ids << contact
       #   # end
