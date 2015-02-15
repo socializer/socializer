@@ -33,7 +33,7 @@ module Socializer
 
       @activity.audiences.each do |audience|
         return [I18n.t('socializer.activities.audiences.index.tooltip.public')] if audience.public?
-        list.concat(build_audience_list(audience))
+        list.concat(audience_list(audience))
       end
 
       list.unshift(@activity.activitable_actor.activitable.display_name)
@@ -41,8 +41,8 @@ module Socializer
 
     private
 
-    def build_audience_list(audience)
       activitable = audience.activity_object.activitable
+    def audience_list(audience)
 
       return build_circles_audience_list if audience.circles?
       return build_limited_audience_list(activitable: activitable) if audience.limited?
