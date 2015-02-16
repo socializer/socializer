@@ -3,7 +3,7 @@
 [![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat-square)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://img.shields.io/coveralls/socializer/socializer.svg?style=flat-square)](https://coveralls.io/r/socializer/socializer?branch=master)
 [![Code Climate](https://img.shields.io/codeclimate/github/socializer/socializer.png?style=flat-square)](https://codeclimate.com/github/socializer/socializer)
-[![Dependency Status](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat-square)](https://gemnasium.com/socializer/socializer)
+[![Gemnasium](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat-square)](https://gemnasium.com/socializer/socializer)
 [![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master&style=flat-square)](http://inch-ci.org/github/socializer/socializer)
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
