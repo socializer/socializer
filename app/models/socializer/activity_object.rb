@@ -135,7 +135,7 @@ module Socializer
     #
     # @return [OpenStruct]
     def create_like_unlike_activity(actor:, verb:)
-      public = Audience.privacy_value(privacy: :public).split(',')
+      public = Audience.privacy.public.value.split(',')
 
       ActivityCreator.new(actor_id: actor.guid,
                           activity_object_id: id,
