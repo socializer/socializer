@@ -44,6 +44,9 @@ module Socializer
       it { is_expected.to validate_inclusion_of(:avatar_provider).in_array(%w(TWITTER FACEBOOK LINKEDIN GRAVATAR)) }
     end
 
+    it { is_expected.to enumerize(:gender).in(:unknown, :female, :male).with_default(:unknown) }
+    it { is_expected.to enumerize(:relationship).in(:unknown, :single, :relationship, :engaged, :married, :complicated, :open, :widowed, :domestic, :civil).with_default(:unknown) }
+
     it '.create_with_omniauth' do
       expect(Socializer::Person).to respond_to(:create_with_omniauth)
     end
