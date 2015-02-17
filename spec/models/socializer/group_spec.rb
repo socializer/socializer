@@ -32,7 +32,7 @@ module Socializer
       end
     end
 
-    it { expect(enumerize(:privacy).in(:public, :restricted, :private).with_default(:public)) }
+    it { is_expected.to enumerize(:privacy).in(:public, :restricted, :private).with_default(:public) }
 
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }

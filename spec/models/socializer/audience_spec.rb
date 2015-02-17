@@ -25,7 +25,7 @@ module Socializer
       # it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
     end
 
-    it { expect(enumerize(:privacy).in(:public, :circles, :limited).with_default(:public)) }
+    it { is_expected.to enumerize(:privacy).in(:public, :circles, :limited).with_default(:public) }
 
     context '.privacy_value' do
       it { expect { Audience.privacy_value(privacy: :none) }.to raise_error(NoMethodError) }
