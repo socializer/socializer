@@ -19,16 +19,6 @@ module Socializer
 
     # Class Methods
 
-    # This method is a shorthand for the enumerize find_value(value).value method(s)
-    #
-    # @param privacy: [String]
-    # @param privacy: [Symbol]
-    #
-    # @return [String]
-    def self.privacy_value(privacy:)
-      self.privacy.find_value(privacy).value
-    end
-
     # Instance Methods
     def object
       activity_object.activitable

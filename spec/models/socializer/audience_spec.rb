@@ -27,11 +27,6 @@ module Socializer
 
     it { is_expected.to enumerize(:privacy).in(:public, :circles, :limited).with_default(:public) }
 
-    context '.privacy_value' do
-      it { expect { Audience.privacy_value(privacy: :none) }.to raise_error(NoMethodError) }
-      it { expect(Audience.privacy_value(privacy: :public)).to eq(Audience.privacy.find_value(:public).value) }
-    end
-
     context '#object' do
       let(:activitable) { audience.activity_object.activitable }
       it { expect(audience.object).to be_a(activitable.class) }
