@@ -52,7 +52,7 @@ module Socializer
       list = []
 
       @activity.actor.circles.each do |circle|
-        list.concat(circle.activity_contacts)
+        list.concat(limited_audience_list(activitable: circle))
       end
 
       list
