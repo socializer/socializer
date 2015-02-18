@@ -152,6 +152,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.stream_query(viewer_id:)
+      # FIXME: Notes shared with Circles don't show in the stream
+      #         The note doesn't display in the owners stream or in a circle members stream
+
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
