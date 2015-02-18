@@ -107,7 +107,7 @@ module Socializer
     #
     # @return [Array] Returns a collection of contacts
     def contacts
-      circles.map(&:contacts).flatten.uniq
+      circles.flat_map(&:contacts).uniq
     end
 
     def contact_of
