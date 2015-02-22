@@ -5,7 +5,7 @@ gemspec
 group :test do
   gem 'cucumber-rails', '~> 1.4.2', require: false
   gem 'database_cleaner'
-  gem 'simplecov', '~> 0.9.1', require: false
+  gem 'simplecov', '~> 0.9.2', require: false
   gem 'coveralls', require: false
 end
 
