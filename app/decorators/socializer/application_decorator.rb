@@ -25,7 +25,7 @@ module Socializer
       options.reverse_merge! title: created_updated_tooltip_text
 
       options[:data] ||= {}
-      options[:data].merge! time_ago: 'moment.js'
+      options[:data][:time_ago] = 'moment.js'
 
       h.time_tag(created_at, created_at.strftime('%B %e, %Y %l:%M%P'), options)
     end
