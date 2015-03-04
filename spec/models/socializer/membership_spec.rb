@@ -22,6 +22,23 @@ module Socializer
     end
 
     describe 'scopes' do
+      context 'active' do
+        context 'no active records' do
+          let(:result) { Membership.active }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.present?).to be false }
+        end
+
+        context 'active records' do
+          before { create(:socializer_membership, active: true) }
+          let(:result) { Membership.active }
+
+          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          it { expect(result.first.active).to be true }
+        end
+      end
+
       context 'inactive' do
         context 'no inactive records' do
           let(:result) { Membership.inactive }

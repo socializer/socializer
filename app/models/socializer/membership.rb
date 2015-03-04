@@ -12,6 +12,7 @@ module Socializer
     # Validations
 
     # Named Scopes
+    scope :active, -> { where(active: true) }
     scope :inactive, -> { where(active: false) }
     scope :by_person, -> member_guid { where(member_id: member_guid) }
 
