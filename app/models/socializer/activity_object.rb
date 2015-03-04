@@ -31,7 +31,7 @@ module Socializer
     has_many :circles,    foreign_key: 'author_id'
 
     has_many :ties,        foreign_key: 'contact_id'
-    has_many :memberships, -> { where active: true }, foreign_key: 'member_id'
+    has_many :memberships, -> { Membership.active }, foreign_key: 'member_id'
 
     # Validations
     validates :activitable, presence: true
