@@ -17,8 +17,7 @@ module Socializer
 
     describe 'relationships' do
       it { is_expected.to belong_to(:group) }
-      it { is_expected.to belong_to(:activity_member) }
-      # it { is_expected.to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
+      it { is_expected.to belong_to(:activity_member).class_name('ActivityObject').with_foreign_key('member_id') }
     end
 
     describe 'scopes' do
