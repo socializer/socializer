@@ -14,7 +14,7 @@ module Socializer
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id'
 
     has_many :memberships
-    has_many :activity_members, -> { where(socializer_memberships: { active: true }) }, through: :memberships
+    has_many :activity_members, -> { merge(Membership.active) }, through: :memberships
     has_many :links, class_name: 'GroupLink', foreign_key: 'group_id', dependent: :destroy
     has_many :categories, class_name: 'GroupCategory', foreign_key: 'group_id', dependent: :destroy
 
