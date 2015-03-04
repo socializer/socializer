@@ -12,6 +12,7 @@ module Socializer
     #
     # @return [Socializer:AddDefaultCircles] returns an instance of AddDefaultCircles
     def initialize(person:)
+      # TODO: Add translation
       fail(ArgumentError, "person must be an instance of 'Socializer:Person' not '#{person.class.name}'") unless person.is_a?(Socializer::Person)
 
       @person = person

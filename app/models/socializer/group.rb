@@ -83,6 +83,7 @@ module Socializer
       elsif privacy.restricted?
         active = false
       else
+        # TODO: Add translation
         fail 'Cannot self-join a private group, you need to be invited'
       end
 
@@ -110,6 +111,7 @@ module Socializer
 
     def deny_delete_if_members
       return unless memberships.count > 0
+      # TODO: Add translation
       fail 'Cannot delete a group that has members in it.'
     end
   end

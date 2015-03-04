@@ -12,6 +12,7 @@ module Socializer
     #
     # @return [Socializer:ActivityAudienceList] returns an instance of ActivityAudienceList
     def initialize(activity:)
+      # TODO: Add translation
       fail(ArgumentError, "activity must be an instance of 'Socializer:Activity' not '#{activity.class.name}'") unless activity.is_a?(Socializer::Activity)
 
       @activity = activity

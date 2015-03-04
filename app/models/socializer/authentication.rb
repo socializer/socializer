@@ -22,6 +22,7 @@ module Socializer
       # FIXME: authentication - This is not a good user experience.
       #       If the user clicks 'unbind' on their last authentication they will get an error.
       #       A flash notice should be set and the user should be able to continue on.
+      # TODO: Add translation
       fail 'Cannot delete the last authentication available.'
     end
   end
