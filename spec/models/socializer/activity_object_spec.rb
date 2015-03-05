@@ -27,7 +27,7 @@ module Socializer
       it { is_expected.to have_many(:object_activities) }
       it { is_expected.to have_many(:target_activities) }
       it { is_expected.to have_many(:notes) }
-      it { is_expected.to have_many(:comments) }
+      it { is_expected.to have_many(:comments).inverse_of(:activity_author) }
       it { is_expected.to have_many(:groups) }
       it { is_expected.to have_many(:circles) }
       it { is_expected.to have_many(:ties) }
