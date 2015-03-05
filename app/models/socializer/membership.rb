@@ -9,6 +9,8 @@ module Socializer
     belongs_to :group
     belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id'
 
+    has_one :member, through: :activity_member, source: :activitable,  source_type: 'Socializer::Person'
+
     # Validations
 
     # Named Scopes
@@ -19,10 +21,6 @@ module Socializer
     # Class Methods
 
     # Instance Methods
-
-    def member
-      activity_member.activitable
-    end
 
     def approve!
       update_attribute(:active, true)
