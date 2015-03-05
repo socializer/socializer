@@ -15,7 +15,7 @@ module Socializer
     end
 
     context 'relationships' do
-      it { is_expected.to belong_to(:activity_author) }
+      it { is_expected.to belong_to(:activity_author).class_name('ActivityObject').with_foreign_key('author_id').inverse_of(:groups) }
       it { is_expected.to have_many(:memberships) }
       it { is_expected.to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
       it { is_expected.to have_many(:links) }

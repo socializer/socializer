@@ -27,7 +27,7 @@ module Socializer
 
     has_many :notes,      foreign_key: 'author_id', inverse_of: :activity_author
     has_many :comments,   foreign_key: 'author_id', inverse_of: :activity_author
-    has_many :groups,     foreign_key: 'author_id'
+    has_many :groups,     foreign_key: 'author_id', inverse_of: :activity_author
     has_many :circles,    foreign_key: 'author_id'
 
     has_many :ties,        foreign_key: 'contact_id'

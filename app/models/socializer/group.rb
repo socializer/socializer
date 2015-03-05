@@ -11,7 +11,7 @@ module Socializer
     attr_accessible :display_name, :privacy, :author_id, :tagline, :about
 
     # Relationships
-    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id'
+    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :groups
 
     has_many :memberships
     has_many :activity_members, -> { merge(Membership.active) }, through: :memberships

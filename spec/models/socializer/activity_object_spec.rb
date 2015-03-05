@@ -28,7 +28,7 @@ module Socializer
       it { is_expected.to have_many(:target_activities) }
       it { is_expected.to have_many(:notes).inverse_of(:activity_author) }
       it { is_expected.to have_many(:comments).inverse_of(:activity_author) }
-      it { is_expected.to have_many(:groups) }
+      it { is_expected.to have_many(:groups).inverse_of(:activity_author) }
       it { is_expected.to have_many(:circles) }
       it { is_expected.to have_many(:ties) }
       it { is_expected.to have_many(:memberships).conditions(active: true) }
