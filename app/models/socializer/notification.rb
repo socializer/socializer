@@ -7,7 +7,7 @@ module Socializer
 
     # Relationships
     belongs_to :activity
-    belongs_to :activity_object # Person, Group, ...
+    belongs_to :activity_object, inverse_of: :notifications # Person, Group, ...
 
     # Validations
     validates :activity_id, presence: true

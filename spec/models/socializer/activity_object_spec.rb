@@ -20,7 +20,7 @@ module Socializer
 
     context 'relationships' do
       it { is_expected.to belong_to(:activitable) }
-      it { is_expected.to have_many(:notifications) }
+      it { is_expected.to have_many(:notifications).inverse_of(:activity_object) }
       it { is_expected.to have_many(:audiences).inverse_of(:activity_object) }
       it { is_expected.to have_many(:activities).through(:audiences) }
       it { is_expected.to have_many(:actor_activities) }
