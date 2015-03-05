@@ -15,6 +15,7 @@ module Socializer
     context 'relationships' do
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
       it { is_expected.to belong_to(:activity_contact).class_name('ActivityObject').with_foreign_key('contact_id').inverse_of(:ties) }
+      it { is_expected.to have_one(:contact).through(:activity_contact).source(:activitable) }
     end
 
     # TODO: Test return values
