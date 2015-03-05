@@ -19,7 +19,7 @@ module Socializer
       it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
       it { is_expected.to have_many(:links) }
       it { is_expected.to have_many(:categories) }
-      it { is_expected.to have_many(:memberships) }
+      it { is_expected.to have_many(:memberships).inverse_of(:group) }
       it { is_expected.to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
       it { is_expected.to have_many(:members).through(:activity_members).source(:activitable) }
     end

@@ -6,7 +6,7 @@ module Socializer
     attr_accessible :group_id, :active
 
     # Relationships
-    belongs_to :group
+    belongs_to :group, inverse_of: :memberships
     belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id'
 
     has_one :member, through: :activity_member, source: :activitable,  source_type: 'Socializer::Person'
