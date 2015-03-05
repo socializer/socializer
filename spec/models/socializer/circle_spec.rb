@@ -18,6 +18,7 @@ module Socializer
       it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
       it { is_expected.to have_many(:ties).inverse_of(:circle) }
       it { is_expected.to have_many(:activity_contacts).through(:ties) }
+      it { is_expected.to have_many(:contacts).through(:activity_contacts).source(:activitable) }
     end
 
     context 'validations' do

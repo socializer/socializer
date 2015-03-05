@@ -13,6 +13,7 @@ module Socializer
     has_one  :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
     has_many :ties, inverse_of: :circle
     has_many :activity_contacts, through: :ties
+    has_many :contacts, through: :activity_contacts, source: :activitable,  source_type: 'Socializer::Person'
 
     # Validations
     validates :activity_author, presence: true
@@ -30,10 +31,6 @@ module Socializer
     end
 
     # Instance Methods
-
-    def contacts
-      activity_contacts.map(&:activitable)
-    end
 
     def add_contact(contact_id)
       ties.create!(contact_id: contact_id)
