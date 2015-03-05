@@ -14,8 +14,8 @@ module Socializer
     end
 
     context 'relationships' do
-      it { is_expected.to belong_to(:activity_object) }
       it { is_expected.to belong_to(:activity).inverse_of(:audiences) }
+      it { is_expected.to belong_to(:activity_object).inverse_of(:audiences) }
     end
 
     context 'validations' do

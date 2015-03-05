@@ -18,7 +18,7 @@ module Socializer
     belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: 'activitable_id'
 
     has_many :notifications
-    has_many :audiences # , dependent: :destroy
+    has_many :audiences, inverse_of: :activity_object # , dependent: :destroy
     has_many :activities, through: :audiences
 
     has_many :actor_activities,  class_name: 'Activity', foreign_key: 'actor_id',  dependent: :destroy
