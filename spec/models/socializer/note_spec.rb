@@ -13,7 +13,7 @@ module Socializer
     end
 
     context 'relationships' do
-      it { is_expected.to belong_to(:activity_author) }
+      it { is_expected.to belong_to(:activity_author).class_name('ActivityObject').with_foreign_key('author_id').inverse_of(:notes) }
     end
 
     context 'validations' do

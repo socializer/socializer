@@ -25,7 +25,7 @@ module Socializer
     has_many :object_activities, class_name: 'Activity', foreign_key: 'activity_object_id', dependent: :destroy
     has_many :target_activities, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
 
-    has_many :notes,      foreign_key: 'author_id'
+    has_many :notes,      foreign_key: 'author_id', inverse_of: :activity_author
     has_many :comments,   foreign_key: 'author_id', inverse_of: :activity_author
     has_many :groups,     foreign_key: 'author_id'
     has_many :circles,    foreign_key: 'author_id'
