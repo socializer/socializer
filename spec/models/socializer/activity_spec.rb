@@ -26,7 +26,7 @@ module Socializer
       it { is_expected.to have_many(:audiences).inverse_of(:activity) }
       it { is_expected.to have_many(:activity_objects) }
       it { is_expected.to have_many(:children) }
-      it { is_expected.to have_many(:notifications) }
+      it { is_expected.to have_many(:notifications).inverse_of(:activity) }
     end
 
     context 'validations' do

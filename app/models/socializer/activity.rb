@@ -18,7 +18,7 @@ module Socializer
     has_many :audiences, inverse_of: :activity # , dependent: :destroy
     has_many :activity_objects, through: :audiences
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
-    has_many :notifications
+    has_many :notifications, inverse_of: :activity
 
     # Validations
     validates :activitable_actor, presence: true

@@ -6,7 +6,7 @@ module Socializer
     attr_accessible :read
 
     # Relationships
-    belongs_to :activity
+    belongs_to :activity, inverse_of: :notifications
     belongs_to :activity_object, inverse_of: :notifications # Person, Group, ...
 
     # Validations

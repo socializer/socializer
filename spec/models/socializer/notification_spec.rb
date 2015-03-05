@@ -14,7 +14,7 @@ module Socializer
     end
 
     context 'relationships' do
-      it { is_expected.to belong_to(:activity) }
+      it { is_expected.to belong_to(:activity).inverse_of(:notifications) }
       it { is_expected.to belong_to(:activity_object).inverse_of(:notifications) }
     end
 
