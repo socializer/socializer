@@ -14,6 +14,7 @@ module Socializer
 
     context 'relationships' do
       it { is_expected.to belong_to(:activity_author).class_name('ActivityObject').with_foreign_key('author_id').inverse_of(:comments) }
+      it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
     end
 
     context 'validations' do

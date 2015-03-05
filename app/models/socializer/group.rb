@@ -13,6 +13,7 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :groups
 
+    has_one  :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
     has_many :memberships
     has_many :activity_members, -> { merge(Membership.active) }, through: :memberships
     has_many :links, class_name: 'GroupLink', foreign_key: 'group_id', dependent: :destroy
@@ -69,10 +70,6 @@ module Socializer
     end
 
     # Instance Methods
-    def author
-      activity_author.activitable
-    end
-
     def members
       activity_members.map(&:activitable)
     end

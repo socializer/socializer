@@ -10,12 +10,10 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :comments
 
+    has_one :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+
     # Validations
     validates :activity_author, presence: true
     validates :content, presence: true
-
-    def author
-      activity_author.activitable
-    end
   end
 end

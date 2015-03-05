@@ -10,8 +10,9 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :circles
 
-    has_many   :ties, inverse_of: :circle
-    has_many   :activity_contacts, through: :ties
+    has_one  :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+    has_many :ties, inverse_of: :circle
+    has_many :activity_contacts, through: :ties
 
     # Validations
     validates :activity_author, presence: true
@@ -29,9 +30,6 @@ module Socializer
     end
 
     # Instance Methods
-    def author
-      activity_author.activitable
-    end
 
     def contacts
       activity_contacts.map(&:activitable)
