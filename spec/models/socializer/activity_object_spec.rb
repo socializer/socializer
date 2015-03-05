@@ -31,7 +31,7 @@ module Socializer
       it { is_expected.to have_many(:groups).inverse_of(:activity_author) }
       it { is_expected.to have_many(:circles).inverse_of(:activity_author) }
       it { is_expected.to have_many(:ties).inverse_of(:activity_contact) }
-      it { is_expected.to have_many(:memberships).conditions(active: true) }
+      it { is_expected.to have_many(:memberships).conditions(active: true).inverse_of(:activity_member) }
     end
 
     context 'validations' do
