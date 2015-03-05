@@ -6,7 +6,7 @@ module Socializer
     attr_accessible :contact_id
 
     # Relationships
-    belongs_to :circle
+    belongs_to :circle, inverse_of: :ties
     belongs_to :activity_contact, class_name: 'ActivityObject', foreign_key: 'contact_id', inverse_of: :ties
 
     def contact

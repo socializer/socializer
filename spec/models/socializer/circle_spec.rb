@@ -15,7 +15,7 @@ module Socializer
 
     context 'relationships' do
       it { is_expected.to belong_to(:activity_author).class_name('ActivityObject').with_foreign_key('author_id').inverse_of(:circles) }
-      it { is_expected.to have_many(:ties) }
+      it { is_expected.to have_many(:ties).inverse_of(:circle) }
       it { is_expected.to have_many(:activity_contacts).through(:ties) }
     end
 
