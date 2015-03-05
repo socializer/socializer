@@ -10,8 +10,8 @@ module Socializer
     attr_accessible :activity_id, :privacy
 
     # Relationships
-    belongs_to :activity
     belongs_to :activity_object
+    belongs_to :activity, inverse_of: :audiences
 
     # Validations
     # validates :activity_id, presence: true, uniqueness: { scope: :activity_object_id }
