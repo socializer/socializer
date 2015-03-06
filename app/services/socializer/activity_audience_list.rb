@@ -67,8 +67,7 @@ module Socializer
       # which means we can add it as it is in the audience list.
       return [activitable.display_name] unless activitable.is_a?(Circle)
 
-      subquery = activitable.activity_contacts.pluck(:activitable_id)
-      Person.where(id: subquery).pluck(:display_name)
+      activitable.contacts.pluck(:display_name)
     end
   end
 end
