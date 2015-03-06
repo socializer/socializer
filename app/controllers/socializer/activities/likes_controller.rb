@@ -7,7 +7,8 @@ module Socializer
       before_action :authenticate_user!
       before_action :set_likable_and_activity, only: [:create, :destroy]
 
-      # Used to display the Like tooltip
+      # GET /activities/1/likes
+      # Get a list of people who like the activity
       def index
         activity = Activity.find_by(id: params[:id])
 
