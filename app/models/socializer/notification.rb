@@ -95,7 +95,8 @@ module Socializer
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
       ActivityObject.select(:id)
                     .joins(circles: :ties)
-                    .where(id: parent_contact_id, socializer_ties: { contact_id: child_contact_id })
+                    .where(id: parent_contact_id)
+                    .merge(Tie.by_contact_id(child_contact_id))
                     .present?
 
       # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
