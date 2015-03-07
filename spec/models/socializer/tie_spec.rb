@@ -2,7 +2,8 @@ require 'rails_helper'
 
 module Socializer
   RSpec.describe Tie, type: :model do
-    let(:tie) { build(:socializer_tie) }
+    let(:contact) { create(:socializer_person) }
+    let(:tie) { build(:socializer_tie, contact_id: contact.id) }
 
     it 'has a valid factory' do
       expect(tie).to be_valid
@@ -16,6 +17,17 @@ module Socializer
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
       it { is_expected.to belong_to(:activity_contact).class_name('ActivityObject').with_foreign_key('contact_id').inverse_of(:ties) }
       it { is_expected.to have_one(:contact).through(:activity_contact).source(:activitable) }
+    end
+
+    context 'scopes' do
+      context 'by_contact_id' do
+        it { expect(tie.contact_id).to eq(contact.id) }
+
+        context 'nil' do
+          let(:tie) { build(:socializer_tie, contact_id: nil) }
+          it { expect(tie.contact_id).to eq(nil) }
+        end
+      end
     end
 
     # TODO: Test return values
