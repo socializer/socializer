@@ -77,7 +77,7 @@ module Socializer
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.select(:contact_id)
          .joins(circle: { activity_object: :audiences })
-         .where(socializer_audiences: { activity_id: activity_id })
+         .merge(Audience.by_activity_id(activity_id))
          .flatten.uniq
 
       # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
