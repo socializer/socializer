@@ -147,7 +147,7 @@ module Socializer
       verbs_of_interest = %w(like unlike)
 
       query = Activity.joins(:verb)
-                      .where(activity_object_id: object.id)
+                      .by_activity_object_id(object.id)
                       .where(actor_id: guid)
                       .merge(Verb.by_display_name(verbs_of_interest))
 
