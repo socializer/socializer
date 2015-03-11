@@ -79,13 +79,6 @@ module Socializer
          .joins(circle: { activity_object: :audiences })
          .merge(Audience.by_activity_id(activity_id))
          .flatten.uniq
-
-      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
-      #        joins/includes
-      # Tie.select(:contact_id)
-      #    .joins(circle: { activity_object: :audiences })
-      #    .where(circle: { activity_object: { audiences: { activity_id: activity_id } } })
-      #    .flatten.uniq
     end
     private_class_method :get_potential_contact_id
 
@@ -98,13 +91,6 @@ module Socializer
                     .where(id: parent_contact_id)
                     .merge(Tie.by_contact_id(child_contact_id))
                     .present?
-
-      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
-      #        joins/includes
-      # ActivityObject.select(:id)
-      #               .joins(circles: :ties)
-      #               .where(id: parent_contact_id, circles: { ties: { contact_id: child_contact_id } })
-      #               .present?
     end
     private_class_method :person_in_circle?
   end
