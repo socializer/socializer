@@ -48,12 +48,8 @@ module Socializer
     #
     # @return [ActiveRecord::AssociationRelation] a collection of {Socializer::Activity} objects
     def comments
-      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
-      #        joins/includes
-      # @comments ||= children.joins(:activitable_object)
-      #                       .where(activity_objects: { activitable_type: 'Socializer::Comment' })
       @comments ||= children.joins(:activitable_object)
-                            .where(socializer_activity_objects: { activitable_type: Comment.name })
+                            .merge(ActivityObject.by_activitable_type(Comment.name))
     end
 
     # The {Socializer::Person} that performed the activity.
