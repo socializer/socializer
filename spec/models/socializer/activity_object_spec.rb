@@ -38,6 +38,14 @@ module Socializer
       it { is_expected.to validate_presence_of(:activitable) }
     end
 
+    context 'scopes' do
+      context 'by_activitable_type' do
+        let(:sql) { ActivityObject.by_activitable_type(Comment.name).to_sql }
+
+        it { expect(sql).to include(%q(WHERE "socializer_activity_objects"."activitable_type" = 'Socializer::Comment')) }
+      end
+    end
+
     context 'when liked' do
       let(:liking_person) { create(:socializer_person) }
       let(:liked_activity_object) { create(:socializer_activity_object) }

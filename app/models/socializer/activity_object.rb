@@ -36,6 +36,9 @@ module Socializer
     # Validations
     validates :activitable, presence: true
 
+    # Named Scopes
+    scope :by_activitable_type, -> type { where(activitable_type: type) }
+
     # Create predicate methods for comparing the activitable_type
     #
     # @param  *args [Array] The activitable_type(s)
