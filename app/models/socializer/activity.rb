@@ -28,6 +28,7 @@ module Socializer
     # Named Scopes
     scope :newest_first, -> { order(created_at: :desc) }
     scope :by_activity_object_id, -> id { where(activity_object_id: id) }
+    scope :by_actor_id, -> id { where(actor_id: id) }
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
     delegate :display_name, to: :verb, prefix: true
