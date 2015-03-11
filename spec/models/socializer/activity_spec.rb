@@ -35,6 +35,13 @@ module Socializer
       it { is_expected.to validate_presence_of(:verb) }
     end
 
+    context 'scopes' do
+      context 'newest_first' do
+        let(:sql) { Activity.newest_first.to_sql }
+
+        it { expect(sql).to include('ORDER BY "socializer_activities"."created_at" DESC') }
+      end
+
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
     it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
 
