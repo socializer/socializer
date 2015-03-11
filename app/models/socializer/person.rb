@@ -128,7 +128,7 @@ module Socializer
 
       query = Activity.joins(:verb)
                       .by_actor_id(guid)
-                      .where(target_id: nil)
+                      .by_target_id(nil)
                       .merge(Verb.by_display_name(verbs_of_interest))
 
       @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
