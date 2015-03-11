@@ -17,6 +17,9 @@ module Socializer
     # validates :activity_id, presence: true, uniqueness: { scope: :activity_object_id }
     validates :privacy, presence: true
 
+    # Named Scopes
+    scope :by_activity_id, -> id { where(activity_id: id) }
+
     # Class Methods
 
     # Instance Methods

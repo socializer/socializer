@@ -25,6 +25,14 @@ module Socializer
       # it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
     end
 
+    context 'scopes' do
+      context 'by_activity_id' do
+        let(:sql) { Audience.by_activity_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_audiences"."activity_id" = 1') }
+      end
+    end
+
     it { is_expected.to enumerize(:privacy).in(:public, :circles, :limited).with_default(:public) }
 
     context '#object' do
