@@ -42,6 +42,13 @@ module Socializer
         it { expect(sql).to include('ORDER BY "socializer_activities"."created_at" DESC') }
       end
 
+      context 'by_activity_object_id' do
+        let(:sql) { Activity.by_activity_object_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_activities"."activity_object_id" = 1') }
+      end
+    end
+
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
     it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
 
