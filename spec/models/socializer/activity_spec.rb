@@ -53,6 +53,12 @@ module Socializer
 
         it { expect(sql).to include('WHERE "socializer_activities"."actor_id" = 1') }
       end
+
+      context 'by_target_id' do
+        let(:sql) { Activity.by_target_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_activities"."target_id" = 1') }
+      end
     end
 
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
