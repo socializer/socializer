@@ -16,7 +16,7 @@ module Socializer
     # Named Scopes
     scope :active, -> { where(active: true) }
     scope :inactive, -> { where(active: false) }
-    scope :by_person, -> member_guid { where(member_id: member_guid) }
+    scope :by_member_id, -> member_id { where(member_id: member_id) }
 
     # Class Methods
 

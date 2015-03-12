@@ -56,17 +56,17 @@ module Socializer
         end
       end
 
-      context 'by_person' do
+      context 'by_member_id' do
         context 'person has no memberships' do
           let(:user) { create(:socializer_person) }
-          let(:result) { Membership.by_person(user.guid) }
+          let(:result) { Membership.by_member_id(user.guid) }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.present?).to be false }
         end
 
         context 'person has memberships' do
-          let(:result) { Membership.by_person(user.guid) }
+          let(:result) { Membership.by_member_id(user.guid) }
 
           before :each do
             membership
