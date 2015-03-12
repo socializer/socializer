@@ -112,7 +112,7 @@ module Socializer
     #        Notes still don't show after adding people to the circles.
     #
     def self.circle_stream(actor_uid:, viewer_id:)
-      circles  = Circle.select(:id).where(socializer_circles: { id: actor_uid, author_id: viewer_id })
+      circles  = Circle.select(:id). by_id(actor_uid).by_author_id(viewer_id)
       followed = Tie.select(:contact_id).where(circle_id: circles)
 
       stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: followed }).distinct
