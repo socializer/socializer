@@ -12,6 +12,7 @@ module Socializer
     has_one :contact, through: :activity_contact, source: :activitable,  source_type: 'Socializer::Person'
 
     # Named Scopes
+    scope :by_circle_id, -> circle_id { where(circle_id: circle_id) }
     scope :by_contact_id, -> contact_id { where(contact_id: contact_id) }
   end
 end
