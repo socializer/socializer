@@ -157,7 +157,7 @@ module Socializer
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
 
-      query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).where(target_id: nil)
+      query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).by_target_id(nil)
 
       # privacy levels
       privacy_public  = Audience.privacy.public.value
