@@ -63,17 +63,12 @@ module Socializer
       # unlikers = people.merge(Verb.by_display_name('unlike')).pluck(:id)
 
       # likers.where.not(id: unlikers)
-      people = []
-      query  = Activity.joins(:verb).by_activity_object_id(id)
+      query    = Activity.joins(:verb).by_activity_object_id(id)
+      likers   = query.merge(Verb.by_display_name('like'))
+      unlikers = query.merge(Verb.by_display_name('unlike'))
+      people   = likers.map(&:actor)
 
-      activities_likes   = query.merge(Verb.by_display_name('like'))
-      activities_unlikes = query.merge(Verb.by_display_name('unlike'))
-
-      activities_likes.each do |activity|
-        people << activity.actor
-      end
-
-      activities_unlikes.each do |activity|
+      unlikers.each do |activity|
         people.delete_at people.index(activity.actor)
       end
 
