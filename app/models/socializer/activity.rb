@@ -187,7 +187,7 @@ module Socializer
     def self.circles_subquery
       # Retrieve the author's unique identifier
       subquery = ActivityObject.select(:id).joins(:person)
-      Circle.select(:id).where(author_id: subquery).arel
+      Circle.select(:id).by_author_id(subquery).arel
     end
     private_class_method :circles_subquery
 
