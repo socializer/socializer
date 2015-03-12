@@ -57,6 +57,10 @@ module Socializer
       end
 
       context 'by_member_id' do
+        let(:sql) { Membership.by_member_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_memberships"."member_id" = 1') }
+
         context 'person has no memberships' do
           let(:user) { create(:socializer_person) }
           let(:result) { Membership.by_member_id(user.guid) }
