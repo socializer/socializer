@@ -213,7 +213,7 @@ module Socializer
     def self.limited_group_subquery(viewer_id)
       ActivityObject.select(:id)
                     .joins(group: :memberships)
-                    .where(socializer_memberships: { member_id: viewer_id }).arel
+                    .merge(Membership.by_member_id(viewer_id)).arel
     end
     private_class_method :limited_group_subquery
   end
