@@ -30,6 +30,20 @@ module Socializer
       end
     end
 
+    context 'scopes' do
+      context 'by_id' do
+        let(:sql) { Circle.by_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_circles"."id" = 1') }
+      end
+
+      context 'by_author_id' do
+        let(:sql) { Circle.by_author_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_circles"."author_id" = 1') }
+      end
+    end
+
     context 'author' do
       # TODO: Test return values
       it { expect(circle.author).to be_kind_of(Socializer::Person) }

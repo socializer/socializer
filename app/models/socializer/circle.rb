@@ -19,6 +19,10 @@ module Socializer
     validates :activity_author, presence: true
     validates :display_name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
 
+    # Named Scopes
+    scope :by_id, -> id { where(id: id) }
+    scope :by_author_id, -> id { where(author_id: id) }
+
     # Class Methods
 
     # Find all records where display_name is like 'query'
