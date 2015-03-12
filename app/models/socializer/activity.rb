@@ -201,7 +201,7 @@ module Socializer
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
       subquery = Circle.select(:id).joins(activity_object: :audiences)
-      Tie.select(:contact_id).where(circle_id: subquery).arel
+      Tie.select(:contact_id).by_circle_id(subquery).arel
     end
     private_class_method :limited_circle_subquery
 
