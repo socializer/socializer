@@ -112,8 +112,8 @@ module Socializer
     #        Notes still don't show after adding people to the circles.
     #
     def self.circle_stream(actor_uid:, viewer_id:)
-      circles  = Circle.select(:id). by_id(actor_uid).by_author_id(viewer_id)
-      followed = Tie.select(:contact_id).by_circle_id(circles)
+      circles  = Circle.by_id(actor_uid).by_author_id(viewer_id).pluck(:id)
+      followed = Tie.by_circle_id(circles).pluck(:contact_id)
 
       stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: followed }).distinct
     end
@@ -186,8 +186,8 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.circles_subquery
       # Retrieve the author's unique identifier
-      subquery = ActivityObject.select(:id).joins(:person)
-      Circle.select(:id).by_author_id(subquery).arel
+      subquery = ActivityObject.joins(:person).pluck(:id)
+      Circle.by_author_id(subquery).pluck(:id)
     end
     private_class_method :circles_subquery
 
@@ -200,8 +200,8 @@ module Socializer
     def self.limited_circle_subquery
       # Retrieve the circle's unique identifier related to the audience (when the audience
       # is not a circle, this query will simply return nothing)
-      subquery = Circle.select(:id).joins(activity_object: :audiences)
-      Tie.select(:contact_id).by_circle_id(subquery).arel
+      subquery = Circle.joins(activity_object: :audiences).pluck(:id)
+      Tie.by_circle_id(subquery).pluck(:contact_id)
     end
     private_class_method :limited_circle_subquery
 
@@ -211,9 +211,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
-      ActivityObject.select(:id)
-                    .joins(group: :memberships)
-                    .merge(Membership.by_member_id(viewer_id)).arel
+      ActivityObject.joins(group: :memberships)
+                    .merge(Membership.by_member_id(viewer_id))
+                    .pluck(:id)
     end
     private_class_method :limited_group_subquery
   end
