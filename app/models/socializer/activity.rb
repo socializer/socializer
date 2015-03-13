@@ -126,10 +126,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
-      # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 - Allows using relation name when querying
-      #        joins/includes
-      # query.where(audiences: { activity_object_id: group_id }).distinct
-      stream_query(viewer_id: viewer_id).where(socializer_audiences: { activity_object_id: group_id }).distinct
+      stream_query(viewer_id: viewer_id).merge(Audience.by_activity_object_id(group_id)).distinct
     end
 
     # This is a user profile. display everything about them that you are allowed to see
