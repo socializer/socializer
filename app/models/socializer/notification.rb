@@ -88,7 +88,7 @@ module Socializer
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
       ActivityObject.select(:id)
                     .joins(circles: :ties)
-                    .where(id: parent_contact_id)
+                    .by_id(parent_contact_id)
                     .merge(Tie.by_contact_id(child_contact_id))
                     .present?
     end
