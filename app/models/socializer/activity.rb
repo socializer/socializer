@@ -99,7 +99,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.activity_stream(actor_uid:, viewer_id:)
-      stream_query(viewer_id: viewer_id).where(socializer_activities: { id: actor_uid }).distinct
+      stream_query(viewer_id: viewer_id).by_id(actor_uid).distinct
     end
 
     # TODO: [self description]
