@@ -42,6 +42,12 @@ module Socializer
         it { expect(sql).to include('ORDER BY "socializer_activities"."created_at" DESC') }
       end
 
+      context 'by_id' do
+        let(:sql) { Activity.by_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_activities"."id" = 1') }
+      end
+
       context 'by_activity_object_id' do
         let(:sql) { Activity.by_activity_object_id(1).to_sql }
 
