@@ -39,6 +39,12 @@ module Socializer
     end
 
     context 'scopes' do
+      context 'by_id' do
+        let(:sql) { ActivityObject.by_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_activity_objects"."id" = 1') }
+      end
+
       context 'by_activitable_type' do
         let(:sql) { ActivityObject.by_activitable_type(Comment.name).to_sql }
 
