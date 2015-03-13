@@ -42,6 +42,12 @@ module Socializer
 
         it { expect(sql).to include('WHERE "socializer_circles"."author_id" = 1') }
       end
+
+      context 'by_display_name' do
+        let(:sql) { Circle.by_display_name('Friends').to_sql }
+
+        it { expect(sql).to include(%q(WHERE "socializer_circles"."display_name" = 'Friends')) }
+      end
     end
 
     context 'author' do
