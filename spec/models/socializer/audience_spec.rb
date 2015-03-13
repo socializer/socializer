@@ -31,6 +31,12 @@ module Socializer
 
         it { expect(sql).to include('WHERE "socializer_audiences"."activity_id" = 1') }
       end
+
+      context 'by_activity_object_id' do
+        let(:sql) { Audience.by_activity_object_id(1).to_sql }
+
+        it { expect(sql).to include('WHERE "socializer_audiences"."activity_object_id" = 1') }
+      end
     end
 
     it { is_expected.to enumerize(:privacy).in(:public, :circles, :limited).with_default(:public) }

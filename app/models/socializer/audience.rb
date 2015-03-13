@@ -19,6 +19,7 @@ module Socializer
 
     # Named Scopes
     scope :by_activity_id, -> id { where(activity_id: id) }
+    scope :by_activity_object_id, -> id { where(activity_object_id: id) }
 
     # Class Methods
 
