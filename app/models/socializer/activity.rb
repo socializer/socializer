@@ -115,7 +115,7 @@ module Socializer
       circles  = Circle.by_id(actor_uid).by_author_id(viewer_id).pluck(:id)
       followed = Tie.by_circle_id(circles).pluck(:contact_id)
 
-      stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: followed }).distinct
+      stream_query(viewer_id: viewer_id).by_actor_id(followed).distinct
     end
 
     # This is a group. display everything that was posted to this group as audience
@@ -137,7 +137,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id: viewer_id).where(socializer_activities: { actor_id: person_id }).distinct
+      stream_query(viewer_id: viewer_id).by_actor_id(person_id).distinct
     end
 
     # Class Methods - Private
