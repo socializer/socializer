@@ -49,14 +49,8 @@ module Socializer
     end
 
     def circles_audience_list
-      # TODO: Use a query if possible
-      list = []
-
-      @activity.actor.circles.each do |circle|
-        list.concat(limited_audience_list(activitable: circle))
-      end
-
-      list
+      # TODO: Change the map to pluck if contacts returns a relation
+      @activity.actor.contacts.map(&:display_name)
     end
 
     # In the case of LIMITED audience, then go through all the audience
