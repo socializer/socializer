@@ -51,6 +51,7 @@ module Socializer
 
     delegate :circles, to: :activity_object, allow_nil: true
     delegate :comments, to: :activity_object, allow_nil: true
+    delegate :contacts, to: :activity_object, allow_nil: true
     delegate :groups, to: :activity_object, allow_nil: true
     delegate :notes, to: :activity_object, allow_nil: true
     delegate :memberships, to: :activity_object, allow_nil: true
@@ -101,13 +102,6 @@ module Socializer
     # @return [Socializer::Notification] Returns a collection of {Socializer::Notification notifications}
     def received_notifications
       @notifications ||= activity_object.notifications.newest_first
-    end
-
-    # Collection of contacts for the user
-    #
-    # @return [Array] Returns a collection of contacts
-    def contacts
-      circles.flat_map(&:contacts).uniq
     end
 
     def contact_of
