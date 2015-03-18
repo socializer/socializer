@@ -20,7 +20,7 @@ module Socializer
     end
 
     context '.perform' do
-      let(:person) { build(:socializer_person_circles) }
+      let(:person) { create(:socializer_person_circles) }
 
       before do
         AddDefaultCircles.perform(person: person)
