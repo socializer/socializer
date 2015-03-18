@@ -31,17 +31,23 @@ module Socializer
 
     # Add the default circles
     def perform
-      @person.circles.create!(display_name: 'Friends',
-                              content: 'Your real friends, the ones you feel comfortable sharing private details with.')
+      create_circle(display_name: 'Friends',
+                    content: 'Your real friends, the ones you feel comfortable sharing private details with.')
 
-      @person.circles.create!(display_name: 'Family',
-                              content: 'Your close and extended family, with as many or as few in-laws as you want.')
+      create_circle(display_name: 'Family',
+                    content: 'Your close and extended family, with as many or as few in-laws as you want.')
 
-      @person.circles.create!(display_name: 'Acquaintances',
-                              content: "A good place to stick people you've met but aren't particularly close to.")
+      create_circle(display_name: 'Acquaintances',
+                    content: "A good place to stick people you've met but aren't particularly close to.")
 
-      @person.circles.create!(display_name: 'Following',
-                              content: "People you don't know personally, but whose posts you find interesting.")
+      create_circle(display_name: 'Following',
+                    content: "People you don't know personally, but whose posts you find interesting.")
+    end
+
+    private
+
+    def create_circle(display_name:, content: nil)
+      @person.circles.create!(display_name: display_name, content: content)
     end
   end
 end
