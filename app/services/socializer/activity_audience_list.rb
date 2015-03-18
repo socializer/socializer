@@ -49,8 +49,7 @@ module Socializer
     end
 
     def circles_audience_list
-      # TODO: Change the map to pluck if contacts returns a relation
-      @activity.actor.contacts.map(&:display_name)
+      @activity.actor.contacts.pluck(:display_name)
     end
 
     # In the case of LIMITED audience, then go through all the audience
