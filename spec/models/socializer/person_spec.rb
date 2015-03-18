@@ -101,7 +101,7 @@ module Socializer
     context '#contacts' do
       let(:person) { build(:socializer_person_circles) }
       # TODO: Test return values
-      it { expect(person.contacts).to be_kind_of(Array) }
+      it { expect(person.contacts).to be_kind_of(ActiveRecord::Associations::CollectionProxy) }
     end
 
     context '#contact_of' do
