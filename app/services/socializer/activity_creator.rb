@@ -33,9 +33,10 @@ module Socializer
     # @param activity: [Socializer::Activity] The activity to add the audience to
     # @param audience_ids [Array<Integer>] List of audiences to target
     def add_audience_to_activity(activity:, audience_ids:)
-      audience_ids = audience_ids.split(',') if %w(Fixnum String).include?(audience_ids.class.name)
-      limited      = Audience.privacy.limited.value
-      not_limited  = %W(#{Audience.privacy.public.value} #{Audience.privacy.circles.value})
+      audience_ids     = audience_ids.split(',') if %w(Fixnum String).include?(audience_ids.class.name)
+      audience_privacy = Audience.privacy
+      limited          = audience_privacy.limited.value
+      not_limited      = %W(#{audience_privacy.public.value} #{audience_privacy.circles.value})
 
       audience_ids.each do |audience_id|
         privacy  = not_limited.include?(audience_id) ? audience_id : limited
