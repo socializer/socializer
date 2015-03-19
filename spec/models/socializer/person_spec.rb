@@ -107,7 +107,7 @@ module Socializer
     context '#contact_of' do
       let(:person) { build(:socializer_person_circles) }
       # TODO: Test return values
-      it { expect(person.contact_of).to be_kind_of(Array) }
+      it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
     end
 
     it '#likes' do

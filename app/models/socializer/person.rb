@@ -105,7 +105,10 @@ module Socializer
     end
 
     def contact_of
-      @contact_of ||= Circle.joins(:ties).merge(Tie.by_contact_id(guid)).map(&:author).uniq
+      # CLEANUP: Remove the the TODO and Circle version of the query
+      # TODO: Approach this from the person so we can eliminate the map
+      # @contact_of ||= Circle.joins(:ties).merge(Tie.by_contact_id(guid)).map(&:author).uniq
+      @contact_of ||= Person.distinct.joins(activity_object: { circles: :ties }).merge(Tie.by_contact_id(guid))
     end
 
     # A list of activities the user likes
