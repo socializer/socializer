@@ -29,9 +29,9 @@ module Socializer
     # @return [Array] an [Array] of [Socializer::Notification] objects
     def self.create_for_activity(activity)
       # Get all ties related to the audience of the activity
-      potential_contact_id = get_potential_contact_id(activity.id)
+      potential_contact_ids = get_potential_contact_ids(activity.id)
 
-      potential_contact_id.each do |tie|
+      potential_contact_ids.each do |tie|
         next unless person_in_circle?(tie.contact_id, activity.activitable_actor.id)
         # If the contact has the author of the activity in one of his circle.
         create_notification(activity, tie.contact_id)
@@ -73,14 +73,14 @@ module Socializer
     private_class_method :create_notification
 
     # FIXME: Move to Tie or Activity
-    def self.get_potential_contact_id(activity_id)
+    def self.get_potential_contact_ids(activity_id)
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.select(:contact_id)
          .joins(circle: { activity_object: :audiences })
          .merge(Audience.by_activity_id(activity_id))
          .flatten.uniq
     end
-    private_class_method :get_potential_contact_id
+    private_class_method :get_potential_contact_ids
 
     # FIXME: Move to ActivityObject or Circle
     def self.person_in_circle?(parent_contact_id, child_contact_id)
