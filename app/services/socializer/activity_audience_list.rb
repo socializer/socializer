@@ -14,7 +14,7 @@ module Socializer
     def initialize(activity:)
       # TODO: Add translation
       unless activity.is_a?(Socializer::Activity)
-        fail(ArgumentError, "activity must be an instance of 'Socializer:Activity' not '#{activity.class.name}'")
+        fail(ArgumentError, "activity must be an instance of '#{Activity.class.name}' not '#{activity.class.name}'")
       end
 
       @activity = activity
