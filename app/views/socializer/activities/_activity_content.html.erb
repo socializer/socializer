@@ -1,10 +1,8 @@
 <% if activity.activitable_object.note? %>
-  <!-- FIXME: activity.object conflicts with draper. object is reserved -->
   <p><%= activity.model.object.content %></p>
 
 <%# elsif activity.activitable_object.comment? %>
 
-<!-- FIXME: activity.object conflicts with draper. object is reserved -->
 <!--   <p><%#= link_to activity.actor.display_name, person_activities_path(person_id: activity.actor.id) %><span class='separator'></span><%= activity.model.object.content %></p> -->
 
 <% elsif activity.activitable_object.activity? %>
@@ -15,22 +13,18 @@
     <section class='media-body'>
       <header>
         <h2>
-          <!-- FIXME: activity.object conflicts with draper. object is reserved -->
           <%= link_to(activity.model.object.actor.display_name, person_activities_path(person_id: activity.model.object.actor.id)) %>
           <small class='text-muted'>
-            <!-- FIXME: activity.object conflicts with draper. object is reserved -->
             <%= link_to('originally shared:', activity_activities_path(activity_id: activity.model.object.id)) %>
           </small>
         </h2>
       </header>
 
-      <!-- FIXME: activity.object conflicts with draper. object is reserved -->
       <p><%= activity.model.object.object.content %></p>
 
     </section>
   </article>
 
-  <!-- FIXME: activity.object conflicts with draper. object is reserved -->
 <!--   <p><%#= link_to(activity.model.object.actor.display_name, person_activities_path(person_id: activity.model.object.actor.id)) %> <%= link_to('originally shared:', activity_activities_path(activity_id: activity.model.object.id)) %></p> -->
   <!-- FIXME: activity.object conflicts with draper. object is reserved -->
 <!--   <p><%#= activity.model.object.object.content %></p> -->
