@@ -14,7 +14,9 @@ module Socializer
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       # TODO: Add translation
-      fail(ArgumentError, "person must be an instance of 'Socializer:Person' not '#{person.class.name}'") unless person.is_a?(Socializer::Person)
+      unless person.is_a?(Socializer::Person)
+        fail(ArgumentError, "person must be an instance of 'Socializer:Person' not '#{person.class.name}'")
+      end
 
       @person = person
       @query  = query
