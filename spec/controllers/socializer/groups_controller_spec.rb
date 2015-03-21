@@ -119,7 +119,7 @@ module Socializer
       context 'cannot delete a group that has members' do
         it 'deletes the group' do
           group
-          expect { delete :destroy, id: group }.to raise_error(RuntimeError)
+          expect { delete :destroy, id: group }.not_to change(Group, :count)
         end
       end
 

@@ -190,15 +190,21 @@ module Socializer
       end
 
       it 'can be deleted' do
-        expect { group_without_members.destroy }.not_to raise_error
+        expect(group_without_members.destroy.destroyed?).to be true
       end
     end
 
     context 'when having at least one member' do
       let(:group_with_members) { create(:socializer_group, privacy: :private) }
 
-      it 'cannot be deleted' do
-        expect { group_with_members.destroy }.to raise_error
+      context 'cannot be deleted' do
+        before :each do
+          group_with_members.destroy
+        end
+
+        it { expect(group_with_members.destroyed?).to be false }
+        it { expect(group_with_members.errors.any?).to be true }
+        it { expect(group_with_members.memberships.count).to eq(1) }
       end
     end
   end
