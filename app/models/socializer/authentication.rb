@@ -19,11 +19,10 @@ module Socializer
 
     def make_sure_its_not_the_last_one
       return unless person.authentications.count == 1
-      # FIXME: authentication - This is not a good user experience.
-      #       If the user clicks 'unbind' on their last authentication they will get an error.
-      #       A flash notice should be set and the user should be able to continue on.
       # TODO: Add translation
-      fail 'Cannot delete the last authentication available.'
+      # errors.add(:base, I18n.t('model.validation.cannot_delete_last_authentication'))
+      errors.add(:base, 'cannot delete the last authentication available.')
+      false
     end
   end
 end
