@@ -9,14 +9,14 @@ fr:
         index:
           tooltip:
             public: Anyone can see this
-      sidebar:
-        header: In my circles
       shares:
         form:
           content_label: Voulez-vous ajouter un commentaire avec le partage de cette
             activité?
         new:
           header: Share this post
+      sidebar:
+        header: In my circles
     authentications:
       authentication:
         unbind: Unbind
