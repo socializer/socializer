@@ -13,6 +13,7 @@ module Socializer
     describe 'mass assignment' do
       it { is_expected.to allow_mass_assignment_of(:group_id) }
       it { is_expected.to allow_mass_assignment_of(:active) }
+      it { is_expected.to allow_mass_assignment_of(:activity_member) }
     end
 
     describe 'relationships' do

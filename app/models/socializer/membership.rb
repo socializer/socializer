@@ -3,7 +3,7 @@
 #
 module Socializer
   class Membership < ActiveRecord::Base
-    attr_accessible :group_id, :active
+    attr_accessible :group_id, :active, :activity_member
 
     # Relationships
     belongs_to :group, inverse_of: :memberships
