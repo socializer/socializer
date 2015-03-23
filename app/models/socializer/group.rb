@@ -82,7 +82,7 @@ module Socializer
         fail 'Cannot self-join a private group, you need to be invited'
       end
 
-      person.memberships.create!(group_id: id, active: active)
+      memberships.create!(activity_member: person.activity_object, active: active)
     end
 
     def invite(person)
