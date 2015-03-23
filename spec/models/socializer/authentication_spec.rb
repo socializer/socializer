@@ -48,8 +48,14 @@ module Socializer
 
       it { expect(last_authentication.person.authentications.count).to eq(1) }
 
-      it 'cannot be deleted' do
-        expect { last_authentication.destroy }.to raise_error
+      context 'cannot be deleted' do
+        before :each do
+          last_authentication.destroy
+        end
+
+        it { expect(last_authentication.destroyed?).to be false }
+        it { expect(last_authentication.errors.any?).to be true }
+        it { expect(last_authentication.person.authentications.count).to eq(1) }
       end
     end
   end
