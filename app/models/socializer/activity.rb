@@ -150,18 +150,18 @@ module Socializer
 
       # privacy levels
       audience_privacy = Audience.privacy
-      privacy_public   = audience_privacy.public.value
-      privacy_circles  = audience_privacy.circles.value
-      privacy_limited  = audience_privacy.limited.value
+      public_privacy   = audience_privacy.public.value
+      circles_privacy  = audience_privacy.circles.value
+      limited_privacy  = audience_privacy.limited.value
 
       # The arel_table method is technically private since it is marked :nodoc
       audience       ||= Audience.arel_table
       privacy_field  ||= audience[:privacy]
       viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
 
-      circles_grouping = audience.grouping(privacy_field.eq(privacy_circles).and(viewer_literal.in(circles_subquery)))
-      public_grouping  = audience.grouping(privacy_field.eq(privacy_public).or(circles_grouping))
-      limited_grouping = audience.grouping(privacy_field.eq(privacy_limited)
+      circles_grouping = audience.grouping(privacy_field.eq(circles_privacy).and(viewer_literal.in(circles_subquery)))
+      public_grouping  = audience.grouping(privacy_field.eq(public_privacy).or(circles_grouping))
+      limited_grouping = audience.grouping(privacy_field.eq(limited_privacy)
                                   .and(viewer_literal.in(limited_circle_subquery)
                                     .or(audience[:activity_object_id].in(limited_group_subquery(viewer_id)))
                                   .or(audience[:activity_object_id].in(viewer_id))))
