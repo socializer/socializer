@@ -15,6 +15,7 @@ module Socializer
     belongs_to :verb, inverse_of: :activities
 
     has_one  :activity_field, inverse_of: :activity
+    has_one  :actor, through: :activitable_actor, source: :activitable,  source_type: 'Socializer::Person'
     has_many :audiences, inverse_of: :activity # , dependent: :destroy
     has_many :activity_objects, through: :audiences
     has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
@@ -51,13 +52,6 @@ module Socializer
     def comments
       @comments ||= children.joins(:activitable_object)
                             .merge(ActivityObject.by_activitable_type(Comment.name))
-    end
-
-    # The {Socializer::Person} that performed the activity.
-    #
-    # @return [Socializer::Person]
-    def actor
-      activitable_actor.activitable
     end
 
     # The primary object of the activity.

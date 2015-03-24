@@ -22,6 +22,7 @@ module Socializer
       it { is_expected.to belong_to(:activitable_object) }
       it { is_expected.to belong_to(:activitable_target) }
       it { is_expected.to belong_to(:verb) }
+      it { is_expected.to have_one(:actor).through(:activitable_actor).source(:activitable) }
       it { is_expected.to have_one(:activity_field) }
       it { is_expected.to have_many(:audiences).inverse_of(:activity) }
       it { is_expected.to have_many(:activity_objects) }
