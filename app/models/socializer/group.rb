@@ -46,28 +46,28 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.public
-      Group.with_privacy(:public)
+      with_privacy(:public)
     end
 
     # Return all groups with a privacy of restricted
     #
     # @return [ActiveRecord::Relation]
     def self.restricted
-      Group.with_privacy(:restricted)
+      with_privacy(:restricted)
     end
 
     # Return all groups with a privacy of private
     #
     # @return [ActiveRecord::Relation]
     def self.private
-      Group.with_privacy(:private)
+      with_privacy(:private)
     end
 
     # Return all groups with a privacy of public or restricted
     #
     # @return [ActiveRecord::Relation]
     def self.joinable
-      Group.with_privacy(:public, :restricted)
+      with_privacy(:public, :restricted)
     end
 
     # Instance Methods
