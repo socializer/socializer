@@ -21,8 +21,11 @@ module Socializer
     #
     # @return [OpenStruct]
     def perform
-      # TODO: Add translation
-      fail(RecordInvalid, "Validation failed: #{errors.full_messages.to_sentence}") unless valid?
+      unless valid?
+        message = I18n.t('activerecord.errors.messages.record_invalid', errors: errors.full_messages.to_sentence)
+        fail(RecordInvalid, message)
+      end
+
       create_activity
     end
 
