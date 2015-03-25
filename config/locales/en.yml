@@ -11,8 +11,7 @@ en:
             public: Anyone can see this
       shares:
         form:
-          content_label: Would you like to say something along with the sharing of
-            this activity?
+          content_label: Would you like to say something along with the sharing of this activity?
         new:
           header: Share this post
       sidebar:
@@ -72,6 +71,14 @@ en:
         submit: Comment
       new:
         header: New Comment
+    errors:
+      messages:
+        cannot_delete_last_authentication: cannot delete the last authentication available.
+        group:
+          private:
+            cannot_self_join: Cannot self-join a private group, you need to be invited
+          still_has_members: cannot delete a group that has members in it.
+        wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"
     groups:
       card:
         confirm: Confirm
@@ -188,11 +195,3 @@ en:
         profile: Profile
         signout: Signout
       unlike: Unlike
-    errors:
-      messages:
-        group:
-          still_has_members: cannot delete a group that has members in it.
-          private:
-            cannot_self_join: Cannot self-join a private group, you need to be invited
-        cannot_delete_last_authentication: cannot delete the last authentication available.
-        wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"
