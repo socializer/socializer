@@ -188,3 +188,6 @@ fr:
         profile: Profile
         signout: Déconnexion
       unlike: Unlike
+    errors:
+      messages:
+        wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"
