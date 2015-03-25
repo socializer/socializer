@@ -106,9 +106,8 @@ module Socializer
 
     def deny_delete_if_members
       return unless memberships.count > 0
-      # TODO: Add translation
-      # errors.add(:base, I18n.t('model.validation.group_still_has_members'))
-      errors.add(:base, 'cannot delete a group that has members in it.')
+
+      errors.add(:base, I18n.t('socializer.errors.messages.group.still_has_members'))
       false
     end
   end
