@@ -192,5 +192,7 @@ en:
       messages:
         group:
           still_has_members: cannot delete a group that has members in it.
+          private:
+            cannot_self_join: Cannot self-join a private group, you need to be invited
         cannot_delete_last_authentication: cannot delete the last authentication available.
         wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"

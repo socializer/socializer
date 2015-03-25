@@ -79,7 +79,8 @@ module Socializer
         active = false
       else
         # TODO: Add translation
-        fail 'Cannot self-join a private group, you need to be invited'
+        message = I18n.t('socializer.errors.messages.group.private.cannot_self_join')
+        fail(message)
       end
 
       memberships.create!(activity_member: person.activity_object, active: active)
