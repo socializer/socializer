@@ -78,7 +78,6 @@ module Socializer
       elsif privacy.restricted?
         active = false
       else
-        # TODO: Add translation
         message = I18n.t('socializer.errors.messages.group.private.cannot_self_join')
         fail(message)
       end
