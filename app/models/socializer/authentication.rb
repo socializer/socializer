@@ -19,9 +19,8 @@ module Socializer
 
     def make_sure_its_not_the_last_one
       return unless person.authentications.count == 1
-      # TODO: Add translation
-      # errors.add(:base, I18n.t('model.validation.cannot_delete_last_authentication'))
-      errors.add(:base, 'cannot delete the last authentication available.')
+
+      errors.add(:base, I18n.t('socializer.errors.messages.cannot_delete_last_authentication'))
       false
     end
   end

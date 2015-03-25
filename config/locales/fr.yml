@@ -190,4 +190,5 @@ fr:
       unlike: Unlike
     errors:
       messages:
+        cannot_delete_last_authentication: cannot delete the last authentication available.
         wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"
