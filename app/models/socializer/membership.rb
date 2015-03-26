@@ -23,7 +23,7 @@ module Socializer
     # Instance Methods
 
     def approve
-      update_attribute(:active, true)
+      update(active: true)
     end
 
     alias_method :confirm, :approve
