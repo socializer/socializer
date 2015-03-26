@@ -22,11 +22,11 @@ module Socializer
 
     # Instance Methods
 
-    def approve!
+    def approve
       update_attribute(:active, true)
     end
 
-    alias_method :confirm!, :approve!
+    alias_method :confirm, :approve
 
     def decline
       destroy

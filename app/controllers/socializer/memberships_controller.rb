@@ -20,12 +20,12 @@ module Socializer
     end
 
     def approve
-      @membership.approve!
+      @membership.approve
       redirect_to @membership.group
     end
 
     def confirm
-      @membership.confirm!
+      @membership.confirm
       redirect_to @membership.group
     end
 

@@ -92,20 +92,20 @@ module Socializer
       it { expect(membership.member).to eq(user) }
     end
 
-    describe '#approve!' do
+    describe '#approve' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
 
       it 'becomes active' do
-        inactive_membership.approve!
+        inactive_membership.approve
         expect(inactive_membership.active).to be_truthy
       end
     end
 
-    describe '#confirm!' do
+    describe '#confirm' do
       let(:inactive_membership) { create(:socializer_membership, active: false) }
 
       it 'becomes active' do
-        inactive_membership.confirm!
+        inactive_membership.confirm
         expect(inactive_membership.active).to be_truthy
       end
     end
