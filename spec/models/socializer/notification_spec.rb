@@ -23,13 +23,19 @@ module Socializer
       it { is_expected.to validate_presence_of(:activity_object_id) }
     end
 
-    context '#read!' do
       let(:notification) { build(:socializer_notification, read: false) }
 
       it { expect(notification.read).to be false }
 
       context 'read is false' do
         before { notification.read! }
+    context '#mark_as_read!' do
+      let(:notification) { build(:socializer_notification, read: false) }
+
+      it { expect(notification.read).to be false }
+
+      context 'read is false' do
+        before { notification.mark_as_read! }
         it { expect(notification.read).to be true }
       end
     end
