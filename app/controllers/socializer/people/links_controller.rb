@@ -4,7 +4,7 @@
 module Socializer
   module People
     class LinksController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
       before_action :set_person_link, only: [:update, :destroy]
 
       def create

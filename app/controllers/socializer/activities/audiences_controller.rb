@@ -4,7 +4,7 @@
 module Socializer
   module Activities
     class AudiencesController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
 
       def index
         activity    = Activity.find_by(id: params[:id])

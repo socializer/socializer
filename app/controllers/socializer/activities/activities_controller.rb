@@ -4,7 +4,7 @@
 module Socializer
   module Activities
     class ActivitiesController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
 
       def index
         id          = params.fetch(:activity_id) { nil }

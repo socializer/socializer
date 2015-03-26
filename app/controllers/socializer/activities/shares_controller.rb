@@ -4,7 +4,7 @@
 module Socializer
   module Activities
     class SharesController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
 
       def new
         @activity_object = ActivityObject.find_by(id: params[:id])

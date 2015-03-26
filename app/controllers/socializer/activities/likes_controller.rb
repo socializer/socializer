@@ -4,7 +4,7 @@
 module Socializer
   module Activities
     class LikesController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
       before_action :set_likable_and_activity, only: [:create, :destroy]
 
       # GET /activities/1/likes

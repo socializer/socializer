@@ -3,7 +3,7 @@
 #
 module Socializer
   class MembershipsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
     before_action :set_membership, only: [:approve, :confirm, :decline]
 
     def create

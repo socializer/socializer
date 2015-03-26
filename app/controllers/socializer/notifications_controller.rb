@@ -3,7 +3,7 @@
 #
 module Socializer
   class NotificationsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
     after_action :reset_unread_notifications, only: [:index]
 
     # GET /notifications

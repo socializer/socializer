@@ -3,7 +3,7 @@
 #
 module Socializer
   class NotesController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
     before_action :set_note, only: [:edit, :update, :destroy]
 
     def new

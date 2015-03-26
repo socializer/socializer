@@ -3,7 +3,7 @@
 #
 module Socializer
   class TiesController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
 
     def create
       @circle = Circle.find_by(id: params[:tie][:circle_id])

@@ -3,7 +3,7 @@
 #
 module Socializer
   class AudienceListsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user
 
     def index
       query     = params.fetch(:q) { nil }

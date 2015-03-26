@@ -4,7 +4,7 @@
 module Socializer
   module People
     class ProfilesController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user
       before_action :set_person_profile, only: [:update, :destroy]
 
       def create

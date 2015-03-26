@@ -10,7 +10,7 @@ module Socializer
 
     protected
 
-    def authenticate_user!
+    def authenticate_user
       redirect_to root_path unless signed_in?
     end
 
