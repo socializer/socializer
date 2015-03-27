@@ -67,7 +67,7 @@ module Socializer
 
       context 'and unliked' do
         before do
-          liked_activity_object.unlike! liking_person
+          liked_activity_object.unlike(liking_person)
           liked_activity_object.reload
         end
 
@@ -127,7 +127,7 @@ module Socializer
 
       context 'when an object is unliked' do
         before do
-          activity_object.unlike! liking_person
+          activity_object.unlike(liking_person)
           activity_object.reload
           liking_person.reload
         end

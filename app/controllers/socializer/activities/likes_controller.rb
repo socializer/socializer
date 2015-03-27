@@ -28,7 +28,7 @@ module Socializer
       end
 
       def destroy
-        @likable.unlike!(current_user) if current_user.likes?(@likable)
+        @likable.unlike(current_user) if current_user.likes?(@likable)
 
         respond_to do |format|
           format.js

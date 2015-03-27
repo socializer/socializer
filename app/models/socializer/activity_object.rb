@@ -95,12 +95,12 @@ module Socializer
     # Unlike the ActivityObject
     #
     # @example
-    #   @likable.unlike!(current_user) if current_user.likes?(@likable)
+    #   @likable.unlike(current_user) if current_user.likes?(@likable)
     #
     # @param person [Socializer::Person] The person who is unliking the activity (current_user)
     #
     # @return [OpenStruct]
-    def unlike!(person)
+    def unlike(person)
       results  = create_like_unlike_activity(actor: person, verb: 'unlike')
 
       decrement_like_count if results.success?
