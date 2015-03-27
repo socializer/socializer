@@ -32,7 +32,7 @@ module Socializer
         end
 
         context 'does like' do
-          before { activity_object.like!(person) }
+          before { activity_object.like(person) }
           let(:url) { unlike_activity_path(activity_object) }
           let(:selector) { "a.btn.btn-danger[data-method='delete'][title=#{t('socializer.shared.unlike')}]" }
 

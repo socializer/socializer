@@ -80,12 +80,12 @@ module Socializer
     # Like the ActivityObject
     #
     # @example
-    #   @likable.like!(current_user) unless current_user.likes?(@likable)
+    #   @likable.like(current_user) unless current_user.likes?(@likable)
     #
     # @param person [Socializer::Person] The person who is liking the activity (current_user)
     #
     # @return [OpenStruct]
-    def like!(person)
+    def like(person)
       results  = create_like_unlike_activity(actor: person, verb: 'like')
 
       increment_like_count if results.success?

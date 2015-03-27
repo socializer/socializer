@@ -58,7 +58,7 @@ module Socializer
       let(:liked_activity_object) { create(:socializer_activity_object) }
 
       before do
-        liked_activity_object.like! liking_person
+        liked_activity_object.like(liking_person)
         liked_activity_object.reload
       end
 
@@ -115,7 +115,7 @@ module Socializer
       let(:liking_person) { create(:socializer_person) }
 
       before do
-        activity_object.like! liking_person
+        activity_object.like(liking_person)
         activity_object.reload
         liking_person.reload
       end

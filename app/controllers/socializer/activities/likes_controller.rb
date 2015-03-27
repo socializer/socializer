@@ -20,7 +20,7 @@ module Socializer
       end
 
       def create
-        @likable.like!(current_user) unless current_user.likes?(@likable)
+        @likable.like(current_user) unless current_user.likes?(@likable)
 
         respond_to do |format|
           format.js
