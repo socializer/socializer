@@ -111,7 +111,6 @@ module Socializer
         it { expect(result).not_to have_link('Group', href: '/groups/1/activities') }
 
         it { expect(result).to have_selector('li', count: li_count) }
-        # TODO: Should be able to use t('.more')
         it { expect(result).to have_link(t('socializer.shared.toolbar.more'), href: '#') }
         it { expect(result).to have_selector('li.dropdown') }
         it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
@@ -135,7 +134,6 @@ module Socializer
         it { expect(result).to have_link('Group', href: '/groups/1/activities') }
 
         it { expect(result).to have_selector('li', count: li_count) }
-        # TODO: Should be able to use t('.more')
         it { expect(result).to have_link(t('socializer.shared.toolbar.more'), href: '#') }
         it { expect(result).to have_selector('li.dropdown') }
         it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
