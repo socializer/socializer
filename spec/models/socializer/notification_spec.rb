@@ -34,17 +34,6 @@ module Socializer
       end
     end
 
-    context '#mark_as_read!' do
-      let(:notification) { build(:socializer_notification, read: false) }
-
-      it { expect(notification.read).to be false }
-
-      context 'read is false' do
-        before { notification.mark_as_read! }
-        it { expect(notification.read).to be true }
-      end
-    end
-
     context '#unread?' do
       let(:notification) { build(:socializer_notification, read: false) }
 

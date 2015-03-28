@@ -40,17 +40,10 @@ module Socializer
 
     # Instance methods
 
-    # Marks the notification as read by calling update
+    # Marks the notification as read
     #
     # @return [boolean]
     def mark_as_read
-      update(read: true)
-    end
-
-    # Marks the notification as read by calling update!
-    #
-    # @return [boolean]
-    def mark_as_read!
       update!(read: true)
     end
 
