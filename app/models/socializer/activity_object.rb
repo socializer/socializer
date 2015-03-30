@@ -125,6 +125,7 @@ module Socializer
                           content: content).perform
     end
 
+    # Increments the unread_notifications_count by 1 and saves the record
     def increment_unread_notifications_count
       increment!(:unread_notifications_count)
     end
