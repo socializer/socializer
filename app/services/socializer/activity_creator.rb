@@ -17,6 +17,7 @@ module Socializer
 
     # Instance Methods
 
+    # Invoke the ActivityCreator. This is the primary public API method.
     # Creates an activity, adds the content and audience if needed.
     #
     # @return [OpenStruct]
