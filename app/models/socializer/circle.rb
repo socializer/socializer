@@ -37,6 +37,12 @@ module Socializer
 
     # Instance Methods
 
+    # Add a contact to the circle
+    #
+    # @param contact_id [Integer] The guid of the person to add to the circle
+    #
+    # @return [Socializer:Circle/ActiveRecord::RecordInvalid] The resulting object is returned if validations passes.
+    # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def add_contact(contact_id)
       ties.create!(contact_id: contact_id)
     end
