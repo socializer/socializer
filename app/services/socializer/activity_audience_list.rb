@@ -22,13 +22,18 @@ module Socializer
 
     # Class Methods
 
+    # Invoke the ActivityAudienceList. This is the primary public API method.
+    #
+    # @param activity: [Socializer::Activity] the activity to build the audience for
+    #
+    # @return [Array]
     def self.perform(activity:)
       ActivityAudienceList.new(activity: activity).perform
     end
 
     # Instance Methods
 
-    # [perform description]
+    # Invoke the ActivityAudienceList instance. This is the primary public API method.
     #
     # @return [Array]
     def perform
