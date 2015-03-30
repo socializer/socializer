@@ -22,6 +22,7 @@ module Socializer
 
     # Class Methods
 
+    # Invoke the AddDefaultCircles. This is the primary public API method.
     # Add the default circles
     #
     # @param person: [Socializer:Person] the person to create the default circles for
@@ -31,6 +32,7 @@ module Socializer
 
     # Instance Methods
 
+    # Invoke the AddDefaultCircles instance. This is the primary public API method.
     # Add the default circles
     def perform
       create_circle(display_name: 'Friends',

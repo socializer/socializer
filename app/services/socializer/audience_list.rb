@@ -24,6 +24,7 @@ module Socializer
 
     # Class Methods
 
+    # Invoke the AudienceList. This is the primary public API method.
     # Create the audience list
     #
     # @param person: [Socializer:Person] the person to build the list for
@@ -36,6 +37,7 @@ module Socializer
 
     # Instance Methods
 
+    # Invoke the AudienceList instance. This is the primary public API method.
     # Create the audience list
     #
     # @return [Array]
