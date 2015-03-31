@@ -27,7 +27,7 @@ module Socializer
       options[:data] ||= {}
       options[:data][:time_ago] = 'moment.js'
 
-      h.time_tag(created_at, created_at.strftime('%B %e, %Y %l:%M%P'), options)
+      helpers.time_tag(created_at, created_at.strftime('%B %e, %Y %l:%M%P'), options)
     end
 
     # TODO: make sure that note, comment, etc is touched when the ActivityObject is edited
