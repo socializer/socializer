@@ -30,7 +30,7 @@ module Socializer
       h.time_tag(created_at, created_at.strftime('%B %e, %Y %l:%M%P'), options)
     end
 
-    # TODO: make sure that note, comment, etc is edited when the ActivityObject is touched
+    # TODO: make sure that note, comment, etc is touched when the ActivityObject is edited
     #
     # Creates the title/tooltip. If the model has been updated, it returns a multiline string.
     # If not, it returns the created_at value
