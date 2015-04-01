@@ -8,5 +8,8 @@ class CreateSocializerAuthentications < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_authentications, :person_id
+    add_index :socializer_authentications, :provider
   end
 end
