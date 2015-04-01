@@ -96,7 +96,7 @@ module Socializer
       stream_query(viewer_id: viewer_id).by_id(actor_uid).distinct
     end
 
-    # TODO: [self description]
+    # Display all activities for a given circle
     #
     # @param  actor_uid: [FixNum] unique identifier of the previously typed provider
     # @param  viewer_id: [FixNum] who wants to see the activity stream
@@ -137,7 +137,7 @@ module Socializer
 
     # Class Methods - Private
 
-    # TODO: [self description]
+    # Build the stream query
     #
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #
