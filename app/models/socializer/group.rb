@@ -113,6 +113,11 @@ module Socializer
       membership.destroy
     end
 
+    # Check if the person is a member of the group
+    #
+    # @param person [Socializer::Person] the person that you are checking
+    #
+    # @return [TrueClass/FalseClass]
     def member?(person)
       person.memberships.find_by(group_id: id).present?
     end
