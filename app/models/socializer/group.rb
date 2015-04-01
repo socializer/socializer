@@ -98,7 +98,7 @@ module Socializer
     # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def invite(person)
-      person.memberships.create!(group_id: id, active: false)
+      memberships.create!(activity_member: person.activity_object, active: false)
     end
 
     # Leave the group
@@ -109,7 +109,7 @@ module Socializer
     # that no changes should be made (since they can't be persisted). If the before_destroy callback returns false
     # the action is cancelled and leave returns false.
     def leave(person)
-      membership = person.memberships.find_by(group_id: id)
+      membership = memberships.find_by(activity_member: person.activity_object)
       membership.destroy
     end
 
@@ -119,7 +119,7 @@ module Socializer
     #
     # @return [TrueClass/FalseClass]
     def member?(person)
-      person.memberships.find_by(group_id: id).present?
+      memberships.find_by(activity_member: person.activity_object).present?
     end
 
     private

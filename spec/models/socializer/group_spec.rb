@@ -169,6 +169,7 @@ module Socializer
     end
 
     context 'when inviting a person' do
+      let(:group) { create(:socializer_group) }
       let(:person) { create(:socializer_person) }
 
       before do
