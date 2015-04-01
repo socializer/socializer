@@ -18,6 +18,12 @@ module Socializer
       it { is_expected.to belong_to(:person) }
     end
 
+    context 'validations' do
+      it { is_expected.to validate_presence_of(:person) }
+      it { is_expected.to validate_presence_of(:provider) }
+      it { is_expected.to validate_presence_of(:uid) }
+    end
+
     context 'scopes' do
       context 'by_provider' do
         before { create(:socializer_authentication, provider: 'identity') }

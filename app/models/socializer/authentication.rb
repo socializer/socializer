@@ -12,6 +12,12 @@ module Socializer
     scope :by_provider, -> provider { where(provider: provider.downcase) }
     scope :by_not_provider, -> provider { where.not(provider: provider.downcase) }
 
+    # Validations
+    # TODO: Should a person only be allowed to have 1 provider of each type?
+    validates :person, presence: true
+    validates :provider, presence: true
+    validates :uid, presence: true
+
     # Callbacks
     before_destroy :make_sure_its_not_the_last_one
 

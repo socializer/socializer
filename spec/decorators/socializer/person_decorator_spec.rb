@@ -10,7 +10,7 @@ module Socializer
       it 'when the provider is Facebook, LinkedIn, or Twitter' do
         %w( FACEBOOK LINKEDIN TWITTER ).each do |provider|
           person = create(:socializer_person, avatar_provider: provider)
-          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com")
+          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com", uid: person.id)
           decorated_person = PersonDecorator.new(person)
 
           expect(decorated_person.avatar_url).to include(provider.downcase)
