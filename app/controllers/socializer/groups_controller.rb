@@ -60,11 +60,6 @@ module Socializer
       redirect_to group
     end
 
-    # GET /groups/pending_invites
-    def pending_invites
-      @pending_invites = current_user.pending_memberships_invites
-    end
-
     private
 
     def set_group

@@ -114,11 +114,12 @@ fr:
             one: You own 1 group
             other: You own %{count} groups
       pending_invites:
-        confirm: confirmer
-        decline: refuser
-        header:
-          one: You have 1 pending invite
-          other: You have %{count} pending invites
+        index:
+          confirm: confirmer
+          decline: refuser
+          header:
+            one: You have 1 pending invite
+            other: You have %{count} pending invites
       public:
         index:
           header:

@@ -147,19 +147,5 @@ module Socializer
         expect(response).to redirect_to group_path(group)
       end
     end
-
-    describe 'GET #pending_invites' do
-      before :each do
-        get :pending_invites
-      end
-
-      it 'assigns @pending_invites' do
-        expect(assigns(:pending_invites)).to match_array([])
-      end
-
-      it 'renders the :index template' do
-        expect(response).to render_template :pending_invites
-      end
-    end
   end
 end
