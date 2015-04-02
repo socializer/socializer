@@ -40,17 +40,17 @@ Socializer::Engine.routes.draw do
   # Not a good idea to create comments that don't belong to something else
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
+  namespace :groups do
+    get 'joinable'
+    get 'memberships'
+    get 'ownerships'
+    get 'pending_invites'
+    get 'public'
+    get 'restricted'
+  end
+
   resources :groups do
     resources :activities, only: [:index], controller: 'groups/activities'
-
-    collection do
-      get 'joinable'
-      get 'memberships'
-      get 'ownerships'
-      get 'pending_invites'
-      get 'public'
-      get 'restricted'
-    end
 
     member do
       get 'invite/:user_id' => 'groups#invite', as: :invite_to
