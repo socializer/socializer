@@ -41,7 +41,7 @@ Socializer::Engine.routes.draw do
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
   namespace :groups do
-    get 'joinable'
+    get 'joinable', to: 'joinable#index'
     get 'memberships'
     get 'ownerships'
     get 'pending_invites'

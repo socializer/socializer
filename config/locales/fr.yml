@@ -94,9 +94,10 @@ fr:
       index:
         header: Discover groups
       joinable:
-        header:
-          one: 1 joinable group
-          other: "%{count} joinable groups"
+        index:
+          header:
+            one: 1 joinable group
+            other: "%{count} joinable groups"
       memberships:
         header:
           one: You belong to 1 group

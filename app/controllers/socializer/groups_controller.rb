@@ -70,11 +70,6 @@ module Socializer
       @groups = Group.restricted
     end
 
-    # GET /groups/joinable
-    def joinable
-      @groups = Group.joinable
-    end
-
     # GET /groups/memberships
     def memberships
       @memberships = current_user.memberships
