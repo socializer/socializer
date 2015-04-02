@@ -43,7 +43,7 @@ Socializer::Engine.routes.draw do
   namespace :groups do
     get 'joinable', to: 'joinable#index'
     get 'memberships', to: 'memberships#index'
-    get 'ownerships'
+    get 'ownerships', to: 'ownerships#index'
     get 'pending_invites'
     get 'public'
     get 'restricted'

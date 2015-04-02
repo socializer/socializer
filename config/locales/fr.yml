@@ -107,11 +107,12 @@ fr:
       new:
         header: New Group
       ownerships:
-        delete: supprimer
-        edit: "éditer"
-        header:
-          one: You own 1 group
-          other: You own %{count} groups
+        index:
+          delete: supprimer
+          edit: "éditer"
+          header:
+            one: You own 1 group
+            other: You own %{count} groups
       pending_invites:
         confirm: confirmer
         decline: refuser

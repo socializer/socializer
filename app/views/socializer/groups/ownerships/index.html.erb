@@ -1,11 +1,11 @@
 <% content_for :toolbar do %>
-  <%= render 'toolbar' %>
+  <%= render 'socializer/groups/toolbar' %>
 <% end %>
 
 <h1><%= t('.header', count: @ownerships.count) %></h1>
 
 <div class='row'>
-  <%= render partial: 'card', collection: @ownerships, as: :group %>
+  <%= render partial: 'socializer/groups/card', collection: @ownerships, as: :group %>
 </div><!-- /.row -->
 
 <ul class="large-group-list">
