@@ -4,6 +4,7 @@
 module Socializer
   module Groups
     class MembershipsController < ApplicationController
+      # GET /groups/memberships
       def index
         @memberships = current_user.memberships
       end
