@@ -65,11 +65,6 @@ module Socializer
       @groups = Group.public
     end
 
-    # GET /groups/restricted
-    def restricted
-      @groups = Group.restricted
-    end
-
     # GET /groups/pending_invites
     def pending_invites
       @pending_invites = current_user.pending_memberships_invites

@@ -124,9 +124,10 @@ en:
           one: 1 public group
           other: "%{count} public groups"
       restricted:
-        header:
-          one: 1 restricted group
-          other: "%{count} restricted groups"
+        index:
+          header:
+            one: 1 restricted group
+            other: "%{count} restricted groups"
       show:
         confirm: Are you sure?
         edit: Edit

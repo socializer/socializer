@@ -162,23 +162,6 @@ module Socializer
       end
     end
 
-    describe 'GET #restricted' do
-      let(:privacy) { Socializer::Group.privacy.find_value(:restricted).value }
-      let(:group) { create(:socializer_group, activity_author: user.activity_object, privacy: privacy) }
-
-      before :each do
-        get :restricted
-      end
-
-      it 'assigns @groups' do
-        expect(assigns(:groups)).to match_array([group])
-      end
-
-      it 'renders the :index template' do
-        expect(response).to render_template :restricted
-      end
-    end
-
     describe 'GET #pending_invites' do
       before :each do
         get :pending_invites
