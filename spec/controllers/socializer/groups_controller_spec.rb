@@ -179,20 +179,6 @@ module Socializer
       end
     end
 
-    describe 'GET #memberships' do
-      before :each do
-        get :memberships
-      end
-
-      it 'assigns @memberships' do
-        expect(assigns(:memberships)).to match_array([membership])
-      end
-
-      it 'renders the :index template' do
-        expect(response).to render_template :memberships
-      end
-    end
-
     describe 'GET #ownerships' do
       before :each do
         get :ownerships

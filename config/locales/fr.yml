@@ -99,10 +99,11 @@ fr:
             one: 1 joinable group
             other: "%{count} joinable groups"
       memberships:
-        header:
-          one: You belong to 1 group
-          other: You belong to %{count} groups
-        leave: quitter
+        index:
+          header:
+            one: You belong to 1 group
+            other: You belong to %{count} groups
+          leave: quitter
       new:
         header: New Group
       ownerships:
