@@ -45,7 +45,7 @@ Socializer::Engine.routes.draw do
     get 'memberships', to: 'memberships#index'
     get 'ownerships', to: 'ownerships#index'
     get 'pending_invites'
-    get 'public'
+    get 'public', to: 'public#index'
     get 'restricted', to: 'restricted#index'
   end
 

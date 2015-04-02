@@ -60,11 +60,6 @@ module Socializer
       redirect_to group
     end
 
-    # GET /groups/public
-    def public
-      @groups = Group.public
-    end
-
     # GET /groups/pending_invites
     def pending_invites
       @pending_invites = current_user.pending_memberships_invites

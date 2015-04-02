@@ -120,9 +120,10 @@ fr:
           one: You have 1 pending invite
           other: You have %{count} pending invites
       public:
-        header:
-          one: 1 public group
-          other: "%{count} public groups"
+        index:
+          header:
+            one: 1 public group
+            other: "%{count} public groups"
       restricted:
         index:
           header:

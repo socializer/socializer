@@ -148,20 +148,6 @@ module Socializer
       end
     end
 
-    describe 'GET #public' do
-      before :each do
-        get :public
-      end
-
-      it 'assigns @groups' do
-        expect(assigns(:groups)).to match_array([group])
-      end
-
-      it 'renders the :index template' do
-        expect(response).to render_template :public
-      end
-    end
-
     describe 'GET #pending_invites' do
       before :each do
         get :pending_invites
