@@ -7,7 +7,6 @@ module Socializer
     # Create a user and a group
     let(:user) { create(:socializer_person) }
     let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { Membership.find_by(group_id: group.id) }
 
     # Setting the current user
     before { cookies[:user_id] = user.guid }
