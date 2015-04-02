@@ -8,9 +8,6 @@ module Socializer
     let(:user) { create(:socializer_person) }
     let(:group) { create(:socializer_group, activity_author: user.activity_object) }
     let(:membership) { Membership.find_by(group_id: group.id) }
-    let(:privacy) { Socializer::Group.privacy.find_value(:public).value }
-    let(:valid_attributes) { { group: { author_id: user.guid, display_name: 'Test', privacy: privacy } } }
-    let(:invalid_attributes) { { group: { author_id: user.guid, display_name: '', privacy: nil } } }
 
     # Setting the current user
     before { cookies[:user_id] = user.guid }
