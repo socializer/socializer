@@ -8,6 +8,7 @@ AllCops:
   Exclude:
     - bin/**
     - db/migrate/**
+    - spec/i18n_spec.rb
     - spec/dummy/**/*
     - spec/internal/**/*
 
