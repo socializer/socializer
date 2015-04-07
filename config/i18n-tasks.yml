@@ -16,7 +16,7 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     ## Default:
-    - config/locales/%{locale}.yml
+    # - config/locales/%{locale}.yml
     ## More files:
     # - config/locales/**/*.%{locale}.yml
     ## Another gem:
@@ -28,7 +28,7 @@ data:
     ## For example, write devise and simple form keys to their respective files:
     # - ['{devise, simple_form}.*', 'config/locales/\1.%{locale}.yml']
     ## Catch-all default:
-    - config/locales/%{locale}.yml
+    # - config/locales/%{locale}.yml
 
   ## Specify the router (see Readme for details). Valid values: conservative_router, pattern_router, or a custom class.
   # router: convervative_router
@@ -40,7 +40,6 @@ data:
 
   ## Pretty-print JSON:
   # json:
-  #
   #   write:
   #     indent: '  '
   #     space: ' '
@@ -61,8 +60,10 @@ search:
   #   - app/presenters
 
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
-  ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
-  # exclude: []
+  ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
+  exclude:
+    - app/assets/images
+    - app/assets/fonts
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -76,9 +77,9 @@ search:
 #   # Get an API key and set billing info at https://code.google.com/apis/console to use Google Translate
 #   api_key: "AbC-dEf5"
 
-# Do not consider these keys missing:
+## Do not consider these keys missing:
 ignore_missing:
- - activerecord.*
+  - activerecord.*
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
 # - '{devise,simple_form}.*'
 
