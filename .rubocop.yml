@@ -33,6 +33,11 @@ Style/RegexpLiteral:
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
 
+Style/SpaceAroundOperators:
+  MultiSpaceAllowedForOperators:
+    - '='
+    - '=>'
+    - '||='
 
 Metrics/LineLength:
   # Max: 120
