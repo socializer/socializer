@@ -20,6 +20,9 @@ Style/AlignHash:
   Exclude:
     - 'config/initializers/simple_form.rb'
 
+Style/Documentation:
+  Enabled: false
+
 Style/MultilineOperationIndentation:
   Enabled: false
 
@@ -30,8 +33,6 @@ Style/RegexpLiteral:
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
 
-Style/Documentation:
-  Enabled: false
 
 Metrics/LineLength:
   # Max: 120
