@@ -7,6 +7,11 @@ module Socializer
       "/auth/#{provider}"
     end
 
+    # Check if the current_user and the user are the same
+    #
+    # @param user [Socializer::Person]
+    #
+    # @return [TrueClass/FalseClass]
     def current_user?(user)
       user == current_user
     end
