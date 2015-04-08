@@ -20,7 +20,6 @@ Style/AlignHash:
   Exclude:
     - 'config/initializers/simple_form.rb'
 
-# TODO: Review
 Style/MultilineOperationIndentation:
   Enabled: false
 
