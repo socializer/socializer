@@ -20,7 +20,7 @@ module Socializer
     #
     # @return [String] An HTML time tag
     def time_ago(options: {})
-      created_at = model.created_at.to_time.utc
+      created_at = model.created_at.utc
 
       options.reverse_merge! title: created_updated_tooltip_text
 
@@ -39,8 +39,8 @@ module Socializer
     #
     # @return [String]
     def created_updated_tooltip_text(format: :short)
-      created_at = l(model.created_at.to_time.utc, format: format)
-      updated_at = l(model.updated_at.to_time.utc, format: format)
+      created_at = l(model.created_at.utc, format: format)
+      updated_at = l(model.updated_at.utc, format: format)
 
       if created_at == updated_at
         created_at

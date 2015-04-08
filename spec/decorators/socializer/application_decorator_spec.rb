@@ -5,8 +5,8 @@ module Socializer
     context 'created_at_time_ago' do
       let(:activity) { create(:socializer_activity) }
       let(:decorated_activity) { ActivityDecorator.new(activity) }
-      let(:created_at) { activity.created_at.to_time.utc }
-      let(:updated_at) { activity.updated_at.to_time.utc }
+      let(:created_at) { activity.created_at.utc }
+      let(:updated_at) { activity.updated_at.utc }
 
       context 'when created_at and updated_at are equal' do
         let(:result) { decorated_activity.created_at_time_ago }
