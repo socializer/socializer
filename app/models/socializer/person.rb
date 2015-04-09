@@ -104,6 +104,9 @@ module Socializer
       @notifications ||= activity_object.notifications.newest_first
     end
 
+    # A collection of {Socializer::Person people} this person is a contact of
+    #
+    # @return [ActiveRecord::Relation]
     def contact_of
       @contact_of ||= Person.distinct.joins(activity_object: { circles: :ties }).merge(Tie.by_contact_id(guid))
     end
