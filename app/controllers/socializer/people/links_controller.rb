@@ -7,17 +7,20 @@ module Socializer
       before_action :authenticate_user
       before_action :set_person_link, only: [:update, :destroy]
 
+      # POST /people/1/links
       def create
         @person_link = current_user.links.build(params[:person_link])
         @person_link.save!
         redirect_to current_user
       end
 
+      # PATCH/PUT /people/1/links/1
       def update
         @person_link.update!(params[:person_link])
         redirect_to current_user
       end
 
+      # DELETE /people/1/links/1
       def destroy
         @person_link.destroy
         redirect_to current_user

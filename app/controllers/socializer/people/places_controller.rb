@@ -7,17 +7,20 @@ module Socializer
       before_action :authenticate_user
       before_action :set_person_place, only: [:update, :destroy]
 
+      # POST /people/1/places
       def create
         @person_place = current_user.places.build(params[:person_place])
         @person_place.save!
         redirect_to current_user
       end
 
+      # PATCH/PUT /people/1/places/1
       def update
         @person_place.update!(params[:person_place])
         redirect_to current_user
       end
 
+      # DELETE /people/1/places/1
       def destroy
         @person_place.destroy
         redirect_to current_user
