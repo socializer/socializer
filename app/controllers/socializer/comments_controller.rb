@@ -6,10 +6,12 @@ module Socializer
     before_action :authenticate_user
     before_action :set_comment, only: [:edit, :update, :destroy]
 
+    # GET /comments/new
     def new
       @comment = Comment.new
     end
 
+    # POST /comments
     def create
       @comment = current_user.comments.build(params[:comment])
       @comment.activity_verb = 'add'
@@ -21,9 +23,11 @@ module Socializer
       redirect_to activities_path
     end
 
+    # GET /comments/1/edit
     def edit
     end
 
+    # PATCH/PUT /comments/1
     def update
       @comment.update!(params[:comment])
 
@@ -31,6 +35,7 @@ module Socializer
       redirect_to activities_path
     end
 
+    # DELETE /comments/1
     def destroy
       @comment.destroy
       redirect_to activities_path
