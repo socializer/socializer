@@ -6,6 +6,7 @@ module Socializer
     class ActivitiesController < ApplicationController
       before_action :authenticate_user
 
+      # GET activities/1/activities
       def index
         id          = params.fetch(:activity_id) { nil }
         @activity   = Activity.find_by(id: id).decorate
