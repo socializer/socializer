@@ -1,4 +1,8 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
+  # Decorators for {Socializer::Circle}
   class CircleDecorator < Draper::Decorator
     delegate_all
 

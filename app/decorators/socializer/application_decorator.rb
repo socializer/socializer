@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Decorators that can be shared with the other decorators by inheriting from ApplicationDecorator
   class ApplicationDecorator < Draper::Decorator
     # Returns an HTML time tag
     #

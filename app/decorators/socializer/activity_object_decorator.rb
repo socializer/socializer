@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Decorators for {Socializer::ActivityObject}
   class ActivityObjectDecorator < Draper::Decorator
     delegate_all
 

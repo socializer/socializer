@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Decorators for {Socializer::Activity}
   class ActivityDecorator < ApplicationDecorator
     # TODO: ActivityDecorator - be explicit about what is delegated
     delegate_all

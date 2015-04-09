@@ -1,4 +1,8 @@
+#
+# Namespace for the Socializer engine
+#
 module Socializer
+  # Decorators for {Socializer::Group}
   class GroupDecorator < Draper::Decorator
     delegate_all
 

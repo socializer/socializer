@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Decorators for {Socializer::Notification}
   class NotificationDecorator < ApplicationDecorator
     delegate_all
 
