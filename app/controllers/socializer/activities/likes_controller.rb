@@ -19,6 +19,7 @@ module Socializer
         end
       end
 
+      # POST /activities/1/like
       def create
         @likable.like(current_user) unless current_user.likes?(@likable)
 
@@ -27,6 +28,7 @@ module Socializer
         end
       end
 
+      # DELETE /activities/1/unlike
       def destroy
         @likable.unlike(current_user) if current_user.likes?(@likable)
 

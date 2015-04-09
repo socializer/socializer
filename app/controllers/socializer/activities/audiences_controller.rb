@@ -6,6 +6,7 @@ module Socializer
     class AudiencesController < ApplicationController
       before_action :authenticate_user
 
+      # GET activities/1/audience
       def index
         activity    = Activity.find_by(id: params[:id])
         @object_ids = ActivityAudienceList.new(activity: activity).perform
