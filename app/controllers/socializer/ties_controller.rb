@@ -5,6 +5,7 @@ module Socializer
   class TiesController < ApplicationController
     before_action :authenticate_user
 
+    # POST /ties
     def create
       @circle = Circle.find_by(id: params[:tie][:circle_id])
       tie = @circle.add_contact(params[:tie][:contact_id])
@@ -17,6 +18,7 @@ module Socializer
       end
     end
 
+    # DELETE /ties/1
     def destroy
       @tie = Tie.find_by(id: params[:id])
       @circle = @tie.circle
