@@ -19,7 +19,6 @@ require 'capybara/rspec'
 require 'rspec/rails'
 
 require 'capybara/rails'
-require 'shoulda-matchers'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 
