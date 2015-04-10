@@ -3,6 +3,7 @@
 #
 module Socializer
   class SessionsController < ApplicationController
+    # GET|POST /auth/facebook/callback
     def create
       auth      = request.env['omniauth.auth']
       user_auth = Authentication.find_by(provider: auth.provider, uid: auth.uid)
@@ -15,11 +16,13 @@ module Socializer
       end
     end
 
+    # GET|DELETE /signout
     def destroy
       cookies.delete :user_id, domain: :all
       redirect_to root_url
     end
 
+    # GET|POST /auth/failure
     def failure
       redirect_to root_url
     end
