@@ -14,11 +14,7 @@ require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rubygems'
 require 'bundler/setup'
 
-require 'capybara/rspec'
-
 require 'rspec/rails'
-
-require 'capybara/rails'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 
