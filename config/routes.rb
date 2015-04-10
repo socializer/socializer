@@ -1,26 +1,26 @@
 Socializer::Engine.routes.draw do
-  match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
-  match '/auth/failure' => 'sessions#failure', via: [:get, :post]
-  match '/signin' => 'sessions#new', as: :signin,  via: :get
-  match '/signout' => 'sessions#destroy', as: :signout, via: [:get, :delete]
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match '/auth/failure', to: 'sessions#failure', via: [:get, :post]
+  match '/signin', to: 'sessions#new', as: :signin,  via: :get
+  match '/signout', to: 'sessions#destroy', as: :signout, via: [:get, :delete]
 
-  get '/activities/:id/comment' => 'comments#new', as: :comment_activity
+  get '/activities/:id/comment', to: 'comments#new', as: :comment_activity
 
   resources :activities, only: [:index, :destroy] do
     resources :activities, only: [:index], controller: 'activities/activities'
 
     member do
       # Audiences
-      get 'audience' => 'activities/audiences#index'
+      get 'audience', to: 'activities/audiences#index'
 
       # Likes
-      get 'likes' => 'activities/likes#index'
-      post 'like' => 'activities/likes#create'
-      delete 'unlike' => 'activities/likes#destroy'
+      get 'likes', to: 'activities/likes#index'
+      post 'like', to: 'activities/likes#create'
+      delete 'unlike', to: 'activities/likes#destroy'
 
       # Shares
-      get 'share' => 'activities/shares#new', as: 'new_share'
-      post 'share' => 'activities/shares#create', as: 'create_share'
+      get 'share', to: 'activities/shares#new', as: 'new_share'
+      post 'share', to: 'activities/shares#create', as: 'create_share'
     end
   end
 
@@ -53,7 +53,7 @@ Socializer::Engine.routes.draw do
     resources :activities, only: [:index], controller: 'groups/activities'
 
     member do
-      get 'invite/:user_id' => 'groups#invite', as: :invite_to
+      get 'invite/:user_id', to: 'groups#invite', as: :invite_to
     end
   end
 
@@ -88,6 +88,6 @@ Socializer::Engine.routes.draw do
   resources :ties, only: [:create, :destroy]
 
   # Example root that gets defined for a logged in user
-  # get '/' => 'activities#index', constraints: -> request { request.cookies.key?('user_id').present? }
+  # get '/', to: 'activities#index', constraints: -> request { request.cookies.key?('user_id').present? }
   root to: 'pages#index'
 end
