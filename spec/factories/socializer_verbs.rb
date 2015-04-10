@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :socializer_verb, class: Socializer::Verb do
-    display_name 'post'
+    sequence(:display_name) { |n| "post#{n}" }
   end
 end
