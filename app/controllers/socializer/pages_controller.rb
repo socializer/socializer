@@ -3,6 +3,7 @@
 #
 module Socializer
   class PagesController < ApplicationController
+    # GET /pages
     def index
       redirect_to activities_path if signed_in?
     end
