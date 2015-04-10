@@ -6,6 +6,7 @@ module Socializer
     before_action :authenticate_user
     before_action :set_activity, only: [:audience, :destroy]
 
+    # GET /activities
     def index
       @activities = Activity.stream(viewer_id: current_user.id).decorate
       @current_id = nil
@@ -13,6 +14,7 @@ module Socializer
       @note       = Note.new
     end
 
+    # DELETE /activities/1
     def destroy
       @activity_guid = @activity.guid
       @activity.destroy
