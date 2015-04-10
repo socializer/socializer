@@ -19,7 +19,6 @@ require 'capybara/rspec'
 require 'rspec/rails'
 
 require 'capybara/rails'
-require 'factory_girl_rails'
 require 'database_cleaner'
 require 'shoulda-matchers'
 
@@ -65,8 +64,6 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
-  config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
     # DatabaseCleaner.strategy = :truncation
