@@ -29,6 +29,7 @@ module Socializer
 
     alias_method :confirm, :approve
 
+    # CLEANUP: Remove old code
     # # POST /memberships/1/confirm
     # def confirm
     #   @membership.confirm
