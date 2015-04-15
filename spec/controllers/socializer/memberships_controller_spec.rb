@@ -61,15 +61,15 @@ module Socializer
       end
     end
 
-    describe 'POST #decline' do
+    describe 'DELETE #decline' do
       context 'with valid attributes' do
         it 'decline the membership' do
           membership
-          expect { post :decline, id: membership.id }.to change(Membership, :count).by(-1)
+          expect { delete :decline, id: membership.id }.to change(Membership, :count).by(-1)
         end
 
         it 'redirects to groups#show' do
-          post :decline, id: membership.id
+          delete :decline, id: membership.id
           expect(response).to redirect_to groups_pending_invites_path
         end
       end
