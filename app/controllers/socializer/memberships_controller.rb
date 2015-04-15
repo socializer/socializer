@@ -27,11 +27,13 @@ module Socializer
       redirect_to @membership.group
     end
 
-    # POST /memberships/1/confirm
-    def confirm
-      @membership.confirm
-      redirect_to @membership.group
-    end
+    alias_method :confirm, :approve
+
+    # # POST /memberships/1/confirm
+    # def confirm
+    #   @membership.confirm
+    #   redirect_to @membership.group
+    # end
 
     # POST /memberships/1/decline
     def decline
