@@ -1,5 +1,7 @@
 # Contributing to Socializer
 
+We welcome contributions from *everyone*. While contributing, please follow the project [code of conduct](https://github.com/socializer/socializer/blob/master/CODE_OF_CONDUCT.md), so that everyone can be included.
+
 ## Reporting issues
 
 Socializer uses [GitHub Issue Tracking](https://github.com/dominicgoulet/socializer/issues)
