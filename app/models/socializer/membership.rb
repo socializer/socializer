@@ -27,9 +27,5 @@ module Socializer
     end
 
     alias_method :confirm, :approve
-
-    def decline
-      destroy
-    end
   end
 end

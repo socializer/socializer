@@ -109,14 +109,5 @@ module Socializer
         expect(inactive_membership.active).to be_truthy
       end
     end
-
-    describe '#decline' do
-      let(:inactive_membership) { create(:socializer_membership, active: false) }
-
-      it 'no longer exists' do
-        inactive_membership.decline
-        expect { inactive_membership.reload }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
   end
 end
