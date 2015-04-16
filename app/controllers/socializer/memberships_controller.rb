@@ -4,7 +4,7 @@
 module Socializer
   class MembershipsController < ApplicationController
     before_action :authenticate_user
-    before_action :set_membership, only: [:approve, :confirm, :decline]
+    before_action :set_membership, only: [:approve, :confirm]
 
     # POST /memberships
     def create
@@ -35,12 +35,6 @@ module Socializer
     #   @membership.confirm
     #   redirect_to @membership.group
     # end
-
-    # DELETE /memberships/1/decline
-    def decline
-      @membership.decline
-      redirect_to groups_pending_invites_path
-    end
 
     private
 

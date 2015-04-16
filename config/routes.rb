@@ -61,7 +61,7 @@ Socializer::Engine.routes.draw do
     member do
       post 'approve'
       post 'confirm', to: 'memberships#approve'
-      delete 'decline'
+      delete 'decline', to: 'memberships/decline#destroy'
     end
   end
 
