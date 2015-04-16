@@ -37,21 +37,21 @@ module Socializer
       end
     end
 
-    describe 'POST #approve' do
+    describe 'POST #confirm' do
       context 'with valid attributes' do
         let(:membership) { create(:socializer_membership, active: false, group: group, activity_member: user.activity_object) }
 
-        it 'approve the membership' do
+        it 'confirm the membership' do
           expect(membership.active).to be false
 
-          post :approve, id: membership.id
+          post :confirm, id: membership.id
 
           expect(membership.reload.active).to eq(true)
           expect(assigns(:membership)).to eq membership
         end
 
         it 'redirects to groups#show' do
-          post :approve, id: membership.id
+          post :confirm, id: membership.id
           expect(response).to redirect_to membership.group
         end
       end

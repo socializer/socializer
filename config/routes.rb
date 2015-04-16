@@ -59,8 +59,7 @@ Socializer::Engine.routes.draw do
 
   resources :memberships, only: [:create, :destroy] do
     member do
-      post 'approve'
-      post 'confirm', to: 'memberships#approve'
+      post 'confirm'
       delete 'decline', to: 'memberships/decline#destroy'
     end
   end

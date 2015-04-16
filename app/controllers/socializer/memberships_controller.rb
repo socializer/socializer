@@ -4,7 +4,7 @@
 module Socializer
   class MembershipsController < ApplicationController
     before_action :authenticate_user
-    before_action :set_membership, only: [:approve, :confirm]
+    before_action :set_membership, only: [:confirm]
 
     # POST /memberships
     def create
@@ -21,20 +21,11 @@ module Socializer
       redirect_to @group
     end
 
-    # POST /memberships/1/approve
-    def approve
-      @membership.approve
+    # POST /memberships/1/confirm
+    def confirm
+      @membership.confirm
       redirect_to @membership.group
     end
-
-    alias_method :confirm, :approve
-
-    # CLEANUP: Remove old code
-    # # POST /memberships/1/confirm
-    # def confirm
-    #   @membership.confirm
-    #   redirect_to @membership.group
-    # end
 
     private
 

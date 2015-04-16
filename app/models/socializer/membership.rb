@@ -22,10 +22,8 @@ module Socializer
 
     # Instance Methods
 
-    def approve
+    def confirm
       update(active: true)
     end
-
-    alias_method :confirm, :approve
   end
 end
