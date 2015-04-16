@@ -3,7 +3,7 @@
 #
 module Socializer
   module Memberships
-    class DeclineController <ApplicationController
+    class DeclineController < ApplicationController
       # DELETE /memberships/1/decline
       def destroy
         @membership = Membership.find_by(id: params[:id])
