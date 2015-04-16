@@ -12,7 +12,7 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    describe "DELETE #destroy" do
+    describe 'DELETE #destroy' do
       context 'with valid attributes' do
         it 'decline the membership' do
           membership

@@ -12,7 +12,7 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    describe "POST #create" do
+    describe 'POST #create' do
       context 'with valid attributes' do
         it 'confirm the membership' do
           expect(membership.active).to be false
