@@ -47,8 +47,8 @@ module Socializer
       redirect_to contacts_circles_path
     end
 
-    # GET /circles/find_people
-    def find_people
+    # GET /circles/find_contacts
+    def find_contacts
       @people = Person.all
     end
 
