@@ -33,7 +33,7 @@ Socializer::Engine.routes.draw do
     collection do
       get 'contacts', to: 'circles/contacts#index'
       get 'contact_of', to: 'circles/contact_of#index'
-      get 'find_contacts'
+      get 'find_contacts', to: 'circles/find_contacts#index'
     end
   end
 

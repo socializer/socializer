@@ -42,8 +42,9 @@ en:
           header: Your circles
       edit:
         header: Edit %{name}
-      find_people:
-        header: Suggestions
+      find_contacts:
+        index:
+          header: Suggestions
       form:
         submit: Save changes
       header: Your circles
