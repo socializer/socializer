@@ -8,12 +8,10 @@ module Socializer
       auth      = request.env['omniauth.auth']
       user_auth = Authentication.find_by(provider: auth.provider, uid: auth.uid)
 
-      if user_auth.blank?
-        add_authentication(auth) if signed_in?
-        create_authentication(auth) unless signed_in?
-      else
-        login(user_auth.person)
-      end
+      return login(user_auth.person) if user_auth.present?
+
+      add_authentication(auth) if signed_in?
+      create_authentication(auth) unless signed_in?
     end
 
     # GET|DELETE /signout
