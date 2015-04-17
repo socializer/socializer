@@ -11,7 +11,7 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    describe "GET #index" do
+    describe 'GET #index' do
       before :each do
         get :index
       end
