@@ -44,7 +44,7 @@
               <h1>
                 <%= link_to(user.display_name, person_activities_path(person_id: user.id)) %>
               </h1>
-              <%= link_to(t('.invite'), invite_to_group_path(id: @group, user_id: user), class: 'btn btn-xs btn-success', title: "#{t('.tooltip.invite', display_name: user.display_name, group_name: @group.display_name)}") %>
+              <%= link_to(t('.invite'), invite_to_group_path(id: @group, person_id: user), class: 'btn btn-xs btn-success', title: "#{t('.tooltip.invite', display_name: user.display_name, group_name: @group.display_name)}") %>
           </section>
         </article>
       </div>
