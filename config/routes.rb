@@ -53,7 +53,7 @@ Socializer::Engine.routes.draw do
     resources :activities, only: [:index], controller: 'groups/activities'
 
     member do
-      get 'invite/:user_id', to: 'groups#invite', as: :invite_to
+      post 'invite/:user_id', to: 'groups#invite', as: :invite_to
     end
   end
 

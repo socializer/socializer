@@ -51,7 +51,7 @@ module Socializer
       redirect_to groups_path
     end
 
-    # GET /groups/:id/invite/:user_id
+    # POST /groups/:id/invite/:user_id
     def invite
       invited_user = Person.find_by(id: params[:user_id])
       group = Group.find_by(id: params[:id])

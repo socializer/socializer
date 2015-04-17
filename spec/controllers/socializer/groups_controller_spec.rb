@@ -143,7 +143,7 @@ module Socializer
       let(:invited_user) { create(:socializer_person) }
 
       it 'redirects to groups#show' do
-        get :invite, id: group, user_id: invited_user
+        post :invite, id: group, user_id: invited_user
         expect(response).to redirect_to group_path(group)
       end
     end
