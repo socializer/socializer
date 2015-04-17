@@ -31,7 +31,7 @@ Socializer::Engine.routes.draw do
     resources :activities, only: [:index], controller: 'circles/activities'
 
     collection do
-      get 'contacts'
+      get 'contacts', to: 'circles/contacts#index'
       get 'contact_of'
       get 'find_people'
     end

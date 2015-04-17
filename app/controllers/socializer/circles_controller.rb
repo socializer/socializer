@@ -47,11 +47,6 @@ module Socializer
       redirect_to contacts_circles_path
     end
 
-    # GET /circles/contacts
-    def contacts
-      @contacts = current_user.contacts
-    end
-
     # GET /circles/contact_of
     def contact_of
       @contact_of = current_user.contact_of

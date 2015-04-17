@@ -37,7 +37,8 @@ en:
           one: 1 person
           other: "%{count} people"
       contacts:
-        header: Your circles
+        index:
+          header: Your circles
       edit:
         header: Edit %{name}
       find_people:
