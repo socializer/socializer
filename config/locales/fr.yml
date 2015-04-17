@@ -33,9 +33,10 @@ fr:
           new: Add a new service
     circles:
       contact_of:
-        header:
-          one: 1 person
-          other: "%{count} people"
+        index:
+          header:
+            one: 1 person
+            other: "%{count} people"
       contacts:
         index:
           header: Your circles
