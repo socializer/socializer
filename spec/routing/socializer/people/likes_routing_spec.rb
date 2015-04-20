@@ -31,7 +31,7 @@ module Socializer
       end
 
       it 'does not route to #destroy' do
-        expect(post: '/people/1/likes/1').to_not be_routable
+        expect(delete: '/people/1/likes/1').to_not be_routable
       end
     end
   end
