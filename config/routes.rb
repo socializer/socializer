@@ -80,7 +80,7 @@ Socializer::Engine.routes.draw do
 
     member do
       get 'likes', to: 'people/likes#index'
-      get 'message'
+      get 'messages/new', to: 'people/messages#new'
     end
   end
 

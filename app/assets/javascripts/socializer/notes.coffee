@@ -22,7 +22,7 @@ jQuery ->
   controller_action = $('body').data('action')
   reset_content = if controller_action is 'edit' then false else true
 
-  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people'
+  if controller_name == 'notes' || controller_name == 'activities' || controller_name == 'people' || controller_name == 'messages'
 
     audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')

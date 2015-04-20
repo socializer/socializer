@@ -4,7 +4,7 @@
 module Socializer
   class PeopleController < ApplicationController
     before_action :authenticate_user
-    before_action :set_person, only: [:show, :message]
+    before_action :set_person, only: [:show]
 
     # GET /people
     def index
@@ -26,12 +26,6 @@ module Socializer
 
       flash[:notice] = t('socializer.model.update', model: 'Person')
       redirect_to current_user
-    end
-
-    # GET people/1/message
-    def message
-      @current_id = @person.guid
-      @note = Note.new
     end
 
     private

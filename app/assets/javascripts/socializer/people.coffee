@@ -3,5 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  if $('body').data('controller') == 'people'
+  controller_name = $('body').data('controller')
+  if controller_name == 'people' || controller_name == 'messages'
     $('[id^=message_person_] #note_content').click().focus()
