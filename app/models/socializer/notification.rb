@@ -77,8 +77,8 @@ module Socializer
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.joins(circle: { activity_object: :audiences })
          .merge(Audience.by_activity_id(activity_id))
-         .pluck(:contact_id)
          .distinct
+         .pluck(:contact_id)
     end
     private_class_method :get_potential_contact_ids
 
