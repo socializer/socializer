@@ -6,8 +6,6 @@ module Socializer
 
     # Create a user and a contact
     let(:user) { create(:socializer_person) }
-    let(:contact) { create(:socializer_person) }
-    let(:circle) { user.circles.create!(display_name: 'Friends').add_contact(contact.id) }
     let(:contacts) { user.contacts }
 
     # Setting the current user
@@ -27,7 +25,6 @@ module Socializer
       end
 
       it 'assigns @contacts' do
-        circle
         expect(assigns(:contacts)).to match_array(contacts)
       end
     end
