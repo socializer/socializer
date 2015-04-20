@@ -79,7 +79,7 @@ Socializer::Engine.routes.draw do
     resources :profiles,       only: [:create, :update, :destroy], controller: 'people/profiles'
 
     member do
-      get 'likes'
+      get 'likes', to: 'people/likes#index'
       get 'message'
     end
   end

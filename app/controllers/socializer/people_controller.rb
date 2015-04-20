@@ -28,13 +28,6 @@ module Socializer
       redirect_to current_user
     end
 
-    # TODO: Should be handled by the likes controller.
-    # Used to display the likes in the user profile
-    # GET people/1/likes
-    def likes
-      @likes = @person.likes
-    end
-
     # GET people/1/message
     def message
       @current_id = @person.guid
