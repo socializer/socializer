@@ -26,6 +26,7 @@ module Socializer
       flash[:notice] = t('socializer.model.create', model: 'Note')
 
       respond_to do |format|
+        format.html { redirect_to activities_path }
         format.js
       end
     end
