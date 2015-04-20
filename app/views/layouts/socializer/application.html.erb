@@ -28,7 +28,7 @@
         <% if controller_path == 'socializer/activities' ||
               controller_name == 'circles' || controller_path == 'socializer/circles/activities' ||
               controller_name == 'groups' || controller_path == 'socializer/groups/activities' ||
-              controller_name == 'people' || controller_path == 'socializer/people/activities'
+              controller_path.include?('people')
         %>
 
         <main id='page-content' role='main'>
@@ -40,7 +40,7 @@
             <%= render 'socializer/circles/sidebar', circle: @circle, title: @title if @circle %>
           <% elsif controller_name == 'groups' || controller_path == 'socializer/groups/activities' %>
             <%= render 'socializer/groups/sidebar', group: @group, title: @title if @group %>
-          <% elsif controller_name == 'people' || controller_path == 'socializer/people/activities' %>
+          <% elsif controller_path.include?('people') %>
             <%= render 'socializer/people/sidebar', person: @person if @person %>
           <% elsif controller_path == 'socializer/activities' %>
             <%= render 'socializer/activities/sidebar' %>
