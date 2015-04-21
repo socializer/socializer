@@ -27,7 +27,7 @@ module Socializer
       end
 
       it 'routes to #update' do
-        expect(put: '/people/1').to route_to('socializer/people#update', id: '1')
+        expect(patch: '/people/1').to route_to('socializer/people#update', id: '1')
       end
 
       it 'does not route to #destroy' do
