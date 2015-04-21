@@ -64,7 +64,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :notes
+  resources :notes, except: [:index, :show]
   resources :notifications, only: [:index, :show]
 
   resources :people, only: [:index, :show, :edit, :update] do
