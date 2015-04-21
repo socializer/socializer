@@ -6,7 +6,7 @@ module Socializer
 
     describe 'routing' do
       it 'routes to #index' do
-        expect(:get => '/people').to route_to('socializer/people#index')
+        expect(get: '/people').to route_to('socializer/people#index')
       end
 
       it 'does not route to #new' do
@@ -15,11 +15,11 @@ module Socializer
       end
 
       it 'routes to #show' do
-        expect(:get => '/people/1').to route_to('socializer/people#show', :id => '1')
+        expect(get: '/people/1').to route_to('socializer/people#show', id: '1')
       end
 
       it 'routes to #edit' do
-        expect(:get => '/people/1/edit').to route_to('socializer/people#edit', :id => '1')
+        expect(get: '/people/1/edit').to route_to('socializer/people#edit', id: '1')
       end
 
       it 'does not route to #create' do
@@ -27,7 +27,7 @@ module Socializer
       end
 
       it 'routes to #update' do
-        expect(:put => '/people/1').to route_to('socializer/people#update', :id => '1')
+        expect(put: '/people/1').to route_to('socializer/people#update', id: '1')
       end
 
       it 'does not route to #destroy' do
