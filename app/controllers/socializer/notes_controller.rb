@@ -47,7 +47,9 @@ module Socializer
     def destroy
       @activity_guid = Activity.find_by(activity_object_id: @note.guid).guid
       @note.destroy
+
       respond_to do |format|
+        format.html { redirect_to activities_path }
         format.js
       end
     end
