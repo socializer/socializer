@@ -12,7 +12,7 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    describe "GET #new" do
+    describe 'GET #new' do
       before :each do
         get :new
       end
@@ -25,12 +25,12 @@ module Socializer
         expect(response).to render_template :new
       end
 
-      it "returns http success" do
+      it 'returns http success' do
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "POST #create" do
+    describe 'POST #create' do
       context 'with valid attributes' do
         it 'saves the new group in the database' do
           expect { post :create, valid_attributes }.to change(Note, :count).by(1)
@@ -47,7 +47,7 @@ module Socializer
       end
     end
 
-    describe "GET #edit" do
+    describe 'GET #edit' do
       before :each do
         get :edit, id: note
       end
@@ -61,7 +61,7 @@ module Socializer
       end
     end
 
-    describe "PATCH #update" do
+    describe 'PATCH #update' do
       context 'with valid attributes' do
         it 'redirects to activities#index' do
           patch :update, id: note, note: { content: 'updated content' }
@@ -74,7 +74,7 @@ module Socializer
       end
     end
 
-    describe "DELETE #destroy" do
+    describe 'DELETE #destroy' do
       let(:note) do
         user.activity_object.notes.create!(valid_attributes[:note])
       end
