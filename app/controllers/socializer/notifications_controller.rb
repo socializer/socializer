@@ -24,10 +24,7 @@ module Socializer
 
     def reset_unread_notifications
       activity_object = current_user.activity_object
-
-      return unless activity_object.unread_notifications_count > 0
-      activity_object.unread_notifications_count = 0
-      activity_object.save!
+      activity_object.update!(unread_notifications_count: 0) if activity_object.unread_notifications_count > 0
     end
   end
 end
