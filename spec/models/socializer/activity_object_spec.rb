@@ -170,6 +170,18 @@ module Socializer
       it { expect(activity_object.unread_notifications_count).to eq(1) }
     end
 
+    context '#reset_unread_notifications' do
+      let(:activity_object) do
+        create(:socializer_activity_object, unread_notifications_count: 10)
+      end
+
+      before :each do
+        activity_object.reset_unread_notifications
+      end
+
+      it { expect(activity_object.unread_notifications_count).to eq(0) }
+    end
+
     %w(Person Activity Note Comment Group Circle).each do |type|
       # it format('is type of %s', type) do
       it "is type of #{type}" do

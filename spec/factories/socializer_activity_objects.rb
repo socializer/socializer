@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_activity_object, class: Socializer::ActivityObject do
+    unread_notifications_count 0
     association :activitable, factory: :socializer_note
 
     factory :socializer_activity_object_activity, class: Socializer::ActivityObject do

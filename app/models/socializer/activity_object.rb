@@ -130,6 +130,11 @@ module Socializer
       increment!(:unread_notifications_count)
     end
 
+    # Reset unread_notifications_count to 0
+    def reset_unread_notifications
+      update!(unread_notifications_count: 0) if unread_notifications_count > 0
+    end
+
     private
 
     # Create the activity for like and unlike.
