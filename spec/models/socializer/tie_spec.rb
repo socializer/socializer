@@ -19,6 +19,11 @@ module Socializer
       it { is_expected.to have_one(:contact).through(:activity_contact).source(:activitable) }
     end
 
+    context 'validations' do
+      it { is_expected.to validate_presence_of(:circle) }
+      it { is_expected.to validate_presence_of(:activity_contact) }
+    end
+
     context 'scopes' do
       context 'by_circle_id' do
         let(:sql) { Tie.by_circle_id(1).to_sql }
