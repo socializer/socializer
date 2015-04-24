@@ -1,8 +1,8 @@
 class CreateSocializerTies < ActiveRecord::Migration
   def change
     create_table :socializer_ties do |t|
-      t.integer  :contact_id
-      t.integer  :circle_id
+      t.integer  :contact_id, null: false
+      t.integer  :circle_id, null: false
 
       t.timestamps null: false
     end
