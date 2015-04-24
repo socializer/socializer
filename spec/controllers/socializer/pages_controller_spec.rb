@@ -4,13 +4,13 @@ module Socializer
   RSpec.describe PagesController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    describe "GET #index" do
+    describe 'GET #index' do
       before :each do
         get :index
       end
 
       context 'when not logged in' do
-        it "returns http success" do
+        it 'returns http success' do
           expect(response).to have_http_status(:success)
         end
       end
