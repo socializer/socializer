@@ -1,8 +1,8 @@
 class CreateSocializerNotes < ActiveRecord::Migration
   def change
     create_table :socializer_notes do |t|
-      t.integer  :author_id
-      t.text     :content
+      t.integer  :author_id, null: false
+      t.text     :content, null: false
 
       t.timestamps null: false
     end
