@@ -25,7 +25,7 @@ Socializer::Engine.routes.draw do
   end
 
   resources :audience_lists,  only: [:index]
-  resources :authentications, only: [:index, :show, :new, :destroy]
+  resources :authentications, only: [:index, :destroy]
 
   resources :circles do
     resources :activities, only: [:index], controller: 'circles/activities'
