@@ -30,6 +30,7 @@ module Socializer
       end
     end
 
+    # TODO: Add a test for format.js
     describe 'POST #create' do
       context 'with valid attributes' do
         it 'saves the new group in the database' do
