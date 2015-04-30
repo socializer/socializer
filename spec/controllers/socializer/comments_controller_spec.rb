@@ -12,6 +12,8 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
+    it { should use_before_action(:authenticate_user) }
+
     describe 'GET #new' do
       before :each do
         get :new

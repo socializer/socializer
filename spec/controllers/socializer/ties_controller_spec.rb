@@ -13,6 +13,8 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
+    it { should use_before_action(:authenticate_user) }
+
     describe 'POST #create' do
       before :each do
         @request.env['HTTP_ACCEPT'] = 'application/javascript'

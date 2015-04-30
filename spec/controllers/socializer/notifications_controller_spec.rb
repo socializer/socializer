@@ -11,6 +11,8 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
+    it { should use_before_action(:authenticate_user) }
+
     describe 'GET #index' do
       let(:params) { { note: { content: 'Test', object_ids: 'public', activity_verb: 'post' } } }
       let(:note) { user.activity_object.notes.create!(params[:note]) }
