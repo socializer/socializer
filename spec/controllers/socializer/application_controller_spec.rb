@@ -10,6 +10,8 @@ module Socializer
 
     let(:user) { create(:socializer_person) }
 
+    it { should_not use_before_action(:authenticate_user) }
+
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
