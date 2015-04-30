@@ -13,7 +13,7 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    describe "GET #index" do
+    describe 'GET #index' do
       before :each do
         get :index
       end
@@ -38,12 +38,12 @@ module Socializer
         expect(response).to render_template :index
       end
 
-      it "returns http success" do
+      it 'returns http success' do
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "DELETE #destroy" do
+    describe 'DELETE #destroy' do
       context 'assigns variables and returns success' do
         before :each do
           delete :destroy,  id: activity, format: :js
@@ -57,7 +57,7 @@ module Socializer
           expect(assigns(:activity_guid)).to eq(activity.guid)
         end
 
-        it "returns http success" do
+        it 'returns http success' do
           expect(response).to have_http_status(:success)
         end
       end
