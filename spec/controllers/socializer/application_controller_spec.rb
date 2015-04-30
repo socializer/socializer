@@ -10,6 +10,7 @@ module Socializer
 
     let(:user) { create(:socializer_person) }
 
+    it { should use_before_action(:set_locale) }
     it { should_not use_before_action(:authenticate_user) }
 
     # Setting the current user
