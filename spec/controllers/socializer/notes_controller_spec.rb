@@ -30,16 +30,28 @@ module Socializer
       end
     end
 
-    # TODO: Add a test for format.js
     describe 'POST #create' do
       context 'with valid attributes' do
-        it 'saves the new group in the database' do
-          expect { post :create, valid_attributes }.to change(Note, :count).by(1)
+        context 'format.html' do
+          it 'saves the new group in the database' do
+            expect { post :create, valid_attributes }.to change(Note, :count).by(1)
+          end
+
+          it 'redirects to activities#index' do
+            post :create, valid_attributes
+            expect(response).to redirect_to activities_path
+          end
         end
 
-        it 'redirects to activities#index' do
-          post :create, valid_attributes
-          expect(response).to redirect_to activities_path
+        context 'format.js' do
+          it 'saves the new group in the database' do
+            expect { post :create, valid_attributes, format: :js }.to change(Note, :count).by(1)
+          end
+
+          it 'returns http success' do
+            post :create, valid_attributes, format: :js
+            expect(response).to have_http_status(:found)
+          end
         end
       end
 
