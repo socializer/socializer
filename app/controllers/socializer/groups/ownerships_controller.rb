@@ -4,6 +4,8 @@
 module Socializer
   module Groups
     class OwnershipsController < ApplicationController
+      before_action :authenticate_user
+
       # GET /groups/ownerships
       def index
         @ownerships = current_user.groups
