@@ -4,6 +4,8 @@
 module Socializer
   module Memberships
     class DeclineController < ApplicationController
+      before_action :authenticate_user
+
       # DELETE /memberships/1/decline
       def destroy
         @membership = Membership.find_by(id: params[:id])

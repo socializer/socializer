@@ -4,6 +4,8 @@
 module Socializer
   module Memberships
     class ConfirmController < ApplicationController
+      before_action :authenticate_user
+
       # POST /memberships/1/confirm
       def create
         @membership = Membership.find_by(id: params[:id])

@@ -12,6 +12,8 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
+    it { should use_before_action(:authenticate_user) }
+
     describe 'DELETE #destroy' do
       context 'with valid attributes' do
         it 'decline the membership' do
