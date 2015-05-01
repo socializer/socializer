@@ -195,7 +195,7 @@ module Socializer
     end
     private_class_method :limited_circle_subquery
 
-    # TODO: [self description]
+    # Limitied group subquery
     #
     # @param  viewer_id: [FixNum] who wants to see the activity stream
     #
