@@ -5,13 +5,14 @@ module Socializer
     RSpec.describe SharesController, type: :controller do
       routes { Socializer::Engine.routes }
 
-      # Create a user
+      # Create a user and a note to share
       let(:user) { create(:socializer_person) }
+      let(:note) { create(:socializer_note) }
+
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
-      # Create an activity_object to share
-      let(:note) { create(:socializer_note) }
+      it { should use_before_action(:authenticate_user) }
 
       describe 'GET #new' do
         # Visit the new page

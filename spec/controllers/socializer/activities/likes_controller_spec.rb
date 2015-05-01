@@ -12,6 +12,8 @@ module Socializer
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
+      it { should use_before_action(:authenticate_user) }
+
       describe 'Set likable and activity' do
         # Verify that the likable variable is set before create and destroy action
         [:create, :destroy].each do |action|
