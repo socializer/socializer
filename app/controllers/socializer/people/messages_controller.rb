@@ -4,6 +4,8 @@
 module Socializer
   module People
     class MessagesController < ApplicationController
+      before_action :authenticate_user
+
       # GET people/1/messages/new
       def new
         @person = Person.find_by(id: params[:id]).decorate
