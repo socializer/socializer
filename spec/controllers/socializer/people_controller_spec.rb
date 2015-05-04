@@ -56,7 +56,7 @@ module Socializer
 
     describe 'PATCH #update' do
       context 'with valid attributes' do
-        it 'redirects to /people#show ' do
+        it 'redirects to people#show' do
           patch :update, id: user, person: { tagline: 'This is a tagline' }
           expect(response).to redirect_to user
         end
