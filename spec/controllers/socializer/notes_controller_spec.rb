@@ -35,7 +35,7 @@ module Socializer
     describe 'POST #create' do
       context 'with valid attributes' do
         context 'format.html' do
-          it 'saves the new group in the database' do
+          it 'saves the new note in the database' do
             expect { post :create, valid_attributes }.to change(Note, :count).by(1)
           end
 
@@ -46,7 +46,7 @@ module Socializer
         end
 
         context 'format.js' do
-          it 'saves the new group in the database' do
+          it 'saves the new note in the database' do
             expect { post :create, valid_attributes, format: :js }.to change(Note, :count).by(1)
           end
 
