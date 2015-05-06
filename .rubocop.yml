@@ -16,6 +16,10 @@ AllCops:
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: true
 
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*
+
 Style/AlignHash:
   Exclude:
     - 'config/initializers/simple_form.rb'
