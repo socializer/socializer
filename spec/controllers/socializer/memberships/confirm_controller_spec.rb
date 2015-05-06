@@ -35,6 +35,5 @@ module Socializer
         it 'is a pending example'
       end
     end
-
   end
 end

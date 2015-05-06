@@ -62,6 +62,5 @@ module Socializer
         expect(response).to redirect_to activity_activities_path(activity_id: notification.activity.id)
       end
     end
-
   end
 end

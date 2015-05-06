@@ -30,6 +30,5 @@ module Socializer
         expect(assigns(:people)).to match_array(people)
       end
     end
-
   end
 end
