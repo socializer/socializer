@@ -9,7 +9,7 @@ module Socializer
 
       # POST /people/1/addresses
       def create
-        @person_address = current_user.adresses.build(params[:person_address])
+        @person_address = current_user.addresses.build(params[:person_address])
         @person_address.save!
         redirect_to current_user
       end
