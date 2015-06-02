@@ -4,7 +4,6 @@
 module Socializer
   class GroupsController < ApplicationController
     before_action :authenticate_user
-    before_action :set_group, only: [:edit, :update, :destroy]
 
     # GET /groups
     def index
@@ -23,6 +22,7 @@ module Socializer
 
     # GET /groups/1/edit
     def edit
+      @group = find_group
     end
 
     # POST /groups
@@ -39,6 +39,7 @@ module Socializer
 
     # PATCH/PUT /groups/1
     def update
+      @group = find_group
       @group.update!(params[:group])
 
       flash[:notice] = t('socializer.model.update', model: 'Group')
@@ -47,6 +48,7 @@ module Socializer
 
     # DELETE /groups/1
     def destroy
+      @group = find_group
       @group.destroy
       redirect_to groups_path
     end
@@ -62,8 +64,8 @@ module Socializer
 
     private
 
-    def set_group
-      @group = current_user.groups.find_by(id: params[:id])
+    def find_group
+      current_user.groups.find_by(id: params[:id])
     end
   end
 end

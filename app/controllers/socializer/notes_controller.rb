@@ -4,7 +4,6 @@
 module Socializer
   class NotesController < ApplicationController
     before_action :authenticate_user
-    before_action :set_note, only: [:edit, :update, :destroy]
 
     # GET /notes/new
     def new
@@ -33,10 +32,12 @@ module Socializer
 
     # GET /notes/1/edit
     def edit
+      @note = find_note
     end
 
     # PATCH/PUT /notes/1
     def update
+      @note = find_note
       @note.update!(params[:note])
 
       flash[:notice] = t('socializer.model.update', model: 'Note')
@@ -45,6 +46,7 @@ module Socializer
 
     # DELETE /notes/1
     def destroy
+      @note = find_note
       @activity_guid = Activity.find_by(activity_object_id: @note.guid).guid
       @note.destroy
 
@@ -56,8 +58,8 @@ module Socializer
 
     private
 
-    def set_note
-      @note = current_user.activity_object.notes.find_by(id: params[:id])
+    def find_note
+      current_user.activity_object.notes.find_by(id: params[:id])
     end
 
     def create_note

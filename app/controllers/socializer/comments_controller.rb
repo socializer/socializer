@@ -4,7 +4,6 @@
 module Socializer
   class CommentsController < ApplicationController
     before_action :authenticate_user
-    before_action :set_comment, only: [:edit, :update, :destroy]
 
     # GET /comments/new
     def new
@@ -25,10 +24,12 @@ module Socializer
 
     # GET /comments/1/edit
     def edit
+      @comment = find_comment
     end
 
     # PATCH/PUT /comments/1
     def update
+      @comment = find_comment
       @comment.update!(params[:comment])
 
       flash[:notice] = t('socializer.model.update', model: 'Comment')
@@ -37,13 +38,14 @@ module Socializer
 
     # DELETE /comments/1
     def destroy
+      @comment = find_comment
       @comment.destroy
       redirect_to activities_path
     end
 
     private
 
-    def set_comment
+    def find_comment
       @comment = current_user.comments.find_by(id: params[:id])
     end
   end
