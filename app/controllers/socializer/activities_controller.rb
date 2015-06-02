@@ -4,7 +4,6 @@
 module Socializer
   class ActivitiesController < ApplicationController
     before_action :authenticate_user
-    before_action :set_activity, only: [:destroy]
 
     # GET /activities
     def index
@@ -16,6 +15,7 @@ module Socializer
 
     # DELETE /activities/1
     def destroy
+      @activity = find_activity
       @activity_guid = @activity.guid
       @activity.destroy
 
@@ -26,8 +26,8 @@ module Socializer
 
     private
 
-    def set_activity
-      @activity = Activity.find_by(id: params[:id])
+    def find_activity
+      Activity.find_by(id: params[:id])
     end
   end
 end

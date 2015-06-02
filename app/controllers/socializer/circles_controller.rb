@@ -4,7 +4,6 @@
 module Socializer
   class CirclesController < ApplicationController
     before_action :authenticate_user
-    before_action :set_circle, only: [:show, :edit, :update, :destroy]
 
     # GET /circles
     def index
@@ -13,6 +12,7 @@ module Socializer
 
     # GET /circles/1
     def show
+      @circle = find_circle
     end
 
     # GET /circles/new
@@ -22,6 +22,7 @@ module Socializer
 
     # GET /circles/1/edit
     def edit
+      @circle = find_circle
     end
 
     # POST /circles
@@ -35,6 +36,7 @@ module Socializer
 
     # PATCH/PUT /circles/1
     def update
+      @circle = find_circle
       @circle.update!(params[:circle])
 
       flash[:notice] = t('socializer.model.update', model: 'Circle')
@@ -43,14 +45,15 @@ module Socializer
 
     # DELETE /circles/1
     def destroy
+      @circle = find_circle
       @circle.destroy
       redirect_to contacts_circles_path
     end
 
     private
 
-    def set_circle
-      @circle = current_user.circles.find_by(id: params[:id]).decorate
+    def find_circle
+      current_user.circles.find_by(id: params[:id]).decorate
     end
   end
 end
