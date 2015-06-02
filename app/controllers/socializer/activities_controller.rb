@@ -4,7 +4,7 @@
 module Socializer
   class ActivitiesController < ApplicationController
     before_action :authenticate_user
-    before_action :set_activity, only: [:audience, :destroy]
+    before_action :set_activity, only: [:destroy]
 
     # GET /activities
     def index
