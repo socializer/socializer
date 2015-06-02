@@ -5,7 +5,6 @@ module Socializer
   module Activities
     class LikesController < ApplicationController
       before_action :authenticate_user
-      before_action :set_likable_and_activity, only: [:create, :destroy]
 
       # GET /activities/1/likes
       # Get a list of people who like the activity
@@ -21,6 +20,8 @@ module Socializer
 
       # POST /activities/1/like
       def create
+        @likable  = find_likable
+        @activity = find_activity(likable: @likable)
         @likable.like(current_user) unless current_user.likes?(@likable)
 
         respond_to do |format|
@@ -30,6 +31,8 @@ module Socializer
 
       # DELETE /activities/1/unlike
       def destroy
+        @likable  = find_likable
+        @activity = find_activity(likable: @likable)
         @likable.unlike(current_user) if current_user.likes?(@likable)
 
         respond_to do |format|
@@ -39,10 +42,12 @@ module Socializer
 
       private
 
-      # Use callbacks to share common setup or constraints between actions.
-      def set_likable_and_activity
-        @likable = ActivityObject.find_by(id: params[:id])
-        @activity = @likable.activitable.decorate
+      def find_likable
+        ActivityObject.find_by(id: params[:id])
+      end
+
+      def find_activity(likable:)
+        likable.activitable.decorate
       end
 
       # # Never trust parameters from the scary internet, only allow the white list through.
