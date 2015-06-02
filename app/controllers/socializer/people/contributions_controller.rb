@@ -5,7 +5,6 @@ module Socializer
   module People
     class ContributionsController < ApplicationController
       before_action :authenticate_user
-      before_action :set_person_contribution, only: [:update, :destroy]
 
       # POST /people/1/contributions
       def create
@@ -16,20 +15,22 @@ module Socializer
 
       # PATCH/PUT /people/1/contributions/1
       def update
+        @person_contribution = find_person_contribution
         @person_contribution.update!(params[:person_contribution])
         redirect_to current_user
       end
 
       # DELETE /people/1/contributions/1
       def destroy
+        @person_contribution = find_person_contribution
         @person_contribution.destroy
         redirect_to current_user
       end
 
       private
 
-      def set_person_contribution
-        @person_contribution = current_user.contributions.find_by(id: params[:id])
+      def find_person_contribution
+        current_user.contributions.find_by(id: params[:id])
       end
     end
   end

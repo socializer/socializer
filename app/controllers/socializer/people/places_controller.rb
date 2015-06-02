@@ -5,7 +5,6 @@ module Socializer
   module People
     class PlacesController < ApplicationController
       before_action :authenticate_user
-      before_action :set_person_place, only: [:update, :destroy]
 
       # POST /people/1/places
       def create
@@ -16,20 +15,22 @@ module Socializer
 
       # PATCH/PUT /people/1/places/1
       def update
+        @person_place = find_person_place
         @person_place.update!(params[:person_place])
         redirect_to current_user
       end
 
       # DELETE /people/1/places/1
       def destroy
+        @person_place = find_person_place
         @person_place.destroy
         redirect_to current_user
       end
 
       private
 
-      def set_person_place
-        @person_place = current_user.places.find_by(id: params[:id])
+      def find_person_place
+        current_user.places.find_by(id: params[:id])
       end
     end
   end

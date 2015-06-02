@@ -5,7 +5,6 @@ module Socializer
   module People
     class LinksController < ApplicationController
       before_action :authenticate_user
-      before_action :set_person_link, only: [:update, :destroy]
 
       # POST /people/1/links
       def create
@@ -16,20 +15,22 @@ module Socializer
 
       # PATCH/PUT /people/1/links/1
       def update
+        @person_link = find_person_link
         @person_link.update!(params[:person_link])
         redirect_to current_user
       end
 
       # DELETE /people/1/links/1
       def destroy
+        @person_link = find_person_link
         @person_link.destroy
         redirect_to current_user
       end
 
       private
 
-      def set_person_link
-        @person_link = current_user.links.find_by(id: params[:id])
+      def find_person_link
+        current_user.links.find_by(id: params[:id])
       end
     end
   end
