@@ -204,7 +204,7 @@ module Socializer
         end
 
         it { expect(group_with_members.destroyed?).to be false }
-        it { expect(group_with_members.errors.any?).to be true }
+        it { expect(group_with_members.errors.present?).to be true }
         it { expect(group_with_members.memberships.count).to eq(1) }
       end
     end

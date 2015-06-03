@@ -60,7 +60,7 @@ module Socializer
         end
 
         it { expect(last_authentication.destroyed?).to be false }
-        it { expect(last_authentication.errors.any?).to be true }
+        it { expect(last_authentication.errors.present?).to be true }
         it { expect(last_authentication.person.authentications.count).to eq(1) }
       end
     end
