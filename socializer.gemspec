@@ -50,7 +50,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('factory_girl_rails',   '~> 4.5.0')
   spec.add_development_dependency('i18n-tasks',           '~> 0.8.3')
   spec.add_development_dependency('inch',                 '~> 0.6.2')
-  spec.add_development_dependency('shoulda-matchers',     '~> 2.8.0')
+  spec.add_development_dependency('shoulda-matchers',     '~> 3.0.0.rc1')
   spec.add_development_dependency('database_cleaner',     '~> 1.4.0')
   spec.add_development_dependency('rails_best_practices', '~> 1.15.7')
   spec.add_development_dependency('rubocop',              '~> 0.31.0')
