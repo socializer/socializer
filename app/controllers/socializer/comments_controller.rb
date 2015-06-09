@@ -12,11 +12,10 @@ module Socializer
 
     # POST /comments
     def create
-      @comment = current_user.comments.build(params[:comment])
-      @comment.activity_verb = 'add'
-      # TODO: Is scope needed? Try commenting it out to see what happens
-      @comment.scope = Audience.privacy.find_value(:public)
-      @comment.save!
+      @comment = current_user.comments.create!(params[:comment]) do |comment|
+        comment.activity_verb = 'add'
+        comment.scope = Audience.privacy.find_value(:public)
+      end
 
       flash[:notice] = t('socializer.model.create', model: 'Comment')
       redirect_to activities_path
