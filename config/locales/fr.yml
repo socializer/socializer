@@ -42,7 +42,7 @@ fr:
           header: Your circles
       edit:
         header: Edit %{name}
-      find_contacts:
+      suggestions:
         index:
           header: Suggestions
       form:

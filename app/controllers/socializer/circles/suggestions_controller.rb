@@ -3,10 +3,10 @@
 #
 module Socializer
   module Circles
-    class FindContactsController < ApplicationController
+    class SuggestionsController < ApplicationController
       before_action :authenticate_user
 
-      # GET /circles/find_contacts
+      # GET /circles/suggestions
       def index
         @people = Person.all
       end

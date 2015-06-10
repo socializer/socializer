@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Socializer
-  RSpec.describe Circles::FindContactsController, type: :controller do
+  RSpec.describe Circles::SuggestionsController, type: :controller do
     routes { Socializer::Engine.routes }
 
     # Create a user and contact_of
