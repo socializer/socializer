@@ -44,13 +44,13 @@ module Socializer
     def perform
       audiences = []
 
-      audiences << merge_icon(privacy_hash(:public), 'fa-globe')
-      audiences << merge_icon(privacy_hash(:circles), 'fa-google-circles')
+      audiences << merge_icon(list: privacy_hash(privacy_symbol: :public), icon: 'fa-globe')
+      audiences << merge_icon(list: privacy_hash(privacy_symbol: :circles), icon: 'fa-google-circles')
 
       # TODO: may use the avatar for the user
-      audiences.concat(merge_icon(person_list, 'fa-user'))
-      audiences.concat(merge_icon(audience_list(type: :circles), 'fa-google-circles'))
-      audiences.concat(merge_icon(audience_list(type: :groups), 'fa-users'))
+      audiences.concat(merge_icon(list: person_list, icon: 'fa-user'))
+      audiences.concat(merge_icon(list: audience_list(type: :circles), icon: 'fa-google-circles'))
+      audiences.concat(merge_icon(list: audience_list(type: :groups), icon: 'fa-users'))
     end
 
     private
@@ -73,7 +73,7 @@ module Socializer
       result.display_name_like(query: "%#{@query}%")
     end
 
-    def merge_icon(list, icon)
+    def merge_icon(list:, icon:)
       return list.merge(icon: icon) if list.is_a?(Hash)
       list = list.to_a unless list.is_a?(Array)
       list.map { |item| item.serializable_hash.merge(icon: icon).symbolize_keys! }
@@ -93,12 +93,12 @@ module Socializer
     # Returns a {Hash} containing the value and text for the privacy level
     #
     # @example
-    #   privacy_hash(:public)
+    #   privacy_hash(privacy_symbol: :public)
     #
     # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy
     #
     # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
-    def privacy_hash(privacy_symbol)
+    def privacy_hash(privacy_symbol:)
       privacy_symbol = privacy_symbol.downcase.to_sym
       privacy        = Audience.privacy.find_value(privacy_symbol)
 
