@@ -153,7 +153,7 @@ module Socializer
       end
 
       it 'cannot be joined' do
-        expect { private_group.join(person) }.to raise_error
+        expect { private_group.join(person) }.to raise_error(RuntimeError, I18n.t('socializer.errors.messages.group.private.cannot_self_join'))
       end
 
       context 'and a person gets invited' do
