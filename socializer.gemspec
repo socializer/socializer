@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('omniauth-twitter',     '~> 1.2.0')
   spec.add_dependency('simple_form',          '~> 3.1.0')
 
-  spec.add_development_dependency('bundler',              '~> 1.10.3')
+  spec.add_development_dependency('bundler',              '~> 1.10.4')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('sqlite3',              '~> 1.3.10')
   spec.add_development_dependency('rspec-rails',          '~> 3.1.0')
