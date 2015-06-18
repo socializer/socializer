@@ -10,6 +10,7 @@ AllCops:
     - 'spec/i18n_spec.rb'
     - 'spec/dummy/**/*'
     - 'spec/internal/**/*'
+    - 'vendor/**/*'
 
   # By default, the rails cops are not run. Override in project or home
   # directory .rubocop.yml files, or by giving the -R/--rails option.
