@@ -4,10 +4,26 @@ module Socializer
   RSpec.describe GroupsController, type: :controller do
     routes { Socializer::Engine.routes }
 
+    # Create a user and a group
+    let(:user) { create(:socializer_person) }
+    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
+    let(:membership) { Membership.find_by(group_id: group.id) }
+    let(:privacy) { Socializer::Group.privacy.find_value(:public).value }
+    let(:valid_attributes) { { group: { author_id: user.guid, display_name: 'Test', privacy: privacy } } }
+    let(:invalid_attributes) { { group: { author_id: user.guid, display_name: '', privacy: nil } } }
+
+
     describe 'when not logged in' do
       describe 'GET #index' do
         it 'requires login' do
           get :index
+          expect(response).to redirect_to root_path
+        end
+      end
+
+      describe 'GET #show' do
+        it 'requires login' do
+          get :show, id: group
           expect(response).to redirect_to root_path
         end
       end
@@ -18,17 +34,46 @@ module Socializer
           expect(response).to redirect_to root_path
         end
       end
+
+      describe 'POST #create' do
+        it 'requires login' do
+          post :create, valid_attributes
+          expect(response).to redirect_to root_path
+        end
+      end
+
+      describe 'GET #edit' do
+        it 'requires login' do
+          get :edit, id: group
+          expect(response).to redirect_to root_path
+        end
+      end
+
+      describe 'PATCH #update' do
+        it 'requires login' do
+          patch :update, id: group, group: { privacy: privacy }
+          expect(response).to redirect_to root_path
+        end
+      end
+
+      describe 'DELETE #destroy' do
+        it 'requires login' do
+          delete :destroy, id: group
+          expect(response).to redirect_to root_path
+        end
+      end
+
+      describe 'POST #invite' do
+        let(:invited_user) { create(:socializer_person) }
+
+        it 'requires login' do
+          post :invite, id: group, person_id: invited_user
+          expect(response).to redirect_to root_path
+        end
+      end
     end
 
     describe 'when logged in' do
-      # Create a user and a group
-      let(:user) { create(:socializer_person) }
-      let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-      let(:membership) { Membership.find_by(group_id: group.id) }
-      let(:privacy) { Socializer::Group.privacy.find_value(:public).value }
-      let(:valid_attributes) { { group: { author_id: user.guid, display_name: 'Test', privacy: privacy } } }
-      let(:invalid_attributes) { { group: { author_id: user.guid, display_name: '', privacy: nil } } }
-
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
