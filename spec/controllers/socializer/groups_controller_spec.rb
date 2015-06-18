@@ -12,7 +12,6 @@ module Socializer
     let(:valid_attributes) { { group: { author_id: user.guid, display_name: 'Test', privacy: privacy } } }
     let(:invalid_attributes) { { group: { author_id: user.guid, display_name: '', privacy: nil } } }
 
-
     describe 'when not logged in' do
       describe 'GET #index' do
         it 'requires login' do
