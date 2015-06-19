@@ -12,7 +12,6 @@ module Socializer
     # Setting the current user
     before { cookies[:user_id] = user.guid }
 
-    it { should_not use_before_action(:authenticate_user) }
 
     describe 'GET #index' do
       before :each do
@@ -31,6 +30,7 @@ module Socializer
         expect(response).to have_http_status(:success)
       end
     end
+      it { should use_before_action(:authenticate_user) }
 
     describe 'DELETE #destroy' do
       context 'cannot delete the last authentication' do

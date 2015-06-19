@@ -3,6 +3,8 @@
 #
 module Socializer
   class AuthenticationsController < ApplicationController
+    before_action :authenticate_user
+
     # GET /authentications
     def index
       @authentications = current_user.services
