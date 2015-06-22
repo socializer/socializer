@@ -9,6 +9,7 @@ module Socializer
       let(:user) { create(:socializer_person) }
       let(:note) { create(:socializer_note) }
       let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(',') }
+      let(:valid_attributes) { { share: { content: '', object_ids: object_ids, activity_id: note.guid }, id: note } }
 
       describe 'when not logged in' do
         describe 'GET #new' do
@@ -20,7 +21,7 @@ module Socializer
 
         describe 'POST #create' do
           it 'requires login' do
-            post :create, share: { content: '', object_ids: object_ids, activity_id: note.guid }, id: note
+            post :create, valid_attributes
             expect(response).to redirect_to root_path
           end
         end
@@ -52,7 +53,7 @@ module Socializer
         describe 'POST #create' do
           context 'with valid attributes' do
             it 'redirects to circles#contacts' do
-              post :create, share: { content: '', object_ids: object_ids, activity_id: note.guid }, id: note
+              post :create, valid_attributes
               expect(response).to redirect_to activities_path
             end
           end
