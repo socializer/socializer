@@ -18,4 +18,4 @@ group :development, :test do
 end
 
 # add these gems to help with the transition to Rails 4:
-gem 'protected_attributes', '~> 1.0.9'
+gem 'protected_attributes', '~> 1.1.0'
