@@ -58,6 +58,21 @@ module Socializer
           expect(user.likes?(note_activity.activity_object)).to be_falsey
         end
 
+        describe 'GET #index' do
+          # Create a like
+          before { post :create, id: note_activity.guid, format: :js }
+          # Get the people ou like the activity
+          before { get :index,  id: note_activity.id, format: :html }
+
+          it 'return people' do
+            expect(assigns(:people)).to be_present
+          end
+
+          it 'return the user who like the activity' do
+            expect(assigns(:people)).to include(user)
+          end
+        end
+
         describe 'GET #create' do
           # Create a like
           before { post :create, id: note_activity.guid, format: :js }
@@ -75,21 +90,6 @@ module Socializer
 
           it 'does not like the note anymore' do
             expect(user.likes?(note_activity.activity_object)).to be_falsey
-          end
-        end
-
-        describe 'GET #index' do
-          # Create a like
-          before { post :create, id: note_activity.guid, format: :js }
-          # Get the people ou like the activity
-          before { get :index,  id: note_activity.id, format: :html }
-
-          it 'return people' do
-            expect(assigns(:people)).to be_present
-          end
-
-          it 'return the user who like the activity' do
-            expect(assigns(:people)).to include(user)
           end
         end
       end
