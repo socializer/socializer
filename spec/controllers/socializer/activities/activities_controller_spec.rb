@@ -11,38 +11,49 @@ module Socializer
     let(:activity) { result.activity.decorate }
     let(:activities) { Activity.activity_stream(actor_uid: activity.id, viewer_id: user.id).decorate }
 
-    # Setting the current user
-    before { cookies[:user_id] = user.guid }
-
-    it { should use_before_action(:authenticate_user) }
-
-    describe 'GET #index' do
-      before :each do
-        get :index, activity_id: activity
+    describe 'when not logged in' do
+      describe 'GET #index' do
+        it 'requires login' do
+          get :index, activity_id: activity
+          expect(response).to redirect_to root_path
+        end
       end
+    end
 
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+    describe 'when logged in' do
+      # Setting the current user
+      before { cookies[:user_id] = user.guid }
 
-      it 'renders the :index template' do
-        expect(response).to render_template :index
-      end
+      it { should use_before_action(:authenticate_user) }
 
-      it 'assigns @activity' do
-        expect(assigns(:activity)).to match(activity)
-      end
+      describe 'GET #index' do
+        before :each do
+          get :index, activity_id: activity
+        end
 
-      it 'assigns @title' do
-        expect(assigns(:title)).to match('Activity stream')
-      end
+        it 'returns http success' do
+          expect(response).to have_http_status(:success)
+        end
 
-      it 'assigns @current_id' do
-        expect(assigns(:current_id)).to eq(nil)
-      end
+        it 'renders the :index template' do
+          expect(response).to render_template :index
+        end
 
-      it 'assigns @activities' do
-        expect(assigns(:activities)).to match_array(activities)
+        it 'assigns @activity' do
+          expect(assigns(:activity)).to match(activity)
+        end
+
+        it 'assigns @title' do
+          expect(assigns(:title)).to match('Activity stream')
+        end
+
+        it 'assigns @current_id' do
+          expect(assigns(:current_id)).to eq(nil)
+        end
+
+        it 'assigns @activities' do
+          expect(assigns(:activities)).to match_array(activities)
+        end
       end
     end
   end
