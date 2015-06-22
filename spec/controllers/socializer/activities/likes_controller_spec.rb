@@ -71,7 +71,7 @@ module Socializer
           # Create a like
           before { post :create,  id: note_activity.guid, format: :js }
           # Destroy the like
-          before { post :destroy, id: note_activity.guid, format: :js }
+          before { delete :destroy, id: note_activity.guid, format: :js }
 
           it 'does not like the note anymore' do
             expect(user.likes?(note_activity.activity_object)).to be_falsey
