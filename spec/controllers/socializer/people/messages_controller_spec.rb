@@ -7,34 +7,45 @@ module Socializer
     # Create a user
     let(:user) { create(:socializer_person) }
 
-    # Setting the current user
-    before { cookies[:user_id] = user.guid }
-
-    it { should use_before_action(:authenticate_user) }
-
-    describe 'GET #new' do
-      before :each do
-        get :new, id: user.id
+    describe 'when not logged in' do
+      describe 'GET #new' do
+        it 'requires login' do
+          get :new, id: user.id
+          expect(response).to redirect_to root_path
+        end
       end
+    end
 
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
+    describe 'when logged in' do
+      # Setting the current user
+      before { cookies[:user_id] = user.guid }
 
-      it 'assigns @person' do
-        expect(assigns(:person)).to match(user)
-      end
+      it { should use_before_action(:authenticate_user) }
 
-      it 'assigns @current_id' do
-        expect(assigns(:current_id)).to match(user.guid)
-      end
+      describe 'GET #new' do
+        before :each do
+          get :new, id: user.id
+        end
 
-      it 'assigns @note' do
-        expect(assigns(:note)).to be_a_new(Note)
-      end
+        it 'returns http success' do
+          expect(response).to have_http_status(:success)
+        end
 
-      it 'renders the :new template' do
-        expect(response).to render_template :new
+        it 'assigns @person' do
+          expect(assigns(:person)).to match(user)
+        end
+
+        it 'assigns @current_id' do
+          expect(assigns(:current_id)).to match(user.guid)
+        end
+
+        it 'assigns @note' do
+          expect(assigns(:note)).to be_a_new(Note)
+        end
+
+        it 'renders the :new template' do
+          expect(response).to render_template :new
+        end
       end
     end
   end
