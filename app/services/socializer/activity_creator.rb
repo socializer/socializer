@@ -22,12 +22,10 @@ module Socializer
     #
     # @return [OpenStruct]
     def perform
-      unless valid?
-        message = I18n.t('activerecord.errors.messages.record_invalid', errors: errors.full_messages.to_sentence)
-        fail(RecordInvalid, message)
-      end
+      return create_activity if valid?
 
-      create_activity
+      message = I18n.t('activerecord.errors.messages.record_invalid', errors: errors.full_messages.to_sentence)
+      fail(RecordInvalid, message)
     end
 
     private
