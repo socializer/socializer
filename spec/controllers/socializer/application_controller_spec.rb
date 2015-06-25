@@ -13,27 +13,35 @@ module Socializer
     it { should use_before_action(:set_locale) }
     it { should_not use_before_action(:authenticate_user) }
 
-    # Setting the current user
-    before { cookies[:user_id] = user.guid }
-
-    describe '#set_locale' do
-      context 'language set on the person' do
-        before :each do
-          get :index
-        end
-
-        let(:user) { create(:socializer_person, :english) }
-        it { expect(I18n.locale.to_s).to eq(user.language) }
+    describe 'when not logged in' do
+      before :each do
+        get :index
       end
+    end
 
-      context "language set in request.env['HTTP_ACCEPT_LANGUAGE']" do
-        before :each do
-          request.env['HTTP_ACCEPT_LANGUAGE'] = 'en'
-          get :index
+    describe 'when logged in' do
+      # Setting the current user
+      before { cookies[:user_id] = user.guid }
+
+      describe '#set_locale' do
+        context 'language set on the person' do
+          before :each do
+            get :index
+          end
+
+          let(:user) { create(:socializer_person, :english) }
+          it { expect(I18n.locale.to_s).to eq(user.language) }
         end
 
-        let(:language) { request.env['HTTP_ACCEPT_LANGUAGE'] }
-        it { expect(I18n.locale.to_s).to eq(language) }
+        context "language set in request.env['HTTP_ACCEPT_LANGUAGE']" do
+          before :each do
+            request.env['HTTP_ACCEPT_LANGUAGE'] = 'en'
+            get :index
+          end
+
+          let(:language) { request.env['HTTP_ACCEPT_LANGUAGE'] }
+          it { expect(I18n.locale.to_s).to eq(language) }
+        end
       end
     end
   end
