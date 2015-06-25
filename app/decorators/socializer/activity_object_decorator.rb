@@ -21,13 +21,12 @@ module Socializer
     def link_to_like_or_unlike
       return unless helpers.current_user
 
-      content   = like_or_unlike_content
-      variables = like_or_unlike_variables
+      content = like_or_unlike_content
 
-      helpers.link_to(content, variables.path, method: variables.verb,
-                                               remote: true,
-                                               class: variables.link_class,
-                                               title: variables.tooltip)
+      helpers.link_to(content, like_or_unlike_path, method: like_or_unlike_verb,
+                                                    remote: true,
+                                                    class: "btn #{like_or_unlike_class}",
+                                                    title: like_or_unlike_title)
     end
 
     private
@@ -38,20 +37,28 @@ module Socializer
       content
     end
 
-    def like_or_unlike_variables
-      return like_or_unlike_openstruct unless helpers.current_user.likes?(model)
-
-      path       = helpers.unlike_activity_path(model)
-      link_class = 'btn-danger'
-      tooltip    = 'unlike'
-      verb       = :delete
-
-      like_or_unlike_openstruct(path: path, verb: verb, link_class: link_class, tooltip: tooltip)
+    def like_or_unlike_class
+      return 'btn-danger' if current_user_likes?
+      'btn-default'
     end
 
-    def like_or_unlike_openstruct(path: helpers.like_activity_path(model), verb: :post, link_class: 'btn-default', tooltip: 'like')
-      tooltip = helpers.t("socializer.shared.#{tooltip}")
-      OpenStruct.new(path: path, verb: verb, link_class: "btn #{link_class}", tooltip: tooltip)
+    def like_or_unlike_path
+      return helpers.unlike_activity_path(model) if current_user_likes?
+      helpers.like_activity_path(model)
+    end
+
+    def like_or_unlike_title
+      return helpers.t('socializer.shared.unlike') if current_user_likes?
+      helpers.t('socializer.shared.like')
+    end
+
+    def like_or_unlike_verb
+      return :delete if current_user_likes?
+      :post
+    end
+
+    def current_user_likes?
+      @current_user_likes ||= helpers.current_user.likes?(model)
     end
   end
 end
