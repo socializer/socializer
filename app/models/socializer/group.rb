@@ -129,7 +129,7 @@ module Socializer
     end
 
     def deny_delete_if_members
-      return unless memberships.count > 0
+      return if memberships.count == 0
 
       errors.add(:base, I18n.t('socializer.errors.messages.group.still_has_members'))
       false
