@@ -20,7 +20,7 @@ module Socializer
       @current_user ||= Person.find_by(id: cookies[:user_id]).decorate if cookies[:user_id].present?
     end
 
-    # Is the current user signed in
+    # Check if a user is signed in
     #
     # @return [TrueClass/FalseClass]
     def signed_in?
