@@ -145,15 +145,15 @@ module Socializer
       let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(',') }
       let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: 'Share') }
 
-      it { expect(results.success?).to eq(true) }
-      it { expect(results.activity.actor_id).to eq(actor.guid) }
-      it { expect(results.activity.activity_object_id).to eq(activity_object.id) }
-      it { expect(results.activity.verb.display_name).to eq('share') }
-      it { expect(results.activity.activity_field_content).to eq('Share') }
+      it { expect(results.persisted?).to eq(true) }
+      it { expect(results.actor_id).to eq(actor.guid) }
+      it { expect(results.activity_object_id).to eq(activity_object.id) }
+      it { expect(results.verb.display_name).to eq('share') }
+      it { expect(results.activity_field_content).to eq('Share') }
 
       context 'with no content' do
         let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: nil) }
-        it { expect(results.activity.activity_field_content).to eq(nil) }
+        it { expect(results.activity_field_content).to eq(nil) }
       end
     end
 

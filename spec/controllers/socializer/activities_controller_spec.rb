@@ -8,7 +8,7 @@ module Socializer
     let(:user) { create(:socializer_person) }
     let(:note) { create(:socializer_note, activity_author: user.activity_object) }
     let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: 'post', object_ids: 'public').perform }
-    let(:activity) { result.activity.decorate }
+    let(:activity) { result.decorate }
 
     describe 'when not logged in' do
       describe 'GET #index' do

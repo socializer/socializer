@@ -84,11 +84,11 @@ module Socializer
     #
     # @param person [Socializer::Person] The person who is liking the activity (current_user)
     #
-    # @return [OpenStruct]
+    # @return [Socializer::Activity]
     def like(person)
       results  = create_like_unlike_activity(actor: person, verb: 'like')
 
-      increment_like_count if results.success?
+      increment_like_count if results.persisted?
       results
     end
 
@@ -99,11 +99,11 @@ module Socializer
     #
     # @param person [Socializer::Person] The person who is unliking the activity (current_user)
     #
-    # @return [OpenStruct]
+    # @return [Socializer::Activity]
     def unlike(person)
       results  = create_like_unlike_activity(actor: person, verb: 'unlike')
 
-      decrement_like_count if results.success?
+      decrement_like_count if results.persisted?
       results
     end
 
@@ -116,7 +116,7 @@ module Socializer
     # @param object_ids [Array<Integer>] List of audiences to target
     # @param content [String] Text with the share
     #
-    # @return [OpenStruct]
+    # @return [Socializer::Activity]
     def share(actor_id:, object_ids:, content: nil)
       ActivityCreator.new(actor_id: actor_id,
                           activity_object_id: id,
@@ -142,7 +142,7 @@ module Socializer
     # @param actor [Person] User who is liking/unliking the activity (current_user)
     # @param verb [String] Verb for the activity
     #
-    # @return [OpenStruct]
+    # @return [Socializer::Activity]
     def create_like_unlike_activity(actor:, verb:)
       public = Audience.privacy.public.value.split(',')
 
