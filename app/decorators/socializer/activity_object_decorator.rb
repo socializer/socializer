@@ -19,8 +19,12 @@ module Socializer
     #
     # @return [String] the html needed to display the like/unlike link
     def link_to_like_or_unlike
-      return unless helpers.current_user
+      like_or_unlike_link if helpers.current_user
+    end
 
+    private
+
+    def like_or_unlike_link
       content = like_or_unlike_content
 
       helpers.link_to(content, like_or_unlike_path, method: like_or_unlike_verb,
@@ -28,8 +32,6 @@ module Socializer
                                                     class: "btn #{like_or_unlike_class}",
                                                     title: like_or_unlike_title)
     end
-
-    private
 
     def like_or_unlike_content
       content = helpers.content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')
