@@ -152,10 +152,11 @@ li.list-group-item {
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   text-transform: uppercase;
 
-  // TODO: See if SASS has an equivalent method
-  // li& {
-  //   padding: 3px 15px;
-  // }
+  @at-root {
+    li#{&} {
+      padding: 3px 15px;
+    }
+  }
 
   .list-group & {
     margin-top: 9px;
