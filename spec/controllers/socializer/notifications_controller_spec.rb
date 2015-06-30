@@ -29,7 +29,6 @@ module Socializer
       before { cookies[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
-      it { should use_after_action(:reset_unread_notifications) }
 
       describe 'GET #index' do
         let(:params) { { note: { content: 'Test', object_ids: 'public', activity_verb: 'post' } } }
