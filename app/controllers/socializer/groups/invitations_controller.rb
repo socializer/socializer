@@ -1,0 +1,19 @@
+#
+# Namespace for the Socializer engine
+#
+module Socializer
+  module Groups
+    class InvitationsController < ApplicationController
+      before_action :authenticate_user
+
+      # POST /groups/:id/invite/:person_id
+      def create
+        invited_user = Person.find_by(id: params[:person_id])
+        group = Group.find_by(id: params[:id])
+        group.invite(invited_user)
+
+        redirect_to group
+      end
+    end
+  end
+end

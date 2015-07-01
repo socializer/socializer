@@ -61,15 +61,6 @@ module Socializer
           expect(response).to redirect_to root_path
         end
       end
-
-      describe 'POST #invite' do
-        let(:invited_user) { create(:socializer_person) }
-
-        it 'requires login' do
-          post :invite, id: group, person_id: invited_user
-          expect(response).to redirect_to root_path
-        end
-      end
     end
 
     describe 'when logged in' do
@@ -199,15 +190,6 @@ module Socializer
             delete :destroy, id: group
             expect(response).to redirect_to groups_path
           end
-        end
-      end
-
-      describe 'POST #invite' do
-        let(:invited_user) { create(:socializer_person) }
-
-        it 'redirects to groups#show' do
-          post :invite, id: group, person_id: invited_user
-          expect(response).to redirect_to group_path(group)
         end
       end
     end
