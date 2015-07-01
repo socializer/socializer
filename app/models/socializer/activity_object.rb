@@ -41,6 +41,8 @@ module Socializer
     scope :by_id, -> id { where(id: id) }
     scope :by_activitable_type, -> type { where(activitable_type: type) }
 
+    # Class Methods
+
     # Create predicate methods for comparing the activitable_type
     #
     # @param  *args [Array] The activitable_type(s)
@@ -53,6 +55,8 @@ module Socializer
     end
 
     attribute_type_of :note, :activity, :comment, :person, :group, :circle
+
+    # Instance Methods
 
     # A list of people that like this activity object
     #

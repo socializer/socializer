@@ -36,6 +36,8 @@ module Socializer
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
     delegate :display_name, to: :verb, prefix: true
 
+    # Instance Methods
+
     # Returns true if activity has comments
     #
     # @example
@@ -68,6 +70,8 @@ module Socializer
     def target
       activitable_target.activitable
     end
+
+    # Class Methods
 
     # Selects the activities that either the person owns, that are public from a person in
     # one of their circles, or that are shared to one of the circles they are part of.
