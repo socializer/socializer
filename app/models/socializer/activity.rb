@@ -149,30 +149,64 @@ module Socializer
     def self.stream_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these verbs
       verbs_of_interest = %w(post share)
-
       query = joins(:audiences, :verb).merge(Verb.by_display_name(verbs_of_interest)).by_target_id(nil)
 
-      # privacy levels
-      audience_privacy = Audience.privacy
-      public_privacy   = audience_privacy.public.value
-      circles_privacy  = audience_privacy.circles.value
-      limited_privacy  = audience_privacy.limited.value
-
-      # The arel_table method is technically private since it is marked :nodoc
-      audience       ||= Audience.arel_table
-      privacy_field  ||= audience[:privacy]
-      viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
-
-      circles_grouping = audience.grouping(privacy_field.eq(circles_privacy).and(viewer_literal.in(circles_subquery)))
-      public_grouping  = audience.grouping(privacy_field.eq(public_privacy).or(circles_grouping))
-      limited_grouping = audience.grouping(privacy_field.eq(limited_privacy)
-                                  .and(viewer_literal.in(limited_circle_subquery)
-                                    .or(audience[:activity_object_id].in(limited_group_subquery(viewer_id)))
-                                  .or(audience[:activity_object_id].in(viewer_id))))
-
-      query.where(public_grouping.or(limited_grouping).or(arel_table[:actor_id].eq(viewer_id)))
+      query.where(public_grouping(viewer_id: viewer_id)
+           .or(limited_grouping(viewer_id: viewer_id))
+           .or(arel_table[:actor_id].eq(viewer_id)))
     end
     private_class_method :stream_query
+
+    # TODO: Look into replacing with Active Record queries.
+    # May need to wait until Rails 5 for the .or if a backport doesn't exist
+    # Create/Use scopes. This one might be called viewer_in_circles
+    # Audience.with_privacy(:circles).where(viewer_literal.in(circles_subquery))
+    def self.circles_grouping(viewer_id:)
+      circles_privacy   ||= Audience.privacy.circles.value
+      viewer_literal    ||= viewer_literal(viewer_id: viewer_id)
+      @circles_grouping ||= audience_table.grouping(privacy_field.eq(circles_privacy).and(viewer_literal.in(circles_subquery)))
+    end
+    private_class_method :circles_grouping
+
+    # TODO: Look into replacing with Active Record queries.
+    # May need to wait until Rails 5 for the .or if a backport doesn't exist
+    # Create/Use scopes.
+    # Audience.with_privacy(:limited).where(viewer_literal.in(limited_circle_subquery))...
+    def self.limited_grouping(viewer_id:)
+      limited_privacy   ||= Audience.privacy.limited.value
+      viewer_literal    ||= viewer_literal(viewer_id: viewer_id)
+      @limited_grouping ||= audience_table.grouping(privacy_field.eq(limited_privacy)
+                                  .and(viewer_literal.in(limited_circle_subquery)
+                                    .or(audience_table[:activity_object_id].in(limited_group_subquery(viewer_id)))
+                                  .or(audience_table[:activity_object_id].in(viewer_id))))
+    end
+    private_class_method :limited_grouping
+
+    # TODO: Look into replacing with Active Record queries.
+    # May need to wait until Rails 5 for the .or if a backport doesn't exist
+    # Create/Use scopes.
+    # Audience.with_privacy(:public)...
+    def self.public_grouping(viewer_id:)
+      public_privacy   ||= Audience.privacy.public.value
+      @public_grouping ||= audience_table.grouping(privacy_field.eq(public_privacy).or(circles_grouping(viewer_id: viewer_id)))
+    end
+    private_class_method :public_grouping
+
+    # The arel_table method is technically private since it is marked :nodoc
+    def self.audience_table
+      @audience_table ||= Audience.arel_table
+    end
+    private_class_method :audience_table
+
+    def self.privacy_field
+      @privacy_field  ||= audience_table[:privacy]
+    end
+    private_class_method :privacy_field
+
+    def self.viewer_literal(viewer_id:)
+      @viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
+    end
+    private_class_method :viewer_literal
 
     # Audience : CIRCLES
     # Ensure the audience is CIRCLES and then make sure that the viewer is in those circles
