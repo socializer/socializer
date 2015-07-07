@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Identity model
+  #
+  # Provides a traditional login/password based authentication system
+  #
   class Identity < OmniAuth::Identity::Models::ActiveRecord
     attr_accessible :name, :email, :password, :password_confirmation
 
