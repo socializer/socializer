@@ -40,6 +40,8 @@ Style/RegexpLiteral:
 
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
+  Exclude:
+    - db/migrate/**/*
 
 Style/SpaceAroundOperators:
   MultiSpaceAllowedForOperators:
