@@ -3,7 +3,7 @@
 #
 module Socializer
   #
-  # Prepares the list to diplay in the tooltip
+  # Prepares the list to display in the tooltip
   #
   class ActivityAudienceList
     # Initializer
