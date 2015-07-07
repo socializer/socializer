@@ -16,6 +16,10 @@ AllCops:
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: true
 
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/**/*
+
 Metrics/ModuleLength:
   Exclude:
     - spec/**/*
