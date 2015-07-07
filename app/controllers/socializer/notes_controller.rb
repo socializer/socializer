@@ -13,9 +13,7 @@ module Socializer
 
     # POST /notes
     def create
-      note      = create_note
-      @activity = Activity.find_by(activity_object_id: note.guid).decorate
-
+      @activity   = Activity.find_by(activity_object_id: create_note.guid).decorate
       @note       = Note.new
       @current_id = nil
       @title      = 'Activity stream'
