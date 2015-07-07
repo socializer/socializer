@@ -3,6 +3,9 @@
 #
 module Socializer
   module Groups
+    #
+    # Joinable controller
+    #
     class JoinableController < ApplicationController
       before_action :authenticate_user
 

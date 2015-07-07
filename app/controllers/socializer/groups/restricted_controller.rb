@@ -3,6 +3,9 @@
 #
 module Socializer
   module Groups
+    #
+    # Restricted controller
+    #
     class RestrictedController < ApplicationController
       before_action :authenticate_user
 

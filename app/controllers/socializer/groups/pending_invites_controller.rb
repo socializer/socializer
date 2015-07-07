@@ -3,6 +3,9 @@
 #
 module Socializer
   module Groups
+    #
+    # Pending Invites controller
+    #
     class PendingInvitesController < ApplicationController
       before_action :authenticate_user
 

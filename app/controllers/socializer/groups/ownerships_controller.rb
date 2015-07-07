@@ -3,6 +3,9 @@
 #
 module Socializer
   module Groups
+    #
+    # Ownerships controller
+    #
     class OwnershipsController < ApplicationController
       before_action :authenticate_user
 

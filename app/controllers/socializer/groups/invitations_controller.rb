@@ -3,6 +3,9 @@
 #
 module Socializer
   module Groups
+    #
+    # Invitations controller
+    #
     class InvitationsController < ApplicationController
       before_action :authenticate_user
 
