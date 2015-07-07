@@ -20,6 +20,15 @@ Metrics/AbcSize:
   Exclude:
     - db/migrate/**/*
 
+Metrics/LineLength:
+  # Max: 120
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - db/migrate/**/*
+
 Metrics/ModuleLength:
   Exclude:
     - spec/**/*
@@ -48,12 +57,3 @@ Style/SpaceAroundOperators:
     - '='
     - '=>'
     - '||='
-
-Metrics/LineLength:
-  # Max: 120
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: true
-  Exclude:
-    - db/migrate/**/*
