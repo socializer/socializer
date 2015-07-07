@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # A {Socializer::Tie} is a link between a {Socializer::Circle} and a {Socializer::Person}
   class Tie < ActiveRecord::Base
     attr_accessible :contact_id
 

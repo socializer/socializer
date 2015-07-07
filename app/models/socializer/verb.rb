@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Identifies the action that the activity describes.
   class Verb < ActiveRecord::Base
     attr_accessible :display_name
 
