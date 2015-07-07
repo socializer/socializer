@@ -17,6 +17,8 @@ require 'simple_form'
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Wraps Socializer's functionality so that it can be shares with other applications
+  # or within a larger packaged application.
   class Engine < Rails::Engine
     isolate_namespace Socializer
 
