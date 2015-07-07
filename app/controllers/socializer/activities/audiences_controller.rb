@@ -3,6 +3,9 @@
 #
 module Socializer
   module Activities
+    #
+    # Audiences controller
+    #
     class AudiencesController < ApplicationController
       before_action :authenticate_user
 

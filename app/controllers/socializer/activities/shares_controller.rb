@@ -3,6 +3,9 @@
 #
 module Socializer
   module Activities
+    #
+    # Shares controller
+    #
     class SharesController < ApplicationController
       before_action :authenticate_user
 
