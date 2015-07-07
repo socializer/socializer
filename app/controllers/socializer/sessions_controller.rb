@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Sessions controller
+  #
   class SessionsController < ApplicationController
     # GET|POST /auth/facebook/callback
     def create

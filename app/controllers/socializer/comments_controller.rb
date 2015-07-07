@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Comments controller
+  #
   class CommentsController < ApplicationController
     before_action :authenticate_user
 

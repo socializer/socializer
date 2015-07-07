@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Memberships controller
+  #
   class MembershipsController < ApplicationController
     before_action :authenticate_user
 
