@@ -39,6 +39,9 @@ Style/AlignHash:
 
 Style/Documentation:
   Enabled: true
+  Exclude:
+    - db/migrate/**/*
+    - spec/**/*
 
 Style/MultilineOperationIndentation:
   Enabled: false
