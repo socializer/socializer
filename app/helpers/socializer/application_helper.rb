@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Methods added to this helper will be available to all templates in the application.
+  #
   module ApplicationHelper
     # Build the sign path for the given provider
     #
