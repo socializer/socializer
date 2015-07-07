@@ -10,7 +10,8 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :circles
 
-    has_one  :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+
     has_many :ties, inverse_of: :circle
     has_many :activity_contacts, through: :ties
     has_many :contacts, through: :activity_contacts, source: :activitable,  source_type: 'Socializer::Person'

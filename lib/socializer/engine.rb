@@ -28,7 +28,7 @@ module Socializer
                                routing_specs: true,
                                controller_specs: true,
                                request_specs: false
-      generator.integration_tool    false
+      generator.integration_tool false
       generator.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
   end

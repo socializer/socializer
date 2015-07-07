@@ -13,7 +13,8 @@ module Socializer
     # Relationships
     belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :groups
 
-    has_one  :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+
     has_many :links, class_name: 'GroupLink', foreign_key: 'group_id', dependent: :destroy
     has_many :categories, class_name: 'GroupCategory', foreign_key: 'group_id', dependent: :destroy
     has_many :memberships, inverse_of: :group
@@ -26,7 +27,7 @@ module Socializer
     validates :privacy, presence: true
 
     # Callbacks
-    after_create   :add_author_to_members
+    after_create :add_author_to_members
     before_destroy :deny_delete_if_members
 
     # Named Scopes

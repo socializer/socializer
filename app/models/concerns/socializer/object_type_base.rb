@@ -6,13 +6,13 @@ module Socializer
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor   :activity_verb, :scope, :object_ids, :activity_target_id
+      attr_accessor :activity_verb, :scope, :object_ids, :activity_target_id
       attr_accessible :activity_verb, :scope, :object_ids, :author_id, :activity_target_id
 
       has_one :activity_object, as: :activitable, dependent: :destroy
 
       before_create :activity_object_builder
-      after_create  :append_to_activity_stream
+      after_create :append_to_activity_stream
     end
 
     # Class methods
