@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Every {Socializer::Activity} is shared with one or more {audiences Socializer::Audience}.
   class Audience < ActiveRecord::Base
     extend Enumerize
 
