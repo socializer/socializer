@@ -6,6 +6,9 @@ module Socializer
   # Circle model
   #
   # Circles make it easy to share the right things with the right people.
+  # You can organize the people you follow and the people who follow you,
+  # by grouping them into Circles.
+  #
   # The association between a {Socializer::Person person} and a
   # {Socializer::Circle circle} is called a {Socializer::Tie tie}.
   #
