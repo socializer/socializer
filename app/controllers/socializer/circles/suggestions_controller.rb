@@ -3,6 +3,9 @@
 #
 module Socializer
   module Circles
+    #
+    # Suggestions controller
+    #
     class SuggestionsController < ApplicationController
       before_action :authenticate_user
 

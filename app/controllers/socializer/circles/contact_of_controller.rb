@@ -3,6 +3,9 @@
 #
 module Socializer
   module Circles
+    #
+    # ContactOf controller
+    #
     class ContactOfController < ApplicationController
       before_action :authenticate_user
 
