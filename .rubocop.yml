@@ -38,7 +38,7 @@ Style/AlignHash:
     - 'config/initializers/simple_form.rb'
 
 Style/Documentation:
-  Enabled: false
+  Enabled: true
 
 Style/MultilineOperationIndentation:
   Enabled: false
