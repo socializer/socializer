@@ -2,6 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  # Decorators for {Socializer::Person}
   class PersonDecorator < ApplicationDecorator
     delegate_all
 
