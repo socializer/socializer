@@ -3,6 +3,9 @@
 #
 module Socializer
   module Memberships
+    #
+    # Confirm controller
+    #
     class ConfirmController < ApplicationController
       before_action :authenticate_user
 
