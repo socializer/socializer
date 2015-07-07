@@ -39,7 +39,7 @@ Style/RegexpLiteral:
     - '*.gemspec'
 
 Style/SingleSpaceBeforeFirstArg:
-  Enabled: false
+  Enabled: true
   Exclude:
     - db/migrate/**/*
 
