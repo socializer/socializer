@@ -3,6 +3,9 @@
 #
 module Socializer
   module People
+    #
+    # Employments controller
+    #
     class EmploymentsController < ApplicationController
       before_action :authenticate_user
 

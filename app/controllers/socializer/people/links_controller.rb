@@ -3,6 +3,9 @@
 #
 module Socializer
   module People
+    #
+    # Links controller
+    #
     class LinksController < ApplicationController
       before_action :authenticate_user
 

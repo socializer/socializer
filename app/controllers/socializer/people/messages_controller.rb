@@ -3,6 +3,9 @@
 #
 module Socializer
   module People
+    #
+    # Messages controller
+    #
     class MessagesController < ApplicationController
       before_action :authenticate_user
 

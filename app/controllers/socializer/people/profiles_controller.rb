@@ -3,6 +3,9 @@
 #
 module Socializer
   module People
+    #
+    # Profiles controller
+    #
     class ProfilesController < ApplicationController
       before_action :authenticate_user
 

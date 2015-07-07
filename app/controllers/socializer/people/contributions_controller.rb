@@ -3,6 +3,9 @@
 #
 module Socializer
   module People
+    #
+    # Contributions controller
+    #
     class ContributionsController < ApplicationController
       before_action :authenticate_user
 
