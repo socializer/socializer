@@ -30,7 +30,7 @@ AllCops:
 
 Metrics/AbcSize:
   Exclude:
-    - db/migrate/**/*
+    - 'db/migrate/**/*'
 
 Metrics/LineLength:
   # Max: 120
@@ -39,11 +39,11 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Enabled: true
   Exclude:
-    - db/migrate/**/*
+    - 'db/migrate/**/*'
 
 Metrics/ModuleLength:
   Exclude:
-    - spec/**/*
+    - 'spec/**/*'
 
 Style/AlignHash:
   Exclude:
@@ -52,8 +52,8 @@ Style/AlignHash:
 Style/Documentation:
   Enabled: true
   Exclude:
-    - db/migrate/**/*
-    - spec/**/*
+    - 'db/migrate/**/*'
+    - 'spec/**/*'
 
 Style/MultilineOperationIndentation:
   Enabled: false
@@ -65,7 +65,7 @@ Style/RegexpLiteral:
 Style/SingleSpaceBeforeFirstArg:
   Enabled: true
   Exclude:
-    - db/migrate/**/*
+    - 'db/migrate/**/*'
 
 Style/SpaceAroundOperators:
   MultiSpaceAllowedForOperators:
