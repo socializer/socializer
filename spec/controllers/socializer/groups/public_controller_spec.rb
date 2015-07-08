@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe Groups::PublicController, type: :controller do
@@ -8,35 +8,35 @@ module Socializer
     let(:user) { create(:socializer_person) }
     let(:group) { create(:socializer_group, activity_author: user.activity_object) }
 
-    describe 'when not logged in' do
-      describe 'GET #index' do
-        it 'requires login' do
+    describe "when not logged in" do
+      describe "GET #index" do
+        it "requires login" do
           get :index
           expect(response).to redirect_to root_path
         end
       end
     end
 
-    describe 'when logged in' do
+    describe "when logged in" do
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
 
-      describe 'GET #index' do
+      describe "GET #index" do
         before :each do
           get :index
         end
 
-        it 'returns http success' do
+        it "returns http success" do
           expect(response).to have_http_status(:success)
         end
 
-        it 'renders the :index template' do
+        it "renders the :index template" do
           expect(response).to render_template :index
         end
 
-        it 'assigns @groups' do
+        it "assigns @groups" do
           expect(assigns(:groups)).to match_array([group])
         end
       end

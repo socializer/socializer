@@ -1,23 +1,23 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe Note, type: :model do
     let(:note) { build(:socializer_note) }
 
-    it 'has a valid factory' do
+    it "has a valid factory" do
       expect(note).to be_valid
     end
 
-    context 'mass assignment' do
+    context "mass assignment" do
       it { is_expected.to allow_mass_assignment_of(:content) }
     end
 
-    context 'relationships' do
-      it { is_expected.to belong_to(:activity_author).class_name('ActivityObject').with_foreign_key('author_id').inverse_of(:notes) }
+    context "relationships" do
+      it { is_expected.to belong_to(:activity_author).class_name("ActivityObject").with_foreign_key("author_id").inverse_of(:notes) }
       it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
     end
 
-    context 'validations' do
+    context "validations" do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:content) }
     end

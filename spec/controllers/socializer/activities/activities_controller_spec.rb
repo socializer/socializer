@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe Activities::ActivitiesController, type: :controller do
@@ -7,51 +7,51 @@ module Socializer
     # Create a user, activity, and activities
     let(:user) { create(:socializer_person) }
     let(:note) { create(:socializer_note, activity_author: user.activity_object) }
-    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: 'post', object_ids: 'public').perform }
+    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: "post", object_ids: "public").perform }
     let(:activity) { result.decorate }
     let(:activities) { Activity.activity_stream(actor_uid: activity.id, viewer_id: user.id).decorate }
 
-    describe 'when not logged in' do
-      describe 'GET #index' do
-        it 'requires login' do
+    describe "when not logged in" do
+      describe "GET #index" do
+        it "requires login" do
           get :index, activity_id: activity
           expect(response).to redirect_to root_path
         end
       end
     end
 
-    describe 'when logged in' do
+    describe "when logged in" do
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
 
-      describe 'GET #index' do
+      describe "GET #index" do
         before :each do
           get :index, activity_id: activity
         end
 
-        it 'returns http success' do
+        it "returns http success" do
           expect(response).to have_http_status(:success)
         end
 
-        it 'renders the :index template' do
+        it "renders the :index template" do
           expect(response).to render_template :index
         end
 
-        it 'assigns @activity' do
+        it "assigns @activity" do
           expect(assigns(:activity)).to match(activity)
         end
 
-        it 'assigns @title' do
-          expect(assigns(:title)).to match('Activity stream')
+        it "assigns @title" do
+          expect(assigns(:title)).to match("Activity stream")
         end
 
-        it 'assigns @current_id' do
+        it "assigns @current_id" do
           expect(assigns(:current_id)).to eq(nil)
         end
 
-        it 'assigns @activities' do
+        it "assigns @activities" do
           expect(assigns(:activities)).to match_array(activities)
         end
       end

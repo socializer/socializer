@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :socializer_person_phone, class: Socializer::PersonPhone do
     category :home
-    number '6666666666'
+    number "6666666666"
     sequence(:label) { |n| n }
     association :person, factory: :socializer_person
   end

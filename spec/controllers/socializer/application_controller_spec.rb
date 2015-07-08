@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe ApplicationController, type: :controller do
     controller do
       def index
-        render text: 'Hello'
+        render text: "Hello"
       end
     end
 
@@ -13,18 +13,18 @@ module Socializer
     it { should use_before_action(:set_locale) }
     it { should_not use_before_action(:authenticate_user) }
 
-    describe 'when not logged in' do
+    describe "when not logged in" do
       before :each do
         get :index
       end
     end
 
-    describe 'when logged in' do
+    describe "when logged in" do
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
-      describe '#set_locale' do
-        context 'language set on the person' do
+      describe "#set_locale" do
+        context "language set on the person" do
           before :each do
             get :index
           end
@@ -35,11 +35,11 @@ module Socializer
 
         context "language set in request.env['HTTP_ACCEPT_LANGUAGE']" do
           before :each do
-            request.env['HTTP_ACCEPT_LANGUAGE'] = 'en'
+            request.env["HTTP_ACCEPT_LANGUAGE"] = "en"
             get :index
           end
 
-          let(:language) { request.env['HTTP_ACCEPT_LANGUAGE'] }
+          let(:language) { request.env["HTTP_ACCEPT_LANGUAGE"] }
           it { expect(I18n.locale.to_s).to eq(language) }
         end
       end

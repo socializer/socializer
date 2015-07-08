@@ -1,4 +1,4 @@
-require 'database_cleaner'
+require "database_cleaner"
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -17,7 +17,7 @@ RSpec.configure do |config|
         used by the spec.
 
         This Ruby app server database connection would not be able to see data that
-        has been setup by the spec's database connection inside an uncommitted
+        has been setup by the spec"s database connection inside an uncommitted
         transaction.
 
         Disabling the use_transactional_fixtures setting helps avoid uncommitted
@@ -38,7 +38,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :feature) do
-    # :rack_test driver's Rack app under test shares database connection
+    # :rack_test driver"s Rack app under test shares database connection
     # with the specs, so we can use transaction strategy for speed.
     driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 

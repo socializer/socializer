@@ -1,14 +1,14 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe PersonAddress, type: :model do
     let(:person_address) { build(:socializer_person_address) }
 
-    it 'has a valid factory' do
+    it "has a valid factory" do
       expect(person_address).to be_valid
     end
 
-    context 'mass assignment' do
+    context "mass assignment" do
       it { is_expected.to allow_mass_assignment_of(:line1) }
       it { is_expected.to allow_mass_assignment_of(:line2) }
       it { is_expected.to allow_mass_assignment_of(:city) }
@@ -17,11 +17,11 @@ module Socializer
       it { is_expected.to allow_mass_assignment_of(:country) }
     end
 
-    context 'relationships' do
+    context "relationships" do
       it { is_expected.to belong_to(:person) }
     end
 
-    context 'validations' do
+    context "validations" do
       it { is_expected.to validate_presence_of(:category) }
       it { is_expected.to validate_presence_of(:person) }
     end

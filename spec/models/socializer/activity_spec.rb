@@ -1,14 +1,14 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe Activity, type: :model do
     let(:activity) { build(:socializer_activity) }
 
-    it 'has a valid factory' do
+    it "has a valid factory" do
       expect(activity).to be_valid
     end
 
-    context 'mass assignment' do
+    context "mass assignment" do
       it { is_expected.to allow_mass_assignment_of(:verb) }
       it { is_expected.to allow_mass_assignment_of(:circles) }
       it { is_expected.to allow_mass_assignment_of(:actor_id) }
@@ -16,7 +16,7 @@ module Socializer
       it { is_expected.to allow_mass_assignment_of(:target_id) }
     end
 
-    context 'relationships' do
+    context "relationships" do
       it { is_expected.to belong_to(:parent) }
       it { is_expected.to belong_to(:activitable_actor) }
       it { is_expected.to belong_to(:activitable_object) }
@@ -30,38 +30,38 @@ module Socializer
       it { is_expected.to have_many(:notifications).inverse_of(:activity) }
     end
 
-    context 'validations' do
+    context "validations" do
       it { is_expected.to validate_presence_of(:activitable_actor) }
       it { is_expected.to validate_presence_of(:activitable_object) }
       it { is_expected.to validate_presence_of(:verb) }
     end
 
-    context 'scopes' do
-      context 'newest_first' do
+    context "scopes" do
+      context "newest_first" do
         let(:sql) { Activity.newest_first.to_sql }
 
         it { expect(sql).to include('ORDER BY "socializer_activities"."created_at" DESC') }
       end
 
-      context 'by_id' do
+      context "by_id" do
         let(:sql) { Activity.by_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_activities"."id" = 1') }
       end
 
-      context 'by_activity_object_id' do
+      context "by_activity_object_id" do
         let(:sql) { Activity.by_activity_object_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_activities"."activity_object_id" = 1') }
       end
 
-      context 'by_actor_id' do
+      context "by_actor_id" do
         let(:sql) { Activity.by_actor_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_activities"."actor_id" = 1') }
       end
 
-      context 'by_target_id' do
+      context "by_target_id" do
         let(:sql) { Activity.by_target_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_activities"."target_id" = 1') }
@@ -71,13 +71,13 @@ module Socializer
     it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
     it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
 
-    context '#comments' do
+    context "#comments" do
       it { expect(activity.comments?).to eq(false) }
 
-      context 'to be true' do
+      context "to be true" do
         let(:activity) { create(:socializer_activity) }
         let(:scope) { Audience.privacy.find_value(:public) }
-        let(:comment_attributes) { { content: 'Comment', activity_target_id: activity.id, activity_verb: 'add', scope: scope } }
+        let(:comment_attributes) { { content: "Comment", activity_target_id: activity.id, activity_verb: "add", scope: scope } }
         let(:actor) { activity.actor }
 
         before :each do
@@ -93,7 +93,7 @@ module Socializer
     it { expect(activity.object).to be_kind_of(Socializer::Note) }
     it { expect(activity.target).to be_kind_of(Socializer::Group) }
 
-    context '.stream' do
+    context ".stream" do
       let(:activity_object_person) { build(:socializer_activity_object_person) }
       let(:activity_object_group) { build(:socializer_activity_object_group) }
       let(:person) { activity_object_person.activitable }

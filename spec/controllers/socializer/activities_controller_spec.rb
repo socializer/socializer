@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe ActivitiesController, type: :controller do
@@ -7,81 +7,81 @@ module Socializer
     # Create a user, note, and an activity
     let(:user) { create(:socializer_person) }
     let(:note) { create(:socializer_note, activity_author: user.activity_object) }
-    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: 'post', object_ids: 'public').perform }
+    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: "post", object_ids: "public").perform }
     let(:activity) { result.decorate }
 
-    describe 'when not logged in' do
-      describe 'GET #index' do
-        it 'requires login' do
+    describe "when not logged in" do
+      describe "GET #index" do
+        it "requires login" do
           get :index
           expect(response).to redirect_to root_path
         end
       end
 
-      describe 'DELETE #destroy' do
-        it 'requires login' do
+      describe "DELETE #destroy" do
+        it "requires login" do
           delete :destroy, id: activity, format: :js
           expect(response).to redirect_to root_path
         end
       end
     end
 
-    describe 'when logged in' do
+    describe "when logged in" do
       # Setting the current user
       before { cookies[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
 
-      describe 'GET #index' do
+      describe "GET #index" do
         before :each do
           get :index
         end
 
-        it 'assigns @activities' do
+        it "assigns @activities" do
           expect(assigns(:activities)).to match_array([activity])
         end
 
-        it 'assigns @current_id' do
+        it "assigns @current_id" do
           expect(assigns(:current_id)).to eq(nil)
         end
 
-        it 'assigns @title' do
-          expect(assigns(:title)).to match('Activity stream')
+        it "assigns @title" do
+          expect(assigns(:title)).to match("Activity stream")
         end
 
-        it 'assigns @note' do
+        it "assigns @note" do
           expect(assigns(:note)).to be_a_new(Note)
         end
 
-        it 'renders the :index template' do
+        it "renders the :index template" do
           expect(response).to render_template :index
         end
 
-        it 'returns http success' do
+        it "returns http success" do
           expect(response).to have_http_status(:success)
         end
       end
 
-      describe 'DELETE #destroy' do
-        context 'assigns variables and returns success' do
+      describe "DELETE #destroy" do
+        context "assigns variables and returns success" do
           before :each do
             delete :destroy,  id: activity, format: :js
           end
 
-          it 'assigns @activity' do
+          it "assigns @activity" do
             expect(assigns(:activity)).to eq(activity)
           end
 
-          it 'assigns @activity_guid' do
+          it "assigns @activity_guid" do
             expect(assigns(:activity_guid)).to eq(activity.guid)
           end
 
-          it 'returns http success' do
+          it "returns http success" do
             expect(response).to have_http_status(:success)
           end
         end
 
-        it 'deletes the activity' do
+        it "deletes the activity" do
           activity
           expect { delete :destroy, id: activity, format: :js }.to change(Activity, :count).by(-1)
         end

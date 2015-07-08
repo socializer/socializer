@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :socializer_person_place, class: Socializer::PersonPlace do
-    city_name 'name'
+    city_name "name"
     association :person, factory: :socializer_person
   end
 end

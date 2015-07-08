@@ -1,43 +1,43 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe Tie, type: :model do
     let(:contact) { create(:socializer_person) }
     let(:tie) { build(:socializer_tie, contact_id: contact.id) }
 
-    it 'has a valid factory' do
+    it "has a valid factory" do
       expect(tie).to be_valid
     end
 
-    context 'mass assignment' do
+    context "mass assignment" do
       it { is_expected.to allow_mass_assignment_of(:contact_id) }
     end
 
-    context 'relationships' do
+    context "relationships" do
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
-      it { is_expected.to belong_to(:activity_contact).class_name('ActivityObject').with_foreign_key('contact_id').inverse_of(:ties) }
+      it { is_expected.to belong_to(:activity_contact).class_name("ActivityObject").with_foreign_key("contact_id").inverse_of(:ties) }
       it { is_expected.to have_one(:contact).through(:activity_contact).source(:activitable) }
     end
 
-    context 'validations' do
+    context "validations" do
       it { is_expected.to validate_presence_of(:circle) }
       it { is_expected.to validate_presence_of(:activity_contact) }
     end
 
-    context 'scopes' do
-      context 'by_circle_id' do
+    context "scopes" do
+      context "by_circle_id" do
         let(:sql) { Tie.by_circle_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1') }
       end
 
-      context 'by_contact_id' do
+      context "by_contact_id" do
         let(:sql) { Tie.by_contact_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1') }
         it { expect(tie.contact_id).to eq(contact.id) }
 
-        context 'nil' do
+        context "nil" do
           let(:tie) { build(:socializer_tie, contact_id: nil) }
           it { expect(tie.contact_id).to eq(nil) }
         end

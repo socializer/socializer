@@ -1,14 +1,14 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe ActivityObject, type: :model do
     let(:activity_object) { build(:socializer_activity_object) }
 
-    it 'has a valid factory' do
+    it "has a valid factory" do
       expect(activity_object).to be_valid
     end
 
-    context 'mass assignment' do
+    context "mass assignment" do
       it { is_expected.to allow_mass_assignment_of(:scope) }
       it { is_expected.to allow_mass_assignment_of(:object_ids) }
       it { is_expected.to allow_mass_assignment_of(:activitable_id) }
@@ -18,7 +18,7 @@ module Socializer
       it { is_expected.to allow_mass_assignment_of(:object_ids) }
     end
 
-    context 'relationships' do
+    context "relationships" do
       it { is_expected.to belong_to(:activitable) }
       it { is_expected.to have_many(:notifications).inverse_of(:activity_object) }
       it { is_expected.to have_many(:audiences).inverse_of(:activity_object) }
@@ -35,25 +35,25 @@ module Socializer
       it { is_expected.to have_many(:memberships).conditions(active: true).inverse_of(:activity_member) }
     end
 
-    context 'validations' do
+    context "validations" do
       it { is_expected.to validate_presence_of(:activitable) }
     end
 
-    context 'scopes' do
-      context 'by_id' do
+    context "scopes" do
+      context "by_id" do
         let(:sql) { ActivityObject.by_id(1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_activity_objects"."id" = 1') }
       end
 
-      context 'by_activitable_type' do
+      context "by_activitable_type" do
         let(:sql) { ActivityObject.by_activitable_type(Comment.name).to_sql }
 
         it { expect(sql).to include(%q(WHERE "socializer_activity_objects"."activitable_type" = 'Socializer::Comment')) }
       end
     end
 
-    context 'when liked' do
+    context "when liked" do
       let(:liking_person) { create(:socializer_person) }
       let(:liked_activity_object) { create(:socializer_activity_object) }
 
@@ -65,7 +65,7 @@ module Socializer
       it { expect(liked_activity_object.like_count).to eq(1) }
       it { expect(liked_activity_object.liked_by.size).to eq(1) }
 
-      context 'and unliked' do
+      context "and unliked" do
         before do
           liked_activity_object.unlike(liking_person)
           liked_activity_object.reload
@@ -78,39 +78,39 @@ module Socializer
 
     it { is_expected.to respond_to(:scope) }
 
-    context 'check activitable_type predicates' do
-      context '#activity?' do
+    context "check activitable_type predicates" do
+      context "#activity?" do
         let(:activity_object) { build(:socializer_activity_object_activity) }
         it { expect(activity_object.activity?).to be_truthy }
       end
 
-      context '#circle?' do
+      context "#circle?" do
         let(:activity_object) { build(:socializer_activity_object_circle) }
         it { expect(activity_object.circle?).to be_truthy }
       end
 
-      context '#comment?' do
+      context "#comment?" do
         let(:activity_object) { build(:socializer_activity_object_comment) }
         it { expect(activity_object.comment?).to be_truthy }
       end
 
-      context '#group?' do
+      context "#group?" do
         let(:activity_object) { build(:socializer_activity_object_group) }
         it { expect(activity_object.group?).to be_truthy }
       end
 
-      context '#note?' do
+      context "#note?" do
         let(:activity_object) { build(:socializer_activity_object) }
         it { expect(activity_object.note?).to be_truthy }
       end
 
-      context '#person?' do
+      context "#person?" do
         let(:activity_object) { build(:socializer_activity_object_person) }
         it { expect(activity_object.person?).to be_truthy }
       end
     end
 
-    context 'when an object is liked' do
+    context "when an object is liked" do
       let(:activity_object) { create(:socializer_activity_object) }
       let(:liking_person) { create(:socializer_person) }
 
@@ -125,7 +125,7 @@ module Socializer
       it { expect(liking_person.likes.count.size).to eq(1) }
       it { expect(liking_person.likes? activity_object).to be_truthy }
 
-      context 'when an object is unliked' do
+      context "when an object is unliked" do
         before do
           activity_object.unlike(liking_person)
           activity_object.reload
@@ -139,25 +139,25 @@ module Socializer
       end
     end
 
-    context 'when an object is shared' do
+    context "when an object is shared" do
       let(:activity_object) { create(:socializer_activity_object) }
       let(:actor) { create(:socializer_person) }
-      let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(',') }
-      let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: 'Share') }
+      let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(",") }
+      let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: "Share") }
 
       it { expect(results.persisted?).to eq(true) }
       it { expect(results.actor_id).to eq(actor.guid) }
       it { expect(results.activity_object_id).to eq(activity_object.id) }
-      it { expect(results.verb.display_name).to eq('share') }
-      it { expect(results.activity_field_content).to eq('Share') }
+      it { expect(results.verb.display_name).to eq("share") }
+      it { expect(results.activity_field_content).to eq("Share") }
 
-      context 'with no content' do
+      context "with no content" do
         let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: nil) }
         it { expect(results.activity_field_content).to eq(nil) }
       end
     end
 
-    context '#increment_unread_notifications_count' do
+    context "#increment_unread_notifications_count" do
       let(:activity_object) do
         create(:socializer_activity_object)
       end
@@ -170,7 +170,7 @@ module Socializer
       it { expect(activity_object.unread_notifications_count).to eq(1) }
     end
 
-    context '#reset_unread_notifications' do
+    context "#reset_unread_notifications" do
       let(:activity_object) do
         create(:socializer_activity_object, unread_notifications_count: 10)
       end
@@ -183,7 +183,7 @@ module Socializer
     end
 
     %w(Person Activity Note Comment Group Circle).each do |type|
-      # it format('is type of %s', type) do
+      # it format("is type of %s", type) do
       it "is type of #{type}" do
         activity_object.activitable_type = "Socializer::#{type}"
         expect(activity_object.send("#{type.downcase}?")).to be_truthy

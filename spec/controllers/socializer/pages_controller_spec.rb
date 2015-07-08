@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Socializer
   RSpec.describe PagesController, type: :controller do
@@ -6,19 +6,19 @@ module Socializer
 
     it { should_not use_before_action(:authenticate_user) }
 
-    describe 'GET #index' do
+    describe "GET #index" do
       before :each do
         get :index
       end
 
-      context 'when not logged in' do
-        it 'returns http success' do
+      context "when not logged in" do
+        it "returns http success" do
           expect(response).to have_http_status(:success)
         end
       end
 
-      context 'when logged in' do
-        it 'is a pending example'
+      context "when logged in" do
+        it "is a pending example"
         # # Create a user
         # let(:user) { create(:socializer_person) }
 
@@ -28,7 +28,7 @@ module Socializer
         #   allow(controller).to receive(:signed_in?).and_return(true)
         # end
 
-        # it 'redirects to activities#index' do
+        # it "redirects to activities#index" do
         #   expect(response).to redirect_to activities_path
         # end
       end
