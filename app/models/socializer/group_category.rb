@@ -5,7 +5,7 @@ module Socializer
   #
   # Group Category model
   #
-  # Categories guide discussions and help members find the topics they’re most
+  # Categories guide discussions and help members find the topics they're most
   # interested in.
   #
   class GroupCategory < ActiveRecord::Base
