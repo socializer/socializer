@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Authentication model
+  #
+  # Tracks the authentication provders for each {Socializer::Person person}.
+  #
   class Authentication < ActiveRecord::Base
     attr_accessible :provider, :uid, :image_url
 

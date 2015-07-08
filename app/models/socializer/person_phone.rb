@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Person Phone model
+  #
+  # Phone numbers related to the {Socializer::Person person}
+  #
   class PersonPhone < ActiveRecord::Base
     extend Enumerize
 

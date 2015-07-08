@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Person Address model
+  #
+  # Addresses related to the {Socializer::Person person}
+  #
   class PersonAddress < ActiveRecord::Base
     extend Enumerize
 

@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Person Place model
+  #
+  # Where the {Socializer::Person person} has lived
+  #
   class PersonPlace < ActiveRecord::Base
     attr_accessible :city_name, :current
 

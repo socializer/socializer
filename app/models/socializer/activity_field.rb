@@ -2,6 +2,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Activity Field model
+  #
   class ActivityField < ActiveRecord::Base
     attr_accessible :content, :activity
 

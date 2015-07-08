@@ -2,6 +2,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Person Contribution model
+  #
+  # Links to content that {Socializer::Person person} has contributed to
+  #
   class PersonContribution < ActiveRecord::Base
     attr_accessible :label, :url, :current
 
