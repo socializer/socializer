@@ -4,10 +4,10 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
-require 'cucumber/rails'
+require "cucumber/rails"
 
 # Capybara defaults to CSS3 selectors rather than XPath.
-# If you'd prefer to use XPath, just uncomment this line and adjust any
+# If you"d prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
 
@@ -28,25 +28,25 @@ require 'cucumber/rails'
 #
 ActionController::Base.allow_rescue = false
 
-# Remove/comment out the lines below if your app doesn't have a database.
+# Remove/comment out the lines below if your app doesn"t have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
+  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
-#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
+#   Before("@no-txn,@selenium,@culerity,@celerity,@javascript") do
 #     # { :except => [:widgets] } may not do what you expect here
 #     # as Cucumber::Rails::Database.javascript_strategy overrides
 #     # this setting.
 #     DatabaseCleaner.strategy = :truncation
 #   end
 #
-#   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
+#   Before("~@no-txn", "~@selenium", "~@culerity", "~@celerity", "~@javascript") do
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
