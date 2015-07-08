@@ -10,7 +10,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: 'time' do
+    #     helpers.content_tag :span, class: "time" do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -43,11 +43,11 @@ module Socializer
     #
     # @param size: nil [String]
     # @param css_class: nil [String]
-    # @param alt: 'Avatar' [String]
+    # @param alt: "Avatar" [String]
     # @param title: nil [String]
     #
     # @return [String]  An HTML image tag
-    def image_tag_avatar(size: nil, css_class: nil, alt: 'Avatar', title: nil)
+    def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
       helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt, title: title)
     end
 
@@ -85,18 +85,18 @@ module Socializer
     end
 
     def toolbar_dropdown(list)
-      helpers.content_tag(:li, class: 'dropdown') do
+      helpers.content_tag(:li, class: "dropdown") do
         dropdown_link +
 
-        helpers.content_tag(:ul, class: 'dropdown-menu') do
+        helpers.content_tag(:ul, class: "dropdown-menu") do
           toolbar_links(list)
         end
       end
     end
 
     def dropdown_link
-      icon = helpers.content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')
-      helpers.link_to('#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }) do
+      icon = helpers.content_tag(:span, nil, class: "fa fa-angle-down fa-fw")
+      helpers.link_to("#", class: "dropdown-toggle", data: { toggle: "dropdown" }) do
         "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
     end
@@ -105,9 +105,9 @@ module Socializer
     #
     # @param url: [String] The url to check
     #
-    # @return [String/Nil] Returns 'active' if the url is the current page.
+    # @return [String/Nil] Returns "active" if the url is the current page.
     def toolbar_item_class(url:)
-      'active' if helpers.current_page?(url)
+      "active" if helpers.current_page?(url)
     end
 
     def toolbar_links(list)

@@ -26,9 +26,9 @@ module Socializer
       options.reverse_merge! title: created_updated_tooltip_text
 
       options[:data] ||= {}
-      options[:data][:time_ago] = 'moment.js'
+      options[:data][:time_ago] = "moment.js"
 
-      helpers.time_tag(created_at, created_at.strftime('%B %e, %Y %l:%M%P'), options)
+      helpers.time_tag(created_at, created_at.strftime("%B %e, %Y %l:%M%P"), options)
     end
 
     # TODO: make sure that note, comment, etc is touched when the ActivityObject is edited

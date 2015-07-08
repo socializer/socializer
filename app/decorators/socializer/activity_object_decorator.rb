@@ -10,7 +10,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: 'time' do
+    #     helpers.content_tag :span, class: "time" do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -34,14 +34,14 @@ module Socializer
     end
 
     def like_or_unlike_content
-      content = helpers.content_tag(:span, nil, class: 'fa fa-fw fa-thumbs-o-up')
+      content = helpers.content_tag(:span, nil, class: "fa fa-fw fa-thumbs-o-up")
       content += "#{model.like_count}".html_safe if model.like_count > 0
       content
     end
 
     def like_or_unlike_class
-      return 'btn-danger' if current_user_likes?
-      'btn-default'
+      return "btn-danger" if current_user_likes?
+      "btn-default"
     end
 
     def like_or_unlike_path
@@ -50,8 +50,8 @@ module Socializer
     end
 
     def like_or_unlike_title
-      return helpers.t('socializer.shared.unlike') if current_user_likes?
-      helpers.t('socializer.shared.like')
+      return helpers.t("socializer.shared.unlike") if current_user_likes?
+      helpers.t("socializer.shared.like")
     end
 
     def like_or_unlike_verb
