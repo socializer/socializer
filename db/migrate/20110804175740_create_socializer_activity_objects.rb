@@ -9,6 +9,6 @@ class CreateSocializerActivityObjects < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :socializer_activity_objects, [:activitable_type, :activitable_id], name: 'index_socializer_activity_objects_on_activitable'
+    add_index :socializer_activity_objects, [:activitable_type, :activitable_id], name: "index_socializer_activity_objects_on_activitable"
   end
 end
