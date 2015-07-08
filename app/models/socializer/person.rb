@@ -7,7 +7,7 @@ module Socializer
   #
   # Person model
   #
-  # Represents an individual person.
+  # Represents an individual {person Socializer::Person}.
   #
   class Person < ActiveRecord::Base
     extend Enumerize
