@@ -60,7 +60,7 @@ Style/MultilineOperationIndentation:
 
 Style/RegexpLiteral:
   Exclude:
-    - '*.gemspec'
+    - '**/*.gemspec'
 
 Style/SingleSpaceBeforeFirstArg:
   Enabled: true
