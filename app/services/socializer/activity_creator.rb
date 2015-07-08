@@ -24,7 +24,7 @@ module Socializer
     def perform
       return create_activity if valid?
 
-      message = I18n.t('activerecord.errors.messages.record_invalid', errors: errors.full_messages.to_sentence)
+      message = I18n.t("activerecord.errors.messages.record_invalid", errors: errors.full_messages.to_sentence)
       fail(RecordInvalid, message)
     end
 
@@ -35,7 +35,7 @@ module Socializer
     # @param activity: [Socializer::Activity] The activity to add the audience to
     # @param audience_ids [Array<Integer>] List of audiences to target
     def add_audience_to_activity(activity:, audience_ids:)
-      audience_ids = audience_ids.split(',') if %w(Fixnum String).include?(audience_ids.class.name)
+      audience_ids = audience_ids.split(",") if %w(Fixnum String).include?(audience_ids.class.name)
       limited      = audience_privacy(value: :limited)
       not_limited  = %W(#{audience_privacy(value: :public)} #{audience_privacy(value: :circles)})
 

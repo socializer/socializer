@@ -14,7 +14,7 @@ module Socializer
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       unless person.is_a?(Socializer::Person)
-        message = I18n.t('socializer.errors.messages.wrong_instance_type', argument: 'person', valid_class: Person.name, invalid_class: person.class.name)
+        message = I18n.t("socializer.errors.messages.wrong_instance_type", argument: "person", valid_class: Person.name, invalid_class: person.class.name)
         fail(ArgumentError, message)
       end
 
@@ -44,13 +44,13 @@ module Socializer
     def perform
       audiences = []
 
-      audiences << merge_icon(list: privacy_hash(privacy_symbol: :public), icon: 'fa-globe')
-      audiences << merge_icon(list: privacy_hash(privacy_symbol: :circles), icon: 'fa-google-circles')
+      audiences << merge_icon(list: privacy_hash(privacy_symbol: :public), icon: "fa-globe")
+      audiences << merge_icon(list: privacy_hash(privacy_symbol: :circles), icon: "fa-google-circles")
 
       # TODO: may use the avatar for the user
-      audiences.concat(merge_icon(list: person_list, icon: 'fa-user'))
-      audiences.concat(merge_icon(list: audience_list(type: :circles), icon: 'fa-google-circles'))
-      audiences.concat(merge_icon(list: audience_list(type: :groups), icon: 'fa-users'))
+      audiences.concat(merge_icon(list: person_list, icon: "fa-user"))
+      audiences.concat(merge_icon(list: audience_list(type: :circles), icon: "fa-google-circles"))
+      audiences.concat(merge_icon(list: audience_list(type: :groups), icon: "fa-users"))
     end
 
     private
@@ -81,7 +81,7 @@ module Socializer
 
     # Build the list of people based on the query
     #
-    # @return [ActiveRecord::NullRelation] If query is nil or '', Person.none is returned
+    # @return [ActiveRecord::NullRelation] If query is nil or "", Person.none is returned
     # @return [ActiveRecord::Relation] If a query is provided the display_name and guid
     # for all records that match the query
     def person_list
@@ -97,7 +97,7 @@ module Socializer
     #
     # @param  privacy_symbol [Symbol] The symbol representing the Audience privacy
     #
-    # @return [Hash] Using the example you will get !{id: 1, name: 'Public'}
+    # @return [Hash] Using the example you will get !{id: 1, name: "Public"}
     def privacy_hash(privacy_symbol:)
       privacy_symbol = privacy_symbol.downcase.to_sym
       privacy        = Audience.privacy.find_value(privacy_symbol)
@@ -107,7 +107,7 @@ module Socializer
 
     def select_display_name_alias_and_guids(query:)
       klass              = query.base_class
-      display_name_alias = klass.arel_table[:display_name].as('name')
+      display_name_alias = klass.arel_table[:display_name].as("name")
       query.select(display_name_alias).guids
     end
   end
