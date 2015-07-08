@@ -8,7 +8,7 @@ module Socializer
   # {Socializer::Activity} objects are specializations of the base {Socializer::ObjectTypeBase Object}
   # type that provide information about pending, ongoing or completed actions.
   #
-  # # Activities follow the {Activity Streams}[http://activitystrea.ms/] standard.
+  # Activities follow the {http://activitystrea.ms/ Activity Streams} standard.
   #
   class Activity < ActiveRecord::Base
     include ObjectTypeBase
