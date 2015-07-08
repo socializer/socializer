@@ -33,7 +33,7 @@ module Socializer
       @circle = current_user.circles.build(params[:circle])
       @circle.save!
 
-      flash[:notice] = t('socializer.model.create', model: 'Circle')
+      flash[:notice] = t("socializer.model.create", model: "Circle")
       redirect_to contacts_circles_path
     end
 
@@ -42,7 +42,7 @@ module Socializer
       @circle = find_circle
       @circle.update!(params[:circle])
 
-      flash[:notice] = t('socializer.model.update', model: 'Circle')
+      flash[:notice] = t("socializer.model.update", model: "Circle")
       redirect_to @circle
     end
 

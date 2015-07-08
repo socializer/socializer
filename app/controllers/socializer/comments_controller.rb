@@ -16,11 +16,11 @@ module Socializer
     # POST /comments
     def create
       @comment = current_user.comments.create!(params[:comment]) do |comment|
-        comment.activity_verb = 'add'
+        comment.activity_verb = "add"
         comment.scope = Audience.privacy.find_value(:public)
       end
 
-      flash[:notice] = t('socializer.model.create', model: 'Comment')
+      flash[:notice] = t("socializer.model.create", model: "Comment")
       redirect_to activities_path
     end
 
@@ -34,7 +34,7 @@ module Socializer
       @comment = find_comment
       @comment.update!(params[:comment])
 
-      flash[:notice] = t('socializer.model.update', model: 'Comment')
+      flash[:notice] = t("socializer.model.update", model: "Comment")
       redirect_to activities_path
     end
 

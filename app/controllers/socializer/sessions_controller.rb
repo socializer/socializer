@@ -8,7 +8,7 @@ module Socializer
   class SessionsController < ApplicationController
     # GET|POST /auth/facebook/callback
     def create
-      auth      = request.env['omniauth.auth']
+      auth      = request.env["omniauth.auth"]
       user_auth = Authentication.find_by(provider: auth.provider, uid: auth.uid)
 
       return login(user_auth.person) if user_auth.present?

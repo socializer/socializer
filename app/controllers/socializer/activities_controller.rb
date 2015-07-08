@@ -12,7 +12,7 @@ module Socializer
     def index
       @activities = Activity.stream(viewer_id: current_user.id).decorate
       @current_id = nil
-      @title      = 'Activity stream'
+      @title      = "Activity stream"
       @note       = Note.new
     end
 

@@ -19,11 +19,11 @@ module Socializer
       @activity   = Activity.find_by(activity_object_id: create_note.guid).decorate
       @note       = Note.new
       @current_id = nil
-      @title      = 'Activity stream'
+      @title      = "Activity stream"
 
       Notification.create_for_activity(@activity.model)
 
-      flash[:notice] = t('socializer.model.create', model: 'Note')
+      flash[:notice] = t("socializer.model.create", model: "Note")
 
       respond_to do |format|
         format.html { redirect_to activities_path }
@@ -41,7 +41,7 @@ module Socializer
       @note = find_note
       @note.update!(params[:note])
 
-      flash[:notice] = t('socializer.model.update', model: 'Note')
+      flash[:notice] = t("socializer.model.update", model: "Note")
       redirect_to activities_path
     end
 
@@ -65,8 +65,8 @@ module Socializer
 
     def create_note
       current_user.activity_object.notes.create!(params[:note]) do |note|
-        note.object_ids    = note.object_ids.split(',')
-        note.activity_verb = 'post'
+        note.object_ids    = note.object_ids.split(",")
+        note.activity_verb = "post"
       end
     end
   end

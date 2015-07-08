@@ -13,7 +13,7 @@ module Socializer
       def index
         id          = params.fetch(:activity_id) { nil }
         @activity   = Activity.find_by(id: id).decorate
-        @title      = 'Activity stream'
+        @title      = "Activity stream"
         @current_id = nil
         @note       = Note.new
         # TODO: makes sense to have stream or activities as an instance
