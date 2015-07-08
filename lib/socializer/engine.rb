@@ -1,23 +1,23 @@
-# Added 'jquery-ui-rails' for drag and drop
-require 'jquery/ui/rails'
-require 'coffee-rails'
-require 'sass/rails'
-require 'bootstrap-sass'
-require 'draper'
-require 'enumerize'
-require 'omniauth'
-require 'omniauth-identity'
-require 'omniauth-facebook'
-require 'omniauth-linkedin'
-require 'omniauth-openid'
-require 'omniauth-twitter'
-require 'simple_form'
+# Added "jquery-ui-rails" for drag and drop
+require "jquery/ui/rails"
+require "coffee-rails"
+require "sass/rails"
+require "bootstrap-sass"
+require "draper"
+require "enumerize"
+require "omniauth"
+require "omniauth-identity"
+require "omniauth-facebook"
+require "omniauth-linkedin"
+require "omniauth-openid"
+require "omniauth-twitter"
+require "simple_form"
 
 #
 # Namespace for the Socializer engine
 #
 module Socializer
-  # Wraps Socializer's functionality so that it can be shares with other applications
+  # Wraps Socializer"s functionality so that it can be shares with other applications
   # or within a larger packaged application.
   class Engine < Rails::Engine
     isolate_namespace Socializer
@@ -31,7 +31,7 @@ module Socializer
                                controller_specs: true,
                                request_specs: false
       generator.integration_tool false
-      generator.fixture_replacement :factory_girl, dir: 'spec/factories'
+      generator.fixture_replacement :factory_girl, dir: "spec/factories"
     end
   end
 end
