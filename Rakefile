@@ -1,39 +1,39 @@
 #!/usr/bin/env rake
 begin
-  require 'bundler/setup'
+  require "bundler/setup"
 rescue LoadError
-  Rails.logger.error('You must `gem install bundler` and `bundle install` to run rake tasks')
-  # puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+  Rails.logger.error("You must `gem install bundler` and `bundle install` to run rake tasks")
+  # puts "You must `gem install bundler` and `bundle install` to run rake tasks"
 end
 begin
-  require 'rdoc/task'
+  require "rdoc/task"
 rescue LoadError
-  require 'rdoc/rdoc'
-  require 'rake/rdoctask'
+  require "rdoc/rdoc"
+  require "rake/rdoctask"
   RDoc::Task = Rake::RDocTask
 end
 
 RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Socializer'
-  rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_dir = "rdoc"
+  rdoc.title    = "Socializer"
+  rdoc.options << "--line-numbers"
+  rdoc.rdoc_files.include("README.rdoc")
+  rdoc.rdoc_files.include("lib/**/*.rb")
 end
 
-APP_RAKEFILE = File.expand_path('../spec/dummy/Rakefile', __FILE__)
+APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 
-load 'rails/tasks/engine.rake' if File.exist?(APP_RAKEFILE)
+load "rails/tasks/engine.rake" if File.exist?(APP_RAKEFILE)
 
-Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each { |f| load f }
+Dir[File.join(File.dirname(__FILE__), "tasks/**/*.rake")].each { |f| load f }
 
 Bundler::GemHelper.install_tasks
 
-require 'rspec/core'
-require 'rspec/core/rake_task'
+require "rspec/core"
+require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
-require 'rails/dummy/tasks'
+require "rails/dummy/tasks"
