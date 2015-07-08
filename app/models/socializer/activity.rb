@@ -16,18 +16,18 @@ module Socializer
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
 
     # Relationships
-    belongs_to :parent,             class_name: 'Activity',       foreign_key: 'target_id'
-    belongs_to :activitable_actor,  class_name: 'ActivityObject', foreign_key: 'actor_id'
-    belongs_to :activitable_object, class_name: 'ActivityObject', foreign_key: 'activity_object_id'
-    belongs_to :activitable_target, class_name: 'ActivityObject', foreign_key: 'target_id'
+    belongs_to :parent,             class_name: "Activity",       foreign_key: "target_id"
+    belongs_to :activitable_actor,  class_name: "ActivityObject", foreign_key: "actor_id"
+    belongs_to :activitable_object, class_name: "ActivityObject", foreign_key: "activity_object_id"
+    belongs_to :activitable_target, class_name: "ActivityObject", foreign_key: "target_id"
     belongs_to :verb, inverse_of: :activities
 
     has_one :activity_field, inverse_of: :activity
-    has_one :actor, through: :activitable_actor, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :actor, through: :activitable_actor, source: :activitable,  source_type: "Socializer::Person"
 
     has_many :audiences, inverse_of: :activity # , dependent: :destroy
     has_many :activity_objects, through: :audiences
-    has_many :children, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
+    has_many :children, class_name: "Activity", foreign_key: "target_id", dependent: :destroy
     has_many :notifications, inverse_of: :activity
 
     # Validations

@@ -18,13 +18,13 @@ module Socializer
     attr_accessible :display_name, :content
 
     # Relationships
-    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :circles
+    belongs_to :activity_author, class_name: "ActivityObject", foreign_key: "author_id", inverse_of: :circles
 
-    has_one :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :author, through: :activity_author, source: :activitable,  source_type: "Socializer::Person"
 
     has_many :ties, inverse_of: :circle
     has_many :activity_contacts, through: :ties
-    has_many :contacts, through: :activity_contacts, source: :activitable,  source_type: 'Socializer::Person'
+    has_many :contacts, through: :activity_contacts, source: :activitable,  source_type: "Socializer::Person"
 
     # Validations
     validates :activity_author, presence: true
@@ -37,7 +37,7 @@ module Socializer
 
     # Class Methods
 
-    # Find all records where display_name is like 'query'
+    # Find all records where display_name is like "query"
     #
     # @param query: [String]
     #
@@ -63,7 +63,7 @@ module Socializer
     # @param contact_id [Integer] The guid of the person to add to the circle
     #
     # @return [Socializer:Circle/FalseClass] Deletes the record in the database and freezes this instance to reflect
-    # that no changes should be made (since they can't be persisted). If the before_destroy callback returns false
+    # that no changes should be made (since they can"t be persisted). If the before_destroy callback returns false
     # the action is cancelled and remove_contact returns false.
     def remove_contact(contact_id)
       tie = ties.find_by(contact_id: contact_id)

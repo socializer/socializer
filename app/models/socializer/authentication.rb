@@ -31,7 +31,7 @@ module Socializer
     def make_sure_its_not_the_last_one
       return unless person.authentications.count == 1
 
-      errors.add(:base, I18n.t('socializer.errors.messages.cannot_delete_last_authentication'))
+      errors.add(:base, I18n.t("socializer.errors.messages.cannot_delete_last_authentication"))
       false
     end
   end

@@ -17,15 +17,15 @@ module Socializer
     attr_accessible :display_name, :privacy, :author_id, :tagline, :about
 
     # Relationships
-    belongs_to :activity_author, class_name: 'ActivityObject', foreign_key: 'author_id', inverse_of: :groups
+    belongs_to :activity_author, class_name: "ActivityObject", foreign_key: "author_id", inverse_of: :groups
 
-    has_one :author, through: :activity_author, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :author, through: :activity_author, source: :activitable,  source_type: "Socializer::Person"
 
-    has_many :links, class_name: 'GroupLink', foreign_key: 'group_id', dependent: :destroy
-    has_many :categories, class_name: 'GroupCategory', foreign_key: 'group_id', dependent: :destroy
+    has_many :links, class_name: "GroupLink", foreign_key: "group_id", dependent: :destroy
+    has_many :categories, class_name: "GroupCategory", foreign_key: "group_id", dependent: :destroy
     has_many :memberships, inverse_of: :group
     has_many :activity_members, -> { merge(Membership.active) }, through: :memberships
-    has_many :members, through: :activity_members, source: :activitable,  source_type: 'Socializer::Person'
+    has_many :members, through: :activity_members, source: :activitable,  source_type: "Socializer::Person"
 
     # Validations
     validates :activity_author, presence: true
@@ -40,7 +40,7 @@ module Socializer
 
     # Class Methods
 
-    # Find all records where display_name is like 'query'
+    # Find all records where display_name is like "query"
     #
     # @param query: [String]
     #
@@ -91,7 +91,7 @@ module Socializer
       elsif privacy.restricted?
         active = false
       else
-        message = I18n.t('socializer.errors.messages.group.private.cannot_self_join')
+        message = I18n.t("socializer.errors.messages.group.private.cannot_self_join")
         fail(message)
       end
 
@@ -138,7 +138,7 @@ module Socializer
     def deny_delete_if_members
       return if memberships.count == 0
 
-      errors.add(:base, I18n.t('socializer.errors.messages.group.still_has_members'))
+      errors.add(:base, I18n.t("socializer.errors.messages.group.still_has_members"))
       false
     end
   end

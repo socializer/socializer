@@ -17,25 +17,25 @@ module Socializer
     # queries. By using these relationships we no longer need to use Arel in those methods.
     # NOTE: These relationships will no longer be needed if rails provides a nice way to joins to a polymorphic
     #       relationship
-    belongs_to :group,  -> { where(socializer_activity_objects: { activitable_type: Group.name }) }, foreign_key: 'activitable_id'
-    belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: 'activitable_id'
+    belongs_to :group,  -> { where(socializer_activity_objects: { activitable_type: Group.name }) }, foreign_key: "activitable_id"
+    belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: "activitable_id"
 
     has_many :notifications, inverse_of: :activity_object
     has_many :audiences, inverse_of: :activity_object # , dependent: :destroy
     has_many :activities, through: :audiences
 
-    has_many :actor_activities,  class_name: 'Activity', foreign_key: 'actor_id',  dependent: :destroy
-    has_many :object_activities, class_name: 'Activity', foreign_key: 'activity_object_id', dependent: :destroy
-    has_many :target_activities, class_name: 'Activity', foreign_key: 'target_id', dependent: :destroy
+    has_many :actor_activities,  class_name: "Activity", foreign_key: "actor_id",  dependent: :destroy
+    has_many :object_activities, class_name: "Activity", foreign_key: "activity_object_id", dependent: :destroy
+    has_many :target_activities, class_name: "Activity", foreign_key: "target_id", dependent: :destroy
 
-    has_many :notes,    foreign_key: 'author_id', inverse_of: :activity_author
-    has_many :comments, foreign_key: 'author_id', inverse_of: :activity_author
-    has_many :groups,   foreign_key: 'author_id', inverse_of: :activity_author
-    has_many :circles,  foreign_key: 'author_id', inverse_of: :activity_author
+    has_many :notes,    foreign_key: "author_id", inverse_of: :activity_author
+    has_many :comments, foreign_key: "author_id", inverse_of: :activity_author
+    has_many :groups,   foreign_key: "author_id", inverse_of: :activity_author
+    has_many :circles,  foreign_key: "author_id", inverse_of: :activity_author
     has_many :contacts, through: :circles
 
-    has_many :ties,       foreign_key: 'contact_id', inverse_of: :activity_contact
-    has_many :memberships, -> { Membership.active }, foreign_key: 'member_id', inverse_of: :activity_member
+    has_many :ties,       foreign_key: "contact_id", inverse_of: :activity_contact
+    has_many :memberships, -> { Membership.active }, foreign_key: "member_id", inverse_of: :activity_member
 
     # Validations
     validates :activitable, presence: true
@@ -68,13 +68,13 @@ module Socializer
     def liked_by
       # subquery = Activity.where(activity_object_id: id)
       # people   = Person.joins(activity_object: { actor_activities: :verb }).merge(subquery)
-      # likers   = people.merge(Verb.by_display_name('like'))
-      # unlikers = people.merge(Verb.by_display_name('unlike')).pluck(:id)
+      # likers   = people.merge(Verb.by_display_name("like"))
+      # unlikers = people.merge(Verb.by_display_name("unlike")).pluck(:id)
 
       # likers.where.not(id: unlikers)
       query    = Activity.joins(:verb).by_activity_object_id(id)
-      likers   = query.merge(Verb.by_display_name('like'))
-      unlikers = query.merge(Verb.by_display_name('unlike'))
+      likers   = query.merge(Verb.by_display_name("like"))
+      unlikers = query.merge(Verb.by_display_name("unlike"))
       people   = likers.map(&:actor)
 
       unlikers.each do |activity|
@@ -93,7 +93,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def like(person)
-      results  = create_like_unlike_activity(actor: person, verb: 'like')
+      results  = create_like_unlike_activity(actor: person, verb: "like")
 
       increment_like_count if results.persisted?
       results
@@ -108,7 +108,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def unlike(person)
-      results  = create_like_unlike_activity(actor: person, verb: 'unlike')
+      results  = create_like_unlike_activity(actor: person, verb: "unlike")
 
       decrement_like_count if results.persisted?
       results
@@ -117,7 +117,7 @@ module Socializer
     # Share the activity with an audience
     #
     # @example
-    #   @shareable.share(actor_id: actor.guid, object_ids: object_ids, content: 'This is the content')
+    #   @shareable.share(actor_id: actor.guid, object_ids: object_ids, content: "This is the content")
     #
     # @param actor_id [Integer] User who is sharing the activity (current_user)
     # @param object_ids [Array<Integer>] List of audiences to target
@@ -127,7 +127,7 @@ module Socializer
     def share(actor_id:, object_ids:, content: nil)
       ActivityCreator.new(actor_id: actor_id,
                           activity_object_id: id,
-                          verb: 'share',
+                          verb: "share",
                           object_ids: object_ids,
                           content: content).perform
     end
@@ -151,7 +151,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def create_like_unlike_activity(actor:, verb:)
-      public = Audience.privacy.public.value.split(',')
+      public = Audience.privacy.public.value.split(",")
 
       ActivityCreator.new(actor_id: actor.guid,
                           activity_object_id: id,

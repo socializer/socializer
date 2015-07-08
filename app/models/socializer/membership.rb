@@ -12,9 +12,9 @@ module Socializer
 
     # Relationships
     belongs_to :group, inverse_of: :memberships
-    belongs_to :activity_member, class_name: 'ActivityObject', foreign_key: 'member_id', inverse_of: :memberships
+    belongs_to :activity_member, class_name: "ActivityObject", foreign_key: "member_id", inverse_of: :memberships
 
-    has_one :member, through: :activity_member, source: :activitable,  source_type: 'Socializer::Person'
+    has_one :member, through: :activity_member, source: :activitable,  source_type: "Socializer::Person"
 
     # Validations
 

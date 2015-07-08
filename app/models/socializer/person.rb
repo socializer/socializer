@@ -1,4 +1,4 @@
-require 'digest/md5'
+require "digest/md5"
 
 #
 # Namespace for the Socializer engine
@@ -35,14 +35,14 @@ module Socializer
 
     # Relationships
     has_many :authentications
-    has_many :addresses, class_name: 'PersonAddress', foreign_key: 'person_id', dependent: :destroy
-    has_many :contributions, class_name: 'PersonContribution', foreign_key: 'person_id', dependent: :destroy
-    has_many :educations, class_name: 'PersonEducation', foreign_key: 'person_id', dependent: :destroy
-    has_many :employments, class_name: 'PersonEmployment', foreign_key: 'person_id', dependent: :destroy
-    has_many :links, class_name: 'PersonLink', foreign_key: 'person_id', dependent: :destroy
-    has_many :phones, class_name: 'PersonPhone', foreign_key: 'person_id', dependent: :destroy
-    has_many :places, class_name: 'PersonPlace', foreign_key: 'person_id', dependent: :destroy
-    has_many :profiles, class_name: 'PersonProfile', foreign_key: 'person_id', dependent: :destroy
+    has_many :addresses, class_name: "PersonAddress", foreign_key: "person_id", dependent: :destroy
+    has_many :contributions, class_name: "PersonContribution", foreign_key: "person_id", dependent: :destroy
+    has_many :educations, class_name: "PersonEducation", foreign_key: "person_id", dependent: :destroy
+    has_many :employments, class_name: "PersonEmployment", foreign_key: "person_id", dependent: :destroy
+    has_many :links, class_name: "PersonLink", foreign_key: "person_id", dependent: :destroy
+    has_many :phones, class_name: "PersonPhone", foreign_key: "person_id", dependent: :destroy
+    has_many :places, class_name: "PersonPlace", foreign_key: "person_id", dependent: :destroy
+    has_many :profiles, class_name: "PersonProfile", foreign_key: "person_id", dependent: :destroy
 
     # Validations
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
@@ -73,13 +73,13 @@ module Socializer
         user.display_name = auth_info.name
         user.email = auth_info.email
         image_url = auth_info.image
-        user.avatar_provider = image_url.blank? ? 'GRAVATAR' : auth.provider.upcase
+        user.avatar_provider = image_url.blank? ? "GRAVATAR" : auth.provider.upcase
 
         user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
       end
     end
 
-    # Find all records where display_name is like 'query'
+    # Find all records where display_name is like "query"
     #
     # @param query: [String]
     #
@@ -94,7 +94,7 @@ module Socializer
     #
     # @return [Socializer::Authentication] Returns a collection of {Socializer::Authentication authentications}
     def services
-      @services ||= authentications.by_not_provider('Identity')
+      @services ||= authentications.by_not_provider("Identity")
     end
 
     # Collection of {Socializer::Notification notifications} that the user has received
@@ -125,7 +125,7 @@ module Socializer
                       .by_target_id(nil)
                       .merge(Verb.by_display_name(verbs_of_interest))
 
-      @likes ||= query.group(:activity_object_id).having('COUNT(1) % 2 == 1')
+      @likes ||= query.group(:activity_object_id).having("COUNT(1) % 2 == 1")
     end
 
     # Checks if the person likes the object or not
