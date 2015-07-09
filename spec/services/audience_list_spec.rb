@@ -21,6 +21,8 @@ module Socializer
 
     context ".perform" do
       let(:person) { create(:socializer_person_circles) }
+      let(:public) { { id: "public", name: "Public" } }
+      let(:circles) { { id: "circles", name: "Circles" } }
 
       before do
         AddDefaultCircles.perform(person: person)
@@ -37,8 +39,8 @@ module Socializer
           end
         end
 
-        it { expect(audience_list.first).to include(id: "public", name: "Public") }
-        it { expect(audience_list.second).to include(id: "circles", name: "Circles") }
+        it { expect(audience_list.first).to include(public) }
+        it { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
           circles = []
@@ -61,8 +63,8 @@ module Socializer
           end
         end
 
-        it { expect(audience_list.first).to include(id: "public", name: "Public") }
-        it { expect(audience_list.second).to include(id: "circles", name: "Circles") }
+        it { expect(audience_list.first).to include(public) }
+        it { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
           circles = []
