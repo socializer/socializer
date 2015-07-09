@@ -14,7 +14,7 @@ module Socializer
     it { should_not use_before_action(:authenticate_user) }
 
     describe "when not logged in" do
-      before :each do
+      before do
         get :index
       end
     end
@@ -25,7 +25,7 @@ module Socializer
 
       describe "#set_locale" do
         context "language set on the person" do
-          before :each do
+          before do
             get :index
           end
 
@@ -34,7 +34,7 @@ module Socializer
         end
 
         context "language set in request.env['HTTP_ACCEPT_LANGUAGE']" do
-          before :each do
+          before do
             request.env["HTTP_ACCEPT_LANGUAGE"] = "en"
             get :index
           end

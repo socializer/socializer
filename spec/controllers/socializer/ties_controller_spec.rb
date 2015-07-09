@@ -33,7 +33,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "POST #create" do
-        before :each do
+        before do
           @request.env["HTTP_ACCEPT"] = "application/javascript"
         end
 
@@ -60,7 +60,7 @@ module Socializer
         end
 
         context "check the variables and redirect" do
-          before :each do
+          before do
             delete :destroy, id: tie
           end
 

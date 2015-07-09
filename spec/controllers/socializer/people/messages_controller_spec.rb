@@ -23,7 +23,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #new" do
-        before :each do
+        before do
           get :new, id: user.id
         end
 

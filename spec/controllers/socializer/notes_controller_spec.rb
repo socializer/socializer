@@ -53,7 +53,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #new" do
-        before :each do
+        before do
           get :new
         end
 
@@ -101,7 +101,7 @@ module Socializer
       end
 
       describe "GET #edit" do
-        before :each do
+        before do
           get :edit, id: note
         end
 

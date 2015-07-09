@@ -70,7 +70,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #index" do
-        before :each do
+        before do
           get :index
         end
 
@@ -84,7 +84,7 @@ module Socializer
       end
 
       describe "GET #show" do
-        before :each do
+        before do
           get :show, id: group
         end
 
@@ -102,7 +102,7 @@ module Socializer
       end
 
       describe "GET #new" do
-        before :each do
+        before do
           get :new
         end
 
@@ -140,7 +140,7 @@ module Socializer
       end
 
       describe "GET #edit" do
-        before :each do
+        before do
           get :edit, id: group
         end
 
@@ -177,7 +177,7 @@ module Socializer
         end
 
         context "can delete a group that has no members" do
-          before :each do
+          before do
             group.leave(user)
           end
 

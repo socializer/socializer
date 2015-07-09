@@ -24,7 +24,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #index" do
-        before :each do
+        before do
           get :index, person_id: user
         end
 

@@ -211,7 +211,7 @@ module Socializer
         create(:socializer_activity_object, unread_notifications_count: 10)
       end
 
-      before :each do
+      before do
         activity_object.reset_unread_notifications
       end
 

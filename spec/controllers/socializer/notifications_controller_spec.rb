@@ -36,7 +36,7 @@ module Socializer
         let(:activity) { Activity.find_by(activity_object_id: note.guid).decorate }
 
         context "when unread notifications are 0" do
-          before :each do
+          before do
             get :index
           end
 
@@ -66,7 +66,7 @@ module Socializer
       end
 
       describe "GET #show" do
-        before :each do
+        before do
           get :show, id: notification
         end
 

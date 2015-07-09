@@ -7,7 +7,7 @@ module Socializer
     it { should_not use_before_action(:authenticate_user) }
 
     describe "GET #index" do
-      before :each do
+      before do
         get :index
       end
 
@@ -24,7 +24,7 @@ module Socializer
 
         # # Setting the current user
         # before { cookies[:user_id] = user.guid }
-        # before :each do
+        # before do
         #   allow(controller).to receive(:signed_in?).and_return(true)
         # end
 

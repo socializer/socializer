@@ -55,7 +55,7 @@ module Socializer
       it { expect(last_authentication.person.authentications.count).to eq(1) }
 
       context "cannot be deleted" do
-        before :each do
+        before do
           last_authentication.destroy
         end
 

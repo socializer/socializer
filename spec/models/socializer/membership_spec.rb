@@ -96,7 +96,7 @@ module Socializer
         context "person has memberships" do
           let(:result) { Membership.by_member_id(user.guid) }
 
-          before :each do
+          before do
             membership
           end
 

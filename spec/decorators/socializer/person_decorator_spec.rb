@@ -23,7 +23,7 @@ module Socializer
         let(:decorated_person) { PersonDecorator.new(person) }
 
         context "it should be Facebook" do
-          before :each do
+          before do
             person.authentications.create(authentication_attributes)
           end
 
@@ -35,7 +35,7 @@ module Socializer
         end
 
         context "it should be LinkedIn" do
-          before :each do
+          before do
             person.authentications.create(authentication_attributes)
           end
 
@@ -47,7 +47,7 @@ module Socializer
         end
 
         context "it should be Twitter" do
-          before :each do
+          before do
             person.authentications.create(authentication_attributes)
           end
 

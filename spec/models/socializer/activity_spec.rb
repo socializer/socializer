@@ -118,7 +118,7 @@ module Socializer
 
         let(:actor) { activity.actor }
 
-        before :each do
+        before do
           actor.comments.create!(comment_attributes)
         end
 

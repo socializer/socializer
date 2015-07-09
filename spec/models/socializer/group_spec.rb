@@ -259,7 +259,7 @@ module Socializer
       end
 
       context "cannot be deleted" do
-        before :each do
+        before do
           group_with_members.destroy
         end
 
