@@ -4,6 +4,13 @@ module Socializer
   RSpec.describe ActivityCreator, type: :service do
     let(:ac) { ActivityCreator.new }
 
+    let(:activity_attributes) do
+      { actor_id: person.id,
+        activity_object_id: activity_object.id,
+        verb: "post"
+      }
+    end
+
     context "validations" do
       it { is_expected.to validate_presence_of(:actor_id) }
       it { is_expected.to validate_presence_of(:activity_object_id) }
@@ -20,7 +27,7 @@ module Socializer
       context "with the required attributes" do
         let(:person) { create(:socializer_person) }
         let(:activity_object) { create(:socializer_activity_object) }
-        let(:ac) { ActivityCreator.new(actor_id: person.id, activity_object_id: activity_object.id, verb: "post") }
+        let(:ac) { ActivityCreator.new(activity_attributes) }
 
         it { expect(ac.valid?).to be true }
         it { expect(ac.perform).to be_kind_of(Activity) }

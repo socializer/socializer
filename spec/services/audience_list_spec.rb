@@ -29,7 +29,9 @@ module Socializer
       end
 
       context "with no query" do
-        let(:audience_list) { AudienceList.new(person: person, query: nil).perform }
+        let(:audience_list) do
+          AudienceList.new(person: person, query: nil).perform
+        end
 
         it { expect(audience_list).to be_kind_of(Array) }
 
@@ -52,7 +54,9 @@ module Socializer
       end
 
       context "with query" do
-        let(:audience_list) { AudienceList.new(person: person, query: "friends").perform }
+        let(:audience_list) do
+          AudienceList.new(person: person, query: "friends").perform
+        end
 
         it { expect(audience_list).to be_kind_of(Array) }
         it { expect(audience_list.count).to eq(3) }
@@ -69,7 +73,8 @@ module Socializer
         it "contains the persons circles" do
           circles = []
           circles << "Public" << "Circles"
-          circles.concat(person.circles.by_display_name("Friends").pluck(:display_name))
+          friends = person.circles.by_display_name("Friends")
+          circles.concat(friends.pluck(:display_name))
 
           expect(audience_list.all? { |item| circles.include?(item[:name]) }).to be true
         end

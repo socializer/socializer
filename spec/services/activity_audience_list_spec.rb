@@ -22,7 +22,10 @@ module Socializer
     describe ".perform" do
       context "without an audience" do
         let(:activity) { create(:socializer_activity) }
-        let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+
+        let(:audience_list) do
+          ActivityAudienceList.new(activity: activity).perform
+        end
 
         it { expect(audience_list).to be_kind_of(Array) }
         it { expect(audience_list.size).to eq(1) }
@@ -31,38 +34,84 @@ module Socializer
 
       context "with an audience" do
         let(:person) { create(:socializer_person) }
-        let(:note) { person.activity_object.notes.create!(content: "Test note", object_ids: ["public"], activity_verb: "post") }
-        let(:activity) { Activity.find_by(activity_object_id: note.activity_object.id) }
+
+        let(:note_attributes) do
+          { content: "Test note",
+            object_ids: ["public"],
+            activity_verb: "post"
+          }
+        end
+
+        let(:note) { person.activity_object.notes.create!(note_attributes) }
+
+        let(:activity) do
+          Activity.find_by(activity_object_id: note.activity_object.id)
+        end
 
         context "public" do
-          let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+          let(:audience_list) do
+            ActivityAudienceList.new(activity: activity).perform
+          end
+
+          let(:tooltip_public) do
+            I18n.t("socializer.activities.audiences.index.tooltip.public")
+          end
 
           it { expect(audience_list.size).to eq(1) }
-          it { expect(audience_list.first).to eq(I18n.t("socializer.activities.audiences.index.tooltip.public")) }
+          it { expect(audience_list.first).to eq(tooltip_public) }
         end
 
         context "that is circles" do
-          before :each do
+          before do
             AddDefaultCircles.perform(person: person)
           end
 
-          let(:note) { person.activity_object.notes.create!(content: "Test note", object_ids: ["circles"], activity_verb: "post") }
-          let(:activity) { Activity.find_by(activity_object_id: note.activity_object.id) }
-          let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+          let(:note_attributes) do
+            { content: "Test note",
+              object_ids: ["circles"],
+              activity_verb: "post"
+            }
+          end
+
+          let(:note) { person.activity_object.notes.create!(note_attributes) }
+
+          let(:activity) do
+            Activity.find_by(activity_object_id: note.activity_object.id)
+          end
+
+          let(:audience_list) do
+            ActivityAudienceList.new(activity: activity).perform
+          end
 
           it { expect(audience_list.size).to eq(1) }
           it { expect(audience_list.first).to start_with("name") }
         end
 
         context "that is limited" do
-          before :each do
+          before do
             AddDefaultCircles.perform(person: person)
           end
 
-          let(:family) { Circle.find_by(author_id: person.id, display_name: "Family") }
-          let(:note) { person.activity_object.notes.create!(content: "Test note", object_ids: [family.id], activity_verb: "post") }
-          let(:activity) { Activity.find_by(activity_object_id: note.activity_object.id) }
-          let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+          let(:family) do
+            Circle.find_by(author_id: person.id, display_name: "Family")
+          end
+
+          let(:note_attributes) do
+            { content: "Test note",
+              object_ids: [family.id],
+              activity_verb: "post"
+            }
+          end
+
+          let(:note) { person.activity_object.notes.create!(note_attributes) }
+
+          let(:activity) do
+            Activity.find_by(activity_object_id: note.activity_object.id)
+          end
+
+          let(:audience_list) do
+            ActivityAudienceList.new(activity: activity).perform
+          end
 
           it { expect(audience_list.size).to eq(1) }
           it { expect(audience_list.first).to start_with("name") }
