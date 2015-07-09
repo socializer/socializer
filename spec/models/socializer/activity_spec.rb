@@ -99,13 +99,41 @@ module Socializer
       let(:person) { activity_object_person.activitable }
       let(:group) { activity_object_group.activitable }
 
+      let(:common_stream_attributes) do
+        { actor_uid: person.id, viewer_id: person.id }
+      end
+
+      let(:group_stream_attributes) do
+        { actor_uid: group.id, viewer_id: person.id }
+      end
+
       # TODO: Test return values
       it { expect { Activity.stream }.to raise_error(ArgumentError) }
-      it { expect(Activity.stream(viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.activity_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.circle_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.group_stream(actor_uid: group.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
-      it { expect(Activity.person_stream(actor_uid: person.id, viewer_id: person.id)).to be_kind_of(ActiveRecord::Relation) }
+
+      it do
+        expect(Activity.stream(viewer_id: person.id))
+        .to be_kind_of(ActiveRecord::Relation)
+      end
+
+      it do
+        expect(Activity.activity_stream(common_stream_attributes))
+        .to be_kind_of(ActiveRecord::Relation)
+      end
+
+      it do
+        expect(Activity.circle_stream(common_stream_attributes))
+        .to be_kind_of(ActiveRecord::Relation)
+      end
+
+      it do
+        expect(Activity.group_stream(group_stream_attributes))
+        .to be_kind_of(ActiveRecord::Relation)
+      end
+
+      it do
+        expect(Activity.person_stream(common_stream_attributes))
+        .to be_kind_of(ActiveRecord::Relation)
+      end
     end
   end
 end
