@@ -18,7 +18,8 @@ module Socializer
       end
 
       context "when the provider is gravatar" do
-        it { expect(decorated_person.avatar_url).to include("http://www.gravatar.com/avatar/") }
+        let(:avatar_url) { "http://www.gravatar.com/avatar/" }
+        it { expect(decorated_person.avatar_url).to include(avatar_url) }
 
         context "with a blank email" do
           let(:person) { build(:socializer_person, email: nil) }
@@ -34,9 +35,14 @@ module Socializer
       end
 
       context "specified" do
-        let(:person) { build(:socializer_person, birthdate: Time.zone.now - 10.years) }
+        let(:person) do
+          build(:socializer_person, birthdate: Time.zone.now - 10.years)
+        end
 
-        it { expect(decorated_person.birthdate).to eq(person.birthdate.to_s(:long_ordinal)) }
+        it do
+          expect(decorated_person.birthdate)
+          .to eq(person.birthdate.to_s(:long_ordinal))
+        end
       end
     end
 
@@ -46,35 +52,74 @@ module Socializer
 
       context "with no image_url" do
         let(:result) { decorated_person.image_tag_avatar }
-        it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar]") }
+
+        it do
+          expect(result).to have_selector("img[alt=Avatar][src*=gravatar]")
+        end
+
         it { expect(result).to include(decorated_person.avatar_url) }
       end
 
       context "with the size argument" do
         context "with Width x Height" do
-          let(:result) { decorated_person.image_tag_avatar(size: "50x100") }
-          it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][width='50'][height='100']") }
+          let(:result) do
+            decorated_person.image_tag_avatar(size: "50x100")
+          end
+
+          let(:selector) do
+            "img[alt=Avatar][src*=gravatar][width='50'][height='100']"
+          end
+
+          it { expect(result).to have_selector(selector) }
         end
 
         context "with number" do
-          let(:result) { decorated_person.image_tag_avatar(size: "100") }
-          it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][width='100'][height='100']") }
+          let(:result) do
+            decorated_person.image_tag_avatar(size: "100")
+          end
+
+          let(:selector) do
+            "img[alt=Avatar][src*=gravatar][width='100'][height='100']"
+          end
+
+          it { expect(result).to have_selector(selector) }
         end
       end
 
       context "with css class" do
-        let(:result) { decorated_person.image_tag_avatar(css_class: "img") }
-        it { expect(result).to have_selector("img[alt=Avatar][src*=gravatar][class='img']") }
+        let(:result) do
+          decorated_person.image_tag_avatar(css_class: "img")
+        end
+
+        let(:selector) do
+          "img[alt=Avatar][src*=gravatar][class='img']"
+        end
+
+        it { expect(result).to have_selector(selector) }
       end
 
       context "with the alt argument" do
-        let(:result) { decorated_person.image_tag_avatar(alt: "Different Text") }
-        it { expect(result).to have_selector("img[alt='Different Text'][src*=gravatar]") }
+        let(:result) do
+          decorated_person.image_tag_avatar(alt: "Different Text")
+        end
+
+        let(:selector) do
+          "img[alt='Different Text'][src*=gravatar]"
+        end
+
+        it { expect(result).to have_selector(selector) }
       end
 
       context "with the title argument" do
-        let(:result) { decorated_person.image_tag_avatar(title: "Title Text") }
-        it { expect(result).to have_selector("img[alt='Avatar'][src*=gravatar][title='Title Text']") }
+        let(:result) do
+          decorated_person.image_tag_avatar(title: "Title Text")
+        end
+
+        let(:selector) do
+          "img[alt='Avatar'][src*=gravatar][title='Title Text']"
+        end
+
+        it { expect(result).to have_selector(selector) }
       end
     end
 
@@ -83,8 +128,16 @@ module Socializer
       let(:decorated_person) { PersonDecorator.new(person) }
       let(:result) { decorated_person.link_to_avatar }
 
-      it { expect(result).to have_link("", href: helpers.person_activities_path(person_id: person.id)) }
-      it { expect(result).to include(decorated_person.image_tag_avatar(title: decorated_person.display_name)) }
+      let(:image_tag_avatar) do
+        decorated_person.image_tag_avatar(title: decorated_person.display_name)
+      end
+
+      let(:person_activities_path) do
+        helpers.person_activities_path(person_id: person.id)
+      end
+
+      it { expect(result).to have_link("", href: person_activities_path) }
+      it { expect(result).to include(image_tag_avatar) }
     end
 
     context "toolbar_stream_links" do
@@ -104,40 +157,112 @@ module Socializer
         let(:li_count) { person.circles.count + 1 }
 
         it { expect(result.html_safe?).to be true }
-        it { expect(result).to have_link("Friends", href: "/circles/1/activities") }
-        it { expect(result).to have_link("Family", href: "/circles/2/activities") }
-        it { expect(result).to have_link("Acquaintances", href: "/circles/3/activities") }
-        it { expect(result).to have_link("Following", href: "/circles/4/activities") }
-        it { expect(result).not_to have_link("Group", href: "/groups/1/activities") }
 
-        it { expect(result).to have_selector("li", count: li_count) }
-        it { expect(result).to have_link(t("socializer.shared.toolbar.more"), href: "#") }
-        it { expect(result).to have_selector("li.dropdown") }
-        it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
-        it { expect(result).to have_selector("ul.dropdown-menu") }
+        it do
+          expect(result)
+          .to have_link("Friends", href: "/circles/1/activities")
+        end
+
+        it do
+          expect(result)
+          .to have_link("Family", href: "/circles/2/activities")
+        end
+
+        it do
+          expect(result)
+          .to have_link("Acquaintances", href: "/circles/3/activities")
+        end
+
+        it do
+          expect(result)
+          .to have_link("Following", href: "/circles/4/activities")
+        end
+
+        it do
+          expect(result)
+          .not_to have_link("Group", href: "/groups/1/activities")
+        end
+
+        it do
+          expect(result).to have_selector("li", count: li_count)
+        end
+
+        it do
+          expect(result)
+          .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+        end
+
+        it do
+          expect(result).to have_selector("li.dropdown")
+        end
+
+        it do
+          expect(result)
+          .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
+        end
+
+        it do
+          expect(result).to have_selector("ul.dropdown-menu")
+        end
       end
 
       context "with no circles, but with memberships" do
         before do
           AddDefaultCircles.perform(person: person)
-          create(:socializer_group, author_id: person.id, display_name: "Group")
+
+          create(
+            :socializer_group,
+            author_id: person.id,
+            display_name: "Group")
         end
 
         let(:result) { decorated_person.toolbar_stream_links }
         let(:li_count) { person.circles.count + person.groups.count + 1 }
 
         it { expect(result.html_safe?).to be true }
-        it { expect(result).to have_link("Friends", href: "/circles/1/activities") }
-        it { expect(result).to have_link("Family", href: "/circles/2/activities") }
-        it { expect(result).to have_link("Acquaintances", href: "/circles/3/activities") }
-        it { expect(result).to have_link("Following", href: "/circles/4/activities") }
-        it { expect(result).to have_link("Group", href: "/groups/1/activities") }
+
+        it do
+          expect(result)
+          .to have_link("Friends", href: "/circles/1/activities")
+        end
+
+        it do
+          expect(result).to have_link("Family", href: "/circles/2/activities")
+        end
+
+        it do
+          expect(result)
+          .to have_link("Acquaintances", href: "/circles/3/activities")
+        end
+
+        it do
+          expect(result)
+          .to have_link("Following", href: "/circles/4/activities")
+        end
+
+        it do
+          expect(result).to have_link("Group", href: "/groups/1/activities")
+        end
 
         it { expect(result).to have_selector("li", count: li_count) }
-        it { expect(result).to have_link(t("socializer.shared.toolbar.more"), href: "#") }
-        it { expect(result).to have_selector("li.dropdown") }
-        it { expect(result).to have_selector("a.dropdown-toggle[data-toggle='dropdown']") }
-        it { expect(result).to have_selector("ul.dropdown-menu") }
+
+        it do
+          expect(result)
+          .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+        end
+
+        it do
+          expect(result).to have_selector("li.dropdown")
+        end
+
+        it do
+          expect(result)
+          .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
+        end
+
+        it do
+          expect(result).to have_selector("ul.dropdown-menu")
+        end
       end
     end
   end
