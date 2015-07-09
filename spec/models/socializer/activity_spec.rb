@@ -22,7 +22,12 @@ module Socializer
       it { is_expected.to belong_to(:activitable_object) }
       it { is_expected.to belong_to(:activitable_target) }
       it { is_expected.to belong_to(:verb) }
-      it { is_expected.to have_one(:actor).through(:activitable_actor).source(:activitable) }
+
+      it do
+        is_expected
+        .to have_one(:actor).through(:activitable_actor).source(:activitable)
+      end
+
       it { is_expected.to have_one(:activity_field) }
       it { is_expected.to have_many(:audiences).inverse_of(:activity) }
       it { is_expected.to have_many(:activity_objects) }
@@ -40,36 +45,61 @@ module Socializer
       context "newest_first" do
         let(:sql) { Activity.newest_first.to_sql }
 
-        it { expect(sql).to include('ORDER BY "socializer_activities"."created_at" DESC') }
+        it do
+          expect(sql)
+          .to include('ORDER BY "socializer_activities"."created_at" DESC')
+        end
       end
 
       context "by_id" do
         let(:sql) { Activity.by_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_activities"."id" = 1') }
+        it do
+          expect(sql).to include('WHERE "socializer_activities"."id" = 1')
+        end
       end
 
       context "by_activity_object_id" do
         let(:sql) { Activity.by_activity_object_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_activities"."activity_object_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_activities"."activity_object_id" = 1')
+        end
       end
 
       context "by_actor_id" do
         let(:sql) { Activity.by_actor_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_activities"."actor_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_activities"."actor_id" = 1')
+        end
       end
 
       context "by_target_id" do
         let(:sql) { Activity.by_target_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_activities"."target_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_activities"."target_id" = 1')
+        end
       end
     end
 
-    it { is_expected.to delegate_method(:activity_field_content).to(:activity_field).as(:content) }
-    it { is_expected.to delegate_method(:verb_display_name).to(:verb).as(:display_name) }
+    it do
+      is_expected
+      .to delegate_method(:activity_field_content)
+        .to(:activity_field)
+        .as(:content)
+    end
+
+    it do
+      is_expected
+      .to delegate_method(:verb_display_name)
+        .to(:verb)
+        .as(:display_name)
+    end
 
     context "#comments" do
       it { expect(activity.comments?).to eq(false) }
@@ -77,7 +107,15 @@ module Socializer
       context "to be true" do
         let(:activity) { create(:socializer_activity) }
         let(:scope) { Audience.privacy.find_value(:public) }
-        let(:comment_attributes) { { content: "Comment", activity_target_id: activity.id, activity_verb: "add", scope: scope } }
+
+        let(:comment_attributes) do
+          { content: "Comment",
+            activity_target_id: activity.id,
+            activity_verb: "add",
+            scope: scope
+          }
+        end
+
         let(:actor) { activity.actor }
 
         before :each do
@@ -94,7 +132,10 @@ module Socializer
     it { expect(activity.target).to be_kind_of(Socializer::Group) }
 
     context ".stream" do
-      let(:activity_object_person) { build(:socializer_activity_object_person) }
+      let(:activity_object_person) do
+        build(:socializer_activity_object_person)
+      end
+
       let(:activity_object_group) { build(:socializer_activity_object_group) }
       let(:person) { activity_object_person.activitable }
       let(:group) { activity_object_group.activitable }

@@ -14,13 +14,21 @@ module Socializer
       it { is_expected.to allow_mass_assignment_of(:activitable_id) }
       it { is_expected.to allow_mass_assignment_of(:activitable_type) }
       it { is_expected.to allow_mass_assignment_of(:like_count) }
-      it { is_expected.to allow_mass_assignment_of(:unread_notifications_count) }
+
+      it do
+        is_expected.to allow_mass_assignment_of(:unread_notifications_count)
+      end
+
       it { is_expected.to allow_mass_assignment_of(:object_ids) }
     end
 
     context "relationships" do
       it { is_expected.to belong_to(:activitable) }
-      it { is_expected.to have_many(:notifications).inverse_of(:activity_object) }
+
+      it do
+        is_expected.to have_many(:notifications).inverse_of(:activity_object)
+      end
+
       it { is_expected.to have_many(:audiences).inverse_of(:activity_object) }
       it { is_expected.to have_many(:activities).through(:audiences) }
       it { is_expected.to have_many(:actor_activities) }
@@ -32,7 +40,13 @@ module Socializer
       it { is_expected.to have_many(:circles).inverse_of(:activity_author) }
       it { is_expected.to have_many(:contacts).through(:circles) }
       it { is_expected.to have_many(:ties).inverse_of(:activity_contact) }
-      it { is_expected.to have_many(:memberships).conditions(active: true).inverse_of(:activity_member) }
+
+      it do
+        is_expected
+        .to have_many(:memberships)
+          .conditions(active: true)
+          .inverse_of(:activity_member)
+      end
     end
 
     context "validations" do
@@ -43,13 +57,22 @@ module Socializer
       context "by_id" do
         let(:sql) { ActivityObject.by_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_activity_objects"."id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_activity_objects"."id" = 1')
+        end
       end
 
       context "by_activitable_type" do
         let(:sql) { ActivityObject.by_activitable_type(Comment.name).to_sql }
 
-        it { expect(sql).to include(%q(WHERE "socializer_activity_objects"."activitable_type" = 'Socializer::Comment')) }
+        let(:expected) do
+          %q(WHERE "socializer_activity_objects"."activitable_type" = 'Socializer::Comment')
+        end
+
+        it do
+          expect(sql).to include(expected)
+        end
       end
     end
 
@@ -142,8 +165,16 @@ module Socializer
     context "when an object is shared" do
       let(:activity_object) { create(:socializer_activity_object) }
       let(:actor) { create(:socializer_person) }
-      let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(",") }
-      let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: "Share") }
+
+      let(:object_ids) do
+        Socializer::Audience.privacy.find_value(:public).value.split(",")
+      end
+
+      let(:share_attributes) do
+        { actor_id: actor.guid, object_ids: object_ids, content: "Share" }
+      end
+
+      let(:results) { activity_object.share(share_attributes) }
 
       it { expect(results.persisted?).to eq(true) }
       it { expect(results.actor_id).to eq(actor.guid) }
@@ -152,7 +183,12 @@ module Socializer
       it { expect(results.activity_field_content).to eq("Share") }
 
       context "with no content" do
-        let(:results) { activity_object.share(actor_id: actor.guid, object_ids: object_ids, content: nil) }
+        let(:share_attributes) do
+          { actor_id: actor.guid, object_ids: object_ids, content: nil }
+        end
+
+        let(:results) { activity_object.share(share_attributes) }
+
         it { expect(results.activity_field_content).to eq(nil) }
       end
     end

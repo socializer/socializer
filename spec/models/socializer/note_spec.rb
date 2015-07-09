@@ -13,8 +13,20 @@ module Socializer
     end
 
     context "relationships" do
-      it { is_expected.to belong_to(:activity_author).class_name("ActivityObject").with_foreign_key("author_id").inverse_of(:notes) }
-      it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
+      it do
+        is_expected
+        .to belong_to(:activity_author)
+          .class_name("ActivityObject")
+          .with_foreign_key("author_id")
+          .inverse_of(:notes)
+      end
+
+      it do
+        is_expected
+        .to have_one(:author)
+          .through(:activity_author)
+          .source(:activitable)
+      end
     end
 
     context "validations" do

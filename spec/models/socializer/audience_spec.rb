@@ -21,25 +21,46 @@ module Socializer
     context "validations" do
       it { is_expected.to validate_presence_of(:privacy) }
       # it { is_expected.to validate_presence_of(:activity_id) }
-      # it { is_expected.to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
-      # it { expect(create(:socializer_audience)).to validate_uniqueness_of(:activity_id).scoped_to(:activity_object_id) }
+      #
+      # it do
+      #   is_expected
+      #   .to validate_uniqueness_of(:activity_id)
+      #     .scoped_to(:activity_object_id)
+      # end
+
+      # it do
+      #   expect(create(:socializer_audience))
+      #   .to validate_uniqueness_of(:activity_id)
+      #     .scoped_to(:activity_object_id)
+      # end
     end
 
     context "scopes" do
       context "by_activity_id" do
         let(:sql) { Audience.by_activity_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_audiences"."activity_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_audiences"."activity_id" = 1')
+        end
       end
 
       context "by_activity_object_id" do
         let(:sql) { Audience.by_activity_object_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_audiences"."activity_object_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_audiences"."activity_object_id" = 1')
+        end
       end
     end
 
-    it { is_expected.to enumerize(:privacy).in(:public, :circles, :limited).with_default(:public) }
+    it do
+      is_expected
+      .to enumerize(:privacy)
+        .in(:public, :circles, :limited)
+        .with_default(:public)
+    end
 
     context "#object" do
       let(:activitable) { audience.activity_object.activitable }

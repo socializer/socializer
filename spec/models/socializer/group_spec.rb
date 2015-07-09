@@ -15,13 +15,38 @@ module Socializer
     end
 
     context "relationships" do
-      it { is_expected.to belong_to(:activity_author).class_name("ActivityObject").with_foreign_key("author_id").inverse_of(:groups) }
-      it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
+      it do
+        is_expected
+        .to belong_to(:activity_author)
+          .class_name("ActivityObject")
+          .with_foreign_key("author_id")
+          .inverse_of(:groups)
+      end
+
+      it do
+        is_expected
+        .to have_one(:author)
+          .through(:activity_author)
+          .source(:activitable)
+      end
+
       it { is_expected.to have_many(:links) }
       it { is_expected.to have_many(:categories) }
       it { is_expected.to have_many(:memberships).inverse_of(:group) }
-      it { is_expected.to have_many(:activity_members).through(:memberships).conditions(socializer_memberships: { active: true }) }
-      it { is_expected.to have_many(:members).through(:activity_members).source(:activitable) }
+
+      it do
+        is_expected
+        .to have_many(:activity_members)
+          .through(:memberships)
+          .conditions(socializer_memberships: { active: true })
+      end
+
+      it do
+        is_expected
+        .to have_many(:members)
+          .through(:activity_members)
+          .source(:activitable)
+      end
     end
 
     context "validations" do
@@ -30,11 +55,18 @@ module Socializer
       it { is_expected.to validate_presence_of(:privacy) }
       it "check uniqueness of display_name" do
         create(:socializer_group)
-        is_expected.to validate_uniqueness_of(:display_name).scoped_to(:author_id).case_insensitive
+        is_expected
+        .to validate_uniqueness_of(:display_name)
+          .scoped_to(:author_id)
+          .case_insensitive
       end
     end
 
-    it { is_expected.to enumerize(:privacy).in(:public, :restricted, :private).with_default(:public) }
+    it do
+      is_expected
+      .to enumerize(:privacy).in(:public, :restricted, :private)
+        .with_default(:public)
+    end
 
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }
@@ -109,7 +141,14 @@ module Socializer
     end
 
     context "when group is restricted" do
-      let(:restricted_group) { create(:socializer_group, privacy: :restricted) }
+      let(:restricted_group) do
+        create(:socializer_group, privacy: :restricted)
+      end
+
+      let(:membership_attributes) do
+        { member_id: person.guid, group_id: restricted_group.id }
+      end
+
       let(:person) { create(:socializer_person) }
 
       before do
@@ -131,7 +170,7 @@ module Socializer
       context "and a person joins it" do
         before do
           restricted_group.join(person)
-          @membership = Membership.find_by(member_id: person.guid, group_id: restricted_group.id)
+          @membership = Membership.find_by(membership_attributes)
         end
 
         it "creates an inactive membership" do
@@ -143,6 +182,14 @@ module Socializer
     context "when group is private" do
       let(:private_group) { create(:socializer_group, privacy: :private) }
       let(:person) { create(:socializer_person) }
+
+      let(:error_message) do
+        I18n.t("socializer.errors.messages.group.private.cannot_self_join")
+      end
+
+      let(:membership_attributes) do
+        { member_id: person.guid, group_id: private_group.id }
+      end
 
       before do
         private_group.save!
@@ -157,13 +204,14 @@ module Socializer
       end
 
       it "cannot be joined" do
-        expect { private_group.join(person) }.to raise_error(RuntimeError, I18n.t("socializer.errors.messages.group.private.cannot_self_join"))
+        expect { private_group.join(person) }
+        .to raise_error(RuntimeError, error_message)
       end
 
       context "and a person gets invited" do
         before do
           private_group.invite(person)
-          @membership = Membership.find_by(member_id: person.guid, group_id: private_group.id)
+          @membership = Membership.find_by(membership_attributes)
         end
 
         it "creates an inactive membership" do
@@ -176,9 +224,13 @@ module Socializer
       let(:group) { create(:socializer_group) }
       let(:person) { create(:socializer_person) }
 
+      let(:membership_attributes) do
+        { member_id: person.guid, group_id: group.id }
+      end
+
       before do
         group.invite(person)
-        @membership = Membership.find_by(member_id: person.guid, group_id: group.id)
+        @membership = Membership.find_by(membership_attributes)
       end
 
       it "creates an inactive membership" do
@@ -187,7 +239,9 @@ module Socializer
     end
 
     context "when having no member" do
-      let(:group_without_members) { create(:socializer_group, privacy: :private) }
+      let(:group_without_members) do
+        create(:socializer_group, privacy: :private)
+      end
 
       before do
         # the author is added as a member, so remove it first
@@ -200,7 +254,9 @@ module Socializer
     end
 
     context "when having at least one member" do
-      let(:group_with_members) { create(:socializer_group, privacy: :private) }
+      let(:group_with_members) do
+        create(:socializer_group, privacy: :private)
+      end
 
       context "cannot be deleted" do
         before :each do

@@ -14,19 +14,42 @@ module Socializer
     end
 
     context "relationships" do
-      it { is_expected.to belong_to(:activity_author).class_name("ActivityObject").with_foreign_key("author_id").inverse_of(:circles) }
-      it { is_expected.to have_one(:author).through(:activity_author).source(:activitable) }
+      it do
+        is_expected
+        .to belong_to(:activity_author)
+          .class_name("ActivityObject")
+          .with_foreign_key("author_id")
+          .inverse_of(:circles)
+      end
+
+      it do
+        is_expected
+        .to have_one(:author)
+          .through(:activity_author)
+          .source(:activitable)
+      end
+
       it { is_expected.to have_many(:ties).inverse_of(:circle) }
       it { is_expected.to have_many(:activity_contacts).through(:ties) }
-      it { is_expected.to have_many(:contacts).through(:activity_contacts).source(:activitable) }
+
+      it do
+        is_expected
+        .to have_many(:contacts)
+          .through(:activity_contacts)
+          .source(:activitable)
+      end
     end
 
     context "validations" do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:display_name) }
+
       it "check uniqueness of display_name" do
         create(:socializer_circle)
-        is_expected.to validate_uniqueness_of(:display_name).scoped_to(:author_id).case_insensitive
+        is_expected
+        .to validate_uniqueness_of(:display_name)
+          .scoped_to(:author_id)
+          .case_insensitive
       end
     end
 
@@ -40,13 +63,21 @@ module Socializer
       context "by_author_id" do
         let(:sql) { Circle.by_author_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_circles"."author_id" = 1') }
+        it do
+          expect(sql).to include('WHERE "socializer_circles"."author_id" = 1')
+        end
       end
 
       context "by_display_name" do
         let(:sql) { Circle.by_display_name("Friends").to_sql }
 
-        it { expect(sql).to include(%q(WHERE "socializer_circles"."display_name" = 'Friends')) }
+        let(:expected) do
+          %q(WHERE "socializer_circles"."display_name" = 'Friends')
+        end
+
+        it do
+          expect(sql).to include(expected)
+        end
       end
     end
 

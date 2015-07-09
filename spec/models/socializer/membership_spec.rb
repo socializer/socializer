@@ -3,8 +3,17 @@ require "rails_helper"
 module Socializer
   RSpec.describe Membership, type: :model do
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { create(:socializer_membership, activity_member: user.activity_object, group: group) }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:membership) do
+      create(
+        :socializer_membership,
+        activity_member: user.activity_object,
+        group: group)
+    end
 
     it "has a valid factory" do
       expect(membership).to be_valid
@@ -18,8 +27,19 @@ module Socializer
 
     describe "relationships" do
       it { is_expected.to belong_to(:group).inverse_of(:memberships) }
-      it { is_expected.to belong_to(:activity_member).class_name("ActivityObject").with_foreign_key("member_id").inverse_of(:memberships) }
-      it { is_expected.to have_one(:member).through(:activity_member).source(:activitable) }
+
+      it do
+        is_expected
+        .to belong_to(:activity_member)
+          .class_name("ActivityObject")
+          .with_foreign_key("member_id")
+          .inverse_of(:memberships)
+      end
+
+      it do
+        is_expected
+        .to have_one(:member).through(:activity_member).source(:activitable)
+      end
     end
 
     describe "scopes" do
@@ -60,7 +80,10 @@ module Socializer
       context "by_member_id" do
         let(:sql) { Membership.by_member_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_memberships"."member_id" = 1') }
+        it do
+          expect(sql)
+          .to include('WHERE "socializer_memberships"."member_id" = 1')
+        end
 
         context "person has no memberships" do
           let(:user) { create(:socializer_person) }
@@ -93,7 +116,9 @@ module Socializer
     end
 
     describe "#confirm" do
-      let(:inactive_membership) { create(:socializer_membership, active: false) }
+      let(:inactive_membership) do
+        create(:socializer_membership, active: false)
+      end
 
       it "becomes active" do
         inactive_membership.confirm

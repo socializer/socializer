@@ -15,8 +15,21 @@ module Socializer
 
     context "relationships" do
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
-      it { is_expected.to belong_to(:activity_contact).class_name("ActivityObject").with_foreign_key("contact_id").inverse_of(:ties) }
-      it { is_expected.to have_one(:contact).through(:activity_contact).source(:activitable) }
+
+      it do
+        is_expected
+        .to belong_to(:activity_contact)
+          .class_name("ActivityObject")
+          .with_foreign_key("contact_id")
+          .inverse_of(:ties)
+      end
+
+      it do
+        is_expected
+        .to have_one(:contact)
+          .through(:activity_contact)
+          .source(:activitable)
+      end
     end
 
     context "validations" do
@@ -28,13 +41,18 @@ module Socializer
       context "by_circle_id" do
         let(:sql) { Tie.by_circle_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1') }
+        it do
+          expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1')
+        end
       end
 
       context "by_contact_id" do
         let(:sql) { Tie.by_contact_id(1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1') }
+        it do
+          expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1')
+        end
+
         it { expect(tie.contact_id).to eq(contact.id) }
 
         context "nil" do
