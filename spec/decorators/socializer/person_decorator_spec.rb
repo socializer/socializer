@@ -7,13 +7,55 @@ module Socializer
     let(:decorated_person) { PersonDecorator.new(person) }
 
     context "#avatar_url" do
-      it "when the provider is Facebook, LinkedIn, or Twitter" do
-        %w( FACEBOOK LINKEDIN TWITTER ).each do |provider|
-          person = create(:socializer_person, avatar_provider: provider)
-          person.authentications.create(provider: provider.downcase, image_url: "http://#{provider.downcase}.com", uid: person.id)
-          decorated_person = PersonDecorator.new(person)
 
-          expect(decorated_person.avatar_url).to include(provider.downcase)
+      context "when the provider is Facebook, LinkedIn, or Twitter" do
+        let(:authentication_attributes) do
+          { provider: provider.downcase,
+            image_url: "http://#{provider.downcase}.com",
+            uid: person.id
+          }
+        end
+
+        let(:person) do
+          create(:socializer_person, avatar_provider: provider)
+        end
+
+        let(:decorated_person) { PersonDecorator.new(person) }
+
+        context "it should be Facebook" do
+          before :each do
+            person.authentications.create(authentication_attributes)
+          end
+
+          let(:provider) { "FACEBOOK" }
+
+          it do
+            expect(decorated_person.avatar_url).to include(provider.downcase)
+          end
+        end
+
+        context "it should be LinkedIn" do
+          before :each do
+            person.authentications.create(authentication_attributes)
+          end
+
+          let(:provider) { "LINKEDIN" }
+
+          it do
+            expect(decorated_person.avatar_url).to include(provider.downcase)
+          end
+        end
+
+        context "it should be Twitter" do
+          before :each do
+            person.authentications.create(authentication_attributes)
+          end
+
+          let(:provider) { "TWITTER" }
+
+          it do
+            expect(decorated_person.avatar_url).to include(provider.downcase)
+          end
         end
       end
 
