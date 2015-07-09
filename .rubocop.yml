@@ -34,7 +34,7 @@ Metrics/AbcSize:
 
 Metrics/LineLength:
   # Max: 120
-  Enabled: false
+  Enabled: true
 
 Metrics/MethodLength:
   Enabled: true
