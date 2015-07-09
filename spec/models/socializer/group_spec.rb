@@ -47,6 +47,10 @@ module Socializer
       let(:public_group) { create(:socializer_group, privacy: :public) }
       let(:person) { create(:socializer_person) }
 
+      let(:membership_attributes) do
+        { member_id: person.guid, group_id: public_group.id }
+      end
+
       before do
         public_group.save!
       end
@@ -70,7 +74,7 @@ module Socializer
       context "and a person joins it" do
         before do
           public_group.join(person)
-          @membership = Membership.find_by(member_id: person.guid, group_id: public_group.id)
+          @membership = Membership.find_by(membership_attributes)
         end
 
         it "creates an active membership" do
@@ -89,7 +93,7 @@ module Socializer
         context "and leaving" do
           before do
             public_group.leave(person)
-            @membership = Membership.find_by(member_id: person.guid, group_id: public_group.id)
+            @membership = Membership.find_by(membership_attributes)
           end
 
           it "destroys the membership" do
