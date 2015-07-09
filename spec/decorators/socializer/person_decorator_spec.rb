@@ -7,7 +7,6 @@ module Socializer
     let(:decorated_person) { PersonDecorator.new(person) }
 
     context "#avatar_url" do
-
       context "when the provider is Facebook, LinkedIn, or Twitter" do
         let(:authentication_attributes) do
           { provider: provider.downcase,
