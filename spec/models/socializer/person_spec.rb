@@ -3,6 +3,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe Person, type: :model do
     let(:person) { build(:socializer_person) }
+    let(:valid_providers) { %w(TWITTER FACEBOOK LINKEDIN GRAVATAR) }
 
     it "has a valid factory" do
       expect(person).to be_valid
@@ -41,7 +42,7 @@ module Socializer
     end
 
     context "validations" do
-      it { is_expected.to validate_inclusion_of(:avatar_provider).in_array(%w(TWITTER FACEBOOK LINKEDIN GRAVATAR)) }
+      it { is_expected.to validate_inclusion_of(:avatar_provider).in_array(valid_providers) }
     end
 
     it { is_expected.to enumerize(:gender).in(:unknown, :female, :male).with_default(:unknown) }
@@ -123,7 +124,7 @@ module Socializer
     end
 
     it "accepts known avatar_provider" do
-      %w( TWITTER FACEBOOK LINKEDIN GRAVATAR ).each do |provider|
+      valid_providers.each do |provider|
         expect(build(:socializer_person, avatar_provider: provider)).to be_valid
       end
     end
