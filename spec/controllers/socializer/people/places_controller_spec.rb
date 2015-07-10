@@ -6,20 +6,35 @@ module Socializer
 
     # Create a user nad place
     let(:user) { create(:socializer_person) }
-    let(:valid_attributes) { { city_name: "name" } }
-    let(:place) { user.places.create!(valid_attributes) }
+
+    let(:valid_attributes) do
+      { person_id: user,
+        person_place: { city_name: "name" }
+      }
+    end
+
+    let(:place) do
+      user.places.create!(valid_attributes[:person_place])
+    end
+
+    let(:update_attributes) do
+      { id: place,
+        person_id: user,
+        person_place: { city_name: "updated content" }
+      }
+    end
 
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
-          post :create, person_place: valid_attributes, person_id: user
+          post :create, valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: place, person_id: user, person_place: { city_name: "updated content" }
+          patch :update, update_attributes
           expect(response).to redirect_to root_path
         end
       end
@@ -41,11 +56,12 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new place in the database" do
-            expect { post :create, person_place: valid_attributes, person_id: user }.to change(PersonPlace, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(PersonPlace, :count).by(1)
           end
 
           it "redirects to people#show" do
-            post :create, person_place: valid_attributes, person_id: user
+            post :create, valid_attributes
             expect(response).to redirect_to user
           end
         end
@@ -58,7 +74,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, id: place, person_id: user, person_place: { city_name: "updated content" }
+            patch :update, update_attributes
             expect(response).to redirect_to user
           end
         end
@@ -71,7 +87,8 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the place" do
           place
-          expect { delete :destroy, id: place, person_id: user }.to change(PersonPlace, :count).by(-1)
+          expect { delete :destroy, id: place, person_id: user }
+          .to change(PersonPlace, :count).by(-1)
         end
 
         it "redirects to people#show" do

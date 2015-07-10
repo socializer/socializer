@@ -6,8 +6,14 @@ module Socializer
 
     # Create a user and a group
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { Membership.find_by(group_id: group.id) }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:membership) do
+      Membership.find_by(group_id: group.id)
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

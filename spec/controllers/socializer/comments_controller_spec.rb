@@ -6,9 +6,27 @@ module Socializer
 
     # Create a user and a comment
     let(:user) { create(:socializer_person) }
-    let(:comment) { create(:socializer_comment, activity_author: user.activity_object) }
-    let(:note) { create(:socializer_note) }
-    let(:valid_attributes) { { comment: { content: "This is a comment", activity_target_id: note.guid } } }
+
+    let(:comment) do
+      create(:socializer_comment, activity_author: user.activity_object)
+    end
+
+    let(:note) do
+      create(:socializer_note)
+    end
+
+    let(:valid_attributes) do
+      { comment: { content: "This is a comment",
+                   activity_target_id: note.guid
+                 }
+      }
+    end
+
+    let(:update_attributes) do
+      { id: comment,
+        comment: { content: "This is a comment update" }
+      }
+    end
 
     describe "when not logged in" do
       describe "GET #new" do
@@ -34,7 +52,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: comment, comment: { content: "This is a comment update" }
+          patch :update, update_attributes
           expect(response).to redirect_to root_path
         end
       end
@@ -70,7 +88,8 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new comment in the database" do
-            expect { post :create, valid_attributes }.to change(Comment, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(Comment, :count).by(1)
           end
 
           it "redirects to activities#index" do
@@ -101,7 +120,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to activities#index" do
-            patch :update, id: comment, comment: { content: "This is a comment" }
+            patch :update, update_attributes
             expect(response).to redirect_to activities_path
           end
         end
@@ -114,7 +133,8 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the comment" do
           comment
-          expect { delete :destroy, id: comment }.to change(Comment, :count).by(-1)
+          expect { delete :destroy, id: comment }
+          .to change(Comment, :count).by(-1)
         end
 
         it "redirects to activities#index" do

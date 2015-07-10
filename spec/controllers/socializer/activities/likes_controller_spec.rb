@@ -39,7 +39,8 @@ module Socializer
         it { should use_before_action(:authenticate_user) }
 
         describe "Set likable and activity" do
-          # Verify that the likable variable is set before create and destroy action
+          # Verify that the likable variable is set before create and destroy
+          # action
           [:create, :destroy].each do |action|
             before { post action, id: note_activity.guid, format: :js }
 

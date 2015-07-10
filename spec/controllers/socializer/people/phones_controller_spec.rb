@@ -6,20 +6,35 @@ module Socializer
 
     # Create a user and phone
     let(:user) { create(:socializer_person) }
-    let(:valid_attributes) { { category: :home, label: 1, number: "1234567890" } }
-    let(:phone) { user.phones.create!(valid_attributes) }
+
+    let(:valid_attributes) do
+      {
+        person_id: user,
+        person_phone: { category: :home, label: 1, number: "1234567890" }
+      }
+    end
+
+    let(:phone) do
+      user.phones.create!(valid_attributes[:person_phone])
+    end
+    let(:update_attributes) do
+      { id: phone,
+        person_id: user,
+        person_phone: { number: "6666666666" }
+      }
+    end
 
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
-          post :create, person_phone: valid_attributes, person_id: user
+          post :create, valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: phone, person_id: user, person_phone: { number: "6666666666" }
+          patch :update, update_attributes
           expect(response).to redirect_to root_path
         end
       end
@@ -41,11 +56,12 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new phone in the database" do
-            expect { post :create, person_phone: valid_attributes, person_id: user }.to change(PersonPhone, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(PersonPhone, :count).by(1)
           end
 
           it "redirects to people#show" do
-            post :create, person_phone: valid_attributes, person_id: user
+            post :create, valid_attributes
             expect(response).to redirect_to user
           end
         end
@@ -58,7 +74,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, id: phone, person_id: user, person_phone: { number: "6666666666" }
+            patch :update, update_attributes
             expect(response).to redirect_to user
           end
         end
@@ -71,7 +87,8 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the phone" do
           phone
-          expect { delete :destroy, id: phone, person_id: user }.to change(PersonPhone, :count).by(-1)
+          expect { delete :destroy, id: phone, person_id: user }
+          .to change(PersonPhone, :count).by(-1)
         end
 
         it "redirects to people#show" do

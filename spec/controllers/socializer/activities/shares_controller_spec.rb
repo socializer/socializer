@@ -8,8 +8,19 @@ module Socializer
       # Create a user and a note to share
       let(:user) { create(:socializer_person) }
       let(:note) { create(:socializer_note) }
-      let(:object_ids) { Socializer::Audience.privacy.find_value(:public).value.split(",") }
-      let(:valid_attributes) { { share: { content: "", object_ids: object_ids, activity_id: note.guid }, id: note } }
+
+      let(:object_ids) do
+        Socializer::Audience.privacy.find_value(:public).value.split(",")
+      end
+
+      let(:valid_attributes) do
+        { id: note,
+          share: { content: "",
+                   object_ids: object_ids,
+                   activity_id: note.guid
+                 }
+        }
+      end
 
       describe "when not logged in" do
         describe "GET #new" do

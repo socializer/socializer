@@ -31,9 +31,21 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #index" do
-        let(:params) { { note: { content: "Test", object_ids: "public", activity_verb: "post" } } }
-        let(:note) { user.activity_object.notes.create!(params[:note]) }
-        let(:activity) { Activity.find_by(activity_object_id: note.guid).decorate }
+        let(:params) do
+          { note: { content: "Test",
+                    object_ids: "public",
+                    activity_verb: "post"
+                  }
+          }
+        end
+
+        let(:note) do
+          user.activity_object.notes.create!(params[:note])
+        end
+
+        let(:activity) do
+          Activity.find_by(activity_object_id: note.guid).decorate
+        end
 
         context "when unread notifications are 0" do
           before do
@@ -41,7 +53,8 @@ module Socializer
           end
 
           it "assigns @notifications" do
-            expect(assigns(:notifications)).to match_array(activity.notifications)
+            expect(assigns(:notifications))
+            .to match_array(activity.notifications)
           end
 
           it "renders the :index template" do
@@ -70,12 +83,16 @@ module Socializer
           get :show, id: notification
         end
 
+        let(:activities_path) do
+          activity_activities_path(activity_id: notification.activity.id)
+        end
+
         it "marks the notification as read" do
           expect(notification.reload.read).to be true
         end
 
         it "renders the show template" do
-          expect(response).to redirect_to activity_activities_path(activity_id: notification.activity.id)
+          expect(response).to redirect_to activities_path
         end
       end
     end

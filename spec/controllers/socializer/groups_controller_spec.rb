@@ -6,11 +6,30 @@ module Socializer
 
     # Create a user and a group
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { Membership.find_by(group_id: group.id) }
-    let(:privacy) { Socializer::Group.privacy.find_value(:public).value }
-    let(:valid_attributes) { { group: { author_id: user.guid, display_name: "Test", privacy: privacy } } }
-    let(:invalid_attributes) { { group: { author_id: user.guid, display_name: "", privacy: nil } } }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:membership) do
+      Membership.find_by(group_id: group.id)
+    end
+
+    let(:privacy) do
+      Socializer::Group.privacy.find_value(:public).value
+    end
+
+    let(:valid_attributes) do
+      { group: { author_id: user.guid,
+                 display_name: "Test",
+                 privacy: privacy
+               }
+      }
+    end
+
+    let(:invalid_attributes) do
+      { group: { author_id: user.guid, display_name: "", privacy: nil } }
+    end
 
     describe "when not logged in" do
       describe "GET #index" do
@@ -118,7 +137,8 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new group in the database" do
-            expect { post :create, valid_attributes }.to change(Group, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(Group, :count).by(1)
           end
 
           it "redirects to group#show" do
@@ -129,7 +149,8 @@ module Socializer
 
         context "with invalid attributes" do
           it "does not save the new circle in the database" do
-            expect { post :create, invalid_attributes }.not_to change(Group, :count)
+            expect { post :create, invalid_attributes }
+            .not_to change(Group, :count)
           end
 
           it "re-renders the :new template" do
@@ -155,7 +176,9 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-          let(:privacy) { Socializer::Group.privacy.find_value(:private).value }
+          let(:privacy) do
+            Socializer::Group.privacy.find_value(:private).value
+          end
 
           it "redirects to groups#show" do
             patch :update, id: group, group: { privacy: privacy }
@@ -172,7 +195,8 @@ module Socializer
         context "cannot delete a group that has members" do
           it "deletes the group" do
             group
-            expect { delete :destroy, id: group }.not_to change(Group, :count)
+            expect { delete :destroy, id: group }
+            .not_to change(Group, :count)
           end
         end
 
@@ -183,7 +207,8 @@ module Socializer
 
           it "deletes the group" do
             group
-            expect { delete :destroy, id: group }.to change(Group, :count).by(-1)
+            expect { delete :destroy, id: group }
+            .to change(Group, :count).by(-1)
           end
 
           it "redirects to groups#index" do

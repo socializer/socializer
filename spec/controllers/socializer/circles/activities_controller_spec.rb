@@ -6,8 +6,14 @@ module Socializer
 
     # Create a user, circle, and activities
     let(:user) { create(:socializer_person) }
-    let(:circle) { create(:socializer_circle, activity_author: user.activity_object) }
-    let(:activities) { Activity.circle_stream(actor_uid: circle.id, viewer_id: user.id).decorate }
+
+    let(:circle) do
+      create(:socializer_circle, activity_author: user.activity_object)
+    end
+
+    let(:activities) do
+      Activity.circle_stream(actor_uid: circle.id, viewer_id: user.id).decorate
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

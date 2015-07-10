@@ -6,8 +6,20 @@ module Socializer
 
     # Create a user, note, and an activity
     let(:user) { create(:socializer_person) }
-    let(:note) { create(:socializer_note, activity_author: user.activity_object) }
-    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: "post", object_ids: "public").perform }
+
+    let(:note) do
+      create(:socializer_note, activity_author: user.activity_object)
+    end
+
+    let(:activity_attributes) do
+      { actor_id: user.guid,
+        activity_object_id: note.guid,
+        verb: "post",
+        object_ids: "public"
+      }
+    end
+
+    let(:result) { ActivityCreator.new(activity_attributes).perform }
     let(:activity) { result.decorate }
 
     describe "when not logged in" do
@@ -33,7 +45,7 @@ module Socializer
       it { should use_before_action(:authenticate_user) }
 
       describe "GET #index" do
-        before :each do
+        before do
           get :index
         end
 
@@ -64,7 +76,7 @@ module Socializer
 
       describe "DELETE #destroy" do
         context "assigns variables and returns success" do
-          before :each do
+          before do
             delete :destroy,  id: activity, format: :js
           end
 
@@ -83,7 +95,8 @@ module Socializer
 
         it "deletes the activity" do
           activity
-          expect { delete :destroy, id: activity, format: :js }.to change(Activity, :count).by(-1)
+          expect { delete :destroy, id: activity, format: :js }
+          .to change(Activity, :count).by(-1)
         end
       end
     end

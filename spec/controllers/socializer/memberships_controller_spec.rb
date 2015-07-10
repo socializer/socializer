@@ -6,8 +6,17 @@ module Socializer
 
     # Create a user, a group, and a membership
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { create(:socializer_membership, group: group, activity_member: user.activity_object) }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:membership) do
+      create(:socializer_membership,
+             group: group,
+             activity_member: user.activity_object)
+    end
+
     let(:valid_attributes) { { membership: { group_id: group.id } } }
 
     describe "when not logged in" do
@@ -36,7 +45,8 @@ module Socializer
         context "with valid attributes" do
           it "saves the new membership in the database" do
             group
-            expect { post :create, valid_attributes }.to change(Membership, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(Membership, :count).by(1)
           end
 
           it "redirects to groups#show" do
@@ -53,7 +63,8 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the membership" do
           membership
-          expect { delete :destroy, id: membership }.to change(Membership, :count).by(-1)
+          expect { delete :destroy, id: membership }
+          .to change(Membership, :count).by(-1)
         end
       end
     end

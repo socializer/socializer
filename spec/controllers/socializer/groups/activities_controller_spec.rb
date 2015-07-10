@@ -6,8 +6,14 @@ module Socializer
 
     # Create a user, group, and activities
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:activities) { Activity.group_stream(actor_uid: group.id, viewer_id: user.id).decorate }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:activities) do
+      Activity.group_stream(actor_uid: group.id, viewer_id: user.id).decorate
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

@@ -6,8 +6,20 @@ module Socializer
 
     # Create a user, a group, and a membership
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
-    let(:membership) { create(:socializer_membership, group: group, activity_member: user.activity_object) }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
+
+    let(:membership_attributes) do
+      { group: group,
+        activity_member: user.activity_object
+      }
+    end
+
+    let(:membership) do
+      create(:socializer_membership, membership_attributes)
+    end
 
     describe "when not logged in" do
       describe "DELETE #destroy" do
@@ -28,7 +40,8 @@ module Socializer
         context "with valid attributes" do
           it "decline the membership" do
             membership
-            expect { delete :destroy, id: membership.id }.to change(Membership, :count).by(-1)
+            expect { delete :destroy, id: membership.id }
+            .to change(Membership, :count).by(-1)
           end
 
           it "redirects to groups#pending_invites" do

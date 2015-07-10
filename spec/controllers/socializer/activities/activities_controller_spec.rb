@@ -6,10 +6,34 @@ module Socializer
 
     # Create a user, activity, and activities
     let(:user) { create(:socializer_person) }
-    let(:note) { create(:socializer_note, activity_author: user.activity_object) }
-    let(:result) { ActivityCreator.new(actor_id: user.guid, activity_object_id: note.guid, verb: "post", object_ids: "public").perform }
-    let(:activity) { result.decorate }
-    let(:activities) { Activity.activity_stream(actor_uid: activity.id, viewer_id: user.id).decorate }
+
+    let(:note) do
+      create(:socializer_note, activity_author: user.activity_object)
+    end
+
+    let(:creator_attributes) do
+      { actor_id: user.guid,
+        activity_object_id: note.guid,
+        verb: "post",
+        object_ids: "public"
+      }
+    end
+
+    let(:result) do
+      ActivityCreator.new(creator_attributes).perform
+    end
+
+    let(:activity) do
+      result.decorate
+    end
+
+    let(:stream_attributes) do
+      { actor_uid: activity.id, viewer_id: user.id }
+    end
+
+    let(:activities) do
+      Activity.activity_stream(stream_attributes).decorate
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

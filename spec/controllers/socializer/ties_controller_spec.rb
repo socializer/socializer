@@ -7,8 +7,18 @@ module Socializer
     # Create a user, a circle, a tie, and valid_attributes
     let(:user) { create(:socializer_person) }
     let(:circle) { create(:socializer_circle) }
-    let(:tie) { create(:socializer_tie, activity_contact: user.activity_object, circle: circle) }
-    let(:valid_attributes) { { tie: { circle_id: circle.id, contact_id: user.activity_object.id } } }
+
+    let(:tie_attributes) do
+      { activity_contact: user.activity_object, circle: circle }
+    end
+
+    let(:tie) do
+      create(:socializer_tie, tie_attributes)
+    end
+
+    let(:valid_attributes) do
+      { tie: { circle_id: circle.id, contact_id: user.activity_object.id } }
+    end
 
     describe "when not logged in" do
       describe "POST #create" do
@@ -39,7 +49,8 @@ module Socializer
 
         context "with valid attributes" do
           it "saves the new group in the database" do
-            expect { post :create, valid_attributes }.to change(Tie, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(Tie, :count).by(1)
           end
 
           it "returns http ok" do

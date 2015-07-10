@@ -6,9 +6,22 @@ module Socializer
 
     # Create a user, audience, and activities
     let(:user) { create(:socializer_person) }
-    let(:note) { user.activity_object.notes.create!(content: "Test note", object_ids: ["public"], activity_verb: "post") }
-    let(:activity) { Activity.find_by(activity_object_id: note.activity_object.id) }
-    let(:audience_list) { ActivityAudienceList.new(activity: activity).perform }
+
+    let(:note_attributes) do
+      { content: "Test note", object_ids: ["public"], activity_verb: "post" }
+    end
+
+    let(:note) do
+      user.activity_object.notes.create!(note_attributes)
+    end
+
+    let(:activity) do
+      Activity.find_by(activity_object_id: note.activity_object.id)
+    end
+
+    let(:audience_list) do
+      ActivityAudienceList.new(activity: activity).perform
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

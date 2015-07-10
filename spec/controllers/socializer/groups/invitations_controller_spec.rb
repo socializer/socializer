@@ -6,7 +6,10 @@ module Socializer
 
     # Create a user and a group
     let(:user) { create(:socializer_person) }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object) }
+
+    let(:group) do
+      create(:socializer_group, activity_author: user.activity_object)
+    end
 
     describe "when not logged in" do
       describe "POST #create" do

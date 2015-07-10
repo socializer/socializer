@@ -6,8 +6,18 @@ module Socializer
 
     # Create a user and a group
     let(:user) { create(:socializer_person) }
-    let(:privacy) { Socializer::Group.privacy.find_value(:restricted).value }
-    let(:group) { create(:socializer_group, activity_author: user.activity_object, privacy: privacy) }
+
+    let(:privacy) do
+      Socializer::Group.privacy.find_value(:restricted).value
+    end
+
+    let(:group_attributes) do
+      { activity_author: user.activity_object, privacy: privacy }
+    end
+
+    let(:group) do
+      create(:socializer_group, group_attributes)
+    end
 
     describe "when not logged in" do
       describe "GET #index" do

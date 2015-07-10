@@ -6,8 +6,20 @@ module Socializer
 
     # Create a user, a circle, and valid+attributes
     let(:user) { create(:socializer_person) }
-    let(:circle) { create(:socializer_circle, activity_author: user.activity_object) }
-    let(:valid_attributes) { { circle: { author_id: user.guid, display_name: "Test" } } }
+
+    let(:circle) do
+      create(:socializer_circle, activity_author: user.activity_object)
+    end
+
+    let(:valid_attributes) do
+      { circle: { author_id: user.guid, display_name: "Test" } }
+    end
+
+    let(:update_attributes) do
+      { id: circle,
+        circle: { display_name: "Test1" }
+      }
+    end
 
     describe "when not logged in" do
       describe "GET #index" do
@@ -47,7 +59,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: circle, circle: { display_name: "Test1" }
+          patch :update, update_attributes
           expect(response).to redirect_to root_path
         end
       end
@@ -125,7 +137,8 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new circle in the database" do
-            expect { post :create, valid_attributes }.to change(Circle, :count).by(1)
+            expect { post :create, valid_attributes }
+            .to change(Circle, :count).by(1)
           end
 
           it "redirects to circles#contacts" do
@@ -156,7 +169,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to the updated circle" do
-            patch :update, id: circle, circle: { display_name: "Test1" }
+            patch :update, update_attributes
             expect(response).to redirect_to circle
           end
         end
@@ -169,7 +182,8 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the circle" do
           circle
-          expect { delete :destroy, id: circle }.to change(Circle, :count).by(-1)
+          expect { delete :destroy, id: circle }
+          .to change(Circle, :count).by(-1)
         end
 
         it "redirects to contacts#index" do
