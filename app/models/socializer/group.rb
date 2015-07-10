@@ -81,9 +81,11 @@ module Socializer
 
     # Add a member to the group
     #
-    # @param person [Socializer::Person] the person that would like to join the group
+    # @param person [Socializer::Person] the person that would like to join the
+    # group
     #
-    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting object is returned if validations passes.
+    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The
+    # resulting object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def join(person)
       if privacy.public?
@@ -100,9 +102,11 @@ module Socializer
 
     # Invite a member to the group
     #
-    # @param person [Socializer::Person] the person that you are inviting to the group
+    # @param person [Socializer::Person] the person that you are inviting to
+    # the group
     #
-    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting object is returned if validations passes.
+    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting
+    # object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def invite(person)
       memberships.create!(activity_member: person.activity_object, active: false)
@@ -112,9 +116,10 @@ module Socializer
     #
     # @param person [Socializer::Person] the person that is leaving the group
     #
-    # @return [Socializer:Membership/FalseClass] Deletes the record in the database and freezes this instance to reflect
-    # that no changes should be made (since they can't be persisted). If the before_destroy callback returns false
-    # the action is cancelled and leave returns false.
+    # @return [Socializer:Membership/FalseClass] Deletes the record in the
+    # database and freezes this instance to reflect that no changes should be
+    # made (since they can't be persisted). If the before_destroy callback
+    # returns false the action is cancelled and leave returns false.
     def leave(person)
       membership = memberships.find_by(activity_member: person.activity_object)
       membership.destroy
