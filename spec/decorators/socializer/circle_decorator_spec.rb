@@ -18,7 +18,10 @@ module Socializer
       end
 
       context "with 4 ties" do
-        let(:circle) { create(:socializer_circle, :with_ties, number_of_ties: 4) }
+        let(:circle) do
+          create(:socializer_circle, :with_ties, number_of_ties: 4)
+        end
+
         let(:decorated_circle) { CircleDecorator.new(circle) }
 
         it { expect(decorated_circle.ties_count).to eq("4 people") }
