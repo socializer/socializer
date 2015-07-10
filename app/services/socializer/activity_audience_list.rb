@@ -13,7 +13,11 @@ module Socializer
     # @return [Socializer:ActivityAudienceList] returns an instance of ActivityAudienceList
     def initialize(activity:)
       unless activity.is_a?(Socializer::Activity)
-        message = I18n.t("socializer.errors.messages.wrong_instance_type", argument: "activity", valid_class: Activity.name, invalid_class: activity.class.name)
+        message = I18n.t("socializer.errors.messages.wrong_instance_type",
+                         argument: "activity",
+                         valid_class: Activity.name,
+                         invalid_class: activity.class.name)
+
         fail(ArgumentError, message)
       end
 

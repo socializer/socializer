@@ -8,7 +8,8 @@ module Socializer
   class ActivityCreator
     include ActiveModel::Model
 
-    attr_accessor :actor_id, :activity_object_id, :target_id, :verb, :object_ids, :content
+    attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
+                  :object_ids, :content
 
     # Validations
     validates :actor_id, presence: true
@@ -24,7 +25,9 @@ module Socializer
     def perform
       return create_activity if valid?
 
-      message = I18n.t("activerecord.errors.messages.record_invalid", errors: errors.full_messages.to_sentence)
+      message = I18n.t("activerecord.errors.messages.record_invalid",
+                       errors: errors.full_messages.to_sentence)
+
       fail(RecordInvalid, message)
     end
 

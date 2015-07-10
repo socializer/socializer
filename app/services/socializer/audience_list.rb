@@ -14,7 +14,11 @@ module Socializer
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       unless person.is_a?(Socializer::Person)
-        message = I18n.t("socializer.errors.messages.wrong_instance_type", argument: "person", valid_class: Person.name, invalid_class: person.class.name)
+        message = I18n.t("socializer.errors.messages.wrong_instance_type",
+                         argument: "person",
+                         valid_class: Person.name,
+                         invalid_class: person.class.name)
+
         fail(ArgumentError, message)
       end
 
