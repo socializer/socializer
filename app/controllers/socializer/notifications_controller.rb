@@ -17,9 +17,11 @@ module Socializer
     # GET /notifications/1
     def show
       notification = Notification.find_by(id: params[:id])
+      activity     = notification.activity
+
       notification.mark_as_read if notification.unread?
 
-      redirect_to activity_activities_path(activity_id: notification.activity.id)
+      redirect_to activity_activities_path(activity_id: activity.id)
     end
 
     private

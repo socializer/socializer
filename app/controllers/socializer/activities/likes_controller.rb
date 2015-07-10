@@ -53,7 +53,8 @@ module Socializer
         likable.activitable.decorate
       end
 
-      # # Never trust parameters from the scary internet, only allow the white list through.
+      # Never trust parameters from the scary internet, only allow the white
+      # list through.
       # def like_params
       #   params.require(:like).permit(:actor_id, :activity_object_id)
       # end

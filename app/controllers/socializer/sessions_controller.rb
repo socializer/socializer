@@ -9,7 +9,8 @@ module Socializer
     # GET|POST /auth/facebook/callback
     def create
       auth      = request.env["omniauth.auth"]
-      user_auth = Authentication.find_by(provider: auth.provider, uid: auth.uid)
+      user_auth = Authentication.find_by(provider: auth.provider,
+                                         uid: auth.uid)
 
       return login(user_auth.person) if user_auth.present?
 
@@ -31,7 +32,9 @@ module Socializer
     private
 
     def add_authentication(auth)
-      current_user.authentications.create!(provider: auth.provider, uid: auth.uid)
+      current_user.authentications.create!(provider: auth.provider,
+                                           uid: auth.uid)
+
       redirect_to authentications_path
     end
 
