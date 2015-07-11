@@ -70,7 +70,7 @@ module Socializer
           %q(
               WHERE "socializer_activity_objects"."activitable_type" =
                 'Socializer::Comment'
-            )
+            ).squish
         end
 
         it do
