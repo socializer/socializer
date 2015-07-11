@@ -35,6 +35,7 @@ Metrics/AbcSize:
 Metrics/LineLength:
   # Max: 120
   Enabled: true
+    - 'script/cucumber'
 
 Metrics/MethodLength:
   Enabled: true
