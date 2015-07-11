@@ -51,7 +51,7 @@ module Socializer
       end
     end
 
-    def audience_privacy(audience_id: audience_id)
+    def audience_privacy(audience_id:)
       not_limited = %W(#{public_privacy} #{circles_privacy})
 
       @audience_privacy ||= if not_limited.include?(audience_id)
