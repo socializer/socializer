@@ -35,22 +35,42 @@ module Socializer
 
     # Add an audience to the activity
     #
-    # @param activity: [Socializer::Activity] The activity to add the audience to
+    # @param activity: [Socializer::Activity] The activity to add the audience
+    # to
     # @param audience_ids [Array<Integer>] List of audiences to target
     def add_audience_to_activity(activity:, audience_ids:)
-      audience_ids = audience_ids.split(",") if %w(Fixnum String).include?(audience_ids.class.name)
-      limited      = audience_privacy(value: :limited)
-      not_limited  = %W(#{audience_privacy(value: :public)} #{audience_privacy(value: :circles)})
+      if %w(Fixnum String).include?(audience_ids.class.name)
+        audience_ids = audience_ids.split(",")
+      end
 
       audience_ids.each do |audience_id|
-        privacy  = not_limited.include?(audience_id) ? audience_id : limited
+        privacy  = audience_privacy(audience_id: audience_id)
         audience = activity.audiences.build(privacy: privacy)
-        audience.activity_object_id = audience_id if privacy == limited
+
+        audience.activity_object_id = audience_id if privacy == limited_privacy
       end
     end
 
-    def audience_privacy(value:)
-      Audience.privacy.find_value(value.downcase).value
+    def audience_privacy(audience_id: audience_id)
+      not_limited = %W(#{public_privacy} #{circles_privacy})
+
+      @audience_privacy ||= if not_limited.include?(audience_id)
+                              audience_id
+                            else
+                              limited_privacy
+                            end
+    end
+
+    def circles_privacy
+      @circles_privacy ||= Audience.privacy.circles.value
+    end
+
+    def limited_privacy
+      @limited_privacy ||= Audience.privacy.limited.value
+    end
+
+    def public_privacy
+      @public_privacy ||= Audience.privacy.public.value
     end
 
     def create_activity
@@ -61,7 +81,10 @@ module Socializer
         activity.verb               = Verb.find_or_create_by(display_name: verb)
 
         activity.build_activity_field(content: content) if content.present?
-        add_audience_to_activity(activity: activity, audience_ids: object_ids) if object_ids.present?
+
+        if object_ids.present?
+          add_audience_to_activity(activity: activity, audience_ids: object_ids)
+        end
       end
     end
   end

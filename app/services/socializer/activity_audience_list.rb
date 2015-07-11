@@ -8,9 +8,11 @@ module Socializer
   class ActivityAudienceList
     # Initializer
     #
-    # @param activity: [Socializer:Activity] the activity to build the audience for
+    # @param activity: [Socializer:Activity] the activity to build the
+    # audience for
     #
-    # @return [Socializer:ActivityAudienceList] returns an instance of ActivityAudienceList
+    # @return [Socializer:ActivityAudienceList] returns an instance of
+    # ActivityAudienceList
     def initialize(activity:)
       unless activity.is_a?(Socializer::Activity)
         message = I18n.t("socializer.errors.messages.wrong_instance_type",
@@ -28,7 +30,8 @@ module Socializer
 
     # Invoke the ActivityAudienceList. This is the primary public API method.
     #
-    # @param activity: [Socializer::Activity] the activity to build the audience for
+    # @param activity: [Socializer::Activity] the activity to build the
+    # audience for
     #
     # @return [Array]
     def self.perform(activity:)
@@ -37,14 +40,20 @@ module Socializer
 
     # Instance Methods
 
-    # Invoke the ActivityAudienceList instance. This is the primary public API method.
+    # Invoke the ActivityAudienceList instance. This is the primary public
+    # API method.
     #
     # @return [Array]
     def perform
       list = []
 
       @activity.audiences.each do |audience|
-        return [I18n.t("socializer.activities.audiences.index.tooltip.public")] if audience.public?
+        if audience.public?
+          message = I18n.t("tooltip.public",
+                           scope: "socializer.activities.audiences.index")
+          return [message]
+        end
+
         list.concat(audience_list(audience: audience))
       end
 
@@ -56,7 +65,9 @@ module Socializer
     def audience_list(audience:)
       return circles_audience_list if audience.circles?
 
-      limited_audience_list(activitable: audience.activity_object.activitable) if audience.limited?
+      activitable = audience.activity_object.activitable
+
+      limited_audience_list(activitable: activitable) if audience.limited?
     end
 
     def circles_audience_list

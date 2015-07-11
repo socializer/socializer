@@ -8,9 +8,11 @@ module Socializer
   class AddDefaultCircles
     # Initializer
     #
-    # @param person: [Socializer:Person] the person to create the default circles for
+    # @param person: [Socializer:Person] the person to create the default
+    # circles for
     #
-    # @return [Socializer:AddDefaultCircles] returns an instance of AddDefaultCircles
+    # @return [Socializer:AddDefaultCircles] returns an instance of
+    # AddDefaultCircles
     def initialize(person:)
       unless person.is_a?(Socializer::Person)
         message = I18n.t("socializer.errors.messages.wrong_instance_type",
@@ -29,33 +31,55 @@ module Socializer
     # Invoke the AddDefaultCircles. This is the primary public API method.
     # Add the default circles
     #
-    # @param person: [Socializer:Person] the person to create the default circles for
+    # @param person: [Socializer:Person] the person to create the default
+    # circles for
     def self.perform(person:)
       AddDefaultCircles.new(person: person).perform
     end
 
     # Instance Methods
 
-    # Invoke the AddDefaultCircles instance. This is the primary public API method.
+    # Invoke the AddDefaultCircles instance. This is the primary public API
+    # method.
     # Add the default circles
     def perform
       create_circle(display_name: "Friends",
-                    content: "Your real friends, the ones you feel comfortable sharing private details with.")
+                    content: friends_content)
 
       create_circle(display_name: "Family",
-                    content: "Your close and extended family, with as many or as few in-laws as you want.")
+                    content: family_content)
 
       create_circle(display_name: "Acquaintances",
-                    content: "A good place to stick people you've met but aren't particularly close to.")
+                    content: acquaintances_content)
 
       create_circle(display_name: "Following",
-                    content: "People you don't know personally, but whose posts you find interesting.")
+                    content: following_content)
     end
 
     private
 
     def create_circle(display_name:, content: nil)
       @person.circles.create!(display_name: display_name, content: content)
+    end
+
+    def acquaintances_content
+      "A good place to stick people you've met but " \
+      "aren't particularly close to."
+    end
+
+    def family_content
+      "Your close and extended family, with as " \
+      "many or as few in-laws as you want."
+    end
+
+    def following_content
+      "People you don't know personally, but whose " \
+      "posts you find interesting."
+    end
+
+    def friends_content
+      "Your real friends, the ones you feel " \
+      "comfortable sharing private details with."
     end
   end
 end
