@@ -27,14 +27,19 @@ module Socializer
     def like_or_unlike_link
       content = like_or_unlike_content
 
-      helpers.link_to(content, like_or_unlike_path, method: like_or_unlike_verb,
-                                                    remote: true,
-                                                    class: "btn #{like_or_unlike_class}",
-                                                    title: like_or_unlike_title)
+      helpers.link_to(content,
+                      like_or_unlike_path,
+                      method: like_or_unlike_verb,
+                      remote: true,
+                      class: "btn #{like_or_unlike_class}",
+                      title: like_or_unlike_title)
     end
 
     def like_or_unlike_content
-      content = helpers.content_tag(:span, nil, class: "fa fa-fw fa-thumbs-o-up")
+      content = helpers.content_tag(:span,
+                                    nil,
+                                    class: "fa fa-fw fa-thumbs-o-up")
+
       content += "#{model.like_count}".html_safe if model.like_count > 0
       content
     end

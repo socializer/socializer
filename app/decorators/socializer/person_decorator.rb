@@ -48,14 +48,19 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
-      helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt, title: title)
+      helpers.image_tag(avatar_url,
+                        size: size,
+                        class: css_class,
+                        alt: alt,
+                        title: title)
     end
 
     # Creates a link to the persons profile with their avatar as the content
     #
     # @return [String] An HTML a tag
     def link_to_avatar
-      helpers.link_to(image_tag_avatar(title: model.display_name), helpers.person_activities_path(person_id: model.id))
+      helpers.link_to(image_tag_avatar(title: model.display_name),
+                      helpers.person_activities_path(person_id: model.id))
     end
 
     # Builds the links for the shared toolbar
@@ -95,8 +100,11 @@ module Socializer
     end
 
     def dropdown_link
-      icon = helpers.content_tag(:span, nil, class: "fa fa-angle-down fa-fw")
-      helpers.link_to("#", class: "dropdown-toggle", data: { toggle: "dropdown" }) do
+      css_class = "dropdown-toggle"
+      icon      = helpers.content_tag(:span, nil,
+                                      class: "fa fa-angle-down fa-fw")
+
+      helpers.link_to("#", class: css_class, data: { toggle: "dropdown" }) do
         "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
     end
