@@ -22,7 +22,8 @@ module Socializer
       end
 
       it "routes to #create" do
-        expect(post: "/memberships/1/confirm").to route_to("socializer/memberships/confirm#create", id: "1")
+        expect(post: "/memberships/1/confirm")
+        .to route_to("socializer/memberships/confirm#create", id: "1")
       end
 
       it "does not route to #update" do

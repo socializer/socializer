@@ -6,7 +6,8 @@ module Socializer
 
     describe "routing" do
       it "routes to #index" do
-        expect(get: "/groups/memberships").to route_to("socializer/groups/memberships#index")
+        expect(get: "/groups/memberships")
+        .to route_to("socializer/groups/memberships#index")
       end
 
       it "does not route to #new" do

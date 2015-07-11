@@ -6,15 +6,18 @@ module Socializer
 
     describe "routing" do
       it "routes to #index" do
-        expect(get: "/notifications").to route_to("socializer/notifications#index")
+        expect(get: "/notifications")
+        .to route_to("socializer/notifications#index")
       end
 
       it "does not route to #new" do
-        expect(get: "/notifications/new").to_not route_to("socializer/notifications#new")
+        expect(get: "/notifications/new")
+        .to_not route_to("socializer/notifications#new")
       end
 
       it "routes to #show" do
-        expect(get: "/notifications/1").to route_to("socializer/notifications#show", id: "1")
+        expect(get: "/notifications/1")
+        .to route_to("socializer/notifications#show", id: "1")
       end
 
       it "does not route to #edit" do

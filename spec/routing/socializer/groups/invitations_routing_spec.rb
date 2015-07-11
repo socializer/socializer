@@ -22,7 +22,11 @@ module Socializer
       end
 
       it "routes to #create" do
-        expect(post: "/groups/1/invite/1").to route_to("socializer/groups/invitations#create", id: "1", person_id: "1")
+        expect(post: "/groups/1/invite/1")
+        .to route_to(
+          "socializer/groups/invitations#create",
+          id: "1",
+          person_id: "1")
       end
 
       it "does not route to #update" do

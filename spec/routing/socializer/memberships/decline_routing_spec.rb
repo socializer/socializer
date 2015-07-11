@@ -31,7 +31,8 @@ module Socializer
       end
 
       it "routes to #destroy" do
-        expect(delete: "/memberships/1/decline").to route_to("socializer/memberships/decline#destroy", id: "1")
+        expect(delete: "/memberships/1/decline")
+        .to route_to("socializer/memberships/decline#destroy", id: "1")
       end
     end
   end

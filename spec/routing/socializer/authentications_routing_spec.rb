@@ -6,7 +6,8 @@ module Socializer
 
     describe "routing" do
       it "routes to #index" do
-        expect(get: "/authentications").to route_to("socializer/authentications#index")
+        expect(get: "/authentications")
+        .to route_to("socializer/authentications#index")
       end
 
       it "does not route to #new" do
@@ -30,7 +31,8 @@ module Socializer
       end
 
       it "does not route to #destroy" do
-        expect(delete: "/authentications/1").to route_to("socializer/authentications#destroy", id: "1")
+        expect(delete: "/authentications/1")
+        .to route_to("socializer/authentications#destroy", id: "1")
       end
     end
   end
