@@ -2,7 +2,10 @@
 begin
   require "bundler/setup"
 rescue LoadError
-  Rails.logger.error("You must `gem install bundler` and `bundle install` to run rake tasks")
+  message = "You must `gem install bundler` and `bundle install` " \
+            "to run rake tasks"
+
+  Rails.logger.error(message)
   # puts "You must `gem install bundler` and `bundle install` to run rake tasks"
 end
 begin
