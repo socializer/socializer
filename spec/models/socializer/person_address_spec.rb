@@ -26,6 +26,8 @@ module Socializer
       it { is_expected.to validate_presence_of(:person) }
     end
 
-    it { is_expected.to enumerize(:category).in(:home, :work).with_default(:home) }
+    it do
+      is_expected.to enumerize(:category).in(:home, :work).with_default(:home)
+    end
   end
 end

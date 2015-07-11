@@ -67,7 +67,10 @@ module Socializer
         let(:sql) { ActivityObject.by_activitable_type(Comment.name).to_sql }
 
         let(:expected) do
-          %q(WHERE "socializer_activity_objects"."activitable_type" = 'Socializer::Comment')
+          %q(
+              WHERE "socializer_activity_objects"."activitable_type" =
+                'Socializer::Comment'
+            )
         end
 
         it do
