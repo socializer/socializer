@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, authentication, and valid_attributes
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:valid_attributes) do
       { authentication: { provider: "facebook",
@@ -16,7 +16,7 @@ module Socializer
     end
 
     let(:authentication) do
-      create(:socializer_authentication, valid_attributes[:authentication])
+      create(:authentication, valid_attributes[:authentication])
     end
 
     describe "when not logged in" do

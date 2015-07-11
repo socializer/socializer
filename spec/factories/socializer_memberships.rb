@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :socializer_membership, class: Socializer::Membership do
     active true
-    association :group, factory: :socializer_group
-    association :activity_member, factory: :socializer_activity_object_person
+    association :group, factory: :group
+    association :activity_member, factory: :activity_object_person
   end
 end

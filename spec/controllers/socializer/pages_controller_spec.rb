@@ -20,7 +20,7 @@ module Socializer
       context "when logged in" do
         it "is a pending example"
         # # Create a user
-        # let(:user) { create(:socializer_person) }
+        # let(:user) { create(:person) }
 
         # # Setting the current user
         # before { cookies[:user_id] = user.guid }

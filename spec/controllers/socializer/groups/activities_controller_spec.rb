@@ -5,10 +5,10 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, group, and activities
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:group) do
-      create(:socializer_group, activity_author: user.activity_object)
+      create(:group, activity_author: user.activity_object)
     end
 
     let(:activities) do

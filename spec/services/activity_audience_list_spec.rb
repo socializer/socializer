@@ -21,7 +21,7 @@ module Socializer
 
     describe ".perform" do
       context "without an audience" do
-        let(:activity) { create(:socializer_activity) }
+        let(:activity) { create(:activity) }
 
         let(:audience_list) do
           ActivityAudienceList.new(activity: activity).perform
@@ -33,7 +33,7 @@ module Socializer
       end
 
       context "with an audience" do
-        let(:person) { create(:socializer_person) }
+        let(:person) { create(:person) }
 
         let(:note_attributes) do
           { content: "Test note",

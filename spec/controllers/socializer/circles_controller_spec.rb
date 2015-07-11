@@ -5,10 +5,10 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, a circle, and valid+attributes
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:circle) do
-      create(:socializer_circle, activity_author: user.activity_object)
+      create(:circle, activity_author: user.activity_object)
     end
 
     let(:valid_attributes) do

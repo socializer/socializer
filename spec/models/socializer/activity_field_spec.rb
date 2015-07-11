@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe ActivityField, type: :model do
-    let(:activity_field) { build(:socializer_activity_field) }
+    let(:activity_field) { build(:activity_field) }
 
     it "has a valid factory" do
       expect(activity_field).to be_valid

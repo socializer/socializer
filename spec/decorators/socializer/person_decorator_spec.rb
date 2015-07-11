@@ -3,7 +3,7 @@ include Socializer::Engine.routes.url_helpers
 
 module Socializer
   RSpec.describe PersonDecorator, type: :decorator do
-    let(:person) { build(:socializer_person) }
+    let(:person) { build(:person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
     context "#avatar_url" do
@@ -16,7 +16,7 @@ module Socializer
         end
 
         let(:person) do
-          create(:socializer_person, avatar_provider: provider)
+          create(:person, avatar_provider: provider)
         end
 
         let(:decorated_person) { PersonDecorator.new(person) }
@@ -63,7 +63,7 @@ module Socializer
         it { expect(decorated_person.avatar_url).to include(avatar_url) }
 
         context "with a blank email" do
-          let(:person) { build(:socializer_person, email: nil) }
+          let(:person) { build(:person, email: nil) }
           let(:decorated_person) { PersonDecorator.new(person) }
           it { expect(decorated_person.avatar_url).to eq(nil) }
         end
@@ -77,7 +77,7 @@ module Socializer
 
       context "specified" do
         let(:person) do
-          build(:socializer_person, birthdate: Time.zone.now - 10.years)
+          build(:person, birthdate: Time.zone.now - 10.years)
         end
 
         it do
@@ -88,7 +88,7 @@ module Socializer
     end
 
     context "image_tag_avatar" do
-      let(:person) { create(:socializer_person) }
+      let(:person) { create(:person) }
       let(:decorated_person) { PersonDecorator.new(person) }
 
       context "with no image_url" do
@@ -165,7 +165,7 @@ module Socializer
     end
 
     context "link_to_avatar" do
-      let(:person) { create(:socializer_person) }
+      let(:person) { create(:person) }
       let(:decorated_person) { PersonDecorator.new(person) }
       let(:result) { decorated_person.link_to_avatar }
 
@@ -182,7 +182,7 @@ module Socializer
     end
 
     context "toolbar_stream_links" do
-      let(:person) { create(:socializer_person) }
+      let(:person) { create(:person) }
       let(:decorated_person) { PersonDecorator.new(person) }
 
       context "with no circles or memberships" do
@@ -252,7 +252,7 @@ module Socializer
           AddDefaultCircles.perform(person: person)
 
           create(
-            :socializer_group,
+            :group,
             author_id: person.id,
             display_name: "Group")
         end

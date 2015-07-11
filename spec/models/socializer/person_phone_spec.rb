@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe PersonPhone, type: :model do
-    let(:person_phone) { build(:socializer_person_phone) }
+    let(:person_phone) { build(:person_phone) }
 
     it "has a valid factory" do
       expect(person_phone).to be_valid

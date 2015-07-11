@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe ActivityObject, type: :model do
-    let(:activity_object) { build(:socializer_activity_object) }
+    let(:activity_object) { build(:activity_object) }
 
     it "has a valid factory" do
       expect(activity_object).to be_valid
@@ -80,8 +80,8 @@ module Socializer
     end
 
     context "when liked" do
-      let(:liking_person) { create(:socializer_person) }
-      let(:liked_activity_object) { create(:socializer_activity_object) }
+      let(:liking_person) { create(:person) }
+      let(:liked_activity_object) { create(:activity_object) }
 
       before do
         liked_activity_object.like(liking_person)
@@ -106,39 +106,39 @@ module Socializer
 
     context "check activitable_type predicates" do
       context "#activity?" do
-        let(:activity_object) { build(:socializer_activity_object_activity) }
+        let(:activity_object) { build(:activity_object_activity) }
         it { expect(activity_object.activity?).to be_truthy }
       end
 
       context "#circle?" do
-        let(:activity_object) { build(:socializer_activity_object_circle) }
+        let(:activity_object) { build(:activity_object_circle) }
         it { expect(activity_object.circle?).to be_truthy }
       end
 
       context "#comment?" do
-        let(:activity_object) { build(:socializer_activity_object_comment) }
+        let(:activity_object) { build(:activity_object_comment) }
         it { expect(activity_object.comment?).to be_truthy }
       end
 
       context "#group?" do
-        let(:activity_object) { build(:socializer_activity_object_group) }
+        let(:activity_object) { build(:activity_object_group) }
         it { expect(activity_object.group?).to be_truthy }
       end
 
       context "#note?" do
-        let(:activity_object) { build(:socializer_activity_object) }
+        let(:activity_object) { build(:activity_object) }
         it { expect(activity_object.note?).to be_truthy }
       end
 
       context "#person?" do
-        let(:activity_object) { build(:socializer_activity_object_person) }
+        let(:activity_object) { build(:activity_object_person) }
         it { expect(activity_object.person?).to be_truthy }
       end
     end
 
     context "when an object is liked" do
-      let(:activity_object) { create(:socializer_activity_object) }
-      let(:liking_person) { create(:socializer_person) }
+      let(:activity_object) { create(:activity_object) }
+      let(:liking_person) { create(:person) }
 
       before do
         activity_object.like(liking_person)
@@ -166,8 +166,8 @@ module Socializer
     end
 
     context "when an object is shared" do
-      let(:activity_object) { create(:socializer_activity_object) }
-      let(:actor) { create(:socializer_person) }
+      let(:activity_object) { create(:activity_object) }
+      let(:actor) { create(:person) }
 
       let(:object_ids) do
         Socializer::Audience.privacy.find_value(:public).value.split(",")
@@ -198,7 +198,7 @@ module Socializer
 
     context "#increment_unread_notifications_count" do
       let(:activity_object) do
-        create(:socializer_activity_object)
+        create(:activity_object)
       end
 
       before do
@@ -211,7 +211,7 @@ module Socializer
 
     context "#reset_unread_notifications" do
       let(:activity_object) do
-        create(:socializer_activity_object, unread_notifications_count: 10)
+        create(:activity_object, unread_notifications_count: 10)
       end
 
       before do

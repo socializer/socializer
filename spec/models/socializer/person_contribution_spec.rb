@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe PersonContribution, type: :model do
-    let(:person_contribution) { build(:socializer_person_contribution) }
+    let(:person_contribution) { build(:person_contribution) }
 
     it "has a valid factory" do
       expect(person_contribution).to be_valid

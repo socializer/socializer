@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Circle, type: :model do
-    let(:circle) { build(:socializer_circle) }
+    let(:circle) { build(:circle) }
 
     it "has a valid factory" do
       expect(circle).to be_valid
@@ -45,7 +45,7 @@ module Socializer
       it { is_expected.to validate_presence_of(:display_name) }
 
       it "check uniqueness of display_name" do
-        create(:socializer_circle)
+        create(:circle)
         is_expected
         .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
@@ -87,7 +87,7 @@ module Socializer
     end
 
     context "when adding a contact" do
-      let(:circle_with_contacts) { create(:socializer_circle) }
+      let(:circle_with_contacts) { create(:circle) }
 
       before do
         circle_with_contacts.add_contact(1)

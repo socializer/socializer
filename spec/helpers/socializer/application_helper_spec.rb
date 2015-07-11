@@ -9,7 +9,7 @@ module Socializer
     end
 
     context "#current_user?" do
-      let(:person) { build(:socializer_person) }
+      let(:person) { build(:person) }
       context "is false" do
         before do
           allow(helper).to receive(:current_user).and_return(nil)

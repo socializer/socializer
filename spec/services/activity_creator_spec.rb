@@ -25,8 +25,8 @@ module Socializer
       end
 
       context "with the required attributes" do
-        let(:person) { create(:socializer_person) }
-        let(:activity_object) { create(:socializer_activity_object) }
+        let(:person) { create(:person) }
+        let(:activity_object) { create(:activity_object) }
         let(:ac) { ActivityCreator.new(activity_attributes) }
 
         it { expect(ac.valid?).to be true }

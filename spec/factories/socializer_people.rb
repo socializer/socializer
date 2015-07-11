@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :socializer_person, class: Socializer::Person do
+  factory :person, class: Socializer::Person do
     sequence(:display_name) { |n| "name#{n}" }
     sequence(:email) { |n| "name#{n}@example.com" }
     avatar_provider "GRAVATAR"
@@ -14,20 +14,20 @@ FactoryGirl.define do
       language "fr"
     end
 
-    factory :socializer_person_circles, class: Socializer::Person do
-      association :activity_object, factory: :socializer_activity_object_circle
+    factory :person_circles, class: Socializer::Person do
+      association :activity_object, factory: :activity_object_circle
     end
 
-    factory :socializer_person_comments, class: Socializer::Person do
-      association :activity_object, factory: :socializer_activity_object_comment
+    factory :person_comments, class: Socializer::Person do
+      association :activity_object, factory: :activity_object_comment
     end
 
-    factory :socializer_person_groups, class: Socializer::Person do
-      association :activity_object, factory: :socializer_activity_object_group
+    factory :person_groups, class: Socializer::Person do
+      association :activity_object, factory: :activity_object_group
     end
 
-    factory :socializer_person_notes, class: Socializer::Person do
-      association :activity_object, factory: :socializer_activity_object
+    factory :person_notes, class: Socializer::Person do
+      association :activity_object, factory: :activity_object
     end
   end
 end

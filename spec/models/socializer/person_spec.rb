@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Person, type: :model do
-    let(:person) { build(:socializer_person) }
+    let(:person) { build(:person) }
     let(:valid_providers) { %w(TWITTER FACEBOOK LINKEDIN GRAVATAR) }
 
     it "has a valid factory" do
@@ -81,7 +81,7 @@ module Socializer
       end
 
       it do
-        person = create(:socializer_person, avatar_provider: "FACEBOOK")
+        person = create(:person, avatar_provider: "FACEBOOK")
         person.authentications.create(authentications_attributes)
 
         expect(person.services.to_sql).to include("!= 'identity'")
@@ -92,28 +92,28 @@ module Socializer
     end
 
     context "#circles" do
-      let(:person) { build(:socializer_person_circles) }
+      let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
       it { expect(person.circles).to be_a(circles.class) }
       it { expect(person.circles).to eq(circles) }
     end
 
     context "#comments" do
-      let(:person) { build(:socializer_person_comments) }
+      let(:person) { build(:person_comments) }
       let(:comments) { person.activity_object.comments }
       it { expect(person.comments).to be_a(comments.class) }
       it { expect(person.comments).to eq(comments) }
     end
 
     context "#groups" do
-      let(:person) { build(:socializer_person_groups) }
+      let(:person) { build(:person_groups) }
       let(:groups) { person.activity_object.groups }
       it { expect(person.groups).to be_a(groups.class) }
       it { expect(person.groups).to eq(groups) }
     end
 
     context "#notes" do
-      let(:person) { build(:socializer_person_notes) }
+      let(:person) { build(:person_notes) }
       let(:notes) { person.activity_object.notes }
       it { expect(person.notes).to be_a(notes.class) }
       it { expect(person.notes).to eq(notes) }
@@ -128,7 +128,7 @@ module Socializer
     end
 
     context "#contacts" do
-      let(:person) { build(:socializer_person_circles) }
+      let(:person) { build(:person_circles) }
       # TODO: Test return values
       it do
         expect(person.contacts)
@@ -137,7 +137,7 @@ module Socializer
     end
 
     context "#contact_of" do
-      let(:person) { build(:socializer_person_circles) }
+      let(:person) { build(:person_circles) }
       # TODO: Test return values
       it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
     end
@@ -156,14 +156,14 @@ module Socializer
 
     it "accepts known avatar_provider" do
       valid_providers.each do |provider|
-        expect(build(:socializer_person, avatar_provider: provider))
+        expect(build(:person, avatar_provider: provider))
         .to be_valid
       end
     end
 
     it "rejects unknown avatar_provider" do
       %w( IDENTITY TEST DUMMY OTHER ).each do |provider|
-        expect(build(:socializer_person, avatar_provider: provider))
+        expect(build(:person, avatar_provider: provider))
         .to be_invalid
       end
     end

@@ -3,7 +3,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe Notification, type: :model do
     # Define a person for common testd instead of build one for each
-    let(:notification) { build(:socializer_notification) }
+    let(:notification) { build(:notification) }
 
     it "has a valid factory" do
       expect(notification).to be_valid
@@ -27,7 +27,7 @@ module Socializer
     end
 
     context "#mark_as_read" do
-      let(:notification) { build(:socializer_notification, read: false) }
+      let(:notification) { build(:notification, read: false) }
 
       it { expect(notification.read).to be false }
 
@@ -38,14 +38,14 @@ module Socializer
     end
 
     context "#unread?" do
-      let(:notification) { build(:socializer_notification, read: false) }
+      let(:notification) { build(:notification, read: false) }
 
       context "read is false" do
         it { expect(notification.unread?).to be true }
       end
 
       context "read is true" do
-        let(:notification) { build(:socializer_notification, read: true) }
+        let(:notification) { build(:notification, read: true) }
         it { expect(notification.unread?).to be false }
       end
     end

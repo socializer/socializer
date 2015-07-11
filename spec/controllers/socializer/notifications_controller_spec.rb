@@ -5,8 +5,8 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user and notification
-    let(:user) { create(:socializer_person) }
-    let(:notification) { create(:socializer_notification) }
+    let(:user) { create(:person) }
+    let(:notification) { create(:notification) }
 
     describe "when not logged in" do
       describe "GET #index" do

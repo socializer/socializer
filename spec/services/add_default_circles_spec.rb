@@ -20,7 +20,7 @@ module Socializer
     end
 
     context ".perform" do
-      let(:person) { build(:socializer_person_circles) }
+      let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
 
       before do

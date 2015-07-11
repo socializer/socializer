@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Audience, type: :model do
-    let(:audience) { build(:socializer_audience) }
+    let(:audience) { build(:audience) }
 
     it "has a valid factory" do
       expect(audience).to be_valid
@@ -29,7 +29,7 @@ module Socializer
       # end
 
       # it do
-      #   expect(create(:socializer_audience))
+      #   expect(create(:audience))
       #   .to validate_uniqueness_of(:activity_id)
       #     .scoped_to(:activity_object_id)
       # end

@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe ActivityObjectDecorator, type: :decorator do
-    let(:activity_object) { create(:socializer_activity_object) }
+    let(:activity_object) { create(:activity_object) }
 
     let(:decorated_activity_object) do
       ActivityObjectDecorator.new(activity_object)
@@ -21,7 +21,7 @@ module Socializer
 
       context "with current_user" do
         before do
-          person = create(:socializer_person)
+          person = create(:person)
           allow(helper).to receive(:current_user).and_return(person)
         end
 

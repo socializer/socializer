@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, audience, and activities
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:note_attributes) do
       { content: "Test note", object_ids: ["public"], activity_verb: "post" }

@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user nad address
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:valid_attributes) do
       {

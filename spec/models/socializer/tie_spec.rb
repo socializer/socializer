@@ -2,8 +2,8 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Tie, type: :model do
-    let(:contact) { create(:socializer_person) }
-    let(:tie) { build(:socializer_tie, contact_id: contact.id) }
+    let(:contact) { create(:person) }
+    let(:tie) { build(:tie, contact_id: contact.id) }
 
     it "has a valid factory" do
       expect(tie).to be_valid
@@ -56,7 +56,7 @@ module Socializer
         it { expect(tie.contact_id).to eq(contact.id) }
 
         context "nil" do
-          let(:tie) { build(:socializer_tie, contact_id: nil) }
+          let(:tie) { build(:tie, contact_id: nil) }
           it { expect(tie.contact_id).to eq(nil) }
         end
       end

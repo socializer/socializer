@@ -1,28 +1,28 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :socializer_activity_object, class: Socializer::ActivityObject do
+  factory :activity_object, class: Socializer::ActivityObject do
     unread_notifications_count 0
-    association :activitable, factory: :socializer_note
+    association :activitable, factory: :note
 
-    factory :socializer_activity_object_activity, class: Socializer::ActivityObject do
-      association :activitable, factory: :socializer_activity
+    factory :activity_object_activity, class: Socializer::ActivityObject do
+      association :activitable, factory: :activity
     end
 
-    factory :socializer_activity_object_circle, class: Socializer::ActivityObject do
-      association :activitable, factory: :socializer_circle
+    factory :activity_object_circle, class: Socializer::ActivityObject do
+      association :activitable, factory: :circle
     end
 
-    factory :socializer_activity_object_comment, class: Socializer::ActivityObject do
-      association :activitable, factory: :socializer_comment
+    factory :activity_object_comment, class: Socializer::ActivityObject do
+      association :activitable, factory: :comment
     end
 
-    factory :socializer_activity_object_group, class: Socializer::ActivityObject do
-      association :activitable, factory: :socializer_group
+    factory :activity_object_group, class: Socializer::ActivityObject do
+      association :activitable, factory: :group
     end
 
-    factory :socializer_activity_object_person, class: Socializer::ActivityObject do
-      association :activitable, factory: :socializer_person
+    factory :activity_object_person, class: Socializer::ActivityObject do
+      association :activitable, factory: :person
     end
   end
 end

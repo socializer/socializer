@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user and contact_of
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
     let(:contact_of) { user.contact_of }
 
     describe "when not logged in" do

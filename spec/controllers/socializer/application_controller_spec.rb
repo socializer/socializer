@@ -8,7 +8,7 @@ module Socializer
       end
     end
 
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     it { should use_before_action(:set_locale) }
     it { should_not use_before_action(:authenticate_user) }
@@ -29,7 +29,7 @@ module Socializer
             get :index
           end
 
-          let(:user) { create(:socializer_person, :english) }
+          let(:user) { create(:person, :english) }
           it { expect(I18n.locale.to_s).to eq(user.language) }
         end
 

@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user and activities
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:activities) do
       Activity.person_stream(actor_uid: user.id, viewer_id: user.id).decorate

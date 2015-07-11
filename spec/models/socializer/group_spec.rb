@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Group, type: :model do
-    let(:group) { build(:socializer_group) }
+    let(:group) { build(:group) }
 
     it "has a valid factory" do
       expect(group).to be_valid
@@ -54,7 +54,7 @@ module Socializer
       it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_presence_of(:privacy) }
       it "check uniqueness of display_name" do
-        create(:socializer_group)
+        create(:group)
         is_expected
         .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
@@ -76,8 +76,8 @@ module Socializer
     it { is_expected.to respond_to(:member?) }
 
     context "when group is public" do
-      let(:public_group) { create(:socializer_group, privacy: :public) }
-      let(:person) { create(:socializer_person) }
+      let(:public_group) { create(:group, privacy: :public) }
+      let(:person) { create(:person) }
 
       let(:membership_attributes) do
         { member_id: person.guid, group_id: public_group.id }
@@ -142,14 +142,14 @@ module Socializer
 
     context "when group is restricted" do
       let(:restricted_group) do
-        create(:socializer_group, privacy: :restricted)
+        create(:group, privacy: :restricted)
       end
 
       let(:membership_attributes) do
         { member_id: person.guid, group_id: restricted_group.id }
       end
 
-      let(:person) { create(:socializer_person) }
+      let(:person) { create(:person) }
 
       before do
         restricted_group.save!
@@ -180,8 +180,8 @@ module Socializer
     end
 
     context "when group is private" do
-      let(:private_group) { create(:socializer_group, privacy: :private) }
-      let(:person) { create(:socializer_person) }
+      let(:private_group) { create(:group, privacy: :private) }
+      let(:person) { create(:person) }
 
       let(:error_message) do
         I18n.t("socializer.errors.messages.group.private.cannot_self_join")
@@ -221,8 +221,8 @@ module Socializer
     end
 
     context "when inviting a person" do
-      let(:group) { create(:socializer_group) }
-      let(:person) { create(:socializer_person) }
+      let(:group) { create(:group) }
+      let(:person) { create(:person) }
 
       let(:membership_attributes) do
         { member_id: person.guid, group_id: group.id }
@@ -240,7 +240,7 @@ module Socializer
 
     context "when having no member" do
       let(:group_without_members) do
-        create(:socializer_group, privacy: :private)
+        create(:group, privacy: :private)
       end
 
       before do
@@ -255,7 +255,7 @@ module Socializer
 
     context "when having at least one member" do
       let(:group_with_members) do
-        create(:socializer_group, privacy: :private)
+        create(:group, privacy: :private)
       end
 
       context "cannot be deleted" do

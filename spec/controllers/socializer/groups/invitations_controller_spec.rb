@@ -5,15 +5,15 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user and a group
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:group) do
-      create(:socializer_group, activity_author: user.activity_object)
+      create(:group, activity_author: user.activity_object)
     end
 
     describe "when not logged in" do
       describe "POST #create" do
-        let(:invited_user) { create(:socializer_person) }
+        let(:invited_user) { create(:person) }
 
         it "requires login" do
           post :create, id: group, person_id: invited_user
@@ -27,7 +27,7 @@ module Socializer
       before { cookies[:user_id] = user.guid }
 
       describe "POST #create" do
-        let(:invited_user) { create(:socializer_person) }
+        let(:invited_user) { create(:person) }
 
         it "redirects to groups#show" do
           post :create, id: group, person_id: invited_user

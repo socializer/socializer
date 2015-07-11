@@ -5,7 +5,7 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user and a group
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:privacy) do
       Socializer::Group.privacy.find_value(:restricted).value
@@ -16,7 +16,7 @@ module Socializer
     end
 
     let(:group) do
-      create(:socializer_group, group_attributes)
+      create(:group, group_attributes)
     end
 
     describe "when not logged in" do

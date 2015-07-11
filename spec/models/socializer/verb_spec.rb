@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Verb, type: :model do
-    let(:verb) { build(:socializer_verb) }
+    let(:verb) { build(:verb) }
 
     it "has a valid factory" do
       expect(verb).to be_valid
@@ -23,7 +23,7 @@ module Socializer
 
     context "scopes" do
       context "by_display_name" do
-        before { create(:socializer_verb, display_name: "post") }
+        before { create(:verb, display_name: "post") }
         let(:result) { Verb.by_display_name("post") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }

@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Identity, type: :model do
-    let(:identity) { build(:socializer_identity) }
+    let(:identity) { build(:identity) }
 
     it "has a valid factory" do
       expect(identity).to be_valid

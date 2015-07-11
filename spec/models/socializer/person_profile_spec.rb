@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe PersonProfile, type: :model do
-    let(:person_profile) { build(:socializer_person_profile) }
+    let(:person_profile) { build(:person_profile) }
 
     it "has a valid factory" do
       expect(person_profile).to be_valid

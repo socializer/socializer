@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Authentication, type: :model do
-    let(:authentication) { build(:socializer_authentication) }
+    let(:authentication) { build(:authentication) }
 
     it "has a valid factory" do
       expect(authentication).to be_valid
@@ -26,7 +26,7 @@ module Socializer
 
     context "scopes" do
       context "by_provider" do
-        before { create(:socializer_authentication, provider: "identity") }
+        before { create(:authentication, provider: "identity") }
         let(:result) { Authentication.by_provider("identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -41,7 +41,7 @@ module Socializer
       end
 
       context "by_not_provider" do
-        before { create(:socializer_authentication, provider: "identity") }
+        before { create(:authentication, provider: "identity") }
         let(:result) { Authentication.by_not_provider("identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -50,7 +50,7 @@ module Socializer
     end
 
     context "when last authentication for a person" do
-      let(:last_authentication) { create(:socializer_authentication) }
+      let(:last_authentication) { create(:authentication) }
 
       it { expect(last_authentication.person.authentications.count).to eq(1) }
 

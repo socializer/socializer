@@ -6,8 +6,8 @@ module Socializer
       routes { Socializer::Engine.routes }
 
       # Create a user and a activity
-      let(:user) { create(:socializer_person) }
-      let(:note_activity) { create(:socializer_activity) }
+      let(:user) { create(:person) }
+      let(:note_activity) { create(:activity) }
 
       describe "when not logged in" do
         describe "GET #index" do

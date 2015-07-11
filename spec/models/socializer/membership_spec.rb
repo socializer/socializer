@@ -2,10 +2,10 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Membership, type: :model do
-    let(:user) { create(:socializer_person) }
+    let(:user) { create(:person) }
 
     let(:group) do
-      create(:socializer_group, activity_author: user.activity_object)
+      create(:group, activity_author: user.activity_object)
     end
 
     let(:membership) do
@@ -86,7 +86,7 @@ module Socializer
         end
 
         context "person has no memberships" do
-          let(:user) { create(:socializer_person) }
+          let(:user) { create(:person) }
           let(:result) { Membership.by_member_id(user.guid) }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }

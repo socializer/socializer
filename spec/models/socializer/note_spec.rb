@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Note, type: :model do
-    let(:note) { build(:socializer_note) }
+    let(:note) { build(:note) }
 
     it "has a valid factory" do
       expect(note).to be_valid

@@ -20,7 +20,7 @@ module Socializer
     end
 
     context ".perform" do
-      let(:person) { create(:socializer_person_circles) }
+      let(:person) { create(:person_circles) }
       let(:public) { { id: "public", name: "Public" } }
       let(:circles) { { id: "circles", name: "Circles" } }
 

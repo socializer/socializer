@@ -6,8 +6,8 @@ module Socializer
       routes { Socializer::Engine.routes }
 
       # Create a user and a note to share
-      let(:user) { create(:socializer_person) }
-      let(:note) { create(:socializer_note) }
+      let(:user) { create(:person) }
+      let(:note) { create(:note) }
 
       let(:object_ids) do
         Socializer::Audience.privacy.find_value(:public).value.split(",")

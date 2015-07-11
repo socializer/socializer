@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Activity, type: :model do
-    let(:activity) { build(:socializer_activity) }
+    let(:activity) { build(:activity) }
 
     it "has a valid factory" do
       expect(activity).to be_valid
@@ -105,7 +105,7 @@ module Socializer
       it { expect(activity.comments?).to eq(false) }
 
       context "to be true" do
-        let(:activity) { create(:socializer_activity) }
+        let(:activity) { create(:activity) }
         let(:scope) { Audience.privacy.find_value(:public) }
 
         let(:comment_attributes) do
@@ -133,10 +133,10 @@ module Socializer
 
     context ".stream" do
       let(:activity_object_person) do
-        build(:socializer_activity_object_person)
+        build(:activity_object_person)
       end
 
-      let(:activity_object_group) { build(:socializer_activity_object_group) }
+      let(:activity_object_group) { build(:activity_object_group) }
       let(:person) { activity_object_person.activitable }
       let(:group) { activity_object_group.activitable }
 
