@@ -35,6 +35,9 @@ Metrics/AbcSize:
 Metrics/LineLength:
   # Max: 120
   Enabled: true
+  Exclude:
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
     - 'features/support/env.rb'
     - 'script/cucumber'
 
