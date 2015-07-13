@@ -18,7 +18,14 @@ module Socializer
         # TODO: makes sense to have stream or activities as an instance
         #       method so we can do
         #       @group.activities(viewer_id: current_user.id)
-        @activities = Activity.group_stream(actor_uid: id, viewer_id: current_user.id).decorate
+        @activities = stream
+      end
+
+      private
+
+      def stream
+        @stream ||= Activity.group_stream(actor_uid: @group.id,
+                                          viewer_id: current_user.id).decorate
       end
     end
   end
