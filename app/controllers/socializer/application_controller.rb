@@ -39,8 +39,14 @@ module Socializer
     end
 
     def extract_locale_from_accept_language_header
-      return unless request.present? && request.env["HTTP_ACCEPT_LANGUAGE"].present?
+      return unless request.present? && http_accept_language.present?
       request.env["HTTP_ACCEPT_LANGUAGE"].scan(/^[a-z]{2}/).first
+    end
+
+    private
+
+    def http_accept_language
+      @http_accept_language ||= request.env["HTTP_ACCEPT_LANGUAGE"]
     end
   end
 end
