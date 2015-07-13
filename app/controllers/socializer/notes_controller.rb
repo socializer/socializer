@@ -16,7 +16,7 @@ module Socializer
 
     # POST /notes
     def create
-      @activity   = Activity.find_by(activity_object_id: create_note.guid).decorate
+      @activity   = activity_for_note(note: create_note)
       @note       = Note.new
       @current_id = nil
       @title      = "Activity stream"
@@ -58,6 +58,14 @@ module Socializer
     end
 
     private
+
+    # TODO: Add to Activity. May need to rename by_ scopes to where_
+    # This would allow for find_by queries to use by_
+    # Maybe add an activity relationship to ObjectTypeBase so we can do
+    # note.activity
+    def activity_for_note(note:)
+      Activity.find_by(activity_object_id: note.guid).decorate
+    end
 
     def find_note
       current_user.activity_object.notes.find_by(id: params[:id])
