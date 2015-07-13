@@ -11,7 +11,8 @@ module Socializer
 
       # POST /people/1/contributions
       def create
-        @person_contribution = current_user.contributions.create!(params[:person_contribution])
+        @person_contribution = create_person_contribution
+
         redirect_to current_user
       end
 
@@ -33,8 +34,16 @@ module Socializer
 
       private
 
+      def contributions
+        @contributions ||= current_user.contributions
+      end
+
       def find_person_contribution
         current_user.contributions.find_by(id: params[:id])
+      end
+
+      def create_person_contribution
+        contributions.create!(params[:person_contribution])
       end
     end
   end

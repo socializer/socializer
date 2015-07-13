@@ -11,7 +11,7 @@ module Socializer
 
       # POST /people/1/profiles
       def create
-        @person_profile = current_user.profiles.create!(params[:person_profile])
+        @person_profile = profiles.create!(params[:person_profile])
 
         redirect_to current_user
       end
@@ -33,6 +33,10 @@ module Socializer
       end
 
       private
+
+      def profiles
+        @profiles ||= current_user.profiles
+      end
 
       def find_person_profile
         current_user.profiles.find_by(id: params[:id])

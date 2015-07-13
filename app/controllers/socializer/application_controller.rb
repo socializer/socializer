@@ -34,7 +34,9 @@ module Socializer
       if signed_in? && current_user.language.present? && params[:locale].blank?
         I18n.locale =  current_user.language
       else
-        I18n.locale =  params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
+        I18n.locale =  params[:locale] ||
+                       extract_locale_from_accept_language_header ||
+                       I18n.default_locale
       end
     end
 

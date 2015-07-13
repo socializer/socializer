@@ -11,7 +11,7 @@ module Socializer
 
       # POST /people/1/employments
       def create
-        @person_employment = current_user.employments.create!(params[:person_employment])
+        @person_employment = employments.create!(params[:person_employment])
 
         redirect_to current_user
       end
@@ -33,6 +33,10 @@ module Socializer
       end
 
       private
+
+      def employments
+        @employments ||= current_user.employments
+      end
 
       def find_person_employment
         current_user.employments.find_by(id: params[:id])
