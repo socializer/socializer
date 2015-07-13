@@ -11,8 +11,8 @@ module Socializer
 
       # POST /people/1/addresses
       def create
-        @person_address = current_user.addresses.build(params[:person_address])
-        @person_address.save!
+        @person_address = current_user.addresses.create!(params[:person_address])
+
         redirect_to current_user
       end
 
@@ -20,6 +20,7 @@ module Socializer
       def update
         @person_address = find_person_address
         @person_address.update!(params[:person_address])
+
         redirect_to current_user
       end
 
@@ -27,6 +28,7 @@ module Socializer
       def destroy
         @person_address = find_person_address
         @person_address.destroy
+
         redirect_to current_user
       end
 

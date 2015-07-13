@@ -11,8 +11,8 @@ module Socializer
 
       # POST /people/1/employments
       def create
-        @person_employment = current_user.employments.build(params[:person_employment])
-        @person_employment.save!
+        @person_employment = current_user.employments.create!(params[:person_employment])
+
         redirect_to current_user
       end
 
@@ -20,6 +20,7 @@ module Socializer
       def update
         @person_employment = find_person_employment
         @person_employment.update!(params[:person_employment])
+
         redirect_to current_user
       end
 
@@ -27,6 +28,7 @@ module Socializer
       def destroy
         @person_employment = find_person_employment
         @person_employment.destroy
+
         redirect_to current_user
       end
 

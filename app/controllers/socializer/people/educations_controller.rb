@@ -11,8 +11,8 @@ module Socializer
 
       # POST /people/1/educations
       def create
-        @person_education = current_user.educations.build(params[:person_education])
-        @person_education.save!
+        @person_education = current_user.educations.create!(params[:person_education])
+
         redirect_to current_user
       end
 
@@ -20,6 +20,7 @@ module Socializer
       def update
         @person_education = find_person_education
         @person_education.update!(params[:person_education])
+
         redirect_to current_user
       end
 
@@ -27,6 +28,7 @@ module Socializer
       def destroy
         @person_education = find_person_education
         @person_education.destroy
+
         redirect_to current_user
       end
 

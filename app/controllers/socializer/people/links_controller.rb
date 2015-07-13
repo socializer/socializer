@@ -11,8 +11,8 @@ module Socializer
 
       # POST /people/1/links
       def create
-        @person_link = current_user.links.build(params[:person_link])
-        @person_link.save!
+        @person_link = current_user.links.create!(params[:person_link])
+
         redirect_to current_user
       end
 
@@ -20,6 +20,7 @@ module Socializer
       def update
         @person_link = find_person_link
         @person_link.update!(params[:person_link])
+
         redirect_to current_user
       end
 
@@ -27,6 +28,7 @@ module Socializer
       def destroy
         @person_link = find_person_link
         @person_link.destroy
+
         redirect_to current_user
       end
 
