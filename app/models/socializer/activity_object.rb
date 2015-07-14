@@ -7,16 +7,18 @@ module Socializer
   #
   class ActivityObject < ActiveRecord::Base
     attr_accessor :scope, :object_ids
-    attr_accessible :scope, :object_ids, :activitable_id, :activitable_type, :like_count, :unread_notifications_count
+    attr_accessible :scope, :object_ids, :activitable_id, :activitable_type,
+                    :like_count, :unread_notifications_count
 
     # Relationships
     belongs_to :activitable, polymorphic: true
 
     # Polymorphic
-    # These relationships simplify the Activity.circles_subquery and Activity.limited_group_subquery
-    # queries. By using these relationships we no longer need to use Arel in those methods.
-    # NOTE: These relationships will no longer be needed if rails provides a nice way to joins to a polymorphic
-    #       relationship
+    # These relationships simplify the Activity.circles_subquery and
+    # Activity.limited_group_subquery queries. By using these relationships we
+    # no longer need to use Arel in those methods.
+    # NOTE: These relationships will no longer be needed if rails provides a
+    #       nice way to joins to a polymorphic relationship
     belongs_to :group,  -> { where(socializer_activity_objects: { activitable_type: Group.name }) }, foreign_key: "activitable_id"
     belongs_to :person, -> { where(socializer_activity_objects: { activitable_type: Person.name }) }, foreign_key: "activitable_id"
 
@@ -24,9 +26,17 @@ module Socializer
     has_many :audiences, inverse_of: :activity_object # , dependent: :destroy
     has_many :activities, through: :audiences
 
-    has_many :actor_activities,  class_name: "Activity", foreign_key: "actor_id",  dependent: :destroy
-    has_many :object_activities, class_name: "Activity", foreign_key: "activity_object_id", dependent: :destroy
-    has_many :target_activities, class_name: "Activity", foreign_key: "target_id", dependent: :destroy
+    has_many :actor_activities, class_name: "Activity",
+                                foreign_key: "actor_id",
+                                dependent: :destroy
+
+    has_many :object_activities, class_name: "Activity",
+                                 foreign_key: "activity_object_id",
+                                 dependent: :destroy
+
+    has_many :target_activities, class_name: "Activity",
+                                 foreign_key: "target_id",
+                                 dependent: :destroy
 
     has_many :notes,    foreign_key: "author_id", inverse_of: :activity_author
     has_many :comments, foreign_key: "author_id", inverse_of: :activity_author
@@ -34,8 +44,12 @@ module Socializer
     has_many :circles,  foreign_key: "author_id", inverse_of: :activity_author
     has_many :contacts, through: :circles
 
-    has_many :ties,       foreign_key: "contact_id", inverse_of: :activity_contact
-    has_many :memberships, -> { Membership.active }, foreign_key: "member_id", inverse_of: :activity_member
+    has_many :ties, foreign_key: "contact_id",
+                    inverse_of: :activity_contact
+
+    has_many :memberships, -> { Membership.active },
+                          foreign_key: "member_id",
+                          inverse_of: :activity_member
 
     # Validations
     validates :activitable, presence: true
@@ -53,7 +67,8 @@ module Socializer
     # @return [Object] The predicate method
     def self.attribute_type_of(*args)
       args.each do |type|
-        define_method("#{type}?") { activitable_type == "Socializer::#{type.to_s.classify}" }
+        klass = type.to_s.classify
+        define_method("#{type}?") { activitable_type == "Socializer::#{klass}" }
       end
     end
 
@@ -89,7 +104,8 @@ module Socializer
     # @example
     #   @likable.like(current_user) unless current_user.likes?(@likable)
     #
-    # @param person [Socializer::Person] The person who is liking the activity (current_user)
+    # @param person [Socializer::Person] The person who is liking the activity
+    # (current_user)
     #
     # @return [Socializer::Activity]
     def like(person)
@@ -104,7 +120,8 @@ module Socializer
     # @example
     #   @likable.unlike(current_user) if current_user.likes?(@likable)
     #
-    # @param person [Socializer::Person] The person who is unliking the activity (current_user)
+    # @param person [Socializer::Person] The person who is unliking the
+    # activity (current_user)
     #
     # @return [Socializer::Activity]
     def unlike(person)
@@ -117,7 +134,9 @@ module Socializer
     # Share the activity with an audience
     #
     # @example
-    #   @shareable.share(actor_id: actor.guid, object_ids: object_ids, content: "This is the content")
+    #   @shareable.share(actor_id: actor.guid,
+    #                    object_ids: object_ids,
+    #                    content: "This is the content")
     #
     # @param actor_id [Integer] User who is sharing the activity (current_user)
     # @param object_ids [Array<Integer>] List of audiences to target
@@ -146,7 +165,8 @@ module Socializer
 
     # Create the activity for like and unlike.
     #
-    # @param actor [Person] User who is liking/unliking the activity (current_user)
+    # @param actor [Person] User who is liking/unliking the activity
+    # (current_user)
     # @param verb [String] Verb for the activity
     #
     # @return [Socializer::Activity]
