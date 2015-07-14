@@ -30,5 +30,5 @@
   return
 
 jQuery ->
-  if $('body').data('controller') == 'circles'
+  if $('body').data('controller') == 'suggestions'
     setup()
