@@ -15,6 +15,9 @@ module Socializer
     #     end
     #   end
 
+    # The number of ties for the decorated {Socializer::Circle}
+    #
+    # @return [String]
     def ties_count
       helpers.pluralize(model.ties.count, "person")
     end
