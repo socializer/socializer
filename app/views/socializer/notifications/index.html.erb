@@ -5,11 +5,8 @@
 <h1><%= t('.header') %></h1>
 
 <section class='notifications'>
-  <% index_notification = 0 %>
-
-  <% @notifications.each do |notification| %>
-    <% index_notification += 1 %>
-    <%= render notification, classname: notification.card_class(index: index_notification) %>
+  <% @notifications.each.with_index(1) do |notification, index| %>
+    <%= render notification, classname: notification.card_class(index: index) %>
   <% end %>
   <%#= render @notifications %>
 </section>
