@@ -5,12 +5,14 @@ module Socializer
   #
   # Audience model
   #
-  # Every {Socializer::Activity} is shared with one or more {Socializer::Audience audiences}.
+  # Every {Socializer::Activity} is shared with one or more
+  # {Socializer::Audience audiences}.
   #
   class Audience < ActiveRecord::Base
     extend Enumerize
 
-    enumerize :privacy, in:  %w(public circles limited), default: :public, predicates: true, scope: true
+    enumerize :privacy, in:  %w(public circles limited),
+                        default: :public, predicates: true, scope: true
 
     attr_accessible :activity_id, :privacy
 
@@ -19,7 +21,8 @@ module Socializer
     belongs_to :activity_object, inverse_of: :audiences
 
     # Validations
-    # validates :activity_id, presence: true, uniqueness: { scope: :activity_object_id }
+    # validates :activity_id, presence: true,
+    #                         uniqueness: { scope: :activity_object_id }
     validates :privacy, presence: true
 
     # Named Scopes
