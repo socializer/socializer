@@ -8,15 +8,8 @@
   <% index_notification = 0 %>
 
   <% @notifications.each do |notification| %>
-
-    <%
-      index_notification += 1
-      classname = 'panel-default'
-      classname = 'panel-default bg-muted' if notification.read
-      classname = 'panel-success bg-success' if index_notification <= current_user.activity_object.unread_notifications_count
-    %>
-
-    <%= render notification, classname: classname %>
+    <% index_notification += 1 %>
+    <%= render notification, classname: notification.card_class(index: index_notification) %>
   <% end %>
   <%#= render @notifications %>
 </section>

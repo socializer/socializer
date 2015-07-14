@@ -14,5 +14,28 @@ module Socializer
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
+    #
+
+    # Return the CSS class for the notification
+    #
+    # @param index: [Fixnum] Index of the item in the enum
+    #
+    # @return [type] [description]
+    def card_class(index:)
+      classname = 'panel-default'
+      classname = 'panel-default bg-muted' if model.read
+
+      if index <= unread_notifications_count
+        classname = 'panel-success bg-success'
+      end
+
+      classname
+    end
+
+    private
+
+    def unread_notifications_count
+      helpers.current_user.activity_object.unread_notifications_count
+    end
   end
 end
