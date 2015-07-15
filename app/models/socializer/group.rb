@@ -12,24 +12,43 @@ module Socializer
     extend Enumerize
     include ObjectTypeBase
 
-    enumerize :privacy, in: { public: 1, restricted: 2, private: 3 }, default: :public, predicates: true, scope: true
+    enumerize :privacy, in: { public: 1, restricted: 2, private: 3 },
+                        default: :public, predicates: true, scope: true
 
     attr_accessible :display_name, :privacy, :author_id, :tagline, :about
 
     # Relationships
-    belongs_to :activity_author, class_name: "ActivityObject", foreign_key: "author_id", inverse_of: :groups
+    belongs_to :activity_author, class_name: "ActivityObject",
+                                 foreign_key: "author_id",
+                                 inverse_of: :groups
 
-    has_one :author, through: :activity_author, source: :activitable,  source_type: "Socializer::Person"
+    has_one :author, through: :activity_author,
+                     source: :activitable,
+                     source_type: "Socializer::Person"
 
-    has_many :links, class_name: "GroupLink", foreign_key: "group_id", dependent: :destroy
-    has_many :categories, class_name: "GroupCategory", foreign_key: "group_id", dependent: :destroy
+    has_many :links, class_name: "GroupLink",
+                     foreign_key: "group_id",
+                     dependent: :destroy
+
+    has_many :categories, class_name: "GroupCategory",
+                          foreign_key: "group_id",
+                          dependent: :destroy
+
     has_many :memberships, inverse_of: :group
-    has_many :activity_members, -> { merge(Membership.active) }, through: :memberships
-    has_many :members, through: :activity_members, source: :activitable,  source_type: "Socializer::Person"
+
+    has_many :activity_members,
+             -> { merge(Membership.active) },
+             through: :memberships
+
+    has_many :members, through: :activity_members,
+                       source: :activitable,
+                       source_type: "Socializer::Person"
 
     # Validations
     validates :activity_author, presence: true
-    validates :display_name, presence: true, uniqueness: { scope: :author_id, case_sensitive: false }
+    validates :display_name, presence: true,
+                             uniqueness: { scope: :author_id,
+                                           case_sensitive: false }
     validates :privacy, presence: true
 
     # Callbacks
@@ -93,11 +112,12 @@ module Socializer
       elsif privacy.restricted?
         active = false
       else
-        message = I18n.t("socializer.errors.messages.group.private.cannot_self_join")
+        message = I18n.t(:cannot_self_join,
         fail(message)
       end
 
-      memberships.create!(activity_member: person.activity_object, active: active)
+      memberships.create!(activity_member: person.activity_object,
+                          active: active)
     end
 
     # Invite a member to the group
@@ -109,7 +129,8 @@ module Socializer
     # object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def invite(person)
-      memberships.create!(activity_member: person.activity_object, active: false)
+      memberships.create!(activity_member: person.activity_object,
+                          active: false)
     end
 
     # Leave the group
@@ -143,7 +164,9 @@ module Socializer
     def deny_delete_if_members
       return if memberships.count == 0
 
-      errors.add(:base, I18n.t("socializer.errors.messages.group.still_has_members"))
+      message = I18n.t("socializer.errors.messages.group.still_has_members")
+      errors.add(:base, message)
+
       false
     end
   end
