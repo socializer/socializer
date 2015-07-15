@@ -13,14 +13,21 @@ module Socializer
     extend Enumerize
     include ObjectTypeBase
 
-    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 },
-    #                             default: :gravatar, predicates: true, scope: true
+    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3,
+    #                                   gravatar: 4 },
+    #                             default: :gravatar,
+    #                             predicates: true, scope: true
 
-    attr_accessible :display_name, :email, :language, :avatar_provider, :tagline, :introduction, :bragging_rights,
-                    :occupation, :skills, :gender, :looking_for_friends, :looking_for_dating, :looking_for_relationship,
-                    :looking_for_networking, :birthdate, :relationship, :other_names
+    attr_accessible :display_name, :email, :language, :avatar_provider,
+                    :tagline, :introduction, :bragging_rights, :occupation,
+                    :skills, :gender, :looking_for_friends,
+                    :looking_for_dating, :looking_for_relationship,
+                    :looking_for_networking, :birthdate, :relationship,
+                    :other_names
 
-    enumerize :gender, in: { unknown: 0, female: 1, male: 2 }, default: :unknown, predicates: true, scope: true
+    enumerize :gender, in: { unknown: 0, female: 1, male: 2 },
+                       default: :unknown, predicates: true, scope: true
+
     enumerize :relationship, in: { unknown: 0,
                                    single: 1,
                                    relationship: 2,
@@ -35,17 +42,42 @@ module Socializer
 
     # Relationships
     has_many :authentications
-    has_many :addresses, class_name: "PersonAddress", foreign_key: "person_id", dependent: :destroy
-    has_many :contributions, class_name: "PersonContribution", foreign_key: "person_id", dependent: :destroy
-    has_many :educations, class_name: "PersonEducation", foreign_key: "person_id", dependent: :destroy
-    has_many :employments, class_name: "PersonEmployment", foreign_key: "person_id", dependent: :destroy
-    has_many :links, class_name: "PersonLink", foreign_key: "person_id", dependent: :destroy
-    has_many :phones, class_name: "PersonPhone", foreign_key: "person_id", dependent: :destroy
-    has_many :places, class_name: "PersonPlace", foreign_key: "person_id", dependent: :destroy
-    has_many :profiles, class_name: "PersonProfile", foreign_key: "person_id", dependent: :destroy
+    has_many :addresses, class_name: "PersonAddress",
+                         foreign_key: "person_id",
+                         dependent: :destroy
+
+    has_many :contributions, class_name: "PersonContribution",
+                             foreign_key: "person_id",
+                             dependent: :destroy
+
+    has_many :educations, class_name: "PersonEducation",
+                          foreign_key: "person_id",
+                          dependent: :destroy
+
+    has_many :employments, class_name: "PersonEmployment",
+                           foreign_key: "person_id",
+                           dependent: :destroy
+
+    has_many :links, class_name: "PersonLink",
+                     foreign_key: "person_id",
+                     dependent: :destroy
+
+    has_many :phones, class_name: "PersonPhone",
+                      foreign_key: "person_id",
+                      dependent: :destroy
+
+    has_many :places, class_name: "PersonPlace",
+                      foreign_key: "person_id",
+                      dependent: :destroy
+
+    has_many :profiles, class_name: "PersonProfile",
+                        foreign_key: "person_id",
+                        dependent: :destroy
+
 
     # Validations
-    validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN GRAVATAR )
+    validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN
+                                               GRAVATAR )
 
     # Named Scopes
 
@@ -58,12 +90,15 @@ module Socializer
 
     # Class Methods
 
-    # Creates a Socializer::Person with data provided by {https://github.com/intridea/omniauth/wiki OmniAuth}
+    # Creates a Socializer::Person with data provided by
+    # {https://github.com/intridea/omniauth/wiki OmniAuth}
     #
-    # @param auth [Hash] Authentication information provided by {https://github.com/intridea/omniauth/wiki OmniAuth}.
+    # @param auth [Hash] Authentication information provided by
+    # {https://github.com/intridea/omniauth/wiki OmniAuth}.
     #
     # @see https://github.com/intridea/omniauth/wiki OmniAuth
-    # @see https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema OmniAuth Auth Hash Schema
+    # @see https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema OmniAuth
+    # Auth Hash Schema
     #
     # @return [Socializer::Person]
     def self.create_with_omniauth(auth)
@@ -73,9 +108,15 @@ module Socializer
         user.display_name = auth_info.name
         user.email = auth_info.email
         image_url = auth_info.image
-        user.avatar_provider = image_url.blank? ? "GRAVATAR" : auth.provider.upcase
 
-        user.authentications.build(provider: auth.provider, uid: auth.uid, image_url: image_url)
+        if image_url.blank?
+          "GRAVATAR"
+        else
+          auth.provider.upcase
+        end
+
+        user.authentications.build(provider: auth.provider,
+                                   uid: auth.uid, image_url: image_url)
       end
     end
 
@@ -90,16 +131,20 @@ module Socializer
 
     # Instance Methods
 
-    # Collection of {Socializer::Authentication authentications} that the user owns
+    # Collection of {Socializer::Authentication authentications} that the user
+    # owns
     #
-    # @return [Socializer::Authentication] Returns a collection of {Socializer::Authentication authentications}
+    # @return [Socializer::Authentication] Returns a collection of
+    # {Socializer::Authentication authentications}
     def services
       @services ||= authentications.by_not_provider("Identity")
     end
 
-    # Collection of {Socializer::Notification notifications} that the user has received
+    # Collection of {Socializer::Notification notifications} that the user has
+    # received
     #
-    # @return [Socializer::Notification] Returns a collection of {Socializer::Notification notifications}
+    # @return [Socializer::Notification] Returns a collection of
+    # {Socializer::Notification notifications}
     def received_notifications
       @notifications ||= activity_object.notifications.newest_first
     end
@@ -108,7 +153,9 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def contact_of
-      @contact_of ||= Person.distinct.joins(activity_object: { circles: :ties }).merge(Tie.by_contact_id(guid))
+      @contact_of ||= Person.distinct
+                      .joins(activity_object: { circles: :ties })
+                      .merge(Tie.by_contact_id(guid))
     end
 
     # A list of activities the user likes
@@ -148,11 +195,14 @@ module Socializer
       query.count.odd?
     end
 
-    # Returns a collection of pending {Socializer::Membership memberships} invites
+    # Returns a collection of pending {Socializer::Membership memberships}
+    # invites
     #
-    # @return [Socializer::Membership] Returns a collection of {Socializer::Membership memberships}
+    # @return [Socializer::Membership] Returns a collection of
+    # {Socializer::Membership memberships}
     def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.inactive.by_member_id(guid).joins(:group).merge(Group.private)
+      @pending_memberships_invites ||= Membership.inactive.by_member_id(guid)
+                                       .joins(:group).merge(Group.private)
     end
   end
 end
