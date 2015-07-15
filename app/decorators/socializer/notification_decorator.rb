@@ -10,7 +10,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: 'time' do
+    #     helpers.content_tag :span, class: "time" do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -22,11 +22,11 @@ module Socializer
     #
     # @return [type] [description]
     def card_class(index:)
-      classname = 'panel-default'
-      classname = 'panel-default bg-muted' if model.read
+      classname = "panel-default"
+      classname = "panel-default bg-muted" if model.read
 
       if index <= unread_notifications_count
-        classname = 'panel-success bg-success'
+        classname = "panel-success bg-success"
       end
 
       classname
