@@ -60,9 +60,6 @@ Style/Documentation:
     - "db/migrate/**/*"
     - "spec/**/*"
 
-Style/MultilineOperationIndentation:
-  Enabled: false
-
 Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
