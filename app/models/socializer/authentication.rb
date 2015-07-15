@@ -25,11 +25,16 @@ module Socializer
     # Named Scopes
     scope :by_provider, -> provider { where(provider: provider.downcase) }
 
-    scope :by_not_provider, -> provider {
-      where.not(provider: provider.downcase)
-    }
-
     # Class Methods
+
+    # Find authentications that are not provider
+    #
+    # @param provider: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_not_provider(provider:)
+      where.not(provider: provider.downcase)
+    end
 
     private
 

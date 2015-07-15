@@ -42,7 +42,7 @@ module Socializer
 
       context "by_not_provider" do
         before { create(:authentication, provider: "identity") }
-        let(:result) { Authentication.by_not_provider("identity") }
+        let(:result) { Authentication.by_not_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.present?).to be(false) }
