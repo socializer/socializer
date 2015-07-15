@@ -47,9 +47,10 @@ module Socializer
     has_many :ties, foreign_key: "contact_id",
                     inverse_of: :activity_contact
 
-    has_many :memberships, -> { Membership.active },
-                          foreign_key: "member_id",
-                          inverse_of: :activity_member
+    has_many :memberships,
+             -> { Membership.active },
+             foreign_key: "member_id",
+             inverse_of: :activity_member
 
     # Validations
     validates :activitable, presence: true
