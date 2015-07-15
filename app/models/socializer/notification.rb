@@ -29,15 +29,20 @@ module Socializer
 
     # Create notifications for the given activity
     #
-    # @param activity [Socializer::Activity] the activity to create the notifications for
+    # @param activity [Socializer::Activity] the activity to create the
+    # notifications for
     #
     # @return [Array] an [Array] of [Socializer::Notification] objects
     def self.create_for_activity(activity)
       # Get all ties related to the audience of the activity
-      potential_contact_ids = get_potential_contact_ids(activity_id: activity.id)
+      potential_contact_ids =
+        get_potential_contact_ids(activity_id: activity.id)
 
       potential_contact_ids.each do |contact_id|
-        next unless person_in_circle?(parent_contact_id: contact_id, child_contact_id: activity.activitable_actor.id)
+        next unless person_in_circle?(parent_contact_id: contact_id,
+                                      child_contact_id: activity
+                                                          .activitable_actor
+                                                          .id)
         # If the contact has the author of the activity in one of his circle.
         create_notification(activity: activity, contact_id: contact_id)
       end
