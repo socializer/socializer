@@ -8,7 +8,8 @@ module Socializer
   # Where the {Socializer::Person person} has worked
   #
   class PersonEmployment < ActiveRecord::Base
-    attr_accessible :employer_name, :job_title, :started_on, :ended_on, :current, :job_description
+    attr_accessible :employer_name, :job_title, :started_on, :ended_on,
+                    :current, :job_description
 
     # Relationships
     belongs_to :person

@@ -10,7 +10,8 @@ module Socializer
   class PersonPhone < ActiveRecord::Base
     extend Enumerize
 
-    enumerize :category, in: { home: 1, work: 2 }, default: :home, predicates: true, scope: true
+    enumerize :category, in: { home: 1, work: 2 }, default: :home,
+                         predicates: true, scope: true
 
     attr_accessible :label, :number
 
