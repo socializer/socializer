@@ -68,15 +68,31 @@ Socializer::Engine.routes.draw do
   resources :notifications, only: [:index, :show]
 
   resources :people, only: [:index, :show, :edit, :update] do
-    resources :activities,     only: [:index], controller: "people/activities"
-    resources :addresses,      only: [:create, :update, :destroy], controller: "people/addresses"
-    resources :contributions,  only: [:create, :update, :destroy], controller: "people/contributions"
-    resources :educations,     only: [:create, :update, :destroy], controller: "people/educations"
-    resources :employments,    only: [:create, :update, :destroy], controller: "people/employments"
-    resources :links,          only: [:create, :update, :destroy], controller: "people/links"
-    resources :phones,         only: [:create, :update, :destroy], controller: "people/phones"
-    resources :places,         only: [:create, :update, :destroy], controller: "people/places"
-    resources :profiles,       only: [:create, :update, :destroy], controller: "people/profiles"
+    resources :activities, only: [:index], controller: "people/activities"
+
+    resources :addresses, only: [:create, :update, :destroy],
+                          controller: "people/addresses"
+
+    resources :contributions, only: [:create, :update, :destroy],
+                              controller: "people/contributions"
+
+    resources :educations, only: [:create, :update, :destroy],
+                           controller: "people/educations"
+
+    resources :employments, only: [:create, :update, :destroy],
+                            controller: "people/employments"
+
+    resources :links, only: [:create, :update, :destroy],
+                      controller: "people/links"
+
+    resources :phones, only: [:create, :update, :destroy],
+                       controller: "people/phones"
+
+    resources :places, only: [:create, :update, :destroy],
+                       controller: "people/places"
+
+    resources :profiles, only: [:create, :update, :destroy],
+                         controller: "people/profiles"
 
     member do
       get "likes", to: "people/likes#index"
@@ -87,6 +103,9 @@ Socializer::Engine.routes.draw do
   resources :ties, only: [:create, :destroy]
 
   # Example root that gets defined for a logged in user
-  # get "/", to: "activities#index", constraints: -> request { request.cookies.key?("user_id").present? }
+  # get "/",
+  #     to: "activities#index",
+  #     constraints: -> request { request.cookies.key?("user_id").present? }
+  #
   root to: "pages#index"
 end
