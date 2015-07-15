@@ -13,9 +13,13 @@ module Socializer
     attr_accessible :content
 
     # Relationships
-    belongs_to :activity_author, class_name: "ActivityObject", foreign_key: "author_id", inverse_of: :notes
+    belongs_to :activity_author, class_name: "ActivityObject",
+                                 foreign_key: "author_id",
+                                 inverse_of: :notes
 
-    has_one :author, through: :activity_author, source: :activitable,  source_type: "Socializer::Person"
+    has_one :author, through: :activity_author,
+                     source: :activitable,
+                     source_type: "Socializer::Person"
 
     # Validations
     validates :activity_author, presence: true
