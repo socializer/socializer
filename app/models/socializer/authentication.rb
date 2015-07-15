@@ -23,7 +23,7 @@ module Socializer
     before_destroy :make_sure_its_not_the_last_one
 
     # Named Scopes
-    scope :by_provider, -> provider { where(provider: provider.downcase) }
+    scope :by_provider, -> (provider) { where(provider: provider.downcase) }
 
     # Class Methods
 

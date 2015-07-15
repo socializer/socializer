@@ -56,8 +56,8 @@ module Socializer
     validates :activitable, presence: true
 
     # Named Scopes
-    scope :by_id, -> id { where(id: id) }
-    scope :by_activitable_type, -> type { where(activitable_type: type) }
+    scope :by_id, -> (id) { where(id: id) }
+    scope :by_activitable_type, -> (type) { where(activitable_type: type) }
 
     # Class Methods
 

@@ -26,7 +26,7 @@ module Socializer
     validates :activity_contact, presence: true
 
     # Named Scopes
-    scope :by_circle_id, -> circle_id { where(circle_id: circle_id) }
-    scope :by_contact_id, -> contact_id { where(contact_id: contact_id) }
+    scope :by_circle_id, -> (circle_id) { where(circle_id: circle_id) }
+    scope :by_contact_id, -> (contact_id) { where(contact_id: contact_id) }
   end
 end

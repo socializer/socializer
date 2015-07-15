@@ -17,6 +17,6 @@ module Socializer
     validates :display_name, presence: true, uniqueness: true
 
     # Named Scopes
-    scope :by_display_name, -> name { where(display_name: name) }
+    scope :by_display_name, -> (name) { where(display_name: name) }
   end
 end

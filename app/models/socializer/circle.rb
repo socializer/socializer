@@ -39,9 +39,9 @@ module Socializer
                                            case_sensitive: false }
 
     # Named Scopes
-    scope :by_id, -> id { where(id: id) }
-    scope :by_author_id, -> id { where(author_id: id) }
-    scope :by_display_name, -> name { where(display_name: name) }
+    scope :by_id, -> (id) { where(id: id) }
+    scope :by_author_id, -> (id) { where(author_id: id) }
+    scope :by_display_name, -> (name) { where(display_name: name) }
 
     # Class Methods
 
