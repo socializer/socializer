@@ -15,7 +15,7 @@ module Socializer
     context "relationships" do
       it do
         is_expected
-        .to belong_to(:activity_author)
+          .to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
           .inverse_of(:notes)
@@ -23,7 +23,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_one(:author)
+          .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end

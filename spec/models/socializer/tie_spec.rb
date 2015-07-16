@@ -18,7 +18,7 @@ module Socializer
 
       it do
         is_expected
-        .to belong_to(:activity_contact)
+          .to belong_to(:activity_contact)
           .class_name("ActivityObject")
           .with_foreign_key("contact_id")
           .inverse_of(:ties)
@@ -26,7 +26,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_one(:contact)
+          .to have_one(:contact)
           .through(:activity_contact)
           .source(:activitable)
       end

@@ -44,19 +44,19 @@ module Socializer
     context "validations" do
       it do
         is_expected
-        .to validate_inclusion_of(:avatar_provider).in_array(valid_providers)
+          .to validate_inclusion_of(:avatar_provider).in_array(valid_providers)
       end
     end
 
     it do
       is_expected
-      .to enumerize(:gender).in(:unknown, :female, :male)
+        .to enumerize(:gender).in(:unknown, :female, :male)
         .with_default(:unknown)
     end
 
     it do
       is_expected
-      .to enumerize(:relationship)
+        .to enumerize(:relationship)
         .in(
           :unknown,
           :single,
@@ -87,7 +87,7 @@ module Socializer
         expect(person.services.to_sql).to include("!= 'identity'")
         expect(person.services.count).to eq(1)
         expect(person.services.find_by(provider: "facebook").provider)
-        .to eq("facebook")
+          .to eq("facebook")
       end
     end
 
@@ -132,7 +132,7 @@ module Socializer
       # TODO: Test return values
       it do
         expect(person.contacts)
-        .to be_kind_of(ActiveRecord::Associations::CollectionProxy)
+          .to be_kind_of(ActiveRecord::Associations::CollectionProxy)
       end
     end
 
@@ -157,14 +157,14 @@ module Socializer
     it "accepts known avatar_provider" do
       valid_providers.each do |provider|
         expect(build(:person, avatar_provider: provider))
-        .to be_valid
+          .to be_valid
       end
     end
 
     it "rejects unknown avatar_provider" do
       %w( IDENTITY TEST DUMMY OTHER ).each do |provider|
         expect(build(:person, avatar_provider: provider))
-        .to be_invalid
+          .to be_invalid
       end
     end
   end

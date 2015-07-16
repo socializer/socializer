@@ -43,7 +43,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_many(:memberships)
+          .to have_many(:memberships)
           .conditions(active: true)
           .inverse_of(:activity_member)
       end
@@ -59,7 +59,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_activity_objects"."id" = 1')
+            .to include('WHERE "socializer_activity_objects"."id" = 1')
         end
       end
 

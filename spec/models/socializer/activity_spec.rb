@@ -25,7 +25,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_one(:actor).through(:activitable_actor).source(:activitable)
+          .to have_one(:actor).through(:activitable_actor).source(:activitable)
       end
 
       it { is_expected.to have_one(:activity_field) }
@@ -47,7 +47,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('ORDER BY "socializer_activities"."created_at" DESC')
+            .to include('ORDER BY "socializer_activities"."created_at" DESC')
         end
       end
 
@@ -64,7 +64,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_activities"."activity_object_id" = 1')
+            .to include('WHERE "socializer_activities"."activity_object_id" = 1')
         end
       end
 
@@ -73,7 +73,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_activities"."actor_id" = 1')
+            .to include('WHERE "socializer_activities"."actor_id" = 1')
         end
       end
 
@@ -82,21 +82,21 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_activities"."target_id" = 1')
+            .to include('WHERE "socializer_activities"."target_id" = 1')
         end
       end
     end
 
     it do
       is_expected
-      .to delegate_method(:activity_field_content)
+        .to delegate_method(:activity_field_content)
         .to(:activity_field)
         .as(:content)
     end
 
     it do
       is_expected
-      .to delegate_method(:verb_display_name)
+        .to delegate_method(:verb_display_name)
         .to(:verb)
         .as(:display_name)
     end
@@ -153,27 +153,27 @@ module Socializer
 
       it do
         expect(Activity.stream(viewer_id: person.id))
-        .to be_kind_of(ActiveRecord::Relation)
+          .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
         expect(Activity.activity_stream(common_stream_attributes))
-        .to be_kind_of(ActiveRecord::Relation)
+          .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
         expect(Activity.circle_stream(common_stream_attributes))
-        .to be_kind_of(ActiveRecord::Relation)
+          .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
         expect(Activity.group_stream(group_stream_attributes))
-        .to be_kind_of(ActiveRecord::Relation)
+          .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
         expect(Activity.person_stream(common_stream_attributes))
-        .to be_kind_of(ActiveRecord::Relation)
+          .to be_kind_of(ActiveRecord::Relation)
       end
     end
   end

@@ -30,7 +30,7 @@ module Socializer
 
       it do
         is_expected
-        .to belong_to(:activity_member)
+          .to belong_to(:activity_member)
           .class_name("ActivityObject")
           .with_foreign_key("member_id")
           .inverse_of(:memberships)
@@ -38,7 +38,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_one(:member).through(:activity_member).source(:activitable)
+          .to have_one(:member).through(:activity_member).source(:activitable)
       end
     end
 
@@ -82,7 +82,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_memberships"."member_id" = 1')
+            .to include('WHERE "socializer_memberships"."member_id" = 1')
         end
 
         context "person has no memberships" do

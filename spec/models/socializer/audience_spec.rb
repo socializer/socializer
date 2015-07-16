@@ -41,7 +41,7 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_audiences"."activity_id" = 1')
+            .to include('WHERE "socializer_audiences"."activity_id" = 1')
         end
       end
 
@@ -50,14 +50,14 @@ module Socializer
 
         it do
           expect(sql)
-          .to include('WHERE "socializer_audiences"."activity_object_id" = 1')
+            .to include('WHERE "socializer_audiences"."activity_object_id" = 1')
         end
       end
     end
 
     it do
       is_expected
-      .to enumerize(:privacy)
+        .to enumerize(:privacy)
         .in(:public, :circles, :limited)
         .with_default(:public)
     end

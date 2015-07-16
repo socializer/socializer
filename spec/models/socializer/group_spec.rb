@@ -17,7 +17,7 @@ module Socializer
     context "relationships" do
       it do
         is_expected
-        .to belong_to(:activity_author)
+          .to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
           .inverse_of(:groups)
@@ -25,7 +25,7 @@ module Socializer
 
       it do
         is_expected
-        .to have_one(:author)
+          .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end
@@ -36,14 +36,14 @@ module Socializer
 
       it do
         is_expected
-        .to have_many(:activity_members)
+          .to have_many(:activity_members)
           .through(:memberships)
           .conditions(socializer_memberships: { active: true })
       end
 
       it do
         is_expected
-        .to have_many(:members)
+          .to have_many(:members)
           .through(:activity_members)
           .source(:activitable)
       end
@@ -56,7 +56,7 @@ module Socializer
       it "check uniqueness of display_name" do
         create(:group)
         is_expected
-        .to validate_uniqueness_of(:display_name)
+          .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
           .case_insensitive
       end
@@ -64,7 +64,7 @@ module Socializer
 
     it do
       is_expected
-      .to enumerize(:privacy).in(:public, :restricted, :private)
+        .to enumerize(:privacy).in(:public, :restricted, :private)
         .with_default(:public)
     end
 
@@ -205,7 +205,7 @@ module Socializer
 
       it "cannot be joined" do
         expect { private_group.join(person) }
-        .to raise_error(RuntimeError, error_message)
+          .to raise_error(RuntimeError, error_message)
       end
 
       context "and a person gets invited" do
