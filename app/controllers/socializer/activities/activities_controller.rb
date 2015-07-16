@@ -27,7 +27,7 @@ module Socializer
       def stream
         @stream ||= Activity.activity_stream(actor_uid: @activity.id,
                                              viewer_id: current_user.id)
-                            .decorate
+                    .decorate
       end
     end
   end
