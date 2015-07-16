@@ -112,7 +112,7 @@ module Socializer
       elsif privacy.restricted?
         active = false
       else
-        message = I18n.t(:cannot_self_join,
+        message = I18n.t(:cannot_self_join, scope: "socializer.errors.messages.group.private")
         fail(message)
       end
 
