@@ -1,12 +1,12 @@
 language: ruby
 sudo: false
-cache: bundler
-# bundler_args: --without development
 before_install: gem install bundler
 before_script:
+  - bundle update
   - bundle exec rake dummy:app --trace
   - bundle exec rake app:db:migrate --trace
-script: bundle exec rspec spec
+cache: bundler
+script: bundle exec rspec
 env:
   - DB=postgres
   - DB=mysql
