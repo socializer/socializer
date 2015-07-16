@@ -62,9 +62,12 @@ module Socializer
       context "by_activity_object_id" do
         let(:sql) { Activity.by_activity_object_id(1).to_sql }
 
+        let(:expected) do
+          'WHERE "socializer_activities"."activity_object_id" = 1'
+        end
+
         it do
-          expect(sql)
-            .to include('WHERE "socializer_activities"."activity_object_id" = 1')
+          expect(sql).to include(expected)
         end
       end
 
