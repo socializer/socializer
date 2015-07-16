@@ -79,7 +79,7 @@ module Socializer
     # {Socializer::Activity} objects
     def comments
       @comments ||= children.joins(:activitable_object)
-                      .merge(ActivityObject.by_activitable_type(Comment.name))
+                    .merge(ActivityObject.by_activitable_type(Comment.name))
     end
 
     # The primary object of the activity.
@@ -300,8 +300,8 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
-                    .merge(Membership.by_member_id(viewer_id))
-                    .pluck(:id)
+        .merge(Membership.by_member_id(viewer_id))
+        .pluck(:id)
     end
     private_class_method :limited_group_subquery
   end

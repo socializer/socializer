@@ -137,7 +137,7 @@ module Socializer
     # @return [Socializer::Authentication] Returns a collection of
     # {Socializer::Authentication authentications}
     def services
-      @services ||= authentications.by_not_provider("Identity")
+      @services ||= authentications.by_not_provider(provider: "Identity")
     end
 
     # Collection of {Socializer::Notification notifications} that the user has
@@ -168,9 +168,9 @@ module Socializer
       verbs_of_interest = %w(like unlike)
 
       query = Activity.joins(:verb)
-                      .by_actor_id(guid)
-                      .by_target_id(nil)
-                      .merge(Verb.by_display_name(verbs_of_interest))
+              .by_actor_id(guid)
+              .by_target_id(nil)
+              .merge(Verb.by_display_name(verbs_of_interest))
 
       @likes ||= query.group(:activity_object_id).having("COUNT(1) % 2 == 1")
     end
@@ -188,9 +188,9 @@ module Socializer
       verbs_of_interest = %w(like unlike)
 
       query = Activity.joins(:verb)
-                      .by_activity_object_id(object.id)
-                      .by_actor_id(guid)
-                      .merge(Verb.by_display_name(verbs_of_interest))
+              .by_activity_object_id(object.id)
+              .by_actor_id(guid)
+              .merge(Verb.by_display_name(verbs_of_interest))
 
       query.count.odd?
     end
