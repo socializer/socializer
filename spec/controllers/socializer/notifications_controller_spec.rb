@@ -54,7 +54,7 @@ module Socializer
 
           it "assigns @notifications" do
             expect(assigns(:notifications))
-            .to match_array(activity.notifications)
+              .to match_array(activity.notifications)
           end
 
           it "renders the :index template" do

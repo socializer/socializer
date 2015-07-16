@@ -46,7 +46,7 @@ module Socializer
           it "saves the new membership in the database" do
             group
             expect { post :create, valid_attributes }
-            .to change(Membership, :count).by(1)
+              .to change(Membership, :count).by(1)
           end
 
           it "redirects to groups#show" do
@@ -64,7 +64,7 @@ module Socializer
         it "deletes the membership" do
           membership
           expect { delete :destroy, id: membership }
-          .to change(Membership, :count).by(-1)
+            .to change(Membership, :count).by(-1)
         end
       end
     end

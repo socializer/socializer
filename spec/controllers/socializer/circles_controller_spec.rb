@@ -138,7 +138,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new circle in the database" do
             expect { post :create, valid_attributes }
-            .to change(Circle, :count).by(1)
+              .to change(Circle, :count).by(1)
           end
 
           it "redirects to circles#contacts" do
@@ -183,7 +183,7 @@ module Socializer
         it "deletes the circle" do
           circle
           expect { delete :destroy, id: circle }
-          .to change(Circle, :count).by(-1)
+            .to change(Circle, :count).by(-1)
         end
 
         it "redirects to contacts#index" do

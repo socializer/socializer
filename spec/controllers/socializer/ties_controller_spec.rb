@@ -50,7 +50,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new group in the database" do
             expect { post :create, valid_attributes }
-            .to change(Tie, :count).by(1)
+              .to change(Tie, :count).by(1)
           end
 
           it "returns http ok" do

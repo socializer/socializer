@@ -64,7 +64,7 @@ module Socializer
           it "deletes the authentication" do
             authentication
             expect { delete :destroy, id: authentication }
-            .to change(Authentication, :count).by(0)
+              .to change(Authentication, :count).by(0)
           end
         end
 
@@ -81,7 +81,7 @@ module Socializer
             identity
             authentication
             expect { delete :destroy, id: authentication }
-            .to change(Authentication, :count).by(-1)
+              .to change(Authentication, :count).by(-1)
           end
         end
 

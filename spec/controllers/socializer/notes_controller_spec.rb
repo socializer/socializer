@@ -85,7 +85,7 @@ module Socializer
           context "format.html" do
             it "saves the new note in the database" do
               expect { post :create, valid_attributes }
-              .to change(Note, :count).by(1)
+                .to change(Note, :count).by(1)
             end
 
             it "redirects to activities#index" do
@@ -97,7 +97,7 @@ module Socializer
           context "format.js" do
             it "saves the new note in the database" do
               expect { post :create, valid_attributes, format: :js }
-              .to change(Note, :count).by(1)
+                .to change(Note, :count).by(1)
             end
 
             it "returns http success" do

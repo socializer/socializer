@@ -89,7 +89,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new comment in the database" do
             expect { post :create, valid_attributes }
-            .to change(Comment, :count).by(1)
+              .to change(Comment, :count).by(1)
           end
 
           it "redirects to activities#index" do
@@ -134,7 +134,7 @@ module Socializer
         it "deletes the comment" do
           comment
           expect { delete :destroy, id: comment }
-          .to change(Comment, :count).by(-1)
+            .to change(Comment, :count).by(-1)
         end
 
         it "redirects to activities#index" do

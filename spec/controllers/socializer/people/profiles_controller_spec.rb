@@ -57,7 +57,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new profile in the database" do
             expect { post :create, valid_attributes }
-            .to change(PersonProfile, :count).by(1)
+              .to change(PersonProfile, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -88,7 +88,7 @@ module Socializer
         it "deletes the profile" do
           profile
           expect { delete :destroy, id: profile, person_id: user }
-          .to change(PersonProfile, :count).by(-1)
+            .to change(PersonProfile, :count).by(-1)
         end
 
         it "redirects to people#show" do

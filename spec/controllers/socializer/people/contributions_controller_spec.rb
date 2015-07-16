@@ -58,7 +58,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new contribution in the database" do
             expect { post :create, valid_attributes }
-            .to change(PersonContribution, :count).by(1)
+              .to change(PersonContribution, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -89,7 +89,7 @@ module Socializer
         it "deletes the contribution" do
           contribution
           expect { delete :destroy, id: contribution, person_id: user }
-          .to change(PersonContribution, :count).by(-1)
+            .to change(PersonContribution, :count).by(-1)
         end
 
         it "redirects to people#show" do

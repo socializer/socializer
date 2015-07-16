@@ -41,7 +41,7 @@ module Socializer
           it "decline the membership" do
             membership
             expect { delete :destroy, id: membership.id }
-            .to change(Membership, :count).by(-1)
+              .to change(Membership, :count).by(-1)
           end
 
           it "redirects to groups#pending_invites" do

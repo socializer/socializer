@@ -96,7 +96,7 @@ module Socializer
         it "deletes the activity" do
           activity
           expect { delete :destroy, id: activity, format: :js }
-          .to change(Activity, :count).by(-1)
+            .to change(Activity, :count).by(-1)
         end
       end
     end

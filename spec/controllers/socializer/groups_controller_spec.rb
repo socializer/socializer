@@ -138,7 +138,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new group in the database" do
             expect { post :create, valid_attributes }
-            .to change(Group, :count).by(1)
+              .to change(Group, :count).by(1)
           end
 
           it "redirects to group#show" do
@@ -150,7 +150,7 @@ module Socializer
         context "with invalid attributes" do
           it "does not save the new circle in the database" do
             expect { post :create, invalid_attributes }
-            .not_to change(Group, :count)
+              .not_to change(Group, :count)
           end
 
           it "re-renders the :new template" do
@@ -196,7 +196,7 @@ module Socializer
           it "deletes the group" do
             group
             expect { delete :destroy, id: group }
-            .not_to change(Group, :count)
+              .not_to change(Group, :count)
           end
         end
 
@@ -208,7 +208,7 @@ module Socializer
           it "deletes the group" do
             group
             expect { delete :destroy, id: group }
-            .to change(Group, :count).by(-1)
+              .to change(Group, :count).by(-1)
           end
 
           it "redirects to groups#index" do

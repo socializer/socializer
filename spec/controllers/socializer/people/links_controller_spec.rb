@@ -58,7 +58,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new link in the database" do
             expect { post :create, valid_attributes }
-            .to change(PersonLink, :count).by(1)
+              .to change(PersonLink, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -89,7 +89,7 @@ module Socializer
         it "deletes the link" do
           link
           expect { delete :destroy, id: link, person_id: user }
-          .to change(PersonLink, :count).by(-1)
+            .to change(PersonLink, :count).by(-1)
         end
 
         it "redirects to people#show" do
