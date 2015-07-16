@@ -82,7 +82,7 @@ module Socializer
 
         it do
           expect(decorated_person.birthdate)
-          .to eq(person.birthdate.to_s(:long_ordinal))
+            .to eq(person.birthdate.to_s(:long_ordinal))
         end
       end
     end
@@ -201,27 +201,27 @@ module Socializer
 
         it do
           expect(result)
-          .to have_link("Friends", href: "/circles/1/activities")
+            .to have_link("Friends", href: "/circles/1/activities")
         end
 
         it do
           expect(result)
-          .to have_link("Family", href: "/circles/2/activities")
+            .to have_link("Family", href: "/circles/2/activities")
         end
 
         it do
           expect(result)
-          .to have_link("Acquaintances", href: "/circles/3/activities")
+            .to have_link("Acquaintances", href: "/circles/3/activities")
         end
 
         it do
           expect(result)
-          .to have_link("Following", href: "/circles/4/activities")
+            .to have_link("Following", href: "/circles/4/activities")
         end
 
         it do
           expect(result)
-          .not_to have_link("Group", href: "/groups/1/activities")
+            .not_to have_link("Group", href: "/groups/1/activities")
         end
 
         it do
@@ -230,7 +230,7 @@ module Socializer
 
         it do
           expect(result)
-          .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+            .to have_link(t("socializer.shared.toolbar.more"), href: "#")
         end
 
         it do
@@ -239,7 +239,7 @@ module Socializer
 
         it do
           expect(result)
-          .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
+            .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
         end
 
         it do
@@ -264,7 +264,7 @@ module Socializer
 
         it do
           expect(result)
-          .to have_link("Friends", href: "/circles/1/activities")
+            .to have_link("Friends", href: "/circles/1/activities")
         end
 
         it do
@@ -273,12 +273,12 @@ module Socializer
 
         it do
           expect(result)
-          .to have_link("Acquaintances", href: "/circles/3/activities")
+            .to have_link("Acquaintances", href: "/circles/3/activities")
         end
 
         it do
           expect(result)
-          .to have_link("Following", href: "/circles/4/activities")
+            .to have_link("Following", href: "/circles/4/activities")
         end
 
         it do
@@ -289,7 +289,7 @@ module Socializer
 
         it do
           expect(result)
-          .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+            .to have_link(t("socializer.shared.toolbar.more"), href: "#")
         end
 
         it do
@@ -298,7 +298,7 @@ module Socializer
 
         it do
           expect(result)
-          .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
+            .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
         end
 
         it do

@@ -18,12 +18,12 @@ module Socializer
 
         it do
           expect(result)
-          .to have_selector("time[datetime='#{created_at.iso8601}']")
+            .to have_selector("time[datetime='#{created_at.iso8601}']")
         end
 
         it do
           expect(result)
-          .to have_selector("time[title='#{created_at.to_s(:short)}']")
+            .to have_selector("time[title='#{created_at.to_s(:short)}']")
         end
 
         it do
@@ -50,12 +50,12 @@ module Socializer
 
         it do
           expect(result)
-          .to have_selector("time[datetime='#{created_at.iso8601}']")
+            .to have_selector("time[datetime='#{created_at.iso8601}']")
         end
 
         it do
           expect(result)
-          .to have_selector("time[title='#{time_title}']")
+            .to have_selector("time[title='#{time_title}']")
         end
 
         it do
