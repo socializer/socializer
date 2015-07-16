@@ -109,11 +109,11 @@ module Socializer
         user.email = auth_info.email
         image_url = auth_info.image
 
-        if image_url.blank?
-          "GRAVATAR"
-        else
-          auth.provider.upcase
-        end
+        user.avatar_provider = if image_url.blank?
+                                 "GRAVATAR"
+                               else
+                                 auth.provider.upcase
+                               end
 
         user.authentications.build(provider: auth.provider,
                                    uid: auth.uid, image_url: image_url)
