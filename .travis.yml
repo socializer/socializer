@@ -5,6 +5,7 @@ before_script:
   - bundle update
   - bundle exec rake dummy:app --trace
   - bundle exec rake app:db:migrate --trace
+  - bundle exec rake app:db:test:prepare --trace
 cache: bundler
 script: bundle exec rspec
 env:
