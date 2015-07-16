@@ -23,7 +23,7 @@ module Socializer
 
       it "routes to #create" do
         expect(post: "/memberships")
-        .to route_to("socializer/memberships#create")
+          .to route_to("socializer/memberships#create")
       end
 
       it "does not route to #update" do
@@ -32,7 +32,7 @@ module Socializer
 
       it "routes to #destroy" do
         expect(delete: "/memberships/1")
-        .to route_to("socializer/memberships#destroy", id: "1")
+          .to route_to("socializer/memberships#destroy", id: "1")
       end
     end
   end

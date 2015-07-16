@@ -31,7 +31,7 @@ module Socializer
 
       it "does not route to #destroy" do
         expect(delete: "/ties/1")
-        .to route_to("socializer/ties#destroy", id: "1")
+          .to route_to("socializer/ties#destroy", id: "1")
       end
     end
   end

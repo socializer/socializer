@@ -19,22 +19,22 @@ module Socializer
 
       it "routes to #edit" do
         expect(get: "/comments/1/edit")
-        .to route_to("socializer/comments#edit", id: "1")
+          .to route_to("socializer/comments#edit", id: "1")
       end
 
       it "routes to #create" do
         expect(post: "/comments")
-        .to route_to("socializer/comments#create")
+          .to route_to("socializer/comments#create")
       end
 
       it "routes to #update" do
         expect(patch: "/comments/1")
-        .to route_to("socializer/comments#update", id: "1")
+          .to route_to("socializer/comments#update", id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/comments/1")
-        .to route_to("socializer/comments#destroy", id: "1")
+          .to route_to("socializer/comments#destroy", id: "1")
       end
     end
   end

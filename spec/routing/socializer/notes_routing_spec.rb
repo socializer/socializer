@@ -19,22 +19,22 @@ module Socializer
 
       it "routes to #edit" do
         expect(get: "/notes/1/edit")
-        .to route_to("socializer/notes#edit", id: "1")
+          .to route_to("socializer/notes#edit", id: "1")
       end
 
       it "routes to #create" do
         expect(post: "/notes")
-        .to route_to("socializer/notes#create")
+          .to route_to("socializer/notes#create")
       end
 
       it "routes to #update" do
         expect(patch: "/notes/1")
-        .to route_to("socializer/notes#update", id: "1")
+          .to route_to("socializer/notes#update", id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/notes/1")
-        .to route_to("socializer/notes#destroy", id: "1")
+          .to route_to("socializer/notes#destroy", id: "1")
       end
     end
   end

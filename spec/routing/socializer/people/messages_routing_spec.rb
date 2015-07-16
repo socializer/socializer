@@ -11,7 +11,7 @@ module Socializer
 
       it "routes to #new" do
         expect(get: "/people/1/messages/new")
-        .to route_to("socializer/people/messages#new", id: "1")
+          .to route_to("socializer/people/messages#new", id: "1")
       end
 
       it "does not route to #show" do

@@ -7,7 +7,7 @@ module Socializer
     describe "routing" do
       it "routes to #index" do
         expect(get: "/circles/suggestions")
-        .to route_to("socializer/circles/suggestions#index")
+          .to route_to("socializer/circles/suggestions#index")
       end
 
       it "does not route to #new" do

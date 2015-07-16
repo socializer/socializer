@@ -32,7 +32,7 @@ module Socializer
 
       it "routes to #destroy" do
         expect(delete: "/memberships/1/decline")
-        .to route_to("socializer/memberships/decline#destroy", id: "1")
+          .to route_to("socializer/memberships/decline#destroy", id: "1")
       end
     end
   end

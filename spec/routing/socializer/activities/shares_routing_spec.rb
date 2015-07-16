@@ -11,7 +11,7 @@ module Socializer
 
       it "routes to #new" do
         expect(get: "/activities/1/share")
-        .to route_to("socializer/activities/shares#new", id: "1")
+          .to route_to("socializer/activities/shares#new", id: "1")
       end
 
       it "does not route to #show" do
@@ -24,7 +24,7 @@ module Socializer
 
       it "routes to #create" do
         expect(post: "/activities/1/share")
-        .to route_to("socializer/activities/shares#create", id: "1")
+          .to route_to("socializer/activities/shares#create", id: "1")
       end
 
       it "does not route to #update" do

@@ -23,29 +23,29 @@ module Socializer
 
       it "routes to #create" do
         expect(post: "/people/1/employments")
-        .to route_to("socializer/people/employments#create", person_id: "1")
+          .to route_to("socializer/people/employments#create", person_id: "1")
       end
 
       it "routes to #update" do
         expect(patch: "/people/1/employments/1")
-        .to route_to(
-          "socializer/people/employments#update",
-          person_id: "1",
-          id: "1")
+          .to route_to(
+            "socializer/people/employments#update",
+            person_id: "1",
+            id: "1")
 
         expect(put: "/people/1/employments/1")
-        .to route_to(
-          "socializer/people/employments#update",
-          person_id: "1",
-          id: "1")
+          .to route_to(
+            "socializer/people/employments#update",
+            person_id: "1",
+            id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/people/1/employments/1")
-        .to route_to(
-          "socializer/people/employments#destroy",
-          person_id: "1",
-          id: "1")
+          .to route_to(
+            "socializer/people/employments#destroy",
+            person_id: "1",
+            id: "1")
       end
     end
   end

@@ -7,7 +7,7 @@ module Socializer
     describe "routing" do
       it "routes to #index" do
         expect(get: "/activities/1/likes")
-        .to route_to("socializer/activities/likes#index", id: "1")
+          .to route_to("socializer/activities/likes#index", id: "1")
       end
 
       it "does not route to #new" do
@@ -24,7 +24,7 @@ module Socializer
 
       it "routes to #create" do
         expect(post: "/activities/1/like")
-        .to route_to("socializer/activities/likes#create", id: "1")
+          .to route_to("socializer/activities/likes#create", id: "1")
       end
 
       it "does not route to #update" do
@@ -34,7 +34,7 @@ module Socializer
 
       it "routes to #destroy" do
         expect(delete: "/activities/1/unlike")
-        .to route_to("socializer/activities/likes#destroy", id: "1")
+          .to route_to("socializer/activities/likes#destroy", id: "1")
       end
     end
   end

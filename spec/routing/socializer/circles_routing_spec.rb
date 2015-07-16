@@ -15,12 +15,12 @@ module Socializer
 
       it "routes to #show" do
         expect(get: "/circles/1")
-        .to route_to("socializer/circles#show", id: "1")
+          .to route_to("socializer/circles#show", id: "1")
       end
 
       it "routes to #edit" do
         expect(get: "/circles/1/edit")
-        .to route_to("socializer/circles#edit", id: "1")
+          .to route_to("socializer/circles#edit", id: "1")
       end
 
       it "routes to #create" do
@@ -29,12 +29,12 @@ module Socializer
 
       it "routes to #update" do
         expect(patch: "/circles/1")
-        .to route_to("socializer/circles#update", id: "1")
+          .to route_to("socializer/circles#update", id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/circles/1")
-        .to route_to("socializer/circles#destroy", id: "1")
+          .to route_to("socializer/circles#destroy", id: "1")
       end
     end
   end

@@ -16,12 +16,12 @@ module Socializer
 
       it "routes to #show" do
         expect(get: "/people/1")
-        .to route_to("socializer/people#show", id: "1")
+          .to route_to("socializer/people#show", id: "1")
       end
 
       it "routes to #edit" do
         expect(get: "/people/1/edit")
-        .to route_to("socializer/people#edit", id: "1")
+          .to route_to("socializer/people#edit", id: "1")
       end
 
       it "does not route to #create" do
@@ -30,7 +30,7 @@ module Socializer
 
       it "routes to #update" do
         expect(patch: "/people/1")
-        .to route_to("socializer/people#update", id: "1")
+          .to route_to("socializer/people#update", id: "1")
       end
 
       it "does not route to #destroy" do
