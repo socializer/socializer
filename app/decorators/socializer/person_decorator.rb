@@ -92,10 +92,9 @@ module Socializer
     def toolbar_dropdown(list)
       helpers.content_tag(:li, class: "dropdown") do
         dropdown_link +
-
-        helpers.content_tag(:ul, class: "dropdown-menu") do
-          toolbar_links(list)
-        end
+          helpers.content_tag(:ul, class: "dropdown-menu") do
+            toolbar_links(list)
+          end
       end
     end
 
