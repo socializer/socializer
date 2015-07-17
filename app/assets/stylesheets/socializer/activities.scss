@@ -1,9 +1,7 @@
 @import "variables";
 
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+// Place all the styles related to the matching controller here.
+// They will automatically be included in application.css.
 ul.activities {
   list-style-type: none;
   margin: 0;
@@ -27,9 +25,9 @@ ul.activities ul > li {
   margin: 0;
 }
 
-/*.activity-content {
-  white-space: pre-wrap;
-}*/
+// .activity-content {
+//   white-space: pre-wrap;
+// }
 
 .activity-subcontent
 {
@@ -72,7 +70,7 @@ textarea.note-content-field
 	height: $input-height-base;
 	resize: none;
 	// border: 1px solid #ccc;
-/*	margin-bottom: 5px;*/
+	// margin-bottom: 5px;
   // padding: $padding-base-vertical $padding-base-horizontal;
 }
 
