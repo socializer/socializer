@@ -235,7 +235,7 @@ $cursor-disabled:                not-allowed;
 //** Background for the dropdown menu.
 $dropdown-bg:                    #fff;
 //** Dropdown menu `border-color`.
-$dropdown-border:                rgba(0,0,0,.2);
+$dropdown-border:                rgba(0, 0, 0, .2);
 //** Dropdown menu `border-color` **for IE8**.
 $dropdown-fallback-border:       #ccc;
 //** Divider color for between dropdown items.
@@ -704,7 +704,7 @@ $popover-bg:                          #fff;
 //** Popover maximum width
 $popover-max-width:                   276px;
 //** Popover border color
-$popover-border-color:                rgba(0,0,0,.2);
+$popover-border-color:                rgba(0, 0, 0, .2);
 //** Popover fallback border color
 $popover-fallback-border-color:       #ccc;
 
@@ -719,7 +719,7 @@ $popover-arrow-color:                 $popover-bg;
 //** Popover outer arrow width
 $popover-arrow-outer-width:           ($popover-arrow-width + 1);
 //** Popover outer arrow color
-$popover-arrow-outer-color:           rgba(0,0,0,.25);
+$popover-arrow-outer-color:           rgba(0, 0, 0, .25);
 //** Popover outer arrow fallback color
 $popover-arrow-outer-fallback-color:  #999;
 
