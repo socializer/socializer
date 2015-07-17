@@ -171,7 +171,7 @@ input[type="checkbox"],
     border-color: #c6c6c6;
     background-color: #ebebeb;
     // override the bkgd color for IE
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffffff", endColorstr="#ffffffff", GradientType=0);
   }
 
   &:checked {
@@ -187,7 +187,7 @@ input[type="radio"],
   height: 15px;
 
   &:checked::after {
-    content: '';
+    content: "";
     display: block;
     position: relative;
     top: 3px;
@@ -225,9 +225,9 @@ input[type="checkbox"],
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 
-@include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
+@include input-size(".input-sm", $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 
-@include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+@include input-size(".input-lg", $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
 
 
 
