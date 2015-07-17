@@ -1,119 +1,145 @@
 @font-face {
-  font-family: 'socializer';
-  src: url('socializer.eot?30891968');
-  src: url('socializer.eot?30891968#iefix') format('embedded-opentype'),
-       url('socializer.woff?30891968') format('woff'),
-       url('socializer.ttf?30891968') format('truetype'),
-       url('socializer.svg?30891968#socializer') format('svg');
+  font-family: "socializer";
+  src: url("socializer.eot?30891968");
+  src: url("socializer.eot?30891968#iefix") format("embedded-opentype"),
+       url("socializer.woff?30891968") format("woff"),
+       url("socializer.ttf?30891968") format("truetype"),
+       url("socializer.svg?30891968#socializer") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 .fa {
   display: inline-block;
-  font-family: 'socializer';
+  font-family: "socializer";
   font-style: normal;
   font-weight: normal;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* makes the font 33% larger relative to the icon container */
+
+// makes the font 33% larger relative to the icon container
 .fa-lg {
   font-size: 1.3333333333333333em;
-  line-height: 0.75em;
+  line-height: .75em;
   vertical-align: -15%;
 }
+
 .fa-2x {
   font-size: 2em;
 }
+
 .fa-3x {
   font-size: 3em;
 }
+
 .fa-4x {
   font-size: 4em;
 }
+
 .fa-5x {
   font-size: 5em;
 }
+
 .fa-fw {
   width: 1.2857142857142858em;
   text-align: center;
 }
+
 .fa-ul {
   padding-left: 0;
   margin-left: 2.142857142857143em;
   list-style-type: none;
 }
+
 .fa-ul > li {
   position: relative;
 }
+
 .fa-li {
   position: absolute;
   left: -2.142857142857143em;
   width: 2.142857142857143em;
-  top: 0.14285714285714285em;
+  top: .14285714285714285em;
   text-align: center;
 }
+
 .fa-li.fa-lg {
   left: -1.8571428571428572em;
 }
+
 .fa-border {
   padding: .2em .25em .15em;
-  border: solid 0.08em #eeeeee;
+  border: solid .08em #eeeeee;
   border-radius: .1em;
 }
+
 .pull-right {
   float: right;
 }
+
 .pull-left {
   float: left;
 }
+
 .fa.pull-left {
   margin-right: .3em;
 }
+
 .fa.pull-right {
   margin-left: .3em;
 }
+
 .fa-spin {
   -webkit-animation: spin 2s infinite linear;
   -moz-animation: spin 2s infinite linear;
   -o-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear;
 }
+
 @-moz-keyframes spin {
   0% {
     -moz-transform: rotate(0deg);
   }
+
   100% {
     -moz-transform: rotate(359deg);
   }
 }
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(359deg);
   }
 }
+
 @-o-keyframes spin {
   0% {
     -o-transform: rotate(0deg);
   }
+
   100% {
     -o-transform: rotate(359deg);
   }
 }
+
 @keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
+
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
@@ -122,6 +148,7 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
 .fa-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
@@ -130,6 +157,7 @@
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+
 .fa-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -webkit-transform: rotate(270deg);
@@ -138,6 +166,7 @@
   -o-transform: rotate(270deg);
   transform: rotate(270deg);
 }
+
 .fa-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
   -webkit-transform: scale(-1, 1);
@@ -146,6 +175,7 @@
   -o-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
+
 .fa-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
   -webkit-transform: scale(1, -1);
@@ -154,6 +184,7 @@
   -o-transform: scale(1, -1);
   transform: scale(1, -1);
 }
+
 .fa-stack {
   position: relative;
   display: inline-block;
@@ -162,6 +193,7 @@
   line-height: 2em;
   vertical-align: middle;
 }
+
 .fa-stack-1x,
 .fa-stack-2x {
   position: absolute;
@@ -169,53 +201,56 @@
   width: 100%;
   text-align: center;
 }
+
 .fa-stack-1x {
   line-height: inherit;
 }
+
 .fa-stack-2x {
   font-size: 2em;
 }
+
 .fa-inverse {
   color: #ffffff;
 }
 
-.fa-angle-left:before { content: '\e800'; } /* '' */
-.fa-angle-right:before { content: '\e801'; } /* '' */
-.fa-angle-up:before { content: '\e802'; } /* '' */
-.fa-angle-down:before { content: '\e803'; } /* '' */
-.fa-google-circles:before { content: '\e804'; } /* '' */
-.fa-google:before { content: '\e805'; } /* '' */
-.fa-comments-o:before { content: '\e806'; } /* '' */
-.fa-off:before { content: '\e807'; } /* '' */
-.fa-user:before { content: '\e808'; } /* '' */
-.fa-users:before { content: '\e809'; } /* '' */
-.fa-picture:before { content: '\e80a'; } /* '' */
-.fa-camera:before { content: '\e80b'; } /* '' */
-.fa-flag:before { content: '\e80c'; } /* '' */
-.fa-calendar:before { content: '\e80d'; } /* '' */
-.fa-pencil:before { content: '\e80e'; } /* '' */
-.fa-youtube-play:before { content: '\e80f'; } /* '' */
-.fa-link:before { content: '\e810'; } /* '' */
-.fa-home:before { content: '\e811'; } /* '' */
-.fa-times:before { content: '\e812'; } /* '' */
-.fa-air:before { content: '\e813'; } /* '' */
-.fa-search:before { content: '\e814'; } /* '' */
-.fa-key:before { content: '\e815'; } /* '' */
-.fa-globe:before { content: '\e816'; } /* '' */
-.fa-bell-alt:before { content: '\e817'; } /* '' */
-.fa-cog:before { content: '\e818'; } /* '' */
-.fa-share:before { content: '\e819'; } /* '' */
-.fa-spinner:before { content: '\e81a'; } /* '' */
-.fa-location:before { content: '\e81b'; } /* '' */
-.fa-lock:before { content: '\e81c'; } /* '' */
-.fa-linkedin:before { content: '\e81d'; } /* '' */
-.fa-twitter:before { content: '\e81e'; } /* '' */
-.fa-facebook:before { content: '\e81f'; } /* '' */
-.fa-thumbs-o-up:before { content: '\e821'; } /* '' */
-.fa-reply:before { content: '\e823'; } /* '' */
-.fa-angle-down-big:before { content: '\e824'; } /* '' */
-.fa-bell:before { content: '\e825'; } /* '' */
-.fa-yahoo:before { content: '\e827'; } /* '' */
-.fa-thumbs-o-down:before { content: '\e828'; } /* '' */
-.fa-thumbs-up:before { content: '\e829'; } /* '' */
-.fa-thumbs-down:before { content: '\e82a'; } /* '' */
+.fa-angle-left:before { content: "\e800"; } // ""
+.fa-angle-right:before { content: "\e801"; } // ""
+.fa-angle-up:before { content: "\e802"; } // ""
+.fa-angle-down:before { content: "\e803"; } // ""
+.fa-google-circles:before { content: "\e804"; } // ""
+.fa-google:before { content: "\e805"; } // ""
+.fa-comments-o:before { content: "\e806"; } // ""
+.fa-off:before { content: "\e807"; } // ""
+.fa-user:before { content: "\e808"; } // ""
+.fa-users:before { content: "\e809"; } // ""
+.fa-picture:before { content: "\e80a"; } // ""
+.fa-camera:before { content: "\e80b"; } // ""
+.fa-flag:before { content: "\e80c"; } // ""
+.fa-calendar:before { content: "\e80d"; } // ""
+.fa-pencil:before { content: "\e80e"; } // ""
+.fa-youtube-play:before { content: "\e80f"; } // ""
+.fa-link:before { content: "\e810"; } // ""
+.fa-home:before { content: "\e811"; } // ""
+.fa-times:before { content: "\e812"; } // ""
+.fa-air:before { content: "\e813"; } // ""
+.fa-search:before { content: "\e814"; } // ""
+.fa-key:before { content: "\e815"; } // ""
+.fa-globe:before { content: "\e816"; } // ""
+.fa-bell-alt:before { content: "\e817"; } // ""
+.fa-cog:before { content: "\e818"; } // ""
+.fa-share:before { content: "\e819"; } // ""
+.fa-spinner:before { content: "\e81a"; } // ""
+.fa-location:before { content: "\e81b"; } // ""
+.fa-lock:before { content: "\e81c"; } // ""
+.fa-linkedin:before { content: "\e81d"; } // ""
+.fa-twitter:before { content: "\e81e"; } // ""
+.fa-facebook:before { content: "\e81f"; } // ""
+.fa-thumbs-o-up:before { content: "\e821"; } // ""
+.fa-reply:before { content: "\e823"; } // ""
+.fa-angle-down-big:before { content: "\e824"; } // ""
+.fa-bell:before { content: "\e825"; } // ""
+.fa-yahoo:before { content: "\e827"; } // ""
+.fa-thumbs-o-down:before { content: "\e828"; } // ""
+.fa-thumbs-up:before { content: "\e829"; } // ""
+.fa-thumbs-down:before { content: "\e82a"; } // ""
