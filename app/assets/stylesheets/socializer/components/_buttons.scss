@@ -14,12 +14,12 @@
   @include box-shadow(none);
 
   &:hover {
-    @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    @include box-shadow(0 1px 1px rgba(0, 0, 0, .1));
   }
 
   &:active,
   &.active {
-    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.1));
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, .1));
   }
 }
 
@@ -37,7 +37,7 @@
     border-color: #c6c6c6;
     @include gradient-vertical($start-color: #f8f8f8, $end-color: #f1f1f1);
     background-position: 0 0;
-    @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    @include box-shadow(0 1px 1px rgba(0, 0, 0, .1));
     @include transition(none);
   }
 
@@ -48,7 +48,7 @@
     @include gradient-vertical($start-color: #f6f6f6, $end-color: #f1f1f1);
     background-color: #e8e8e8;
     text-shadow: 0 1px 0 #fff;
-    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.1));
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, .1));
   }
 
   &:focus {

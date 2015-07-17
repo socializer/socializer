@@ -19,11 +19,11 @@
     @include box-shadow(none);
     &:hover {
       border-color: $border-color;
-      @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.1) inset);
+      @include box-shadow(0 1px 2px rgba(0, 0, 0, .1) inset);
     }
     &:focus {
       border-color: $border-color;
-      @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.3) inset);
+      @include box-shadow(0 1px 2px rgba(0, 0, 0, .3) inset);
     }
   }
   // // Set validation states also for addons
@@ -55,6 +55,6 @@
   &:focus {
     // border-color: $color;
     // outline: 0;
-    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.3));
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, .3));
   }
 }
