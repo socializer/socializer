@@ -1,0 +1,16 @@
+scss_files: "**/*.scss"
+
+linters:
+  HexLength:
+    enabled: false
+    style: short
+  PropertySortOrder:
+    enabled: true
+    ignore_unspecified: false
+    severity: warning
+    separate_groups: false
+  StringQuotes:
+    enabled: true
+    style: double_quotes
+  TrailingSemicolon:
+    enabled: true
