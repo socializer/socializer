@@ -1,31 +1,12 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require socializer/activities
- *= require socializer/circles
- *= require socializer/general
- *= require socializer/groups
- *= require socializer/notes
- *= require socializer/notifications
- *= require socializer/persons
- *= require socializer/socializer-font
- *= require jquery.qtip
- *= require jquery.qtip.overrides
- *= require token-input
-*/
-
-// @import "simple_form";
-
-// @import "variables";
-// @import "bootstrap-custom";
-// @import "components/navbar";"
+@import "activities";
+@import "circles";
+@import "general";
+@import "groups";
+@import "notes";
+@import "notifications";
+@import "persons";
+@import "socializer-font";
+@import "jquery.qtip";
+@import "jquery.qtip.overrides";
+@import "token-input";
 @import "socializer";
-
