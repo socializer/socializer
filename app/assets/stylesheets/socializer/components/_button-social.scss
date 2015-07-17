@@ -19,6 +19,7 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   :first-child {
     position: absolute;
     left: 0;
@@ -30,24 +31,30 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
     text-align: center;
     border-right: 1px solid rgba(0, 0, 0, .2);
   }
+
   &.btn-lg {
     padding-left: $bs-height-lg + $padding-large-horizontal;
+
     :first-child {
       line-height: $bs-height-lg;
       width: $bs-height-lg;
       font-size: 1.8em;
     }
   }
+
   &.btn-sm {
     padding-left: $bs-height-sm + $padding-small-horizontal;
+
     :first-child {
       line-height: $bs-height-sm;
       width: $bs-height-sm;
       font-size: 1.4em;
     }
   }
+
   &.btn-xs {
     padding-left: $bs-height-xs + $padding-small-horizontal;
+
     :first-child {
       line-height: $bs-height-xs;
       width: $bs-height-xs;
@@ -61,23 +68,27 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
   height: ($bs-height-base + 2);
   width: ($bs-height-base + 2);
   padding: 0;
+
   :first-child {
     border: none;
     text-align: center;
     width: 100%!important;
   }
+
   &.btn-lg {
     height: $bs-height-lg;
     width: $bs-height-lg;
     padding-left: 0;
     padding-right: 0;
   }
+
   &.btn-sm {
     height: ($bs-height-sm + 2);
     width: ($bs-height-sm + 2);
     padding-left: 0;
     padding-right: 0;
   }
+
   &.btn-xs {
     height: ($bs-height-xs + 2);
     width: ($bs-height-xs + 2);

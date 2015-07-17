@@ -15,6 +15,7 @@
   &:first-child {
     @include border-top-radius($list-group-border-radius);
   }
+
   &:last-child {
     @include border-bottom-radius($list-group-border-radius);
   }
@@ -22,6 +23,7 @@
   .dropdown {
     display: none;
   }
+
   .dropdown-toggle {
     display: inline-block;
     padding: 5px 6px 5px 5px;
@@ -59,11 +61,13 @@ a.list-group-item {
       color: $list-group-active-text-color;
     }
   }
+
   &.active:hover,
   &.active:focus {
     background-color: $list-group-hover-bg;
   }
 }
+
 a.list-group-item,
 li.list-group-item a {
   // Hover state
@@ -74,10 +78,12 @@ li.list-group-item a {
     background-color: $list-group-hover-bg;
   }
 }
+
 li.list-group-item {
   padding: 0;
   margin-bottom: 0;
   border: 0 none;
+
   > a {
     color: $gray-darker;
     display: block;
@@ -89,6 +95,7 @@ li.list-group-item {
   &.active:hover,
   &.active:focus {
     background-color: $list-group-active-bg;
+
     > a {
       margin-left: 10px;
       color: $list-group-active-color;
@@ -111,9 +118,11 @@ li.list-group-item {
 
 .list-group-item-wrapper {
   margin-left: 14px;
+
   &:hover > .dropdown {
     display: block;
   }
+
   > a {
     display: block;
     padding: 5px 17px;
@@ -123,16 +132,20 @@ li.list-group-item {
     //   background-color: $gray-lighter !important;
     // }
   }
+
   > .dropdown {
     &:hover + a {
       background-color: $gray-lighter;
     }
+
     &.open {
       display: block;
+
       + a {
         background-color: $gray-lighter;
       }
     }
+
     > .dropdown-menu {
       margin-top: 0;
     }
@@ -162,6 +175,7 @@ li.list-group-item {
     margin-top: 9px;
   }
 }
+
 li.list-group-header {
   padding: 3px 15px;
 }
@@ -178,9 +192,11 @@ li.list-group-header {
   .list-group-item-wrapper > a {
     padding-left: 30px;
   }
+
   .list-group-item-menu .list-group-item-wrapper > a {
     padding-left: 44px;
   }
+
   > .list-group-item {
     .collapse-caret {
       margin-left: 28px;
@@ -196,6 +212,7 @@ li.list-group-header {
   width: 17px;
   height: 28px;
   margin-left: 14px;
+
   &:before {
     content: '';
     position: absolute;
@@ -205,6 +222,7 @@ li.list-group-header {
     @extend .caret;
     border-bottom: 0 dotted;
   }
+
   &:hover {
     background-color: $gray-lighter;
   }

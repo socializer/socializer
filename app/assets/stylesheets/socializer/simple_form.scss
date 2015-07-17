@@ -4,6 +4,7 @@
     clear: both;
     /* Required for Webkit, but not for Gecko */
   }
+
   label {
     float: left;
     width: 100px;
@@ -40,6 +41,7 @@ label.collection_radio_buttons {
     display: block;
     margin-left: 120px;
   }
+
   .hint {
     clear: left;
     margin-left: 120px;
@@ -54,6 +56,7 @@ input {
     margin-right: 5px;
     vertical-align: -3px;
   }
+
   &.check_boxes {
     margin-left: 3px;
     vertical-align: -3px;

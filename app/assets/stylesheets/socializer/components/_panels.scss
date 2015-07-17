@@ -20,23 +20,31 @@
   &.bg-primary {
     @extend .bg-primary;
   }
+
+
   &.bg-success {
      @extend .bg-success;
    }
+
   &.bg-info {
     @extend .bg-info;
   }
+
   &.bg-warning {
     @extend .bg-warning;
   }
+
   &.bg-danger {
      @extend .bg-danger;
    }
+
   &.bg-muted {
     @extend .bg-muted;
     @extend .text-muted;
+
     h1 {
       @extend .text-muted;
+
       > a {
         @extend .text-muted;
       }
@@ -108,6 +116,7 @@
         th:first-child {
           border-top-left-radius: ($panel-border-radius - 1);
         }
+
         td:last-child,
         th:last-child {
           border-top-right-radius: ($panel-border-radius - 1);
@@ -125,6 +134,7 @@
         th:first-child {
           border-bottom-left-radius: ($panel-border-radius - 1);
         }
+
         td:last-child,
         th:last-child {
           border-bottom-right-radius: ($panel-border-radius - 1);
@@ -132,6 +142,7 @@
       }
     }
   }
+
   > .panel-body + .table,
   > .panel-body + .table-responsive {
     border-top: 1px solid $table-border-color;
@@ -143,18 +154,23 @@
 .panel-default {
   @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-heading-bg);
 }
+
 .panel-primary {
   @include panel-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);
 }
+
 .panel-success {
   @include panel-variant($panel-success-border, $panel-success-text, $panel-success-heading-bg, $panel-success-border);
 }
+
 .panel-info {
   @include panel-variant($panel-info-border, $panel-info-text, $panel-info-heading-bg, $panel-info-border);
 }
+
 .panel-warning {
   @include panel-variant($panel-warning-border, $panel-warning-text, $panel-warning-heading-bg, $panel-warning-border);
 }
+
 .panel-danger {
   @include panel-variant($panel-danger-border, $panel-danger-text, $panel-danger-heading-bg, $panel-danger-border);
 }
@@ -172,6 +188,7 @@
   .panel {
     border-color: transparent;
     border-radius: 0;
+
     + .panel {
       margin-top: -3px;
     }
@@ -218,6 +235,7 @@
       border-top: 0 none;
     }
   }
+
   .panel-footer {
     + .panel-collapse .panel-body {
       border-bottom: 0 none;

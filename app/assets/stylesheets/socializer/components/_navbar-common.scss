@@ -17,6 +17,7 @@
 .navbar-static-top {
   border-width: 1px 0;
 }
+
 .navbar-fixed-bottom {
   border-width: 1px 0;
 }
@@ -34,9 +35,11 @@
 .navbar-fixed-bottom {
   border-radius: 0;
 }
+
 .navbar-fixed-top {
   top: 0;
 }
+
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0; // override .navbar defaults
@@ -51,9 +54,11 @@
   padding: $padding-small-vertical $padding-small-horizontal;
   margin-top: (floor(($navbar-height - $input-height-small) / 2));
 }
+
 .btn.navbar-masthead-btn {
   margin-top: (($navbar-masthead-height - $input-height-base) / 2);
 }
+
 .btn.navbar-toolbar-btn {
   margin-top: (($navbar-toolbar-height - $input-height-base) / 2);
 }
@@ -77,6 +82,7 @@
 // Default navbar variables
 .navbar-link {
   color: $navbar-default-link-color;
+
   &:hover {
     color: $navbar-default-link-hover-color;
   }
@@ -85,6 +91,7 @@
 // Use the inverse navbar variables
 .navbar-inverse .navbar-link {
   color: $navbar-inverse-link-color;
+
   &:hover {
     color: $navbar-inverse-link-hover-color;
   }

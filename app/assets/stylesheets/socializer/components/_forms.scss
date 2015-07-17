@@ -88,6 +88,7 @@ output {
   fieldset[disabled] & {
     background-color: $input-bg-disabled;
     border: 1px solid #e5e5e5;
+
     &:hover,
     &:focus,
     &:active {
@@ -95,8 +96,10 @@ output {
       @include box-shadow(none);
     }
   }
+
   &[readonly] & {
     border: 1px solid $input-border;
+
     &:hover,
     &:focus,
     &:active {
@@ -126,6 +129,7 @@ input[type="month"] {
   &.input-sm {
     line-height: $input-height-small;
   }
+
   &.input-lg {
     line-height: $input-height-large;
   }
@@ -140,6 +144,7 @@ input[type="month"] {
 .checkbox {
   min-height: $line-height-computed; // clear the floating input if there is no label text
 }
+
 input[type="radio"],
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
@@ -173,6 +178,7 @@ input[type="checkbox"],
     background: #fff;
   }
 }
+
 input[type="radio"],
 .radio input[type="radio"],
 .radio-inline input[type="radio"] {
@@ -192,6 +198,7 @@ input[type="radio"],
     border-radius: 1em;
   }
 }
+
 input[type="checkbox"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
@@ -242,11 +249,13 @@ input[type="checkbox"],
   height: $input-height-base;
   line-height: $input-height-base;
 }
+
 .input-lg + .form-control-feedback {
   width: $input-height-large;
   height: $input-height-large;
   line-height: $input-height-large;
 }
+
 .input-sm + .form-control-feedback {
   width: $input-height-small;
   height: $input-height-small;
@@ -257,9 +266,11 @@ input[type="checkbox"],
 .has-success {
   @include form-control-validation($state-success-text, $state-success-text, $state-success-bg);
 }
+
 .has-warning {
   @include form-control-validation(darken($alert-warning-border, 20%), darken($alert-warning-border, 20%), $state-warning-bg);
 }
+
 .has-error {
   @include form-control-validation(#dd4b39, #dd4b39, $state-danger-bg);
 }
@@ -339,6 +350,7 @@ input[type="checkbox"],
       padding-left: 0;
       vertical-align: middle;
     }
+
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       float: none;

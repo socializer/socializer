@@ -64,9 +64,11 @@ $media-font-size-h2: $font-size-base;
 
     a {
       color: $gray-dark;
+
       &:hover {
         color: lighten($gray-dark, 20%);
       }
+
       &.text-muted {
         color: $text-muted;
       }

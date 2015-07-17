@@ -53,9 +53,11 @@ body > main {
   @include make-sm-column(2);
   margin-top: 15px;
 }
+
 #page-content {
   @include make-sm-column(7);
 }
+
 #contextual-column {
   @include make-sm-column(3);
 
@@ -63,6 +65,7 @@ body > main {
     display: none;
   }
 }
+
 .topbar {
   @extend .navbar;
   @extend .navbar-default;

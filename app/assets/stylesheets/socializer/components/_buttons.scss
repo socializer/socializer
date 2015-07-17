@@ -75,25 +75,31 @@
     text-shadow: none;
   }
 }
+
 .btn-primary {
   @include button-variant($brand-primary, #4787ed, $btn-primary-color, $btn-primary-border);
 }
+
 // Success appears as green
 .btn-success {
   @include button-variant($brand-success, $brand-success, $btn-success-color, $btn-success-border);
 }
+
 // Info appears as blue-green
 .btn-info {
   @include button-variant($btn-info-bg, $btn-info-bg, $btn-info-color, $btn-info-border);
 }
+
 // Warning appears as orange
 .btn-warning {
   @include button-variant(lighten($brand-warning, 5%), $brand-warning, $btn-warning-color, $btn-warning-border);
 }
+
 // Danger and error appear as red
 .btn-danger {
   @include button-variant(#dd4b39, #d14836, $btn-danger-color, $btn-danger-border);
 }
+
 .btn-transparent {
   @include button-variant(transparentize(white, 1), transparentize(white, 1), $gray-dark, transparentize(white, 1));
 
@@ -117,18 +123,21 @@
     background-color: transparent;
     @include box-shadow(none);
   }
+
   &,
   &:hover,
   &:focus,
   &:active {
     border-color: transparent;
   }
+
   &:hover,
   &:focus {
     color: $link-hover-color;
     background-color: transparent;
     @include box-shadow(none);
   }
+
   &[disabled],
   fieldset[disabled] & {
     &:hover,
@@ -146,10 +155,12 @@
   // line-height: ensure even-numbered height of button next to large input
   @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-base);
 }
+
 .btn-sm {
   // line-height: ensure proper height of button next to small input
   @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-base);
 }
+
 .btn-xs {
   @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-mini, $line-height-xs, $border-radius-small);
 }
