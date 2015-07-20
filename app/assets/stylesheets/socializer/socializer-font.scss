@@ -71,7 +71,7 @@
 
 .fa-border {
   padding: .2em .25em .15em;
-  border: solid .08em #eeeeee;
+  border: solid .08em $gray-lighter;
   border-radius: .1em;
 }
 
@@ -158,7 +158,7 @@
 }
 
 .fa-inverse {
-  color: #ffffff;
+  color: $white;
 }
 
 .fa-angle-left:before { content: "\e800"; } // ""

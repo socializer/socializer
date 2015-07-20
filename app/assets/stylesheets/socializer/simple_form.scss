@@ -40,7 +40,7 @@ label.collection_radio_buttons {
     display: block;
     margin-left: 120px;
     clear: left;
-    color: #000;
+    color: $black;
   }
 
   .hint {
@@ -48,7 +48,7 @@ label.collection_radio_buttons {
     margin-left: 120px;
     clear: left;
     font-style: italic;
-    color: #555;
+    color: $gray;
   }
 }
 

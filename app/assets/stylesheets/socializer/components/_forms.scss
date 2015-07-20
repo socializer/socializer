@@ -153,7 +153,7 @@ input[type="checkbox"],
   position: relative;
   width: 13px;
   height: 13px;
-  background: #fff;
+  background: $white;
   border: 1px solid #dcdcdc;
   border-width: 0 \0; // override styles for IE
   border-radius: 1px;
@@ -172,7 +172,7 @@ input[type="checkbox"],
   }
 
   &:checked {
-    background: #fff;
+    background: $white;
   }
 }
 

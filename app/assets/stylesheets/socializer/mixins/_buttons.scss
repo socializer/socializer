@@ -3,7 +3,7 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($start-color, $end-color, $color: #fff, $border-color: $btn-default-border) {
+@mixin button-variant($start-color, $end-color, $color: $white, $border-color: $btn-default-border) {
   @include gradient-vertical($start-color: $start-color, $end-color: $end-color);
   @include reset-filter();
   border: 1px solid $border-color;
@@ -39,7 +39,7 @@
   }
 
   &:focus {
-    @include box-shadow(inset 0 0 0 1px #fff);
+    @include box-shadow(inset 0 0 0 1px $white);
     border: 1px solid $border-color;
   }
 
