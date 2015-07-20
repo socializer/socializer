@@ -30,45 +30,45 @@ ul.activities ul > li {
 // }
 
 .activity-subcontent {
-	padding: 5px 20px 10px 50px;
+  padding: 5px 20px 10px 50px;
 }
 
 .ui-tooltip-content ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 ul.activities a.important-link {
-	font-weight: bold;
-	text-decoration: none;
-	color: #00a;
+  font-weight: bold;
+  text-decoration: none;
+  color: #00a;
 }
 
 ul.activities a.unimportant-link {
-	text-decoration: none;
-	color: #aaa;
+  text-decoration: none;
+  color: #aaa;
 }
 
 ul.activities > a {
-	color: #00a;
-	text-decoration: none;
+  color: #00a;
+  text-decoration: none;
 }
 
 ul.activities > a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 textarea.note-content-field {
-	width: 100%;
-	height: $input-height-base;
-	resize: none;
-	// border: 1px solid #ccc;
-	// margin-bottom: 5px;
+  width: 100%;
+  height: $input-height-base;
+  resize: none;
+  // border: 1px solid #ccc;
+  // margin-bottom: 5px;
   // padding: $padding-base-vertical $padding-base-horizontal;
 }
 
 ul.activities .separator {
-	color: #ccc;
+  color: #ccc;
 }
 
 .separator:before {
