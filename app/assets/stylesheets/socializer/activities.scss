@@ -29,43 +29,36 @@ ul.activities ul > li {
 //   white-space: pre-wrap;
 // }
 
-.activity-subcontent
-{
+.activity-subcontent {
 	padding: 5px 20px 10px 50px;
 }
 
-.ui-tooltip-content ul
-{
+.ui-tooltip-content ul {
 	padding: 0;
 	margin: 0;
 }
 
-ul.activities a.important-link
-{
+ul.activities a.important-link {
 	font-weight: bold;
 	text-decoration: none;
 	color: #00a;
 }
 
-ul.activities a.unimportant-link
-{
+ul.activities a.unimportant-link {
 	text-decoration: none;
 	color: #aaa;
 }
 
-ul.activities > a
-{
+ul.activities > a {
 	color: #00a;
 	text-decoration: none;
 }
 
-ul.activities > a:hover
-{
+ul.activities > a:hover {
 	text-decoration: underline;
 }
 
-textarea.note-content-field
-{
+textarea.note-content-field {
 	width: 100%;
 	height: $input-height-base;
 	resize: none;
@@ -74,12 +67,10 @@ textarea.note-content-field
   // padding: $padding-base-vertical $padding-base-horizontal;
 }
 
-ul.activities .separator
-{
+ul.activities .separator {
 	color: #ccc;
 }
 
-.separator:before
-{
+.separator:before {
   content: "\2013";
 }

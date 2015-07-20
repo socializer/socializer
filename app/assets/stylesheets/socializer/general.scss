@@ -55,29 +55,25 @@
 //   padding: 0 20px;
 // }
 
-.content-header-bar
-{
+.content-header-bar {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background-color: #efefef;
   padding: 10px 20px;
 }
 
-.content-header-bar a
-{
+.content-header-bar a {
   text-decoration: none;
   font-weight: bold;
   padding-right: 20px;
   color: #000;
 }
 
-.content-header-bar a:hover
-{
+.content-header-bar a:hover {
   color: #aaa;
 }
 
-.content-header-bar .current
-{
+.content-header-bar .current {
   color: #a00;
 }
 
