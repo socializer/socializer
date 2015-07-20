@@ -22,7 +22,8 @@ jQuery ->
   controller_action = $('body').data('action')
   reset_content = if controller_action is 'edit' then false else true
 
-  if controller_name == 'notes' or controller_name == 'activities' or controller_name == 'people' or controller_name == 'messages'
+  if controller_name == 'notes' or controller_name == 'activities' or
+  controller_name == 'people' or controller_name == 'messages'
 
     audience_path = $('#note_object_ids').data('source')
     title = $('#note_object_ids').data('title')
@@ -40,9 +41,11 @@ jQuery ->
       preventDuplicates: true
       prePopulate: prepopulate
       resultsFormatter: (item) ->
-        "<li><span class='fa fa-fw " + item.icon + "'></span> " + item.name + "</li>"
+        "<li><span class='fa fa-fw " + item.icon + "'></span> " +
+          item.name + "</li>"
 
-    $('.token-input-list').hide()  if (current_id isnt null) and (title is '') or (controller_action == 'edit')
+    if (current_id isnt null) and (title is '') or (controller_action == 'edit')
+      $('.token-input-list').hide()
 
     resetNoteForm(reset_content)
 
