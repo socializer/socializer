@@ -5,12 +5,12 @@
 
 // Base class
 .panel {
+  @include box-shadow(none);
   word-wrap: break-word;
   background-color: $panel-bg;
   border: 1px solid transparent;
   border-bottom-width: 2px;
   border-radius: $panel-border-radius;
-  @include box-shadow(none);
 
   // TODO: Fix this it's to broad
   a > .lead {
@@ -59,9 +59,9 @@
 
 // Optional heading
 .panel-heading {
+  @include border-top-radius($panel-border-radius);
   padding: $panel-heading-padding;
   // border-bottom: 1px solid transparent;
-  @include border-top-radius($panel-border-radius);
 }
 
 // Within heading, strip any `h*` tag of its default margins for spacing.
@@ -71,10 +71,10 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
+  @include border-bottom-radius($panel-border-radius);
   padding: $panel-footer-padding;
   background-color: $panel-footer-bg;
   border-top: 1px solid $panel-inner-border;
-  @include border-bottom-radius($panel-border-radius);
 }
 
 
@@ -207,9 +207,9 @@
       text-decoration: none;
 
       &:before {
+        @extend .glyphicon;
         margin-right: 7px;
         content: "\e082";
-        @extend .glyphicon;
       }
 
       &:hover {
@@ -221,9 +221,9 @@
       }
 
       &.collapsed:before {
+        @extend .glyphicon;
         margin-right: 7px;
         content: "\e081";
-        @extend .glyphicon;
       }
     }
 

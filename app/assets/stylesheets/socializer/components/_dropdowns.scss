@@ -5,6 +5,7 @@
 
 // The dropdown menu (ul)
 .dropdown-menu {
+  @include box-shadow(0 2px 4px $dropdown-border);
   padding: 6px 0;
   margin: 1px 0 0; // override default ul
   font-size: $font-size-base;
@@ -12,7 +13,6 @@
   border: 1px solid $dropdown-fallback-border; // IE8 fallback
   border: 1px solid $dropdown-border;
   border-radius: 0;
-  @include box-shadow(0 2px 4px $dropdown-border);
 
   // Dividers (basically an hr) within the dropdown
   .divider {
@@ -38,8 +38,8 @@
 .dropdown-menu li > a:focus,
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
-  color: $dropdown-link-hover-color;
   @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: $dropdown-link-hover-bg);
+  color: $dropdown-link-hover-color;
   background-color: $gray-lighter;
 }
 
@@ -48,8 +48,8 @@
   &,
   &:hover,
   &:focus {
-    color: $dropdown-link-active-color;
     @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: $dropdown-link-hover-bg);
+    color: $dropdown-link-active-color;
     background-color: $gray-lighter;
   }
 }
@@ -89,9 +89,9 @@
 
 // Caret to indicate there is a submenu
 .dropdown-submenu > a:after {
+  @extend .caret-right;
   position: absolute;
   right: 10px;
-  @extend .caret-right;
   margin-top: ($caret-width-base + 1);
   content: "";
 }
