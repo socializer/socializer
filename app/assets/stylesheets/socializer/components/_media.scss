@@ -12,8 +12,8 @@ $media-font-size-h2: $font-size-base;
 .media {
   display: table;
   width: 100%;
-  margin-bottom: $line-height-base;
   padding-bottom: 5px;
+  margin-bottom: $line-height-base;
   // border-bottom: 1px solid transparentize($media-color, .9);
 
   &:last-child {
@@ -40,11 +40,11 @@ $media-font-size-h2: $font-size-base;
   padding-right: $media-gutter;
 
   img {
+    display: block;
     width: $media-image-width;
     height: auto;
-    border-radius: $border-radius-base;
-    display: block;
     max-width: none;
+    border-radius: $border-radius-base;
   }
 
   &.right-align {
@@ -58,9 +58,9 @@ $media-font-size-h2: $font-size-base;
 
   h1,
   h2 {
-    font-size: $media-font-size-h1;
     margin-top: .2em;
     margin-bottom: .5em;
+    font-size: $media-font-size-h1;
 
     a {
       color: $gray-dark;
@@ -76,8 +76,8 @@ $media-font-size-h2: $font-size-base;
   }
 
   h2 {
-    font-size: $media-font-size-h2;
     margin-top: 5px;
+    font-size: $media-font-size-h2;
   }
 
   p {
@@ -108,8 +108,8 @@ $media-font-size-h2: $font-size-base;
 }
 
 .media-body-attachment {
-  border-top: 1px solid #ccc;
   padding-top: 10px;
+  border-top: 1px solid #ccc;
 }
 
 .media-comments {

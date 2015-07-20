@@ -3,26 +3,26 @@
 // Place all the styles related to the matching controller here.
 // They will automatically be included in application.css.
 ul.activities {
-  list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 
 ul.activities > li {
-  border-bottom: 1px solid #ccc;
   padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
 }
 
 ul.activities ul {
-  list-style-type: none;
-  margin: 5px 0 5px 50px;
   padding: 0;
+  margin: 5px 0 5px 50px;
+  list-style-type: none;
 }
 
 ul.activities ul > li {
-  border-bottom-width: 0;
   padding: 0;
   margin: 0;
+  border-bottom-width: 0;
 }
 
 // .activity-content {
@@ -40,13 +40,13 @@ ul.activities ul > li {
 
 ul.activities a.important-link {
   font-weight: bold;
-  text-decoration: none;
   color: #00a;
+  text-decoration: none;
 }
 
 ul.activities a.unimportant-link {
-  text-decoration: none;
   color: #aaa;
+  text-decoration: none;
 }
 
 ul.activities > a {

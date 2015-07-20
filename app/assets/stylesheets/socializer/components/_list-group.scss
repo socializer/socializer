@@ -49,11 +49,11 @@ a.list-group-item {
   &.active,
   &.active:hover,
   &.active:focus {
-    color: $list-group-active-color;
     font-weight: bold;
+    color: $list-group-active-color;
     background-color: $list-group-active-bg;
-    border-color: $list-group-active-border;
     border-left: 4px solid $list-group-active-color;
+    border-color: $list-group-active-border;
     border-left-color: $list-group-active-color;
 
     .list-group-item-text {
@@ -73,8 +73,8 @@ li.list-group-item a {
   // Hover state
   &:hover,
   &:focus {
-    text-decoration: none;
     color: $list-group-link-hover-color;
+    text-decoration: none;
     background-color: $list-group-hover-bg;
   }
 }
@@ -85,10 +85,10 @@ li.list-group-item {
   border: 0 none;
 
   > a {
-    color: $gray-darker;
     display: block;
     padding: $padding-base-vertical 17px;
     margin: 0 0 0 14px;
+    color: $gray-darker;
   }
 
   &.active,
@@ -214,13 +214,13 @@ li.list-group-header {
   margin-left: 14px;
 
   &:before {
-    content: "";
     position: absolute;
     top: 12px;
     left: 5px;
     margin-left: 0;
-    @extend .caret;
     border-bottom: 0 dotted;
+    content: "";
+    @extend .caret;
   }
 
   &:hover {

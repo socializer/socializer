@@ -11,19 +11,19 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
 .btn-social {
   position: relative;
   padding-left: $bs-height-base + $padding-base-horizontal;
-  text-align: left;
-  white-space: nowrap;
   overflow: hidden;
+  text-align: left;
   text-overflow: ellipsis;
+  white-space: nowrap;
 
   :first-child {
     position: absolute;
-    left: 0;
     top: 0;
     bottom: 0;
+    left: 0;
     width: $bs-height-base;
-    line-height: ($bs-height-base + 2);
     font-size: 1.6em;
+    line-height: ($bs-height-base + 2);
     text-align: center;
     border-right: 1px solid rgba(0, 0, 0, .2);
   }
@@ -32,9 +32,9 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
     padding-left: $bs-height-lg + $padding-large-horizontal;
 
     :first-child {
-      line-height: $bs-height-lg;
       width: $bs-height-lg;
       font-size: 1.8em;
+      line-height: $bs-height-lg;
     }
   }
 
@@ -42,9 +42,9 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
     padding-left: $bs-height-sm + $padding-small-horizontal;
 
     :first-child {
-      line-height: $bs-height-sm;
       width: $bs-height-sm;
       font-size: 1.4em;
+      line-height: $bs-height-sm;
     }
   }
 
@@ -52,44 +52,44 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
     padding-left: $bs-height-xs + $padding-small-horizontal;
 
     :first-child {
-      line-height: $bs-height-xs;
       width: $bs-height-xs;
       font-size: 1.2em;
+      line-height: $bs-height-xs;
     }
   }
 }
 
 .btn-social-icon {
   @extend .btn-social;
-  height: ($bs-height-base + 2);
   width: ($bs-height-base + 2);
+  height: ($bs-height-base + 2);
   padding: 0;
 
   :first-child {
-    border: none;
-    text-align: center;
     width: 100%!important;
+    text-align: center;
+    border: none;
   }
 
   &.btn-lg {
-    height: $bs-height-lg;
     width: $bs-height-lg;
-    padding-left: 0;
+    height: $bs-height-lg;
     padding-right: 0;
+    padding-left: 0;
   }
 
   &.btn-sm {
-    height: ($bs-height-sm + 2);
     width: ($bs-height-sm + 2);
-    padding-left: 0;
+    height: ($bs-height-sm + 2);
     padding-right: 0;
+    padding-left: 0;
   }
 
   &.btn-xs {
-    height: ($bs-height-xs + 2);
     width: ($bs-height-xs + 2);
-    padding-left: 0;
+    height: ($bs-height-xs + 2);
     padding-right: 0;
+    padding-left: 0;
   }
 }
 

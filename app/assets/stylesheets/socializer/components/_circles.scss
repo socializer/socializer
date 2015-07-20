@@ -14,15 +14,15 @@ $circle-default-border:             #dcdcdc;
 // --------------------------------------------------
 
 .circle {
-  background-color: $circle-default-bg;
-  color: $circle-default-color;
-  text-align: center;
-  height: 125px;
   width: 125px;
-  border-radius: 50%;
+  height: 125px;
   padding: 45px 0;
   margin: 10px auto;
+  color: $circle-default-color;
+  text-align: center;
   cursor: pointer;
+  background-color: $circle-default-bg;
+  border-radius: 50%;
 
   &:hover,
   &.droppable-hover {

@@ -21,14 +21,14 @@
 
   // Links within the dropdown menu
   > li > a {
-    padding: 3px 30px;
     position: relative;
+    padding: 3px 30px;
 
     // icon within the menu item
     .glyphicon {
       position: absolute;
-      left: 7px;
       top: 4px;
+      left: 7px;
     }
   }
 }

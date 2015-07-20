@@ -56,17 +56,17 @@
 // }
 
 .content-header-bar {
+  padding: 10px 20px;
+  background-color: #efefef;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: #efefef;
-  padding: 10px 20px;
 }
 
 .content-header-bar a {
-  text-decoration: none;
-  font-weight: bold;
   padding-right: 20px;
+  font-weight: bold;
   color: #000;
+  text-decoration: none;
 }
 
 .content-header-bar a:hover {

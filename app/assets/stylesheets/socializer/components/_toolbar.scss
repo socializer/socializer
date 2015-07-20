@@ -152,11 +152,11 @@
 
 .navbar-toolbar .navbar-brand {
   // float: left;
+  height: $navbar-toolbar-height;
   padding: $navbar-toolbar-padding-vertical $navbar-toolbar-padding-horizontal;
   font-size: $navbar-toolbar-brand-font-size;
   font-weight: bold;
   // line-height: $line-height-computed;
-  height: $navbar-toolbar-height;
   //
   // &:hover,
   // &:focus {
@@ -314,9 +314,9 @@
 // our navbars.
 
 .navbar-toolbar .navbar-form {
-  margin-left: -$navbar-toolbar-padding-horizontal;
-  margin-right: -$navbar-toolbar-padding-horizontal;
   padding: 10px $navbar-toolbar-padding-horizontal;
+  margin-right: -$navbar-toolbar-padding-horizontal;
+  margin-left: -$navbar-toolbar-padding-horizontal;
 
   > .input-group .form-control {
     @include navbar-vertical-align($input-height-base, $navbar-toolbar-height);
@@ -333,10 +333,10 @@
 
   // Undo 100% width for pull classes
   @media (min-width: $grid-float-breakpoint) {
-    margin-left: 0;
-    margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
 
     // Outdent the form if last child to line up with content down the page
     &.navbar-right:last-child {
@@ -488,8 +488,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-toolbar-default-link-active-bg;
         color: $navbar-toolbar-default-link-active-color;
+        background-color: $navbar-toolbar-default-link-active-bg;
       }
     }
 
@@ -646,8 +646,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-toolbar-inverse-link-active-bg;
         color: $navbar-toolbar-inverse-link-active-color;
+        background-color: $navbar-toolbar-inverse-link-active-bg;
       }
     }
 

@@ -152,10 +152,10 @@
 
 .navbar-brand {
   // float: left;
+  height: $navbar-height;
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
-  height: $navbar-height;
 
   // &:hover,
   // &:focus {
@@ -184,13 +184,13 @@
 .navbar-toggle {
   // position: relative;
   // float: right;
-  margin-right: $navbar-padding-horizontal;
   padding: $padding-base-vertical 10px;
+  margin-right: $navbar-padding-horizontal;
+  border-radius: $border-radius-base;
   @include navbar-vertical-align($input-height-small);
   // background-color: transparent;
   // background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   // border: 1px solid transparent;
-  border-radius: $border-radius-base;
 
   // We remove the `outline` here, but later compensate by attaching `:hover`
   // styles to `:focus`.
@@ -291,9 +291,9 @@
 // our navbars.
 
 .navbar-form {
-  margin-left: -$navbar-padding-horizontal;
-  margin-right: -$navbar-padding-horizontal;
   padding: 10px $navbar-padding-horizontal;
+  margin-right: -$navbar-padding-horizontal;
+  margin-left: -$navbar-padding-horizontal;
   // border-top: 1px solid transparent;
   // border-bottom: 1px solid transparent;
   @include box-shadow(none);
@@ -318,10 +318,10 @@
   @media (min-width: $grid-float-breakpoint) {
     // width: auto;
     // border: 0;
-    margin-left: 0;
-    margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
     // .box-shadow(none);
 
     // Outdent the form if last child to line up with content down the page
@@ -471,8 +471,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-default-link-active-bg;
         color: $navbar-default-link-active-color;
+        background-color: $navbar-default-link-active-bg;
       }
     }
 
@@ -621,8 +621,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: $navbar-inverse-link-active-bg;
         color: $navbar-inverse-link-active-color;
+        background-color: $navbar-inverse-link-active-bg;
       }
     }
 

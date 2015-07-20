@@ -1,25 +1,25 @@
 // Place all the styles related to the matching controller here.
 // They will automatically be included in application.css.
 .large-group-list {
-  list-style-type: none;
   padding: 20px 0;
+  list-style-type: none;
 }
 
 .large-group-list li div.group-card {
-  margin: 0;
-  border: 5px solid #ddd;
-  background-color: #efefef;
-  width: 205px;
   display: block;
   float: left;
+  width: 205px;
+  padding: 15px 5px 0 5px;
+  margin: 0;
   margin-right: 10px;
   margin-bottom: 10px;
-  padding: 15px 5px 0 5px;
+  background-color: #efefef;
+  border: 5px solid #ddd;
 }
 
 .large-group-list li div.group-info {
-  min-height: 100px;
   max-height: 100px;
+  min-height: 100px;
 }
 
 .large-group-list li div.group-actions {
@@ -28,24 +28,24 @@
 }
 
 .large-group-list li div.public {
-  border-color: #d6e9c6;
   background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 .large-group-list li div.restricted {
-  border-color: #bce8f1;
   background-color: #d9edf7;
+  border-color: #bce8f1;
 }
 
 .large-group-list li div.private {
-  border-color: #faebcc;
   background-color: #fcf8e3;
+  border-color: #faebcc;
 }
 
 .large-group-list li div span.group-name {
-  font-weight: bold;
   display: block;
   font-size: 13pt;
+  font-weight: bold;
 }
 
 .large-group-list li div span.group-member-count {

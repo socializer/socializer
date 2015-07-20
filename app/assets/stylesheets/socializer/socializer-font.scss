@@ -12,11 +12,11 @@
 .fa {
   display: inline-block;
   font-family: "socializer";
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 // makes the font 33% larger relative to the icon container
@@ -59,9 +59,9 @@
 
 .fa-li {
   position: absolute;
+  top: .14285714285714285em;
   left: -2.142857142857143em;
   width: 2.142857142857143em;
-  top: .14285714285714285em;
   text-align: center;
 }
 
