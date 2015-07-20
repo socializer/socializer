@@ -2,6 +2,10 @@ source "http://rubygems.org"
 
 gemspec
 
+group :development do
+  gem "coffeelint", "~> 1.10.0"
+end
+
 group :test do
   gem "cucumber-rails", "~> 1.4.2", require: false
   gem "database_cleaner", "~> 1.4.1"
