@@ -101,7 +101,7 @@
 }
 
 .btn-transparent {
-  @include button-variant(transparentize(white, 1), transparentize(white, 1), $gray-dark, transparentize(white, 1));
+  @include button-variant(transparentize(#fff, 1), transparentize(#fff, 1), $gray-dark, transparentize(#fff, 1));
 
   &.btn-xs {
     padding: 2px 4px;
