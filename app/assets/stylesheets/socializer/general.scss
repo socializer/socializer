@@ -60,21 +60,21 @@
   background-color: #efefef;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-}
 
-.content-header-bar a {
-  padding-right: 20px;
-  font-weight: bold;
-  color: $black;
-  text-decoration: none;
-}
+  a {
+    padding-right: 20px;
+    font-weight: bold;
+    color: $black;
+    text-decoration: none;
 
-.content-header-bar a:hover {
-  color: #aaa;
-}
+    &:hover {
+      color: #aaa;
+    }
+  }
 
-.content-header-bar .current {
-  color: #a00;
+  .current {
+    color: #a00;
+  }
 }
 
 .action-button,

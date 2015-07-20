@@ -30,23 +30,27 @@
 // body { @extend .container; }
 body {
   padding-top: 100px;
-}
 
-// body > header { @extend .page-header;
-//   p { @extend .lead; }
-// }
+  // > header {
+  //   @extend .page-header;
 
-body > main {
-  // @include make-row;
-  // nav {
-  //   @extend .col-lg-3;
-  //   ul {
-  //     @extend .list-group;
-  //     li {
-  //       @extend .list-group-item;
-  //     }
+  //   p {
+  //     @extend .lead;
   //   }
   // }
+
+  > main {
+    // @include make-row;
+    // nav {
+    //   @extend .col-lg-3;
+    //   ul {
+    //     @extend .list-group;
+    //     li {
+    //       @extend .list-group-item;
+    //     }
+    //   }
+    // }
+  }
 }
 
 #stream-column {
