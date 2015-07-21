@@ -107,11 +107,10 @@ module Socializer
     # resulting object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
     def join(person)
-      if privacy.public?
-        active = true
-      elsif privacy.restricted?
-        active = false
-      else
+      active = true if privacy.public?
+      active = false if privacy.restricted?
+
+      if privacy.private?
         message = I18n.t(:cannot_self_join,
                          scope: "socializer.errors.messages.group.private")
         fail(message)
