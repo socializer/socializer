@@ -15,32 +15,3 @@
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require moment/moment-with-locales
-
-$(document).ready(function () {
-  // Replace default titles on images with link by qTip tooltips
-  $('a [title!=""], a[title!=""], [data-content!=""], [data-title!=""]').each(function () {
-    $(this).qtip({
-      content: {
-        text: $(this).data('content') || true,
-        title: $(this).data('title') || false
-      },
-      style: {
-        classes: 'qtip-todc-bootstrap',
-        tip: {
-          width: 12
-        }
-      },
-      show: {
-        solo: true
-      },
-      position: {
-        adjust: {
-          method: 'shift'
-        },
-        my: 'top center',
-        at: 'bottom center',
-        viewport: $(window)
-      }
-    })
-  })
-})
