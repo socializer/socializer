@@ -53,7 +53,7 @@ module Socializer
 
     def person
       @person ||= if cookies[:user_id].present?
-                    Person.find_by(id: cookies[:user_id]).decorate
+                    Person.find_by(id: cookies.signed[:user_id]).decorate
                   end
     end
   end

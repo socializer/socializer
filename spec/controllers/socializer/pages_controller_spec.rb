@@ -23,7 +23,7 @@ module Socializer
         # let(:user) { create(:person) }
 
         # # Setting the current user
-        # before { cookies[:user_id] = user.guid }
+        # before { cookies.signed[:user_id] = user.guid }
         # before do
         #   allow(controller).to receive(:signed_in?).and_return(true)
         # end

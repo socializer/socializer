@@ -24,7 +24,7 @@ module Socializer
 
     describe "when logged in" do
       # Setting the current user
-      before { cookies[:user_id] = user.guid }
+      before { cookies.signed[:user_id] = user.guid }
 
       describe "POST #create" do
         let(:invited_user) { create(:person) }

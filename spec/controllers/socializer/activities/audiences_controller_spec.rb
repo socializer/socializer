@@ -34,7 +34,7 @@ module Socializer
 
     describe "when logged in" do
       # Setting the current user
-      before { cookies[:user_id] = user.guid }
+      before { cookies.signed[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
 
