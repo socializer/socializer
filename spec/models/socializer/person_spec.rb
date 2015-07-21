@@ -154,17 +154,39 @@ module Socializer
       expect(person).to respond_to(:pending_memberships_invites)
     end
 
-    it "accepts known avatar_provider" do
-      valid_providers.each do |provider|
-        expect(build(:person, avatar_provider: provider))
-          .to be_valid
+    context "accepts known avatar_provider" do
+      it "when it is 'FACEBOOK'" do
+        expect(build(:person, avatar_provider: "FACEBOOK")).to be_valid
+      end
+
+      it "when it is 'GRAVATAR'" do
+        expect(build(:person, avatar_provider: "GRAVATAR")).to be_valid
+      end
+
+      it "when it is 'LINKEDIN'" do
+        expect(build(:person, avatar_provider: "LINKEDIN")).to be_valid
+      end
+
+      it "when it is 'TWITTER'" do
+        expect(build(:person, avatar_provider: "TWITTER")).to be_valid
       end
     end
 
-    it "rejects unknown avatar_provider" do
-      %w( IDENTITY TEST DUMMY OTHER ).each do |provider|
-        expect(build(:person, avatar_provider: provider))
-          .to be_invalid
+    context "rejects unknown avatar_provider" do
+      it "when it is 'IDENTITY'" do
+        expect(build(:person, avatar_provider: "IDENTITY")).to be_invalid
+      end
+
+      it "when it is 'TEST'" do
+        expect(build(:person, avatar_provider: "TEST")).to be_invalid
+      end
+
+      it "when it is 'DUMMY'" do
+        expect(build(:person, avatar_provider: "DUMMY")).to be_invalid
+      end
+
+      it "when it is 'OTHER'" do
+        expect(build(:person, avatar_provider: "OTHER")).to be_invalid
       end
     end
   end

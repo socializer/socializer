@@ -41,14 +41,26 @@ module Socializer
         describe "Set likable and activity" do
           # Verify that the likable variable is set before create and destroy
           # action
-          [:create, :destroy].each do |action|
-            before { post action, id: note_activity.guid, format: :js }
+          describe "POST #create" do
+            before { post :create, id: note_activity.guid, format: :js }
 
-            it "set likable for action #{action}" do
+            it "set likable for action 'create'" do
               expect(assigns(:likable)).to eq(note_activity.activity_object)
             end
 
-            it "set activity for action #{action}" do
+            it "set activity for action 'create'" do
+              expect(assigns(:activity)).to eq(note_activity)
+            end
+          end
+
+          describe "DELETE #destroy" do
+            before { delete :destroy, id: note_activity.guid, format: :js }
+
+            it "set likable for action 'destroy'" do
+              expect(assigns(:likable)).to eq(note_activity.activity_object)
+            end
+
+            it "set activity for action 'destroy'" do
               expect(assigns(:activity)).to eq(note_activity)
             end
           end
