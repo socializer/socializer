@@ -53,16 +53,16 @@ body {
   }
 }
 
-#stream-column {
+.stream-column {
   @include make-sm-column(2);
   margin-top: 15px;
 }
 
-#page-content {
+.page-content {
   @include make-sm-column(7);
 }
 
-#contextual-column {
+.contextual-column {
   @include make-sm-column(3);
 
   @media (max-width: $screen-xs-max) {

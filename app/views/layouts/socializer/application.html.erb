@@ -20,7 +20,7 @@
       <div class='row'>
 
       <% if signed_in? %>
-        <aside id='stream-column' role='complementary'>
+        <aside class='stream-column' role='complementary'>
           <%= render 'socializer/shared/main_navigation' %>
         </aside>
 
@@ -31,11 +31,11 @@
               controller_path.include?('people')
         %>
 
-        <main id='page-content' role='main'>
+        <main class='page-content' role='main'>
           <%= yield %>
         </main>
 
-        <aside id='contextual-column' role='complementary'>
+        <aside class='contextual-column' role='complementary'>
           <% if controller_name == 'circles' || controller_path == 'socializer/circles/activities' %>
             <%= render 'socializer/circles/sidebar', circle: @circle, title: @title if @circle %>
           <% elsif controller_name == 'groups' || controller_path == 'socializer/groups/activities' %>
@@ -49,14 +49,14 @@
 
         <% else %>
 
-        <main id='page-content' role='main'>
+        <main class='page-content' role='main'>
           <%= yield %>
         </main>
 
         <% end %>
 
       <% else %>
-        <main id='page-content' role='main'>
+        <main class='page-content' role='main'>
           <%= render 'socializer/people/login' %>
         </main>
       <% end %>
