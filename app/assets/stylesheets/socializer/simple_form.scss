@@ -1,4 +1,4 @@
-.simple_form {
+.simple-form {
   div.input {
     margin-bottom: 10px;
     clear: both;
@@ -30,7 +30,7 @@
 
 
 div.boolean,
-.simple_form input[type='submit'] {
+.simple-form input[type='submit'] {
   margin-left: 120px;
 }
 
@@ -39,7 +39,7 @@ div.boolean label {
   margin: 0;
 }
 
-label.collection_radio_buttons {
+label.collection-radio-buttons {
   float: none;
   margin: 0;
   margin-right: 10px;
@@ -47,7 +47,7 @@ label.collection_radio_buttons {
   vertical-align: -2px;
 }
 
-.field_with_errors {
+.field-with-errors {
   background-color: #ff3333;
 }
 
@@ -57,13 +57,13 @@ input {
     vertical-align: -3px;
   }
 
-  &.check_boxes {
+  &.check-boxes {
     margin-left: 3px;
     vertical-align: -3px;
   }
 }
 
-label.collection_check_boxes {
+label.collection-check-boxes {
   float: none;
   margin: 0;
   margin-left: 2px;
