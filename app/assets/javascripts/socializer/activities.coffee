@@ -8,7 +8,7 @@
     timeago  = $(this).data("time-ago")
 
     # This could also be timeago?, but this is more explicit
-    if timeago is "moment.js"
+    if timeago == "moment.js"
       locale   = $("body").data("locale")
       moment.locale locale
 

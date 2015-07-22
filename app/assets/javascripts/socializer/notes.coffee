@@ -5,7 +5,7 @@
 @resetNoteForm = (reset_content = true) ->
   $("#note_content").removeAttr("style")
 
-  if reset_content is true
+  if reset_content == true
     $("#note_content").val("")
     $("#note_actions").hide()
 
@@ -20,7 +20,7 @@
 jQuery ->
   controller_name = $("body").data("controller")
   controller_action = $("body").data("action")
-  reset_content = if controller_action is "edit" then false else true
+  reset_content = if controller_action == "edit" then false else true
 
   if controller_name == "notes" or controller_name == "activities" or
   controller_name == "people" or controller_name == "messages"
@@ -30,7 +30,7 @@ jQuery ->
     current_id = $("#note_object_ids").data("current-id")
     prepopulate = null
 
-    if current_id isnt null
+    if current_id != null
       prepopulate = [
         id: current_id
         name: title
@@ -44,7 +44,7 @@ jQuery ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " +
           item.name + "</li>"
 
-    if (current_id isnt null) and (title is "") or (controller_action == "edit")
+    if (current_id != null) and (title == "") or (controller_action == "edit")
       $(".token-input-list").hide()
 
     resetNoteForm(reset_content)
