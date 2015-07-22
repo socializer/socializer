@@ -4,8 +4,8 @@ jQuery ->
   $("[data-behavior~=tooltip-on-hover]").each ->
     $(this).qtip
       content:
-        text: $(this).data("content") or true
-        title: $(this).data("title") or false
+        text: $(this).data("content") || true
+        title: $(this).data("title") || false
       style:
         classes: "qtip-todc-bootstrap"
         tip: width: 12

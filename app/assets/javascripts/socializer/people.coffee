@@ -4,5 +4,5 @@
 
 jQuery ->
   controller_name = $("body").data("controller")
-  if controller_name == "people" or controller_name == "messages"
+  if controller_name == "people" || controller_name == "messages"
     $("[id^=message_person_] #note_content").click().focus()

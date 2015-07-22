@@ -22,8 +22,8 @@ jQuery ->
   controller_action = $("body").data("action")
   reset_content = if controller_action == "edit" then false else true
 
-  if controller_name == "notes" or controller_name == "activities" or
-  controller_name == "people" or controller_name == "messages"
+  if controller_name == "notes" || controller_name == "activities" ||
+  controller_name == "people" || controller_name == "messages"
 
     audience_path = $("#note_object_ids").data("source")
     title = $("#note_object_ids").data("title")
@@ -44,7 +44,7 @@ jQuery ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " +
           item.name + "</li>"
 
-    if (current_id != null) and (title == "") or (controller_action == "edit")
+    if (current_id != null) && (title == "") || (controller_action == "edit")
       $(".token-input-list").hide()
 
     resetNoteForm(reset_content)

@@ -76,5 +76,5 @@ jQuery ->
     $("[data-behavior~=tooltip-on-click]").each ->
       addTooltipSupport $(this)
 
-  if controller_name == "activities" or controller_name = "shares"
+  if controller_name == "activities" || controller_name = "shares"
     addTimeAgoSupport()
