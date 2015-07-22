@@ -4,10 +4,11 @@
 
 jQuery ->
   if $("body").data("controller") == "shares"
-    audience_path = $("#share_object_ids").data("source")
+    tokeninput = $("#share_object_ids")
+    audience_path = tokeninput.data("source")
     prepopulate = null
 
-    $("#share_object_ids").tokenInput audience_path,
+    tokeninput.tokenInput audience_path,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
