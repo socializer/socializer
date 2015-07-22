@@ -91,7 +91,7 @@
     "level": "error"
   },
   "no_this": {
-    "level": "ignore"
+    "level": "error"
   },
   "no_throwing_strings": {
     "level": "error"

@@ -10,13 +10,13 @@
   $(".droppable").droppable
     hoverClass: "droppable-hover"
     drop: (event, ui) ->
-      circle = $("a", this)
+      circle = $("a", @)
       person = ui.draggable
       circle_id = circle.data("object-id")
       person_id = person.data("object-id")
       circle_name = circle.text()
       person_name = person.data("person-name")
-      circle_tie_count = $(".circle-tie-count", this)
+      circle_tie_count = $(".circle-tie-count", @)
       $.post("/ties",
         "tie[circle_id]": circle_id
         "tie[contact_id]": person_id

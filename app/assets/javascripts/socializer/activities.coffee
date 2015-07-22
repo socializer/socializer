@@ -5,16 +5,16 @@
 @addTimeAgoSupport = ->
   # Use moment.js to mimic Google+
   $("time").each ->
-    timeago  = $(this).data("time-ago")
+    timeago  = $(@).data("time-ago")
 
     # This could also be timeago?, but this is more explicit
     if timeago == "moment.js"
       locale   = $("body").data("locale")
       moment.locale locale
 
-      datetime = moment($(this).attr("datetime"))
+      datetime = moment($(@).attr("datetime"))
 
-      $(this).text distance_of_time(datetime)
+      $(@).text distance_of_time(datetime)
 
 distance_of_time = (past_date) ->
   past_date ?= 0
@@ -74,7 +74,7 @@ jQuery ->
   if controller_name == "activities"
     # Add a qTip to all tooltip elements.
     $("[data-behavior~=tooltip-on-click]").each ->
-      addTooltipSupport $(this)
+      addTooltipSupport $(@)
 
   if controller_name == "activities" || controller_name = "shares"
     addTimeAgoSupport()

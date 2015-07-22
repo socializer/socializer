@@ -13,7 +13,7 @@
 
   $("#note_content").on "click focus", ->
     $("#note_actions").show()
-    $(this).animate
+    $(@).animate
       height: 100
     , "fast"
 
