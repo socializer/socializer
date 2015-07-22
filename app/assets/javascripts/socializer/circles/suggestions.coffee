@@ -7,7 +7,7 @@
     revert: true
     zIndex: 2500
 
-  $(".droppable").droppable
+  $("[data-behavior~=droppable]").droppable
     hoverClass: "droppable-hover"
     drop: (event, ui) ->
       circle = $("a", @)
