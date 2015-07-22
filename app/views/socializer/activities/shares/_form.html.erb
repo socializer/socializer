@@ -1,18 +1,18 @@
-<%= form_tag create_share_activity_path(share), role: 'form' do %>
-  <div class='form-group'>
-    <%= label_tag('share[content]', t('.content_label')) %>
-    <%= text_area_tag('share[content]', nil, rows: 5, class: 'form-control', id: 'share[content]') %>
+<%= form_tag create_share_activity_path(share), role: "form" do %>
+  <div class="form-group">
+    <%= label_tag("share[content]", t(".content_label")) %>
+    <%= text_area_tag("share[content]", nil, rows: 5, class: "form-control", id: "share[content]") %>
   </div>
 
-  <div class='form-group'>
-    <%= text_field_tag('share[object_ids]', nil, data: { source: j(audience_lists_path) }) %>
+  <div class="form-group">
+    <%= text_field_tag("share[object_ids]", nil, data: { source: j(audience_lists_path) }) %>
   </div>
 
-  <%= hidden_field_tag('share[activity_id]', activity_object.id, id: 'share[activity_id]') %>
+  <%= hidden_field_tag("share[activity_id]", activity_object.id, id: "share[activity_id]") %>
 
   <hr>
 
   <%= render activity_object.activitable.decorate %>
 
-  <%= submit_tag('Share', class: 'btn btn-success') %>
+  <%= submit_tag("Share", class: "btn btn-success") %>
 <% end %>

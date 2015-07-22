@@ -1,10 +1,10 @@
 <% content_for :toolbar do %>
-  <%= render 'toolbar' %>
+  <%= render "toolbar" %>
 <% end %>
 
-<p><%= link_to t('.new'), new_circle_path %></p>
+<p><%= link_to t(".new"), new_circle_path %></p>
 <ul>
 <% @circles.each do |circle| %>
-  <li><%= link_to circle.display_name, circle %> (<%= link_to t('.edit'), edit_circle_path(circle) %> | <%= link_to t('.delete'), circle, method: :delete %>)</li>
+  <li><%= link_to circle.display_name, circle %> (<%= link_to t(".edit"), edit_circle_path(circle) %> | <%= link_to t(".delete"), circle, method: :delete %>)</li>
 <% end %>
 </ul>

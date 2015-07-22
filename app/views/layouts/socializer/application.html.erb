@@ -2,75 +2,75 @@
 <html>
   <head>
     <title>Socializer</title>
-    <%= stylesheet_link_tag    'socializer/application' %>
+    <%= stylesheet_link_tag    "socializer/application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body data-controller='<%= controller_name %>' data-action='<%= action_name %>' data-locale='<%= I18n.locale %>' >
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-locale="<%= I18n.locale %>" >
 
     <% if signed_in? %>
-    <header role='banner'>
-      <%= render 'socializer/shared/topbar' %>
+    <header role="banner">
+      <%= render "socializer/shared/topbar" %>
       <%= yield :toolbar %>
     </header>
     <% end %>
 
-    <div id='content' class='container'>
-      <%= render 'socializer/shared/flash' %>
+    <div id="content" class="container">
+      <%= render "socializer/shared/flash" %>
 
-      <div class='row'>
+      <div class="row">
 
       <% if signed_in? %>
-        <aside class='stream-column' role='complementary'>
-          <%= render 'socializer/shared/main_navigation' %>
+        <aside class="stream-column" role="complementary">
+          <%= render "socializer/shared/main_navigation" %>
         </aside>
 
-        <%# if params[:controller] == 'socializer/activities' && (params[:provider] == 'groups' || params[:provider] =='circles' || params[:provider].nil?) %>
-        <% if controller_path == 'socializer/activities' ||
-              controller_name == 'circles' || controller_path == 'socializer/circles/activities' ||
-              controller_name == 'groups' || controller_path == 'socializer/groups/activities' ||
-              controller_path.include?('people')
+        <%# if params[:controller] == "socializer/activities" && (params[:provider] == "groups" || params[:provider] =="circles" || params[:provider].nil?) %>
+        <% if controller_path == "socializer/activities" ||
+              controller_name == "circles" || controller_path == "socializer/circles/activities" ||
+              controller_name == "groups" || controller_path == "socializer/groups/activities" ||
+              controller_path.include?("people")
         %>
 
-        <main class='page-content' role='main'>
+        <main class="page-content" role="main">
           <%= yield %>
         </main>
 
-        <aside class='contextual-column' role='complementary'>
-          <% if controller_name == 'circles' || controller_path == 'socializer/circles/activities' %>
-            <%= render 'socializer/circles/sidebar', circle: @circle, title: @title if @circle %>
-          <% elsif controller_name == 'groups' || controller_path == 'socializer/groups/activities' %>
-            <%= render 'socializer/groups/sidebar', group: @group, title: @title if @group %>
-          <% elsif controller_path.include?('people') %>
-            <%= render 'socializer/people/sidebar', person: @person if @person %>
-          <% elsif controller_path == 'socializer/activities' %>
-            <%= render 'socializer/activities/sidebar' %>
+        <aside class="contextual-column" role="complementary">
+          <% if controller_name == "circles" || controller_path == "socializer/circles/activities" %>
+            <%= render "socializer/circles/sidebar", circle: @circle, title: @title if @circle %>
+          <% elsif controller_name == "groups" || controller_path == "socializer/groups/activities" %>
+            <%= render "socializer/groups/sidebar", group: @group, title: @title if @group %>
+          <% elsif controller_path.include?("people") %>
+            <%= render "socializer/people/sidebar", person: @person if @person %>
+          <% elsif controller_path == "socializer/activities" %>
+            <%= render "socializer/activities/sidebar" %>
           <% end %>
         </aside>
 
         <% else %>
 
-        <main class='page-content' role='main'>
+        <main class="page-content" role="main">
           <%= yield %>
         </main>
 
         <% end %>
 
       <% else %>
-        <main class='page-content' role='main'>
-          <%= render 'socializer/people/login' %>
+        <main class="page-content" role="main">
+          <%= render "socializer/people/login" %>
         </main>
       <% end %>
 
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-    <footer role='contentinfo'>
-      <div class='container'>
-        <div class='row'>
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="row">
         </div><!-- /.row -->
       </div><!-- /.container -->
     </footer>
 
-    <%= javascript_include_tag 'socializer/application' %>
+    <%= javascript_include_tag "socializer/application" %>
   </body>
 </html>

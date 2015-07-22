@@ -1,37 +1,37 @@
-<article class='media media-sm' data-activityid="<%= comment.guid %>">
-  <section class='media-object'>
+<article class="media media-sm" data-activityid="<%= comment.guid %>">
+  <section class="media-object">
     <%= link_to(image_tag(comment.actor.decorate.avatar_url), comment.actor) %>
   </section>
 
-  <section class='media-body'>
+  <section class="media-body">
     <header>
-      <div class='btn-group pull-right'>
-        <a href='#' data-toggle='dropdown' class='btn btn-xs btn-transparent dropdown-toggle'>
-          <span class='fa fa-angle-down fa-lg'></span>
+      <div class="btn-group pull-right">
+        <a href="#" data-toggle="dropdown" class="btn btn-xs btn-transparent dropdown-toggle">
+          <span class="fa fa-angle-down fa-lg"></span>
         </a>
-        <ul class='dropdown-menu'>
-          <li><%= link_to('Edit', [:edit, comment.model.object]) if current_user?(comment.actor) %></li>
-          <li><%= link_to('Delete', comment.model.object, method: :delete, remote: true) if current_user?(comment.actor) %></li>
+        <ul class="dropdown-menu">
+          <li><%= link_to("Edit", [:edit, comment.model.object]) if current_user?(comment.actor) %></li>
+          <li><%= link_to("Delete", comment.model.object, method: :delete, remote: true) if current_user?(comment.actor) %></li>
         </ul>
       </div>
 
       <h1>
         <%= link_to(comment.actor.display_name, person_activities_path(person_id: comment.actor.id)) %>
-        <small class='text-muted'> -
-          <%= link_to(comment.created_at_time_ago, activity_activities_path(activity_id: comment.id), class: 'text-muted') %>
+        <small class="text-muted"> -
+          <%= link_to(comment.created_at_time_ago, activity_activities_path(activity_id: comment.id), class: "text-muted") %>
         </small>
       </h1>
     </header>
 
     <p><%= comment.model.object.content %></p>
 
-    <footer class='media-body-footer'>
-      <div class='btn-group'>
-        <%#= link_to(content_tag(:small, 'Reply'), '#', title: 'Reply', class: 'text-muted', data: { behavior: "tooltip-on-hover" }) %>
+    <footer class="media-body-footer">
+      <div class="btn-group">
+        <%#= link_to(content_tag(:small, "Reply"), "#", title: "Reply", class: "text-muted", data: { behavior: "tooltip-on-hover" }) %>
         <%# Like / Unlike button %>
         <%= comment.activity_object.decorate.link_to_like_or_unlike %>
-        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-flag'), '#', title: 'Report abuse or spam', class: 'text-muted', data: { behavior: "tooltip-on-hover" }) %>
-        <%#= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-times'), '#', title: 'Remove comment', class: 'text-muted', data: { behavior: "tooltip-on-hover" }) %>
+        <%#= link_to(content_tag(:span, nil, class: "fa fa-fw fa-flag"), "#", title: "Report abuse or spam", class: "text-muted", data: { behavior: "tooltip-on-hover" }) %>
+        <%#= link_to(content_tag(:span, nil, class: "fa fa-fw fa-times"), "#", title: "Remove comment", class: "text-muted", data: { behavior: "tooltip-on-hover" }) %>
       </div>
     </footer>
   </section>

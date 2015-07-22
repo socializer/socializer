@@ -1,5 +1,5 @@
 <ul>
 <% @people.each do |person| %>
-<li><%= link_to person.display_name, person %> (<%= link_to 'edit', edit_person_path(person) %>)</li>
+<li><%= link_to person.display_name, person %> (<%= link_to "edit", edit_person_path(person) %>)</li>
 <% end %>
 </ul>

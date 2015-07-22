@@ -1,8 +1,8 @@
 <%= simple_form_for(person, wrapper_mappings: { boolean: :vertical_boolean } ) do |f| %>
   <%= f.input :display_name, input_html: { autofocus: true } %>
   <%= f.input :email %>
-  <%= f.input :language, collection: [['English', 'en'], ['Français', 'fr']] %>
-  <%= f.input :avatar_provider, collection: [['Twitter', 'TWITTER'], ['Facebook', 'FACEBOOK'], ['Linked In', 'LINKEDIN'], ['Gravatar', 'GRAVATAR']] %>
+  <%= f.input :language, collection: [["English", "en"], ["Français", "fr"]] %>
+  <%= f.input :avatar_provider, collection: [["Twitter", "TWITTER"], ["Facebook", "FACEBOOK"], ["Linked In", "LINKEDIN"], ["Gravatar", "GRAVATAR"]] %>
 
   <%= f.input :tagline %>
   <%= f.input :introduction %>
@@ -14,14 +14,14 @@
   <%= f.input :gender %>
 
   <%= f.label :looking_for %>
-  <%= f.input :looking_for_friends, label: 'Friends' %>
-  <%= f.input :looking_for_dating, label: 'Dating' %>
-  <%= f.input :looking_for_relationship, label: 'Relationship' %>
-  <%= f.input :looking_for_networking, label: 'Networking' %>
+  <%= f.input :looking_for_friends, label: "Friends" %>
+  <%= f.input :looking_for_dating, label: "Dating" %>
+  <%= f.input :looking_for_relationship, label: "Relationship" %>
+  <%= f.input :looking_for_networking, label: "Networking" %>
 
   <%= f.input :birthdate, start_year: Time.zone.today.year - 90, end_year: Time.zone.today.year - 13,  order: [:month, :day, :year] %>
   <%= f.input :relationship %>
   <%= f.input :other_names %>
 
-  <%= f.button :submit, class: 'btn-primary action-button' %>
+  <%= f.button :submit, class: "btn-primary action-button" %>
 <% end %>

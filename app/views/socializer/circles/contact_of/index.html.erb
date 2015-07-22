@@ -1,11 +1,11 @@
 <% content_for :toolbar do %>
-  <%= render 'socializer/circles/toolbar' %>
+  <%= render "socializer/circles/toolbar" %>
 <% end %>
 
-<h1><%= t('.header', count: @contact_of.count) %></h1>
+<h1><%= t(".header", count: @contact_of.count) %></h1>
 
-<div class='row'>
-  <%= render partial: 'socializer/people/mini_card', collection: @contact_of, as: :person %>
+<div class="row">
+  <%= render partial: "socializer/people/mini_card", collection: @contact_of, as: :person %>
 </div>
 
-<%= render 'socializer/circles/circles' %>
+<%= render "socializer/circles/circles" %>

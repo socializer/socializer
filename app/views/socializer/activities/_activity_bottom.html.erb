@@ -2,9 +2,9 @@
 
   <%# Like / Unlike button %>
   <% if current_user.likes?(activity.activity_object) %>
-    <%= link_to 'Unlike', unlike_activity_path(activity.activity_object), method: :delete, remote: true %>
+    <%= link_to "Unlike", unlike_activity_path(activity.activity_object), method: :delete, remote: true %>
   <% else %>
-    <%= link_to 'Like', like_activity_path (activity.activity_object), method: :post, remote: true %>
+    <%= link_to "Like", like_activity_path (activity.activity_object), method: :post, remote: true %>
   <% end %>
 
   <%# Number of likes %>
@@ -14,14 +14,14 @@
 
   <%# Comment button %>
   <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
-    <span class='separator'></span>
-    <%= link_to 'Comment', comment_activity_path(activity) %>
+    <span class="separator"></span>
+    <%= link_to "Comment", comment_activity_path(activity) %>
   <% end %>
 
   <%# Share button %>
   <% if activity.activitable_object.note?  %>
-    <span class='separator'></span>
-    <%= link_to 'Share', new_share_activity_path(activity.activity_object) %>
+    <span class="separator"></span>
+    <%= link_to "Share", new_share_activity_path(activity.activity_object) %>
   <% end %>
 
   <%# Edit and Delete buttons %>
@@ -29,24 +29,24 @@
 
     <% if activity.activitable_object.note? %>
 
-<!--       <span class='separator'></span> -->
+<!--       <span class="separator"></span> -->
       <%#= link_to "Edit", edit_note_path(activity.model.object) %>
 
-<!--       <span class='separator'></span> -->
+<!--       <span class="separator"></span> -->
       <%#= link_to "Delete", activity.model.object, method: :delete, remote: true %>
 
     <%# elsif activity.activitable_object.comment? %>
 
-<!--       <span class='separator'></span> -->
+<!--       <span class="separator"></span> -->
       <%#= link_to "Edit", edit_comment_path(activity.object) %>
 
-<!--       <span class='separator'></span> -->
+<!--       <span class="separator"></span> -->
       <%#= link_to "Delete", activity.object, method: :delete, remote: true %>
 
     <% elsif activity.activitable_object.activity? %>
 
-      <span class='separator'></span>
-      <%= link_to 'Delete', activity, method: :delete, remote: true %>
+      <span class="separator"></span>
+      <%= link_to "Delete", activity, method: :delete, remote: true %>
 
     <% end %>
 

@@ -1,29 +1,29 @@
 <% content_for :toolbar do %>
-  <%= render 'socializer/groups/toolbar' %>
+  <%= render "socializer/groups/toolbar" %>
 <% end %>
 
-<h1><%= t('.header', count: @memberships.count) %></h1>
+<h1><%= t(".header", count: @memberships.count) %></h1>
 
-<div class='row'>
+<div class="row">
   <% @memberships.each do |membership| %>
-    <%= render 'socializer/groups/card', group: membership.group %>
+    <%= render "socializer/groups/card", group: membership.group %>
 
     <%
-      classname = 'panel-default'
-      classname = 'panel-warning' if membership.group.restricted?
-      classname = 'panel-danger' if membership.group.private?
+      classname = "panel-default"
+      classname = "panel-warning" if membership.group.restricted?
+      classname = "panel-danger" if membership.group.private?
     %>
-    <div class='col-sm-4'>
-      <div class='panel <%=classname %>'>
-        <div class='panel-body'>
+    <div class="col-sm-4">
+      <div class="panel <%=classname %>">
+        <div class="panel-body">
           <%= link_to(membership.group) do %>
             <p class="lead"><%= membership.group.display_name %></p>
-            <p class='text-muted'>
+            <p class="text-muted">
               <%= membership.group.members.count %> members - <%= membership.group.privacy.titlecase %>
               <br>
               TODO: need a posts count
             </p>
-            <%= link_to(t('.leave'), membership, method: :delete, class: 'btn btn-default') %>
+            <%= link_to(t(".leave"), membership, method: :delete, class: "btn btn-default") %>
           <% end %>
         </div>
       </div>

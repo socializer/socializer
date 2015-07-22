@@ -5,13 +5,13 @@
 
   <p><%= activity.activity_field_content %></p>
 
-  <article  class='media media-body-attachment'>
-    <section class='media-body'>
+  <article  class="media media-body-attachment">
+    <section class="media-body">
       <header>
         <h2>
           <%= link_to(activity.model.object.actor.display_name, person_activities_path(person_id: activity.model.object.actor.id)) %>
-          <small class='text-muted'>
-            <%= link_to('originally shared:', activity_activities_path(activity_id: activity.model.object.id)) %>
+          <small class="text-muted">
+            <%= link_to("originally shared:", activity_activities_path(activity_id: activity.model.object.id)) %>
           </small>
         </h2>
       </header>

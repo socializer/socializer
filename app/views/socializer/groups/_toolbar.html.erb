@@ -1,39 +1,39 @@
-<nav class='toolbar' role='navigation'>
-  <div class='container'>
-    <div class='row'>
+<nav class="toolbar" role="navigation">
+  <div class="container">
+    <div class="row">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class='navbar-header col-sm-2'>
-        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#toolbar-collapse-1'>
-          <span class='sr-only'>Toggle navigation</span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
+      <div class="navbar-header col-sm-2">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#toolbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-users') + t('.groups'), groups_path, class: 'navbar-brand') %>
+        <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-users") + t(".groups"), groups_path, class: "navbar-brand") %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
-        <div class='col-sm-7'>
-          <ul class='nav navbar-nav'>
+      <div class="collapse navbar-collapse" id="toolbar-collapse-1">
+        <div class="col-sm-7">
+          <ul class="nav navbar-nav">
             <!-- TODO; Add translations -->
-            <li class="<%= 'active' if current_page?(groups_path) %>"><%= link_to(t('.all'), groups_path) %><li>
-            <li class="<%= 'active' if current_page?(groups_ownerships_path) %>"><%= link_to(t('.your_groups'), groups_ownerships_path) %></li>
-            <li class="<%= 'active' if current_page?(groups_memberships_path) %>"><%= link_to(t('.memberships'), groups_memberships_path) %></li>
-            <li class="<%= 'active' if current_page?(groups_pending_invites_path) %>"><%= link_to(t('.pending_invites'), groups_pending_invites_path) %></li>
+            <li class="<%= "active" if current_page?(groups_path) %>"><%= link_to(t(".all"), groups_path) %><li>
+            <li class="<%= "active" if current_page?(groups_ownerships_path) %>"><%= link_to(t(".your_groups"), groups_ownerships_path) %></li>
+            <li class="<%= "active" if current_page?(groups_memberships_path) %>"><%= link_to(t(".memberships"), groups_memberships_path) %></li>
+            <li class="<%= "active" if current_page?(groups_pending_invites_path) %>"><%= link_to(t(".pending_invites"), groups_pending_invites_path) %></li>
 
-            <li class='dropdown'>
-              <%= link_to("More #{content_tag(:span, nil, class: 'fa fa-angle-down fa-fw')}".html_safe, nil, class: 'dropdown-toggle', data: { toggle: 'dropdown' }) %>
-              <ul class='dropdown-menu'>
-                <li class="<%= 'active' if current_page?(groups_public_path) %>"><%= link_to(t('.public'), groups_public_path) %></li>
-                <li class="<%= 'active' if current_page?(groups_restricted_path) %>"><%= link_to(t('.restricted'), groups_restricted_path) %></li>
-                <li class="<%= 'active' if current_page?(groups_joinable_path) %>"><%= link_to(t('.joinable'), groups_joinable_path) %></li>
+            <li class="dropdown">
+              <%= link_to("More #{content_tag(:span, nil, class: "fa fa-angle-down fa-fw")}".html_safe, nil, class: "dropdown-toggle", data: { toggle: "dropdown" }) %>
+              <ul class="dropdown-menu">
+                <li class="<%= "active" if current_page?(groups_public_path) %>"><%= link_to(t(".public"), groups_public_path) %></li>
+                <li class="<%= "active" if current_page?(groups_restricted_path) %>"><%= link_to(t(".restricted"), groups_restricted_path) %></li>
+                <li class="<%= "active" if current_page?(groups_joinable_path) %>"><%= link_to(t(".joinable"), groups_joinable_path) %></li>
               </ul>
             </li>
-            <li><%= link_to('Explore') %><li>
+            <li><%= link_to("Explore") %><li>
           </ul>
           <div class="btn-group pull-right">
-            <%= link_to(t('.new'), new_group_path, class: 'btn btn-primary') %>
+            <%= link_to(t(".new"), new_group_path, class: "btn btn-primary") %>
           </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->

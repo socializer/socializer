@@ -1,11 +1,11 @@
 <% content_for :toolbar do %>
-  <%= render 'socializer/groups/toolbar' %>
+  <%= render "socializer/groups/toolbar" %>
 <% end %>
 
-<h1><%= t('.header', count: @ownerships.count) %></h1>
+<h1><%= t(".header", count: @ownerships.count) %></h1>
 
-<div class='row'>
-  <%= render partial: 'socializer/groups/card', collection: @ownerships, as: :group %>
+<div class="row">
+  <%= render partial: "socializer/groups/card", collection: @ownerships, as: :group %>
 </div><!-- /.row -->
 
 <ul class="large-group-list">
@@ -20,8 +20,8 @@
         </div>
       <% end %>
       <div class="group-actions">
-        <%= link_to t('.edit'), edit_group_path(group) %> |
-        <%= link_to t('.delete'), group, method: :delete %>
+        <%= link_to t(".edit"), edit_group_path(group) %> |
+        <%= link_to t(".delete"), group, method: :delete %>
       </div>
     </div>
   </li>

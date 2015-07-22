@@ -1,12 +1,12 @@
 <% content_for :toolbar do %>
-  <%= render 'socializer/groups/toolbar' %>
+  <%= render "socializer/groups/toolbar" %>
 <% end %>
 
-<h1><%= t('.header', count: @pending_invites.count) %></h1>
+<h1><%= t(".header", count: @pending_invites.count) %></h1>
 
-<div class='row'>
+<div class="row">
   <% @pending_invites.each do |membership| %>
-    <%= render 'socializer/groups/card', group: membership.group %>
+    <%= render "socializer/groups/card", group: membership.group %>
   <% end %>
 </div>
 
@@ -22,8 +22,8 @@
         </div>
       <% end %>
       <div class="group-actions">
-        <%= link_to t('.decline'), decline_membership_path(membership), method: :post %> |
-        <%= link_to t('.confirm'), confirm_membership_path(membership), method: :post %>
+        <%= link_to t(".decline"), decline_membership_path(membership), method: :post %> |
+        <%= link_to t(".confirm"), confirm_membership_path(membership), method: :post %>
       </div>
     </div>
   </li>

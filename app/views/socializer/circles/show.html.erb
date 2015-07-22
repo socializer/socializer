@@ -1,30 +1,30 @@
 <% content_for :toolbar do %>
-  <%= render 'toolbar' %>
+  <%= render "toolbar" %>
 <% end %>
 
-<h1><%= t('socializer.circles.header') %></h1>
+<h1><%= t("socializer.circles.header") %></h1>
 
 <h2>
-  <%= @circle.display_name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.tooltip.edit')}", data: { behavior: "tooltip-on-hover" }) %>
+  <%= @circle.display_name %> <%= link_to("#{content_tag(:span, nil, class: "fa fa-fw fa-pencil")}".html_safe, edit_circle_path(@circle), class: "btn btn-xs btn-default", title: "#{t(".tooltip.edit")}", data: { behavior: "tooltip-on-hover" }) %>
 </h2>
 
 <p><%= @circle.content %></p>
 <h3>Contacts (<%= @circle.ties.count %>)</h3>
 
-<div class='row'>
+<div class="row">
   <% @circle.ties.each do |tie| %>
     <!-- TODO: Create a partial or use people/mini_card. The partial will need to account for actions -->
-    <div class='col-sm-6 col-md-4 draggable', data-object-id='<%= tie.contact.guid %>', data-person-name='<%= tie.contact.display_name %>'>
-      <article class='media panel panel-default'>
-        <section class='media-object'>
+    <div class="col-sm-6 col-md-4 draggable", data-object-id="<%= tie.contact.guid %>", data-person-name="<%= tie.contact.display_name %>">
+      <article class="media panel panel-default">
+        <section class="media-object">
           <%= link_to(image_tag(tie.contact.decorate.avatar_url), tie.contact) %>
         </section>
 
-        <section class='media-body'>
+        <section class="media-body">
             <h1>
               <%= link_to(tie.contact.display_name, person_activities_path(person_id: tie.contact.id)) %>
             </h1>
-            <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.display_name)}", data: { confirm: "#{t('.confirm')}", behavior: "tooltip-on-hover" }) %>
+            <%= link_to(t(".delete"), tie, method: :delete, class: "btn btn-xs btn-danger", title: "#{t(".tooltip.delete", display_name: tie.contact.display_name, circle_name: @circle.display_name)}", data: { confirm: "#{t(".confirm")}", behavior: "tooltip-on-hover" }) %>
         </section>
       </article>
     </div>

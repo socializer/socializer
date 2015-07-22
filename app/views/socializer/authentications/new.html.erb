@@ -1,13 +1,13 @@
 <% content_for :toolbar do %>
-  <%= render 'toolbar' %>
+  <%= render "toolbar" %>
 <% end %>
 
-<h1><%= t('.header') %></h1>
+<h1><%= t(".header") %></h1>
 
 <p>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-facebook', title: 'Facebook', data: { behavior: "tooltip-on-hover" }), signin_path(:facebook), class: 'btn btn-social-icon btn-facebook btn-lg') %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-twitter', title: 'Twitter', data: { behavior: "tooltip-on-hover" }), signin_path(:twitter), class: 'btn btn-social-icon btn-twitter btn-lg') %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-linkedin', title: 'LinkedIn', data: { behavior: "tooltip-on-hover" }), signin_path(:linkedin), class: 'btn btn-social-icon btn-linkedin btn-lg') %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-yahoo', title: 'Yahoo', data: { behavior: "tooltip-on-hover" }), signin_path(:yahoo), class: 'btn btn-social-icon btn-yahoo btn-lg') %>
-  <%= link_to(content_tag(:span, nil, class:'fa fa-google', title: 'Google', data: { behavior: "tooltip-on-hover" }), signin_path(:google), class: 'btn btn-social-icon btn-google btn-lg') %>
+  <%= link_to(content_tag(:span, nil, class:"fa fa-facebook", title: "Facebook", data: { behavior: "tooltip-on-hover" }), signin_path(:facebook), class: "btn btn-social-icon btn-facebook btn-lg") %>
+  <%= link_to(content_tag(:span, nil, class:"fa fa-twitter", title: "Twitter", data: { behavior: "tooltip-on-hover" }), signin_path(:twitter), class: "btn btn-social-icon btn-twitter btn-lg") %>
+  <%= link_to(content_tag(:span, nil, class:"fa fa-linkedin", title: "LinkedIn", data: { behavior: "tooltip-on-hover" }), signin_path(:linkedin), class: "btn btn-social-icon btn-linkedin btn-lg") %>
+  <%= link_to(content_tag(:span, nil, class:"fa fa-yahoo", title: "Yahoo", data: { behavior: "tooltip-on-hover" }), signin_path(:yahoo), class: "btn btn-social-icon btn-yahoo btn-lg") %>
+  <%= link_to(content_tag(:span, nil, class:"fa fa-google", title: "Google", data: { behavior: "tooltip-on-hover" }), signin_path(:google), class: "btn btn-social-icon btn-google btn-lg") %>
 </p>

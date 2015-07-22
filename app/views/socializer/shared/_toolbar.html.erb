@@ -1,24 +1,24 @@
-<nav class='toolbar' role='navigation'>
-  <div class='container'>
-    <div class='row'>
+<nav class="toolbar" role="navigation">
+  <div class="container">
+    <div class="row">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class='navbar-header col-sm-2'>
-        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#toolbar-collapse-1'>
-          <span class='sr-only'>Toggle navigation</span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
+      <div class="navbar-header col-sm-2">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#toolbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-home') + t('.home'), root_path, class: 'navbar-brand') %>
+        <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-home") + t(".home"), root_path, class: "navbar-brand") %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
-        <div class='col-sm-7'>
-          <ul class='nav navbar-nav'>
-            <li class="<%= 'active' if current_page?(activities_path) %>"><%= link_to(t('.all'), activities_path) %><li>
+      <div class="collapse navbar-collapse" id="toolbar-collapse-1">
+        <div class="col-sm-7">
+          <ul class="nav navbar-nav">
+            <li class="<%= "active" if current_page?(activities_path) %>"><%= link_to(t(".all"), activities_path) %><li>
             <%= current_user.toolbar_stream_links %>
-            <li><%= link_to('Explore') %><li>
+            <li><%= link_to("Explore") %><li>
           </ul>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->

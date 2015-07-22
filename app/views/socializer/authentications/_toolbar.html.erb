@@ -1,25 +1,25 @@
-<nav class='toolbar' role='navigation'>
-  <div class='container'>
-    <div class='row'>
+<nav class="toolbar" role="navigation">
+  <div class="container">
+    <div class="row">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class='navbar-header col-sm-2'>
-        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#toolbar-collapse-1'>
-          <span class='sr-only'>Toggle navigation</span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
+      <div class="navbar-header col-sm-2">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#toolbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-user') + t('.authentications'), authentications_path, class: 'navbar-brand') %>
+        <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-user") + t(".authentications"), authentications_path, class: "navbar-brand") %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class='collapse navbar-collapse' id='toolbar-collapse-1'>
-        <div class='col-sm-7'>
-          <ul class='nav navbar-nav'>
-            <li class="<%= 'active' if current_page?(authentications_path) %>"><%= link_to(t('.all'), authentications_path) %></li>
+      <div class="collapse navbar-collapse" id="toolbar-collapse-1">
+        <div class="col-sm-7">
+          <ul class="nav navbar-nav">
+            <li class="<%= "active" if current_page?(authentications_path) %>"><%= link_to(t(".all"), authentications_path) %></li>
           </ul>
           <div class="btn-group pull-right">
-            <%= link_to(t('.new'), new_authentication_path, class: 'btn btn-primary', title: "#{t('.tooltip.new')}", data: { behavior: "tooltip-on-hover" }) %>
+            <%= link_to(t(".new"), new_authentication_path, class: "btn btn-primary", title: "#{t(".tooltip.new")}", data: { behavior: "tooltip-on-hover" }) %>
           </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->

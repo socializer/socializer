@@ -1,10 +1,10 @@
-<div class='col-sm-3'>
-  <div class='panel panel-default'>
-    <div class='panel-body text-center'>
+<div class="col-sm-3">
+  <div class="panel panel-default">
+    <div class="panel-body text-center">
       <%= content_tag(:span, nil, class: "fa fa-#{authentication.provider.downcase} fa-2x") %>
-      <%= authentication.provider.downcase if authentication.provider.downcase == 'identity' %><br>
+      <%= authentication.provider.downcase if authentication.provider.downcase == "identity" %><br>
       <%= authentication.uid %><br>
-      <%= link_to t('.unbind'), authentication, method: :delete %>
+      <%= link_to t(".unbind"), authentication, method: :delete %>
     </div>
   </div>
 </div>

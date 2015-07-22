@@ -3,22 +3,22 @@
 </h3>
 
 <p>
-  <%= person.image_tag_avatar(size:'190x190', css_class: 'img-responsive') %>
+  <%= person.image_tag_avatar(size:"190x190", css_class: "img-responsive") %>
 </p>
 
 <p>
-  <%= link_to(t('.send_message'), messages_new_person_path(person), class: 'btn btn-primary') %>
+  <%= link_to(t(".send_message"), messages_new_person_path(person), class: "btn btn-primary") %>
 </p>
 
-<p>In <%= person.display_name %>'s circles (<%= person.contacts.size %>):</p>
-<ul class='small-contact-list'>
+<p>In <%= person.display_name %>"s circles (<%= person.contacts.size %>):</p>
+<ul class="small-contact-list">
   <% person.contacts.each do |contact| %>
   <li><%= contact.decorate.link_to_avatar %>
   <% end %>
 </ul>
 
 <p>Have <%= person.display_name %> in circles (<%= person.contact_of.size %>):</p>
-<ul class='small-contact-list'>
+<ul class="small-contact-list">
   <% person.contact_of.each do |person| %>
   <li><%= person.decorate.link_to_avatar %>
   <% end %>

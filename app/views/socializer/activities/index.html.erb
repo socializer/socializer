@@ -1,11 +1,11 @@
 <% content_for :toolbar do %>
-  <%= render 'socializer/shared/toolbar' %>
+  <%= render "socializer/shared/toolbar" %>
 <% end %>
 
 <h1><%= @title %></h1>
 
-<%= render 'socializer/notes/form', note: @note, title: @title, current_id: @current_id %>
+<%= render "socializer/notes/form", note: @note, title: @title, current_id: @current_id %>
 
-<section class='activities'>
+<section class="activities">
   <%= render @activities %>
 </section>

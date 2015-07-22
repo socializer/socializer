@@ -1,18 +1,18 @@
-<article class='media panel <%= classname %>' data-activity-id='<%= notification.activity.guid %>'>
-  <section class='media-object'>
+<article class="media panel <%= classname %>" data-activity-id="<%= notification.activity.guid %>">
+  <section class="media-object">
     <%= link_to(image_tag(notification.activity.actor.decorate.avatar_url), notification.activity.actor) %>
   </section>
 
-  <section class='media-body'>
+  <section class="media-body">
     <header>
       <h1>
         <%= link_to(notification.activity.actor.display_name, person_activities_path(person_id: notification.activity.actor.id)) %>
-        <small class='text-muted'> -
-          <%= link_to(notification.created_at_time_ago, activity_activities_path(activity_id: notification.activity.id), class: 'text-muted') %>
+        <small class="text-muted"> -
+          <%= link_to(notification.created_at_time_ago, activity_activities_path(activity_id: notification.activity.id), class: "text-muted") %>
         </small>
       </h1>
     </header>
 
-    <p><%= "Shared with you: #{ notification.activity.object.content }" if notification.activity.activitable_object.note? && notification.activity.verb_display_name == 'post' %></p>
+    <p><%= "Shared with you: #{ notification.activity.object.content }" if notification.activity.activitable_object.note? && notification.activity.verb_display_name == "post" %></p>
   </section>
 </article>

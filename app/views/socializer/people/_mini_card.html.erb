@@ -1,11 +1,11 @@
 <!-- TODO: This partial will need to account for actions passed in-->
-<div class='col-sm-6 col-md-4 draggable', data-object-id='<%= person.guid %>', data-person-name='<%= person.display_name %>'>
-  <article class='media panel panel-default'>
-    <section class='media-object'>
+<div class="col-sm-6 col-md-4 draggable", data-object-id="<%= person.guid %>", data-person-name="<%= person.display_name %>">
+  <article class="media panel panel-default">
+    <section class="media-object">
       <%= link_to(image_tag(person.decorate.avatar_url), person) %>
     </section>
 
-    <section class='media-body'>
+    <section class="media-body">
         <h1>
           <%= link_to(person.display_name, person_activities_path(person_id: person.id)) %>
         </h1>
