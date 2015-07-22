@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @setup = ->
-  $(".draggable").draggable
+  $("[data-behavior~=draggable]").draggable
     revert: true
     zIndex: 2500
 

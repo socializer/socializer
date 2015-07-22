@@ -34,7 +34,7 @@
   <div class="row">
     <% Socializer::Person.all.decorate.each do |user| %>
       <!-- TODO: Create a partial or use people/mini_card. The partial will need to account for actions -->
-      <div class="col-sm-6 col-md-4 draggable", data-object-id="<%= user.guid %>", data-person-name="<%= user.display_name %>">
+      <div class="col-sm-6 col-md-4", data-object-id="<%= user.guid %>", data-person-name="<%= user.display_name %>", data-behavior="draggable">
         <article class="media panel panel-default">
           <section class="media-object">
             <%= link_to(image_tag(user.avatar_url), user) %>

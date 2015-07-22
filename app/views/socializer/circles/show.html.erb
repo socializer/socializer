@@ -14,7 +14,7 @@
 <div class="row">
   <% @circle.ties.each do |tie| %>
     <!-- TODO: Create a partial or use people/mini_card. The partial will need to account for actions -->
-    <div class="col-sm-6 col-md-4 draggable", data-object-id="<%= tie.contact.guid %>", data-person-name="<%= tie.contact.display_name %>">
+    <div class="col-sm-6 col-md-4", data-object-id="<%= tie.contact.guid %>", data-person-name="<%= tie.contact.display_name %>", data-behavior="draggable">
       <article class="media panel panel-default">
         <section class="media-object">
           <%= link_to(image_tag(tie.contact.decorate.avatar_url), tie.contact) %>

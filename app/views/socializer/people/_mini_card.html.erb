@@ -1,5 +1,5 @@
 <!-- TODO: This partial will need to account for actions passed in-->
-<div class="col-sm-6 col-md-4 draggable", data-object-id="<%= person.guid %>", data-person-name="<%= person.display_name %>">
+<div class="col-sm-6 col-md-4", data-object-id="<%= person.guid %>", data-person-name="<%= person.display_name %>", data-behavior="draggable">
   <article class="media panel panel-default">
     <section class="media-object">
       <%= link_to(image_tag(person.decorate.avatar_url), person) %>
