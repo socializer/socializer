@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  if $('body').data('controller') == 'shares'
-    audience_path = $('#share_object_ids').data('source')
+  if $("body").data("controller") == "shares"
+    audience_path = $("#share_object_ids").data("source")
     prepopulate = null
 
-    $('#share_object_ids').tokenInput audience_path,
+    $("#share_object_ids").tokenInput audience_path,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate

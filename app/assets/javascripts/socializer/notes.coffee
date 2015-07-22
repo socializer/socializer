@@ -3,31 +3,31 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @resetNoteForm = (reset_content = true) ->
-  $('#note_content').removeAttr('style')
+  $("#note_content").removeAttr("style")
 
   if reset_content is true
-    $('#note_content').val('')
-    $('#note_actions').hide()
+    $("#note_content").val("")
+    $("#note_actions").hide()
 
-  $('#note_object_ids').tokenInput 'clear'
+  $("#note_object_ids").tokenInput "clear"
 
-  $('#note_content').on 'click focus', ->
-    $('#note_actions').show()
+  $("#note_content").on "click focus", ->
+    $("#note_actions").show()
     $(this).animate
       height: 100
-    , 'fast'
+    , "fast"
 
 jQuery ->
-  controller_name = $('body').data('controller')
-  controller_action = $('body').data('action')
-  reset_content = if controller_action is 'edit' then false else true
+  controller_name = $("body").data("controller")
+  controller_action = $("body").data("action")
+  reset_content = if controller_action is "edit" then false else true
 
-  if controller_name == 'notes' or controller_name == 'activities' or
-  controller_name == 'people' or controller_name == 'messages'
+  if controller_name == "notes" or controller_name == "activities" or
+  controller_name == "people" or controller_name == "messages"
 
-    audience_path = $('#note_object_ids').data('source')
-    title = $('#note_object_ids').data('title')
-    current_id = $('#note_object_ids').data('current-id')
+    audience_path = $("#note_object_ids").data("source")
+    title = $("#note_object_ids").data("title")
+    current_id = $("#note_object_ids").data("current-id")
     prepopulate = null
 
     if current_id isnt null
@@ -36,7 +36,7 @@ jQuery ->
         name: title
       ]
 
-    $('#note_object_ids').tokenInput audience_path,
+    $("#note_object_ids").tokenInput audience_path,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
@@ -44,10 +44,10 @@ jQuery ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " +
           item.name + "</li>"
 
-    if (current_id isnt null) and (title is '') or (controller_action == 'edit')
-      $('.token-input-list').hide()
+    if (current_id isnt null) and (title is "") or (controller_action == "edit")
+      $(".token-input-list").hide()
 
     resetNoteForm(reset_content)
 
-    $('#note_cancel').on 'click', ->
+    $("#note_cancel").on "click", ->
       resetNoteForm(reset_content)
