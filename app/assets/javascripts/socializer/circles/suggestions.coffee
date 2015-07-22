@@ -16,7 +16,7 @@
       person_id = person.data("object-id")
       circle_name = circle.text()
       person_name = person.data("person-name")
-      circle_tie_count = $(".circle-tie-count", @)
+      circle_tie_count = $("[data-behavior~=circle-tie-count]", @)
       $.post("/ties",
         "tie[circle_id]": circle_id
         "tie[contact_id]": person_id
