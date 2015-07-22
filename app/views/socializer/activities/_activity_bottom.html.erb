@@ -9,7 +9,7 @@
 
   <%# Number of likes %>
   <% if activity.activity_object.like_count > 0 %>
-    (<%= link_to activity.activity_object.like_count, likes_activity_path(activity), class: 'tooltip' %>)
+    (<%= link_to activity.activity_object.like_count, likes_activity_path(activity), data: { behavior: "tooltip-on-click" } %>)
   <% end %>
 
   <%# Comment button %>

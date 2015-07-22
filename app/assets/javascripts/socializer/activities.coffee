@@ -73,7 +73,7 @@ jQuery ->
   controller_name = $('body').data('controller')
   if controller_name == 'activities'
     # Add a qTip to all tooltip elements.
-    $('.tooltip').each ->
+    $('[data-behavior~=tooltip-on-click]').each ->
       addTooltipSupport $(this)
 
   if controller_name == 'activities' or controller_name = 'shares'

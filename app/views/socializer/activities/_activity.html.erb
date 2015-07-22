@@ -21,7 +21,7 @@
           <%= link_to(activity.model.object.decorate.created_at_time_ago, activity_activities_path(activity_id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.distinct.each do |audience| %>
-            <span title='<%= t('.tooltip.sharing') %>', data-behavior="tooltip-on-hover" }><%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %></span>
+            <span title='<%= t('.tooltip.sharing') %>', data-behavior="tooltip-on-hover" }><%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'text-muted', data: { behavior: "tooltip-on-click" }) %></span>
           <% end %>
         </small>
       </h1>
