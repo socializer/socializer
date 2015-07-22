@@ -13,7 +13,7 @@
 <hr>
 
 <% if @group.member?(current_user) %>
-  <%= link_to(t('.leave'), @membership, method: :delete, class: 'btn btn-danger', title: "#{t('.tooltip.leave', display_name: current_user.display_name, group_name: @group.display_name)}", data: { confirm: "#{t('.confirm')}" }) %>
+  <%= link_to(t('.leave'), @membership, method: :delete, class: 'btn btn-danger', title: "#{t('.tooltip.leave', display_name: current_user.display_name, group_name: @group.display_name)}", data: { confirm: "#{t('.confirm')}", behavior: "tooltip-on-hover" }) %>
 <% else %>
   <%= simple_form_for(current_user.memberships.build(group_id: @group.id)) do |f| %>
     <%= f.input :group_id,  as: :hidden %>
@@ -44,7 +44,7 @@
               <h1>
                 <%= link_to(user.display_name, person_activities_path(person_id: user.id)) %>
               </h1>
-              <%= link_to(t('.invite'), invite_to_group_path(id: @group, person_id: user), class: 'btn btn-xs btn-success', title: "#{t('.tooltip.invite', display_name: user.display_name, group_name: @group.display_name)}") %>
+              <%= link_to(t('.invite'), invite_to_group_path(id: @group, person_id: user), class: 'btn btn-xs btn-success', title: "#{t('.tooltip.invite', display_name: user.display_name, group_name: @group.display_name)}", data: { behavior: "tooltip-on-hover" }) %>
           </section>
         </article>
       </div>

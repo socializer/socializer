@@ -1,7 +1,7 @@
 
 jQuery ->
   # Replace default titles on images with link by qTip tooltips
-  $('a [title!=""], a[title!=""], [data-content!=""], [data-title!=""]').each ->
+  $('[data-behavior~=tooltip-on-hover]').each ->
     $(this).qtip
       content:
         text: $(this).data('content') or true

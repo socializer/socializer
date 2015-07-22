@@ -2,7 +2,7 @@
   <% current_user.circles.decorate.each do |circle| %>
     <div class='col-sm-6 col-md-3'>
       <div class='circle droppable'>
-        <%= link_to(circle.display_name, circle, data: { object_id: circle.id, title: "#{circle.ties_count} in this circle", content: "#{circle.content}" }) %>
+        <%= link_to(circle.display_name, circle, data: { object_id: circle.id, title: "#{circle.ties_count} in this circle", content: "#{circle.content}", behavior: "tooltip-on-hover" }) %>
         <br>
         <span class="circle-tie-count"><%= circle.ties.count %></span>
       </div>

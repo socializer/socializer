@@ -25,6 +25,7 @@ module Socializer
       created_at = model.created_at.utc
 
       options.reverse_merge! title: created_updated_tooltip_text
+      options.reverse_merge! data: { behavior: "tooltip-on-hover" }
 
       options[:data] ||= {}
       options[:data][:time_ago] = "moment.js"

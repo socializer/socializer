@@ -5,7 +5,7 @@
 <h1><%= t('socializer.circles.header') %></h1>
 
 <h2>
-  <%= @circle.display_name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.tooltip.edit')}") %>
+  <%= @circle.display_name %> <%= link_to("#{content_tag(:span, nil, class: 'fa fa-fw fa-pencil')}".html_safe, edit_circle_path(@circle), class: 'btn btn-xs btn-default', title: "#{t('.tooltip.edit')}", data: { behavior: "tooltip-on-hover" }) %>
 </h2>
 
 <p><%= @circle.content %></p>
@@ -24,7 +24,7 @@
             <h1>
               <%= link_to(tie.contact.display_name, person_activities_path(person_id: tie.contact.id)) %>
             </h1>
-            <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.display_name)}", data: { confirm: "#{t('.confirm')}" }) %>
+            <%= link_to(t('.delete'), tie, method: :delete, class: 'btn btn-xs btn-danger', title: "#{t('.tooltip.delete', display_name: tie.contact.display_name, circle_name: @circle.display_name)}", data: { confirm: "#{t('.confirm')}", behavior: "tooltip-on-hover" }) %>
         </section>
       </article>
     </div>

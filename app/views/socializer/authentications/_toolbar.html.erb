@@ -19,7 +19,7 @@
             <li class="<%= 'active' if current_page?(authentications_path) %>"><%= link_to(t('.all'), authentications_path) %></li>
           </ul>
           <div class="btn-group pull-right">
-            <%= link_to(t('.new'), new_authentication_path, class: 'btn btn-primary', title: "#{t('.tooltip.new')}") %>
+            <%= link_to(t('.new'), new_authentication_path, class: 'btn btn-primary', title: "#{t('.tooltip.new')}", data: { behavior: "tooltip-on-hover" }) %>
           </div>
         </div><!-- /.col-sm-7 -->
       </div><!-- /.navbar-collapse -->

@@ -21,7 +21,7 @@
           <%= link_to(activity.model.object.decorate.created_at_time_ago, activity_activities_path(activity_id: activity.id), class: 'text-muted') %> -
           <!-- FIXME: Displays duplicates -->
           <% activity.audiences.distinct.each do |audience| %>
-            <span title='<%= t('.tooltip.sharing') %>'><%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %></span>
+            <span title='<%= t('.tooltip.sharing') %>', data-behavior="tooltip-on-hover" }><%= link_to(audience.privacy.text, audience_activity_path(activity), class: 'tooltip text-muted') %></span>
           <% end %>
         </small>
       </h1>
@@ -36,13 +36,13 @@
 
         <%# Comment button %>
         <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
-          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-comments-o'), comment_activity_path(activity), class: 'btn btn-default', title: 'Comment') %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-comments-o'), comment_activity_path(activity), class: 'btn btn-default', title: 'Comment', data: { behavior: "tooltip-on-hover" }) %>
         <% end %>
 
         <%# Share button %>
         <%# TODO: Need a Share count %>
         <% if activity.activitable_object.note?  %>
-          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-share'), new_share_activity_path(activity.activity_object), class: 'btn btn-default', title: 'Share') %>
+          <%= link_to(content_tag(:span, nil, class: 'fa fa-fw fa-share'), new_share_activity_path(activity.activity_object), class: 'btn btn-default', title: 'Share', data: { behavior: "tooltip-on-hover" }) %>
         <% end %>
       </div>
     </footer>

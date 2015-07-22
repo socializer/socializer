@@ -32,7 +32,8 @@ module Socializer
                       method: like_or_unlike_verb,
                       remote: true,
                       class: "btn #{like_or_unlike_class}",
-                      title: like_or_unlike_title)
+                      title: like_or_unlike_title,
+                      data: { behavior: "tooltip-on-hover" })
     end
 
     def like_or_unlike_content
