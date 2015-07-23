@@ -60,9 +60,9 @@ module Socializer
       where(author_id: id)
     end
 
-    # Find circles where the by_display_name is equal to the given id
+    # Find circles where the display_name is equal to the given name
     #
-    # @param id: [Fixnum]
+    # @param name: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
     def self.by_display_name(name:)

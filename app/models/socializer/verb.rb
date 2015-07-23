@@ -17,6 +17,16 @@ module Socializer
     validates :display_name, presence: true, uniqueness: true
 
     # Named Scopes
-    scope :by_display_name, -> (name) { where(display_name: name) }
+
+    # Class Methods
+
+    # Find verbs where the display_name is equal to the given name
+    #
+    # @param name: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_display_name(name:)
+      where(display_name: name)
+    end
   end
 end
