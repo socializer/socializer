@@ -52,7 +52,8 @@ module Socializer
                         size: size,
                         class: css_class,
                         alt: alt,
-                        title: title)
+                        title: title,
+                        data: { behavior: "tooltip-on-hover" })
     end
 
     # Creates a link to the persons profile with their avatar as the content
