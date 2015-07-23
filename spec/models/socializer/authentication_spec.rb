@@ -27,13 +27,13 @@ module Socializer
     context "scopes" do
       context "by_provider" do
         before { create(:authentication, provider: "identity") }
-        let(:result) { Authentication.by_provider("identity") }
+        let(:result) { Authentication.by_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.first.provider).to eq("identity") }
 
         context "when the provider is not found" do
-          let(:result) { Authentication.by_provider("none") }
+          let(:result) { Authentication.by_provider(provider: "none") }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.present?).to be(false) }
