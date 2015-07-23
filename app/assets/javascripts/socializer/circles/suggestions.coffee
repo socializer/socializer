@@ -12,17 +12,19 @@
     drop: (event, ui) ->
       circle = $("a", @)
       person = ui.draggable
-      circle_id = circle.data("object-id")
-      person_id = person.data("object-id")
+      circleId = circle.data("object-id")
+      personId = person.data("object-id")
+      # TODO: is circle_name needed?
       circle_name = circle.text()
+      # TODO: is person_name needed?
       person_name = person.data("person-name")
-      circle_tie_count = $("[data-behavior~=circle-tie-count]", @)
+      circleTieCount = $("[data-behavior~=circle-tie-count]", @)
       $.post("/ties",
-        "tie[circle_id]": circle_id
-        "tie[contact_id]": person_id
+        "tie[circle_id]": circleId
+        "tie[contact_id]": personId
       ).success ->
-        tie_count = parseInt(circle_tie_count.html()) + 1
-        circle_tie_count.html tie_count.toString()
+        tieCount = parseInt(circleTieCount.html()) + 1
+        circleTieCount.html tieCount.toString()
         return
 
       return

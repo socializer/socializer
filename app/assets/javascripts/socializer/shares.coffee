@@ -5,10 +5,10 @@
 jQuery ->
   if $("body").data("controller") == "shares"
     tokeninput = $("[data-behavior~=tokeninput-for-share]")
-    audience_path = tokeninput.data("source")
+    audiencePath = tokeninput.data("source")
     prepopulate = null
 
-    tokeninput.tokenInput audience_path,
+    tokeninput.tokenInput audiencePath,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate

@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  controller_name = $("body").data("controller")
-  if controller_name == "people" || controller_name == "messages"
-    messagefrom = "[data-behavior^=message-from-person-]"
-    notecontent = $(messagefrom + " [data-behavior~=note-content]")
+  controllerName = $("body").data("controller")
+  if controllerName == "people" || controllerName == "messages"
+    messageFrom = "[data-behavior^=message-from-person-]"
+    noteContent = $(messageFrom + " [data-behavior~=note-content]")
 
-    notecontent.click().focus()
+    noteContent.click().focus()

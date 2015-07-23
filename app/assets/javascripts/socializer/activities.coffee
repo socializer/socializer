@@ -14,12 +14,13 @@
 
       datetime = moment($(@).attr("datetime"))
 
-      $(@).text distance_of_time(datetime)
+      $(@).text distanceOfTime(datetime)
 
-distance_of_time = (past_date) ->
-  past_date ?= 0
+distanceOfTime = (pastDate) ->
+  pastDate ?= 0
   today = moment()
-  days_difference = today.diff(past_date, "days")
+  # TODO: is daysDifference needed?
+  daysDifference = today.diff(pastDate, "days")
 
   moment.locale "en",
     calendar:
@@ -39,7 +40,7 @@ distance_of_time = (past_date) ->
       lastWeek: "ll"
       sameElse: "ll"
 
-  moment(past_date).calendar()
+  moment(pastDate).calendar()
 
 
 @addTooltipSupport = (jQueryElement) ->
@@ -70,11 +71,11 @@ distance_of_time = (past_date) ->
     event.preventDefault()
 
 jQuery ->
-  controller_name = $("body").data("controller")
-  if controller_name == "activities"
+  controllerName = $("body").data("controller")
+  if controllerName == "activities"
     # Add a qTip to all tooltip elements.
     $("[data-behavior~=tooltip-on-click]").each ->
       addTooltipSupport $(@)
 
-  if controller_name == "activities" || controller_name = "shares"
+  if controllerName == "activities" || controllerName = "shares"
     addTimeAgoSupport()

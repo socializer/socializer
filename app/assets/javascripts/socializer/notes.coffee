@@ -2,46 +2,46 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@resetNoteForm = (reset_content = true) ->
-  notecontent = $("[data-behavior~=note-content]")
-  noteactions = $("[data-behavior~=note-actions]")
+@resetNoteForm = (resetContent = true) ->
+  noteContent = $("[data-behavior~=note-content]")
+  noteActions = $("[data-behavior~=note-actions]")
 
-  notecontent.removeAttr("style")
+  noteContent.removeAttr("style")
 
-  if reset_content == true
-    notecontent.val("")
-    noteactions.hide()
+  if resetContent == true
+    noteContent.val("")
+    noteActions.hide()
 
   tokeninput = $("[data-behavior~=tokeninput-for-note]")
   tokeninput.tokenInput "clear"
 
-  notecontent.on "click focus", ->
-    noteactions.show()
+  noteContent.on "click focus", ->
+    noteActions.show()
     $(@).animate
       height: 100
     , "fast"
 
 jQuery ->
-  controller_name = $("body").data("controller")
-  controller_action = $("body").data("action")
-  reset_content = if controller_action == "edit" then false else true
+  controllerName = $("body").data("controller")
+  controllerAction = $("body").data("action")
+  resetContent = if controllerAction == "edit" then false else true
 
-  if controller_name == "notes" || controller_name == "activities" ||
-  controller_name == "people" || controller_name == "messages"
+  if controllerName == "notes" || controllerName == "activities" ||
+  controllerName == "people" || controllerName == "messages"
 
     tokeninput = $("[data-behavior~=tokeninput-for-note]")
-    audience_path = tokeninput.data("source")
+    audiencePath = tokeninput.data("source")
     title = tokeninput.data("title")
-    current_id = tokeninput.data("current-id")
+    currentId = tokeninput.data("current-id")
     prepopulate = null
 
-    if current_id != null
+    if currentId != null
       prepopulate = [
-        id: current_id
+        id: currentId
         name: title
       ]
 
-    tokeninput.tokenInput audience_path,
+    tokeninput.tokenInput audiencePath,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
@@ -49,10 +49,10 @@ jQuery ->
         "<li><span class='fa fa-fw " + item.icon + "'></span> " +
           item.name + "</li>"
 
-    if (current_id != null) && (title == "") || (controller_action == "edit")
+    if (currentId != null) && (title == "") || (controllerAction == "edit")
       $(".token-input-list").hide()
 
-    resetNoteForm(reset_content)
+    resetNoteForm(resetContent)
 
     $("[data-behavior~=cancel-note-form]").on "click", ->
-      resetNoteForm(reset_content)
+      resetNoteForm(resetContent)
