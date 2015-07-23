@@ -6,6 +6,6 @@ jQuery ->
   controllerName = $("body").data("controller")
   if controllerName == "people" || controllerName == "messages"
     messageFrom = "[data-behavior^=message-from-person-]"
-    noteContent = $(messageFrom + " [data-behavior~=note-content]")
+    noteContent = $("#{messageFrom} [data-behavior~=note-content]")
 
     noteContent.click().focus()

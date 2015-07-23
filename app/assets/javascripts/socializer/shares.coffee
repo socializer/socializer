@@ -13,5 +13,4 @@ jQuery ->
       preventDuplicates: true
       prePopulate: prepopulate
       resultsFormatter: (item) ->
-        "<li><span class='fa fa-fw " + item.icon + "'></span> " +
-          item.name + "</li>"
+        "<li><span class='fa fa-fw #{item.icon}'></span> #{item.name}</li>"
