@@ -4,18 +4,19 @@
 
 @resetNoteForm = (reset_content = true) ->
   notecontent = $("[data-behavior~=note-content]")
+  noteactions = $("[data-behavior~=note-actions]")
 
   notecontent.removeAttr("style")
 
   if reset_content == true
     notecontent.val("")
-    $("#note_actions").hide()
+    noteactions.hide()
 
   tokeninput = $("[data-behavior~=tokeninput-for-note]")
   tokeninput.tokenInput "clear"
 
   notecontent.on "click focus", ->
-    $("#note_actions").show()
+    noteactions.show()
     $(@).animate
       height: 100
     , "fast"
