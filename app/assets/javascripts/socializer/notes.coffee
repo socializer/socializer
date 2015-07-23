@@ -51,5 +51,5 @@ jQuery ->
 
     resetNoteForm(reset_content)
 
-    $("#note_cancel").on "click", ->
+    $("[data-behavior~=cancel-note-form]").on "click", ->
       resetNoteForm(reset_content)

@@ -6,7 +6,7 @@
       <%= f.input :object_ids, label: false, input_html: { data: { source: j(audience_lists_path), title: j(title), current_id: current_id, behavior: "tooltip-on-hover, tokeninput-for-note" } } %>
 
       <%= f.button :submit, t(".share"), class: "btn-success action-button" %>
-      <%= button_tag "Cancel", class: "btn btn-default", id: "note_cancel", type: "button" %>
+      <%= button_tag "Cancel", class: "btn btn-default", id: "note_cancel", type: "button", data: { behavior: "cancel-note-form" } %>
     </div>
   <% end %>
 </div>
