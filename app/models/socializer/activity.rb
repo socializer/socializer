@@ -53,52 +53,47 @@ module Socializer
 
     # Named Scopes
     scope :newest_first, -> { order(created_at: :desc) }
-    scope :by_id, -> (id) { where(id: id) }
-    scope :by_activity_object_id, -> (id) { where(activity_object_id: id) }
-    scope :by_actor_id, -> (id) { where(actor_id: id) }
-    scope :by_target_id, -> (id) { where(target_id: id) }
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
     delegate :display_name, to: :verb, prefix: true
 
-    # Instance Methods
-
-    # Returns true if activity has comments
-    #
-    # @example
-    #   activity.comments?
-    #
-    # @return [TrueClass, FalseClass]
-    def comments?
-      comments.present?
-    end
-
-    # Retrieves the comments for an activity
-    #
-    # @return [ActiveRecord::AssociationRelation] a collection of
-    # {Socializer::Activity} objects
-    def comments
-      @comments ||= children.joins(:activitable_object)
-                    .merge(ActivityObject.by_activitable_type(Comment.name))
-    end
-
-    # The primary object of the activity.
-    #
-    # @return the activitable object
-    def object
-      activitable_object.activitable
-    end
-
-    # The target of the activity. The precise meaning of the activity target is
-    # dependent on the activities verb,
-    # but will often be the object the English preposition "to".
-    #
-    # @return the activitable target
-    def target
-      activitable_target.activitable
-    end
-
     # Class Methods
+
+    # Find activities where the id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_id(id:)
+      where(id: id)
+    end
+
+    # Find activities where the activity_object_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_activity_object_id(id:)
+      where(activity_object_id: id)
+    end
+
+    # Find activities where the by_actor_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_actor_id(id:)
+      where(actor_id: id)
+    end
+
+    # Find activities where the by_target_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_target_id(id:)
+      where(target_id: id)
+    end
 
     # Selects the activities that either the person owns, that are public from
     # a person in
@@ -135,7 +130,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.activity_stream(actor_uid:, viewer_id:)
-      stream_query(viewer_id: viewer_id).by_id(actor_uid).distinct
+      stream_query(viewer_id: viewer_id).by_id(id: actor_uid).distinct
     end
 
     # Display all activities for a given circle
@@ -154,7 +149,7 @@ module Socializer
       circles  = Circle.by_id(actor_uid).by_author_id(viewer_id).pluck(:id)
       followed = Tie.by_circle_id(circles).pluck(:contact_id)
 
-      stream_query(viewer_id: viewer_id).by_actor_id(followed).distinct
+      stream_query(viewer_id: viewer_id).by_actor_id(id: followed).distinct
     end
 
     # This is a group. display everything that was posted to this group as
@@ -169,7 +164,7 @@ module Socializer
       group_id = Group.find_by(id: actor_uid).guid
 
       stream_query(viewer_id: viewer_id)
-        .merge(Audience.by_activity_object_id(group_id)).distinct
+        .merge(Audience.by_activity_object_id(id: group_id)).distinct
     end
 
     # This is a user profile. display everything about them that you are
@@ -182,7 +177,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id: viewer_id).by_actor_id(person_id).distinct
+      stream_query(viewer_id: viewer_id).by_actor_id(id: person_id).distinct
     end
 
     # Class Methods - Private
@@ -198,7 +193,7 @@ module Socializer
       verbs_of_interest = %w(post share)
       query = joins(:audiences, :verb)
               .merge(Verb.by_display_name(verbs_of_interest))
-              .by_target_id(nil)
+              .by_target_id(id: nil)
 
       query.where(public_grouping(viewer_id: viewer_id)
            .or(limited_grouping(viewer_id: viewer_id))
@@ -304,5 +299,42 @@ module Socializer
         .pluck(:id)
     end
     private_class_method :limited_group_subquery
+
+    # Instance Methods
+
+    # Returns true if activity has comments
+    #
+    # @example
+    #   activity.comments?
+    #
+    # @return [TrueClass, FalseClass]
+    def comments?
+      comments.present?
+    end
+
+    # Retrieves the comments for an activity
+    #
+    # @return [ActiveRecord::AssociationRelation] a collection of
+    # {Socializer::Activity} objects
+    def comments
+      @comments ||= children.joins(:activitable_object)
+                    .merge(ActivityObject.by_activitable_type(Comment.name))
+    end
+
+    # The primary object of the activity.
+    #
+    # @return the activitable object
+    def object
+      activitable_object.activitable
+    end
+
+    # The target of the activity. The precise meaning of the activity target is
+    # dependent on the activities verb,
+    # but will often be the object the English preposition "to".
+    #
+    # @return the activitable target
+    def target
+      activitable_target.activitable
+    end
   end
 end
