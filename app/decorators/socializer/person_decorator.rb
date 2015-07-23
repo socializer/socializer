@@ -80,7 +80,7 @@ module Socializer
     private
 
     def social_avatar_url(provider)
-      auth = authentications.by_provider(provider).first
+      auth = authentications.by_provider(provider: provider).first
       auth.image_url if auth.present?
     end
 
