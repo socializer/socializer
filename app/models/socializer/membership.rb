@@ -26,9 +26,17 @@ module Socializer
     # Named Scopes
     scope :active, -> { where(active: true) }
     scope :inactive, -> { where(active: false) }
-    scope :by_member_id, -> (member_id) { where(member_id: member_id) }
 
     # Class Methods
+
+    # Find memberships where the member_id is equal to the given member_id
+    #
+    # @param member_id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_member_id(member_id:)
+      where(member_id: member_id)
+    end
 
     # Instance Methods
 

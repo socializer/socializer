@@ -78,7 +78,7 @@ module Socializer
       end
 
       context "by_member_id" do
-        let(:sql) { Membership.by_member_id(1).to_sql }
+        let(:sql) { Membership.by_member_id(member_id: 1).to_sql }
 
         it do
           expect(sql)
@@ -87,14 +87,14 @@ module Socializer
 
         context "person has no memberships" do
           let(:user) { create(:person) }
-          let(:result) { Membership.by_member_id(user.guid) }
+          let(:result) { Membership.by_member_id(member_id: user.guid) }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.present?).to be false }
         end
 
         context "person has memberships" do
-          let(:result) { Membership.by_member_id(user.guid) }
+          let(:result) { Membership.by_member_id(member_id: user.guid) }
 
           before do
             membership
