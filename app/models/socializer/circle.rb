@@ -39,11 +39,35 @@ module Socializer
                                            case_sensitive: false }
 
     # Named Scopes
-    scope :by_id, -> (id) { where(id: id) }
-    scope :by_author_id, -> (id) { where(author_id: id) }
-    scope :by_display_name, -> (name) { where(display_name: name) }
 
     # Class Methods
+
+    # Find circles where the id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_id(id:)
+      where(id: id)
+    end
+
+    # Find circles where the by_author_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_author_id(id:)
+      where(author_id: id)
+    end
+
+    # Find circles where the by_display_name is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_display_name(name:)
+      where(display_name: name)
+    end
 
     # Find all records where display_name is like "query"
     #

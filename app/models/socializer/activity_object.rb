@@ -109,8 +109,6 @@ module Socializer
       # likers   = people.merge(Verb.by_display_name("like"))
       # unlikers = people.merge(Verb.by_display_name("unlike")).pluck(:id)
 
-      # likers.where.not(id: unlikers)
-      query    = Activity.joins(:verb).by_activity_object_id(id)
       query    = Activity.joins(:verb).by_activity_object_id(id: id)
       likers   = query.merge(Verb.by_display_name("like"))
       unlikers = query.merge(Verb.by_display_name("unlike"))
