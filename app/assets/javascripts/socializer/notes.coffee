@@ -3,16 +3,18 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @resetNoteForm = (reset_content = true) ->
-  $("#note_content").removeAttr("style")
+  notecontent = $("[data-behavior~=note-content]")
+
+  notecontent.removeAttr("style")
 
   if reset_content == true
-    $("#note_content").val("")
+    notecontent.val("")
     $("#note_actions").hide()
 
   tokeninput = $("[data-behavior~=tokeninput-for-note]")
   tokeninput.tokenInput "clear"
 
-  $("#note_content").on "click focus", ->
+  notecontent.on "click focus", ->
     $("#note_actions").show()
     $(@).animate
       height: 100
