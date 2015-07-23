@@ -37,7 +37,7 @@ module Socializer
 
     context "scopes" do
       context "by_activity_id" do
-        let(:sql) { Audience.by_activity_id(1).to_sql }
+        let(:sql) { Audience.by_activity_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -46,7 +46,7 @@ module Socializer
       end
 
       context "by_activity_object_id" do
-        let(:sql) { Audience.by_activity_object_id(1).to_sql }
+        let(:sql) { Audience.by_activity_object_id(id: 1).to_sql }
 
         it do
           expect(sql)

@@ -26,12 +26,29 @@ module Socializer
     validates :privacy, presence: true
 
     # Named Scopes
-    scope :by_activity_id, -> (id) { where(activity_id: id) }
-    scope :by_activity_object_id, -> (id) { where(activity_object_id: id) }
 
     # Class Methods
 
+    # Find audiences where the activity_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_activity_id(id:)
+      where(activity_id: id)
+    end
+
+    # Find audiences where the activity_object_id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_activity_object_id(id:)
+      where(activity_object_id: id)
+    end
+
     # Instance Methods
+
     def object
       activity_object.activitable
     end
