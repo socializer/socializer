@@ -155,7 +155,7 @@ module Socializer
     def contact_of
       @contact_of ||= Person.distinct
                       .joins(activity_object: { circles: :ties })
-                      .merge(Tie.by_contact_id(guid))
+                      .merge(Tie.by_contact_id(contact_id: guid))
     end
 
     # A list of activities the user likes
@@ -201,7 +201,8 @@ module Socializer
     # @return [Socializer::Membership] Returns a collection of
     # {Socializer::Membership memberships}
     def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.inactive.by_member_id(guid)
+      @pending_memberships_invites ||= Membership.inactive
+                                       .by_member_id(member_id: guid)
                                        .joins(:group).merge(Group.private)
     end
   end

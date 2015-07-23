@@ -26,7 +26,25 @@ module Socializer
     validates :activity_contact, presence: true
 
     # Named Scopes
-    scope :by_circle_id, -> (circle_id) { where(circle_id: circle_id) }
-    scope :by_contact_id, -> (contact_id) { where(contact_id: contact_id) }
+
+    # Class Methods
+
+    # Find ties where the circle_id is equal to the given circle_id
+    #
+    # @param circle_id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_circle_id(circle_id:)
+      where(circle_id: circle_id)
+    end
+
+    # Find ties where the contact_id is equal to the given contact_id
+    #
+    # @param contact_id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_contact_id(contact_id:)
+      where(contact_id: contact_id)
+    end
   end
 end
