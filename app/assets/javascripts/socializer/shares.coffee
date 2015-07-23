@@ -4,7 +4,7 @@
 
 jQuery ->
   if $("body").data("controller") == "shares"
-    tokeninput = $("#share_object_ids")
+    tokeninput = $("[data-behavior~=tokeninput-for-share]")
     audience_path = tokeninput.data("source")
     prepopulate = null
 
