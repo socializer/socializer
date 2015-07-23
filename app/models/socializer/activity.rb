@@ -317,8 +317,11 @@ module Socializer
     # @return [ActiveRecord::AssociationRelation] a collection of
     # {Socializer::Activity} objects
     def comments
+      @activitable_type ||=
+        ActivityObject.by_activitable_type(type: Comment.name)
+
       @comments ||= children.joins(:activitable_object)
-                    .merge(ActivityObject.by_activitable_type(Comment.name))
+                    .merge(@activitable_type)
     end
 
     # The primary object of the activity.

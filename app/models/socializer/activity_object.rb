@@ -20,11 +20,11 @@ module Socializer
     # NOTE: These relationships will no longer be needed if rails provides a
     #       nice way to joins to a polymorphic relationship
     belongs_to :group,
-               -> { ActivityObject.by_activitable_type(Group.name) },
+               -> { ActivityObject.by_activitable_type(type: Group.name) },
                foreign_key: "activitable_id"
 
     belongs_to :person,
-               -> { ActivityObject.by_activitable_type(Person.name) },
+               -> { ActivityObject.by_activitable_type(type: Person.name) },
                foreign_key: "activitable_id"
 
     has_many :notifications, inverse_of: :activity_object
@@ -61,10 +61,27 @@ module Socializer
     validates :activitable, presence: true
 
     # Named Scopes
-    scope :by_id, -> (id) { where(id: id) }
-    scope :by_activitable_type, -> (type) { where(activitable_type: type) }
 
     # Class Methods
+
+    # Find activitiy objects where the id is equal to the given id
+    #
+    # @param id: [Fixnum]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_id(id:)
+      where(id: id)
+    end
+
+    # Find activitiy objects where the activitable_type is equal to the given
+    # type
+    #
+    # @param type: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.by_activitable_type(type:)
+      where(activitable_type: type)
+    end
 
     # Create predicate methods for comparing the activitable_type
     #
@@ -94,6 +111,7 @@ module Socializer
 
       # likers.where.not(id: unlikers)
       query    = Activity.joins(:verb).by_activity_object_id(id)
+      query    = Activity.joins(:verb).by_activity_object_id(id: id)
       likers   = query.merge(Verb.by_display_name("like"))
       unlikers = query.merge(Verb.by_display_name("unlike"))
       people   = likers.map(&:actor)
