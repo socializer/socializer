@@ -9,7 +9,8 @@
     $("#note_content").val("")
     $("#note_actions").hide()
 
-  $("#note_object_ids").tokenInput "clear"
+  tokeninput = $("[data-behavior~=tokeninput-for-note]")
+  tokeninput.tokenInput "clear"
 
   $("#note_content").on "click focus", ->
     $("#note_actions").show()
@@ -25,9 +26,10 @@ jQuery ->
   if controller_name == "notes" || controller_name == "activities" ||
   controller_name == "people" || controller_name == "messages"
 
-    audience_path = $("#note_object_ids").data("source")
-    title = $("#note_object_ids").data("title")
-    current_id = $("#note_object_ids").data("current-id")
+    tokeninput = $("[data-behavior~=tokeninput-for-note]")
+    audience_path = tokeninput.data("source")
+    title = tokeninput.data("title")
+    current_id = tokeninput.data("current-id")
     prepopulate = null
 
     if current_id != null
@@ -36,7 +38,7 @@ jQuery ->
         name: title
       ]
 
-    $("#note_object_ids").tokenInput audience_path,
+    tokeninput.tokenInput audience_path,
       minChars: 0
       preventDuplicates: true
       prePopulate: prepopulate
