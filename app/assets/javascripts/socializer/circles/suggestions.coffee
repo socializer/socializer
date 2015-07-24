@@ -17,6 +17,7 @@
         "tie[circle_id]": circle.data("object-id")
         "tie[contact_id]": person.data("object-id")
       ).success ->
+        # TODO: update the number of people in the circle in the tooltip
         tieCount = parseInt(circleTieCount.html()) + 1
         circleTieCount.html tieCount.toString()
         return
