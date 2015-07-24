@@ -14,10 +14,6 @@
       person = ui.draggable
       circleId = circle.data("object-id")
       personId = person.data("object-id")
-      # TODO: is circle_name needed?
-      circle_name = circle.text()
-      # TODO: is person_name needed?
-      person_name = person.data("person-name")
       circleTieCount = $("[data-behavior~=circle-tie-count]", @)
       $.post("/ties",
         "tie[circle_id]": circleId

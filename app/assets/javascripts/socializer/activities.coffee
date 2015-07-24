@@ -19,8 +19,6 @@
 distanceOfTime = (pastDate) ->
   pastDate ?= 0
   today = moment()
-  # TODO: is daysDifference needed?
-  daysDifference = today.diff(pastDate, "days")
 
   moment.locale "en",
     calendar:
@@ -73,7 +71,6 @@ distanceOfTime = (pastDate) ->
 jQuery ->
   controllerName = $("body").data("controller")
   if controllerName == "activities"
-    # Add a qTip to all tooltip elements.
     $("[data-behavior~=tooltip-on-click]").each ->
       addTooltipSupport $(@)
 
