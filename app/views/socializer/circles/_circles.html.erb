@@ -4,7 +4,7 @@
       <div class="circle droppable", data-behavior="droppable">
         <%= link_to(circle.display_name, circle, data: { object_id: circle.id, title: "#{circle.ties_count} in this circle", content: "#{circle.content}", behavior: "tooltip-on-hover" }) %>
         <br>
-        <span data-behavior="circle-tie-count"><%= circle.ties.count %></span>
+        <span data-behavior="circle-tie-count-<%= circle.id %>"><%= circle.ties.count %></span>
       </div>
     </div>
   <% end %>
