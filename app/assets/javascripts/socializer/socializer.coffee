@@ -1,11 +1,13 @@
 
 jQuery ->
-  # Replace default titles on images with link by qTip tooltips
   $("[data-behavior~=tooltip-on-hover]").each ->
     $(@).qtip
       content:
         text: $(@).data("content") || true
-        title: $(@).data("title") || false
+        title: (event, api) ->
+          title = $(@).data("title")
+          return api.set("content.title", false) if typeof title == "undefined"
+          return title
       style:
         classes: "qtip-todc-bootstrap"
         tip: width: 12

@@ -17,9 +17,13 @@
         "tie[circle_id]": circle.data("object-id")
         "tie[contact_id]": person.data("object-id")
       ).success ->
-        # TODO: update the number of people in the circle in the tooltip
         tieCount = parseInt(circleTieCount.html()) + 1
         circleTieCount.html tieCount.toString()
+        # NOTE: May want to add a data attribure to the view that supplies
+        #       the pluralized/localized value
+        #       data-pluralized-person
+        personOrPeople = if tieCount > 1 then "people" else "person"
+        circle.data("title", "#{tieCount} #{personOrPeople} in this circler")
         return
 
       return
