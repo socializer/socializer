@@ -30,14 +30,21 @@ module Socializer
       current_user.present?
     end
 
+    def can_set_locale_from_person_language?
+      signed_in? && current_user.language.present? && params[:locale].blank?
+    end
+
+    def can_not_set_locale_from_person_language
+      params[:locale] || extract_locale_from_accept_language_header ||
+        I18n.default_locale
+    end
+
     def set_locale
-      if signed_in? && current_user.language.present? && params[:locale].blank?
-        I18n.locale =  current_user.language
-      else
-        I18n.locale =  params[:locale] ||
-          extract_locale_from_accept_language_header ||
-          I18n.default_locale
-      end
+      I18n.locale =  if can_set_locale_from_person_language?
+                       current_user.language
+                     else
+                       can_not_set_locale_from_person_language
+                     end
     end
 
     def extract_locale_from_accept_language_header
