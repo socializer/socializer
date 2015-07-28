@@ -11,22 +11,39 @@ module Socializer
 
       # GET /activities/1/share
       def new
-        @activity_object = ActivityObject.find_by(id: params[:id])
+        @activity_object = find_activity_object(id: params[:id])
         @share = @activity_object.activitable
       end
 
       # POST /activities/1/share
       def create
         share = params[:share]
-        activity_object = ActivityObject.find_by(id: share[:activity_id])
+        activity_object = find_activity_object(id: share[:activity_id])
         activity_object.share(actor_id: current_user.guid,
                               object_ids: share[:object_ids].split(","),
                               content: share[:content])
 
-        type_model     = activity_object.activitable_type.demodulize
-        flash[:notice] = t("socializer.model.share", model: type_model)
+        flash[:notice] = flash_message(action: :create,
+                                       activity_object: activity_object)
 
         redirect_to activities_path
+      end
+
+      private
+
+      # TODO: Add to ActivityObject
+      def find_activity_object(id:)
+        @find_activity_object ||= ActivityObject.find_by(id: id)
+      end
+
+      # TODO: Add to ActivityObject
+      def type_model(activity_object:)
+        activity_object.activitable_type.demodulize
+      end
+
+      def flash_message(action:, activity_object:)
+        t("socializer.model.#{action}",
+          model: type_model(activity_object: activity_object))
       end
     end
   end
