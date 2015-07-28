@@ -68,7 +68,7 @@ module Socializer
     #
     # @return [String] the html needed to display the toolbar links
     def toolbar_stream_links
-      list = model.circles + model.memberships
+      list = combine_circles_and_memberships
       return if list.blank?
 
       html = []
@@ -79,6 +79,10 @@ module Socializer
     end
 
     private
+
+    def combine_circles_and_memberships
+      model.circles + model.memberships
+    end
 
     def social_avatar_url(provider)
       auth = authentications.by_provider(provider: provider).first
