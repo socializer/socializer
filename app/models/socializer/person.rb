@@ -155,7 +155,7 @@ module Socializer
     def contact_of
       @contact_of ||= Person.distinct
                       .joins(activity_object: { circles: :ties })
-                      .merge(Tie.by_contact_id(contact_id: guid))
+                      .merge(Tie.with_contact_id(contact_id: guid))
     end
 
     # A list of activities the user likes

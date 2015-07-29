@@ -149,7 +149,7 @@ module Socializer
       circles  = Circle.by_id(id: actor_uid)
                  .by_author_id(id: viewer_id).pluck(:id)
 
-      followed = Tie.by_circle_id(circle_id: circles).pluck(:contact_id)
+      followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
       stream_query(viewer_id: viewer_id).with_actor_id(id: followed).distinct
     end
@@ -286,7 +286,7 @@ module Socializer
       # Retrieve the circle's unique identifier related to the audience (when
       # the audience is not a circle, this query will simply return nothing)
       subquery = Circle.joins(activity_object: :audiences).pluck(:id)
-      Tie.by_circle_id(circle_id: subquery).pluck(:contact_id)
+      Tie.with_circle_id(circle_id: subquery).pluck(:contact_id)
     end
     private_class_method :limited_circle_subquery
 

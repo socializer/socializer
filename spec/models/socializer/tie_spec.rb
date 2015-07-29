@@ -38,16 +38,16 @@ module Socializer
     end
 
     context "scopes" do
-      context "by_circle_id" do
-        let(:sql) { Tie.by_circle_id(circle_id: 1).to_sql }
+      context "with_circle_id" do
+        let(:sql) { Tie.with_circle_id(circle_id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1')
         end
       end
 
-      context "by_contact_id" do
-        let(:sql) { Tie.by_contact_id(contact_id: 1).to_sql }
+      context "with_contact_id" do
+        let(:sql) { Tie.with_contact_id(contact_id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1')
