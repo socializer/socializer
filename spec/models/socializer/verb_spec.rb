@@ -22,15 +22,15 @@ module Socializer
     end
 
     context "scopes" do
-      context "by_display_name" do
+      context "with_display_name" do
         before { create(:verb, display_name: "post") }
-        let(:result) { Verb.by_display_name(name: "post") }
+        let(:result) { Verb.with_display_name(name: "post") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.first.display_name).to eq("post") }
 
         context "when the name is not found" do
-          let(:result) { Verb.by_display_name(name: "none") }
+          let(:result) { Verb.with_display_name(name: "none") }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.present?).to be(false) }

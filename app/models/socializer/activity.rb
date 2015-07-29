@@ -194,7 +194,7 @@ module Socializer
       # verbs
       verbs_of_interest = %w(post share)
       query = joins(:audiences, :verb)
-              .merge(Verb.by_display_name(name: verbs_of_interest))
+              .merge(Verb.with_display_name(name: verbs_of_interest))
               .with_target_id(id: nil)
 
       query.where(public_grouping(viewer_id: viewer_id)

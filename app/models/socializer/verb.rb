@@ -25,7 +25,7 @@ module Socializer
     # @param name: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_display_name(name:)
+    def self.with_display_name(name:)
       where(display_name: name)
     end
   end
