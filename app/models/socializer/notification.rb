@@ -97,7 +97,7 @@ module Socializer
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
       ActivityObject.joins(circles: :ties)
-        .by_id(id: parent_contact_id)
+        .with_id(id: parent_contact_id)
         .merge(Tie.with_contact_id(contact_id: child_contact_id))
         .pluck(:id)
         .present?

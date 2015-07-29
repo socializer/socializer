@@ -146,8 +146,8 @@ module Socializer
     #        Notes still don't show after adding people to the circles.
     #
     def self.circle_stream(actor_uid:, viewer_id:)
-      circles  = Circle.by_id(id: actor_uid)
-                 .by_author_id(id: viewer_id).pluck(:id)
+      circles  = Circle.with_id(id: actor_uid)
+                 .with_author_id(id: viewer_id).pluck(:id)
 
       followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
@@ -271,7 +271,7 @@ module Socializer
     def self.circles_subquery
       # Retrieve the author's unique identifier
       subquery = ActivityObject.joins(:person).pluck(:id)
-      Circle.by_author_id(id: subquery).pluck(:id)
+      Circle.with_author_id(id: subquery).pluck(:id)
     end
     private_class_method :circles_subquery
 

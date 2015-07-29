@@ -74,7 +74,7 @@ module Socializer
         it "contains the persons circles" do
           circles = []
           circles << "Public" << "Circles"
-          friends = person.circles.by_display_name(name: "Friends")
+          friends = person.circles.with_display_name(name: "Friends")
           circles.concat(friends.pluck(:display_name))
 
           expect(audience_list.all? { |item| circles.include?(item[:name]) })
