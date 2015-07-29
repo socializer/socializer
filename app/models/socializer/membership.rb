@@ -34,7 +34,7 @@ module Socializer
     # @param member_id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_member_id(member_id:)
+    def self.with_member_id(member_id:)
       where(member_id: member_id)
     end
 

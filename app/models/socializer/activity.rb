@@ -297,7 +297,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
-        .merge(Membership.by_member_id(member_id: viewer_id))
+        .merge(Membership.with_member_id(member_id: viewer_id))
         .pluck(:id)
     end
     private_class_method :limited_group_subquery
