@@ -63,7 +63,7 @@ module Socializer
 
         context "that is circles" do
           before do
-            AddDefaultCircles.perform(person: person)
+            AddDefaultCircles.call(person: person)
           end
 
           let(:note_attributes) do
@@ -89,7 +89,7 @@ module Socializer
 
         context "that is limited" do
           before do
-            AddDefaultCircles.perform(person: person)
+            AddDefaultCircles.call(person: person)
           end
 
           let(:family) do

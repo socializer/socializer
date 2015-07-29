@@ -33,8 +33,8 @@ module Socializer
     #
     # @param person: [Socializer:Person] the person to create the default
     # circles for
-    def self.perform(person:)
-      AddDefaultCircles.new(person: person).perform
+    def self.call(person:)
+      AddDefaultCircles.new(person: person).call
     end
 
     # Instance Methods
@@ -42,7 +42,7 @@ module Socializer
     # Invoke the AddDefaultCircles instance. This is the primary public API
     # method.
     # Add the default circles
-    def perform
+    def call
       create_circle(display_name: "Friends",
                     content: friends_content)
 

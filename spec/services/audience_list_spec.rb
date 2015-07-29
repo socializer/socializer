@@ -25,7 +25,7 @@ module Socializer
       let(:circles) { { id: "circles", name: "Circles" } }
 
       before do
-        AddDefaultCircles.perform(person: person)
+        AddDefaultCircles.call(person: person)
       end
 
       context "with no query" do

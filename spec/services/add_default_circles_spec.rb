@@ -8,8 +8,8 @@ module Socializer
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
 
-      context ".perform should raise an ArgumentError" do
-        let(:add_default_circles) { AddDefaultCircles.perform(person: nil) }
+      context ".call should raise an ArgumentError" do
+        let(:add_default_circles) { AddDefaultCircles.call(person: nil) }
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
     end
@@ -19,12 +19,12 @@ module Socializer
       it { expect { add_default_circles }.to raise_error(ArgumentError) }
     end
 
-    context ".perform" do
+    context ".call" do
       let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
 
       before do
-        AddDefaultCircles.perform(person: person)
+        AddDefaultCircles.call(person: person)
       end
 
       it { expect(person.activity_object.circles.size).to eq(4) }

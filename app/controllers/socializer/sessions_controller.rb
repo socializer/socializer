@@ -40,7 +40,7 @@ module Socializer
 
     def create_authentication(auth)
       user = Person.create_with_omniauth(auth)
-      AddDefaultCircles.perform(person: user)
+      AddDefaultCircles.call(person: user)
       login(user)
     end
 
