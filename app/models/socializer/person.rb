@@ -137,7 +137,7 @@ module Socializer
     # @return [Socializer::Authentication] Returns a collection of
     # {Socializer::Authentication authentications}
     def services
-      @services ||= authentications.by_not_provider(provider: "Identity")
+      @services ||= authentications.not_with_provider(provider: "Identity")
     end
 
     # Collection of {Socializer::Notification notifications} that the user has
