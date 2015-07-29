@@ -19,7 +19,7 @@ module Socializer
       }
     end
 
-    let(:result) { ActivityCreator.new(activity_attributes).perform }
+    let(:result) { ActivityCreator.new(activity_attributes).call }
     let(:activity) { result.decorate }
 
     describe "when not logged in" do

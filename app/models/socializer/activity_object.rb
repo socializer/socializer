@@ -170,7 +170,7 @@ module Socializer
                           activity_object_id: id,
                           verb: "share",
                           object_ids: object_ids,
-                          content: content).perform
+                          content: content).call
     end
 
     # Increments the unread_notifications_count by 1 and saves the record
@@ -198,7 +198,7 @@ module Socializer
       ActivityCreator.new(actor_id: actor.guid,
                           activity_object_id: id,
                           verb: verb,
-                          object_ids: public).perform
+                          object_ids: public).call
     end
 
     def increment_like_count

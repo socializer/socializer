@@ -22,7 +22,7 @@ module Socializer
     # Creates an activity, adds the content and audience if needed.
     #
     # @return [Socializer::Activity]
-    def perform
+    def call
       return create_activity if valid?
 
       message = I18n.t("activerecord.errors.messages.record_invalid",

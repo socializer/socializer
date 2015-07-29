@@ -66,7 +66,7 @@ module Socializer
                           activity_object_id: guid,
                           target_id: activity_target_id,
                           verb: activity_verb,
-                          object_ids: object_ids).perform
+                          object_ids: object_ids).call
     end
   end
 end

@@ -19,9 +19,9 @@ module Socializer
       it { expect(ac.valid?).to be false }
     end
 
-    context ".perform" do
+    context ".call" do
       context "with no required attributes it should raise RecordInvalid" do
-        it { expect { ac.perform }.to raise_error(RecordInvalid) }
+        it { expect { ac.call }.to raise_error(RecordInvalid) }
       end
 
       context "with the required attributes" do
@@ -30,8 +30,8 @@ module Socializer
         let(:ac) { ActivityCreator.new(activity_attributes) }
 
         it { expect(ac.valid?).to be true }
-        it { expect(ac.perform).to be_kind_of(Activity) }
-        it { expect(ac.perform.persisted?).to be true }
+        it { expect(ac.call).to be_kind_of(Activity) }
+        it { expect(ac.call.persisted?).to be true }
       end
     end
   end
