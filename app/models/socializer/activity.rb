@@ -320,7 +320,7 @@ module Socializer
     # {Socializer::Activity} objects
     def comments
       @activitable_type ||=
-        ActivityObject.by_activitable_type(type: Comment.name)
+        ActivityObject.with_activitable_type(type: Comment.name)
 
       @comments ||= children.joins(:activitable_object)
                     .merge(@activitable_type)

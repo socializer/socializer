@@ -54,8 +54,8 @@ module Socializer
     end
 
     context "scopes" do
-      context "by_id" do
-        let(:sql) { ActivityObject.by_id(id: 1).to_sql }
+      context "with_id" do
+        let(:sql) { ActivityObject.with_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -63,9 +63,9 @@ module Socializer
         end
       end
 
-      context "by_activitable_type" do
+      context "with_activitable_type" do
         let(:sql) do
-          ActivityObject.by_activitable_type(type: Comment.name).to_sql
+          ActivityObject.with_activitable_type(type: Comment.name).to_sql
         end
 
         let(:expected) do

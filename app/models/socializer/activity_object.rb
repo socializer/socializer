@@ -20,11 +20,11 @@ module Socializer
     # NOTE: These relationships will no longer be needed if rails provides a
     #       nice way to joins to a polymorphic relationship
     belongs_to :group,
-               -> { ActivityObject.by_activitable_type(type: Group.name) },
+               -> { ActivityObject.with_activitable_type(type: Group.name) },
                foreign_key: "activitable_id"
 
     belongs_to :person,
-               -> { ActivityObject.by_activitable_type(type: Person.name) },
+               -> { ActivityObject.with_activitable_type(type: Person.name) },
                foreign_key: "activitable_id"
 
     has_many :notifications, inverse_of: :activity_object
@@ -69,7 +69,7 @@ module Socializer
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_id(id:)
+    def self.with_id(id:)
       where(id: id)
     end
 
@@ -79,7 +79,7 @@ module Socializer
     # @param type: [String]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_activitable_type(type:)
+    def self.with_activitable_type(type:)
       where(activitable_type: type)
     end
 
