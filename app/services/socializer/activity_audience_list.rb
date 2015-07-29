@@ -34,8 +34,8 @@ module Socializer
     # audience for
     #
     # @return [Array]
-    def self.perform(activity:)
-      ActivityAudienceList.new(activity: activity).perform
+    def self.call(activity:)
+      ActivityAudienceList.new(activity: activity).call
     end
 
     # Instance Methods
@@ -44,7 +44,7 @@ module Socializer
     # API method.
     #
     # @return [Array]
-    def perform
+    def call
       list = []
 
       @activity.audiences.each do |audience|

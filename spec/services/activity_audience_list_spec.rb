@@ -8,8 +8,8 @@ module Socializer
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
 
-      context ".perform should raise an ArgumentError" do
-        let(:audience_list) { ActivityAudienceList.perform(activity: nil) }
+      context ".call should raise an ArgumentError" do
+        let(:audience_list) { ActivityAudienceList.call(activity: nil) }
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
     end
@@ -19,12 +19,12 @@ module Socializer
       it { expect { audience_list }.to raise_error(ArgumentError) }
     end
 
-    describe ".perform" do
+    describe ".call" do
       context "without an audience" do
         let(:activity) { create(:activity) }
 
         let(:audience_list) do
-          ActivityAudienceList.new(activity: activity).perform
+          ActivityAudienceList.new(activity: activity).call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }
@@ -50,7 +50,7 @@ module Socializer
 
         context "public" do
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).perform
+            ActivityAudienceList.new(activity: activity).call
           end
 
           let(:tooltip_public) do
@@ -80,7 +80,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).perform
+            ActivityAudienceList.new(activity: activity).call
           end
 
           it { expect(audience_list.size).to eq(1) }
@@ -110,7 +110,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).perform
+            ActivityAudienceList.new(activity: activity).call
           end
 
           it { expect(audience_list.size).to eq(1) }
