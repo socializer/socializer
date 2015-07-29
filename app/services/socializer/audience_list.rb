@@ -35,8 +35,8 @@ module Socializer
     # @param query: nil [String] Used to filter the audience list.
     #
     # @return [Array]
-    def self.perform(person:, query: nil)
-      AudienceList.new(person: person, query: query).perform
+    def self.call(person:, query: nil)
+      AudienceList.new(person: person, query: query).call
     end
 
     # Instance Methods
@@ -45,7 +45,7 @@ module Socializer
     # Create the audience list
     #
     # @return [Array]
-    def perform
+    def call
       audiences = []
 
       audiences << merge_icon(list: privacy_hash(privacy_symbol: :public),

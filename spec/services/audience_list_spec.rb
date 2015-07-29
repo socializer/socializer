@@ -8,8 +8,8 @@ module Socializer
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
 
-      context ".perform should raise an ArgumentError" do
-        let(:audience_list) { AudienceList.perform(person: nil, query: nil) }
+      context ".call should raise an ArgumentError" do
+        let(:audience_list) { AudienceList.call(person: nil, query: nil) }
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
     end
@@ -19,7 +19,7 @@ module Socializer
       it { expect { audience_list }.to raise_error(ArgumentError) }
     end
 
-    context ".perform" do
+    context ".call" do
       let(:person) { create(:person_circles) }
       let(:public) { { id: "public", name: "Public" } }
       let(:circles) { { id: "circles", name: "Circles" } }
@@ -30,7 +30,7 @@ module Socializer
 
       context "with no query" do
         let(:audience_list) do
-          AudienceList.new(person: person, query: nil).perform
+          AudienceList.new(person: person, query: nil).call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }
@@ -56,7 +56,7 @@ module Socializer
 
       context "with query" do
         let(:audience_list) do
-          AudienceList.new(person: person, query: "friends").perform
+          AudienceList.new(person: person, query: "friends").call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }
