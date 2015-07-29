@@ -48,7 +48,7 @@ module Socializer
     # DELETE /notes/1
     def destroy
       @note = find_note
-      @activity_guid = Activity.find_by(activity_object_id: @note.guid).guid
+      @activity_guid = activity_for_note(note: @note).guid
       @note.destroy
 
       respond_to do |format|
