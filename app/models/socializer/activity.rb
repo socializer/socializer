@@ -64,7 +64,7 @@ module Socializer
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_id(id:)
+    def self.with_id(id:)
       where(id: id)
     end
 
@@ -73,25 +73,25 @@ module Socializer
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_activity_object_id(id:)
+    def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
 
-    # Find activities where the by_actor_id is equal to the given id
+    # Find activities where the actor_id is equal to the given id
     #
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_actor_id(id:)
+    def self.with_actor_id(id:)
       where(actor_id: id)
     end
 
-    # Find activities where the by_target_id is equal to the given id
+    # Find activities where the target_id is equal to the given id
     #
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_target_id(id:)
+    def self.with_target_id(id:)
       where(target_id: id)
     end
 
@@ -130,7 +130,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.activity_stream(actor_uid:, viewer_id:)
-      stream_query(viewer_id: viewer_id).by_id(id: actor_uid).distinct
+      stream_query(viewer_id: viewer_id).with_id(id: actor_uid).distinct
     end
 
     # Display all activities for a given circle
@@ -151,7 +151,7 @@ module Socializer
 
       followed = Tie.by_circle_id(circle_id: circles).pluck(:contact_id)
 
-      stream_query(viewer_id: viewer_id).by_actor_id(id: followed).distinct
+      stream_query(viewer_id: viewer_id).with_actor_id(id: followed).distinct
     end
 
     # This is a group. display everything that was posted to this group as
@@ -179,7 +179,7 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id: viewer_id).by_actor_id(id: person_id).distinct
+      stream_query(viewer_id: viewer_id).with_actor_id(id: person_id).distinct
     end
 
     # Class Methods - Private
@@ -195,7 +195,7 @@ module Socializer
       verbs_of_interest = %w(post share)
       query = joins(:audiences, :verb)
               .merge(Verb.by_display_name(name: verbs_of_interest))
-              .by_target_id(id: nil)
+              .with_target_id(id: nil)
 
       query.where(public_grouping(viewer_id: viewer_id)
            .or(limited_grouping(viewer_id: viewer_id))

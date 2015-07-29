@@ -109,7 +109,7 @@ module Socializer
       # likers   = people.merge(Verb.by_display_name("like"))
       # unlikers = people.merge(Verb.by_display_name("unlike")).pluck(:id)
 
-      query    = Activity.joins(:verb).by_activity_object_id(id: id)
+      query    = Activity.joins(:verb).with_activity_object_id(id: id)
       likers   = query.merge(Verb.by_display_name(name: "like"))
       unlikers = query.merge(Verb.by_display_name(name: "unlike"))
       people   = likers.map(&:actor)

@@ -51,16 +51,16 @@ module Socializer
         end
       end
 
-      context "by_id" do
-        let(:sql) { Activity.by_id(id: 1).to_sql }
+      context "with_id" do
+        let(:sql) { Activity.with_id(id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_activities"."id" = 1')
         end
       end
 
-      context "by_activity_object_id" do
-        let(:sql) { Activity.by_activity_object_id(id: 1).to_sql }
+      context "with_activity_object_id" do
+        let(:sql) { Activity.with_activity_object_id(id: 1).to_sql }
 
         let(:expected) do
           'WHERE "socializer_activities"."activity_object_id" = 1'
@@ -71,8 +71,8 @@ module Socializer
         end
       end
 
-      context "by_actor_id" do
-        let(:sql) { Activity.by_actor_id(id: 1).to_sql }
+      context "with_actor_id" do
+        let(:sql) { Activity.with_actor_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -80,8 +80,8 @@ module Socializer
         end
       end
 
-      context "by_target_id" do
-        let(:sql) { Activity.by_target_id(id: 1).to_sql }
+      context "with_target_id" do
+        let(:sql) { Activity.with_target_id(id: 1).to_sql }
 
         it do
           expect(sql)
