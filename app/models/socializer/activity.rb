@@ -166,7 +166,7 @@ module Socializer
       group_id = Group.find_by(id: actor_uid).guid
 
       stream_query(viewer_id: viewer_id)
-        .merge(Audience.by_activity_object_id(id: group_id)).distinct
+        .merge(Audience.with_activity_object_id(id: group_id)).distinct
     end
 
     # This is a user profile. display everything about them that you are

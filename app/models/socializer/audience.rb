@@ -34,7 +34,7 @@ module Socializer
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_activity_id(id:)
+    def self.with_activity_id(id:)
       where(activity_id: id)
     end
 
@@ -43,7 +43,7 @@ module Socializer
     # @param id: [Fixnum]
     #
     # @return [ActiveRecord::Relation]
-    def self.by_activity_object_id(id:)
+    def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
 
