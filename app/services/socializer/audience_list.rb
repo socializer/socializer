@@ -36,7 +36,7 @@ module Socializer
     #
     # @return [Array]
     def self.call(person:, query: nil)
-      AudienceList.new(person: person, query: query).call
+      new(person: person, query: query).call
     end
 
     # Instance Methods

@@ -34,7 +34,7 @@ module Socializer
     # @param person: [Socializer:Person] the person to create the default
     # circles for
     def self.call(person:)
-      AddDefaultCircles.new(person: person).call
+      new(person: person).call
     end
 
     # Instance Methods

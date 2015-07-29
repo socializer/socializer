@@ -35,7 +35,7 @@ module Socializer
     #
     # @return [Array]
     def self.call(activity:)
-      ActivityAudienceList.new(activity: activity).call
+      new(activity: activity).call
     end
 
     # Instance Methods
