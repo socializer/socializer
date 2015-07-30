@@ -59,10 +59,6 @@ module Socializer
 
     private
 
-    # TODO: Add to Activity. May need to rename by_ scopes to where_
-    # This would allow for find_by queries to use by_
-    # Maybe add an activity relationship to ObjectTypeBase so we can do
-    # note.activity
     def activity_for_note(note:)
       Activity.find_by(activity_object_id: note.guid).decorate
     end
