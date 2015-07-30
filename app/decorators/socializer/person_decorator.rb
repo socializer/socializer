@@ -26,7 +26,7 @@ module Socializer
       avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
 
       if avatar_provider_array.include?(avatar_provider)
-        social_avatar_url(avatar_provider)
+        social_avatar_url
       else
         gravatar_url
       end
@@ -84,8 +84,8 @@ module Socializer
       model.circles + model.memberships
     end
 
-    def social_avatar_url(provider)
-      auth = authentications.find_by(provider: provider.downcase)
+    def social_avatar_url
+      auth = authentications.find_by(provider: avatar_provider.downcase)
       auth.image_url if auth.present?
     end
 
