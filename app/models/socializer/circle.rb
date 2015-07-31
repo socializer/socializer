@@ -38,6 +38,8 @@ module Socializer
                              uniqueness: { scope: :author_id,
                                            case_sensitive: false }
 
+    delegate :count, to: :ties, prefix: true
+
     # Named Scopes
 
     # Class Methods

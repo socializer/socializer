@@ -19,7 +19,7 @@ module Socializer
     #
     # @return [String]
     def ties_count
-      helpers.pluralize(model.ties.count, "person")
+      helpers.pluralize(model.ties_count, "person")
     end
   end
 end
