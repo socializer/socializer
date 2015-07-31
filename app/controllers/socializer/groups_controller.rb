@@ -34,7 +34,7 @@ module Socializer
 
       if @group.save
         flash[:notice] = t("socializer.model.create", model: "Group")
-        redirect_to @group
+        redirect_to group_path(@group)
       else
         render :new
       end
@@ -46,7 +46,7 @@ module Socializer
       @group.update!(params[:group])
 
       flash[:notice] = t("socializer.model.update", model: "Group")
-      redirect_to @group
+      redirect_to group_path(@group)
     end
 
     # DELETE /groups/1
