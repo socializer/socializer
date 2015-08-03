@@ -82,7 +82,7 @@ The todo list is as follows :
 
 ## If you want to contribute
 
-We welcome contributions from *everyone*. While contributing, please follow the project [code of conduct](https://github.com/socializer/socializer/blob/master/CODE_OF_CONDUCT.md), so that everyone can be included.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/socializer/socializer/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The best way to contribute is to do one of the following :
 * Creating tests
