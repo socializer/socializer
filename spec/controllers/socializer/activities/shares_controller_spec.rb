@@ -63,10 +63,21 @@ module Socializer
 
         describe "POST #create" do
           context "with valid attributes" do
-            it "redirects to circles#contacts" do
+            before do
               post :create, valid_attributes
+            end
+
+            let(:message) do
+              t("socializer.model.create",
+                model: "Note")
+            end
+
+            it "redirects to circles#contacts" do
               expect(response).to redirect_to activities_path
             end
+
+            # FIXME: Should accept a symbol in next RC or release
+            it { should set_flash["notice"].to(message) }
           end
 
           context "with invalid attributes" do
