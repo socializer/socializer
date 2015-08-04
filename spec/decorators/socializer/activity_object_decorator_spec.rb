@@ -8,6 +8,15 @@ module Socializer
       ActivityObjectDecorator.new(activity_object)
     end
 
+    context "demodulized_type" do
+      it { expect(decorated_activity_object.demodulized_type).to eq("Note") }
+
+      it do
+        expect(decorated_activity_object.demodulized_type)
+          .not_to include("Socializer::")
+      end
+    end
+
     context "link_to_like_or_unlike" do
       context "to return nil when no current_user" do
         before do

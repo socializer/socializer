@@ -36,14 +36,9 @@ module Socializer
         @find_activity_object ||= ActivityObject.find_by(id: id)
       end
 
-      # TODO: Add to ActivityObject
-      def type_model(activity_object:)
-        activity_object.activitable_type.demodulize
-      end
-
       def flash_message(action:, activity_object:)
         t("socializer.model.#{action}",
-          model: type_model(activity_object: activity_object))
+          model: activity_object.decorate.demodulized_type)
       end
     end
   end

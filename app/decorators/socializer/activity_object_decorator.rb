@@ -15,6 +15,13 @@ module Socializer
     #     end
     #   end
 
+    # Removes the module part from the activitable_type
+    #
+    # @return [String]
+    def demodulized_type
+      model.activitable_type.demodulize
+    end
+
     # Builds the like or unlike link
     #
     # @return [String] the html needed to display the like/unlike link
