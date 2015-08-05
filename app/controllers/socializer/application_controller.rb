@@ -40,11 +40,11 @@ module Socializer
     end
 
     def set_locale
-      I18n.locale =  if can_set_locale_from_person_language?
-                       current_user.language
-                     else
-                       can_not_set_locale_from_person_language
-                     end
+      I18n.locale = if can_set_locale_from_person_language?
+                      current_user.language
+                    else
+                      can_not_set_locale_from_person_language
+                    end
     end
 
     def extract_locale_from_accept_language_header
