@@ -77,7 +77,7 @@ module Socializer
       describe "DELETE #destroy" do
         context "assigns variables and returns success" do
           before do
-            delete :destroy,  id: activity, format: :js
+            delete :destroy, id: activity, format: :js
           end
 
           it "assigns @activity" do

@@ -12,7 +12,7 @@ module Socializer
       describe "when not logged in" do
         describe "GET #index" do
           it "requires login" do
-            get :index,  id: note_activity.id, format: :html
+            get :index, id: note_activity.id, format: :html
             expect(response).to redirect_to root_path
           end
         end
@@ -75,7 +75,7 @@ module Socializer
           # Create a like
           before { post :create, id: note_activity.guid, format: :js }
           # Get the people ou like the activity
-          before { get :index,  id: note_activity.id, format: :html }
+          before { get :index, id: note_activity.id, format: :html }
 
           it "return people" do
             expect(assigns(:people)).to be_present
@@ -97,7 +97,7 @@ module Socializer
 
         describe "GET #destroy" do
           # Create a like
-          before { post :create,  id: note_activity.guid, format: :js }
+          before { post :create, id: note_activity.guid, format: :js }
           # Destroy the like
           before { delete :destroy, id: note_activity.guid, format: :js }
 
