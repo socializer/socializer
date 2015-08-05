@@ -11,7 +11,7 @@ module Socializer
   class Audience < ActiveRecord::Base
     extend Enumerize
 
-    enumerize :privacy, in:  %w(public circles limited),
+    enumerize :privacy, in: %w(public circles limited),
                         default: :public, predicates: true, scope: true
 
     attr_accessible :activity_id, :privacy

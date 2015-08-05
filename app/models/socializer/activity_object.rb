@@ -131,7 +131,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def like(person)
-      results  = create_like_unlike_activity(actor: person, verb: "like")
+      results = create_like_unlike_activity(actor: person, verb: "like")
 
       increment_like_count if results.persisted?
       results
@@ -147,7 +147,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def unlike(person)
-      results  = create_like_unlike_activity(actor: person, verb: "unlike")
+      results = create_like_unlike_activity(actor: person, verb: "unlike")
 
       decrement_like_count if results.persisted?
       results
