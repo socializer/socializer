@@ -1,7 +1,7 @@
 Socializer::Engine.routes.draw do
   match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   match "/auth/failure", to: "sessions#failure", via: [:get, :post]
-  match "/signin", to: "sessions#new", as: :signin,  via: :get
+  match "/signin", to: "sessions#new", as: :signin, via: :get
   match "/signout", to: "sessions#destroy", as: :signout, via: [:get, :delete]
 
   get "/activities/:id/comment", to: "comments#new", as: :comment_activity
