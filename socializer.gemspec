@@ -49,7 +49,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("capybara",             "~> 2.4.1")
   spec.add_development_dependency("factory_girl_rails",   "~> 4.5.0")
   spec.add_development_dependency("i18n-tasks",           "~> 0.8.6")
-  spec.add_development_dependency("inch",                 "~> 0.6.3")
+  spec.add_development_dependency("inch",                 "~> 0.6.4")
   spec.add_development_dependency("shoulda-matchers",     "~> 3.0.0.rc1")
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.15.7")
