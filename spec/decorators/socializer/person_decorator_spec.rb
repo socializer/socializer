@@ -6,6 +6,61 @@ module Socializer
     let(:person) { create(:person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
+    context "attributes" do
+      context "birthdate" do
+        context "not specified" do
+          it { expect(decorated_person.birthdate).to be nil }
+        end
+
+        context "specified" do
+          let(:person) do
+            build(:person, birthdate: Time.zone.now - 10.years)
+          end
+
+          it do
+            expect(decorated_person.birthdate)
+              .to eq(person.birthdate.to_s(:long_ordinal))
+          end
+        end
+      end
+
+      context "gender" do
+        it { expect(decorated_person.gender).to eq("Unknown") }
+      end
+
+      context "other_names" do
+        context "without a value" do
+          let(:message) { "For example: maiden name, alternate spellings" }
+          it { expect(decorated_person.other_names).to eq(message) }
+        end
+
+        context "with a value" do
+          let(:other_name) { "Mr Scary" }
+          let(:person) { create(:person, other_names: other_name) }
+          let(:decorated_person) { PersonDecorator.new(person) }
+
+          it { expect(decorated_person.other_names).to eq(other_name) }
+        end
+      end
+
+      context "relationship" do
+        context "when unknown" do
+          let(:message) { "Seeing anyone?" }
+          it { expect(decorated_person.relationship).to eq(message) }
+        end
+
+        context "when not unknown" do
+          let(:relationship) { "single" }
+          let(:person) { create(:person, relationship: relationship) }
+          let(:decorated_person) { PersonDecorator.new(person) }
+
+          it do
+            expect(decorated_person.relationship).to eq(relationship.titleize)
+          end
+        end
+      end
+    end
+
     context "#avatar_url" do
       context "when the provider is Facebook, LinkedIn, or Twitter" do
         let(:authentication_attributes) do
@@ -70,23 +125,6 @@ module Socializer
       end
     end
 
-    context "birthdate" do
-      context "not specified" do
-        it { expect(decorated_person.birthdate).to be nil }
-      end
-
-      context "specified" do
-        let(:person) do
-          build(:person, birthdate: Time.zone.now - 10.years)
-        end
-
-        it do
-          expect(decorated_person.birthdate)
-            .to eq(person.birthdate.to_s(:long_ordinal))
-        end
-      end
-    end
-
     context "contacts_count" do
       context "without contacts" do
         it { expect(decorated_person.contacts_count).to eq("0 people") }
@@ -106,7 +144,6 @@ module Socializer
         it "is pending"
       end
     end
-
 
     context "image_tag_avatar" do
       let(:person) { create(:person) }

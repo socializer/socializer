@@ -15,6 +15,39 @@ module Socializer
     #     end
     #   end
 
+    #  Attributes
+
+    # Format the birthdate attribute
+    #
+    # @return [String]
+    def birthdate
+      model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
+    end
+
+    # Returns the capitalized gender
+    #
+    # @return [String]
+    def gender
+      model.gender.titleize
+    end
+
+    # Returns the other_names value or "For example: maiden name, alternate
+    # spellings"
+    #
+    # @return [String]
+    def other_names
+      model.other_names || "For example: maiden name, alternate spellings"
+    end
+
+    # Returnes the capitalized relationship or "Seeing anyone?" if the
+    # relationship value is unknown
+    #
+    # @return [String]
+    def relationship
+      return "Seeing anyone?" if model.relationship.unknown?
+      model.relationship.titleize
+    end
+
     # The location/url of the persons avatar
     #
     # @example
@@ -30,13 +63,6 @@ module Socializer
       else
         gravatar_url
       end
-    end
-
-    # Format the birthdate attribute
-    #
-    # @return [String]
-    def birthdate
-      model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
     end
 
     # The number of contacts for the decorated {Socializer::Person}
