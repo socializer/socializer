@@ -28,6 +28,20 @@ module Socializer
         it { expect(decorated_person.gender).to eq("Unknown") }
       end
 
+      context "occupation" do
+        context "when nil" do
+          let(:message) { "What do you do?" }
+          it { expect(decorated_person.occupation).to eq(message) }
+        end
+
+        context "when not nil" do
+          let(:occupation) { "sleeping, eating, drinking" }
+          let(:person) { create(:person, occupation: occupation) }
+
+          it { expect(decorated_person.occupation).to eq(occupation) }
+        end
+      end
+
       context "other_names" do
         context "without a value" do
           let(:message) { "For example: maiden name, alternate spellings" }
@@ -57,6 +71,20 @@ module Socializer
           it do
             expect(decorated_person.relationship).to eq(relationship.titleize)
           end
+        end
+      end
+
+      context "skills" do
+        context "when nil" do
+          let(:message) { "What are your skills?" }
+          it { expect(decorated_person.skills).to eq(message) }
+        end
+
+        context "when not nil" do
+          let(:skills) { "sleeping, eating, drinking" }
+          let(:person) { create(:person, skills: skills) }
+
+          it { expect(decorated_person.skills).to eq(skills) }
         end
       end
     end

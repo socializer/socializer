@@ -31,6 +31,13 @@ module Socializer
       model.gender.titleize
     end
 
+    # Returns the occupation value or "What do you do?" when occupation is nil
+    #
+    # @return [String]
+    def occupation
+      model.occupation || "What do you do?"
+    end
+
     # Returns the other_names value or "For example: maiden name, alternate
     # spellings"
     #
@@ -46,6 +53,13 @@ module Socializer
     def relationship
       return "Seeing anyone?" if model.relationship.unknown?
       model.relationship.titleize
+    end
+
+    # Returns the skills value or "What are your skills?" when skills is nil
+    #
+    # @return [String]
+    def skills
+      model.skills || "What are your skills?"
     end
 
     # The location/url of the persons avatar
