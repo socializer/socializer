@@ -39,6 +39,21 @@ module Socializer
       model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
     end
 
+    # The number of contacts for the decorated {Socializer::Person}
+    #
+    # @return [String]
+    def contacts_count
+      helpers.pluralize(model.contacts_count, "person")
+    end
+
+    # The number of {Socializer::Person people} this Socializer::Person person}
+    # is a contact of
+    #
+    # @return [String]
+    def contact_of_count
+      helpers.pluralize(model.contact_of.count, "person")
+    end
+
     # Creates an image tag for the persons avatar
     #
     # @param size: nil [String]

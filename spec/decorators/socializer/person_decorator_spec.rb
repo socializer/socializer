@@ -3,7 +3,7 @@ include Socializer::Engine.routes.url_helpers
 
 module Socializer
   RSpec.describe PersonDecorator, type: :decorator do
-    let(:person) { build(:person) }
+    let(:person) { create(:person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
     context "#avatar_url" do
@@ -86,6 +86,27 @@ module Socializer
         end
       end
     end
+
+    context "contacts_count" do
+      context "without contacts" do
+        it { expect(decorated_person.contacts_count).to eq("0 people") }
+      end
+
+      context "with contacts" do
+        it "is pending"
+      end
+    end
+
+    context "contact_of_count" do
+      context "not a contact of anyone" do
+        it { expect(decorated_person.contact_of_count).to eq("0 people") }
+      end
+
+      context "is a contact of someone" do
+        it "is pending"
+      end
+    end
+
 
     context "image_tag_avatar" do
       let(:person) { create(:person) }

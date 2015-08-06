@@ -88,6 +88,8 @@ module Socializer
     delegate :notes, to: :activity_object, allow_nil: true
     delegate :memberships, to: :activity_object, allow_nil: true
 
+    delegate :count, to: :contacts, prefix: true, allow_nil: true
+
     # Class Methods
 
     # Creates a Socializer::Person with data provided by
