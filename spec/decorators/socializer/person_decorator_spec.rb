@@ -51,7 +51,6 @@ module Socializer
         context "with a value" do
           let(:other_name) { "Mr Scary" }
           let(:person) { create(:person, other_names: other_name) }
-          let(:decorated_person) { PersonDecorator.new(person) }
 
           it { expect(decorated_person.other_names).to eq(other_name) }
         end
@@ -66,7 +65,6 @@ module Socializer
         context "when not unknown" do
           let(:relationship) { "single" }
           let(:person) { create(:person, relationship: relationship) }
-          let(:decorated_person) { PersonDecorator.new(person) }
 
           it do
             expect(decorated_person.relationship).to eq(relationship.titleize)
@@ -101,8 +99,6 @@ module Socializer
         let(:person) do
           create(:person, avatar_provider: provider)
         end
-
-        let(:decorated_person) { PersonDecorator.new(person) }
 
         context "it should be Facebook" do
           before do
@@ -147,7 +143,6 @@ module Socializer
 
         context "with a blank email" do
           let(:person) { build(:person, email: nil) }
-          let(:decorated_person) { PersonDecorator.new(person) }
           it { expect(decorated_person.avatar_url).to eq(nil) }
         end
       end
@@ -175,7 +170,6 @@ module Socializer
 
     context "image_tag_avatar" do
       let(:person) { create(:person) }
-      let(:decorated_person) { PersonDecorator.new(person) }
 
       context "with no image_url" do
         let(:result) { decorated_person.image_tag_avatar }
@@ -252,7 +246,6 @@ module Socializer
 
     context "link_to_avatar" do
       let(:person) { create(:person) }
-      let(:decorated_person) { PersonDecorator.new(person) }
       let(:result) { decorated_person.link_to_avatar }
 
       let(:image_tag_avatar) do
@@ -269,7 +262,6 @@ module Socializer
 
     context "toolbar_stream_links" do
       let(:person) { create(:person) }
-      let(:decorated_person) { PersonDecorator.new(person) }
 
       context "with no circles or memberships" do
         it { expect(decorated_person.toolbar_stream_links).to eq(nil) }
