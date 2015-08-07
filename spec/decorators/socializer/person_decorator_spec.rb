@@ -260,6 +260,52 @@ module Socializer
       it { expect(result).to include(image_tag_avatar) }
     end
 
+    context "looking_for" do
+      context "with no looking_for attributes set" do
+        let(:string) { "Who are you looking for?" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+
+      context "with looking_for_friends true" do
+        let(:person) { create(:person, looking_for_friends: true) }
+        let(:string) { "Friends<br>" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+
+      context "with looking_for_dating true" do
+        let(:person) { create(:person, looking_for_dating: true) }
+        let(:string) { "Dating<br>" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+
+      context "with looking_for_relationship true" do
+        let(:person) { create(:person, looking_for_relationship: true) }
+        let(:string) { "Relationship<br>" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+
+      context "with looking_for_networking true" do
+        let(:person) { create(:person, looking_for_networking: true) }
+        let(:string) { "Networking<br>" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+
+      context "with looking for friends and dating are true" do
+        let(:person) do
+          create(:person, looking_for_friends: true, looking_for_dating: true)
+        end
+
+        let(:string) { "Friends<br>Dating<br>" }
+
+        it { expect(decorated_person.looking_for).to eq(string) }
+      end
+    end
+
     context "toolbar_stream_links" do
       let(:person) { create(:person) }
 

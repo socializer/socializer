@@ -116,6 +116,20 @@ module Socializer
                       helpers.person_activities_path(person_id: model.id))
     end
 
+    # Returns what relationships the {Socializer::Person person} is looking for
+    #
+    # @return [String]
+    def looking_for
+      looking_for = ""
+      looking_for << "Friends<br>" if model.looking_for_friends
+      looking_for << "Dating<br>" if model.looking_for_dating
+      looking_for << "Relationship<br>" if model.looking_for_relationship
+      looking_for << "Networking<br>" if model.looking_for_networking
+      looking_for << "Who are you looking for?" if looking_for.empty?
+
+      looking_for
+    end
+
     # Builds the links for the shared toolbar
     #
     # @return [String] the html needed to display the toolbar links
