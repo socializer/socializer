@@ -335,15 +335,9 @@
 
         <ul class="list-unstyled">
         <!-- TODO: Create a partial -->
-        <% @person.addresses.each do |address| %>
+        <% @person.addresses.decorate.each do |address| %>
           <li>
-            <%= address.line1 %><br>
-            <!-- TODO: Need a decorator method -->
-            <% if address.line2? %>
-              <%= address.line2 %><br>
-            <% end %>
-            <%= address.city_province_or_state_postal_code %><br>
-            <%= address.country %>
+            <%= address.formatted_address %>
           </li>
         <% end %>
         </ul>
