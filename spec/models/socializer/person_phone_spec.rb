@@ -30,7 +30,7 @@ module Socializer
 
     it do
       is_expected.to enumerize(:label).in(:phone, :mobile, :fax)
-      .with_default(:phone)
+        .with_default(:phone)
     end
   end
 end
