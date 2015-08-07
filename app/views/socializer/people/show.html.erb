@@ -85,6 +85,7 @@
         </p>
 
         <ul class="small-contact-list">
+        <!-- TODO: Create a partial -->
         <% @person.groups.decorate.each do |group| %>
           <li><%= link_to(group.display_name, group) %></li>
         <% end %>
@@ -356,8 +357,7 @@
         <!-- TODO: Create a partial -->
         <% @person.phones.each do |phone| %>
           <li>
-            <!-- TODO: Need a decorator method -->
-            <%= "#{phone.label} : #{phone.number}".html_safe %>
+            <%= phone.label_and_number %>
           </li>
         <% end %>
         </ul>
