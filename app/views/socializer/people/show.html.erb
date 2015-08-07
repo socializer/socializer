@@ -342,8 +342,7 @@
             <% if address.line2? %>
               <%= address.line2 %><br>
             <% end %>
-            <!-- TODO: Need a decorator method -->
-            <%= "#{address.city}, #{address.province_or_state} #{address.postal_code_or_zip}".html_safe %><br>
+            <%= address.city_province_or_state_postal_code %><br>
             <%= address.country %>
           </li>
         <% end %>
