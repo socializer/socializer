@@ -4,224 +4,442 @@
 
 <h1><%= @person.display_name %></h1>
 
-<section class="form-horizontal">
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Name</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.display_name %></p>
+<div class="row">
+  <!-- TODO: Create a partial -->
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">People</h4>
+      </div>
+
+      <div class="panel-body">
+        <p class="pull-right text-muted"><%= @person.contacts_count %></p>
+        <p><strong>In your circles</strong></p>
+
+        <ul class="small-contact-list">
+        <% @person.contacts.decorate.each do |contact| %>
+          <li><%= contact.link_to_avatar %></li>
+        <% end %>
+        </ul>
+
+        <br>
+
+        <p class="pull-right text-muted"><%= @person.contact_of_count %></p>
+        <p><strong>Have you in circles</strong></p>
+
+        <ul class="small-contact-list">
+        <% @person.contact_of.decorate.each do |person| %>
+          <li><%= person.link_to_avatar %></li>
+        <% end %>
+        </ul>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
     </div>
   </div>
 
-  <h2>Story</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Tagline</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.tagline %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Introduction</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.introduction %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Bragging rights</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.bragging_rights %></p>
+  <!-- TODO: Create a partial -->
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Story</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <strong>Tagline</strong>
+          <br>
+          <span class="text-muted"><%= @person.tagline %></span>
+        </p>
+
+        <p>
+          <strong>Introduction</strong>
+          <br>
+          <span class="text-muted"><%= @person.introduction %></span>
+        </p>
+
+        <p>
+          <strong>Bragging rights</strong>
+          <br>
+          <span class="text-muted"><%= @person.bragging_rights %></span>
+        </p>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
     </div>
   </div>
 
-  <h2>Work</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Occupation</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.occupation %></p>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Groups</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <span class="text-muted">Talk about stuff you're into with people who love it too.</span>
+        </p>
+
+        <ul class="small-contact-list">
+        <% @person.groups.decorate.each do |group| %>
+          <li><%= link_to(group.display_name, group) %></li>
+        <% end %>
+        </ul>
+        <br>
+
+        <p>
+          <a href="#" class="btn btn-primary">Discover groups</a>
+        </p>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Skills</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.skills %></p>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Work</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <strong>Occupation</strong>
+          <br>
+          <span class="text-muted"><%= @person.occupation %></span>
+        </p>
+
+        <p>
+          <strong>Skills</strong>
+          <br>
+          <span class="text-muted"><%= @person.skills %></span>
+        </p>
+
+        <p>
+          <strong>Employment</strong>
+          <br>
+          <span class="text-muted">
+            <!-- TODO: Create a partial -->
+            <!-- TODO: Need a decorator method -->
+            <% if @person.employments.present? %>
+              <ul class="list-unstyled">
+              <% @person.employments.each do |employment| %>
+                <li>
+                  <%= employment.employer_name %><br>
+                  <%= employment.job_title %><br>
+                  <%= employment.job_description %><br>
+                  <%= employment.started_on.to_s(:long_ordinal) %> -
+                  <% if employment.current? %>
+                    present
+                  <% else %>
+                    <%= employment.ended_on.to_s(:long_ordinal) %>
+                  <% end %>
+                </li>
+              <% end %>
+              </ul>
+            <% else  %>
+              Where have you worked?
+            <% end  %>
+          </span>
+        </p>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Employment</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.employments.each do |employment| %>
-        <li class="form-control-static">
-          <%= employment.employer_name %><br>
-          <%= employment.job_title %><br>
-          <%= employment.job_description %><br>
-          <%= employment.started_on.to_s(:long_ordinal) %> -
-          <% if employment.current? %>
-            present
-          <% else %>
-            <%= employment.ended_on.to_s(:long_ordinal) %>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Education</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <span class="text-muted">
+          <!-- TODO: Create a partial -->
+          <!-- TODO: Need a decorator method -->
+          <% if @person.educations.present? %>
+            <ul class="list-unstyled">
+            <% @person.educations.each do |education| %>
+              <li>
+                <%= education.school_name %><br>
+                <%= education.major_or_field_of_study %><br>
+                <%= education.started_on.to_s(:long_ordinal) %> -
+                <% if education.current? %>
+                  present
+                <% else %>
+                  <%= education.ended_on.to_s(:long_ordinal) %>
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          <% else  %>
+            Where have you gone to school?
+          <% end  %>
+          </span>
+        </p>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Places</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          TODO: Add a map for the current location
+        </p>
+
+        <ul class="list-unstyled">
+        <!-- TODO: Create a partial -->
+        <% @person.places.each do |place| %>
+          <li>
+            <!-- TODO: Need a decorator method -->
+            <% if place.current? %>
+              <p>
+                <strong>Currently</strong>
+              </p>
+              <p><%= place.city_name %></p>
+            <% else %>
+              <p>
+                <strong>Previously</strong>
+              </p>
+              <p><%= place.city_name %></p>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Basic Information</h4>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <strong>Gender</strong>
+          </div>
+
+          <div class="col-sm-6">
+            <%= @person.gender %>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <strong>Looking for</strong>
+          </div>
+
+          <div class="col-sm-6">
+            <span class="text-muted">
+              <!-- TODO: Need a decorator method -->
+              <% if @person.looking_for_friends %>Friends<br><% end %>
+              <% if @person.looking_for_dating %>Dating<br><% end %>
+              <% if @person.looking_for_relationship %>Relationship<br><% end %>
+              <% if @person.looking_for_networking %>Networking<% end %>
+              Who are you looking for?
+            </span>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <strong>Birthday</strong>
+          </div>
+
+          <div class="col-sm-6">
+            <%= @person.birthdate %>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <strong>Relationship</strong>
+          </div>
+
+          <div class="col-sm-6">
+            <span class="text-muted">
+              <%= @person.relationship %>
+            </span>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <strong>Other names</strong>
+          </div>
+
+          <div class="col-sm-6">
+            <span class="text-muted">
+              <%= @person.other_names %>
+            </span>
+          </div>
+        </div>
+        <br>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Contact Information</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Email</strong>
+          </div>
+
+          <div class="col-sm-8">
+            <%= @person.email %>
+          </div>
+        </div>
+        <br>
+
+        <p>
+          <strong>Addresses</strong>
+        </p>
+
+        <ul class="list-unstyled">
+        <!-- TODO: Create a partial -->
+        <% @person.addresses.each do |address| %>
+          <li>
+            <%= address.line1 %><br>
+            <!-- TODO: Need a decorator method -->
+            <% if address.line2? %>
+              <%= address.line2 %><br>
+            <% end %>
+            <!-- TODO: Need a decorator method -->
+            <%= "#{address.city}, #{address.province_or_state} #{address.postal_code_or_zip}".html_safe %><br>
+            <%= address.country %>
+          </li>
+        <% end %>
+        </ul>
+
+        <p>
+          <strong>Phones</strong>
+        </p>
+
+        <ul class="list-unstyled">
+        <!-- TODO: Create a partial -->
+        <% @person.phones.each do |phone| %>
+          <li>
+            <!-- TODO: Need a decorator method -->
+            <%= "#{phone.label} : #{phone.number}".html_safe %>
+          </li>
+        <% end %>
+        </ul>
+
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Links</h4>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <strong>Other profiles</strong>
+        </p>
+
+        <!-- TODO: Need a decorator method -->
+        <% if @person.profiles.present? %>
+          <ul class="list-unstyled">
+          <!-- TODO: Create a partial -->
+          <% @person.profiles.each do |profile| %>
+            <li>
+              <%= link_to(profile.label, profile.url) %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
+          </ul>
+        <% else %>
+          <p>
+            <span class="text-muted">What pages are about you?</span>
+          </p>
+        <% end %>
 
-  <h2>Education</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Education</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.educations.each do |education| %>
-        <li class="form-control-static">
-          <%= education.school_name %><br>
-          <%= education.major_or_field_of_study %><br>
-          <%= education.started_on.to_s(:long_ordinal) %> -
-          <% if education.current? %>
-            present
-          <% else %>
-            <%= education.ended_on.to_s(:long_ordinal) %>
+        <p>
+          <strong>Contributor to</strong>
+        </p>
+
+        <!-- TODO: Need a decorator method -->
+        <% if @person.contributions.present? %>
+          <ul class="list-unstyled">
+          <!-- TODO: Create a partial -->
+          <% @person.contributions.each do |contribution| %>
+            <li>
+              <%= link_to(contribution.label, contribution.url) %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
+          </ul>
+        <% else %>
+          <p>
+            <span class="text-muted">What pages feature your work?</span>
+          </p>
+        <% end %>
 
-  <h2>Places</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Places</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.places.each do |place| %>
-        <li class="form-control-static">
-          <%= place.city_name %><br>
-          <% if place.current? %>
-            present
+        <p>
+          <strong>Links</strong>
+        </p>
+
+        <!-- TODO: Need a decorator method -->
+        <% if @person.links.present? %>
+          <ul class="list-unstyled">
+          <!-- TODO: Create a partial -->
+          <% @person.links.each do |link| %>
+            <li>
+              <%= link_to(link.label, link.url) %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
+          </ul>
+        <% else %>
+          <p>
+            <span class="text-muted">What pages interest you?</span>
+          </p>
+        <% end %>
 
-  <h2>Other profiles</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Profiles</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.profiles.each do |profile| %>
-        <li class="form-control-static">
-          <%= link_to(profile.label, profile.url) %>
-        </li>
-      <% end %>
-      </ul>
+        <p>
+          <a href="#">Edit</a>
+        </p>
+      </div>
     </div>
   </div>
-
-  <h2>Contributions</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Contributions</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.contributions.each do |contribution| %>
-        <li class="form-control-static">
-          <%= link_to(contribution.label, contribution.url) %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <h2>Links</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Links</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.links.each do |link| %>
-        <li class="form-control-static">
-          <%= link_to(link.label, link.url) %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <h2>Basic information</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Gender</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.gender.titleize %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Birthdate</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.birthdate %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Relationship</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.relationship.titleize %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Other names</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.other_names %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Looking for</label>
-    <div class="col-sm-9">
-       <p class="form-control-static">
-         <% if @person.looking_for_friends %>Friends<br><% end %>
-         <% if @person.looking_for_dating %>Dating<br><% end %>
-         <% if @person.looking_for_relationship %>Relationship<br><% end %>
-         <% if @person.looking_for_networking %>Networking<% end %>
-       </p>
-    </div>
-  </div>
-
-
-  <h2>Contact information</h2>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Email</label>
-    <div class="col-sm-9">
-      <p class="form-control-static"><%= @person.email %></p>
-    </div>
-  </div>
-
-  <h3>Addresses</h3>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Addresses</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.addresses.each do |address| %>
-        <li class="form-control-static">
-          <%= address.line1 %><br>
-          <% if address.line2? %>
-            <%= address.line2 %><br>
-          <% end %>
-          <%= "#{address.city}, #{address.province_or_state} #{address.postal_code_or_zip}".html_safe %><br>
-          <%= address.country %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <h3>Phones</h3>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Phones</label>
-    <div class="col-sm-9">
-      <ul class="list-unstyled">
-      <% @person.phones.each do |phone| %>
-        <li class="form-control-static">
-          <%= "#{phone.label} : #{phone.number}".html_safe %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-</section>
+</div>
