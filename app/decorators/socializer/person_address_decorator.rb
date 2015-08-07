@@ -15,7 +15,7 @@ module Socializer
     #     end
     #   end
 
-    # Returns the cit, stat/province and postal code on one line
+    # Returns the city, stat/province and postal code on one line
     #
     # @example
     #   Imogeneborough, California 58517

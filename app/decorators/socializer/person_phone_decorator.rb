@@ -15,6 +15,12 @@ module Socializer
     #     end
     #   end
 
+    # Returns the formatted label and phone number
+    #
+    # @example
+    #   Mobile : 1112223333
+    #
+    # @return [String]
     def label_and_number
       "#{model.label.titleize} : #{model.number}".html_safe
     end
