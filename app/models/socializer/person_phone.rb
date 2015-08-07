@@ -13,6 +13,9 @@ module Socializer
     enumerize :category, in: { home: 1, work: 2 }, default: :home,
                          predicates: true, scope: true
 
+    enumerize :label, in: { phone: 1, mobile: 2, fax: 3 }, default: :phone,
+                      predicates: true, scope: true
+
     attr_accessible :label, :number
 
     # Relationships

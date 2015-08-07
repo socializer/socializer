@@ -27,5 +27,10 @@ module Socializer
     it do
       is_expected.to enumerize(:category).in(:home, :work).with_default(:home)
     end
+
+    it do
+      is_expected.to enumerize(:label).in(:phone, :mobile, :fax)
+      .with_default(:phone)
+    end
   end
 end
