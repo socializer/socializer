@@ -103,12 +103,9 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
-      helpers.image_tag(avatar_url,
-                        size: size,
-                        class: css_class,
-                        alt: alt,
-                        title: title,
-                        data: { behavior: "tooltip-on-hover" })
+      helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt,
+                                    title: title,
+                                    data: { behavior: "tooltip-on-hover" })
     end
 
     # Creates a link to the persons profile with their avatar as the content
