@@ -205,22 +205,20 @@
 
         <ul class="list-unstyled">
         <!-- TODO: Create a partial -->
-        <% @person.places.each do |place| %>
           <li>
-            <!-- TODO: Need a decorator method -->
-            <% if place.current? %>
-              <p>
-                <strong>Currently</strong>
-              </p>
-              <p><%= place.city_name %></p>
-            <% else %>
-              <p>
-                <strong>Previously</strong>
-              </p>
-              <p><%= place.city_name %></p>
-            <% end %>
+            <p>
+              <strong>Currently</strong>
+            </p>
+            <!-- TODO: Need a decorator method-->
+            <p><%= @person.places.current.first.try(:city_name) %></p>
           </li>
-        <% end %>
+          <li>
+            <p>
+              <strong>Previously</strong>
+            </p>
+            <!-- TODO: Need a decorator method-->
+            <p><%= @person.places.previous.pluck(:city_name).join(" ,") %></p>
+          </li>
         </ul>
 
         <p>
