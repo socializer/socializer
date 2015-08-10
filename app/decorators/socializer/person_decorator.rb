@@ -70,13 +70,11 @@ module Socializer
     # @return [String]
     #
     def avatar_url
-      avatar_provider_array = %w( FACEBOOK LINKEDIN TWITTER )
+      avatar_providers = %w( FACEBOOK LINKEDIN TWITTER )
 
-      if avatar_provider_array.include?(avatar_provider)
-        social_avatar_url
-      else
-        gravatar_url
-      end
+      return social_avatar_url if avatar_providers.include?(avatar_provider)
+
+      gravatar_url
     end
 
     # The number of contacts for the decorated {Socializer::Person}
