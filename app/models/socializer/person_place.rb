@@ -16,5 +16,9 @@ module Socializer
     # Validations
     validates :city_name, presence: true
     validates :person, presence: true
+
+    # Named Scopes
+    scope :current, -> { where(current: true) }
+    scope :previous, -> { where(current: false) }
   end
 end
