@@ -4,7 +4,7 @@ class CreateSocializerPersonContributions < ActiveRecord::Migration
       t.integer  :person_id, null: false
       t.string   :label
       t.string   :url
-      t.boolean  :current
+      t.boolean  :current, default: false
 
       t.timestamps null: false
     end

@@ -7,7 +7,7 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration
       t.string   :major_or_field_of_study
       t.date     :started_on
       t.date     :ended_on
-      t.boolean  :current
+      t.boolean  :current, default: false
       # TODO: change courses_description to description
       t.text     :courses_description
 

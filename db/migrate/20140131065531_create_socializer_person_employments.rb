@@ -8,7 +8,7 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration
       t.string   :job_title
       t.date     :started_on
       t.date     :ended_on
-      t.boolean  :current
+      t.boolean  :current, default: false
       # TODO: change job_description to description
       t.text     :job_description
 

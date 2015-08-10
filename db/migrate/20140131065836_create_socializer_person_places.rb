@@ -3,7 +3,7 @@ class CreateSocializerPersonPlaces < ActiveRecord::Migration
     create_table :socializer_person_places do |t|
       t.integer  :person_id, null: false
       t.string   :city_name
-      t.boolean  :current
+      t.boolean  :current, default: false
 
       t.timestamps null: false
     end
