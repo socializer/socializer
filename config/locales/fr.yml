@@ -42,9 +42,6 @@ fr:
           header: Your circles
       edit:
         header: Edit %{name}
-      suggestions:
-        index:
-          header: Suggestions
       form:
         submit: Save changes
       header: Your circles
@@ -60,6 +57,9 @@ fr:
         tooltip:
           delete: Remove %{display_name} from %{circle_name}
           edit: Edit this circle
+      suggestions:
+        index:
+          header: Suggestions
       toolbar:
         added_you: Have you in circles
         all: All
