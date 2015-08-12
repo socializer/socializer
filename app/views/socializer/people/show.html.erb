@@ -131,12 +131,7 @@
                   <%= employment.employer_name %><br>
                   <%= employment.job_title %><br>
                   <%= employment.job_description %><br>
-                  <%= employment.started_on.to_s(:long_ordinal) %> -
-                  <% if employment.current? %>
-                    present
-                  <% else %>
-                    <%= employment.ended_on.to_s(:long_ordinal) %>
-                  <% end %>
+                  <%= employment.started_on_to_ended_on %>
                 </li>
               <% end %>
               </ul>
