@@ -19,8 +19,8 @@ data:
     # - config/locales/%{locale}.yml
     ## More files:
     # - config/locales/**/*.%{locale}.yml
-    ## Another gem:
-    # - "<%= %x[bundle show vagrant].chomp %>/templates/locales/%{locale}.yml"
+    ## Another gem (replace %#= with %=):
+    # - "<%#= %x[bundle show vagrant].chomp %>/templates/locales/%{locale}.yml"
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -54,10 +54,11 @@ search:
 
   ## Root directories for relative keys resolution.
   # relative_roots:
-  #   - app/views
   #   - app/controllers
   #   - app/helpers
+  #   - app/mailers
   #   - app/presenters
+  #   - app/views
 
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
   ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
