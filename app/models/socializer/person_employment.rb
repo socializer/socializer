@@ -16,5 +16,7 @@ module Socializer
 
     # Validations
     validates :person, presence: true
+    validates :employer_name, presence: true
+    validates :started_on, presence: true
   end
 end

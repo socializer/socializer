@@ -11,7 +11,8 @@ module Socializer
       {
         person_id: user,
         person_employment: { employer_name: "Test Company",
-                             job_title: "Tester"
+                             job_title: "Tester",
+                             started_on: Time.zone.now.to_date
                            }
       }
     end
