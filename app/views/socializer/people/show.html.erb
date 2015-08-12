@@ -170,12 +170,7 @@
               <li>
                 <%= education.school_name %><br>
                 <%= education.major_or_field_of_study %><br>
-                <%= education.started_on.to_s(:long_ordinal) %> -
-                <% if education.current? %>
-                  present
-                <% else %>
-                  <%= education.ended_on.to_s(:long_ordinal) %>
-                <% end %>
+                <%= education.started_on_to_ended_on %>
               </li>
             <% end %>
             </ul>
@@ -209,14 +204,14 @@
             <p>
               <strong>Currently</strong>
             </p>
-            <!-- TODO: Need a decorator method-->
+            <!-- TODO: Need a decorator/model/view model(cells?) method-->
             <p><%= @person.places.current.first.try(:city_name) %></p>
           </li>
           <li>
             <p>
               <strong>Previously</strong>
             </p>
-            <!-- TODO: Need a decorator method-->
+            <!-- TODO: Need a decorator/model/view model(cells?) method-->
             <p><%= @person.places.previous.pluck(:city_name).join(" ,") %></p>
           </li>
         </ul>
