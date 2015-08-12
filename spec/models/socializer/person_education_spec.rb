@@ -23,6 +23,8 @@ module Socializer
 
     context "validations" do
       it { is_expected.to validate_presence_of(:person) }
+      it { is_expected.to validate_presence_of(:school_name) }
+      it { is_expected.to validate_presence_of(:started_on) }
     end
   end
 end

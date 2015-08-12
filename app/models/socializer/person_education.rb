@@ -16,5 +16,7 @@ module Socializer
 
     # Validations
     validates :person, presence: true
+    validates :school_name, presence: true
+    validates :started_on, presence: true
   end
 end

@@ -11,7 +11,8 @@ module Socializer
       {
         person_id: user,
         person_education: { school_name: "Test School",
-                            major_or_field_of_study: "Student"
+                            major_or_field_of_study: "Student",
+                            started_on: Time.zone.now.to_date
                           }
       }
     end
