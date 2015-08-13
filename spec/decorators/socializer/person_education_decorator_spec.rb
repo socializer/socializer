@@ -19,6 +19,37 @@ module Socializer
       end
     end
 
+    describe "formatted_education" do
+      context "with major_or_field_of_study" do
+        let(:education_value) do
+          "Hard Knocks <br>" \
+          "Slacking <br>" \
+          "#{decorated_education.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_education.formatted_education)
+            .to eq(education_value)
+        end
+      end
+
+      context "without major_or_field_of_study" do
+        let(:education) do
+          create(:person_education, major_or_field_of_study: nil)
+        end
+
+        let(:education_value) do
+          "Hard Knocks <br>" \
+          "#{decorated_education.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_education.formatted_education)
+            .to eq(education_value)
+        end
+      end
+    end
+
     describe "started_on" do
       let(:started_on) { Date.new(2012, 12, 3).to_s(:long_ordinal) }
 

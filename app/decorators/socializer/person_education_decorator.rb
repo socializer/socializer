@@ -2,7 +2,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  # Decorators for {Socializer::Person}
+  # Decorators for {Socializer::PersonEducation}
   class PersonEducationDecorator < Draper::Decorator
     delegate_all
 
@@ -35,6 +35,22 @@ module Socializer
     # @return [String]
     def started_on
       model.started_on.to_date.to_s(:long_ordinal) if model.started_on?
+    end
+
+    # Returns the formatted education
+    #
+    # @example
+    #   282 Kevin Brook
+    #   Imogeneborough, California 58517
+    #   US
+    #
+    # @return [String]
+    def formatted_education
+      education = "#{model.school_name} <br>"
+      education << "#{model.major_or_field_of_study} <br>" if model.major_or_field_of_study?
+      education << "#{started_on_to_ended_on}"
+
+      education.html_safe
     end
 
     # Returns the started_on and ended_on dates using the long_ordinal format

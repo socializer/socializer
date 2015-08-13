@@ -126,7 +126,7 @@
             <!-- TODO: Need a decorator method -->
             <% if @person.employments.present? %>
               <ul class="list-unstyled">
-              <% @person.employments.each do |employment| %>
+              <% @person.employments.decorate.each do |employment| %>
                 <li>
                   <%= employment.employer_name %><br>
                   <%= employment.job_title %><br>
@@ -161,11 +161,9 @@
           <!-- TODO: Need a decorator method -->
           <% if @person.educations.present? %>
             <ul class="list-unstyled">
-            <% @person.educations.each do |education| %>
+            <% @person.educations.decorate.each do |education| %>
               <li>
-                <%= education.school_name %><br>
-                <%= education.major_or_field_of_study %><br>
-                <%= education.started_on_to_ended_on %>
+                <%= education.formatted_education %>
               </li>
             <% end %>
             </ul>
