@@ -28,6 +28,8 @@ module Socializer
       address << "#{model.line2} <br>" if model.line2?
       address << "#{city_province_or_state_postal_code} <br>"
       address << "#{model.country}"
+
+      address.html_safe
     end
 
     # Returns the city, stat/province and postal code on one line
