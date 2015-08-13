@@ -22,8 +22,8 @@ module Socializer
 
         let(:address_value) do
           "282 Kevin Brook <br>" \
-          "Apt. 123 <br>Imogeneborough, California 58517 " \
-          "<br>US"
+          "Apt. 123 <br>Imogeneborough, California 58517 <br>" \
+          "US"
         end
 
         it do
