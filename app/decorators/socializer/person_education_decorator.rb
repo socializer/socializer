@@ -47,7 +47,11 @@ module Socializer
     # @return [String]
     def formatted_education
       education = "#{model.school_name} <br>"
-      education << "#{model.major_or_field_of_study} <br>" if model.major_or_field_of_study?
+
+      if model.major_or_field_of_study?
+        education << "#{model.major_or_field_of_study} <br>"
+      end
+
       education << "#{started_on_to_ended_on}"
 
       education.html_safe
