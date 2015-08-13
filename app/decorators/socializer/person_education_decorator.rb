@@ -40,9 +40,9 @@ module Socializer
     # Returns the formatted education
     #
     # @example
-    #   282 Kevin Brook
-    #   Imogeneborough, California 58517
-    #   US
+    #   Harvard
+    #   Economics
+    #   February 20th, 2015 - February 28th, 2015
     #
     # @return [String]
     def formatted_education
