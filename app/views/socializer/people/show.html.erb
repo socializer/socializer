@@ -128,10 +128,7 @@
               <ul class="list-unstyled">
               <% @person.employments.decorate.each do |employment| %>
                 <li>
-                  <%= employment.employer_name %><br>
-                  <%= employment.job_title %><br>
-                  <%= employment.job_description %><br>
-                  <%= employment.started_on_to_ended_on %>
+                  <%= employment.formatted_employment %>
                 </li>
               <% end %>
               </ul>

@@ -19,6 +19,71 @@ module Socializer
       end
     end
 
+    describe "formatted_employment" do
+      context "without job_title or job_description" do
+        let(:employment_value) do
+          "Some Company <br>" \
+          "#{decorated_employment.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_employment.formatted_employment)
+            .to eq(employment_value)
+        end
+      end
+
+      context "with job_title without job_description" do
+        let(:employment) { create(:person_employment, job_title: "My Title") }
+
+        let(:employment_value) do
+          "Some Company <br>" \
+          "My Title <br>" \
+          "#{decorated_employment.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_employment.formatted_employment)
+            .to eq(employment_value)
+        end
+      end
+
+      context "without job_title with job_description" do
+        let(:employment) do
+          create(:person_employment, job_description: "Description")
+        end
+
+        let(:employment_value) do
+          "Some Company <br>" \
+          "Description <br>" \
+          "#{decorated_employment.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_employment.formatted_employment)
+            .to eq(employment_value)
+        end
+      end
+
+      context "with job_title and job_description" do
+        let(:employment) do
+          create(:person_employment, job_title: "My Title",
+                                     job_description: "Description")
+        end
+
+        let(:employment_value) do
+          "Some Company <br>" \
+          "My Title <br>" \
+          "Description <br>" \
+          "#{decorated_employment.started_on_to_ended_on}"
+        end
+
+        it do
+          expect(decorated_employment.formatted_employment)
+            .to eq(employment_value)
+        end
+      end
+    end
+
     describe "started_on" do
       let(:started_on) { Date.new(2014, 12, 3).to_s(:long_ordinal) }
 

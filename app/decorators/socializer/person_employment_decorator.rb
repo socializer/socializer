@@ -27,6 +27,24 @@ module Socializer
       model.ended_on.to_date.to_s(:long_ordinal) if model.ended_on?
     end
 
+    # Returns the formatted employment
+    #
+    # @example
+    #   Employer Name
+    #   My Title
+    #   Job description
+    #   February 20th, 2015 - February 28th, 2015
+    #
+    # @return [String]
+    def formatted_employment
+      employment = "#{model.employer_name} <br>"
+      employment << job_title_with_br_or_empty
+      employment << job_description_with_br_or_empty
+      employment << "#{started_on_to_ended_on}"
+
+      employment.html_safe
+    end
+
     # Returns the started_on date using the long_ordinal format
     #
     # @example
@@ -46,6 +64,18 @@ module Socializer
     def started_on_to_ended_on
       ended = current? ? "present" : ended_on
       "#{started_on} - #{ended}"
+    end
+
+    private
+
+    def job_title_with_br_or_empty
+      return "#{model.job_title} <br>" if model.job_title?
+      ""
+    end
+
+    def job_description_with_br_or_empty
+      return "#{model.job_description} <br>" if model.job_description?
+      ""
     end
   end
 end
