@@ -10,6 +10,10 @@ fr:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Veuillez prendre en compte ces erreurs :"
+    labels:
+      person_address:
+        postal_code_or_zip: "Postal Code"
+        province_or_state: "Province"
     # Examples
     # labels:
     #   defaults:
