@@ -9,6 +9,11 @@ module Socializer
     class AddressesController < ApplicationController
       before_action :authenticate_user
 
+      # GET /groups/new
+      def new
+        @person_address = current_user.addresses.new
+      end
+
       # POST /people/1/addresses
       def create
         @person_address = addresses.create!(params[:person_address])

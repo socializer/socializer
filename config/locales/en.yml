@@ -172,6 +172,9 @@ en:
         all: All
         notifications: Notifications
     people:
+      addresses:
+        new:
+          header: New Address
       login:
         create_account: Create an account
         local_account_query: Don't use these services?

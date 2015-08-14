@@ -70,7 +70,7 @@ Socializer::Engine.routes.draw do
   resources :people, only: [:index, :show, :edit, :update] do
     resources :activities, only: [:index], controller: "people/activities"
 
-    resources :addresses, only: [:create, :update, :destroy],
+    resources :addresses, only: [:new, :create, :update, :destroy],
                           controller: "people/addresses"
 
     resources :contributions, only: [:create, :update, :destroy],

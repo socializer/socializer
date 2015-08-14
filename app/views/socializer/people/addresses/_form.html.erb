@@ -1,11 +1,11 @@
 <%= simple_form_for(person_address) do |f| %>
   <%= f.input :category, input_html: { autofocus: true } %>
-  <%= f.input :label %>
+  <%= f.input :label, hint: "Is this needed?", hint_html: { class: "text-danger" } %>
   <%= f.input :line1 %>
   <%= f.input :line2 %>
   <%= f.input :city %>
-  <%= f.input :postal_code_or_zip %>
   <%= f.input :province_or_state %>
+  <%= f.input :postal_code_or_zip %>
   <%= f.input :country %>
 
   <%= f.button :submit, class: "btn-primary action-button" %>
