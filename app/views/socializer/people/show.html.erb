@@ -314,6 +314,7 @@
         <ul class="list-unstyled">
         <!-- TODO: Create a partial -->
         <% @person.addresses.decorate.each do |address| %>
+          <!-- TODO: Need some space between <li> elements -->
           <li>
             <%= address.formatted_address %>
           </li>
