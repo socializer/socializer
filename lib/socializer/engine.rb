@@ -12,6 +12,7 @@ require "omniauth-linkedin"
 require "omniauth-openid"
 require "omniauth-twitter"
 require "simple_form"
+require "country_select"
 
 #
 # Namespace for the Socializer engine
