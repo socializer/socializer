@@ -24,6 +24,11 @@ module Socializer
     context "validations" do
       it { is_expected.to validate_presence_of(:category) }
       it { is_expected.to validate_presence_of(:person) }
+      it { is_expected.to validate_presence_of(:line1) }
+      it { is_expected.to validate_presence_of(:city) }
+      it { is_expected.to validate_presence_of(:province_or_state) }
+      it { is_expected.to validate_presence_of(:postal_code_or_zip) }
+      it { is_expected.to validate_presence_of(:country) }
     end
 
     it do

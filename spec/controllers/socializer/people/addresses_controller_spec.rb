@@ -10,7 +10,12 @@ module Socializer
     let(:valid_attributes) do
       {
         person_id: user,
-        person_address: { category: :home, postal_code_or_zip: "12345" }
+        person_address: { category: :home,
+                          line1: "282 Kevin Brook",
+                          city: "Imogeneborough",
+                          province_or_state: "California",
+                          postal_code_or_zip: "12345",
+                          country: "US" }
       }
     end
 
