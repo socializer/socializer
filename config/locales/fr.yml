@@ -173,6 +173,8 @@ fr:
         notifications: Notifications
     people:
       addresses:
+        edit:
+          header: Edit Address
         new:
           header: New Address
       login:

@@ -18,8 +18,10 @@ module Socializer
         expect(get: "/people/1/addresses/1/show").to_not be_routable
       end
 
-      it "does not route to #edit" do
-        expect(get: "/people/1/addresses/1/edit").to_not be_routable
+      it "routes to #edit" do
+        expect(get: "/people/1/addresses/1/edit")
+          .to route_to("socializer/people/addresses#edit",
+                       person_id: "1", id: "1")
       end
 
       it "routes to #create" do
@@ -35,18 +37,14 @@ module Socializer
             id: "1")
 
         expect(put: "/people/1/addresses/1")
-          .to route_to(
-            "socializer/people/addresses#update",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/addresses#update",
+                       person_id: "1", id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/people/1/addresses/1")
-          .to route_to(
-            "socializer/people/addresses#destroy",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/addresses#destroy",
+                       person_id: "1", id: "1")
       end
     end
   end

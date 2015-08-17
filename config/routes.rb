@@ -67,11 +67,17 @@ Socializer::Engine.routes.draw do
   resources :notes, except: [:index, :show]
   resources :notifications, only: [:index, :show]
 
+  # TODO: Enable shallow routes
   resources :people, only: [:index, :show, :edit, :update] do
     resources :activities, only: [:index], controller: "people/activities"
 
-    resources :addresses, only: [:new, :create, :update, :destroy],
-                          controller: "people/addresses"
+    resources :person_addresses, except: [:index, :show],
+                                 controller: "people/addresses",
+                                 path: "addresses"
+
+    # TODO: See if this works with namespaced models
+    # resources :addresses, except: [:index, :show],
+    #                       controller: "people/addresses"
 
     resources :contributions, only: [:create, :update, :destroy],
                               controller: "people/contributions"

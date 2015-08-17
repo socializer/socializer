@@ -9,9 +9,14 @@ module Socializer
     class AddressesController < ApplicationController
       before_action :authenticate_user
 
-      # GET /groups/new
+      # GET /people/1/addresses/new
       def new
         @person_address = current_user.addresses.new
+      end
+
+      # GET /people/1/addresses/1/edit
+      def edit
+        @person_address = find_person_address
       end
 
       # POST /people/1/addresses
