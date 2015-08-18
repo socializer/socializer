@@ -46,7 +46,7 @@ module Socializer
                          foreign_key: "person_id",
                          dependent: :destroy
 
-    has_many :contributions, class_name: "PersonContribution",
+    has_many :contributions, class_name: "Person::Contribution",
                              foreign_key: "person_id",
                              dependent: :destroy
 
