@@ -71,6 +71,8 @@ Socializer::Engine.routes.draw do
   resources :people, only: [:index, :show, :edit, :update] do
     resources :activities, only: [:index], controller: "people/activities"
 
+    # TODO: Should these be nested under people since they act on current user?
+    #       maybe namespace under profile?
     resources :person_addresses, except: [:index, :show],
                                  controller: "people/addresses",
                                  path: "addresses"

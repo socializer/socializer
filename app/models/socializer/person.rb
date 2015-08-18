@@ -42,7 +42,7 @@ module Socializer
 
     # Relationships
     has_many :authentications
-    has_many :addresses, class_name: "PersonAddress",
+    has_many :addresses, class_name: "Person::Address",
                          foreign_key: "person_id",
                          dependent: :destroy
 

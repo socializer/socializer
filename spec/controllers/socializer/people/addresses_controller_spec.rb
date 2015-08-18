@@ -78,8 +78,8 @@ module Socializer
           get :new, person_id: user
         end
 
-        it "assigns a new Group to @group" do
-          expect(assigns(:person_address)).to be_a_new(PersonAddress)
+        it "assigns a new Person::Address to @person_address" do
+          expect(assigns(:person_address)).to be_a_new(Person::Address)
         end
 
         it "renders the :new template" do
@@ -91,7 +91,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new address in the database" do
             expect { post :create, valid_attributes }
-              .to change(PersonAddress, :count).by(1)
+              .to change(Person::Address, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -136,7 +136,7 @@ module Socializer
         it "deletes the address" do
           address
           expect { delete :destroy, id: address, person_id: user }
-            .to change(PersonAddress, :count).by(-1)
+            .to change(Person::Address, :count).by(-1)
         end
 
         it "redirects to people#show" do

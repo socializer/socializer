@@ -2,9 +2,9 @@ require "rails_helper"
 include Socializer::Engine.routes.url_helpers
 
 module Socializer
-  RSpec.describe PersonAddressDecorator, type: :decorator do
+  RSpec.describe Person::AddressDecorator, type: :decorator do
     let(:address) { create(:person_address) }
-    let(:decorated_address) { PersonAddressDecorator.new(address) }
+    let(:decorated_address) { Person::AddressDecorator.new(address) }
 
     describe "formatted_address" do
       context "without line2" do
