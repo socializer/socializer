@@ -50,11 +50,10 @@ module Socializer
                              foreign_key: "person_id",
                              dependent: :destroy
 
-    has_many :educations, class_name: "PersonEducation",
                           foreign_key: "person_id",
                           dependent: :destroy
 
-    has_many :employments, class_name: "PersonEmployment",
+    has_many :employments, class_name: "Person::Employment",
                            foreign_key: "person_id",
                            dependent: :destroy
 

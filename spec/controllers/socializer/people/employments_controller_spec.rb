@@ -61,7 +61,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new employment in the database" do
             expect { post :create, valid_attributes }
-              .to change(PersonEmployment, :count).by(1)
+              .to change(Person::Employment, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -92,7 +92,7 @@ module Socializer
         it "deletes the employment" do
           employment
           expect { delete :destroy, id: employment, person_id: user }
-            .to change(PersonEmployment, :count).by(-1)
+            .to change(Person::Employment, :count).by(-1)
         end
 
         it "redirects to people#show" do
