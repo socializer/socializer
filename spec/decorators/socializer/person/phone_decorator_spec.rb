@@ -2,9 +2,9 @@ require "rails_helper"
 include Socializer::Engine.routes.url_helpers
 
 module Socializer
-  RSpec.describe PersonPhoneDecorator, type: :decorator do
+  RSpec.describe Person::PhoneDecorator, type: :decorator do
     let(:phone) { create(:person_phone, label: :phone) }
-    let(:decorated_phone) { PersonPhoneDecorator.new(phone) }
+    let(:decorated_phone) { Person::PhoneDecorator.new(phone) }
 
     describe "label_and_number" do
       let(:label) { "Phone : 6666666666" }

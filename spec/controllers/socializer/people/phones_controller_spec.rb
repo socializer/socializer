@@ -57,7 +57,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new phone in the database" do
             expect { post :create, valid_attributes }
-              .to change(PersonPhone, :count).by(1)
+              .to change(Person::Phone, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -88,7 +88,7 @@ module Socializer
         it "deletes the phone" do
           phone
           expect { delete :destroy, id: phone, person_id: user }
-            .to change(PersonPhone, :count).by(-1)
+            .to change(Person::Phone, :count).by(-1)
         end
 
         it "redirects to people#show" do
