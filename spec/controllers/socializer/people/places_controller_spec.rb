@@ -57,7 +57,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new place in the database" do
             expect { post :create, valid_attributes }
-              .to change(PersonPlace, :count).by(1)
+              .to change(Person::Place, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -88,7 +88,7 @@ module Socializer
         it "deletes the place" do
           place
           expect { delete :destroy, id: place, person_id: user }
-            .to change(PersonPlace, :count).by(-1)
+            .to change(Person::Place, :count).by(-1)
         end
 
         it "redirects to people#show" do

@@ -66,7 +66,7 @@ module Socializer
                       foreign_key: "person_id",
                       dependent: :destroy
 
-    has_many :places, class_name: "PersonPlace",
+    has_many :places, class_name: "Person::Place",
                       foreign_key: "person_id",
                       dependent: :destroy
 

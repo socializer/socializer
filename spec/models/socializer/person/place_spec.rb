@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe PersonPlace, type: :model do
+  RSpec.describe Person::Place, type: :model do
     let(:person_place) { build(:person_place) }
 
     it "has a valid factory" do
@@ -30,11 +30,11 @@ module Socializer
 
         context "with only current record" do
           it "current.present? should be true" do
-            expect(PersonPlace.current.present?).to eq(true)
+            expect(Person::Place.current.present?).to eq(true)
           end
 
           it "previous.empty? should be true" do
-            expect(PersonPlace.previous.empty?).to eq(true)
+            expect(Person::Place.previous.empty?).to eq(true)
           end
         end
 
@@ -44,11 +44,11 @@ module Socializer
           before { not_current_place }
 
           it "current.present? should be true" do
-            expect(PersonPlace.current.present?).to eq(true)
+            expect(Person::Place.current.present?).to eq(true)
           end
 
           it "previous.present? should be true" do
-            expect(PersonPlace.previous.present?).to eq(true)
+            expect(Person::Place.previous.present?).to eq(true)
           end
         end
       end
