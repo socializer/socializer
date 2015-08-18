@@ -4,7 +4,7 @@
 module Socializer
   # Namespace for decorators related to the Person model
   class Person
-    # Decorators for {Socializer::Person}
+    # Decorators for {Socializer::Person::Address}
     class AddressDecorator < Draper::Decorator
       delegate_all
 

@@ -1,9 +1,9 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe PersonEducationDecorator, type: :decorator do
+  RSpec.describe Person::EducationDecorator, type: :decorator do
     let(:education) { create(:person_education) }
-    let(:decorated_education) { PersonEducationDecorator.new(education) }
+    let(:decorated_education) { Person::EducationDecorator.new(education) }
 
     describe "ended_on" do
       context "is nil" do

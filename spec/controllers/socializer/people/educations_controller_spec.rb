@@ -61,7 +61,7 @@ module Socializer
         context "with valid attributes" do
           it "saves the new education in the database" do
             expect { post :create, valid_attributes }
-              .to change(PersonEducation, :count).by(1)
+              .to change(Person::Education, :count).by(1)
           end
 
           it "redirects to people#show" do
@@ -92,7 +92,7 @@ module Socializer
         it "deletes the education" do
           education
           expect { delete :destroy, id: education, person_id: user }
-            .to change(PersonEducation, :count).by(-1)
+            .to change(Person::Education, :count).by(-1)
         end
 
         it "redirects to people#show" do

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe PersonEducation, type: :model do
+  RSpec.describe Person::Education, type: :model do
     let(:person_education) { build(:person_education) }
 
     it "has a valid factory" do
