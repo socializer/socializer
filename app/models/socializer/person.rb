@@ -70,7 +70,7 @@ module Socializer
                       foreign_key: "person_id",
                       dependent: :destroy
 
-    has_many :profiles, class_name: "PersonProfile",
+    has_many :profiles, class_name: "Person::Profile",
                         foreign_key: "person_id",
                         dependent: :destroy
 
