@@ -10,7 +10,12 @@ module Socializer
     # Links to content that {Socializer::Person person} has contributed to
     #
     class Contribution < ActiveRecord::Base
-      attr_accessible :label, :url, :current
+      extend Enumerize
+
+      enumerize :label, in: { current_contributor: 1, past_contributor: 2 },
+                        default: :current_contributor, predicates: true,
+                        scope: true
+
 
       # Relationships
       belongs_to :person

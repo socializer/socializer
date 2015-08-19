@@ -10,7 +10,8 @@ module Socializer
     let(:valid_attributes) do
       {
         person_id: user,
-        person_contribution: { label: "test", url: "http://test.org" }
+        person_contribution: { label: :current_contributor,
+                               url: "http://test.org" }
       }
     end
 
@@ -21,7 +22,7 @@ module Socializer
     let(:update_attributes) do
       { id: contribution,
         person_id: user,
-        person_contribution: { label: "updated content" }
+        person_contribution: { label: :past_contributor }
       }
     end
 

@@ -23,5 +23,11 @@ module Socializer
       it { is_expected.to validate_presence_of(:person) }
       it { is_expected.to validate_presence_of(:url) }
     end
+
+    it do
+      is_expected.to enumerize(:label)
+        .in(:current_contributor, :past_contributor)
+        .with_default(:current_contributor)
+    end
   end
 end
