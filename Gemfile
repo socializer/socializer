@@ -3,7 +3,7 @@ source "http://rubygems.org"
 gemspec
 
 group :development do
-  gem "coffeelint", "~> 1.10.0"
+  gem "coffeelint", "~> 1.11.0"
 end
 
 group :test do
