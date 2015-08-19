@@ -75,9 +75,8 @@ module Socializer
           get :new, person_id: user
         end
 
-        it "assigns a new Person::Contribution to @person_contribution" do
-          expect(assigns(:person_contribution))
-            .to be_a_new(Person::Contribution)
+        it "assigns a new Person::Contribution to @contribution" do
+          expect(assigns(:contribution)).to be_a_new(Person::Contribution)
         end
 
         it "renders the :new template" do
@@ -108,8 +107,8 @@ module Socializer
           get :edit, id: contribution, person_id: user
         end
 
-        it "assigns the requested contribution to @person_contribution" do
-          expect(assigns(:person_contribution)).to eq contribution
+        it "assigns the requested contribution to @contribution" do
+          expect(assigns(:contribution)).to eq contribution
         end
 
         it "renders the :edit template" do
