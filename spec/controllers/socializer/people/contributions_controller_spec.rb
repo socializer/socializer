@@ -10,8 +10,9 @@ module Socializer
     let(:valid_attributes) do
       {
         person_id: user,
-        person_contribution: { label: :current_contributor,
-                               url: "http://test.org" }
+        person_contribution: { display_name: "My Test",
+                               url: "http://test.org",
+                               label: :current_contributor }
       }
     end
 

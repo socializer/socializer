@@ -1,6 +1,7 @@
 <%= simple_form_for(contribution) do |f| %>
-  <%= f.input :label, input_html: { autofocus: true } %>
+  <%= f.input :display_name %>
   <%= f.input :url %>
+  <%= f.input :label, input_html: { autofocus: true } %>
   <%= f.input :current %>
 
   <%= f.button :submit, class: "btn-primary action-button" %>

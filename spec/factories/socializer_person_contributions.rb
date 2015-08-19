@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :person_contribution, class: Socializer::Person::Contribution do
-    label :current_contributor
+    sequence(:display_name) { |n| "Contribution #{n}" }
     url "http://test.org"
+    label :current_contributor
     association :person, factory: :person
   end
 end
