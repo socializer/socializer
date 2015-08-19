@@ -26,7 +26,7 @@ module Socializer
                      source: :activitable,
                      source_type: "Socializer::Person"
 
-    has_many :links, class_name: "GroupLink",
+    has_many :links, class_name: "Group::Link",
                      foreign_key: "group_id",
                      dependent: :destroy
 
