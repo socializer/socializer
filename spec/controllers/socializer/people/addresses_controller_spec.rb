@@ -78,8 +78,8 @@ module Socializer
           get :new, person_id: user
         end
 
-        it "assigns a new Person::Address to @person_address" do
-          expect(assigns(:person_address)).to be_a_new(Person::Address)
+        it "assigns a new Person::Address to @address" do
+          expect(assigns(:address)).to be_a_new(Person::Address)
         end
 
         it "renders the :new template" do
@@ -110,8 +110,8 @@ module Socializer
           get :edit, id: address, person_id: user
         end
 
-        it "assigns the requested person_address to @person_address" do
-          expect(assigns(:person_address)).to eq address
+        it "assigns the requested address to @address" do
+          expect(assigns(:address)).to eq address
         end
 
         it "renders the :edit template" do
