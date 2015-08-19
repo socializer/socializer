@@ -30,7 +30,7 @@ module Socializer
                      foreign_key: "group_id",
                      dependent: :destroy
 
-    has_many :categories, class_name: "GroupCategory",
+    has_many :categories, class_name: "Group::Category",
                           foreign_key: "group_id",
                           dependent: :destroy
 
