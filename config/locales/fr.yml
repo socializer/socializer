@@ -177,6 +177,9 @@ fr:
           header: Edit Address
         new:
           header: New Address
+      contributions:
+        new:
+          header: New Contribution
       login:
         create_account: Créer un compte
         local_account_query: Vous n'utilisez pas ces services?

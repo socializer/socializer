@@ -9,6 +9,11 @@ module Socializer
     class ContributionsController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/contributions/new
+      def new
+        @person_contribution = current_user.contributions.new
+      end
+
       # POST /people/1/contributions
       def create
         @person_contribution = create_person_contribution
