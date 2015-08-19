@@ -1,4 +1,4 @@
-<%= simple_form_for(contribution) do |f| %>
+<%= simple_form_for([person, contribution]) do |f| %>
   <%= f.input :display_name %>
   <%= f.input :url %>
   <%= f.input :label, input_html: { autofocus: true } %>

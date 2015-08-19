@@ -14,6 +14,11 @@ module Socializer
         @person_contribution = current_user.contributions.new
       end
 
+      # GET /people/1/addresses/1/edit
+      def edit
+        @person_contribution = find_person_contribution
+      end
+
       # POST /people/1/contributions
       def create
         @person_contribution = create_person_contribution

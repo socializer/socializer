@@ -42,6 +42,13 @@ module Socializer
         end
       end
 
+      describe "GET #edit" do
+        it "requires login" do
+          get :edit, id: contribution, person_id: user
+          expect(response).to redirect_to root_path
+        end
+      end
+
       describe "PATCH #update" do
         it "requires login" do
           patch :update, update_attributes
@@ -93,6 +100,20 @@ module Socializer
 
         context "with invalid attributes" do
           it "is a pending example"
+        end
+      end
+
+      describe "GET #edit" do
+        before do
+          get :edit, id: contribution, person_id: user
+        end
+
+        it "assigns the requested contribution to @person_contribution" do
+          expect(assigns(:person_contribution)).to eq contribution
+        end
+
+        it "renders the :edit template" do
+          expect(response).to render_template :edit
         end
       end
 

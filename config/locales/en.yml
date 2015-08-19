@@ -178,6 +178,8 @@ en:
         new:
           header: New Address
       contributions:
+        edit:
+          header: Edit Contribution
         new:
           header: New Contribution
       login:

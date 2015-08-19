@@ -110,7 +110,7 @@ module Socializer
           get :edit, id: address, person_id: user
         end
 
-        it "assigns the requested group to @group" do
+        it "assigns the requested person_address to @person_address" do
           expect(assigns(:person_address)).to eq address
         end
 
