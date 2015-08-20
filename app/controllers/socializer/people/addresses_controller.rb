@@ -11,7 +11,7 @@ module Socializer
 
       # GET /people/1/addresses/new
       def new
-        @address = current_user.addresses.new
+        @address = addresses.new
       end
 
       # GET /people/1/addresses/1/edit
