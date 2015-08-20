@@ -2,10 +2,10 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Person::Education, type: :model do
-    let(:person_education) { build(:person_education) }
+    let(:education) { build(:person_education) }
 
     it "has a valid factory" do
-      expect(person_education).to be_valid
+      expect(education).to be_valid
     end
 
     context "mass assignment" do

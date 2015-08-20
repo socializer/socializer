@@ -11,28 +11,28 @@ module Socializer
 
       # GET /people/1/educations/new
       def new
-        @person_education = educations.new
+        @education = educations.new
       end
 
       # POST /people/1/educations
       def create
-        @person_education = educations.create!(params[:person_education])
+        @education = educations.create!(params[:person_education])
 
         redirect_to current_user
       end
 
       # PATCH/PUT /people/1/educations/1
       def update
-        @person_education = find_person_education
-        @person_education.update!(params[:person_education])
+        @education = find_education
+        @education.update!(params[:person_education])
 
         redirect_to current_user
       end
 
       # DELETE /people/1/educations/1
       def destroy
-        @person_education = find_person_education
-        @person_education.destroy
+        @education = find_education
+        @education.destroy
 
         redirect_to current_user
       end
@@ -43,7 +43,7 @@ module Socializer
         @educations ||= current_user.educations
       end
 
-      def find_person_education
+      def find_education
         current_user.educations.find_by(id: params[:id])
       end
     end

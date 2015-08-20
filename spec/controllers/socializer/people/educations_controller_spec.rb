@@ -69,8 +69,8 @@ module Socializer
           get :new, person_id: user
         end
 
-        it "assigns a new Person::Education to @person_education" do
-          expect(assigns(:person_education)).to be_a_new(Person::Education)
+        it "assigns a new Person::Education to @education" do
+          expect(assigns(:education)).to be_a_new(Person::Education)
         end
 
         it "renders the :new template" do
