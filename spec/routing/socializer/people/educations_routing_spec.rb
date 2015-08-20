@@ -10,7 +10,8 @@ module Socializer
       end
 
       it "does not route to #new" do
-        expect(get: "/people/1/educations/new").to_not be_routable
+        expect(get: "/people/1/educations/new")
+          .to route_to("socializer/people/educations#new", person_id: "1")
       end
 
       it "does not route to #show" do

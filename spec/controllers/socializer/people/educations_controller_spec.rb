@@ -29,6 +29,13 @@ module Socializer
     end
 
     describe "when not logged in" do
+      describe "GET #new" do
+        it "requires login" do
+          get :new, person_id: user
+          expect(response).to redirect_to root_path
+        end
+      end
+
       describe "POST #create" do
         it "requires login" do
           post :create, person_education: valid_attributes, person_id: user
@@ -56,6 +63,20 @@ module Socializer
       before { cookies.signed[:user_id] = user.guid }
 
       it { should use_before_action(:authenticate_user) }
+
+      describe "GET #new" do
+        before do
+          get :new, person_id: user
+        end
+
+        it "assigns a new Person::Education to @person_education" do
+          expect(assigns(:person_education)).to be_a_new(Person::Education)
+        end
+
+        it "renders the :new template" do
+          expect(response).to render_template :new
+        end
+      end
 
       describe "POST #create" do
         context "with valid attributes" do

@@ -85,8 +85,9 @@ Socializer::Engine.routes.draw do
                                      controller: "people/contributions",
                                      path: "contributions"
 
-    resources :educations, only: [:create, :update, :destroy],
-                           controller: "people/educations"
+    resources :person_educations, except: [:index, :show, :edit],
+                                  controller: "people/educations",
+                                  path: "educations"
 
     resources :employments, only: [:create, :update, :destroy],
                             controller: "people/employments"

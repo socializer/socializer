@@ -9,6 +9,11 @@ module Socializer
     class EducationsController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/educations/new
+      def new
+        @person_education = educations.new
+      end
+
       # POST /people/1/educations
       def create
         @person_education = educations.create!(params[:person_education])

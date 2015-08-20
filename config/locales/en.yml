@@ -182,6 +182,9 @@ en:
           header: Edit Contribution
         new:
           header: New Contribution
+      educations:
+        new:
+          header: New Education
       login:
         create_account: Create an account
         local_account_query: Don't use these services?
