@@ -381,7 +381,10 @@
           <!-- TODO: Create a partial -->
           <% @person.contributions.each do |contribution| %>
             <li>
-              <%= link_to(contribution.label, contribution.url) %>
+              <span class="pull-right">
+                <%= link_to("Edit", edit_person_person_contribution_path(@person, contribution)) %>
+              </span>
+              <%= link_to(contribution.display_name, contribution.url) %>
             </li>
           <% end %>
           </ul>
