@@ -14,6 +14,11 @@ module Socializer
         @education = educations.new
       end
 
+      # GET /people/1/educations/1/edit
+      def edit
+        @education = find_education
+      end
+
       # POST /people/1/educations
       def create
         @education = educations.create!(params[:person_education])

@@ -183,6 +183,8 @@ fr:
         new:
           header: New Contribution
       educations:
+        edit:
+          header: Edit Education
         new:
           header: New Education
       login:
