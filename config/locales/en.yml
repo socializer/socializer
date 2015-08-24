@@ -187,6 +187,9 @@ en:
           header: Edit Education
         new:
           header: New Education
+      employments:
+        new:
+          header: New Employment
       login:
         create_account: Create an account
         local_account_query: Don't use these services?

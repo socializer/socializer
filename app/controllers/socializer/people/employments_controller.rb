@@ -9,6 +9,11 @@ module Socializer
     class EmploymentsController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/employments/new
+      def new
+        @employment = employments.new
+      end
+
       # POST /people/1/employments
       def create
         @person_employment = employments.create!(params[:person_employment])
