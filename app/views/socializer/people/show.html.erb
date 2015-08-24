@@ -128,6 +128,9 @@
               <ul class="list-unstyled">
               <% @person.employments.decorate.each do |employment| %>
                 <li>
+                  <span class="pull-right">
+                    <%= link_to("Edit", edit_person_person_employment_path(@person, employment)) %>
+                  </span>
                   <%= employment.formatted_employment %>
                 </li>
               <% end %>

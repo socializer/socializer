@@ -14,6 +14,11 @@ module Socializer
         @employment = employments.new
       end
 
+      # GET /people/1/addresses/1/edit
+      def edit
+        @employment = find_person_employment
+      end
+
       # POST /people/1/employments
       def create
         @person_employment = employments.create!(params[:person_employment])

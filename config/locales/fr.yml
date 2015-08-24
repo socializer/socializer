@@ -188,6 +188,8 @@ fr:
         new:
           header: New Education
       employments:
+        edit:
+          header: Edit Employment
         new:
           header: New Employment
       login:
