@@ -21,23 +21,23 @@ module Socializer
 
       # POST /people/1/employments
       def create
-        @person_employment = employments.create!(params[:person_employment])
+        @employment = employments.create!(params[:person_employment])
 
         redirect_to current_user
       end
 
       # PATCH/PUT /people/1/employments/1
       def update
-        @person_employment = find_employment
-        @person_employment.update!(params[:person_employment])
+        @employment = find_employment
+        @employment.update!(params[:person_employment])
 
         redirect_to current_user
       end
 
       # DELETE /people/1/employments/1
       def destroy
-        @person_employment = find_employment
-        @person_employment.destroy
+        @employment = find_employment
+        @employment.destroy
 
         redirect_to current_user
       end
