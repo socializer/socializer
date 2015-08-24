@@ -16,7 +16,7 @@ module Socializer
 
       # GET /people/1/addresses/1/edit
       def edit
-        @employment = find_person_employment
+        @employment = find_employment
       end
 
       # POST /people/1/employments
@@ -28,7 +28,7 @@ module Socializer
 
       # PATCH/PUT /people/1/employments/1
       def update
-        @person_employment = find_person_employment
+        @person_employment = find_employment
         @person_employment.update!(params[:person_employment])
 
         redirect_to current_user
@@ -36,7 +36,7 @@ module Socializer
 
       # DELETE /people/1/employments/1
       def destroy
-        @person_employment = find_person_employment
+        @person_employment = find_employment
         @person_employment.destroy
 
         redirect_to current_user
@@ -48,7 +48,7 @@ module Socializer
         @employments ||= current_user.employments
       end
 
-      def find_person_employment
+      def find_employment
         current_user.employments.find_by(id: params[:id])
       end
     end
