@@ -93,8 +93,9 @@ Socializer::Engine.routes.draw do
                                    controller: "people/employments",
                                    path: "employments"
 
-    resources :links, only: [:create, :update, :destroy],
-                      controller: "people/links"
+    resources :person_links, except: [:index, :show, :edit],
+                             controller: "people/links",
+                             path: "links"
 
     resources :phones, only: [:create, :update, :destroy],
                        controller: "people/phones"

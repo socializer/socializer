@@ -9,6 +9,11 @@ module Socializer
     class LinksController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/links/new
+      def new
+        @link = links.new
+      end
+
       # POST /people/1/links
       def create
         @link = links.create!(params[:person_link])

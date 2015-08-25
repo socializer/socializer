@@ -192,6 +192,9 @@ fr:
           header: Edit Employment
         new:
           header: New Employment
+      links:
+        new:
+          header: New Link
       login:
         create_account: Créer un compte
         local_account_query: Vous n'utilisez pas ces services?
