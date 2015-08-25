@@ -11,7 +11,7 @@ module Socializer
 
       # POST /people/1/phones
       def create
-        @phone = current_user.phones.create!(params[:person_phone])
+        @phone = phones.create!(params[:person_phone])
 
         redirect_to current_user
       end
@@ -33,6 +33,10 @@ module Socializer
       end
 
       private
+
+      def phones
+        @phones ||= current_user.phones
+      end
 
       def find_phone
         current_user.phones.find_by(id: params[:id])
