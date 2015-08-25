@@ -18,7 +18,7 @@ module Socializer
 
       # PATCH/PUT /people/1/phones/1
       def update
-        @phone = find_person_phone
+        @phone = find_phone
         @phone.update!(params[:person_phone])
 
         redirect_to current_user
@@ -26,7 +26,7 @@ module Socializer
 
       # DELETE /people/1/phones/1
       def destroy
-        @phone = find_person_phone
+        @phone = find_phone
         @phone.destroy
 
         redirect_to current_user
@@ -34,7 +34,7 @@ module Socializer
 
       private
 
-      def find_person_phone
+      def find_phone
         current_user.phones.find_by(id: params[:id])
       end
     end
