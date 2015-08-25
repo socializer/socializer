@@ -10,6 +10,7 @@ module Socializer
     # URLs that are interesting to the {Socializer::Person person}
     #
     class Link < ActiveRecord::Base
+      # TODO: Rename label to display_name
       attr_accessible :label, :url
 
       # Relationships
