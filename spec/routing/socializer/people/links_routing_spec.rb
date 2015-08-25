@@ -18,8 +18,10 @@ module Socializer
         expect(get: "/people/1/links/1/show").to_not be_routable
       end
 
-      it "does not route to #edit" do
-        expect(get: "/people/1/links/1/edit").to_not be_routable
+      it "routes to #edit" do
+        expect(get: "/people/1/links/1/edit")
+          .to route_to("socializer/people/links#edit",
+                       person_id: "1", id: "1")
       end
 
       it "routes to #create" do

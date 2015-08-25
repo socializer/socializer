@@ -14,6 +14,11 @@ module Socializer
         @link = links.new
       end
 
+      # GET /people/1/links/1/edit
+      def edit
+        @link = find_link
+      end
+
       # POST /people/1/links
       def create
         @link = links.create!(params[:person_link])

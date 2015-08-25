@@ -193,6 +193,8 @@ en:
         new:
           header: New Employment
       links:
+        edit:
+          header: Edit Link
         new:
           header: New Link
       login:

@@ -410,6 +410,9 @@
           <!-- TODO: Create a partial -->
           <% @person.links.each do |link| %>
             <li>
+              <span class="pull-right">
+                <%= link_to("Edit", edit_person_person_link_path(@person, link)) %>
+              </span>
               <%= link_to(link.label, link.url) %>
             </li>
           <% end %>
