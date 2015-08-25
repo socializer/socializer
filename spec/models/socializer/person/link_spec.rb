@@ -2,10 +2,10 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Person::Link, type: :model do
-    let(:person_link) { build(:person_link) }
+    let(:link) { build(:person_link) }
 
     it "has a valid factory" do
-      expect(person_link).to be_valid
+      expect(link).to be_valid
     end
 
     context "mass assignment" do
