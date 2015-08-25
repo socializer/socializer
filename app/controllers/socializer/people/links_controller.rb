@@ -11,7 +11,7 @@ module Socializer
 
       # POST /people/1/links
       def create
-        @link = current_user.links.create!(params[:person_link])
+        @link = links.create!(params[:person_link])
 
         redirect_to current_user
       end
@@ -33,6 +33,10 @@ module Socializer
       end
 
       private
+
+      def links
+        @links ||= current_user.links
+      end
 
       def find_link
         current_user.links.find_by(id: params[:id])
