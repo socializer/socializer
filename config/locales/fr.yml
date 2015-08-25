@@ -197,6 +197,9 @@ fr:
           header: Edit Link
         new:
           header: New Link
+      phones:
+        new:
+          header: New Phone
       login:
         create_account: Créer un compte
         local_account_query: Vous n'utilisez pas ces services?

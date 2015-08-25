@@ -9,6 +9,11 @@ module Socializer
     class PhonesController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/phones/new
+      def new
+        @phone = phones.new
+      end
+
       # POST /people/1/phones
       def create
         @phone = phones.create!(params[:person_phone])
