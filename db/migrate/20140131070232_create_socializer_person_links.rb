@@ -1,9 +1,9 @@
 class CreateSocializerPersonLinks < ActiveRecord::Migration
   def change
     create_table :socializer_person_links do |t|
-      t.integer  :person_id, null: false
-      t.string   :label
+      t.string   :display_name, null: false
       t.string   :url
+      t.integer  :person_id, null: false
 
       t.timestamps null: false
     end

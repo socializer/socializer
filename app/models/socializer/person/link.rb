@@ -10,14 +10,13 @@ module Socializer
     # URLs that are interesting to the {Socializer::Person person}
     #
     class Link < ActiveRecord::Base
-      # TODO: Rename label to display_name
-      attr_accessible :label, :url
+      attr_accessible :display_name, :url
 
       # Relationships
       belongs_to :person
 
       # Validations
-      validates :label, presence: true
+      validates :display_name, presence: true
       validates :person, presence: true
       validates :url, presence: true
     end
