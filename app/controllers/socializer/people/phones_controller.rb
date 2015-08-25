@@ -11,23 +11,23 @@ module Socializer
 
       # POST /people/1/phones
       def create
-        @person_phone = current_user.phones.create!(params[:person_phone])
+        @phone = current_user.phones.create!(params[:person_phone])
 
         redirect_to current_user
       end
 
       # PATCH/PUT /people/1/phones/1
       def update
-        @person_phone = find_person_phone
-        @person_phone.update!(params[:person_phone])
+        @phone = find_person_phone
+        @phone.update!(params[:person_phone])
 
         redirect_to current_user
       end
 
       # DELETE /people/1/phones/1
       def destroy
-        @person_phone = find_person_phone
-        @person_phone.destroy
+        @phone = find_person_phone
+        @phone.destroy
 
         redirect_to current_user
       end
