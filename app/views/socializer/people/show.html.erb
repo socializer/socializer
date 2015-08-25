@@ -338,6 +338,9 @@
         <!-- TODO: Create a partial -->
         <% @person.phones.each do |phone| %>
           <li>
+            <span class="pull-right">
+              <%= link_to("Edit", edit_person_person_phone_path(@person, phone)) %>
+            </span>
             <%= phone.label_and_number %>
           </li>
         <% end %>

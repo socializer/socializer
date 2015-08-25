@@ -198,6 +198,8 @@ fr:
         new:
           header: New Link
       phones:
+        edit:
+          header: Edit Phone
         new:
           header: New Phone
       login:

@@ -1,4 +1,4 @@
-<%= simple_form_for(phone) do |f| %>
+<%= simple_form_for([person, phone]) do |f| %>
   <%= f.input :label, input_html: { autofocus: true } %>
   <%= f.input :number %>
   <%= f.input :category %>

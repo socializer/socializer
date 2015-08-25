@@ -14,6 +14,11 @@ module Socializer
         @phone = phones.new
       end
 
+      # GET /people/1/phones/1/edit
+      def edit
+        @phone = find_phone
+      end
+
       # POST /people/1/phones
       def create
         @phone = phones.create!(params[:person_phone])
