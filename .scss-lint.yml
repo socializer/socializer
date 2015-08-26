@@ -414,6 +414,10 @@ linters:
   SpaceAfterPropertyName:
     enabled: true
 
+  SpaceAroundOperator:
+    enabled: true
+    style: one_space # or 'no_space'
+
   SpaceBeforeBrace:
     enabled: true
     style: space
@@ -431,6 +435,9 @@ linters:
     enabled: true
 
   TrailingZero:
+    enabled: false
+
+  TransitionAll:
     enabled: false
 
   UnnecessaryMantissa:
