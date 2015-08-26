@@ -47,7 +47,7 @@ a {
 //
 // Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
 .img-thumbnail {
-  @include box-shadow(0 0 0 1px #aaaaaa);
+  @include box-shadow(0 0 0 1px #aaa);
   @include transition(none);
   // Keep them at most 100% wide
   @include img-responsive(inline-block);
