@@ -215,7 +215,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-masthead .navbar-nav {
-  margin: floor(($navbar-masthead-padding-vertical / 2)) -$navbar-masthead-padding-horizontal;
+  margin: floor(($navbar-masthead-padding-vertical / 2)) - $navbar-masthead-padding-horizontal;
 
   // > li > a {
   //   padding-top:    10px;
