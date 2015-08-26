@@ -42,8 +42,8 @@ $media-font-size-h2: $font-size-base;
   img {
     display: block;
     width: $media-image-width;
-    height: auto;
     max-width: none;
+    height: auto;
     border-radius: $border-radius-base;
   }
 

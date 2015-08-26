@@ -166,9 +166,9 @@ input[type="checkbox"],
 
   &:active {
     background-color: #ebebeb;
-    border-color: #c6c6c6;
     // override the bkgd color for IE
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffffff", endColorstr="#ffffffff", GradientType=0);
+    border-color: #c6c6c6;
   }
 
   &:checked {
@@ -190,9 +190,9 @@ input[type="radio"],
     display: block;
     width: 7px;
     height: 7px;
+    content: "";
     background: #666;
     border-radius: 1em;
-    content: "";
   }
 }
 

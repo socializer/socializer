@@ -52,8 +52,8 @@ a.list-group-item {
     font-weight: bold;
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
-    border-left: 4px solid $list-group-active-color;
     border-color: $list-group-active-border;
+    border-left: 4px solid $list-group-active-color;
     border-left-color: $list-group-active-color;
 
     .list-group-item-text {
@@ -219,8 +219,8 @@ li.list-group-header {
     top: 12px;
     left: 5px;
     margin-left: 0;
-    border-bottom: 0 dotted;
     content: "";
+    border-bottom: 0 dotted;
   }
 
   &:hover {
