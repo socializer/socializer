@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_link
-        current_user.links.find_by(id: params[:id])
+        links.find_by(id: params[:id])
       end
     end
   end
