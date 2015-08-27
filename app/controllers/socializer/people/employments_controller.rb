@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_employment
-        current_user.employments.find_by(id: params[:id])
+        employments.find_by(id: params[:id])
       end
     end
   end
