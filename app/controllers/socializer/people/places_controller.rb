@@ -11,7 +11,7 @@ module Socializer
 
       # POST /people/1/places
       def create
-        @place = current_user.places.create!(params[:person_place])
+        @place = places.create!(params[:person_place])
 
         redirect_to current_user
       end
@@ -34,8 +34,12 @@ module Socializer
 
       private
 
+      def places
+        @places ||= current_user.places
+      end
+
       def find_place
-        current_user.places.find_by(id: params[:id])
+        places.find_by(id: params[:id])
       end
     end
   end
