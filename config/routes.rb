@@ -101,7 +101,7 @@ Socializer::Engine.routes.draw do
                               controller: "people/phones",
                               path: "phones"
 
-    resources :person_places, except: [:index, :show, :edit],
+    resources :person_places, except: [:index, :show],
                               controller: "people/places",
                               path: "places"
 

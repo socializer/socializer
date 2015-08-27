@@ -14,6 +14,11 @@ module Socializer
         @place = places.new
       end
 
+      # GET /people/1/places/1/edit
+      def edit
+        @place = find_place
+      end
+
       # POST /people/1/places
       def create
         @place = places.create!(params[:person_place])

@@ -203,6 +203,8 @@ fr:
         new:
           header: New Phone
       places:
+        edit:
+          header: Edit Place
         new:
           header: New Place
       login:
