@@ -18,7 +18,7 @@ module Socializer
 
       # PATCH/PUT /people/1/places/1
       def update
-        @place = find_person_place
+        @place = find_place
         @place.update!(params[:person_place])
 
         redirect_to current_user
@@ -26,7 +26,7 @@ module Socializer
 
       # DELETE /people/1/places/1
       def destroy
-        @place = find_person_place
+        @place = find_place
         @place.destroy
 
         redirect_to current_user
@@ -34,7 +34,7 @@ module Socializer
 
       private
 
-      def find_person_place
+      def find_place
         current_user.places.find_by(id: params[:id])
       end
     end
