@@ -39,7 +39,7 @@ module Socializer
       end
 
       def find_person_profile
-        current_user.profiles.find_by(id: params[:id])
+        profiles.find_by(id: params[:id])
       end
     end
   end
