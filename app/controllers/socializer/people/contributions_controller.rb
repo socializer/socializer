@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_contribution
-        current_user.contributions.find_by(id: params[:id])
+        contributions.find_by(id: params[:id])
       end
 
       def create_contribution
