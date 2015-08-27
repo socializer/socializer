@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_phone
-        current_user.phones.find_by(id: params[:id])
+        phones.find_by(id: params[:id])
       end
     end
   end
