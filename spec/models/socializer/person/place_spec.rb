@@ -2,10 +2,10 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Person::Place, type: :model do
-    let(:person_place) { build(:person_place) }
+    let(:place) { build(:person_place) }
 
     it "has a valid factory" do
-      expect(person_place).to be_valid
+      expect(place).to be_valid
     end
 
     context "mass assignment" do
@@ -24,9 +24,9 @@ module Socializer
 
     context "scopes" do
       context "current and previous" do
-        let(:person_place) { create(:person_place) }
+        let(:place) { create(:person_place) }
 
-        before { person_place }
+        before { place }
 
         context "with only current record" do
           it "current.present? should be true" do
