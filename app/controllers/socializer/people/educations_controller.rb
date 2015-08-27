@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_education
-        current_user.educations.find_by(id: params[:id])
+        educations.find_by(id: params[:id])
       end
     end
   end
