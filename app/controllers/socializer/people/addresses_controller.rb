@@ -49,7 +49,7 @@ module Socializer
       end
 
       def find_address
-        current_user.addresses.find_by(id: params[:id])
+        addresses.find_by(id: params[:id])
       end
     end
   end
