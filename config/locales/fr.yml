@@ -202,6 +202,9 @@ fr:
           header: Edit Phone
         new:
           header: New Phone
+      places:
+        new:
+          header: New Place
       login:
         create_account: Créer un compte
         local_account_query: Vous n'utilisez pas ces services?

@@ -9,6 +9,11 @@ module Socializer
     class PlacesController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/places/new
+      def new
+        @place = places.new
+      end
+
       # POST /people/1/places
       def create
         @place = places.create!(params[:person_place])
