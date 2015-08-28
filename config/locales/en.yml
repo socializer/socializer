@@ -207,6 +207,9 @@ en:
           header: Edit Place
         new:
           header: New Place
+      profiles:
+        new:
+          header: New Profile
       login:
         create_account: Create an account
         local_account_query: Don't use these services?

@@ -9,6 +9,11 @@ module Socializer
     class ProfilesController < ApplicationController
       before_action :authenticate_user
 
+      # GET /people/1/profiles/new
+      def new
+        @profile = profiles.new
+      end
+
       # POST /people/1/profiles
       def create
         @profile = profiles.create!(params[:person_profile])

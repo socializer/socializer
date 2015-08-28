@@ -105,8 +105,9 @@ Socializer::Engine.routes.draw do
                               controller: "people/places",
                               path: "places"
 
-    resources :profiles, only: [:create, :update, :destroy],
-                         controller: "people/profiles"
+    resources :person_profiles, except: [:index, :show, :edit],
+                                controller: "people/profiles",
+                                path: "profiles"
 
     member do
       get "likes", to: "people/likes#index"
