@@ -11,13 +11,13 @@ module Socializer
     # For example: Twitter, Facebook, etc.
     #
     class Profile < ActiveRecord::Base
-      attr_accessible :label, :url
+      attr_accessible :display_name, :url
 
       # Relationships
       belongs_to :person
 
       # Validations
-      validates :label, presence: true
+      validates :display_name, presence: true
       validates :person, presence: true
       validates :url, presence: true
     end

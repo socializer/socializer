@@ -9,7 +9,7 @@ module Socializer
 
     let(:valid_attributes) do
       { person_id: user,
-        person_profile: { label: "test", url: "http://test.org" }
+        person_profile: { display_name: "test", url: "http://test.org" }
       }
     end
 
@@ -20,7 +20,7 @@ module Socializer
     let(:update_attributes) do
       { id: profile,
         person_id: user,
-        person_profile: { label: "updated content" }
+        person_profile: { display_name: "updated content" }
       }
     end
 
