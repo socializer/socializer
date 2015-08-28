@@ -14,6 +14,11 @@ module Socializer
         @profile = profiles.new
       end
 
+      # GET /people/1/profiles/1/edit
+      def edit
+        @profile = find_profile
+      end
+
       # POST /people/1/profiles
       def create
         @profile = profiles.create!(params[:person_profile])

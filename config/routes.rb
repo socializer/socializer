@@ -105,7 +105,7 @@ Socializer::Engine.routes.draw do
                               controller: "people/places",
                               path: "places"
 
-    resources :person_profiles, except: [:index, :show, :edit],
+    resources :person_profiles, except: [:index, :show],
                                 controller: "people/profiles",
                                 path: "profiles"
 

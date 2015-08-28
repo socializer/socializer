@@ -208,6 +208,8 @@ en:
         new:
           header: New Place
       profiles:
+        edit:
+          header: Edit Profile
         new:
           header: New Profile
       login:

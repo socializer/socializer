@@ -373,6 +373,9 @@
           <!-- TODO: Create a partial -->
           <% @person.profiles.each do |profile| %>
             <li>
+              <span class="pull-right">
+                <%= link_to("Edit", edit_person_person_profile_path(@person, @person.profile)) %>
+              </span>
               <%= link_to(profile.label, profile.url) %>
             </li>
           <% end %>
