@@ -18,7 +18,7 @@ module Socializer
 
       # PATCH/PUT /people/1/profiles/1
       def update
-        @profile = find_person_profile
+        @profile = find_profile
         @profile.update!(params[:person_profile])
 
         redirect_to current_user
@@ -26,7 +26,7 @@ module Socializer
 
       # DELETE /people/1/profiles/1
       def destroy
-        @profile = find_person_profile
+        @profile = find_profile
         @profile.destroy
 
         redirect_to current_user
@@ -38,7 +38,7 @@ module Socializer
         @profiles ||= current_user.profiles
       end
 
-      def find_person_profile
+      def find_profile
         profiles.find_by(id: params[:id])
       end
     end
