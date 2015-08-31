@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :group_link, class: Socializer::Group::Link do
-    label "test"
+    display_name "test"
     url "http://test.org"
     association :group, factory: :group
   end

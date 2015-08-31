@@ -10,14 +10,14 @@ module Socializer
     # URLs related to the {Socializer::Group group}
     #
     class Link < ActiveRecord::Base
-      attr_accessible :label, :url
+      attr_accessible :display_name, :url
 
       # Relationships
       belongs_to :group
 
       # Validations
       validates :group, presence: true
-      validates :label, presence: true
+      validates :display_name, presence: true
       validates :url, presence: true
     end
   end

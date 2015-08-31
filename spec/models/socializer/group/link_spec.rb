@@ -9,7 +9,7 @@ module Socializer
     end
 
     context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:label) }
+      it { is_expected.to allow_mass_assignment_of(:display_name) }
       it { is_expected.to allow_mass_assignment_of(:url) }
     end
 
@@ -19,7 +19,7 @@ module Socializer
 
     context "validations" do
       it { is_expected.to validate_presence_of(:group) }
-      it { is_expected.to validate_presence_of(:label) }
+      it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_presence_of(:url) }
     end
   end
