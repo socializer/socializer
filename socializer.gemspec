@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("jquery-ui-rails",      "~> 5.0.5")
   spec.add_dependency("sass-rails",           "~> 5.0.3")
   spec.add_dependency("coffee-rails",         "~> 4.1.0")
-  spec.add_dependency("uglifier",             ">= 2.7.1")
+  spec.add_dependency("uglifier",             ">= 2.7.2")
   spec.add_dependency("bcrypt",               "~> 3.1.10")
   spec.add_dependency("bootstrap-sass",       "~> 3.3.5.1")
   spec.add_dependency("draper",               "~> 2.1.0")
@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   spec.add_dependency("omniauth-openid",      "~> 1.0.1")
   spec.add_dependency("omniauth-twitter",     "~> 1.2.1")
-  spec.add_dependency("simple_form",          "~> 3.1.0")
+  spec.add_dependency("simple_form",          "~> 3.1.1")
   spec.add_dependency("country_select",       "~> 2.3.0")
 
   spec.add_development_dependency("bundler",              "~> 1.10.6")
