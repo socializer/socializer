@@ -8,10 +8,13 @@
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-locale="<%= I18n.locale %>" >
 
     <% if signed_in? %>
-    <header role="banner">
-      <%= render "socializer/shared/topbar" %>
-      <%= yield :toolbar %>
-    </header>
+      <!-- TODO: Consider creating a header partial -->
+      <% cache do  %>
+        <header role="banner">
+          <%= render "socializer/shared/topbar" %>
+          <%= yield :toolbar %>
+        </header>
+      <% end %>
     <% end %>
 
     <div id="content" class="container">
@@ -64,12 +67,15 @@
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-    <footer role="contentinfo">
-      <div class="container">
-        <div class="row">
-        </div><!-- /.row -->
-      </div><!-- /.container -->
-    </footer>
+    <!-- TODO: Consider creating a footer partial -->
+    <% cache do %>
+      <footer role="contentinfo">
+        <div class="container">
+          <div class="row">
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </footer>
+    <% end %>
 
     <%= javascript_include_tag "socializer/application" %>
   </body>
