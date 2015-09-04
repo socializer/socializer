@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("jquery-rails",         "~> 4.0.5")
   # Added "jquery-ui-rails" for drag and drop
   spec.add_dependency("jquery-ui-rails",      "~> 5.0.5")
-  spec.add_dependency("sass-rails",           "~> 5.0.3")
+  spec.add_dependency("sass-rails",           "~> 5.0.4")
   spec.add_dependency("coffee-rails",         "~> 4.1.0")
   spec.add_dependency("uglifier",             ">= 2.7.2")
   spec.add_dependency("bcrypt",               "~> 3.1.10")
