@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivityCreator, type: :service do
+  RSpec.describe ActivityCreator, type: :model do
     let(:ac) { ActivityCreator.new }
 
     let(:activity_attributes) do
