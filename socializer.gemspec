@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("bcrypt",               "~> 3.1.10")
   spec.add_dependency("bootstrap-sass",       "~> 3.3.5.1")
   spec.add_dependency("draper",               "~> 2.1.0")
-  spec.add_dependency("elasticsearch-rails",  "~> 0.1.7")
+  spec.add_dependency("elasticsearch-rails",  "~> 0.1.8")
   spec.add_dependency("enumerize",            "~> 1.0.0")
   spec.add_dependency("omniauth",             "~> 1.2.2")
   spec.add_dependency("omniauth-identity",    "~> 1.1.1")
@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency("bundler",              "~> 1.10.6")
   spec.add_development_dependency("rake",                 "~> 10.4.2")
-  spec.add_development_dependency("sqlite3",              "~> 1.3.10")
+  spec.add_development_dependency("sqlite3",              "~> 1.3.11")
   spec.add_development_dependency("rspec-rails",          "~> 3.1.0")
   # spec.add_development_dependency("brakeman",             "~> 3.0.5")
   # spec.add_development_dependency("cucumber-rails",     "~> 1.4.0")
