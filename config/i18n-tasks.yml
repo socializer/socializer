@@ -68,10 +68,14 @@ search:
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
-  # include: ["*.rb", "*.html.slim"]
+  # only: ["*.rb", "*.html.slim"]
 
-  ## Default scanner finds t() and I18n.t() calls.
-  # scanner: I18n::Tasks::Scanners::PatternWithScopeScanner
+  ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
+  # strict: true
+
+  ## Multiple scanners can be used. Their results are merged.
+  ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
+  ## See this example of a custom scanner: https://github.com/glebm/i18n-tasks/wiki/A-custom-scanner-example
 
 ## Google Translate
 # translation:
