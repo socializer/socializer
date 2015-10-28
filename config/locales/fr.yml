@@ -197,6 +197,12 @@ fr:
           header: Edit Link
         new:
           header: New Link
+      login:
+        create_account: Créer un compte
+        local_account_query: Vous n'utilisez pas ces services?
+        login: Connexion
+        sub_heading: Vous pouvez vous connecter en utilisant les services suivants
+        welcome: Bienvenue sur Socializer
       phones:
         edit:
           header: Edit Phone
@@ -212,12 +218,6 @@ fr:
           header: Edit Profile
         new:
           header: New Profile
-      login:
-        create_account: Créer un compte
-        local_account_query: Vous n'utilisez pas ces services?
-        login: Connexion
-        sub_heading: Vous pouvez vous connecter en utilisant les services suivants
-        welcome: Bienvenue sur Socializer
       sidebar:
         send_message: Send a message
       toolbar:
