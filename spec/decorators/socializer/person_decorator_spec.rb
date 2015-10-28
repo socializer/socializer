@@ -353,6 +353,7 @@ module Socializer
         end
 
         it do
+          # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
             .to have_link(t("socializer.shared.toolbar.more"), href: "#")
         end
@@ -412,6 +413,7 @@ module Socializer
         it { expect(result).to have_selector("li", count: li_count) }
 
         it do
+          # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
             .to have_link(t("socializer.shared.toolbar.more"), href: "#")
         end

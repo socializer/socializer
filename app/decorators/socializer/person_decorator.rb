@@ -173,6 +173,7 @@ module Socializer
                                       class: "fa fa-angle-down fa-fw")
 
       helpers.link_to("#", class: css_class, data: { toggle: "dropdown" }) do
+        # i18n-tasks-use t("socializer.shared.toolbar.more")
         "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
       end
     end

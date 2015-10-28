@@ -63,7 +63,9 @@ module Socializer
     end
 
     def like_or_unlike_title
+      # i18n-tasks-use t("socializer.shared.unlike")
       return helpers.t("socializer.shared.unlike") if current_user_likes?
+      # i18n-tasks-use t("socializer.shared.like")
       helpers.t("socializer.shared.like")
     end
 
