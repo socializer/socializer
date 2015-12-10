@@ -213,7 +213,7 @@ li.list-group-header {
   height: 28px;
   margin-left: 14px;
 
-  &:before {
+  &::before {
     @extend .caret;
     position: absolute;
     top: 12px;
@@ -227,7 +227,7 @@ li.list-group-header {
     background-color: $gray-lighter;
   }
 
-  &.collapsed:before {
+  &.collapsed::before {
     @extend .caret-right;
     top: 10px;
     left: 6px;

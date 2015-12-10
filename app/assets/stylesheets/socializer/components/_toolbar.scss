@@ -235,7 +235,7 @@
   > .active > a {
     font-weight: bold;
 
-    &:before {
+    &::before {
       position: absolute;
       bottom: -1px;
       left: 50%;
@@ -247,7 +247,7 @@
       border-left: 8px solid transparent;
     }
 
-    &:after {
+    &::after {
       position: absolute;
       bottom: -1px;
       left: 50%;
@@ -443,11 +443,11 @@
         background-color: $navbar-toolbar-default-link-active-bg;
       }
 
-      &:before {
+      &::before {
         border-bottom: 8px solid $navbar-toolbar-default-border;
       }
 
-      &:after {
+      &::after {
         border-bottom: 7px solid $dropdown-bg;
       }
     }
@@ -601,11 +601,11 @@
         background-color: $navbar-toolbar-inverse-link-active-bg;
       }
 
-      &:before {
+      &::before {
         border-bottom: 8px solid $navbar-toolbar-inverse-border;
       }
 
-      &:after {
+      &::after {
         border-bottom: 7px solid $dropdown-bg;
       }
     }

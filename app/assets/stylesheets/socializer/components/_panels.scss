@@ -206,7 +206,7 @@
       color: #444;
       text-decoration: none;
 
-      &:before {
+      &::before {
         @extend .glyphicon;
         margin-right: 7px;
         content: "\e082";
@@ -220,7 +220,7 @@
         outline: 0;
       }
 
-      &.collapsed:before {
+      &.collapsed::before {
         @extend .glyphicon;
         margin-right: 7px;
         content: "\e081";
