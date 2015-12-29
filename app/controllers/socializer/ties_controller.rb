@@ -10,8 +10,10 @@ module Socializer
 
     # POST /ties
     def create
-      @circle = Circle.find_by(id: params[:tie][:circle_id])
-      tie = @circle.add_contact(params[:tie][:contact_id])
+      tie_params = params[:tie]
+
+      @circle = Circle.find_by(id: tie_params[:circle_id])
+      tie = @circle.add_contact(tie_params[:contact_id])
 
       flash[:notice] = flash_message(action: :create,
                                      person_name: display_name(tie: tie))
