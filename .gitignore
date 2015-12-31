@@ -15,6 +15,7 @@ Gemfile.lock
 
 .idea
 coverage/*
+.vscode/*
 
 spec/dummy/*
 
