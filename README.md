@@ -93,6 +93,6 @@ The best way to contribute is to do one of the following :
 
 ## License ##
 
-Copyright 2011-2014, Dominic Goulet, http://www.dominicgoulet.com
+Copyright 2011-2016, Dominic Goulet, http://www.dominicgoulet.com
 
 MIT License - http://www.opensource.org/licenses/mit-license.php
