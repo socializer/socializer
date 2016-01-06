@@ -36,9 +36,7 @@ module Socializer
         it { expect(audience_list).to be_kind_of(Array) }
 
         it "has the :id, :name, and :icon keys" do
-          audience_list.each do |item|
-            expect(item.keys).to include(:id, :name, :icon)
-          end
+          expect(audience_list.each).to all(include(:id, :name, :icon))
         end
 
         it { expect(audience_list.first).to include(public) }
@@ -63,9 +61,7 @@ module Socializer
         it { expect(audience_list.count).to eq(3) }
 
         it "has the :id, :name, and :icon keys" do
-          audience_list.each do |item|
-            expect(item.keys).to include(:id, :name, :icon)
-          end
+          expect(audience_list.each).to all(include(:id, :name, :icon))
         end
 
         it { expect(audience_list.first).to include(public) }
