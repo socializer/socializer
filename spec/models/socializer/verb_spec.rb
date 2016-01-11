@@ -17,6 +17,8 @@ module Socializer
     end
 
     context "validations" do
+      subject { verb }
+
       it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_uniqueness_of(:display_name) }
     end

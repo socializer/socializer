@@ -51,7 +51,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("factory_girl_rails",   "~> 4.5.0")
   spec.add_development_dependency("i18n-tasks",           "~> 0.9.2")
   spec.add_development_dependency("inch",                 "~> 0.7.0")
-  spec.add_development_dependency("shoulda-matchers",     "~> 3.0.1")
+  spec.add_development_dependency("shoulda-matchers",     "~> 3.1.0")
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.15.7")
   spec.add_development_dependency("rubocop",              "~> 0.35.1")
