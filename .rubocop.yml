@@ -64,7 +64,7 @@ Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: true
   Exclude:
     - "db/migrate/**/*"
