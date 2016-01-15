@@ -157,8 +157,8 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def contact_of
       @contact_of ||= Person.distinct
-                      .joins(activity_object: { circles: :ties })
-                      .merge(Tie.with_contact_id(contact_id: guid))
+                            .joins(activity_object: { circles: :ties })
+                            .merge(Tie.with_contact_id(contact_id: guid))
     end
 
     # A list of activities the user likes
@@ -171,9 +171,9 @@ module Socializer
       verbs_of_interest = %w(like unlike)
 
       query = Activity.joins(:verb)
-              .with_actor_id(id: guid)
-              .with_target_id(id: nil)
-              .merge(Verb.with_display_name(name: verbs_of_interest))
+                      .with_actor_id(id: guid)
+                      .with_target_id(id: nil)
+                      .merge(Verb.with_display_name(name: verbs_of_interest))
 
       @likes ||= query.group(:activity_object_id).having("COUNT(1) % 2 == 1")
     end
@@ -191,9 +191,9 @@ module Socializer
       verbs_of_interest = %w(like unlike)
 
       query = Activity.joins(:verb)
-              .with_activity_object_id(id: object.id)
-              .with_actor_id(id: guid)
-              .merge(Verb.with_display_name(name: verbs_of_interest))
+                      .with_activity_object_id(id: object.id)
+                      .with_actor_id(id: guid)
+                      .merge(Verb.with_display_name(name: verbs_of_interest))
 
       query.count.odd?
     end
@@ -205,8 +205,9 @@ module Socializer
     # {Socializer::Membership memberships}
     def pending_memberships_invites
       @pending_memberships_invites ||= Membership.inactive
-                                       .with_member_id(member_id: guid)
-                                       .joins(:group).merge(Group.private)
+                                                 .with_member_id(member_id: guid)
+                                                 .joins(:group)
+                                                 .merge(Group.private)
     end
   end
 end
