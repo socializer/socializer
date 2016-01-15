@@ -69,11 +69,5 @@ Style/SpaceBeforeFirstArg:
   Exclude:
     - "db/migrate/**/*"
 
-Style/SpaceAroundOperators:
-  MultiSpaceAllowedForOperators:
-    - "="
-    - "=>"
-    - "||="
-
 Style/StringLiterals:
   EnforcedStyle: double_quotes
