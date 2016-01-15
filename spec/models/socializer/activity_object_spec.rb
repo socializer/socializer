@@ -151,7 +151,7 @@ module Socializer
       it { expect(activity_object.like_count).to eq(1) }
       it { expect(activity_object.liked_by.size).to eq(1) }
       it { expect(liking_person.likes.count.size).to eq(1) }
-      it { expect(liking_person.likes? activity_object).to be_truthy }
+      it { expect(liking_person.likes?(activity_object)).to be_truthy }
 
       context "when an object is unliked" do
         before do
@@ -163,7 +163,7 @@ module Socializer
         it { expect(activity_object.like_count).to eq(0) }
         it { expect(activity_object.liked_by.size).to eq(0) }
         it { expect(liking_person.likes.count.size).to eq(0) }
-        it { expect(liking_person.likes? activity_object).to be_falsey }
+        it { expect(liking_person.likes?(activity_object)).to be_falsey }
       end
     end
 
