@@ -147,7 +147,7 @@ module Socializer
     #
     def self.circle_stream(actor_uid:, viewer_id:)
       circles = Circle.with_id(id: actor_uid)
-                .with_author_id(id: viewer_id).pluck(:id)
+                      .with_author_id(id: viewer_id).pluck(:id)
 
       followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
@@ -297,8 +297,8 @@ module Socializer
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
-        .merge(Membership.with_member_id(member_id: viewer_id))
-        .pluck(:id)
+                    .merge(Membership.with_member_id(member_id: viewer_id))
+                    .pluck(:id)
     end
     private_class_method :limited_group_subquery
 
@@ -323,7 +323,7 @@ module Socializer
         ActivityObject.with_activitable_type(type: Comment.name)
 
       @comments ||= children.joins(:activitable_object)
-                    .merge(activitable_type)
+                            .merge(activitable_type)
     end
 
     # The primary object of the activity.
