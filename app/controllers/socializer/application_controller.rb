@@ -52,8 +52,6 @@ module Socializer
       request.env["HTTP_ACCEPT_LANGUAGE"].scan(/^[a-z]{2}/).first
     end
 
-    private
-
     def http_accept_language
       @http_accept_language ||= request.env["HTTP_ACCEPT_LANGUAGE"]
     end
