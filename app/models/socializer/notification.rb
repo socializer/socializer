@@ -86,9 +86,9 @@ module Socializer
     def self.get_potential_contact_ids(activity_id:)
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.joins(circle: { activity_object: :audiences })
-        .merge(Audience.with_activity_id(id: activity_id))
-        .distinct
-        .pluck(:contact_id)
+         .merge(Audience.with_activity_id(id: activity_id))
+         .distinct
+         .pluck(:contact_id)
     end
     private_class_method :get_potential_contact_ids
 
@@ -97,10 +97,10 @@ module Socializer
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
       ActivityObject.joins(circles: :ties)
-        .with_id(id: parent_contact_id)
-        .merge(Tie.with_contact_id(contact_id: child_contact_id))
-        .pluck(:id)
-        .present?
+                    .with_id(id: parent_contact_id)
+                    .merge(Tie.with_contact_id(contact_id: child_contact_id))
+                    .pluck(:id)
+                    .present?
     end
     private_class_method :person_in_circle?
   end
