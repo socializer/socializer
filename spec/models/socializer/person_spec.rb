@@ -150,8 +150,8 @@ module Socializer
       expect(person).to respond_to(:likes?)
     end
 
-    it "#pending_memberships_invites" do
-      expect(person).to respond_to(:pending_memberships_invites)
+    it "#pending_membership_invites" do
+      expect(person).to respond_to(:pending_membership_invites)
     end
 
     context "accepts known avatar_provider" do

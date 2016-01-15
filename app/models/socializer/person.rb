@@ -203,11 +203,11 @@ module Socializer
     #
     # @return [Socializer::Membership] Returns a collection of
     # {Socializer::Membership memberships}
-    def pending_memberships_invites
-      @pending_memberships_invites ||= Membership.inactive
-                                                 .with_member_id(member_id: guid)
-                                                 .joins(:group)
-                                                 .merge(Group.private)
+    def pending_membership_invites
+      @pending_membership_invites ||= Membership.inactive
+                                                .with_member_id(member_id: guid)
+                                                .joins(:group)
+                                                .merge(Group.private)
     end
   end
 end
