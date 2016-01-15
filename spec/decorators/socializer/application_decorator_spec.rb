@@ -10,7 +10,7 @@ module Socializer
 
       context "when created_at and updated_at are equal" do
         let(:result) { decorated_activity.created_at_time_ago }
-        let(:time_text) { "#{created_at.strftime('%B %e, %Y %l:%M%P')}" }
+        let(:time_text) { created_at.strftime("%B %e, %Y %l:%M%P") }
 
         it do
           expect(result).to have_selector("time", text: time_text)
@@ -38,7 +38,7 @@ module Socializer
         end
 
         let(:result) { decorated_activity.created_at_time_ago }
-        let(:time_text) { "#{created_at.strftime('%B %e, %Y %l:%M%P')}" }
+        let(:time_text) { created_at.strftime("%B %e, %Y %l:%M%P") }
 
         let(:time_title) do
           "#{created_at.to_s(:short)} (edited #{updated_at.to_s(:short)})"

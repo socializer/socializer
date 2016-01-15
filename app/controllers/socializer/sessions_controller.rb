@@ -45,7 +45,7 @@ module Socializer
     end
 
     def login(user)
-      cookies.signed[:user_id] = { domain: :all, value: "#{user.id}" }
+      cookies.signed[:user_id] = { domain: :all, value: user.id.to_s }
       redirect_to root_url
     end
   end

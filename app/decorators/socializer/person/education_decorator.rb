@@ -54,7 +54,7 @@ module Socializer
           education << "#{model.major_or_field_of_study} <br>"
         end
 
-        education << "#{started_on_to_ended_on}"
+        education << started_on_to_ended_on
 
         education.html_safe
       end

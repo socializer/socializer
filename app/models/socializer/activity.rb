@@ -259,7 +259,7 @@ module Socializer
     private_class_method :privacy_field
 
     def self.viewer_literal(viewer_id:)
-      @viewer_literal ||= Arel::Nodes::SqlLiteral.new("#{viewer_id}")
+      @viewer_literal ||= Arel::Nodes::SqlLiteral.new(viewer_id.to_s)
     end
     private_class_method :viewer_literal
 

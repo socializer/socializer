@@ -42,7 +42,7 @@ module Socializer
         employment = "#{model.employer_name} <br>"
         employment << job_title_with_br_or_empty
         employment << job_description_with_br_or_empty
-        employment << "#{started_on_to_ended_on}"
+        employment << started_on_to_ended_on
 
         employment.html_safe
       end

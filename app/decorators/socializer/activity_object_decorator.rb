@@ -48,7 +48,7 @@ module Socializer
                                     nil,
                                     class: "fa fa-fw fa-thumbs-o-up")
 
-      content += "#{model.like_count}".html_safe if model.like_count > 0
+      content += model.like_count.to_s.html_safe if model.like_count > 0
       content
     end
 

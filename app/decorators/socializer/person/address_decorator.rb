@@ -29,7 +29,7 @@ module Socializer
         address = "#{model.line1} <br>"
         address << "#{model.line2} <br>" if model.line2?
         address << "#{city_province_or_state_postal_code} <br>"
-        address << "#{model.country}"
+        address << model.country
 
         address.html_safe
       end
