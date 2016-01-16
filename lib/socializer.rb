@@ -1,5 +1,5 @@
 require "socializer/engine"
-require "socializer/exceptions"
+require "socializer/errors"
 
 # Added "jquery-ui-rails" for drag and drop
 require "jquery/ui/rails"
