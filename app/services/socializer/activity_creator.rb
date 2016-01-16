@@ -28,7 +28,7 @@ module Socializer
       message = I18n.t("activerecord.errors.messages.record_invalid",
                        errors: errors.full_messages.to_sentence)
 
-      fail(RecordInvalid, message)
+      fail(Errors::RecordInvalid, message)
     end
 
     private
