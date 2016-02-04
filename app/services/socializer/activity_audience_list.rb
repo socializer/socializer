@@ -20,7 +20,7 @@ module Socializer
                          valid_class: Activity.name,
                          invalid_class: activity.class.name)
 
-        fail(ArgumentError, message)
+        raise(ArgumentError, message)
       end
 
       @activity = activity

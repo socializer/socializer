@@ -19,7 +19,7 @@ module Socializer
                          valid_class: Person.name,
                          invalid_class: person.class.name)
 
-        fail(ArgumentError, message)
+        raise(ArgumentError, message)
       end
 
       @person = person
