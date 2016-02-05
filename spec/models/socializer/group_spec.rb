@@ -205,7 +205,7 @@ module Socializer
 
       it "cannot be joined" do
         expect { private_group.join(person) }
-          .to raise_error(RuntimeError, error_message)
+          .to raise_error(Errors::PrivateGroupCannotSelfJoin, error_message)
       end
 
       context "and a person gets invited" do

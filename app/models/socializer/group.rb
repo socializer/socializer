@@ -111,9 +111,7 @@ module Socializer
       active = false if privacy.restricted?
 
       if privacy.private?
-        message = I18n.t(:cannot_self_join,
-                         scope: "socializer.errors.messages.group.private")
-        fail(message)
+        raise(Errors::PrivateGroupCannotSelfJoin)
       end
 
       memberships.create!(activity_member: person.activity_object,
