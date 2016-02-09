@@ -76,8 +76,7 @@ module Socializer
               expect(response).to redirect_to activities_path
             end
 
-            # FIXME: Should accept a symbol in next RC or release
-            it { should set_flash["notice"].to(message) }
+            it { should set_flash[:notice].to(message) }
           end
 
           context "with invalid attributes" do
