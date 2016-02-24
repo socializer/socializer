@@ -55,5 +55,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.16.0")
   spec.add_development_dependency("rubocop",              "~> 0.37.2")
-  spec.add_development_dependency("scss_lint",            "~> 0.46.0")
+  spec.add_development_dependency("scss_lint",            "~> 0.47.0")
 end
