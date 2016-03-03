@@ -25,10 +25,7 @@ module Socializer
     def call
       return create_activity if valid?
 
-      message = I18n.t("activerecord.errors.messages.record_invalid",
-                       errors: errors.full_messages.to_sentence)
-
-      raise(Errors::RecordInvalid, message)
+      raise(Errors::RecordInvalid, wrong_type_message)
     end
 
     private
@@ -86,6 +83,11 @@ module Socializer
           add_audience_to_activity(activity: activity, audience_ids: object_ids)
         end
       end
+    end
+
+    def wrong_type_message
+      I18n.t("activerecord.errors.messages.record_invalid",
+             errors: errors.full_messages.to_sentence)
     end
   end
 end

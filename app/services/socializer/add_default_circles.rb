@@ -15,12 +15,7 @@ module Socializer
     # AddDefaultCircles
     def initialize(person:)
       unless person.is_a?(Socializer::Person)
-        message = I18n.t("socializer.errors.messages.wrong_instance_type",
-                         argument: "person",
-                         valid_class: Person.name,
-                         invalid_class: person.class.name)
-
-        raise(ArgumentError, message)
+        raise(ArgumentError, wrong_type_message(instance: person))
       end
 
       @person = person.activity_object
@@ -80,6 +75,13 @@ module Socializer
     def friends_content
       "Your real friends, the ones you feel " \
       "comfortable sharing private details with."
+    end
+
+    def wrong_type_message(instance:)
+      I18n.t("socializer.errors.messages.wrong_instance_type",
+             argument: "person",
+             valid_class: Person.name,
+             invalid_class: instance.class.name)
     end
   end
 end

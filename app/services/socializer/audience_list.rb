@@ -14,12 +14,7 @@ module Socializer
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       unless person.is_a?(Socializer::Person)
-        message = I18n.t("socializer.errors.messages.wrong_instance_type",
-                         argument: "person",
-                         valid_class: Person.name,
-                         invalid_class: person.class.name)
-
-        raise(ArgumentError, message)
+        raise(ArgumentError, wrong_type_message(instance: person))
       end
 
       @person = person
@@ -128,6 +123,13 @@ module Socializer
       klass              = query.base_class
       display_name_alias = klass.arel_table[:display_name].as("name")
       query.select(display_name_alias).guids
+    end
+
+    def wrong_type_message(instance:)
+      I18n.t("socializer.errors.messages.wrong_instance_type",
+             argument: "person",
+             valid_class: Person.name,
+             invalid_class: instance.class.name)
     end
   end
 end

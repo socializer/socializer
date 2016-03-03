@@ -15,12 +15,7 @@ module Socializer
     # ActivityAudienceList
     def initialize(activity:)
       unless activity.is_a?(Socializer::Activity)
-        message = I18n.t("socializer.errors.messages.wrong_instance_type",
-                         argument: "activity",
-                         valid_class: Activity.name,
-                         invalid_class: activity.class.name)
-
-        raise(ArgumentError, message)
+        raise(ArgumentError, wrong_type_message(instance: activity))
       end
 
       @activity = activity
@@ -83,6 +78,13 @@ module Socializer
       return [activitable.display_name] unless activitable.is_a?(Circle)
 
       activitable.contacts.pluck(:display_name)
+    end
+
+    def wrong_type_message(instance:)
+      I18n.t("socializer.errors.messages.wrong_instance_type",
+             argument: "activity",
+             valid_class: Activity.name,
+             invalid_class: instance.class.name)
     end
   end
 end
