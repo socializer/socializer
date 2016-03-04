@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-openid",      "~> 1.0.1")
   spec.add_dependency("omniauth-twitter",     "~> 1.2.1")
   spec.add_dependency("simple_form",          "~> 3.2.1")
-  spec.add_dependency("country_select",       "~> 2.5.1")
+  spec.add_dependency("country_select",       "~> 2.5.2")
 
   spec.add_development_dependency("bundler",              "~> 1.11.2")
   spec.add_development_dependency("rake",                 "~> 10.5.0")
@@ -55,5 +55,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.16.0")
   spec.add_development_dependency("rubocop",              "~> 0.37.2")
-  spec.add_development_dependency("scss_lint",            "~> 0.47.0")
+  spec.add_development_dependency("scss_lint",            "~> 0.47.1")
 end
