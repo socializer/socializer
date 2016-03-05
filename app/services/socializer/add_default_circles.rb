@@ -18,7 +18,7 @@ module Socializer
         raise(ArgumentError, wrong_type_message(instance: person))
       end
 
-      @person = person.activity_object
+      @person = person
     end
 
     # Class Methods
@@ -54,7 +54,8 @@ module Socializer
     private
 
     def create_circle(display_name:, content: nil)
-      @person.circles.create!(display_name: display_name, content: content)
+      circles = @person.activity_object.circles
+      circles.create!(display_name: display_name, content: content)
     end
 
     def acquaintances_content
