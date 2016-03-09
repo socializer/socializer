@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency("rails",                "~> 4.2.5.2")
+  spec.add_dependency("rails",                "~> 4.2.6")
   spec.add_dependency("jquery-rails",         "~> 4.1.0")
   # Added "jquery-ui-rails" for drag and drop
   spec.add_dependency("jquery-ui-rails",      "~> 5.0.5")
