@@ -13,6 +13,7 @@ module Socializer
 
     protected
 
+    # Redirect to the root path if the vistor is not signed in
     def authenticate_user
       redirect_to root_path unless signed_in?
     end
