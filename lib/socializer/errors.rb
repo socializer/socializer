@@ -13,6 +13,11 @@ module Socializer
 
     # Raised when someone tries to join a private goup instead of being invited.
     class PrivateGroupCannotSelfJoin < Socializer::Error
+      #
+      # Override Exception#message
+      #
+      # @return [String] Returns the error's message
+      #
       def message
         I18n.t("socializer.errors.messages.group.private.cannot_self_join")
       end
