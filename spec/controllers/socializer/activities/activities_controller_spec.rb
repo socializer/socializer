@@ -20,7 +20,7 @@ module Socializer
     end
 
     let(:result) do
-      ActivityCreator.new(creator_attributes).call
+      CreateActivity.new(creator_attributes).call
     end
 
     let(:activity) do

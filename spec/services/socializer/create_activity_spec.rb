@@ -1,8 +1,8 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivityCreator, type: :model do
-    let(:ac) { ActivityCreator.new }
+  RSpec.describe CreateActivity, type: :model do
+    let(:ac) { CreateActivity.new }
 
     let(:activity_attributes) do
       { actor_id: person.id,
@@ -27,7 +27,7 @@ module Socializer
       context "with the required attributes" do
         let(:person) { create(:person) }
         let(:activity_object) { create(:activity_object) }
-        let(:ac) { ActivityCreator.new(activity_attributes) }
+        let(:ac) { CreateActivity.new(activity_attributes) }
 
         it { expect(ac.valid?).to be true }
         it { expect(ac.call).to be_kind_of(Activity) }

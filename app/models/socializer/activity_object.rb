@@ -166,7 +166,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def share(actor_id:, object_ids:, content: nil)
-      ActivityCreator.new(actor_id: actor_id,
+      CreateActivity.new(actor_id: actor_id,
                           activity_object_id: id,
                           verb: "share",
                           object_ids: object_ids,
@@ -195,7 +195,7 @@ module Socializer
     def create_like_unlike_activity(actor:, verb:)
       public = Audience.privacy.public.value.split(",")
 
-      ActivityCreator.new(actor_id: actor.guid,
+      CreateActivity.new(actor_id: actor.guid,
                           activity_object_id: id,
                           verb: verb,
                           object_ids: public).call

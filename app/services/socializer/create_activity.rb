@@ -5,7 +5,7 @@ module Socializer
   #
   # Service object for creating a Socializer::Activity
   #
-  class ActivityCreator
+  class CreateActivity
     include ActiveModel::Model
 
     attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
@@ -18,7 +18,7 @@ module Socializer
 
     # Instance Methods
 
-    # Invoke the ActivityCreator. This is the primary public API method.
+    # Invoke the CreateActivity. This is the primary public API method.
     # Creates an activity, adds the content and audience if needed.
     #
     # @return [Socializer::Activity]
