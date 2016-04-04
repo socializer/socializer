@@ -70,8 +70,6 @@ module Socializer
 
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }
-    it { is_expected.to respond_to(:join) }
-    it { is_expected.to respond_to(:leave) }
     it { is_expected.to respond_to(:member?) }
 
     context "when group is public" do
