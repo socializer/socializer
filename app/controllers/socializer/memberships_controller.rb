@@ -11,7 +11,7 @@ module Socializer
     # POST /memberships
     def create
       @group = Group.find_by(id: params[:membership][:group_id])
-      @group.join(current_user)
+      @group.join(person: current_user)
       redirect_to @group
     end
 
@@ -19,7 +19,7 @@ module Socializer
     def destroy
       @membership = current_user.memberships.find_by(id: params[:id])
       @group = @membership.group
-      @group.leave(current_user)
+      @group.leave(person: current_user)
       redirect_to @group
     end
   end

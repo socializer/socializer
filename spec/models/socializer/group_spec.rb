@@ -105,7 +105,7 @@ module Socializer
 
       context "and a person joins it" do
         before do
-          public_group.join(person)
+          public_group.join(person: person)
           @membership = Membership.find_by(membership_attributes)
         end
 
@@ -124,7 +124,7 @@ module Socializer
 
         context "and leaving" do
           before do
-            public_group.leave(person)
+            public_group.leave(person: person)
             @membership = Membership.find_by(membership_attributes)
           end
 
@@ -169,7 +169,7 @@ module Socializer
 
       context "and a person joins it" do
         before do
-          restricted_group.join(person)
+          restricted_group.join(person: person)
           @membership = Membership.find_by(membership_attributes)
         end
 
@@ -204,13 +204,13 @@ module Socializer
       end
 
       it "cannot be joined" do
-        expect { private_group.join(person) }
+        expect { private_group.join(person: person) }
           .to raise_error(Errors::PrivateGroupCannotSelfJoin, error_message)
       end
 
       context "and a person gets invited" do
         before do
-          private_group.invite(person)
+          private_group.invite(person: person)
           @membership = Membership.find_by(membership_attributes)
         end
 
@@ -229,7 +229,7 @@ module Socializer
       end
 
       before do
-        group.invite(person)
+        group.invite(person: person)
         @membership = Membership.find_by(membership_attributes)
       end
 

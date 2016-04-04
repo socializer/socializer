@@ -106,7 +106,7 @@ module Socializer
     # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The
     # resulting object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
-    def join(person)
+    def join(person:)
       active = true if privacy.public?
       active = false if privacy.restricted?
 
@@ -126,7 +126,7 @@ module Socializer
     # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting
     # object is returned if validations passes.
     # Raises ActiveRecord::RecordInvalid when the record is invalid.
-    def invite(person)
+    def invite(person:)
       memberships.create!(activity_member: person.activity_object,
                           active: false)
     end
@@ -139,7 +139,7 @@ module Socializer
     # database and freezes this instance to reflect that no changes should be
     # made (since they can't be persisted). If the before_destroy callback
     # returns false the action is cancelled and leave returns false.
-    def leave(person)
+    def leave(person:)
       membership = memberships.find_by(activity_member: person.activity_object)
       membership.destroy
     end

@@ -202,7 +202,7 @@ module Socializer
 
         context "can delete a group that has no members" do
           before do
-            group.leave(user)
+            group.leave(person: user)
           end
 
           it "deletes the group" do

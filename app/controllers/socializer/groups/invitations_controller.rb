@@ -13,7 +13,7 @@ module Socializer
       def create
         invited_user = Person.find_by(id: params[:person_id])
         group = Group.find_by(id: params[:id])
-        group.invite(invited_user)
+        group.invite(person: invited_user)
 
         redirect_to group
       end
