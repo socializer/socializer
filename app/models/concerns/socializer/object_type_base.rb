@@ -63,10 +63,10 @@ module Socializer
       return if activity_verb.blank?
 
       CreateActivity.new(actor_id: author_id,
-                          activity_object_id: guid,
-                          target_id: activity_target_id,
-                          verb: activity_verb,
-                          object_ids: object_ids).call
+                         activity_object_id: guid,
+                         target_id: activity_target_id,
+                         verb: activity_verb,
+                         object_ids: object_ids).call
     end
   end
 end

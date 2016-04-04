@@ -167,10 +167,10 @@ module Socializer
     # @return [Socializer::Activity]
     def share(actor_id:, object_ids:, content: nil)
       CreateActivity.new(actor_id: actor_id,
-                          activity_object_id: id,
-                          verb: "share",
-                          object_ids: object_ids,
-                          content: content).call
+                         activity_object_id: id,
+                         verb: "share",
+                         object_ids: object_ids,
+                         content: content).call
     end
 
     # Increments the unread_notifications_count by 1 and saves the record
@@ -196,9 +196,9 @@ module Socializer
       public = Audience.privacy.public.value.split(",")
 
       CreateActivity.new(actor_id: actor.guid,
-                          activity_object_id: id,
-                          verb: verb,
-                          object_ids: public).call
+                         activity_object_id: id,
+                         verb: verb,
+                         object_ids: public).call
     end
 
     def increment_like_count
