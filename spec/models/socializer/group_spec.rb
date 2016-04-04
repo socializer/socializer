@@ -71,7 +71,6 @@ module Socializer
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }
     it { is_expected.to respond_to(:join) }
-    it { is_expected.to respond_to(:invite) }
     it { is_expected.to respond_to(:leave) }
     it { is_expected.to respond_to(:member?) }
 
@@ -206,35 +205,6 @@ module Socializer
       it "cannot be joined" do
         expect { private_group.join(person: person) }
           .to raise_error(Errors::PrivateGroupCannotSelfJoin, error_message)
-      end
-
-      context "and a person gets invited" do
-        before do
-          private_group.invite(person: person)
-          @membership = Membership.find_by(membership_attributes)
-        end
-
-        it "creates an inactive membership" do
-          expect(@membership.active).to be_falsey
-        end
-      end
-    end
-
-    context "when inviting a person" do
-      let(:group) { create(:group) }
-      let(:person) { create(:person) }
-
-      let(:membership_attributes) do
-        { member_id: person.guid, group_id: group.id }
-      end
-
-      before do
-        group.invite(person: person)
-        @membership = Membership.find_by(membership_attributes)
-      end
-
-      it "creates an inactive membership" do
-        expect(@membership.active).to be_falsey
       end
     end
 

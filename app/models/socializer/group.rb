@@ -118,19 +118,6 @@ module Socializer
                           active: active)
     end
 
-    # Invite a member to the group
-    #
-    # @param person [Socializer::Person] the person that you are inviting to
-    # the group
-    #
-    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The resulting
-    # object is returned if validations passes.
-    # Raises ActiveRecord::RecordInvalid when the record is invalid.
-    def invite(person:)
-      memberships.create!(activity_member: person.activity_object,
-                          active: false)
-    end
-
     # Leave the group
     #
     # @param person [Socializer::Person] the person that is leaving the group
