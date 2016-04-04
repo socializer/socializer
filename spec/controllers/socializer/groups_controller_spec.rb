@@ -202,7 +202,7 @@ module Socializer
 
         context "can delete a group that has no members" do
           before do
-            group.leave(person: user)
+            Group::Services::Leave.new(group: group, person: user).call
           end
 
           it "deletes the group" do

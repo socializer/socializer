@@ -19,7 +19,9 @@ module Socializer
     def destroy
       @membership = current_user.memberships.find_by(id: params[:id])
       @group = @membership.group
-      @group.leave(person: current_user)
+
+      Group::Services::Leave.new(group: @group, person: current_user).call
+
       redirect_to @group
     end
   end

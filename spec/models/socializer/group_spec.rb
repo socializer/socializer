@@ -70,7 +70,6 @@ module Socializer
 
     it { is_expected.to respond_to(:author) }
     it { is_expected.to respond_to(:members) }
-    it { is_expected.to respond_to(:member?) }
 
     context "when group is public" do
       let(:public_group) { create(:group, privacy: :public) }
@@ -117,22 +116,6 @@ module Socializer
         # The factory adds a person to the public group by default
         it "has 2 members" do
           expect(public_group.members.size).to eq(2)
-        end
-
-        context "and leaving" do
-          before do
-            public_group.leave(person: person)
-            @membership = Membership.find_by(membership_attributes)
-          end
-
-          it "destroys the membership" do
-            expect(@membership).to be_nil
-          end
-
-          # The factory adds a person to the public group by default
-          it "has 1 member" do
-            expect(public_group.members.size).to eq(1)
-          end
         end
       end
     end

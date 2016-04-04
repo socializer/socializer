@@ -118,19 +118,6 @@ module Socializer
                           active: active)
     end
 
-    # Leave the group
-    #
-    # @param person [Socializer::Person] the person that is leaving the group
-    #
-    # @return [Socializer:Membership/FalseClass] Deletes the record in the
-    # database and freezes this instance to reflect that no changes should be
-    # made (since they can't be persisted). If the before_destroy callback
-    # returns false the action is cancelled and leave returns false.
-    def leave(person:)
-      membership = memberships.find_by(activity_member: person.activity_object)
-      membership.destroy
-    end
-
     # Check if the person is a member of the group
     #
     # @param person [Socializer::Person] the person that you are checking

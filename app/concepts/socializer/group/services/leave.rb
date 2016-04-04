@@ -11,9 +11,9 @@ module Socializer
     #
     module Services
       #
-      # Invite a member to join the group
+      # Leave a group
       #
-      class Invite
+      class Leave
         # Initializer
         #
         # @param [Socializer:Group] group: the group to invite the person to
@@ -39,12 +39,17 @@ module Socializer
           @person = person
         end
 
-        # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The
-        # resulting object is returned if validations passes.
-        # Raises ActiveRecord::RecordInvalid when the record is invalid.
+        # @return [Socializer:Membership/FalseClass] Deletes the record in the
+        # database and freezes this instance to reflect that no changes should
+        # be made (since they can't be persisted). If the before_destroy
+        # callback returns false the action is cancelled and leave returns
+        # false.
         def call
-          @group.memberships.create!(activity_member: @person.activity_object,
-                                     active: false)
+          # TODO: Need a guard statement if no members
+          membership = @group.memberships
+                             .find_by(activity_member: @person.activity_object)
+
+          membership.destroy
         end
 
         private
