@@ -98,26 +98,6 @@ module Socializer
 
     # Instance Methods
 
-    # Add a member to the group
-    #
-    # @param person [Socializer::Person] the person that would like to join the
-    # group
-    #
-    # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The
-    # resulting object is returned if validations passes.
-    # Raises ActiveRecord::RecordInvalid when the record is invalid.
-    def join(person:)
-      active = true if privacy.public?
-      active = false if privacy.restricted?
-
-      if privacy.private?
-        raise(Errors::PrivateGroupCannotSelfJoin)
-      end
-
-      memberships.create!(activity_member: person.activity_object,
-                          active: active)
-    end
-
     # Check if the person is a member of the group
     #
     # @param person [Socializer::Person] the person that you are checking

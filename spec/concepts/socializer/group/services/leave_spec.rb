@@ -36,7 +36,7 @@ module Socializer
           end
 
           before do
-            group.join(person: person)
+            Group::Services::Join.new(group: group, person: person).call
             Group::Services::Leave.new(group: group, person: person).call
             @membership = Membership.find_by(membership_attributes)
           end

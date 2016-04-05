@@ -40,8 +40,8 @@ module Socializer
             @membership = Membership.find_by(membership_attributes)
           end
 
-          describe "when the group is private" do
-            let(:group) { create(:group, privacy: :private) }
+          describe "when the group is public" do
+            let(:group) { create(:group, privacy: :public) }
 
             it { expect(group.memberships.size).to eq(2) }
 
@@ -50,8 +50,8 @@ module Socializer
             end
           end
 
-          describe "when the group is public" do
-            let(:group) { create(:group, privacy: :public) }
+          describe "when the group is private" do
+            let(:group) { create(:group, privacy: :private) }
 
             it { expect(group.memberships.size).to eq(2) }
 

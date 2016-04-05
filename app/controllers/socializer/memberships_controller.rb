@@ -11,7 +11,9 @@ module Socializer
     # POST /memberships
     def create
       @group = Group.find_by(id: params[:membership][:group_id])
-      @group.join(person: current_user)
+
+      Group::Services::Join.new(group: @group, person: current_user).call
+
       redirect_to @group
     end
 
