@@ -74,6 +74,10 @@ module Socializer
                         foreign_key: "person_id",
                         dependent: :destroy
 
+    # TODO: May be able replace the circles and contacts delegates. Should be
+    #       able to create circles through this relationship
+    # has_many :circles, through: :activity_object
+    # has_many :contacts, through: :circles
 
     # Validations
     validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN

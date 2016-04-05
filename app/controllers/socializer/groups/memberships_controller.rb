@@ -3,6 +3,7 @@
 #
 module Socializer
   module Groups
+    # TODO: This may belong under people
     #
     # Memberships controller
     #
