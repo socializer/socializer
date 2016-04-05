@@ -7,27 +7,6 @@ module Socializer
         let(:group) { build(:group) }
         let(:person) { build(:person) }
 
-        describe "when the group and person arguments are nil" do
-          context ".new should raise an ArgumentError" do
-            let(:leave) { Leave.new(group: nil, person: nil) }
-            it { expect { leave }.to raise_error(ArgumentError) }
-          end
-        end
-
-        describe "when the group argument is nil" do
-          context ".new should raise an ArgumentError" do
-            let(:leave) { Leave.new(group: nil, person: person) }
-            it { expect { leave }.to raise_error(ArgumentError) }
-          end
-        end
-
-        describe "when the person argument is nil" do
-          context ".new should raise an ArgumentError" do
-            let(:leave) { Leave.new(group: group, person: nil) }
-            it { expect { leave }.to raise_error(ArgumentError) }
-          end
-        end
-
         describe ".call" do
           let(:person) { create(:person) }
 
