@@ -4,7 +4,6 @@ module Socializer
   class Group
     module Services
       RSpec.describe Join, type: :service do
-        let(:group) { build(:group) }
         let(:person) { build(:person) }
 
         describe ".call" do
@@ -14,11 +13,16 @@ module Socializer
             { member_id: person.guid, group_id: group.id }
           end
 
+          let(:join) do
+            Group::Services::Join.new(group: group, person: person)
+          end
+
           describe "when the group is public" do
-            let(:group) { create(:group, privacy: :public) }
+            let(:public_group) { create(:group, privacy: :public) }
+            let(:group) { public_group }
 
             before do
-              group
+              public_group
             end
 
             it ".public has 1 group" do
@@ -30,16 +34,16 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(group.privacy.public?).to be_truthy
+              expect(public_group.privacy.public?).to be_truthy
             end
 
             it "member? is false" do
-              expect(group.member?(person)).to be_falsey
+              expect(public_group.member?(person)).to be_falsey
             end
 
             context "and a person joins it" do
               before do
-                Group::Services::Join.new(group: group, person: person).call
+                join.call
                 @membership = Membership.find_by(membership_attributes)
               end
 
@@ -48,23 +52,20 @@ module Socializer
               end
 
               it "member? is true" do
-                expect(group.member?(person)).to be_truthy
+                expect(public_group.member?(person)).to be_truthy
               end
 
               # The factory adds a person to the public group by default
               it "has 2 members" do
-                expect(group.members.size).to eq(2)
+                expect(public_group.members.size).to eq(2)
               end
             end
           end
 
           describe "when the group is private" do
-            let(:group) { create(:group, privacy: :private) }
+            let(:private_group) { create(:group, privacy: :private) }
+            let(:group) { private_group }
             let(:error) { Errors::PrivateGroupCannotSelfJoin }
-
-            let(:join) do
-              Group::Services::Join.new(group: group, person: person)
-            end
 
             let(:error_message) do
               I18n.t("private.cannot_self_join",
@@ -72,7 +73,7 @@ module Socializer
             end
 
             before do
-              group
+              private_group
             end
 
             it ".private has 1 group" do
@@ -80,7 +81,7 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(group.privacy.private?).to be_truthy
+              expect(private_group.privacy.private?).to be_truthy
             end
 
             it "cannot be joined" do
@@ -89,10 +90,11 @@ module Socializer
           end
 
           describe "when the group is restricted" do
-            let(:group) { create(:group, privacy: :restricted) }
+            let(:restricted_group) { create(:group, privacy: :restricted) }
+            let(:group) { restricted_group }
 
             before do
-              group
+              restricted_group
             end
 
             it ".restricted has 1 group" do
@@ -104,12 +106,12 @@ module Socializer
             end
 
             it "has the right privacy level" do
-              expect(group.privacy.restricted?).to be_truthy
+              expect(restricted_group.privacy.restricted?).to be_truthy
             end
 
             context "and a person joins it" do
               before do
-                Group::Services::Join.new(group: group, person: person).call
+                join.call
                 @membership = Membership.find_by(membership_attributes)
               end
 

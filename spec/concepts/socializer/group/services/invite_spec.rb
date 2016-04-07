@@ -4,7 +4,6 @@ module Socializer
   class Group
     module Services
       RSpec.describe Invite, type: :service do
-        let(:group) { build(:group) }
         let(:person) { build(:person) }
 
         describe ".call" do
@@ -20,9 +19,10 @@ module Socializer
           end
 
           describe "when the group is public" do
-            let(:group) { create(:group, privacy: :public) }
+            let(:public_group) { create(:group, privacy: :public) }
+            let(:group) { public_group }
 
-            it { expect(group.memberships.size).to eq(2) }
+            it { expect(public_group.memberships.size).to eq(2) }
 
             it "creates an inactive membership" do
               expect(@membership.active).to be_falsey
@@ -30,9 +30,10 @@ module Socializer
           end
 
           describe "when the group is private" do
-            let(:group) { create(:group, privacy: :private) }
+            let(:private_group) { create(:group, privacy: :private) }
+            let(:group) { private_group }
 
-            it { expect(group.memberships.size).to eq(2) }
+            it { expect(private_group.memberships.size).to eq(2) }
 
             it "creates an inactive membership" do
               expect(@membership.active).to be_falsey
