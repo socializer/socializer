@@ -44,11 +44,12 @@ module Socializer
     end
 
     def like_or_unlike_content
-      content = helpers.content_tag(:span,
-                                    nil,
-                                    class: "fa fa-fw fa-thumbs-o-up")
+      like_count = model.like_count
+      content    = helpers.content_tag(:span,
+                                       nil,
+                                       class: "fa fa-fw fa-thumbs-o-up")
 
-      content += model.like_count.to_s.html_safe if model.like_count > 0
+      content += like_count.to_s.html_safe if like_count > 0
       content
     end
 
