@@ -12,6 +12,15 @@ module Socializer
     module Message
       module_function
 
+      # Returns a localized error for an invalid record
+      #
+      # @return [String]
+      #
+      def record_invalid_message
+        I18n.t("activerecord.errors.messages.record_invalid",
+               errors: errors.full_messages.to_sentence)
+      end
+
       # Creates an error message if the argument(s) passed to the
       # initializer are the wrong type
       #

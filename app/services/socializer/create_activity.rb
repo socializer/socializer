@@ -7,6 +7,7 @@ module Socializer
   #
   class CreateActivity
     include ActiveModel::Model
+    include Utilities::Message
 
     attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
                   :object_ids, :content
@@ -83,11 +84,6 @@ module Socializer
           add_audience_to_activity(activity: activity, audience_ids: object_ids)
         end
       end
-    end
-
-    def record_invalid_message
-      I18n.t("activerecord.errors.messages.record_invalid",
-             errors: errors.full_messages.to_sentence)
     end
   end
 end
