@@ -24,7 +24,8 @@ module Socializer
       # POST /activities/1/like
       def create
         @likable  = find_likable
-        @activity = find_activity(likable: @likable)
+        @activity = find_activity
+
         @likable.like(current_user) unless current_user.likes?(@likable)
 
         respond_to do |format|
@@ -35,7 +36,8 @@ module Socializer
       # DELETE /activities/1/unlike
       def destroy
         @likable  = find_likable
-        @activity = find_activity(likable: @likable)
+        @activity = find_activity
+
         @likable.unlike(current_user) if current_user.likes?(@likable)
 
         respond_to do |format|
@@ -49,8 +51,8 @@ module Socializer
         ActivityObject.find_by(id: params[:id])
       end
 
-      def find_activity(likable:)
-        likable.activitable.decorate
+      def find_activity
+        @likable.activitable.decorate
       end
 
       # Never trust parameters from the scary internet, only allow the white
