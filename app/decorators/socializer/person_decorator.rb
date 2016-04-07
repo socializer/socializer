@@ -51,8 +51,10 @@ module Socializer
     #
     # @return [String]
     def relationship
-      return "Seeing anyone?" if model.relationship.unknown?
-      model.relationship.titleize
+      relationship = model.relationship
+
+      return "Seeing anyone?" if relationship.unknown?
+      relationship.titleize
     end
 
     # Returns the skills value or "What are your skills?" when skills is nil
