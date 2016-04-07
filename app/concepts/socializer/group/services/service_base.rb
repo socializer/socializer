@@ -61,7 +61,7 @@ module Socializer
           valid_class_name = valid_class.name
 
           I18n.t("socializer.errors.messages.wrong_instance_type",
-                 argument: valid_class_name.downcase,
+                 argument: valid_class_name.demodulize.downcase,
                  valid_class: valid_class_name,
                  invalid_class: instance.class.name)
         end
