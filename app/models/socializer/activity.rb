@@ -222,16 +222,16 @@ module Socializer
     # Audience.with_privacy(:limited)
     #   .where(viewer_literal.in(limited_circle_subquery))...
     def self.limited_grouping(viewer_id:)
-      limited_privacy   ||= Audience.privacy.limited.value
-      viewer_literal    ||= viewer_literal(viewer_id: viewer_id)
+      activity_object_id = audience_table[:activity_object_id]
+      limited_privacy    = Audience.privacy.limited.value
+      viewer_literal     = viewer_literal(viewer_id: viewer_id)
       @limited_grouping ||= audience_table
                             .grouping(privacy_field.eq(limited_privacy)
                                   .and(viewer_literal
                                     .in(limited_circle_subquery)
-                                    .or(audience_table[:activity_object_id]
+                                    .or(activity_object_id
                                       .in(limited_group_subquery(viewer_id)))
-                                  .or(audience_table[:activity_object_id]
-                                    .in(viewer_id))))
+                                  .or(activity_object_id.in(viewer_id))))
     end
     private_class_method :limited_grouping
 
