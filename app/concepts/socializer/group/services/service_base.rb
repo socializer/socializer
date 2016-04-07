@@ -20,8 +20,8 @@ module Socializer
         # @param [Socializer:Person] person: the person that is being invited
         # to the group
         #
-        # @return [Socializer::Group::Services::Invite] returns an instance of
-        # Invite
+        # @return [Socializer::Group::Services] returns an instance of
+        # the object that inherits from [ServiceBase]
         def initialize(group:, person:)
           # TODO: Change to a validation
           unless group.is_a?(Socializer::Group)
