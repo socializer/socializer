@@ -25,7 +25,7 @@ module Socializer
     def call
       return create_activity if valid?
 
-      raise(Errors::RecordInvalid, wrong_type_message)
+      raise(Errors::RecordInvalid, record_invalid_message)
     end
 
     private
@@ -85,7 +85,7 @@ module Socializer
       end
     end
 
-    def wrong_type_message
+    def record_invalid_message
       I18n.t("activerecord.errors.messages.record_invalid",
              errors: errors.full_messages.to_sentence)
     end
