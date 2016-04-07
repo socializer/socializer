@@ -6,6 +6,8 @@ module Socializer
   # Build the audience list that is used in the notes and shares forms
   #
   class AudienceList
+    include Utilities::Message
+
     # Initializer
     #
     # @param person: [Socializer:Person] the person to build the list for
@@ -14,7 +16,8 @@ module Socializer
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       unless person.is_a?(Socializer::Person)
-        raise(ArgumentError, wrong_type_message(instance: person))
+        raise(ArgumentError,
+              wrong_type_message(instance: person, valid_class: Person))
       end
 
       @person = person
@@ -123,13 +126,6 @@ module Socializer
       klass              = query.base_class
       display_name_alias = klass.arel_table[:display_name].as("name")
       query.select(display_name_alias).guids
-    end
-
-    def wrong_type_message(instance:)
-      I18n.t("socializer.errors.messages.wrong_instance_type",
-             argument: "person",
-             valid_class: Person.name,
-             invalid_class: instance.class.name)
     end
   end
 end

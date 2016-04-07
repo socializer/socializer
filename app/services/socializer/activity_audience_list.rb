@@ -6,6 +6,8 @@ module Socializer
   # Prepares the list to display in the tooltip
   #
   class ActivityAudienceList
+    include Utilities::Message
+
     # Initializer
     #
     # @param activity: [Socializer:Activity] the activity to build the
@@ -15,7 +17,8 @@ module Socializer
     # ActivityAudienceList
     def initialize(activity:)
       unless activity.is_a?(Socializer::Activity)
-        raise(ArgumentError, wrong_type_message(instance: activity))
+        raise(ArgumentError,
+              wrong_type_message(instance: activity, valid_class: Activity))
       end
 
       @activity = activity
@@ -78,13 +81,6 @@ module Socializer
       return [activitable.display_name] unless activitable.is_a?(Circle)
 
       activitable.contacts.pluck(:display_name)
-    end
-
-    def wrong_type_message(instance:)
-      I18n.t("socializer.errors.messages.wrong_instance_type",
-             argument: "activity",
-             valid_class: Activity.name,
-             invalid_class: instance.class.name)
     end
   end
 end

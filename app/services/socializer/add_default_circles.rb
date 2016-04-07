@@ -6,6 +6,8 @@ module Socializer
   # Add the default circles for the person
   #
   class AddDefaultCircles
+    include Utilities::Message
+
     # Initializer
     #
     # @param person: [Socializer:Person] the person to create the default
@@ -16,7 +18,8 @@ module Socializer
     def initialize(person:)
       # TODO: Change to a validation
       unless person.is_a?(Socializer::Person)
-        raise(ArgumentError, wrong_type_message(instance: person))
+        raise(ArgumentError,
+              wrong_type_message(instance: person, valid_class: Person))
       end
 
       @person = person
@@ -77,13 +80,6 @@ module Socializer
     def friends_content
       "Your real friends, the ones you feel " \
       "comfortable sharing private details with."
-    end
-
-    def wrong_type_message(instance:)
-      I18n.t("socializer.errors.messages.wrong_instance_type",
-             argument: "person",
-             valid_class: Person.name,
-             invalid_class: instance.class.name)
     end
   end
 end
