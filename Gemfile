@@ -16,7 +16,7 @@ end
 group :development, :test do
   gem "byebug", "~> 8.2.4"
   gem "rspec-rails", "~> 3.4.2"
-  gem "capybara", "~> 2.6.2"
+  gem "capybara", "~> 2.7.0"
   gem "rails-dummy", "~> 0.0.4"
   gem "pry", "~> 0.10.3"
 end
