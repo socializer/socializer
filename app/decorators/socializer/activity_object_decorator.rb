@@ -26,20 +26,46 @@ module Socializer
     #
     # @return [String] the html needed to display the like/unlike link
     def link_to_like_or_unlike
-      like_or_unlike_link if helpers.current_user
+      return unless helpers.current_user
+
+      attributes = current_user_likes? ? like_attributes : unlike_attributes
+
+      like_or_unlike_link(attributes: attributes)
     end
 
     private
 
-    def like_or_unlike_link
+    def like_attributes
+      path  = helpers.unlike_activity_path(model)
+      # i18n-tasks-use t("socializer.shared.unlike")
+      title = helpers.t("socializer.shared.unlike")
+
+      LikeLinkAttributes.new(class_name: "btn-danger",
+                             path: path,
+                             title: title,
+                             verb: :delete)
+    end
+
+    def unlike_attributes
+      path  = helpers.like_activity_path(model)
+      # i18n-tasks-use t("socializer.shared.like")
+      title = helpers.t("socializer.shared.like")
+
+      LikeLinkAttributes.new(class_name: "btn-default",
+                             path: path,
+                             title: title,
+                             verb: :post)
+    end
+
+    def like_or_unlike_link(attributes:)
       content = like_or_unlike_content
 
       helpers.link_to(content,
-                      like_or_unlike_path,
-                      method: like_or_unlike_verb,
+                      attributes.path,
+                      method: attributes.verb,
                       remote: true,
-                      class: "btn #{like_or_unlike_class}",
-                      title: like_or_unlike_title,
+                      class: "btn #{attributes.class_name}",
+                      title: attributes.title,
                       data: { behavior: "tooltip-on-hover" })
     end
 
@@ -51,28 +77,6 @@ module Socializer
 
       content += like_count.to_s.html_safe if like_count > 0
       content
-    end
-
-    def like_or_unlike_class
-      return "btn-danger" if current_user_likes?
-      "btn-default"
-    end
-
-    def like_or_unlike_path
-      return helpers.unlike_activity_path(model) if current_user_likes?
-      helpers.like_activity_path(model)
-    end
-
-    def like_or_unlike_title
-      # i18n-tasks-use t("socializer.shared.unlike")
-      return helpers.t("socializer.shared.unlike") if current_user_likes?
-      # i18n-tasks-use t("socializer.shared.like")
-      helpers.t("socializer.shared.like")
-    end
-
-    def like_or_unlike_verb
-      return :delete if current_user_likes?
-      :post
     end
 
     def current_user_likes?
