@@ -28,43 +28,39 @@ module Socializer
     def link_to_like_or_unlike
       return unless helpers.current_user
 
-      attributes = current_user_likes? ? like_attributes : unlike_attributes
+      options = current_user_likes? ? like_options : unlike_options
 
-      like_or_unlike_link(attributes: attributes)
+      like_or_unlike_link(options: options)
     end
 
     private
 
-    def like_attributes
+    def default_options
+      { remote: true, data: { behavior: "tooltip-on-hover" } }
+    end
+
+    def like_options
       path  = helpers.unlike_activity_path(model)
       # i18n-tasks-use t("socializer.shared.unlike")
       title = helpers.t("socializer.shared.unlike")
 
-      LikeLinkAttributes.new(class_name: "btn-danger",
-                             path: path,
-                             title: title,
-                             verb: :delete)
+      { class: "btn btn-danger", path: path, title: title, method: :delete }
     end
 
-    def unlike_attributes
+    def unlike_options
       path  = helpers.like_activity_path(model)
       # i18n-tasks-use t("socializer.shared.like")
       title = helpers.t("socializer.shared.like")
 
-      LikeLinkAttributes.new(class_name: "btn-default",
-                             path: path,
-                             title: title,
-                             verb: :post)
+      { class: "btn btn-default", path: path, title: title, method: :post }
     end
 
-    def like_or_unlike_link(attributes:)
-      helpers.link_to(like_or_unlike_content,
-                      attributes.path,
-                      method: attributes.verb,
-                      remote: true,
-                      class: "btn #{attributes.class_name}",
-                      title: attributes.title,
-                      data: { behavior: "tooltip-on-hover" })
+    def like_or_unlike_link(options:)
+      path = options.delete(:path)
+
+      options.merge!(default_options)
+
+      helpers.link_to(like_or_unlike_content, path, options)
     end
 
     def like_or_unlike_content
