@@ -58,9 +58,7 @@ module Socializer
     end
 
     def like_or_unlike_link(attributes:)
-      content = like_or_unlike_content
-
-      helpers.link_to(content,
+      helpers.link_to(like_or_unlike_content,
                       attributes.path,
                       method: attributes.verb,
                       remote: true,
