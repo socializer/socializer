@@ -49,22 +49,6 @@ module Socializer
           get :index
         end
 
-        it "assigns @activities" do
-          expect(assigns(:activities)).to match_array([activity])
-        end
-
-        it "assigns @current_id" do
-          expect(assigns(:current_id)).to eq(nil)
-        end
-
-        it "assigns @title" do
-          expect(assigns(:title)).to match("Activity stream")
-        end
-
-        it "assigns @note" do
-          expect(assigns(:note)).to be_a_new(Note)
-        end
-
         it "renders the :index template" do
           expect(response).to render_template :index
         end
@@ -78,14 +62,6 @@ module Socializer
         context "assigns variables and returns success" do
           before do
             delete :destroy, id: activity, format: :js
-          end
-
-          it "assigns @activity" do
-            expect(assigns(:activity)).to eq(activity)
-          end
-
-          it "assigns @activity_guid" do
-            expect(assigns(:activity_guid)).to eq(activity.guid)
           end
 
           it "returns http success" do
