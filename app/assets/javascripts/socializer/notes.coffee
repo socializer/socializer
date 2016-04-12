@@ -21,37 +21,40 @@
       height: 100
     , "fast"
 
+@setup = (controllerName, controllerAction) ->
+  resetContent = if controllerAction == "edit" then false else true
+  tokeninput = $("[data-behavior~=tokeninput-for-note]")
+  audiencePath = tokeninput.data("source")
+  title = tokeninput.data("title")
+  currentId = tokeninput.data("current-id")
+  prepopulate = null
+
+  if currentId != null
+    prepopulate = [
+      id: currentId
+      name: title
+    ]
+
+  tokeninput.tokenInput audiencePath,
+    minChars: 0
+    preventDuplicates: true
+    prePopulate: prepopulate
+    resultsFormatter: (item) ->
+      "<li><span class='fa fa-fw #{item.icon}'></span> #{item.name}</li>"
+
+  if (currentId != null) && (title == "") || (controllerAction == "edit")
+    $(".token-input-list").hide()
+
+  resetNoteForm(resetContent)
+
+  $("[data-behavior~=cancel-note-form]").on "click", ->
+    resetNoteForm(resetContent)
+
 jQuery ->
   controllerName = $("body").data("controller")
   controllerAction = $("body").data("action")
-  resetContent = if controllerAction == "edit" then false else true
 
   if controllerName == "notes" || controllerName == "activities" ||
   controllerName == "people" || controllerName == "messages"
 
-    tokeninput = $("[data-behavior~=tokeninput-for-note]")
-    audiencePath = tokeninput.data("source")
-    title = tokeninput.data("title")
-    currentId = tokeninput.data("current-id")
-    prepopulate = null
-
-    if currentId != null
-      prepopulate = [
-        id: currentId
-        name: title
-      ]
-
-    tokeninput.tokenInput audiencePath,
-      minChars: 0
-      preventDuplicates: true
-      prePopulate: prepopulate
-      resultsFormatter: (item) ->
-        "<li><span class='fa fa-fw #{item.icon}'></span> #{item.name}</li>"
-
-    if (currentId != null) && (title == "") || (controllerAction == "edit")
-      $(".token-input-list").hide()
-
-    resetNoteForm(resetContent)
-
-    $("[data-behavior~=cancel-note-form]").on "click", ->
-      resetNoteForm(resetContent)
+    setup(controllerName, controllerAction)
