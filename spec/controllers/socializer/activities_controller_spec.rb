@@ -59,13 +59,17 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
-        context "assigns variables and returns success" do
+        context "returns success" do
           before do
             delete :destroy, id: activity, format: :js
           end
 
           it "returns http success" do
             expect(response).to have_http_status(:success)
+          end
+
+          it "renders the :destroy template" do
+            expect(response).to render_template :destroy
           end
         end
 

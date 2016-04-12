@@ -12,10 +12,10 @@ module Socializer
     def index
       activities = Activity.stream(viewer_id: current_user.id).decorate
 
-      render "socializer/activities/index", locals: { activities: activities,
-                                                      current_id: nil,
-                                                      title: "Activity stream",
-                                                      note: Note.new }
+      render :index, locals: { activities: activities,
+                               current_id: nil,
+                               title: "Activity stream",
+                               note: Note.new }
     end
 
     # DELETE /activities/1
@@ -25,7 +25,7 @@ module Socializer
 
       respond_to do |format|
         format.js do
-          render "socializer/activities/destroy", activity_guid: activity.guid
+          render :destroy, locals: { activity_guid: activity.guid }
         end
       end
     end
