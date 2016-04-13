@@ -1,4 +1,4 @@
-require "rails_helper"
+# require "rails_helper"
 
 module Socializer
   RSpec.describe NotesController, type: :controller do
@@ -67,12 +67,8 @@ module Socializer
           get :new
         end
 
-        it "assigns @note" do
-          expect(assigns(:note)).to be_a_new(Note)
-        end
-
         it "renders the :new template" do
-          expect(response).to render_template :new
+          expect(response).to render_template(:new)
         end
 
         it "returns http success" do
@@ -95,14 +91,23 @@ module Socializer
           end
 
           context "format.js" do
+            before do
+              @request.env["HTTP_ACCEPT"] = "application/javascript"
+            end
+
             it "saves the new note in the database" do
               expect { post :create, valid_attributes, format: :js }
                 .to change(Note, :count).by(1)
             end
 
-            it "returns http success" do
+            it "returns http ok" do
               post :create, valid_attributes, format: :js
-              expect(response).to have_http_status(:found)
+              expect(response).to have_http_status(:ok)
+            end
+
+            it "renders the :create template" do
+              post :create, valid_attributes, format: :js
+              expect(response).to render_template(:create)
             end
           end
         end
@@ -115,10 +120,6 @@ module Socializer
       describe "GET #edit" do
         before do
           get :edit, id: note
-        end
-
-        it "assigns @note" do
-          expect(assigns(:note)).to eq note
         end
 
         it "renders the :edit template" do
@@ -142,6 +143,20 @@ module Socializer
       describe "DELETE #destroy" do
         let(:note) do
           user.activity_object.notes.create!(valid_attributes[:note])
+        end
+
+        context "returns success" do
+          before do
+            delete :destroy, id: note, format: :js
+          end
+
+          it "returns http success" do
+            expect(response).to have_http_status(:success)
+          end
+
+          it "renders the :destroy template" do
+            expect(response).to render_template(:destroy)
+          end
         end
 
         it "deletes the note" do

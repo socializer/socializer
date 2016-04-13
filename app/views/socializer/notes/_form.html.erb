@@ -1,4 +1,4 @@
-<div class="well well-sm">
+<div class="well well-sm" data-behavior="new-note-form">
   <%= simple_form_for(note, html: { remote: true }) do |f| %>
     <%= f.input :content, label: false, input_html: { class: "note-content-field", placeholder: "#{t(".share_placeholder")}", data: { behavior: "note-content" } } %>
 
