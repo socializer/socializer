@@ -54,8 +54,13 @@ module Socializer
           end
 
           it "returns http ok" do
-            post :create, valid_attributes
+            post :create, valid_attributes, format: :js
             expect(response).to have_http_status(:ok)
+          end
+
+          it "renders the :create template" do
+            post :create, valid_attributes, format: :js
+            expect(response).to render_template(:create)
           end
         end
 
