@@ -11,20 +11,24 @@ module Socializer
 
       # GET /people/1/activities
       def index
-        id          = params.fetch(:person_id) { nil }
-        @person     = Person.find_by(id: id).decorate
-        @title      = @person.display_name
-        @current_id = @person.guid
+        person_id = params.fetch(:person_id) { nil }
+        person    = Person.find_by(id: person_id).decorate
+        # @current_id = @person.guid
         # TODO: makes sense to have stream or activities as an instance
         #       method so we can do
         #       @person.activities(viewer_id: current_user.id)
-        @activities = stream
+
+        activities = stream(person: person)
+
+        render :index, locals: { activities: activities,
+                                 person: person,
+                                 title: person.display_name }
       end
 
       private
 
-      def stream
-        @stream ||= Activity.person_stream(actor_uid: @person.id,
+      def stream(person:)
+        @stream ||= Activity.person_stream(actor_uid: person.id,
                                            viewer_id: current_user.id).decorate
       end
     end

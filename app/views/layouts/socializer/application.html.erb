@@ -44,7 +44,7 @@
           <% elsif controller_name == "groups" || controller_path == "socializer/groups/activities" %>
             <%= render "socializer/groups/sidebar", group: local_assigns[:group], title: local_assigns[:title] if local_assigns[:group] %>
           <% elsif controller_path.include?("people") %>
-            <%= render "socializer/people/sidebar", person: @person if @person %>
+            <%= render "socializer/people/sidebar", person: local_assigns[:person] if local_assigns[:person] %>
           <% elsif controller_path == "socializer/activities" %>
             <%= render "socializer/activities/sidebar" %>
           <% end %>
