@@ -42,7 +42,7 @@
           <% if controller_name == "circles" || controller_path == "socializer/circles/activities" %>
             <%= render "socializer/circles/sidebar", circle: local_assigns[:circle], title: local_assigns[:title] if local_assigns[:circle] %>
           <% elsif controller_name == "groups" || controller_path == "socializer/groups/activities" %>
-            <%= render "socializer/groups/sidebar", group: @group, title: @title if @group %>
+            <%= render "socializer/groups/sidebar", group: local_assigns[:group], title: local_assigns[:title] if local_assigns[:group] %>
           <% elsif controller_path.include?("people") %>
             <%= render "socializer/people/sidebar", person: @person if @person %>
           <% elsif controller_path == "socializer/activities" %>

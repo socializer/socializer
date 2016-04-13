@@ -42,22 +42,6 @@ module Socializer
         it "renders the :index template" do
           expect(response).to render_template :index
         end
-
-        it "assigns @group" do
-          expect(assigns(:group)).to match(group)
-        end
-
-        it "assigns @title" do
-          expect(assigns(:title)).to match(group.display_name)
-        end
-
-        it "assigns @current_id" do
-          expect(assigns(:current_id)).to eq(group.guid)
-        end
-
-        it "assigns @activities" do
-          expect(assigns(:activities)).to match_array(activities)
-        end
       end
     end
   end
