@@ -40,7 +40,7 @@
 
         <aside class="contextual-column" role="complementary">
           <% if controller_name == "circles" || controller_path == "socializer/circles/activities" %>
-            <%= render "socializer/circles/sidebar", circle: @circle, title: @title if @circle %>
+            <%= render "socializer/circles/sidebar", circle: local_assigns[:circle], title: local_assigns[:title] if local_assigns[:circle] %>
           <% elsif controller_name == "groups" || controller_path == "socializer/groups/activities" %>
             <%= render "socializer/groups/sidebar", group: @group, title: @title if @group %>
           <% elsif controller_path.include?("people") %>
