@@ -44,10 +44,8 @@ module Socializer
     #
     # @return [Array]
     def call
-      audiences = []
-
-      audiences << merge_icon(list: privacy_hash(privacy_symbol: :public),
-                              icon: "fa-globe")
+      audiences = [merge_icon(list: privacy_hash(privacy_symbol: :public),
+                              icon: "fa-globe")]
 
       audiences << merge_icon(list: privacy_hash(privacy_symbol: :circles),
                               icon: "fa-google-circles")
