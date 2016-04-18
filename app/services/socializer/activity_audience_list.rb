@@ -6,7 +6,12 @@ module Socializer
   # Prepares the list to display in the tooltip
   #
   class ActivityAudienceList
+    include ActiveModel::Model
     include Utilities::Message
+
+    attr_reader :activity
+
+    validates :activity, presence: true, type: Socializer::Activity
 
     # Initializer
     #
@@ -16,12 +21,9 @@ module Socializer
     # @return [Socializer:ActivityAudienceList] returns an instance of
     # ActivityAudienceList
     def initialize(activity:)
-      unless activity.is_a?(Socializer::Activity)
-        raise(ArgumentError,
-              wrong_type_message(instance: activity, valid_class: Activity))
-      end
-
       @activity = activity
+
+      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
     end
 
     # Class Methods

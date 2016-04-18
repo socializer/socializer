@@ -14,7 +14,13 @@ module Socializer
       # Base class for Group::Service
       #
       class ServiceBase
+        include ActiveModel::Model
         include Utilities::Message
+
+        attr_reader :group, :person
+
+        validates :group, presence: true, type: Socializer::Group
+        validates :person, presence: true, type: Socializer::Person
 
         # Initializer
         #
@@ -25,20 +31,10 @@ module Socializer
         # @return [Socializer::Group::Services] returns an instance of
         # the object that inherits from [ServiceBase]
         def initialize(group:, person:)
-          # TODO: Change to a validation
-          unless group.is_a?(Socializer::Group)
-            raise(ArgumentError,
-                  wrong_type_message(instance: group, valid_class: Group))
-          end
-
-          # TODO: Change to a validation
-          unless person.is_a?(Socializer::Person)
-            raise(ArgumentError,
-                  wrong_type_message(instance: person, valid_class: Person))
-          end
-
           @group  = group
           @person = person
+
+          raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
         end
 
         # @return [Socializer:Membership/FalseClass] Deletes the record in the

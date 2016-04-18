@@ -6,7 +6,12 @@ module Socializer
   # Build the audience list that is used in the notes and shares forms
   #
   class AudienceList
+    include ActiveModel::Model
     include Utilities::Message
+
+    attr_reader :person
+
+    validates :person, presence: true, type: Socializer::Person
 
     # Initializer
     #
@@ -15,13 +20,10 @@ module Socializer
     #
     # @return [Socializer:AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
-      unless person.is_a?(Socializer::Person)
-        raise(ArgumentError,
-              wrong_type_message(instance: person, valid_class: Person))
-      end
-
       @person = person
       @query  = query
+
+      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
     end
 
     # Class Methods

@@ -6,7 +6,12 @@ module Socializer
   # Add the default circles for the person
   #
   class AddDefaultCircles
+    include ActiveModel::Model
     include Utilities::Message
+
+    attr_reader :person
+
+    validates :person, presence: true, type: Socializer::Person
 
     # Initializer
     #
@@ -16,13 +21,9 @@ module Socializer
     # @return [Socializer:AddDefaultCircles] returns an instance of
     # AddDefaultCircles
     def initialize(person:)
-      # TODO: Change to a validation
-      unless person.is_a?(Socializer::Person)
-        raise(ArgumentError,
-              wrong_type_message(instance: person, valid_class: Person))
-      end
-
       @person = person
+
+      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
     end
 
     # Class Methods
