@@ -64,7 +64,7 @@ module Socializer
 
     # Find circles where the display_name is equal to the given name
     #
-    # @param name: [Fixnum]
+    # @param name: [String]
     #
     # @return [ActiveRecord::Relation]
     def self.with_display_name(name:)
