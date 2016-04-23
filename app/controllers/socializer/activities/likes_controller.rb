@@ -23,7 +23,7 @@ module Socializer
 
       # POST /activities/1/like
       def create
-        set_crete_destroy_ivars
+        set_create_destroy_ivars
 
         @likable.like(current_user) unless current_user.likes?(@likable)
 
@@ -34,7 +34,7 @@ module Socializer
 
       # DELETE /activities/1/unlike
       def destroy
-        set_crete_destroy_ivars
+        set_create_destroy_ivars
 
         @likable.unlike(current_user) if current_user.likes?(@likable)
 
@@ -45,7 +45,7 @@ module Socializer
 
       private
 
-      def set_crete_destroy_ivars
+      def set_create_destroy_ivars
         @likable  = find_likable
         @activity = find_activity
       end
