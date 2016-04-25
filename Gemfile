@@ -8,7 +8,7 @@ end
 
 group :test do
   gem "cucumber-rails", "~> 1.4.3", require: false
-  gem "database_cleaner", "~> 1.5.2"
+  gem "database_cleaner", "~> 1.5.3"
   gem "simplecov", "~> 0.11.2", require: false
   gem "coveralls", "~> 0.8.13", require: false
 end
