@@ -25,7 +25,8 @@ module Socializer
       def create
         set_create_destroy_ivars
 
-        @likable.like(current_user) unless current_user.likes?(@likable)
+        ActivityObject::Services::Like.new(actor: current_user,
+                                           activity_object: @likable).call
 
         respond_to do |format|
           format.js
@@ -36,7 +37,8 @@ module Socializer
       def destroy
         set_create_destroy_ivars
 
-        @likable.unlike(current_user) if current_user.likes?(@likable)
+        ActivityObject::Services::Unlike.new(actor: current_user,
+                                             activity_object: @likable).call
 
         respond_to do |format|
           format.js

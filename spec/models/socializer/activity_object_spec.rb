@@ -81,29 +81,6 @@ module Socializer
       end
     end
 
-    context "when liked" do
-      let(:liking_person) { create(:person) }
-      let(:liked_activity_object) { create(:activity_object) }
-
-      before do
-        liked_activity_object.like(liking_person)
-        liked_activity_object.reload
-      end
-
-      it { expect(liked_activity_object.like_count).to eq(1) }
-      it { expect(liked_activity_object.liked_by.size).to eq(1) }
-
-      context "and unliked" do
-        before do
-          liked_activity_object.unlike(liking_person)
-          liked_activity_object.reload
-        end
-
-        it { expect(liked_activity_object.like_count).to eq(0) }
-        it { expect(liked_activity_object.liked_by.size).to eq(0) }
-      end
-    end
-
     it { is_expected.to respond_to(:scope) }
 
     context "check activitable_type predicates" do
@@ -135,35 +112,6 @@ module Socializer
       context "#person?" do
         let(:activity_object) { build(:activity_object_person) }
         it { expect(activity_object.person?).to be_truthy }
-      end
-    end
-
-    context "when an object is liked" do
-      let(:activity_object) { create(:activity_object) }
-      let(:liking_person) { create(:person) }
-
-      before do
-        activity_object.like(liking_person)
-        activity_object.reload
-        liking_person.reload
-      end
-
-      it { expect(activity_object.like_count).to eq(1) }
-      it { expect(activity_object.liked_by.size).to eq(1) }
-      it { expect(liking_person.likes.count.size).to eq(1) }
-      it { expect(liking_person.likes?(activity_object)).to be_truthy }
-
-      context "when an object is unliked" do
-        before do
-          activity_object.unlike(liking_person)
-          activity_object.reload
-          liking_person.reload
-        end
-
-        it { expect(activity_object.like_count).to eq(0) }
-        it { expect(activity_object.liked_by.size).to eq(0) }
-        it { expect(liking_person.likes.count.size).to eq(0) }
-        it { expect(liking_person.likes?(activity_object)).to be_falsey }
       end
     end
 

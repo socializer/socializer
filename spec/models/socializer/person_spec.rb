@@ -142,12 +142,18 @@ module Socializer
       it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
     end
 
-    it "#likes" do
-      expect(person).to respond_to(:likes)
-    end
+    context "#likes and #likes?" do
+      let(:liking_person) { create(:person) }
+      let(:liked_activity_object) { create(:activity_object) }
 
-    it "#likes?" do
-      expect(person).to respond_to(:likes?)
+      before do
+        ActivityObject::Services::Like
+          .new(actor: liking_person,
+               activity_object: liked_activity_object).call
+      end
+
+      it { expect(liking_person.likes.count.size).to eq(1) }
+      it { expect(liking_person.likes?(liked_activity_object)).to be_truthy }
     end
 
     it "#pending_membership_invites" do

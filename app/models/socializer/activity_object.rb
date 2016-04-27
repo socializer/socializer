@@ -121,38 +121,6 @@ module Socializer
       people
     end
 
-    # Like the ActivityObject
-    #
-    # @example
-    #   @likable.like(current_user) unless current_user.likes?(@likable)
-    #
-    # @param person [Socializer::Person] The person who is liking the activity
-    # (current_user)
-    #
-    # @return [Socializer::Activity]
-    def like(person)
-      results = create_like_unlike_activity(actor: person, verb: "like")
-
-      increment_like_count if results.persisted?
-      results
-    end
-
-    # Unlike the ActivityObject
-    #
-    # @example
-    #   @likable.unlike(current_user) if current_user.likes?(@likable)
-    #
-    # @param person [Socializer::Person] The person who is unliking the
-    # activity (current_user)
-    #
-    # @return [Socializer::Activity]
-    def unlike(person)
-      results = create_like_unlike_activity(actor: person, verb: "unlike")
-
-      decrement_like_count if results.persisted?
-      results
-    end
-
     # Share the activity with an audience
     #
     # @example
@@ -183,30 +151,7 @@ module Socializer
       update!(unread_notifications_count: 0) if unread_notifications_count > 0
     end
 
-    private
+    # private
 
-    # Create the activity for like and unlike.
-    #
-    # @param actor [Person] User who is liking/unliking the activity
-    # (current_user)
-    # @param verb [String] Verb for the activity
-    #
-    # @return [Socializer::Activity]
-    def create_like_unlike_activity(actor:, verb:)
-      public = Audience.privacy.public.value.split(",")
-
-      CreateActivity.new(actor_id: actor.guid,
-                         activity_object_id: id,
-                         verb: verb,
-                         object_ids: public).call
-    end
-
-    def increment_like_count
-      increment!(:like_count)
-    end
-
-    def decrement_like_count
-      decrement!(:like_count)
-    end
   end
 end
