@@ -42,7 +42,18 @@ module Socializer
           # Verify that the likable variable is set before create and destroy
           # action
           describe "POST #create" do
-            before { post :create, id: note_activity.guid, format: :js }
+            before do
+              @request.env["HTTP_ACCEPT"] = "application/javascript"
+              post :create, id: note_activity.guid, format: :js
+            end
+
+            it "returns http success" do
+              expect(response).to have_http_status(:success)
+            end
+
+            it "renders the :index template" do
+              expect(response).to render_template(:create)
+            end
 
             it "set likable for action 'create'" do
               expect(assigns(:likable)).to eq(note_activity.activity_object)
@@ -54,7 +65,18 @@ module Socializer
           end
 
           describe "DELETE #destroy" do
-            before { delete :destroy, id: note_activity.guid, format: :js }
+            before do
+              @request.env["HTTP_ACCEPT"] = "application/javascript"
+              delete :destroy, id: note_activity.guid, format: :js
+            end
+
+            it "returns http success" do
+              expect(response).to have_http_status(:success)
+            end
+
+            it "renders the :index template" do
+              expect(response).to render_template(:destroy)
+            end
 
             it "set likable for action 'destroy'" do
               expect(assigns(:likable)).to eq(note_activity.activity_object)
@@ -72,10 +94,13 @@ module Socializer
         end
 
         describe "GET #index" do
-          # Create a like
-          before { post :create, id: note_activity.guid, format: :js }
-          # Get the people ou like the activity
-          before { get :index, id: note_activity.id, format: :html }
+          before do
+            # Create a like
+            post :create, id: note_activity.guid, format: :js
+
+            # Get the people ou like the activity
+            get :index, id: note_activity.id, format: :html
+          end
 
           it "return people" do
             expect(assigns(:people)).to be_present
@@ -88,7 +113,9 @@ module Socializer
 
         describe "GET #create" do
           # Create a like
-          before { post :create, id: note_activity.guid, format: :js }
+          before do
+            post :create, id: note_activity.guid, format: :js
+          end
 
           it "likes the note after liking it" do
             expect(user.likes?(note_activity.activity_object)).to be_truthy
@@ -96,10 +123,13 @@ module Socializer
         end
 
         describe "GET #destroy" do
-          # Create a like
-          before { post :create, id: note_activity.guid, format: :js }
-          # Destroy the like
-          before { delete :destroy, id: note_activity.guid, format: :js }
+          before do
+            # Create a like
+            post :create, id: note_activity.guid, format: :js
+
+            # Destroy the like
+            delete :destroy, id: note_activity.guid, format: :js
+          end
 
           it "does not like the note anymore" do
             expect(user.likes?(note_activity.activity_object)).to be_falsey
