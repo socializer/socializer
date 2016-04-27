@@ -26,7 +26,6 @@ module Socializer
         def initialize(actor:, activity_object:)
           @actor = actor
           @activity_object = activity_object
-          # @verb = Verb.find_or_create_by(display_name: verb)
         end
 
         # Creates the [Socializer::Activity]
