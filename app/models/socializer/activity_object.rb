@@ -121,26 +121,6 @@ module Socializer
       people
     end
 
-    # Share the activity with an audience
-    #
-    # @example
-    #   @shareable.share(actor_id: actor.guid,
-    #                    object_ids: object_ids,
-    #                    content: "This is the content")
-    #
-    # @param actor_id [Integer] User who is sharing the activity (current_user)
-    # @param object_ids [Array<Integer>] List of audiences to target
-    # @param content [String] Text with the share
-    #
-    # @return [Socializer::Activity]
-    def share(actor_id:, object_ids:, content: nil)
-      CreateActivity.new(actor_id: actor_id,
-                         activity_object_id: id,
-                         verb: "share",
-                         object_ids: object_ids,
-                         content: content).call
-    end
-
     # Increments the unread_notifications_count by 1 and saves the record
     def increment_unread_notifications_count
       increment!(:unread_notifications_count)

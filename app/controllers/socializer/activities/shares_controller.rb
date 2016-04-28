@@ -19,9 +19,15 @@ module Socializer
       def create
         share = params[:share]
         activity_object = find_activity_object(id: share[:activity_id])
-        activity_object.share(actor_id: current_user.guid,
-                              object_ids: share[:object_ids].split(","),
-                              content: share[:content])
+        # activity_object.share(actor_id: current_user.guid,
+        #                       object_ids: share[:object_ids].split(","),
+        #                       content: share[:content])
+
+        ActivityObject::Services::Share
+          .new(actor: current_user,
+               activity_object: activity_object,
+               object_ids: share[:object_ids].split(","),
+               content: share[:content]).call
 
         flash[:notice] = flash_message(action: :create,
                                        activity_object: activity_object)
