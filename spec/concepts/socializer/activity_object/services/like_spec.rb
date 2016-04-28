@@ -7,6 +7,7 @@ module Socializer
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
         let(:like) { Like.new(like_attributes) }
+        let(:results) { like.call }
 
         let(:like_attributes) do
           { actor: liking_person,
@@ -14,9 +15,9 @@ module Socializer
           }
         end
 
-        context "check return type when liking an unliked object" do
-          it { expect(like.call).to be_kind_of(Socializer::Activity) }
-        end
+        it { expect(results.persisted?).to eq(true) }
+        it { expect(results.verb.display_name).to eq("like") }
+        it { expect(results).to be_kind_of(Socializer::Activity) }
 
         context "check the like_count and liked_by" do
           before do
@@ -40,7 +41,7 @@ module Socializer
           it { expect(liked_activity_object.like_count).to eq(1) }
 
           it "should be Socializer::Activity::ActiveRecord_Relation" do
-            expect(like.call)
+            expect(results)
               .to be_kind_of(Socializer::Activity::ActiveRecord_Relation)
           end
         end

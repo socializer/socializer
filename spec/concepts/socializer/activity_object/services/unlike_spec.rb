@@ -8,6 +8,7 @@ module Socializer
         let(:liked_activity_object) { create(:activity_object) }
         let(:like) { Like.new(unlike_attributes) }
         let(:unlike) { Unlike.new(unlike_attributes) }
+        let(:results) { unlike.call }
 
         let(:unlike_attributes) do
           { actor: liking_person,
@@ -20,7 +21,9 @@ module Socializer
             like.call
           end
 
-          it { expect(unlike.call).to be_kind_of(Socializer::Activity) }
+          it { expect(results.persisted?).to eq(true) }
+          it { expect(results.verb.display_name).to eq("unlike") }
+          it { expect(results).to be_kind_of(Socializer::Activity) }
         end
 
         context "check the like_count and liked_by" do
@@ -46,7 +49,7 @@ module Socializer
           it { expect(liked_activity_object.liked_by.size).to eq(0) }
 
           it "should be Socializer::Activity::ActiveRecord_Relation" do
-            expect(unlike.call)
+            expect(results)
               .to be_kind_of(Socializer::Activity::ActiveRecord_Relation)
           end
         end
