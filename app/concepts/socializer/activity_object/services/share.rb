@@ -13,6 +13,13 @@ module Socializer
       # Service object for sharing a Socializer::Activity
       #
       class Share
+        # Initializer
+        #
+        # @param [Socializer::Person] actor: the person sharing the activity
+        # @param [Socialicer::ActivityObject] activity_object: the
+        # Socialicer::ActivityObject being shared
+        # @param [Array<String, Fixnum>] object_ids: who's being shared with
+        # @param [String] content: nil short form text message for the share
         def initialize(actor:, activity_object:, object_ids:, content: nil)
           @actor = actor
           @activity_object = activity_object
