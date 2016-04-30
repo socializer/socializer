@@ -16,7 +16,7 @@ module Socializer
       #   ActivityObject::Services::Like.new(actor: current_user,
       #                                      activity_object: @likable).call
       class Like
-        PUBLIC = Audience.privacy.public.value.freeze
+        PUBLIC = Socializer::Audience.privacy.public.value.freeze
 
         # Initializer
         #
