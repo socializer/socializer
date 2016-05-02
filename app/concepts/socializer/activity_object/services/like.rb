@@ -49,10 +49,17 @@ module Socializer
                  object_ids: PUBLIC).call
         end
 
+        # Increment the like_count for the [Socializer::ActivityObject]
+        #
+        # @return [TrueClass, FalseClass] returns true if the record could
+        # be saved
         def change_like_count
           @activity_object.increment!(:like_count)
         end
 
+        # Return true if creating the [Socializer::Activity] shoud not proceed
+        #
+        # @return [TrueClass, FalseClass]
         def blocked?
           @actor.likes?(@activity_object)
         end

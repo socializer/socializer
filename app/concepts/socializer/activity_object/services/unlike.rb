@@ -18,10 +18,17 @@ module Socializer
       class Unlike < Like
         private
 
+        # Decrement the like_count for the [Socializer::ActivityObject]
+        #
+        # @return [TrueClass, FalseClass] returns true if the record could
+        # be saved
         def change_like_count
           @activity_object.decrement!(:like_count)
         end
 
+        # Return true if creating the [Socializer::Activity] shoud not proceed
+        #
+        # @return [TrueClass, FalseClass]
         def blocked?
           !@actor.likes?(@activity_object)
         end
