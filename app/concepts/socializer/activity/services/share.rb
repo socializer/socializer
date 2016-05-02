@@ -12,6 +12,12 @@ module Socializer
       #
       # Service object for sharing a Socializer::Activity
       #
+      # @example
+      #   Activity::Services::Share
+      #     .new(actor: current_user,
+      #          activity_object: activity_object,
+      #          object_ids: share[:object_ids].split(","),
+      #          content: share[:content]).call
       class Share
         # Initializer
         #
