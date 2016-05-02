@@ -44,6 +44,9 @@ module Socializer
 
         private
 
+        # The verb to use when sharing an [Socializer::ActivityObject]
+        #
+        # @return [String]
         def verb
           "share"
         end

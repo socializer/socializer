@@ -26,6 +26,10 @@ module Socializer
           !@actor.likes?(@activity_object)
         end
 
+        # The verb to use when unliking an [Socializer::ActivityObject]
+        #
+        # @return [String]
+        #
         def verb
           "unlike"
         end
