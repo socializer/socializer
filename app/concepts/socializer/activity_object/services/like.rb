@@ -21,8 +21,8 @@ module Socializer
         # Initializer
         #
         # @param [Socializer::Person] actor: the person that likes the activity
-        # @param [Fixnum] activity_object_id: the id for the
-        # [Socializer::ActivityObject]
+        # @param [Socialicer::ActivityObject] activity_object: the
+        # Socialicer::ActivityObject being liked
         def initialize(actor:, activity_object:)
           @actor = actor
           @activity_object = activity_object
