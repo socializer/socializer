@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Socializer
-  class ActivityObject
+  class Activity
     module Services
       RSpec.describe Share, type: :service do
         let(:activity_object) { create(:activity_object) }

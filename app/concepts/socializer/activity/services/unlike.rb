@@ -4,7 +4,7 @@ module Socializer
   #
   # Namespace for Activity related objects
   #
-  class ActivityObject
+  class Activity
     #
     # Namespace for Service related objects
     #
@@ -13,8 +13,8 @@ module Socializer
       # Service object for unliking a Socializer::Activity
       #
       # @example
-      #   ActivityObject::Services::Unlike.new(actor: current_user,
-      #                                        activity_object: @likable).call
+      #   Activity::Services::Unlike.new(actor: current_user,
+      #                                  activity_object: @likable).call
       class Unlike < Like
         private
 

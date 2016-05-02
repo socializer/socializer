@@ -4,7 +4,7 @@ module Socializer
   #
   # Namespace for Activity related objects
   #
-  class ActivityObject
+  class Activity
     #
     # Namespace for Service related objects
     #

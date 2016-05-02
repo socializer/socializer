@@ -51,9 +51,8 @@ module Socializer
 
         context "does like" do
           before do
-            ActivityObject::Services::Like
-              .new(actor: person,
-                   activity_object: activity_object).call
+            Activity::Services::Like
+              .new(actor: person, activity_object: activity_object).call
           end
 
           let(:url) { unlike_activity_path(activity_object) }

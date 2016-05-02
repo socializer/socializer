@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Socializer
-  class ActivityObject
+  class Activity
     module Services
       RSpec.describe Like, type: :service do
         let(:liking_person) { create(:person) }

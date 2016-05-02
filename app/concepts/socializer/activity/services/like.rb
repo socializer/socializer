@@ -4,7 +4,7 @@ module Socializer
   #
   # Namespace for Activity related objects
   #
-  class ActivityObject
+  class Activity
     #
     # Namespace for Service related objects
     #
@@ -13,8 +13,8 @@ module Socializer
       # Service object for liking a Socializer::Activity
       #
       # @example
-      #   ActivityObject::Services::Like.new(actor: current_user,
-      #                                      activity_object: @likable).call
+      #   Activity::Services::Like.new(actor: current_user,
+      #                                activity_object: @likable).call
       class Like
         PUBLIC = Socializer::Audience.privacy.public.value.freeze
 

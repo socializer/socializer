@@ -20,7 +20,7 @@ module Socializer
         share = params[:share]
         activity_object = find_activity_object(id: share[:activity_id])
 
-        ActivityObject::Services::Share
+        Activity::Services::Share
           .new(actor: current_user,
                activity_object: activity_object,
                object_ids: share[:object_ids].split(","),
