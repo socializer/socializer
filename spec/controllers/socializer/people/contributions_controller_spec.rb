@@ -8,12 +8,10 @@ module Socializer
     let(:user) { create(:person) }
 
     let(:valid_attributes) do
-      {
-        person_id: user,
+      { person_id: user,
         person_contribution: { display_name: "My Test",
                                url: "http://test.org",
-                               label: :current_contributor }
-      }
+                               label: :current_contributor } }
     end
 
     let(:contribution) do
@@ -23,8 +21,7 @@ module Socializer
     let(:update_attributes) do
       { id: contribution,
         person_id: user,
-        person_contribution: { label: :past_contributor }
-      }
+        person_contribution: { label: :past_contributor } }
     end
 
     describe "when not logged in" do

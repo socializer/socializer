@@ -9,8 +9,7 @@ module Socializer
 
     let(:valid_attributes) do
       { person_id: user,
-        person_place: { city_name: "name" }
-      }
+        person_place: { city_name: "name" } }
     end
 
     let(:place) do
@@ -20,8 +19,7 @@ module Socializer
     let(:update_attributes) do
       { id: place,
         person_id: user,
-        person_place: { city_name: "updated content" }
-      }
+        person_place: { city_name: "updated content" } }
     end
 
     describe "when not logged in" do

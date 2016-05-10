@@ -8,15 +8,13 @@ module Socializer
     let(:user) { create(:person) }
 
     let(:valid_attributes) do
-      {
-        person_id: user,
+      { person_id: user,
         person_address: { category: :home,
                           line1: "282 Kevin Brook",
                           city: "Imogeneborough",
                           province_or_state: "California",
                           postal_code_or_zip: "12345",
-                          country: "US" }
-      }
+                          country: "US" } }
     end
 
     let(:address) do
@@ -26,8 +24,7 @@ module Socializer
     let(:update_attributes) do
       { id: address,
         person_id: user,
-        person_address: { label: "updated content" }
-      }
+        person_address: { label: "updated content" } }
     end
 
     describe "when not logged in" do

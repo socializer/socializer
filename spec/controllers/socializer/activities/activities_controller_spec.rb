@@ -15,8 +15,7 @@ module Socializer
       { actor_id: user.guid,
         activity_object_id: note.guid,
         verb: "post",
-        object_ids: "public"
-      }
+        object_ids: "public" }
     end
 
     let(:result) do

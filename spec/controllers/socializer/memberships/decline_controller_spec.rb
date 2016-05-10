@@ -13,8 +13,7 @@ module Socializer
 
     let(:membership_attributes) do
       { group: group,
-        activity_member: user.activity_object
-      }
+        activity_member: user.activity_object }
     end
 
     let(:membership) do

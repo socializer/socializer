@@ -14,9 +14,7 @@ module Socializer
     let(:valid_attributes) do
       { note: { content: "Test",
                 object_ids: "public",
-                activity_verb: "post"
-              }
-      }
+                activity_verb: "post" } }
     end
 
     describe "when not logged in" do

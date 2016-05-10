@@ -8,13 +8,10 @@ module Socializer
     let(:user) { create(:person) }
 
     let(:valid_attributes) do
-      {
-        person_id: user,
+      { person_id: user,
         person_education: { school_name: "Test School",
                             major_or_field_of_study: "Student",
-                            started_on: Time.zone.now.to_date
-                          }
-      }
+                            started_on: Time.zone.now.to_date } }
     end
 
     let(:education) do
@@ -24,8 +21,7 @@ module Socializer
     let(:update_attributes) do
       { id: education,
         person_id: user,
-        person_education: { label: "updated content" }
-      }
+        person_education: { label: "updated content" } }
     end
 
     describe "when not logged in" do

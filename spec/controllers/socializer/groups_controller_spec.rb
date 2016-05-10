@@ -22,9 +22,7 @@ module Socializer
     let(:valid_attributes) do
       { group: { author_id: user.guid,
                  display_name: "Test",
-                 privacy: privacy
-               }
-      }
+                 privacy: privacy } }
     end
 
     let(:invalid_attributes) do

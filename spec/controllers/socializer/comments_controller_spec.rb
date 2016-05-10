@@ -17,15 +17,12 @@ module Socializer
 
     let(:valid_attributes) do
       { comment: { content: "This is a comment",
-                   activity_target_id: note.guid
-                 }
-      }
+                   activity_target_id: note.guid } }
     end
 
     let(:update_attributes) do
       { id: comment,
-        comment: { content: "This is a comment update" }
-      }
+        comment: { content: "This is a comment update" } }
     end
 
     describe "when not logged in" do

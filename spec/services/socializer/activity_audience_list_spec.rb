@@ -38,8 +38,7 @@ module Socializer
         let(:note_attributes) do
           { content: "Test note",
             object_ids: ["public"],
-            activity_verb: "post"
-          }
+            activity_verb: "post" }
         end
 
         let(:note) { person.activity_object.notes.create!(note_attributes) }
@@ -69,8 +68,7 @@ module Socializer
           let(:note_attributes) do
             { content: "Test note",
               object_ids: ["circles"],
-              activity_verb: "post"
-            }
+              activity_verb: "post" }
           end
 
           let(:note) { person.activity_object.notes.create!(note_attributes) }
@@ -99,8 +97,7 @@ module Socializer
           let(:note_attributes) do
             { content: "Test note",
               object_ids: [family.id],
-              activity_verb: "post"
-            }
+              activity_verb: "post" }
           end
 
           let(:note) { person.activity_object.notes.create!(note_attributes) }

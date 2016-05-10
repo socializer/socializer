@@ -8,13 +8,10 @@ module Socializer
     let(:user) { create(:person) }
 
     let(:valid_attributes) do
-      {
-        person_id: user,
+      { person_id: user,
         person_employment: { employer_name: "Test Company",
                              job_title: "Tester",
-                             started_on: Time.zone.now.to_date
-                           }
-      }
+                             started_on: Time.zone.now.to_date } }
     end
 
     let(:employment) do
@@ -24,8 +21,7 @@ module Socializer
     let(:update_attributes) do
       { id: employment,
         person_id: user,
-        person_employment: { label: "updated content" }
-      }
+        person_employment: { label: "updated content" } }
     end
 
     describe "when not logged in" do

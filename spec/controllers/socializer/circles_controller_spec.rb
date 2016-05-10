@@ -17,8 +17,7 @@ module Socializer
 
     let(:update_attributes) do
       { id: circle,
-        circle: { display_name: "Test1" }
-      }
+        circle: { display_name: "Test1" } }
     end
 
     describe "when not logged in" do

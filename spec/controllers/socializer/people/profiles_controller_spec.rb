@@ -9,8 +9,7 @@ module Socializer
 
     let(:valid_attributes) do
       { person_id: user,
-        person_profile: { display_name: "test", url: "http://test.org" }
-      }
+        person_profile: { display_name: "test", url: "http://test.org" } }
     end
 
     let(:profile) do
@@ -20,8 +19,7 @@ module Socializer
     let(:update_attributes) do
       { id: profile,
         person_id: user,
-        person_profile: { display_name: "updated content" }
-      }
+        person_profile: { display_name: "updated content" } }
     end
 
     describe "when not logged in" do

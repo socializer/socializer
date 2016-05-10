@@ -16,8 +16,7 @@ module Socializer
           { actor: actor,
             activity_object: activity_object,
             object_ids: object_ids,
-            content: "Share"
-          }
+            content: "Share" }
         end
 
         let(:results) { share.call }
@@ -33,8 +32,7 @@ module Socializer
             { actor: actor,
               activity_object: activity_object,
               object_ids: object_ids,
-              content: nil
-            }
+              content: nil }
           end
 
           let(:results) { share.call }

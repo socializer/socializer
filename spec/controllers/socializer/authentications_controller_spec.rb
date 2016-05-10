@@ -10,9 +10,7 @@ module Socializer
     let(:valid_attributes) do
       { authentication: { provider: "facebook",
                           uid: user.id,
-                          person: user
-                        }
-      }
+                          person: user } }
     end
 
     let(:authentication) do

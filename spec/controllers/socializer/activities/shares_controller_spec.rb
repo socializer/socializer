@@ -17,9 +17,7 @@ module Socializer
         { id: note,
           share: { content: "",
                    object_ids: object_ids,
-                   activity_id: note.guid
-                 }
-        }
+                   activity_id: note.guid } }
       end
 
       describe "when not logged in" do

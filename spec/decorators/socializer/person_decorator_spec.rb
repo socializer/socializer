@@ -92,8 +92,7 @@ module Socializer
         let(:authentication_attributes) do
           { provider: provider.downcase,
             image_url: "http://#{provider.downcase}.com",
-            uid: person.id
-          }
+            uid: person.id }
         end
 
         let(:person) do

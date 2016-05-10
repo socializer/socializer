@@ -34,9 +34,7 @@ module Socializer
         let(:params) do
           { note: { content: "Test",
                     object_ids: "public",
-                    activity_verb: "post"
-                  }
-          }
+                    activity_verb: "post" } }
         end
 
         let(:note) do

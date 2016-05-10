@@ -115,8 +115,7 @@ module Socializer
           { content: "Comment",
             activity_target_id: activity.id,
             activity_verb: "add",
-            scope: scope
-          }
+            scope: scope }
         end
 
         let(:actor) { activity.actor }

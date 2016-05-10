@@ -8,10 +8,8 @@ module Socializer
     let(:user) { create(:person) }
 
     let(:valid_attributes) do
-      {
-        person_id: user,
-        person_phone: { category: :home, label: 1, number: "1234567890" }
-      }
+      { person_id: user,
+        person_phone: { category: :home, label: 1, number: "1234567890" } }
     end
 
     let(:phone) do
@@ -20,8 +18,7 @@ module Socializer
     let(:update_attributes) do
       { id: phone,
         person_id: user,
-        person_phone: { number: "6666666666" }
-      }
+        person_phone: { number: "6666666666" } }
     end
 
     describe "when not logged in" do

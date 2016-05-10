@@ -11,8 +11,7 @@ module Socializer
 
         let(:like_attributes) do
           { actor: liking_person,
-            activity_object: liked_activity_object
-          }
+            activity_object: liked_activity_object }
         end
 
         it { expect(results.persisted?).to eq(true) }

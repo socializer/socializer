@@ -12,8 +12,7 @@ module Socializer
 
         let(:unlike_attributes) do
           { actor: liking_person,
-            activity_object: liked_activity_object
-          }
+            activity_object: liked_activity_object }
         end
 
         context "check return type when unliking a liked object" do

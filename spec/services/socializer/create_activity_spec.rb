@@ -7,8 +7,7 @@ module Socializer
     let(:activity_attributes) do
       { actor_id: person.id,
         activity_object_id: activity_object.id,
-        verb: "post"
-      }
+        verb: "post" }
     end
 
     context "validations" do
