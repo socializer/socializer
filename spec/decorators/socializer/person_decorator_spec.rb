@@ -375,10 +375,7 @@ module Socializer
         before do
           AddDefaultCircles.call(person: person)
 
-          create(
-            :group,
-            author_id: person.id,
-            display_name: "Group")
+          create(:group, author_id: person.id, display_name: "Group")
         end
 
         let(:result) { decorated_person.toolbar_stream_links }

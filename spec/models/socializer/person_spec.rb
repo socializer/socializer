@@ -57,17 +57,16 @@ module Socializer
     it do
       is_expected
         .to enumerize(:relationship)
-        .in(
-          :unknown,
-          :single,
-          :relationship,
-          :engaged,
-          :married,
-          :complicated,
-          :open,
-          :widowed,
-          :domestic,
-          :civil)
+        .in(:unknown,
+            :single,
+            :relationship,
+            :engaged,
+            :married,
+            :complicated,
+            :open,
+            :widowed,
+            :domestic,
+            :civil)
         .with_default(:unknown)
     end
 

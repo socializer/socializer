@@ -31,24 +31,18 @@ module Socializer
 
       it "routes to #update" do
         expect(patch: "/people/1/links/1")
-          .to route_to(
-            "socializer/people/links#update",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/links#update",
+                       person_id: "1", id: "1")
 
         expect(put: "/people/1/links/1")
-          .to route_to(
-            "socializer/people/links#update",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/links#update",
+                       person_id: "1", id: "1")
       end
 
       it "routes to #destroy" do
         expect(delete: "/people/1/links/1")
-          .to route_to(
-            "socializer/people/links#destroy",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/links#destroy",
+                       person_id: "1", id: "1")
       end
     end
   end

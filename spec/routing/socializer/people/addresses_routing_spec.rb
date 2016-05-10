@@ -31,10 +31,8 @@ module Socializer
 
       it "routes to #update" do
         expect(patch: "/people/1/addresses/1")
-          .to route_to(
-            "socializer/people/addresses#update",
-            person_id: "1",
-            id: "1")
+          .to route_to("socializer/people/addresses#update",
+                       person_id: "1", id: "1")
 
         expect(put: "/people/1/addresses/1")
           .to route_to("socializer/people/addresses#update",
