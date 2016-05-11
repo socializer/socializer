@@ -86,9 +86,7 @@ module Socializer
         activity.verb               = Verb.find_or_create_by(display_name: verb)
         activity.activity_field     = activity_field
 
-        if object_ids.present?
-          add_audience_to_activity(activity: activity)
-        end
+        add_audience_to_activity(activity: activity) if object_ids.present?
       end
     end
   end
