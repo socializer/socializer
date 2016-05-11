@@ -39,18 +39,21 @@ module Socializer
     #
     # @param activity: [Socializer::Activity] The activity to add the audience
     # to
-    # @param audience_ids [Array<Integer>] List of audiences to target
-    def add_audience_to_activity(activity:, audience_ids:)
-      if %w(Fixnum String).include?(audience_ids.class.name)
-        audience_ids = audience_ids.split(",")
-      end
-
-      audience_ids.each do |audience_id|
+    def add_audience_to_activity(activity:)
+      object_ids_array.each do |audience_id|
         privacy  = audience_privacy(audience_id: audience_id)
         audience = activity.audiences.build(privacy: privacy)
 
         audience.activity_object_id = audience_id if privacy == limited_privacy
       end
+    end
+
+    def object_ids_array
+      if %w(Fixnum String).include?(object_ids.class.name)
+        return object_ids.split(",")
+      end
+
+      object_ids
     end
 
     def audience_privacy(audience_id:)
@@ -84,7 +87,7 @@ module Socializer
         activity.activity_field     = activity_field
 
         if object_ids.present?
-          add_audience_to_activity(activity: activity, audience_ids: object_ids)
+          add_audience_to_activity(activity: activity)
         end
       end
     end
