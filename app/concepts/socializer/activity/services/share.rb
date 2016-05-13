@@ -13,36 +13,28 @@ module Socializer
       # Service object for sharing a Socializer::Activity
       #
       # @example
-      #   Activity::Services::Share
-      #     .new(actor: current_user,
-      #          activity_object: activity_object,
-      #          object_ids: share[:object_ids].split(","),
-      #          content: share[:content]).call
+      #   Activity::Services::Share.new(actor: current_user,
+      #                                 params: params[:share]).call
       class Share
         # Initializer
         #
         # @param [Socializer::Person] actor: the person sharing the activity
-        # @param [Socialicer::ActivityObject] activity_object: the
-        # Socialicer::ActivityObject being shared
-        # @param [Array<String, Fixnum>] object_ids: who's being shared with
-        # @param [String] content: nil short form text message for the share
-        def initialize(actor:, activity_object:, object_ids:, content: nil)
-          @actor = actor
-          @activity_object = activity_object
-          @content = content
-          @object_ids = object_ids
+        # @param [ActionController::Parameters] params: the share parameters
+        # from the request
+        def initialize(actor:, params:)
+          @actor_guid = actor.guid
+          @activity_object_id = params[:activity_id]
+          @content = params[:content]
+          @object_ids = params[:object_ids].split(",")
         end
 
         # Creates the [Socializer::Activity]
         #
         # @return [Socializer::Activity]
         def call
-          # ActiveRecord::Base.transaction do
-          # raise ActiveRecord::Rollback
-          # end
           Socializer::CreateActivity
-            .new(actor_id: @actor.guid,
-                 activity_object_id: @activity_object.id,
+            .new(actor_id: @actor_guid,
+                 activity_object_id: @activity_object_id,
                  verb: verb,
                  object_ids: @object_ids,
                  content: @content).call

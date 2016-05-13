@@ -6,15 +6,14 @@ module Socializer
       RSpec.describe Share, type: :service do
         let(:activity_object) { create(:activity_object) }
         let(:actor) { create(:person) }
-        let(:share) { Share.new(share_attributes) }
+        let(:share) { Share.new(actor: actor, params: share_attributes) }
 
         let(:object_ids) do
-          Socializer::Audience.privacy.find_value(:public).value.split(",")
+          Socializer::Audience.privacy.find_value(:public).value
         end
 
         let(:share_attributes) do
-          { actor: actor,
-            activity_object: activity_object,
+          { activity_id: activity_object.id,
             object_ids: object_ids,
             content: "Share" }
         end
@@ -29,8 +28,7 @@ module Socializer
 
         context "with no content" do
           let(:share_attributes) do
-            { actor: actor,
-              activity_object: activity_object,
+            { activity_id: activity_object.id,
               object_ids: object_ids,
               content: nil }
           end
