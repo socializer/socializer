@@ -7,5 +7,7 @@ class CreateSocializerPersonProfiles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_person_profiles, :person_id
   end
 end

@@ -9,5 +9,7 @@ class CreateSocializerPersonPhones < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_person_phones, :person_id
   end
 end

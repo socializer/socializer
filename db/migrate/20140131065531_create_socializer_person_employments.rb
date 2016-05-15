@@ -14,5 +14,7 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_person_employments, :person_id
   end
 end

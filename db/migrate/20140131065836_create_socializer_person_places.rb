@@ -7,5 +7,7 @@ class CreateSocializerPersonPlaces < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_person_places, :person_id
   end
 end

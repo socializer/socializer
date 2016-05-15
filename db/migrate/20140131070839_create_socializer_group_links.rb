@@ -7,5 +7,7 @@ class CreateSocializerGroupLinks < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_group_links, :group_id
   end
 end
