@@ -49,7 +49,8 @@ module Socializer
       #
       # @return [String]
       def formatted_education
-        education = "#{model.school_name} <br>"
+        education = []
+        education << "#{model.school_name} <br>"
 
         if model.major_or_field_of_study?
           education << "#{model.major_or_field_of_study} <br>"
@@ -57,7 +58,7 @@ module Socializer
 
         education << started_on_to_ended_on
 
-        education.html_safe
+        helpers.safe_join(education)
       end
 
       # Returns the started_on and ended_on dates using the long_ordinal format

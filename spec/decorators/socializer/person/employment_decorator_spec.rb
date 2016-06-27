@@ -24,7 +24,7 @@ module Socializer
     describe "formatted_employment" do
       context "without job_title or job_description" do
         let(:employment_value) do
-          "Some Company <br>" \
+          "Some Company &lt;br&gt;" \
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
@@ -38,8 +38,8 @@ module Socializer
         let(:employment) { create(:person_employment, job_title: "My Title") }
 
         let(:employment_value) do
-          "Some Company <br>" \
-          "My Title <br>" \
+          "Some Company &lt;br&gt;" \
+          "My Title &lt;br&gt;" \
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
@@ -55,8 +55,8 @@ module Socializer
         end
 
         let(:employment_value) do
-          "Some Company <br>" \
-          "Description <br>" \
+          "Some Company &lt;br&gt;" \
+          "Description &lt;br&gt;" \
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
@@ -73,9 +73,9 @@ module Socializer
         end
 
         let(:employment_value) do
-          "Some Company <br>" \
-          "My Title <br>" \
-          "Description <br>" \
+          "Some Company &lt;br&gt;" \
+          "My Title &lt;br&gt;" \
+          "Description &lt;br&gt;" \
           "#{decorated_employment.started_on_to_ended_on}"
         end
 

@@ -40,12 +40,12 @@ module Socializer
       #
       # @return [String]
       def formatted_employment
-        employment = "#{model.employer_name} <br>"
+        employment = ["#{model.employer_name} <br>"]
         employment << job_title_with_br_or_empty
         employment << job_description_with_br_or_empty
         employment << started_on_to_ended_on
 
-        employment.html_safe
+        helpers.safe_join(employment)
       end
 
       # Returns the started_on date using the long_ordinal format

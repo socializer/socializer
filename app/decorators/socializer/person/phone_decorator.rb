@@ -25,7 +25,12 @@ module Socializer
       #
       # @return [String]
       def label_and_number
-        "#{model.label.titleize} : #{model.number}".html_safe
+        content = []
+        content << model.label.titleize
+        content << " : "
+        content << model.number
+
+        helpers.safe_join(content)
       end
     end
   end

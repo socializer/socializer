@@ -121,14 +121,14 @@ module Socializer
     #
     # @return [String]
     def looking_for
-      looking_for = ""
-      looking_for << "Friends<br>" if model.looking_for_friends
-      looking_for << "Dating<br>" if model.looking_for_dating
-      looking_for << "Relationship<br>" if model.looking_for_relationship
-      looking_for << "Networking<br>" if model.looking_for_networking
-      looking_for << "Who are you looking for?" if looking_for.empty?
+      content = []
+      content << "Friends<br>" if model.looking_for_friends
+      content << "Dating<br>" if model.looking_for_dating
+      content << "Relationship<br>" if model.looking_for_relationship
+      content << "Networking<br>" if model.looking_for_networking
+      content << "Who are you looking for?" if content.empty?
 
-      looking_for
+      helpers.safe_join(content)
     end
 
     # Builds the links for the shared toolbar
@@ -142,7 +142,7 @@ module Socializer
       html << toolbar_links(list[0..2])
       html << toolbar_dropdown(list[3..(list.size)])
 
-      html.join.html_safe
+      helpers.safe_join(html)
     end
 
     private
@@ -177,7 +177,7 @@ module Socializer
 
       helpers.link_to("#", class: css_class, data: { toggle: "dropdown" }) do
         # i18n-tasks-use t("socializer.shared.toolbar.more")
-        "#{helpers.t('socializer.shared.toolbar.more')} #{icon}".html_safe
+        "#{helpers.t('socializer.shared.toolbar.more')} #{icon}"
       end
     end
 
@@ -191,9 +191,11 @@ module Socializer
     end
 
     def toolbar_links(list)
-      list.map do |item|
+      links = list.map do |item|
         toolbar_link(item)
-      end.join.html_safe
+      end
+
+      helpers.safe_join(links)
     end
 
     # Check if the object is an instance of {Socializer::Membership}

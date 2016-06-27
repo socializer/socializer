@@ -27,12 +27,12 @@ module Socializer
       #
       # @return [String]
       def formatted_address
-        address = "#{model.line1} <br>"
+        address = ["#{model.line1} <br>"]
         address << "#{model.line2} <br>" if model.line2?
         address << "#{city_province_or_state_postal_code} <br>"
         address << model.country
 
-        address.html_safe
+        helpers.safe_join(address)
       end
 
       # Returns the city, stat/province and postal code on one line
@@ -43,7 +43,6 @@ module Socializer
       # @return [String]
       def city_province_or_state_postal_code
         "#{model.city}, #{model.province_or_state} #{model.postal_code_or_zip}"
-          .html_safe
       end
     end
   end
