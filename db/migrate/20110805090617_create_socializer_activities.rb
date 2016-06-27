@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSocializerActivities < ActiveRecord::Migration
   def change
     create_table :socializer_activities do |t|

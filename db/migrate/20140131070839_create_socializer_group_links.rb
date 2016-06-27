@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSocializerGroupLinks < ActiveRecord::Migration
   def change
     create_table :socializer_group_links do |t|

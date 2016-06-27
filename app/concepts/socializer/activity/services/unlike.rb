@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+#
 # Namespace for the Socializer engine
 #
 module Socializer

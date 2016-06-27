@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSocializerGroupCategories < ActiveRecord::Migration
   def change
     create_table :socializer_group_categories do |t|

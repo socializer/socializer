@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class TypeValidator provides a custom validator which ensures an object
 # is an instance of a class
 class TypeValidator < ActiveModel::EachValidator

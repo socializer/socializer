@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSocializerVerbs < ActiveRecord::Migration
   def change
     create_table :socializer_verbs do |t|
