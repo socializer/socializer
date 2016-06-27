@@ -72,7 +72,7 @@ module Socializer
     # @return [String]
     #
     def avatar_url
-      avatar_providers = %w( FACEBOOK LINKEDIN TWITTER )
+      avatar_providers = %w(FACEBOOK LINKEDIN TWITTER)
 
       return social_avatar_url if avatar_providers.include?(avatar_provider)
 
