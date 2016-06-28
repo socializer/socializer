@@ -122,11 +122,11 @@ module Socializer
     # @return [String]
     def looking_for
       content = []
-      content << "Friends<br>" if model.looking_for_friends
-      content << "Dating<br>" if model.looking_for_dating
-      content << "Relationship<br>" if model.looking_for_relationship
-      content << "Networking<br>" if model.looking_for_networking
-      content << "Who are you looking for?" if content.empty?
+      content << looking_for_friends
+      content << looking_for_dating
+      content << looking_for_relationship
+      content << looking_for_networking
+      content << looking_for_who if content.join.empty?
 
       helpers.safe_join(content)
     end
@@ -138,14 +138,41 @@ module Socializer
       list = combine_circles_and_memberships
       return if list.blank?
 
-      html = []
-      html << toolbar_links(list[0..2])
+      html = [toolbar_links(list[0..2])]
       html << toolbar_dropdown(list[3..(list.size)])
 
       helpers.safe_join(html)
     end
 
     private
+
+    def content_and_br(content:)
+      [content, helpers.tag("br", nil, true)]
+    end
+
+    def looking_for_friends
+      content_and_br(content: "Friends") if model.looking_for_friends?
+    end
+
+    def looking_for_dating
+      content_and_br(content: "Dating") if model.looking_for_dating?
+    end
+
+    def looking_for_relationship
+      if model.looking_for_relationship?
+        return content_and_br(content: "Relationship")
+      end
+    end
+
+    def looking_for_networking
+      if model.looking_for_networking?
+        return content_and_br(content: "Networking")
+      end
+    end
+
+    def looking_for_who
+      "Who are you looking for?"
+    end
 
     def combine_circles_and_memberships
       model.circles + model.memberships

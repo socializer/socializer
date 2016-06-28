@@ -40,7 +40,7 @@ module Socializer
       #
       # @return [String]
       def formatted_employment
-        employment = ["#{model.employer_name} <br>"]
+        employment = [content_and_br(content: model.employer_name)]
         employment << job_title_with_br_or_empty
         employment << job_description_with_br_or_empty
         employment << started_on_to_ended_on
@@ -71,14 +71,20 @@ module Socializer
 
       private
 
+      def content_and_br(content:)
+        [content, helpers.tag("br", nil, true)]
+      end
+
       def job_title_with_br_or_empty
-        return "#{model.job_title} <br>" if model.job_title?
-        ""
+        content_and_br(content: model.job_title) if model.job_title?
       end
 
       def job_description_with_br_or_empty
-        return "#{model.job_description} <br>" if model.job_description?
-        ""
+        return unless model.job_description?
+        content_and_br(content: model.job_description)
+        # if model.job_description?
+        #   return content_and_br(content: model.job_description)
+        # end
       end
     end
   end

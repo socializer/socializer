@@ -27,9 +27,9 @@ module Socializer
       #
       # @return [String]
       def formatted_address
-        address = ["#{model.line1} <br>"]
-        address << "#{model.line2} <br>" if model.line2?
-        address << "#{city_province_or_state_postal_code} <br>"
+        address = [address_street]
+        address << address_other
+        address << address_city_state_postal
         address << model.country
 
         helpers.safe_join(address)
@@ -43,6 +43,24 @@ module Socializer
       # @return [String]
       def city_province_or_state_postal_code
         "#{model.city}, #{model.province_or_state} #{model.postal_code_or_zip}"
+      end
+
+      private
+
+      def address_street
+        content_and_br(content: model.line1)
+      end
+
+      def address_other
+        content_and_br(content: model.line2) if model.line2?
+      end
+
+      def address_city_state_postal
+        content_and_br(content: city_province_or_state_postal_code)
+      end
+
+      def content_and_br(content:)
+        [content, helpers.tag("br", nil, true)]
       end
     end
   end

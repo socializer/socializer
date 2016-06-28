@@ -50,10 +50,10 @@ module Socializer
       # @return [String]
       def formatted_education
         education = []
-        education << "#{model.school_name} <br>"
+        education << content_and_br(content: model.school_name)
 
         if model.major_or_field_of_study?
-          education << "#{model.major_or_field_of_study} <br>"
+          education << content_and_br(content: model.major_or_field_of_study)
         end
 
         education << started_on_to_ended_on
@@ -70,6 +70,12 @@ module Socializer
       def started_on_to_ended_on
         ended = current? ? "present" : ended_on
         "#{started_on} - #{ended}"
+      end
+
+      private
+
+      def content_and_br(content:)
+        [content, helpers.tag("br", nil, true)]
       end
     end
   end

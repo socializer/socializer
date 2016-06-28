@@ -24,8 +24,8 @@ module Socializer
     describe "formatted_education" do
       context "with major_or_field_of_study" do
         let(:education_value) do
-          "Hard Knocks &lt;br&gt;" \
-          "Slacking &lt;br&gt;" \
+          "Hard Knocks<br>" \
+          "Slacking<br>" \
           "#{decorated_education.started_on_to_ended_on}"
         end
 
@@ -41,7 +41,7 @@ module Socializer
         end
 
         let(:education_value) do
-          "Hard Knocks &lt;br&gt;" \
+          "Hard Knocks<br>" \
           "#{decorated_education.started_on_to_ended_on}"
         end
 

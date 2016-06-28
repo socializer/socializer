@@ -270,28 +270,28 @@ module Socializer
 
       context "with looking_for_friends true" do
         let(:person) { create(:person, looking_for_friends: true) }
-        let(:string) { "Friends&lt;br&gt;" }
+        let(:string) { "Friends<br>" }
 
         it { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_dating true" do
         let(:person) { create(:person, looking_for_dating: true) }
-        let(:string) { "Dating&lt;br&gt;" }
+        let(:string) { "Dating<br>" }
 
         it { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_relationship true" do
         let(:person) { create(:person, looking_for_relationship: true) }
-        let(:string) { "Relationship&lt;br&gt;" }
+        let(:string) { "Relationship<br>" }
 
         it { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_networking true" do
         let(:person) { create(:person, looking_for_networking: true) }
-        let(:string) { "Networking&lt;br&gt;" }
+        let(:string) { "Networking<br>" }
 
         it { expect(decorated_person.looking_for).to eq(string) }
       end
@@ -301,7 +301,7 @@ module Socializer
           create(:person, looking_for_friends: true, looking_for_dating: true)
         end
 
-        let(:string) { "Friends&lt;br&gt;Dating&lt;br&gt;" }
+        let(:string) { "Friends<br>Dating<br>" }
 
         it { expect(decorated_person.looking_for).to eq(string) }
       end

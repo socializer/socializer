@@ -11,8 +11,8 @@ module Socializer
     describe "formatted_address" do
       context "without line2" do
         let(:address_value) do
-          "282 Kevin Brook &lt;br&gt;" \
-          "Imogeneborough, California 58517 &lt;br&gt;US"
+          "282 Kevin Brook<br>" \
+          "Imogeneborough, California 58517<br>US"
         end
 
         it do
@@ -24,8 +24,8 @@ module Socializer
         let(:address) { create(:person_address, line2: "Apt. 123") }
 
         let(:address_value) do
-          "282 Kevin Brook &lt;br&gt;" \
-          "Apt. 123 &lt;br&gt;Imogeneborough, California 58517 &lt;br&gt;" \
+          "282 Kevin Brook<br>" \
+          "Apt. 123<br>Imogeneborough, California 58517<br>" \
           "US"
         end
 
