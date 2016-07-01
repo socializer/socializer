@@ -202,9 +202,12 @@ module Socializer
       icon      = helpers.content_tag(:span, nil,
                                       class: "fa fa-angle-down fa-fw")
 
-      helpers.link_to("#", class: css_class, data: { toggle: "dropdown" }) do
-        # i18n-tasks-use t("socializer.shared.toolbar.more")
-        "#{helpers.t('socializer.shared.toolbar.more')} #{icon}"
+      # i18n-tasks-use t("socializer.shared.toolbar.more")
+      content = [helpers.t("socializer.shared.toolbar.more")]
+      content << icon
+
+      helpers.link_to(nil, class: css_class, data: { toggle: "dropdown" }) do
+        helpers.safe_join(content)
       end
     end
 
