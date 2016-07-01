@@ -75,6 +75,9 @@ module Socializer
     def avatar_url
       avatar_providers = %w(FACEBOOK LINKEDIN TWITTER)
 
+      # REFACTOR: Should an authentications decorator be created? If so,
+      # override the image_url method using this
+      # logic, or we can create an avatar_url method
       return social_avatar_url if avatar_providers.include?(avatar_provider)
 
       gravatar_url
@@ -238,6 +241,13 @@ module Socializer
       object
     end
 
+    # REFACTOR: May make more sense to put this in the application decorator
+    # without the is_a? check and put the method
+    # in a membership decorator that assigns item = item.group.
+    # This should be refactored into a more generic toolbar_nav_link
+    # application decorator method. This should then be
+    # refactored to use that method from the ApplicationDecorator. See the
+    # toolbar partials for the initial requirements
     def toolbar_link(item)
       item       = toolbar_object(object: item)
       url_prefix = item.class.name.demodulize.downcase

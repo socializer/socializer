@@ -21,6 +21,8 @@ module Socializer
         share = params[:share]
         activity_object = find_activity_object(id: share[:activity_id])
 
+        # TODO: Need a validator to validate params - dry-validation
+        # TODO: Pass the validator into the service
         Activity::Services::Share.new(actor: current_user,
                                       params: share).call
 
