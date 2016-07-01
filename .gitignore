@@ -8,13 +8,12 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+pkg/
 
 /config/initializers/omniauth.rb
 
 .idea
 .vscode/*
-
-spec/dummy/*
 
 rails_best_practices_output.html
 report.html
@@ -56,3 +55,11 @@ config/secrets.yml
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore the dummy SQLite database.
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+
+# Ignore all dummy logfiles and tempfiles.
+spec/dummy/log/*.log
+spec/dummy/tmp/
