@@ -2,6 +2,7 @@ language: ruby
 sudo: false
 before_install:
   - "rm ${BUNDLE_GEMFILE}.lock"
+  - "rm -rf spec/dummy"
   - gem install bundler
 before_script:
   - bundle update
