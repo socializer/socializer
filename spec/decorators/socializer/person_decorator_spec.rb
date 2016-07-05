@@ -356,7 +356,7 @@ module Socializer
         it do
           # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
-            .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+            .to have_link(t("socializer.shared.toolbar.more"), href: "")
         end
 
         it do
@@ -413,7 +413,7 @@ module Socializer
         it do
           # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
-            .to have_link(t("socializer.shared.toolbar.more"), href: "#")
+            .to have_link(t("socializer.shared.toolbar.more"), href: "")
         end
 
         it do

@@ -209,7 +209,7 @@ module Socializer
       content = [helpers.t("socializer.shared.toolbar.more")]
       content << icon
 
-      helpers.link_to(nil, class: css_class, data: { toggle: "dropdown" }) do
+      helpers.link_to("", class: css_class, data: { toggle: "dropdown" }) do
         helpers.safe_join(content)
       end
     end
