@@ -18,7 +18,7 @@ group :development, :test do
   gem "rspec-rails", "~> 3.5.1"
   gem "capybara", "~> 2.7.1"
   gem "rails-dummy", "~> 0.0.4"
-  gem "pry", "~> 0.10.3"
+  gem "pry", "~> 0.10.4"
 end
 
 # add these gems to help with the transition to Rails 4:
