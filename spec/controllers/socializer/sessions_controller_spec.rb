@@ -15,18 +15,18 @@ module Socializer
 
     describe "#create" do
       context "when a Person does not exist" do
-        it "should successfully create a user" do
+        it "successfully creates a user" do
           expect { post :create, provider: :identity }
             .to change { Person.count }.by(1)
         end
 
-        it "should successfully create a session" do
+        it "successfully creates a session" do
           expect(cookies.signed[:user_id]).to be_nil
           post :create, provider: :identity
           expect(cookies.signed[:user_id]).not_to be_nil
         end
 
-        it "should redirect the user to the root url" do
+        it "redirects the user to the root url" do
           post :create, provider: :identity
           expect(response).to redirect_to root_path
         end
@@ -40,17 +40,17 @@ module Socializer
           # Setting the current user
           before { cookies.signed[:user_id] = user.guid }
 
-          it "should not create a user" do
+          it "does not create a user" do
             expect { post :create, provider: :identity }
               .to change { Person.count }.by(0)
           end
 
-          it "should create an authentication" do
+          it "creates an authentication" do
             expect { post :create, provider: :identity }
               .to change { Authentication.count }.by(1)
           end
 
-          it "should redirect the user to the authentications url" do
+          it "redirects the user to the authentications url" do
             post :create, provider: :identity
             expect(response).to redirect_to authentications_path
           end
