@@ -46,12 +46,12 @@ module Socializer
 
       describe "POST #create" do
         before do
-          @request.env["HTTP_ACCEPT"] = "application/javascript"
+          request.env["HTTP_ACCEPT"] = "application/javascript"
         end
 
         context "with valid attributes" do
           it "saves the new group in the database" do
-            expect { post :create, valid_attributes }
+            expect { post :create, valid_attributes, format: :js }
               .to change(Tie, :count).by(1)
           end
 

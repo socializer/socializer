@@ -19,6 +19,8 @@ module Socializer
             Group::Services::Join.new(group: group, person: person)
           end
 
+          let(:membership) { Membership.find_by(membership_attributes) }
+
           describe "when the group is public" do
             let(:public_group) { create(:group, privacy: :public) }
             let(:group) { public_group }
@@ -46,11 +48,10 @@ module Socializer
             context "and a person joins it" do
               before do
                 join.call
-                @membership = Membership.find_by(membership_attributes)
               end
 
               it "creates an active membership" do
-                expect(@membership.active).to be_truthy
+                expect(membership.active).to be_truthy
               end
 
               it "member? is true" do
@@ -114,11 +115,10 @@ module Socializer
             context "and a person joins it" do
               before do
                 join.call
-                @membership = Membership.find_by(membership_attributes)
               end
 
               it "creates an inactive membership" do
-                expect(@membership.active).to be_falsey
+                expect(membership.active).to be_falsey
               end
             end
           end

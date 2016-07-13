@@ -92,7 +92,7 @@ module Socializer
 
           context "format.js" do
             before do
-              @request.env["HTTP_ACCEPT"] = "application/javascript"
+              request.env["HTTP_ACCEPT"] = "application/javascript"
             end
 
             it "saves the new note in the database" do

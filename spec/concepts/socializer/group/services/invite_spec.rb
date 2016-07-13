@@ -15,9 +15,10 @@ module Socializer
             { member_id: person.guid, group_id: group.id }
           end
 
+          let(:membership) { Membership.find_by(membership_attributes) }
+
           before do
             Group::Services::Invite.new(group: group, person: person).call
-            @membership = Membership.find_by(membership_attributes)
           end
 
           describe "when the group is public" do
@@ -27,7 +28,7 @@ module Socializer
             it { expect(public_group.memberships.size).to eq(2) }
 
             it "creates an inactive membership" do
-              expect(@membership.active).to be_falsey
+              expect(membership.active).to be_falsey
             end
           end
 
@@ -38,7 +39,7 @@ module Socializer
             it { expect(private_group.memberships.size).to eq(2) }
 
             it "creates an inactive membership" do
-              expect(@membership.active).to be_falsey
+              expect(membership.active).to be_falsey
             end
           end
         end
