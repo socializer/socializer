@@ -42,3 +42,7 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 require "rails/dummy/tasks"
+
+RuboCop::RakeTask.new do |task|
+  task.requires << "rubocop-rspec"
+end
