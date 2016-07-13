@@ -13,28 +13,28 @@ module Socializer
       end
 
       it "does not route to #new" do
-        expect(get: "/groups/memberships/new").to_not be_routable
+        expect(get: "/groups/memberships/new").not_to be_routable
       end
 
       it "does not route to #show" do
-        expect(get: "/groups/memberships/show").to_not be_routable
+        expect(get: "/groups/memberships/show").not_to be_routable
       end
 
       it "does not route to #edit" do
-        expect(get: "/groups/memberships/1/edit").to_not be_routable
+        expect(get: "/groups/memberships/1/edit").not_to be_routable
       end
 
       it "does not route to #create" do
-        expect(post: "/groups/memberships").to_not be_routable
+        expect(post: "/groups/memberships").not_to be_routable
       end
 
       it "does not route to #update" do
-        expect(patch: "/groups/memberships/1").to_not be_routable
-        expect(put: "/groups/memberships/1").to_not be_routable
+        expect(patch: "/groups/memberships/1").not_to be_routable
+        expect(put: "/groups/memberships/1").not_to be_routable
       end
 
       it "does not route to #destroy" do
-        expect(delete: "/groups/memberships/1").to_not be_routable
+        expect(delete: "/groups/memberships/1").not_to be_routable
       end
     end
   end

@@ -12,8 +12,8 @@ module Socializer
       end
 
       it "does not route to #new" do
-        # expect(get: "/people/new").to_not be_routable
-        expect(get: "/people/new").to_not route_to("socializer/people#new")
+        # expect(get: "/people/new").not_to be_routable
+        expect(get: "/people/new").not_to route_to("socializer/people#new")
       end
 
       it "routes to #show" do
@@ -27,7 +27,7 @@ module Socializer
       end
 
       it "does not route to #create" do
-        expect(post: "/people").to_not be_routable
+        expect(post: "/people").not_to be_routable
       end
 
       it "routes to #update" do
@@ -36,7 +36,7 @@ module Socializer
       end
 
       it "does not route to #destroy" do
-        expect(delete: "/people/1").to_not be_routable
+        expect(delete: "/people/1").not_to be_routable
       end
     end
   end

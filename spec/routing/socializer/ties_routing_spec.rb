@@ -8,19 +8,19 @@ module Socializer
 
     describe "routing" do
       it "routes to #index" do
-        expect(get: "/ties").to_not be_routable
+        expect(get: "/ties").not_to be_routable
       end
 
       it "does not route to #new" do
-        expect(get: "/ties/new").to_not be_routable
+        expect(get: "/ties/new").not_to be_routable
       end
 
       it "does not route to #show" do
-        expect(get: "/ties/1").to_not be_routable
+        expect(get: "/ties/1").not_to be_routable
       end
 
       it "does not route to #edit" do
-        expect(get: "/ties/1/edit").to_not be_routable
+        expect(get: "/ties/1/edit").not_to be_routable
       end
 
       it "does not route to #create" do
@@ -28,7 +28,7 @@ module Socializer
       end
 
       it "does not route to #update" do
-        expect(patch: "/ties/1").to_not be_routable
+        expect(patch: "/ties/1").not_to be_routable
       end
 
       it "does not route to #destroy" do

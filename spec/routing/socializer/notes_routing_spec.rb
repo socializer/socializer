@@ -8,7 +8,7 @@ module Socializer
 
     describe "routing" do
       it "does not route to #index" do
-        expect(get: "/notes").to_not be_routable
+        expect(get: "/notes").not_to be_routable
       end
 
       it "routes to #new" do
@@ -16,7 +16,7 @@ module Socializer
       end
 
       it "does not route to #show" do
-        expect(get: "/notes/1").to_not be_routable
+        expect(get: "/notes/1").not_to be_routable
       end
 
       it "routes to #edit" do

@@ -8,7 +8,7 @@ module Socializer
 
     describe "routing" do
       it "does not route to #index" do
-        expect(get: "/sessions").to_not be_routable
+        expect(get: "/sessions").not_to be_routable
       end
 
       it "routes to #new" do
@@ -16,11 +16,11 @@ module Socializer
       end
 
       it "does not route to #show" do
-        expect(get: "/sessions/1").to_not be_routable
+        expect(get: "/sessions/1").not_to be_routable
       end
 
       it "does not route to #edit" do
-        expect(get: "/sessions/1/edit").to_not be_routable
+        expect(get: "/sessions/1/edit").not_to be_routable
       end
 
       it "routes to #create" do
@@ -29,7 +29,7 @@ module Socializer
       end
 
       it "does not route to #update" do
-        expect(patch: "/sessions/1").to_not be_routable
+        expect(patch: "/sessions/1").not_to be_routable
       end
 
       it "routes to #destroy" do

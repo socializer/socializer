@@ -23,7 +23,7 @@ module Socializer
         it "should successfully create a session" do
           expect(cookies.signed[:user_id]).to be_nil
           post :create, provider: :identity
-          expect(cookies.signed[:user_id]).to_not be_nil
+          expect(cookies.signed[:user_id]).not_to be_nil
         end
 
         it "should redirect the user to the root url" do
@@ -67,7 +67,7 @@ module Socializer
       end
 
       it "resets the session" do
-        expect(cookies.signed[:user_id]).to_not be_nil
+        expect(cookies.signed[:user_id]).not_to be_nil
         delete :destroy
         expect(cookies.signed[:user_id]).to be_nil
       end
