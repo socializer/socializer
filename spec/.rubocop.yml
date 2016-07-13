@@ -3,7 +3,7 @@ inherit_from: ../.rubocop.yml
 require: rubocop-rspec
 
 Metrics/LineLength:
-  Enabled: false
+  Enabled: true
 
 Metrics/ModuleLength:
   Enabled: false
