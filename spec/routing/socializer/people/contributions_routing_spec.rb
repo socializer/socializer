@@ -31,12 +31,14 @@ module Socializer
           .to route_to("socializer/people/contributions#create", person_id: "1")
       end
 
-      it "routes to #update" do
+      it "routes to #update using patch" do
         expect(patch: "/people/1/contributions/1")
           .to route_to("socializer/people/contributions#update",
                        person_id: "1",
                        id: "1")
+      end
 
+      it "routes to #update using put" do
         expect(put: "/people/1/contributions/1")
           .to route_to("socializer/people/contributions#update",
                        person_id: "1",

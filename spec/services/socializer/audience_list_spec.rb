@@ -45,8 +45,7 @@ module Socializer
         it { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
-          circles = []
-          circles << "Public" << "Circles"
+          circles = ["Public", "Circles"]
           circles.concat(person.circles.pluck(:display_name))
 
           expect(audience_list.all? { |item| circles.include?(item[:name]) })
@@ -70,8 +69,7 @@ module Socializer
         it { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
-          circles = []
-          circles << "Public" << "Circles"
+          circles = ["Public", "Circles"]
           friends = person.circles.with_display_name(name: "Friends")
           circles.concat(friends.pluck(:display_name))
 

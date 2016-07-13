@@ -59,17 +59,8 @@ module Socializer
     it do
       is_expected
         .to enumerize(:relationship)
-        .in(:unknown,
-            :single,
-            :relationship,
-            :engaged,
-            :married,
-            :complicated,
-            :open,
-            :widowed,
-            :domestic,
-            :civil)
-        .with_default(:unknown)
+        .in(:unknown, :single, :relationship, :engaged, :married, :complicated,
+            :open, :widowed, :domestic, :civil).with_default(:unknown)
     end
 
     it ".create_with_omniauth" do
@@ -81,12 +72,15 @@ module Socializer
         { provider: "facebook", image_url: "http://facebook.com", uid: 1 }
       end
 
-      it do
-        person = create(:person, avatar_provider: "FACEBOOK")
-        person.authentications.create(authentications_attributes)
+      let(:person) { create(:person, avatar_provider: "FACEBOOK") }
 
-        expect(person.services.to_sql).to include("!= 'identity'")
-        expect(person.services.count).to eq(1)
+      before do
+        person.authentications.create(authentications_attributes)
+      end
+
+      it { expect(person.services.to_sql).to include("!= 'identity'") }
+      it { expect(person.services.count).to eq(1) }
+      it "Socializer::Person#services should eq facebook" do
         expect(person.services.find_by(provider: "facebook").provider)
           .to eq("facebook")
       end
