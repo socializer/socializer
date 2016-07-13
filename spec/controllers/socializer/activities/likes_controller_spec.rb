@@ -45,7 +45,6 @@ module Socializer
           # action
           describe "POST #create" do
             before do
-              @request.env["HTTP_ACCEPT"] = "application/javascript"
               post :create, id: note_activity.guid, format: :js
             end
 
@@ -68,7 +67,6 @@ module Socializer
 
           describe "DELETE #destroy" do
             before do
-              @request.env["HTTP_ACCEPT"] = "application/javascript"
               delete :destroy, id: note_activity.guid, format: :js
             end
 
