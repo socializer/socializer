@@ -9,5 +9,10 @@ module Socializer
     it { is_expected.not_to be_nil }
 
     it { expect(Socializer::VERSION.frozen?).to be true }
+
+    let(:gemspec_path) { Engine.root.join("socializer.gemspec").to_s }
+    let(:specification) { Gem::Specification.load(gemspec_path) }
+
+    it { expect(Socializer::VERSION).to eq(specification.version.to_s) }
   end
 end
