@@ -10,7 +10,7 @@ group :test do
   gem "cucumber-rails", "~> 1.4.3", require: false
   gem "database_cleaner", "~> 1.5.3"
   gem "simplecov", "~> 0.12.0", require: false
-  gem "coveralls", "~> 0.8.14", require: false
+  gem "coveralls", "~> 0.8.15", require: false
 end
 
 group :development, :test do
