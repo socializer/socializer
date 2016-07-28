@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
   add_index "socializer_circles", ["display_name", "author_id"], name: "index_socializer_circles_on_display_name_and_author_id", unique: true
 
   create_table "socializer_comments", force: :cascade do |t|
-    t.integer  "author_id"
-    t.text     "content"
+    t.integer  "author_id",  null: false
+    t.text     "content",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,18 +92,22 @@ ActiveRecord::Schema.define(version: 20140131070951) do
 
   create_table "socializer_group_categories", force: :cascade do |t|
     t.integer  "group_id",     null: false
-    t.string   "display_name"
+    t.string   "display_name", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
+  add_index "socializer_group_categories", ["group_id"], name: "index_socializer_group_categories_on_group_id"
+
   create_table "socializer_group_links", force: :cascade do |t|
     t.integer  "group_id",     null: false
-    t.string   "display_name"
-    t.string   "url"
+    t.string   "display_name", null: false
+    t.string   "url",          null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "socializer_group_links", ["group_id"], name: "index_socializer_group_links_on_group_id"
 
   create_table "socializer_groups", force: :cascade do |t|
     t.integer  "author_id",    null: false
@@ -194,6 +198,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at",         null: false
   end
 
+  add_index "socializer_person_addresses", ["person_id"], name: "index_socializer_person_addresses_on_person_id"
+
   create_table "socializer_person_contributions", force: :cascade do |t|
     t.string   "display_name",                 null: false
     t.integer  "person_id",                    null: false
@@ -203,6 +209,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  add_index "socializer_person_contributions", ["person_id"], name: "index_socializer_person_contributions_on_person_id"
 
   create_table "socializer_person_educations", force: :cascade do |t|
     t.integer  "person_id",                               null: false
@@ -216,6 +224,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_index "socializer_person_educations", ["person_id"], name: "index_socializer_person_educations_on_person_id"
+
   create_table "socializer_person_employments", force: :cascade do |t|
     t.integer  "person_id",                       null: false
     t.string   "employer_name",                   null: false
@@ -228,6 +238,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at",                      null: false
   end
 
+  add_index "socializer_person_employments", ["person_id"], name: "index_socializer_person_employments_on_person_id"
+
   create_table "socializer_person_links", force: :cascade do |t|
     t.string   "display_name", null: false
     t.string   "url",          null: false
@@ -235,6 +247,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "socializer_person_links", ["person_id"], name: "index_socializer_person_links_on_person_id"
 
   create_table "socializer_person_phones", force: :cascade do |t|
     t.integer  "person_id",  null: false
@@ -245,6 +259,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "socializer_person_phones", ["person_id"], name: "index_socializer_person_phones_on_person_id"
+
   create_table "socializer_person_places", force: :cascade do |t|
     t.integer  "person_id",                  null: false
     t.string   "city_name"
@@ -253,6 +269,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "socializer_person_places", ["person_id"], name: "index_socializer_person_places_on_person_id"
+
   create_table "socializer_person_profiles", force: :cascade do |t|
     t.integer  "person_id",    null: false
     t.string   "display_name", null: false
@@ -260,6 +278,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "socializer_person_profiles", ["person_id"], name: "index_socializer_person_profiles_on_person_id"
 
   create_table "socializer_ties", force: :cascade do |t|
     t.integer  "contact_id", null: false
