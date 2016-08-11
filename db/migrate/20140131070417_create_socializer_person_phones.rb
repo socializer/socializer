@@ -13,5 +13,6 @@ class CreateSocializerPersonPhones < ActiveRecord::Migration
     end
 
     add_index :socializer_person_phones, :person_id
+    add_foreign_key :socializer_person_phones, :socializer_people
   end
 end

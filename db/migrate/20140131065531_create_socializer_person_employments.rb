@@ -18,5 +18,6 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration
     end
 
     add_index :socializer_person_employments, :person_id
+    add_foreign_key :socializer_person_employments, :socializer_people
   end
 end

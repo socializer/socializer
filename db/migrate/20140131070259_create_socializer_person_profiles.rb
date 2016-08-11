@@ -11,5 +11,6 @@ class CreateSocializerPersonProfiles < ActiveRecord::Migration
     end
 
     add_index :socializer_person_profiles, :person_id
+    add_foreign_key :socializer_person_profiles, :socializer_people
   end
 end

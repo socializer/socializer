@@ -17,5 +17,6 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration
     end
 
     add_index :socializer_person_educations, :person_id
+    add_foreign_key :socializer_person_educations, :socializer_people
   end
 end

@@ -18,5 +18,6 @@ class CreateSocializerPersonAddresses < ActiveRecord::Migration
     end
 
     add_index :socializer_person_addresses, :person_id
+    add_foreign_key :socializer_person_addresses, :socializer_people
   end
 end

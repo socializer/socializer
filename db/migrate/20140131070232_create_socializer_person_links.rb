@@ -11,5 +11,6 @@ class CreateSocializerPersonLinks < ActiveRecord::Migration
     end
 
     add_index :socializer_person_links, :person_id
+    add_foreign_key :socializer_person_links, :socializer_people
   end
 end
