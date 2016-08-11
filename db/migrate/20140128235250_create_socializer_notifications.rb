@@ -9,5 +9,11 @@ class CreateSocializerNotifications < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :socializer_notifications, :activity_id
+    add_index :socializer_notifications, :activity_object_id
+
+    add_foreign_key :socializer_notifications, :socializer_activities
+    add_foreign_key :socializer_notifications, :socializer_activity_objects
   end
 end
