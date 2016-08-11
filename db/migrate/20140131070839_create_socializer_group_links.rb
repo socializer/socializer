@@ -11,5 +11,6 @@ class CreateSocializerGroupLinks < ActiveRecord::Migration
     end
 
     add_index :socializer_group_links, :group_id
+    add_foreign_key :socializer_group_links, :socializer_groups
   end
 end
