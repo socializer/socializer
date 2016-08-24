@@ -52,7 +52,7 @@ module Socializer
 
       errors.add(:base, I18n.t(:cannot_delete_last_authentication,
                                scope: "socializer.errors.messages"))
-      false
+      throw(:abort)
     end
   end
 end

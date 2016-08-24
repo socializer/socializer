@@ -120,7 +120,7 @@ module Socializer
       message = I18n.t("socializer.errors.messages.group.still_has_members")
       errors.add(:base, message)
 
-      false
+      throw(:abort)
     end
   end
 end
