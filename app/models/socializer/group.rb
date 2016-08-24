@@ -9,7 +9,7 @@ module Socializer
   # A {Socializer::Group group} is a link between people where all members
   # share the same level of connection with each other.
   #
-  class Group < ActiveRecord::Base
+  class Group < ApplicationRecord
     extend Enumerize
     include ObjectTypeBase
 

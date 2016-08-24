@@ -10,7 +10,7 @@ module Socializer
     #
     # Where the {Socializer::Person person} has lived
     #
-    class Place < ActiveRecord::Base
+    class Place < ApplicationRecord
       attr_accessible :city_name, :current
 
       # Relationships

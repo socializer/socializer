@@ -12,7 +12,7 @@ module Socializer
   #
   # Activities follow the {http://activitystrea.ms/ Activity Streams} standard.
   #
-  class Activity < ActiveRecord::Base
+  class Activity < ApplicationRecord
     include ObjectTypeBase
 
     attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id

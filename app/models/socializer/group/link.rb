@@ -10,7 +10,7 @@ module Socializer
     #
     # URLs related to the {Socializer::Group group}
     #
-    class Link < ActiveRecord::Base
+    class Link < ApplicationRecord
       attr_accessible :display_name, :url
 
       # Relationships

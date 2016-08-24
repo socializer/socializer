@@ -11,7 +11,7 @@ module Socializer
     # Links to other profiles that the {Socializer::Person person} has.
     # For example: Twitter, Facebook, etc.
     #
-    class Profile < ActiveRecord::Base
+    class Profile < ApplicationRecord
       attr_accessible :display_name, :url
 
       # Relationships

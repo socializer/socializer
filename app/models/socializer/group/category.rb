@@ -11,7 +11,7 @@ module Socializer
     # Categories guide discussions and help members find the topics they're most
     # interested in.
     #
-    class Category < ActiveRecord::Base
+    class Category < ApplicationRecord
       attr_accessible :display_name
 
       # Relationships

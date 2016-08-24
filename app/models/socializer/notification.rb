@@ -8,7 +8,7 @@ module Socializer
   #
   # The system informing you that something of interest has occurred for you.
   #
-  class Notification < ActiveRecord::Base
+  class Notification < ApplicationRecord
     attr_accessible :read
 
     # Relationships

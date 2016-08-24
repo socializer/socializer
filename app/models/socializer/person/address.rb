@@ -10,7 +10,7 @@ module Socializer
     #
     # Addresses related to the {Socializer::Person person}
     #
-    class Address < ActiveRecord::Base
+    class Address < ApplicationRecord
       extend Enumerize
 
       enumerize :category, in: { home: 1, work: 2 },

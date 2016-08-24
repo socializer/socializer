@@ -8,7 +8,7 @@ module Socializer
   #
   # Identifies the action that the activity describes.
   #
-  class Verb < ActiveRecord::Base
+  class Verb < ApplicationRecord
     attr_accessible :display_name
 
     # Relationships

@@ -10,7 +10,7 @@ module Socializer
     #
     # Where the {Socializer::Person person} has worked
     #
-    class Employment < ActiveRecord::Base
+    class Employment < ApplicationRecord
       attr_accessible :employer_name, :job_title, :started_on, :ended_on,
                       :current, :job_description
 

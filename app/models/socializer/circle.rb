@@ -13,7 +13,7 @@ module Socializer
   # The association between a {Socializer::Person person} and a
   # {Socializer::Circle circle} is called a {Socializer::Tie tie}.
   #
-  class Circle < ActiveRecord::Base
+  class Circle < ApplicationRecord
     include ObjectTypeBase
 
     attr_accessible :display_name, :content
