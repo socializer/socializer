@@ -21,5 +21,5 @@ group :development, :test do
   gem "pry", "~> 0.10.4"
 end
 
-# add these gems to help with the transition to Rails 4:
-gem "protected_attributes", "~> 1.1.3"
+# TODO: Remove. add these gems to help with the transition to Rails 5:
+gem "protected_attributes_continued"
