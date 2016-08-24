@@ -25,14 +25,14 @@ module Socializer
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes, format: :js
+          post :create, params: valid_attributes, format: :js
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: tie
+          delete :destroy, params: { id: tie }
           expect(response).to redirect_to root_path
         end
       end
@@ -51,17 +51,17 @@ module Socializer
 
         context "with valid attributes" do
           it "saves the new group in the database" do
-            expect { post :create, valid_attributes, format: :js }
+            expect { post :create, params: valid_attributes, format: :js }
               .to change(Tie, :count).by(1)
           end
 
           it "returns http ok" do
-            post :create, valid_attributes, format: :js
+            post :create, params: valid_attributes, format: :js
             expect(response).to have_http_status(:ok)
           end
 
           it "renders the :create template" do
-            post :create, valid_attributes, format: :js
+            post :create, params: valid_attributes, format: :js
             expect(response).to render_template(:create)
           end
         end
@@ -74,12 +74,13 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the tie" do
           tie
-          expect { delete :destroy, id: tie }.to change(Tie, :count).by(-1)
+          expect { delete :destroy, params: { id: tie } }
+            .to change(Tie, :count).by(-1)
         end
 
         context "check the variables and redirect" do
           before do
-            delete :destroy, id: tie
+            delete :destroy, params: { id: tie }
           end
 
           it "assigns @tie" do

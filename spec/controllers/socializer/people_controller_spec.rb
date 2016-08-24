@@ -19,21 +19,23 @@ module Socializer
 
       describe "GET #show" do
         it "requires login" do
-          get :show, id: user
+          get :show, params: { id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: user
+          get :edit, params: { id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: user, person: { tagline: "This is a tagline" }
+          patch :update, params: { id: user },
+                         person: { tagline: "This is a tagline" }
+
           expect(response).to redirect_to root_path
         end
       end
@@ -61,7 +63,7 @@ module Socializer
 
       describe "GET #show" do
         before do
-          get :show, id: user
+          get :show, params: { id: user }
         end
 
         it "assigns @person" do
@@ -75,7 +77,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: user
+          get :edit, params: { id: user }
         end
 
         it "assigns @person" do
@@ -90,7 +92,9 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, id: user, person: { tagline: "This is a tagline" }
+            patch :update, params: { id: user },
+                           person: { tagline: "This is a tagline" }
+
             expect(response).to redirect_to user
           end
         end

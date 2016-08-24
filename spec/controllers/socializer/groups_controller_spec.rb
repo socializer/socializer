@@ -41,7 +41,7 @@ module Socializer
 
       describe "GET #show" do
         it "requires login" do
-          get :show, id: group
+          get :show, params: { id: group }
           expect(response).to redirect_to root_path
         end
       end
@@ -55,28 +55,28 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes
+          post :create, params: valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: group
+          get :edit, params: { id: group }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: group, group: { privacy: privacy }
+          patch :update, params: { id: group, group: { privacy: privacy } }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: group
+          delete :destroy, params: { id: group }
           expect(response).to redirect_to root_path
         end
       end
@@ -104,7 +104,7 @@ module Socializer
 
       describe "GET #show" do
         before do
-          get :show, id: group
+          get :show, params: { id: group }
         end
 
         it "assigns the requested group to @group" do
@@ -137,24 +137,24 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new group in the database" do
-            expect { post :create, valid_attributes }
+            expect { post :create, params: valid_attributes }
               .to change(Group, :count).by(1)
           end
 
           it "redirects to group#show" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to group_path(assigns[:group])
           end
         end
 
         context "with invalid attributes" do
           it "does not save the new circle in the database" do
-            expect { post :create, invalid_attributes }
+            expect { post :create, params: invalid_attributes }
               .not_to change(Group, :count)
           end
 
           it "re-renders the :new template" do
-            post :create, invalid_attributes
+            post :create, params: invalid_attributes
             expect(response).to render_template :new
           end
         end
@@ -162,7 +162,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: group
+          get :edit, params: { id: group }
         end
 
         it "assigns the requested group to @group" do
@@ -181,7 +181,7 @@ module Socializer
           end
 
           it "redirects to groups#show" do
-            patch :update, id: group, group: { privacy: privacy }
+            patch :update, params: { id: group, group: { privacy: privacy } }
             expect(response).to redirect_to group_path(assigns[:group])
           end
         end
@@ -195,7 +195,7 @@ module Socializer
         context "cannot delete a group that has members" do
           it "deletes the group" do
             group
-            expect { delete :destroy, id: group }
+            expect { delete :destroy, params: { id: group } }
               .not_to change(Group, :count)
           end
         end
@@ -207,12 +207,12 @@ module Socializer
 
           it "deletes the group" do
             group
-            expect { delete :destroy, id: group }
+            expect { delete :destroy, params: { id: group } }
               .to change(Group, :count).by(-1)
           end
 
           it "redirects to groups#index" do
-            delete :destroy, id: group
+            delete :destroy, params: { id: group }
             expect(response).to redirect_to groups_path
           end
         end

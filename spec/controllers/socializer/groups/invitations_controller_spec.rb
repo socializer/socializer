@@ -18,7 +18,7 @@ module Socializer
         let(:invited_user) { create(:person) }
 
         it "requires login" do
-          post :create, id: group, person_id: invited_user
+          post :create, params: { id: group, person_id: invited_user }
           expect(response).to redirect_to root_path
         end
       end
@@ -32,7 +32,7 @@ module Socializer
         let(:invited_user) { create(:person) }
 
         it "redirects to groups#show" do
-          post :create, id: group, person_id: invited_user
+          post :create, params: { id: group, person_id: invited_user }
           expect(response).to redirect_to group_path(group)
         end
       end

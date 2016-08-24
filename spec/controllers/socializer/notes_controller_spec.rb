@@ -19,6 +19,11 @@ module Socializer
                 activity_verb: "post" } }
     end
 
+    let(:update_attributes) do
+      { id: note,
+        note: { content: "updated content" } }
+    end
+
     describe "when not logged in" do
       describe "GET #new" do
         it "requires login" do
@@ -29,28 +34,28 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes
+          post :create, params: valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: note
+          get :edit, params: { id: note }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, id: note, note: { content: "updated content" }
+          patch :update, params: update_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: note
+          delete :destroy, params: { id: note }
           expect(response).to redirect_to root_path
         end
       end
@@ -80,12 +85,12 @@ module Socializer
         context "with valid attributes" do
           context "format.html" do
             it "saves the new note in the database" do
-              expect { post :create, valid_attributes }
+              expect { post :create, params: valid_attributes }
                 .to change(Note, :count).by(1)
             end
 
             it "redirects to activities#index" do
-              post :create, valid_attributes
+              post :create, params: valid_attributes
               expect(response).to redirect_to activities_path
             end
           end
@@ -96,17 +101,17 @@ module Socializer
             end
 
             it "saves the new note in the database" do
-              expect { post :create, valid_attributes, format: :js }
+              expect { post :create, params: valid_attributes, format: :js }
                 .to change(Note, :count).by(1)
             end
 
             it "returns http ok" do
-              post :create, valid_attributes, format: :js
+              post :create, params: valid_attributes, format: :js
               expect(response).to have_http_status(:ok)
             end
 
             it "renders the :create template" do
-              post :create, valid_attributes, format: :js
+              post :create, params: valid_attributes, format: :js
               expect(response).to render_template(:create)
             end
           end
@@ -119,7 +124,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: note
+          get :edit, params: { id: note }
         end
 
         it "renders the :edit template" do
@@ -130,7 +135,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to activities#index" do
-            patch :update, id: note, note: { content: "updated content" }
+            patch :update, params: update_attributes
             expect(response).to redirect_to activities_path
           end
         end
@@ -147,7 +152,7 @@ module Socializer
 
         context "returns success" do
           before do
-            delete :destroy, id: note, format: :js
+            delete :destroy, params: { id: note }, format: :js
           end
 
           it "returns http success" do
@@ -161,11 +166,12 @@ module Socializer
 
         it "deletes the note" do
           note
-          expect { delete :destroy, id: note }.to change(Note, :count).by(-1)
+          expect { delete :destroy, params: { id: note } }
+            .to change(Note, :count).by(-1)
         end
 
         it "redirects to activities#index" do
-          delete :destroy, id: note
+          delete :destroy, params: { id: note }
           expect(response).to redirect_to activities_path
         end
       end

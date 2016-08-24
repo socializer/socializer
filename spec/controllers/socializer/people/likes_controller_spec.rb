@@ -13,7 +13,7 @@ module Socializer
     describe "when not logged in" do
       describe "GET #index" do
         it "requires login" do
-          get :index, id: user.id
+          get :index, params: { id: user.id }
           expect(response).to redirect_to root_path
         end
       end
@@ -27,7 +27,7 @@ module Socializer
 
       describe "GET #index" do
         before do
-          get :index, id: user.id
+          get :index, params: { id: user.id }
         end
 
         it "returns http success" do

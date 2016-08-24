@@ -33,7 +33,7 @@ module Socializer
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: activity, format: :js
+          delete :destroy, params: { id: activity }, format: :js
           expect(response).to redirect_to root_path
         end
       end
@@ -62,7 +62,7 @@ module Socializer
       describe "DELETE #destroy" do
         context "returns success" do
           before do
-            delete :destroy, id: activity, format: :js
+            delete :destroy, params: { id: activity }, format: :js
           end
 
           it "returns http success" do
@@ -76,7 +76,7 @@ module Socializer
 
         it "deletes the activity" do
           activity
-          expect { delete :destroy, id: activity, format: :js }
+          expect { delete :destroy, params: { id: activity }, format: :js }
             .to change(Activity, :count).by(-1)
         end
       end

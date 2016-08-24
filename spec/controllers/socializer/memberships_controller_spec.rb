@@ -24,14 +24,14 @@ module Socializer
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes
+          post :create, params: valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: membership
+          delete :destroy, params: { id: membership }
           expect(response).to redirect_to root_path
         end
       end
@@ -47,12 +47,12 @@ module Socializer
         context "with valid attributes" do
           it "saves the new membership in the database" do
             group
-            expect { post :create, valid_attributes }
+            expect { post :create, params: valid_attributes }
               .to change(Membership, :count).by(1)
           end
 
           it "redirects to groups#show" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to group
           end
         end
@@ -65,7 +65,7 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the membership" do
           membership
-          expect { delete :destroy, id: membership }
+          expect { delete :destroy, params: { id: membership } }
             .to change(Membership, :count).by(-1)
         end
       end
