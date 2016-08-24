@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe ApplicationController, type: :controller do
     controller do
       def index
-        render text: "Hello"
+        render plain: "Hello"
       end
     end
 
