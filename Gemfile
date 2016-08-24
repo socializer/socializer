@@ -13,7 +13,7 @@ group :test do
   gem "coveralls", "~> 0.8.15", require: false
 
   # TODO: Update test so rails-controller-testing can be removed
-  gem 'rails-controller-testing'
+  gem "rails-controller-testing"
 end
 
 group :development, :test do
