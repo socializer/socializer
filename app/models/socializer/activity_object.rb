@@ -6,7 +6,7 @@ module Socializer
   #
   # Activity Object model
   #
-  class ActivityObject < ActiveRecord::Base
+  class ActivityObject < ApplicationRecord
     attr_accessor :scope, :object_ids
     attr_accessible :scope, :object_ids, :activitable_id, :activitable_type,
                     :like_count, :unread_notifications_count
