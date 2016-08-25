@@ -66,10 +66,21 @@ module Socializer
         post :create, params: { provider: :identity }
       end
 
-      it "resets the session" do
-        expect(cookies.signed[:user_id]).not_to be_nil
-        delete :destroy
-        expect(cookies.signed[:user_id]).to be_nil
+      context "resets the session" do
+        context "before the destroy action" do
+          it { expect(cookies.signed[:user_id]).not_to be_nil }
+        end
+
+        context "after the destroy action" do
+          before do
+            delete :destroy
+          end
+
+          it "the cookie should be nil" do
+            cookies = controller.send :cookies
+            expect(cookies.signed[:user_id]).to be_nil
+          end
+        end
       end
 
       it "redirects to the root path" do
