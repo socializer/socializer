@@ -103,10 +103,10 @@ module Socializer
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
 
-          it "has memberships" do
-            expect(result.present?).to be true
-            expect(result.first.group_id).to eq group.id
-            expect(result.first.member_id).to eq user.guid
+          context "has memberships" do
+            it { expect(result.present?).to be true }
+            it { expect(result.first.group_id).to eq group.id }
+            it { expect(result.first.member_id).to eq user.guid }
           end
         end
       end

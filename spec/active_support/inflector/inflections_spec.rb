@@ -4,18 +4,18 @@ require "rails_helper"
 
 RSpec.describe ActiveSupport::Inflector::Inflections do
   context "singularize" do
-    it "return the singular form of a word" do
-      expect("ties".singularize(:en)).to eq("tie")
-      expect("Ties".singularize(:en)).to eq("Tie")
-      expect("activities".singularize(:en)).to eq("activity")
-      expect("Activities".singularize(:en)).to eq("Activity")
+    context "returns the singular form of a word" do
+      it { expect("ties".singularize(:en)).to eq("tie") }
+      it { expect("Ties".singularize(:en)).to eq("Tie") }
+      it { expect("activities".singularize(:en)).to eq("activity") }
+      it { expect("Activities".singularize(:en)).to eq("Activity") }
     end
 
-    it "do not alter an already singular word" do
-      expect("tie".singularize(:en)).to eq("tie")
-      expect("Tie".singularize(:en)).to eq("Tie")
-      expect("activity".singularize(:en)).to eq("activity")
-      expect("Activity".singularize(:en)).to eq("Activity")
+    context "do not alter an already singular word" do
+      it { expect("tie".singularize(:en)).to eq("tie") }
+      it { expect("Tie".singularize(:en)).to eq("Tie") }
+      it { expect("activity".singularize(:en)).to eq("activity") }
+      it { expect("Activity".singularize(:en)).to eq("Activity") }
     end
   end
 end

@@ -20,10 +20,18 @@ module Socializer
             .to change { Person.count }.by(1)
         end
 
-        it "successfully creates a session" do
-          expect(cookies.signed[:user_id]).to be_nil
-          post :create, params: { provider: :identity }
-          expect(cookies.signed[:user_id]).not_to be_nil
+        context "successfully creates a session" do
+          context "before the create action" do
+            it { expect(cookies.signed[:user_id]).to be_nil }
+          end
+
+          context "after the create action" do
+            before do
+              post :create, params: { provider: :identity }
+            end
+
+            it { expect(cookies.signed[:user_id]).not_to be_nil }
+          end
         end
 
         it "redirects the user to the root url" do

@@ -28,9 +28,9 @@ module Socializer
         expect(post: "/groups/memberships").not_to be_routable
       end
 
-      it "does not route to #update" do
-        expect(patch: "/groups/memberships/1").not_to be_routable
-        expect(put: "/groups/memberships/1").not_to be_routable
+      context "does not route to #update" do
+        it { expect(patch: "/groups/memberships/1").not_to be_routable }
+        it { expect(put: "/groups/memberships/1").not_to be_routable }
       end
 
       it "does not route to #destroy" do
