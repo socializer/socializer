@@ -19,6 +19,8 @@ module Socializer
       before do
         get :index
       end
+
+      it "is a pending example"
     end
 
     describe "when logged in" do

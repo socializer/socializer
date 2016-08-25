@@ -34,6 +34,7 @@ module Socializer
 
       context "when a Person does exist" do
         context "when authentication is present" do
+          it "is a pending example"
         end
 
         context "when they are signed in" do
@@ -57,6 +58,7 @@ module Socializer
         end
 
         context "when they are not signed in" do
+          it "is a pending example"
         end
       end
     end
