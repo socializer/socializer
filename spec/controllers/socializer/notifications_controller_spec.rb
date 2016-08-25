@@ -20,7 +20,7 @@ module Socializer
 
       describe "GET #show" do
         it "requires login" do
-          get :show, id: notification
+          get :show, params: { id: notification }
           expect(response).to redirect_to root_path
         end
       end
@@ -80,7 +80,7 @@ module Socializer
 
       describe "GET #show" do
         before do
-          get :show, id: notification
+          get :show, params: { id: notification }
         end
 
         let(:activities_path) do

@@ -9,7 +9,7 @@ module Socializer
   # A {Socializer::Membership} is a link between a {Socializer::Group} and a
   # {Socializer::Person}
   #
-  class Membership < ActiveRecord::Base
+  class Membership < ApplicationRecord
     attr_accessible :group_id, :active, :activity_member
 
     # Relationships

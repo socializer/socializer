@@ -29,7 +29,7 @@ module Socializer
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: authentication
+          delete :destroy, params: { id: authentication }
           expect(response).to redirect_to root_path
         end
       end
@@ -63,7 +63,7 @@ module Socializer
         context "cannot delete the last authentication" do
           it "deletes the authentication" do
             authentication
-            expect { delete :destroy, id: authentication }
+            expect { delete :destroy, params: { id: authentication } }
               .to change(Authentication, :count).by(0)
           end
         end
@@ -80,13 +80,13 @@ module Socializer
           it "deletes the authentication" do
             identity
             authentication
-            expect { delete :destroy, id: authentication }
+            expect { delete :destroy, params: { id: authentication } }
               .to change(Authentication, :count).by(-1)
           end
         end
 
         it "redirects to authentications#index" do
-          delete :destroy, id: authentication
+          delete :destroy, params: { id: authentication }
           expect(response).to redirect_to authentications_path
         end
       end

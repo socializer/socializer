@@ -34,16 +34,16 @@ module Socializer
 
           it { expect(json.count).to eq(2) }
 
-          it "public" do
-            expect(json.first["id"]).to match("public")
-            expect(json.first["name"]).to match("Public")
-            expect(json.first["icon"]).to match("fa-globe")
+          context "public" do
+            it { expect(json.first["id"]).to match("public") }
+            it { expect(json.first["name"]).to match("Public") }
+            it { expect(json.first["icon"]).to match("fa-globe") }
           end
 
-          it "circles" do
-            expect(json.last["id"]).to match("circles")
-            expect(json.last["name"]).to match("Circles")
-            expect(json.last["icon"]).to match("fa-google-circles")
+          context "circles" do
+            it { expect(json.last["id"]).to match("circles") }
+            it { expect(json.last["name"]).to match("Circles") }
+            it { expect(json.last["icon"]).to match("fa-google-circles") }
           end
         end
 

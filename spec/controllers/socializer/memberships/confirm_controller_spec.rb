@@ -26,7 +26,7 @@ module Socializer
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
-          post :create, id: membership.id
+          post :create, params: { id: membership.id }
           expect(response).to redirect_to root_path
         end
       end
@@ -40,17 +40,23 @@ module Socializer
 
       describe "POST #create" do
         context "with valid attributes" do
-          it "confirm the membership" do
-            expect(membership.active).to be false
+          context "confirm the membership" do
+            context "before the #create actions" do
+              it { expect(membership.active).to be false }
+            end
 
-            post :create, id: membership.id
+            context "after the #create actions" do
+              before do
+                post :create, params: { id: membership.id }
 
-            expect(membership.reload.active).to eq(true)
-            expect(assigns(:membership)).to eq membership
+                it { expect(membership.reload.active).to eq(true) }
+                it { expect(assigns(:membership)).to eq membership }
+              end
+            end
           end
 
           it "redirects to groups#show" do
-            post :create, id: membership.id
+            post :create, params: { id: membership.id }
             expect(response).to redirect_to membership.group
           end
         end

@@ -9,7 +9,7 @@ module Socializer
   # Every {Socializer::Activity} is shared with one or more
   # {Socializer::Audience audiences}.
   #
-  class Audience < ActiveRecord::Base
+  class Audience < ApplicationRecord
     extend Enumerize
 
     enumerize :privacy, in: %w(public circles limited),

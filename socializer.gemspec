@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency("rails",                "~> 4.2.7.1")
+  spec.add_dependency("rails",                "~> 5.0.0.1")
   spec.add_dependency("jquery-rails",         "~> 4.2.1")
   # Added "jquery-ui-rails" for drag and drop
   spec.add_dependency("jquery-ui-rails",      "~> 5.0.5")
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("uglifier",             ">= 3.0.2")
   spec.add_dependency("bcrypt",               "~> 3.1.11")
   spec.add_dependency("bootstrap-sass",       "~> 3.3.7")
-  spec.add_dependency("draper",               "~> 2.1.0")
+  spec.add_dependency("draper",               "~> 3.0.0.pre1")
   spec.add_dependency("elasticsearch-rails",  "~> 0.1.9")
   spec.add_dependency("enumerize",            "~> 2.0.0")
   spec.add_dependency("omniauth",             "~> 1.3.1")
@@ -56,6 +56,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.17.0")
   spec.add_development_dependency("rubocop",              "~> 0.42.0")
-  spec.add_development_dependency("rubocop-rspec",        "~> 1.6")
+  spec.add_development_dependency("rubocop-rspec",        "~> 1.7")
   spec.add_development_dependency("scss_lint",            "~> 0.49.0")
 end

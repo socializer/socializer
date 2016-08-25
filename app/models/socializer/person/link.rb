@@ -10,7 +10,7 @@ module Socializer
     #
     # URLs that are interesting to the {Socializer::Person person}
     #
-    class Link < ActiveRecord::Base
+    class Link < ApplicationRecord
       attr_accessible :display_name, :url
 
       # Relationships

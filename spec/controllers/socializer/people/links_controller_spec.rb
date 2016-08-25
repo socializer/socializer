@@ -27,35 +27,35 @@ module Socializer
     describe "when not logged in" do
       describe "GET #new" do
         it "requires login" do
-          get :new, person_id: user
+          get :new, params: { person_id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes
+          post :create, params: valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: link, person_id: user
+          get :edit, params: { id: link, person_id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, update_attributes
+          patch :update, params: update_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: link, person_id: user
+          delete :destroy, params: { id: link, person_id: user }
           expect(response).to redirect_to root_path
         end
       end
@@ -69,7 +69,7 @@ module Socializer
 
       describe "GET #new" do
         before do
-          get :new, person_id: user
+          get :new, params: { person_id: user }
         end
 
         it "assigns a new Person::Link to @link" do
@@ -84,12 +84,12 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new link in the database" do
-            expect { post :create, valid_attributes }
+            expect { post :create, params: valid_attributes }
               .to change(Person::Link, :count).by(1)
           end
 
           it "redirects to people#show" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to user
           end
         end
@@ -101,7 +101,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: link, person_id: user
+          get :edit, params: { id: link, person_id: user }
         end
 
         it "assigns the requested link to @link" do
@@ -116,7 +116,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, update_attributes
+            patch :update, params: update_attributes
             expect(response).to redirect_to user
           end
         end
@@ -129,12 +129,12 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the link" do
           link
-          expect { delete :destroy, id: link, person_id: user }
+          expect { delete :destroy, params: { id: link, person_id: user } }
             .to change(Person::Link, :count).by(-1)
         end
 
         it "redirects to people#show" do
-          delete :destroy, id: link, person_id: user
+          delete :destroy, params: { id: link, person_id: user }
           expect(response).to redirect_to user
         end
       end

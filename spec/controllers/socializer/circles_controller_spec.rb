@@ -32,7 +32,7 @@ module Socializer
 
       describe "GET #show" do
         it "requires login" do
-          get :show, id: circle
+          get :show, params: { id: circle }
           expect(response).to redirect_to root_path
         end
       end
@@ -46,28 +46,28 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, valid_attributes
+          post :create, params: valid_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: circle
+          get :edit, params: { id: circle }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, update_attributes
+          patch :update, params: update_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: circle
+          delete :destroy, params: { id: circle }
           expect(response).to redirect_to root_path
         end
       end
@@ -99,7 +99,7 @@ module Socializer
 
       describe "GET #show" do
         before do
-          get :show, id: circle
+          get :show, params: { id: circle }
         end
 
         it "assigns the requested circle to @circle" do
@@ -111,7 +111,7 @@ module Socializer
         end
 
         it "returns http success" do
-          get :show, id: circle
+          get :show, params: { id: circle }
           expect(response).to have_http_status(:success)
         end
       end
@@ -138,12 +138,12 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new circle in the database" do
-            expect { post :create, valid_attributes }
+            expect { post :create, params: valid_attributes }
               .to change(Circle, :count).by(1)
           end
 
           it "redirects to circles#contacts" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to contacts_circles_path
           end
         end
@@ -155,7 +155,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: circle
+          get :edit, params: { id: circle }
         end
 
         it "assigns the requested circle to @circle" do
@@ -170,7 +170,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to the updated circle" do
-            patch :update, update_attributes
+            patch :update, params: update_attributes
             expect(response).to redirect_to circle
           end
         end
@@ -183,12 +183,12 @@ module Socializer
       describe "DELETE #destroy" do
         it "deletes the circle" do
           circle
-          expect { delete :destroy, id: circle }
+          expect { delete :destroy, params: { id: circle } }
             .to change(Circle, :count).by(-1)
         end
 
         it "redirects to contacts#index" do
-          delete :destroy, id: circle
+          delete :destroy, params: { id: circle }
           expect(response).to redirect_to contacts_circles_path
         end
       end

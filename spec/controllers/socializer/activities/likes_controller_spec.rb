@@ -14,21 +14,21 @@ module Socializer
       describe "when not logged in" do
         describe "GET #index" do
           it "requires login" do
-            get :index, id: note_activity.id, format: :html
+            get :index, params: { id: note_activity.id }, format: :html
             expect(response).to redirect_to root_path
           end
         end
 
         describe "POST #create" do
           it "requires login" do
-            post :create, id: note_activity.guid, format: :js
+            post :create, params: { id: note_activity.guid }, format: :js
             expect(response).to redirect_to root_path
           end
         end
 
         describe "DELETE #destroy" do
           it "requires login" do
-            delete :destroy, id: note_activity.guid, format: :js
+            delete :destroy, params: { id: note_activity.guid }, format: :js
             expect(response).to redirect_to root_path
           end
         end
@@ -45,7 +45,7 @@ module Socializer
           # action
           describe "POST #create" do
             before do
-              post :create, id: note_activity.guid, format: :js
+              post :create, params: { id: note_activity.guid }, format: :js
             end
 
             it "returns http success" do
@@ -67,7 +67,7 @@ module Socializer
 
           describe "DELETE #destroy" do
             before do
-              delete :destroy, id: note_activity.guid, format: :js
+              delete :destroy, params: { id: note_activity.guid }, format: :js
             end
 
             it "returns http success" do
@@ -96,10 +96,10 @@ module Socializer
         describe "GET #index" do
           before do
             # Create a like
-            post :create, id: note_activity.guid, format: :js
+            post :create, params: { id: note_activity.guid }, format: :js
 
             # Get the people ou like the activity
-            get :index, id: note_activity.id, format: :html
+            get :index, params: { id: note_activity.id }, format: :html
           end
 
           it "return people" do
@@ -114,7 +114,7 @@ module Socializer
         describe "GET #create" do
           # Create a like
           before do
-            post :create, id: note_activity.guid, format: :js
+            post :create, params: { id: note_activity.guid }, format: :js
           end
 
           it "likes the note after liking it" do
@@ -125,10 +125,10 @@ module Socializer
         describe "GET #destroy" do
           before do
             # Create a like
-            post :create, id: note_activity.guid, format: :js
+            post :create, params: { id: note_activity.guid }, format: :js
 
             # Destroy the like
-            delete :destroy, id: note_activity.guid, format: :js
+            delete :destroy, params: { id: note_activity.guid }, format: :js
           end
 
           it "does not like the note anymore" do

@@ -6,7 +6,7 @@ module Socializer
   #
   # Activity Field model
   #
-  class ActivityField < ActiveRecord::Base
+  class ActivityField < ApplicationRecord
     attr_accessible :content, :activity
 
     # Relationships

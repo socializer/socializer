@@ -29,35 +29,37 @@ module Socializer
     describe "when not logged in" do
       describe "GET #new" do
         it "requires login" do
-          get :new, person_id: user
+          get :new, params: { person_id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "POST #create" do
         it "requires login" do
-          post :create, person_education: valid_attributes, person_id: user
+          post :create, params: { person_education: valid_attributes,
+                                  person_id: user }
+
           expect(response).to redirect_to root_path
         end
       end
 
       describe "GET #edit" do
         it "requires login" do
-          get :edit, id: education, person_id: user
+          get :edit, params: { id: education, person_id: user }
           expect(response).to redirect_to root_path
         end
       end
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, update_attributes
+          patch :update, params: update_attributes
           expect(response).to redirect_to root_path
         end
       end
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: education, person_id: user
+          delete :destroy, params: { id: education, person_id: user }
           expect(response).to redirect_to root_path
         end
       end
@@ -71,7 +73,7 @@ module Socializer
 
       describe "GET #new" do
         before do
-          get :new, person_id: user
+          get :new, params: { person_id: user }
         end
 
         it "assigns a new Person::Education to @education" do
@@ -86,12 +88,12 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new education in the database" do
-            expect { post :create, valid_attributes }
+            expect { post :create, params: valid_attributes }
               .to change(Person::Education, :count).by(1)
           end
 
           it "redirects to people#show" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to user
           end
         end
@@ -103,7 +105,7 @@ module Socializer
 
       describe "GET #edit" do
         before do
-          get :edit, id: education, person_id: user
+          get :edit, params: { id: education, person_id: user }
         end
 
         it "assigns the requested education to @education" do
@@ -118,7 +120,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, update_attributes
+            patch :update, params: update_attributes
             expect(response).to redirect_to user
           end
         end
@@ -129,14 +131,18 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
+        let(:delete_attributes) do
+          { id: education, person_id: user}
+        end
+
         it "deletes the education" do
           education
-          expect { delete :destroy, id: education, person_id: user }
+          expect { delete :destroy, params: delete_attributes }
             .to change(Person::Education, :count).by(-1)
         end
 
         it "redirects to people#show" do
-          delete :destroy, id: education, person_id: user
+          delete :destroy, params: delete_attributes
           expect(response).to redirect_to user
         end
       end

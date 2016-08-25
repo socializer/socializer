@@ -9,7 +9,7 @@ module Socializer
   # A {Socializer::Tie} is a link between a {Socializer::Circle} and a
   # {Socializer::Person}
   #
-  class Tie < ActiveRecord::Base
+  class Tie < ApplicationRecord
     attr_accessible :contact_id
 
     # Relationships

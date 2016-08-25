@@ -11,6 +11,9 @@ group :test do
   gem "database_cleaner", "~> 1.5.3"
   gem "simplecov", "~> 0.12.0", require: false
   gem "coveralls", "~> 0.8.15", require: false
+
+  # TODO: Update test so rails-controller-testing can be removed
+  gem "rails-controller-testing"
 end
 
 group :development, :test do
@@ -21,5 +24,5 @@ group :development, :test do
   gem "pry", "~> 0.10.4"
 end
 
-# add these gems to help with the transition to Rails 4:
-gem "protected_attributes", "~> 1.1.3"
+# TODO: Remove. add these gems to help with the transition to Rails 5:
+gem "protected_attributes_continued"

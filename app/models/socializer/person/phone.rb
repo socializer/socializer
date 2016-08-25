@@ -10,7 +10,7 @@ module Socializer
     #
     # Phone numbers related to the {Socializer::Person person}
     #
-    class Phone < ActiveRecord::Base
+    class Phone < ApplicationRecord
       extend Enumerize
 
       enumerize :category, in: { home: 1, work: 2 }, default: :home,

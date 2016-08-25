@@ -8,7 +8,7 @@ module Socializer
   #
   # Tracks the authentication provders for each {Socializer::Person person}.
   #
-  class Authentication < ActiveRecord::Base
+  class Authentication < ApplicationRecord
     attr_accessible :provider, :uid, :image_url
 
     # Relationships
@@ -52,7 +52,7 @@ module Socializer
 
       errors.add(:base, I18n.t(:cannot_delete_last_authentication,
                                scope: "socializer.errors.messages"))
-      false
+      throw(:abort)
     end
   end
 end

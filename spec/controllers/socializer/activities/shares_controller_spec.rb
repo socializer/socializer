@@ -25,14 +25,14 @@ module Socializer
       describe "when not logged in" do
         describe "GET #new" do
           it "requires login" do
-            get :new, id: note.guid
+            get :new, params: { id: note.guid }
             expect(response).to redirect_to root_path
           end
         end
 
         describe "POST #create" do
           it "requires login" do
-            post :create, valid_attributes
+            post :create, params: valid_attributes
             expect(response).to redirect_to root_path
           end
         end
@@ -46,7 +46,7 @@ module Socializer
 
         describe "GET #new" do
           # Visit the new page
-          before { get :new, id: note.guid }
+          before { get :new, params: { id: note.guid } }
 
           it "return an activity object" do
             expect(assigns(:activity_object)).to eq(note.activity_object)
@@ -64,7 +64,7 @@ module Socializer
         describe "POST #create" do
           context "with valid attributes" do
             before do
-              post :create, valid_attributes
+              post :create, params: valid_attributes
             end
 
             let(:message) do

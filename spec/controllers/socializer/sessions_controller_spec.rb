@@ -16,24 +16,33 @@ module Socializer
     describe "#create" do
       context "when a Person does not exist" do
         it "successfully creates a user" do
-          expect { post :create, provider: :identity }
+          expect { post :create, params: { provider: :identity } }
             .to change { Person.count }.by(1)
         end
 
-        it "successfully creates a session" do
-          expect(cookies.signed[:user_id]).to be_nil
-          post :create, provider: :identity
-          expect(cookies.signed[:user_id]).not_to be_nil
+        context "successfully creates a session" do
+          context "before the create action" do
+            it { expect(cookies.signed[:user_id]).to be_nil }
+          end
+
+          context "after the create action" do
+            before do
+              post :create, params: { provider: :identity }
+            end
+
+            it { expect(cookies.signed[:user_id]).not_to be_nil }
+          end
         end
 
         it "redirects the user to the root url" do
-          post :create, provider: :identity
+          post :create, params: { provider: :identity }
           expect(response).to redirect_to root_path
         end
       end
 
       context "when a Person does exist" do
         context "when authentication is present" do
+          it "is a pending example"
         end
 
         context "when they are signed in" do
@@ -41,35 +50,47 @@ module Socializer
           before { cookies.signed[:user_id] = user.guid }
 
           it "does not create a user" do
-            expect { post :create, provider: :identity }
+            expect { post :create, params: { provider: :identity } }
               .to change { Person.count }.by(0)
           end
 
           it "creates an authentication" do
-            expect { post :create, provider: :identity }
+            expect { post :create, params: { provider: :identity } }
               .to change { Authentication.count }.by(1)
           end
 
           it "redirects the user to the authentications url" do
-            post :create, provider: :identity
+            post :create, params: { provider: :identity }
             expect(response).to redirect_to authentications_path
           end
         end
 
         context "when they are not signed in" do
+          it "is a pending example"
         end
       end
     end
 
     describe "#destroy" do
       before do
-        post :create, provider: :identity
+        post :create, params: { provider: :identity }
       end
 
-      it "resets the session" do
-        expect(cookies.signed[:user_id]).not_to be_nil
-        delete :destroy
-        expect(cookies.signed[:user_id]).to be_nil
+      context "resets the session" do
+        context "before the destroy action" do
+          it { expect(cookies.signed[:user_id]).not_to be_nil }
+        end
+
+        context "after the destroy action" do
+          before do
+            delete :destroy
+          end
+
+          it "the cookie should be nil" do
+            cookies = controller.send :cookies
+            expect(cookies.signed[:user_id]).to be_nil
+          end
+        end
       end
 
       it "redirects to the root path" do

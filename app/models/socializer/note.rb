@@ -8,7 +8,7 @@ module Socializer
   #
   # Represents a short-form text message.
   #
-  class Note < ActiveRecord::Base
+  class Note < ApplicationRecord
     include ObjectTypeBase
 
     attr_accessible :content

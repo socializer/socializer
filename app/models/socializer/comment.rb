@@ -8,7 +8,7 @@ module Socializer
   #
   # A textual response to another object
   #
-  class Comment < ActiveRecord::Base
+  class Comment < ApplicationRecord
     include ObjectTypeBase
 
     attr_accessible :content

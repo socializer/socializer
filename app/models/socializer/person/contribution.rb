@@ -10,7 +10,7 @@ module Socializer
     #
     # Links to content that {Socializer::Person person} has contributed to
     #
-    class Contribution < ActiveRecord::Base
+    class Contribution < ApplicationRecord
       extend Enumerize
 
       enumerize :label, in: { current_contributor: 1, past_contributor: 2 },

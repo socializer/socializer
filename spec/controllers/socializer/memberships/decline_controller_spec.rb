@@ -25,7 +25,7 @@ module Socializer
     describe "when not logged in" do
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, id: membership.id
+          delete :destroy, params: { id: membership.id }
           expect(response).to redirect_to root_path
         end
       end
@@ -41,12 +41,12 @@ module Socializer
         context "with valid attributes" do
           it "decline the membership" do
             membership
-            expect { delete :destroy, id: membership.id }
+            expect { delete :destroy, params: { id: membership.id } }
               .to change(Membership, :count).by(-1)
           end
 
           it "redirects to groups#pending_invites" do
-            delete :destroy, id: membership.id
+            delete :destroy, params: { id: membership.id }
             expect(response).to redirect_to groups_pending_invites_path
           end
         end
