@@ -9,7 +9,6 @@ before_script:
   - bundle exec rails dummy:app --trace
   - bundle exec rails app:db:migrate --trace
   - bundle exec rails app:db:test:prepare --trace
-  - bundle exec rails app:db:migrate RAILS_ENV=test
 cache: bundler
 script: bundle exec rspec
 env:
