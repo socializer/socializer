@@ -16,8 +16,5 @@ class CreateSocializerAudiences < ActiveRecord::Migration
               name: "index_audiences_on_activity_id__activity_object_id"
 
     add_index :socializer_audiences, :privacy
-
-    add_foreign_key :socializer_audiences, :socializer_activities
-    add_foreign_key :socializer_audiences, :socializer_activity_objects
   end
 end
