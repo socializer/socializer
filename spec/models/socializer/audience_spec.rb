@@ -17,6 +17,7 @@ module Socializer
 
     context "relationships" do
       it { is_expected.to belong_to(:activity).inverse_of(:audiences) }
+      # FIXME: Test for optional: true
       it { is_expected.to belong_to(:activity_object).inverse_of(:audiences) }
     end
 

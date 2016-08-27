@@ -19,9 +19,11 @@ module Socializer
     end
 
     context "relationships" do
+      # FIXME: Test for optional: true
       it { is_expected.to belong_to(:parent) }
       it { is_expected.to belong_to(:activitable_actor) }
       it { is_expected.to belong_to(:activitable_object) }
+      # FIXME: Test for optional: true
       it { is_expected.to belong_to(:activitable_target) }
       it { is_expected.to belong_to(:verb) }
 
