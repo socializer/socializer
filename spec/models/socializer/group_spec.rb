@@ -64,6 +64,20 @@ module Socializer
       end
     end
 
+    context "scopes" do
+      context "with_display_name" do
+        let(:sql) { Group.with_display_name(name: "Group").to_sql }
+
+        let(:expected) do
+          %q(WHERE "socializer_groups"."display_name" = 'Group')
+        end
+
+        it do
+          expect(sql).to include(expected)
+        end
+      end
+    end
+
     it do
       is_expected
         .to enumerize(:privacy).in(:public, :restricted, :private)

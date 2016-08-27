@@ -60,6 +60,15 @@ module Socializer
 
     # Class Methods
 
+    # Find groups where the display_name is equal to the given name
+    #
+    # @param name: [String]
+    #
+    # @return [ActiveRecord::Relation]
+    def self.with_display_name(name:)
+      where(display_name: name)
+    end
+
     # Find all records where display_name is like "query"
     #
     # @param query: [String]
