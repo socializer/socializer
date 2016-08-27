@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerPeople < ActiveRecord::Migration
+class CreateSocializerPeople < ActiveRecord::Migration[4.2]
   def change
     create_table :socializer_people do |t|
       t.string   :display_name

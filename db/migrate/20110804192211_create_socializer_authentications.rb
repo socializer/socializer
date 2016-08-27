@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerAuthentications < ActiveRecord::Migration
+class CreateSocializerAuthentications < ActiveRecord::Migration[4.2]
   def change
     create_table :socializer_authentications do |t|
       t.integer  :person_id, null: false
