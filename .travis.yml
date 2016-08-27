@@ -8,8 +8,6 @@ before_install:
   - gem install bundler
 before_script:
   - bundle update
-  - bundle exec rails --version
-  - bundle exec rspec --version
   # - bundle exec rails dummy:app --trace
   - bundle exec rails app:db:migrate RAILS_ENV=test
   # - bundle exec rails app:db:test:prepare --trace
