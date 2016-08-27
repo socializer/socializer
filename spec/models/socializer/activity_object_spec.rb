@@ -28,6 +28,18 @@ module Socializer
       it { is_expected.to belong_to(:activitable) }
 
       it do
+        is_expected.to belong_to(:group)
+          .with_foreign_key("activitable_id")
+        # .conditions(ActivityObject.with_activitable_type(type: Group.name))
+      end
+
+      it do
+        is_expected.to belong_to(:person)
+          .with_foreign_key("activitable_id")
+        # .conditions(ActivityObject.with_activitable_type(type: Person.name))
+      end
+
+      it do
         is_expected.to have_many(:notifications).inverse_of(:activity_object)
       end
 
