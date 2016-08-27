@@ -2,11 +2,12 @@ language: ruby
 sudo: false
 before_install:
   - "rm ${BUNDLE_GEMFILE}.lock"
-  - "rm -rf spec/dummy"
+  # - "rm -rf spec/dummy"
+  - "rm -rf spec/dummy/db/*"
   - gem install bundler
 before_script:
   - bundle update
-  - bundle exec rails dummy:app --trace
+  # - bundle exec rails dummy:app --trace
   - bundle exec rails app:db:migrate --trace
   - bundle exec rails app:db:test:prepare --trace
 cache: bundler
