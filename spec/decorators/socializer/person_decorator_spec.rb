@@ -310,6 +310,20 @@ module Socializer
     context "toolbar_stream_links" do
       let(:person) { create(:person) }
 
+      let(:friends) { Circle.with_display_name(name: "Friends").first }
+      let(:family) { Circle.with_display_name(name: "Family").first }
+      let(:acquaintances) do
+        Circle.with_display_name(name: "Acquaintances").first
+      end
+      let(:following) { Circle.with_display_name(name: "Following").first }
+      let(:group) { Group.with_display_name(name: "Group").first }
+
+      let(:friends_url) { circle_activities_path(friends.id) }
+      let(:family_url) { circle_activities_path(family.id) }
+      let(:acquaintances_url) { circle_activities_path(acquaintances.id) }
+      let(:following_url) { circle_activities_path(following.id) }
+      let(:group_url) { group_activities_path(group.try(:id)) }
+
       context "with no circles or memberships" do
         it { expect(decorated_person.toolbar_stream_links).to eq(nil) }
       end
@@ -326,22 +340,22 @@ module Socializer
 
         it do
           expect(result)
-            .to have_link("Friends", href: "/circles/1/activities")
+            .to have_link("Friends", href: friends_url)
         end
 
         it do
           expect(result)
-            .to have_link("Family", href: "/circles/2/activities")
+            .to have_link("Family", href: family_url)
         end
 
         it do
           expect(result)
-            .to have_link("Acquaintances", href: "/circles/3/activities")
+            .to have_link("Acquaintances", href: acquaintances_url)
         end
 
         it do
           expect(result)
-            .to have_link("Following", href: "/circles/4/activities")
+            .to have_link("Following", href: following_url)
         end
 
         it do
@@ -387,25 +401,27 @@ module Socializer
 
         it do
           expect(result)
-            .to have_link("Friends", href: "/circles/1/activities")
-        end
-
-        it do
-          expect(result).to have_link("Family", href: "/circles/2/activities")
+            .to have_link("Friends", href: friends_url)
         end
 
         it do
           expect(result)
-            .to have_link("Acquaintances", href: "/circles/3/activities")
+            .to have_link("Family", href: family_url)
         end
 
         it do
           expect(result)
-            .to have_link("Following", href: "/circles/4/activities")
+            .to have_link("Acquaintances", href: acquaintances_url)
         end
 
         it do
-          expect(result).to have_link("Group", href: "/groups/1/activities")
+          expect(result)
+            .to have_link("Following", href: following_url)
+        end
+
+        it do
+          expect(result)
+            .to have_link("Group", href: group_url)
         end
 
         it { expect(result).to have_selector("li", count: li_count) }
