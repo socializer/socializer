@@ -19,7 +19,8 @@ module Socializer
 
     # Relationships
     belongs_to :parent, class_name: "Activity",
-                        foreign_key: "target_id"
+                        foreign_key: "target_id",
+                        optional: true
 
     belongs_to :activitable_actor,  class_name: "ActivityObject",
                                     foreign_key: "actor_id"
@@ -28,7 +29,8 @@ module Socializer
                                     foreign_key: "activity_object_id"
 
     belongs_to :activitable_target, class_name: "ActivityObject",
-                                    foreign_key: "target_id"
+                                    foreign_key: "target_id",
+                                    optional: true
 
     belongs_to :verb, inverse_of: :activities
 

@@ -19,7 +19,7 @@ module Socializer
 
     # Relationships
     belongs_to :activity, inverse_of: :audiences
-    belongs_to :activity_object, inverse_of: :audiences
+    belongs_to :activity_object, inverse_of: :audiences, optional: true
 
     # Validations
     # validates :activity_id, presence: true,

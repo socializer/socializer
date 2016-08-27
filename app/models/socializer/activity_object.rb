@@ -22,11 +22,13 @@ module Socializer
     #       nice way to joins to a polymorphic relationship
     belongs_to :group,
                -> { ActivityObject.with_activitable_type(type: Group.name) },
-               foreign_key: "activitable_id"
+               foreign_key: "activitable_id",
+               optional: true
 
     belongs_to :person,
                -> { ActivityObject.with_activitable_type(type: Person.name) },
-               foreign_key: "activitable_id"
+               foreign_key: "activitable_id",
+               optional: true
 
     has_many :notifications, inverse_of: :activity_object
     has_many :audiences, inverse_of: :activity_object # , dependent: :destroy
