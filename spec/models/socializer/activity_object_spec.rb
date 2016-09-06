@@ -27,18 +27,24 @@ module Socializer
     context "relationships" do
       it { is_expected.to belong_to(:activitable) }
 
-      # FIXME: Test for optional: true
       it do
-        is_expected.to belong_to(:group)
-          .with_foreign_key("activitable_id")
-        # .conditions(ActivityObject.with_activitable_type(type: Group.name))
+        is_expected.to have_one(:self_reference)
+          .class_name("ActivityObject")
+          .with_foreign_key("id")
       end
 
-      # FIXME: Test for optional: true
+      # FIXME: Test for source_type when available
       it do
-        is_expected.to belong_to(:person)
-          .with_foreign_key("activitable_id")
-        # .conditions(ActivityObject.with_activitable_type(type: Person.name))
+        is_expected.to have_one(:group)
+          .through(:self_reference)
+          .source(:activitable)
+      end
+
+      # FIXME: Test for source_type when available
+      it do
+        is_expected.to have_one(:person)
+          .through(:self_reference)
+          .source(:activitable)
       end
 
       it do
