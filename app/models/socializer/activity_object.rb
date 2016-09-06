@@ -18,18 +18,6 @@ module Socializer
     # These relationships simplify the Activity.circles_subquery and
     # Activity.limited_group_subquery queries. By using these relationships we
     # no longer need to use Arel in those methods.
-    # NOTE: These relationships will no longer be needed if rails provides a
-    #       nice way to joins to a polymorphic relationship
-    # belongs_to :group,
-    #            -> { ActivityObject.with_activitable_type(type: Group.name) },
-    #            foreign_key: "activitable_id",
-    #            optional: true
-
-    # belongs_to :person,
-    #            -> { ActivityObject.with_activitable_type(type: Person.name) },
-    #            foreign_key: "activitable_id",
-    #            optional: true
-
     has_one :self_reference, class_name: self, foreign_key: :id
 
     has_one :group,
