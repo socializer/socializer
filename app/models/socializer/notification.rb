@@ -24,7 +24,7 @@ module Socializer
 
     # Callbacks
     # Increment the number of unread notifications
-    after_save { activity_object.increment_unread_notifications_count }
+    after_commit { activity_object.increment_unread_notifications_count }
 
     # Class methods - Public
 
