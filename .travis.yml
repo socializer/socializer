@@ -16,7 +16,7 @@ env:
   - DB=mysql
   - DB=sqlite
 rvm:
-  - 2.2.4
+  # - 2.2.4
   - 2.3.1
 matrix:
   fast_finish: true
