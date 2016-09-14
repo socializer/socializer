@@ -23,7 +23,7 @@ PATH
       uglifier (>= 3.0.2)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actioncable (5.0.0.1)
       actionpack (= 5.0.0.1)
@@ -68,7 +68,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    arel (7.1.1)
+    arel (7.1.2)
     ast (2.3.0)
     autoprefixer-rails (6.4.1.1)
       execjs
