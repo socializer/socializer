@@ -20,3 +20,6 @@ rvm:
   - 2.3.1
 matrix:
   fast_finish: true
+addons:
+  code_climate:
+    repo_token: 08c7e43e5cdaf0614c7e61dcf6279865630cb6992fa9f1f09856f72fd641218b
