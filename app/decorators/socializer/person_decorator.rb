@@ -202,8 +202,7 @@ module Socializer
                                       class: "fa fa-angle-down fa-fw")
 
       # i18n-tasks-use t("socializer.shared.toolbar.more")
-      content = [helpers.t("socializer.shared.toolbar.more")]
-      content << icon
+      content = [helpers.t("socializer.shared.toolbar.more"), icon]
 
       helpers.link_to("", class: css_class, data: { toggle: "dropdown" }) do
         helpers.safe_join(content)
