@@ -162,15 +162,11 @@ module Socializer
     end
 
     def looking_for_relationship
-      if model.looking_for_relationship?
-        return content_and_br(content: "Relationship")
-      end
+      content_and_br(content: "Relationship") if model.looking_for_relationship?
     end
 
     def looking_for_networking
-      if model.looking_for_networking?
-        return content_and_br(content: "Networking")
-      end
+      content_and_br(content: "Networking") if model.looking_for_networking?
     end
 
     def looking_for_who
