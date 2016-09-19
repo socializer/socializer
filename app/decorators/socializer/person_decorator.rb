@@ -124,11 +124,11 @@ module Socializer
     #
     # @return [String]
     def looking_for
-      content = []
-      content << looking_for_friends
-      content << looking_for_dating
-      content << looking_for_relationship
-      content << looking_for_networking
+      content = [looking_for_friends,
+                 looking_for_dating,
+                 looking_for_relationship,
+                 looking_for_networking]
+
       content << looking_for_who if content.join.empty?
 
       helpers.safe_join(content)
