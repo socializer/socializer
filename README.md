@@ -93,6 +93,5 @@ The best way to contribute is to do one of the following :
 
 ## License ##
 
-Copyright 2011-2016, Dominic Goulet, http://www.dominicgoulet.com
+Socializer is released under the [MIT License](https://github.com/socializer/socializer/blob/master/LICENSE)
 
-MIT License - http://www.opensource.org/licenses/mit-license.php
