@@ -240,7 +240,7 @@ GEM
       ast (~> 2.2)
     pkg-config (1.1.7)
     powerpack (0.1.1)
-    protected_attributes_continued (1.2.3)
+    protected_attributes_continued (1.2.4)
       activemodel (>= 4.0.1, < 6.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
