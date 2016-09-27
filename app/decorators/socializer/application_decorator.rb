@@ -23,11 +23,9 @@ module Socializer
     #
     # @return [String] An HTML time tag
     def time_ago(options: {})
-      options.reverse_merge! title: created_updated_tooltip_text
-      options.reverse_merge! data: { behavior: "tooltip-on-hover" }
+      data = { behavior: "tooltip-on-hover", time_ago: "moment.js" }
 
-      options[:data] ||= {}
-      options[:data][:time_ago] = "moment.js"
+      options.reverse_merge!(title: created_updated_tooltip_text, data: data)
 
       time_tag(options: options)
     end
