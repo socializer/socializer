@@ -52,12 +52,10 @@ module Socializer
       created_at = l(model.created_at.utc, format: format)
       updated_at = l(model.updated_at.utc, format: format)
 
-      if created_at == updated_at
-        created_at
-      else
-        # add `white-space: pre-wrap;` to .qtip-content
-        "#{created_at} (edited #{updated_at})"
-      end
+      return created_at if created_at == updated_at
+
+      # add `white-space: pre-wrap;` to .qtip-content
+      "#{created_at} (edited #{updated_at})"
     end
   end
 end
