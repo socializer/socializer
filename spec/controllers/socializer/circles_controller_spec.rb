@@ -84,10 +84,6 @@ module Socializer
           get :index
         end
 
-        it "assigns @circles" do
-          expect(assigns(:circles)).to match_array([circle])
-        end
-
         it "renders the :index template" do
           expect(response).to render_template :index
         end

@@ -11,7 +11,11 @@ module Socializer
 
     # GET /circles
     def index
-      @circles = current_user.circles.decorate
+      circles = current_user.circles.decorate
+
+      respond_to do |format|
+        format.html { render :index, locals: { circles: circles } }
+      end
     end
 
     # GET /circles/1
