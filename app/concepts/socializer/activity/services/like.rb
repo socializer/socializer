@@ -43,6 +43,8 @@ module Socializer
 
         private
 
+        attr_reader :actor, :activity_object
+
         def create_activity
           Socializer::CreateActivity
             .new(actor_id: @actor.guid,
