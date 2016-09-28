@@ -48,14 +48,6 @@ module Socializer
           # Visit the new page
           before { get :new, params: { id: note.guid } }
 
-          it "return an activity object" do
-            expect(assigns(:activity_object)).to eq(note.activity_object)
-          end
-
-          it "return an share object" do
-            expect(assigns(:share)).to eq(note)
-          end
-
           it "renders the :new template" do
             expect(response).to render_template :new
           end

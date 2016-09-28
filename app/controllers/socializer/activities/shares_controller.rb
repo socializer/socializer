@@ -12,8 +12,15 @@ module Socializer
 
       # GET /activities/1/share
       def new
-        @activity_object = find_activity_object(id: params[:id])
-        @share = @activity_object.activitable
+        activity_object = find_activity_object(id: params[:id])
+        share = activity_object.activitable
+
+        respond_to do |format|
+          format.html do
+            render :new, locals: { activity_object: activity_object,
+                                   share: share }
+          end
+        end
       end
 
       # POST /activities/1/share
