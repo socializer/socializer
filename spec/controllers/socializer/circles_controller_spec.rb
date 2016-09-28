@@ -98,10 +98,6 @@ module Socializer
           get :show, params: { id: circle }
         end
 
-        it "assigns the requested circle to @circle" do
-          expect(assigns(:circle)).to eq circle
-        end
-
         it "renders the show template" do
           expect(response).to render_template :show
         end
@@ -115,10 +111,6 @@ module Socializer
       describe "GET #new" do
         before do
           get :new
-        end
-
-        it "assigns a new Group to @circle" do
-          expect(assigns(:circle)).to be_a_new(Circle)
         end
 
         it "renders the :new template" do
@@ -152,10 +144,6 @@ module Socializer
       describe "GET #edit" do
         before do
           get :edit, params: { id: circle }
-        end
-
-        it "assigns the requested circle to @circle" do
-          expect(assigns(:circle)).to eq circle
         end
 
         it "renders the :edit template" do

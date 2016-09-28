@@ -20,23 +20,29 @@ module Socializer
 
     # GET /circles/1
     def show
-      @circle = find_circle
+      respond_to do |format|
+        format.html { render :show, locals: { circle: find_circle } }
+      end
     end
 
     # GET /circles/new
     def new
-      @circle = Circle.new
+      respond_to do |format|
+        format.html { render :new, locals: { circle: Circle.new } }
+      end
     end
 
     # GET /circles/1/edit
     def edit
-      @circle = find_circle
+      respond_to do |format|
+        format.html { render :edit, locals: { circle: find_circle } }
+      end
     end
 
     # POST /circles
     def create
-      @circle = current_user.circles.build(params[:circle])
-      @circle.save!
+      circle = current_user.circles.build(params[:circle])
+      circle.save!
 
       flash[:notice] = t("socializer.model.create", model: "Circle")
       redirect_to contacts_circles_path
@@ -44,24 +50,24 @@ module Socializer
 
     # PATCH/PUT /circles/1
     def update
-      @circle = find_circle
-      @circle.update!(params[:circle])
+      circle = find_circle
+      circle.update!(params[:circle])
 
       flash[:notice] = t("socializer.model.update", model: "Circle")
-      redirect_to @circle
+      redirect_to circle
     end
 
     # DELETE /circles/1
     def destroy
-      @circle = find_circle
-      @circle.destroy
+      circle = find_circle
+      circle.destroy
       redirect_to contacts_circles_path
     end
 
     private
 
     def find_circle
-      current_user.circles.find_by(id: params[:id]).decorate
+      @find_circle ||= current_user.circles.find_by(id: params[:id]).decorate
     end
   end
 end
