@@ -11,11 +11,12 @@ module Socializer
 
     # GET /audience_lists
     def index
-      query     = params.fetch(:q) { nil }
-      audiences = AudienceList.call(person: current_user, query: query)
+      query = params.fetch(:q) { nil }
 
       respond_to do |format|
-        format.json { render json: audiences }
+        format.json do
+          render json: AudienceList.call(person: current_user, query: query)
+        end
       end
     end
   end
