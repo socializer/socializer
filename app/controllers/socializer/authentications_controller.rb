@@ -11,13 +11,17 @@ module Socializer
 
     # GET /authentications
     def index
-      @authentications = current_user.services
+      respond_to do |format|
+        format.html do
+          render :index, locals: { authentications: current_user.services }
+        end
+      end
     end
 
     # DELETE /authentications/1
     def destroy
-      @authentication = current_user.authentications.find_by(id: params[:id])
-      @authentication.destroy
+      authentication = current_user.authentications.find_by(id: params[:id])
+      authentication.destroy
 
       redirect_to authentications_path
     end

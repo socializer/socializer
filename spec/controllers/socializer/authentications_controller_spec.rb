@@ -46,10 +46,6 @@ module Socializer
           get :index
         end
 
-        it "assigns @authentications" do
-          expect(assigns(:authentications)).to match_array([authentication])
-        end
-
         it "renders the :index template" do
           expect(response).to render_template :index
         end
