@@ -55,14 +55,6 @@ module Socializer
             it "renders the :index template" do
               expect(response).to render_template(:create)
             end
-
-            it "set likable for action 'create'" do
-              expect(assigns(:likable)).to eq(note_activity.activity_object)
-            end
-
-            it "set activity for action 'create'" do
-              expect(assigns(:activity)).to eq(note_activity)
-            end
           end
 
           describe "DELETE #destroy" do
@@ -76,14 +68,6 @@ module Socializer
 
             it "renders the :index template" do
               expect(response).to render_template(:destroy)
-            end
-
-            it "set likable for action 'destroy'" do
-              expect(assigns(:likable)).to eq(note_activity.activity_object)
-            end
-
-            it "set activity for action 'destroy'" do
-              expect(assigns(:activity)).to eq(note_activity)
             end
           end
         end

@@ -24,41 +24,36 @@ module Socializer
 
       # POST /activities/1/like
       def create
-        set_create_destroy_ivars
-
         Activity::Services::Like.new(actor: current_user,
-                                     activity_object: @likable).call
+                                     activity_object: find_likable).call
 
         respond_to do |format|
-          format.js
+          format.js do
+            render :create, locals: { activity: find_activity }
+          end
         end
       end
 
       # DELETE /activities/1/unlike
       def destroy
-        set_create_destroy_ivars
-
         Activity::Services::Unlike.new(actor: current_user,
-                                       activity_object: @likable).call
+                                       activity_object: find_likable).call
 
         respond_to do |format|
-          format.js
+          format.js do
+            render :destroy, locals: { activity: find_activity }
+          end
         end
       end
 
       private
 
-      def set_create_destroy_ivars
-        @likable  = find_likable
-        @activity = find_activity
-      end
-
       def find_likable
-        ActivityObject.find_by(id: params[:id])
+        @find_likable ||= ActivityObject.find_by(id: params[:id])
       end
 
       def find_activity
-        @likable.activitable.decorate
+        @find_activity ||= find_likable.activitable.decorate
       end
 
       # Never trust parameters from the scary internet, only allow the white
