@@ -22,8 +22,8 @@ module Socializer
         # false.
         def call
           # TODO: Need a guard statement if no members
-          membership = @group.memberships
-                             .find_by(activity_member: @person.activity_object)
+          membership = group.memberships
+                            .find_by(activity_member: person.activity_object)
 
           membership.destroy
         end

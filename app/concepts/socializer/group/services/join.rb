@@ -19,7 +19,7 @@ module Socializer
         # resulting object is returned if validations passes.
         # Raises ActiveRecord::RecordInvalid when the record is invalid.
         def call
-          privacy = @group.privacy
+          privacy = group.privacy
 
           active = true if privacy.public?
           active = false if privacy.restricted?
@@ -37,8 +37,8 @@ module Socializer
             # errors.add(:base, message)
           end
 
-          @group.memberships.create!(activity_member: @person.activity_object,
-                                     active: active)
+          group.memberships.create!(activity_member: person.activity_object,
+                                    active: active)
         end
       end
     end
