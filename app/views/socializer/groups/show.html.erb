@@ -4,18 +4,18 @@
 
 <h2>
   <div class="pull-right">
-    <%= link_to(t(".edit"), edit_group_path(@group), class: "btn btn-primary") if current_user?(@group.author) %>
+    <%= link_to(t(".edit"), edit_group_path(group), class: "btn btn-primary") if current_user?(group.author) %>
   </div>
-  <%= @group.display_name %> (<%= @group.privacy %>)
+  <%= group.display_name %> (<%= group.privacy %>)
 </h2>
-<p class="lead"><%= @group.tagline %></p>
-<p><%= @group.about %></p>
+<p class="lead"><%= group.tagline %></p>
+<p><%= group.about %></p>
 <hr>
 
-<% if @group.member?(current_user) %>
-  <%= link_to(t(".leave"), @membership, method: :delete, class: "btn btn-danger", title: "#{t(".tooltip.leave", display_name: current_user.display_name, group_name: @group.display_name)}", data: { confirm: "#{t(".confirm")}", behavior: "tooltip-on-hover" }) %>
+<% if group.member?(current_user) %>
+  <%= link_to(t(".leave"), membership, method: :delete, class: "btn btn-danger", title: "#{t(".tooltip.leave", display_name: current_user.display_name, group_name: group.display_name)}", data: { confirm: "#{t(".confirm")}", behavior: "tooltip-on-hover" }) %>
 <% else %>
-  <%= simple_form_for(current_user.memberships.build(group_id: @group.id)) do |f| %>
+  <%= simple_form_for(current_user.memberships.build(group_id: group.id)) do |f| %>
     <%= f.input :group_id,  as: :hidden %>
     <%= f.button :submit, t(".join"), class: "btn btn-primary" %>
   <% end %>
@@ -23,13 +23,13 @@
 
 <h2>Members</h2>
 <div class="row">
-  <% @group.memberships.each do |membership| %>
+  <% group.memberships.each do |membership| %>
     <!-- TODO: The owner should be able to remove members -->
     <%= render partial: "socializer/people/mini_card", object: membership.member, as: :person %>
   <% end %>
 </div>
 
-<% if @group.privacy.private? %>
+<% if group.privacy.private? %>
   <h2>Invite members</h2>
   <div class="row">
     <% Socializer::Person.all.decorate.each do |user| %>
@@ -44,7 +44,7 @@
               <h1>
                 <%= link_to(user.display_name, person_activities_path(person_id: user.id)) %>
               </h1>
-              <%= link_to(t(".invite"), invite_to_group_path(id: @group, person_id: user), class: "btn btn-xs btn-success", title: "#{t(".tooltip.invite", display_name: user.display_name, group_name: @group.display_name)}", data: { behavior: "tooltip-on-hover" }) %>
+              <%= link_to(t(".invite"), invite_to_group_path(id: group, person_id: user), class: "btn btn-xs btn-success", title: "#{t(".tooltip.invite", display_name: user.display_name, group_name: group.display_name)}", data: { behavior: "tooltip-on-hover" }) %>
           </section>
         </article>
       </div>

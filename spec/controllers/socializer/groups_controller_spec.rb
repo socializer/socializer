@@ -107,14 +107,6 @@ module Socializer
           get :show, params: { id: group }
         end
 
-        it "assigns the requested group to @group" do
-          expect(assigns(:group)).to eq group
-        end
-
-        it "assigns the requested groups membership to @membership" do
-          expect(assigns(:membership)).to eq membership
-        end
-
         it "renders the show template" do
           expect(response).to render_template :show
         end
@@ -123,10 +115,6 @@ module Socializer
       describe "GET #new" do
         before do
           get :new
-        end
-
-        it "assigns a new Group to @group" do
-          expect(assigns(:group)).to be_a_new(Group)
         end
 
         it "renders the :new template" do
@@ -143,7 +131,7 @@ module Socializer
 
           it "redirects to group#show" do
             post :create, params: valid_attributes
-            expect(response).to redirect_to group_path(assigns[:group])
+            expect(response).to have_http_status(:found)
           end
         end
 
@@ -165,10 +153,6 @@ module Socializer
           get :edit, params: { id: group }
         end
 
-        it "assigns the requested group to @group" do
-          expect(assigns(:group)).to eq group
-        end
-
         it "renders the :edit template" do
           expect(response).to render_template :edit
         end
@@ -182,7 +166,7 @@ module Socializer
 
           it "redirects to groups#show" do
             patch :update, params: { id: group, group: { privacy: privacy } }
-            expect(response).to redirect_to group_path(assigns[:group])
+            expect(response).to have_http_status(:found)
           end
         end
 
