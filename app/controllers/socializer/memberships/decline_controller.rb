@@ -12,8 +12,8 @@ module Socializer
 
       # DELETE /memberships/1/decline
       def destroy
-        @membership = Membership.find_by(id: params[:id])
-        @membership.destroy
+        membership = Membership.find_by(id: params[:id])
+        membership.destroy
 
         redirect_to groups_pending_invites_path
       end

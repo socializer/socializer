@@ -45,9 +45,13 @@ module Socializer
               .to change(Membership, :count).by(-1)
           end
 
-          it "redirects to groups#pending_invites" do
-            delete :destroy, params: { id: membership.id }
-            expect(response).to redirect_to groups_pending_invites_path
+          context "redirects to groups#pending_invites" do
+            before do
+              delete :destroy, params: { id: membership.id }
+            end
+
+            it { expect(response).to redirect_to groups_pending_invites_path }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 

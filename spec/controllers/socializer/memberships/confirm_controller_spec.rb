@@ -59,6 +59,7 @@ module Socializer
             before do
               post :create, params: { id: membership.id }
             end
+
             it { expect(response).to redirect_to membership.group }
             it { expect(response).to have_http_status(:found) }
           end
