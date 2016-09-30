@@ -12,10 +12,10 @@ module Socializer
 
       # POST /memberships/1/confirm
       def create
-        @membership = Membership.find_by(id: params[:id])
-        @membership.confirm
+        membership = Membership.find_by(id: params[:id])
+        membership.confirm
 
-        redirect_to @membership.group
+        redirect_to membership.group
       end
     end
   end

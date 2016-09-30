@@ -48,16 +48,19 @@ module Socializer
             context "after the #create actions" do
               before do
                 post :create, params: { id: membership.id }
-
-                it { expect(membership.reload.active).to eq(true) }
-                it { expect(assigns(:membership)).to eq membership }
               end
+
+              it { expect(membership.reload.active).to eq(true) }
+              it { expect(response).to have_http_status(:found) }
             end
           end
 
-          it "redirects to groups#show" do
-            post :create, params: { id: membership.id }
-            expect(response).to redirect_to membership.group
+          context "redirects to groups#show" do
+            before do
+              post :create, params: { id: membership.id }
+            end
+            it { expect(response).to redirect_to membership.group }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
