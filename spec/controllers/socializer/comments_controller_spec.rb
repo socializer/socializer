@@ -75,10 +75,6 @@ module Socializer
           get :new
         end
 
-        it "assigns a new Comment to @model" do
-          expect(assigns(:comment)).to be_a_new(Comment)
-        end
-
         it "renders the :new template" do
           expect(response).to render_template :new
         end
@@ -105,10 +101,6 @@ module Socializer
       describe "GET #edit" do
         before do
           get :edit, params: { id: comment }
-        end
-
-        it "assigns the requested comment to @comment" do
-          expect(assigns(:comment)).to eq comment
         end
 
         it "renders the :edit template" do
