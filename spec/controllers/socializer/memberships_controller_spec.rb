@@ -51,9 +51,13 @@ module Socializer
               .to change(Membership, :count).by(1)
           end
 
-          it "redirects to groups#show" do
-            post :create, params: valid_attributes
-            expect(response).to redirect_to group
+          context "redirects to groups#show" do
+            before do
+              post :create, params: valid_attributes
+            end
+
+            it { expect(response).to redirect_to group }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
