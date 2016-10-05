@@ -19,6 +19,16 @@ module Socializer
                           country: "US" } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_address: { category: nil,
+                          line1: "",
+                          city: "Imogeneborough",
+                          province_or_state: "California",
+                          postal_code_or_zip: "12345",
+                          country: "US" } }
+    end
+
     let(:address) do
       user.addresses.create!(valid_attributes[:person_address])
     end
@@ -100,7 +110,15 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new contribution in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Address, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
