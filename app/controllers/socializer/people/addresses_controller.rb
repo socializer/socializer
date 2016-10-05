@@ -12,34 +12,45 @@ module Socializer
 
       # GET /people/1/addresses/new
       def new
-        @address = addresses.new
+        respond_to do |format|
+          format.html { render :new, locals: { address: addresses.new } }
+        end
       end
 
       # GET /people/1/addresses/1/edit
       def edit
-        @address = find_address
+        respond_to do |format|
+          format.html { render :edit, locals: { address: find_address } }
+        end
       end
 
       # POST /people/1/addresses
       def create
-        @address = addresses.create!(params[:person_address])
+        address = addresses.build(params[:person_address])
 
-        redirect_to current_user
+        if address.save
+          flash[:notice] = t("socializer.model.create", model: "Address")
+          redirect_to current_user
+        else
+          render :new
+        end
       end
 
       # PATCH/PUT /people/1/addresses/1
       def update
-        @address = find_address
-        @address.update!(params[:person_address])
+        address = find_address
+        address.update!(params[:person_address])
 
+        flash[:notice] = t("socializer.model.update", model: "Address")
         redirect_to current_user
       end
 
       # DELETE /people/1/addresses/1
       def destroy
-        @address = find_address
-        @address.destroy
+        address = find_address
+        address.destroy
 
+        flash[:notice] = t("socializer.model.destroy", model: "Address")
         redirect_to current_user
       end
 
@@ -50,7 +61,7 @@ module Socializer
       end
 
       def find_address
-        addresses.find_by(id: params[:id])
+        @find_address ||= addresses.find_by(id: params[:id])
       end
     end
   end

@@ -154,6 +154,7 @@ fr:
         your_groups: Vos groupes
     model:
       create: "%{model} was successfully created."
+      destroy: "%{model} was successfully removed."
       share: "%{model} was successfully shared."
       tie:
         create: "%{person_name} was added to your %{circle_name} circle."

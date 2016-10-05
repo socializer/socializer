@@ -77,10 +77,6 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
-        it "assigns a new Person::Address to @address" do
-          expect(assigns(:address)).to be_a_new(Person::Address)
-        end
-
         it "renders the :new template" do
           expect(response).to render_template :new
         end
@@ -93,9 +89,13 @@ module Socializer
               .to change(Person::Address, :count).by(1)
           end
 
-          it "redirects to people#show" do
-            post :create, params: valid_attributes
-            expect(response).to redirect_to user
+          context "redirects to people#show" do
+            before do
+              post :create, params: valid_attributes
+            end
+
+            it { expect(response).to redirect_to user }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
@@ -107,10 +107,6 @@ module Socializer
       describe "GET #edit" do
         before do
           get :edit, params: { id: address, person_id: user }
-        end
-
-        it "assigns the requested address to @address" do
-          expect(assigns(:address)).to eq address
         end
 
         it "renders the :edit template" do
@@ -138,9 +134,13 @@ module Socializer
             .to change(Person::Address, :count).by(-1)
         end
 
-        it "redirects to people#show" do
-          delete :destroy, params: { id: address, person_id: user }
-          expect(response).to redirect_to user
+        context "redirects to people#show" do
+          before do
+            delete :destroy, params: { id: address, person_id: user }
+          end
+
+          it { expect(response).to redirect_to user }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end
