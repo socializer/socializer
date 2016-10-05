@@ -16,6 +16,13 @@ module Socializer
                                label: :current_contributor } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_contribution: { display_name: "",
+                               url: nil,
+                               label: :current_contributor } }
+    end
+
     let(:contribution) do
       user.contributions.create!(valid_attributes[:person_contribution])
     end
@@ -97,7 +104,15 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new contribution in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Contribution, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
