@@ -6,6 +6,7 @@ SimpleCov.start "rails" do
   add_group "Decorators", "app/decorators"
   # add_group "Services",   %w(app/services)
   add_group("Services")   { |src| src.filename.include?("/services") }
+  add_group "Validators", "app/validators"
 
   # Exclude these paths from analysis
   add_filter 'vendor'
