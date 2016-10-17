@@ -34,6 +34,7 @@ Metrics/BlockLength:
     - "**/*.rake"
     - "spec/**/*.rb"
     - "**/*.gemspec"
+    - "config/routes.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
 Metrics/LineLength:
