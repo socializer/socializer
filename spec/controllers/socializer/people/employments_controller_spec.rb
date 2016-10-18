@@ -16,6 +16,13 @@ module Socializer
                              started_on: Time.zone.now.to_date } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_employment: { employer_name: "",
+                             job_title: "Tester",
+                             started_on: nil } }
+    end
+
     let(:employment) do
       user.employments.create!(valid_attributes[:person_employment])
     end
@@ -23,7 +30,7 @@ module Socializer
     let(:update_attributes) do
       { id: employment,
         person_id: user,
-        person_employment: { label: "updated content" } }
+        person_employment: { employer_name: "updated content" } }
     end
 
     describe "when not logged in" do
@@ -74,10 +81,6 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
-        it "assigns a new Person::Employment to @employment" do
-          expect(assigns(:employment)).to be_a_new(Person::Employment)
-        end
-
         it "renders the :new template" do
           expect(response).to render_template :new
         end
@@ -97,17 +100,21 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new employment in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Employment, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
       describe "GET #edit" do
         before do
           get :edit, params: { id: employment, person_id: user }
-        end
-
-        it "assigns the requested employment to @employment" do
-          expect(assigns(:employment)).to eq employment
         end
 
         it "renders the :edit template" do
@@ -117,14 +124,39 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-          it "redirects to people#show" do
+          before do
             patch :update, params: update_attributes
+          end
+
+          it "redirects to people#show" do
             expect(response).to redirect_to user
+          end
+
+          it "changes the attributes" do
+            employment.reload
+            expect(employment.employer_name).to eq("updated content")
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          let(:update_attributes) do
+            { id: employment,
+              person_id: user,
+              person_employment: { employer_name: "" } }
+          end
+
+          before do
+            patch :update, params: update_attributes
+          end
+
+          it "does not change the attributes" do
+            employment.reload
+            expect(employment.employer_name).not_to eq("")
+          end
+
+          it "renders the :edit template" do
+            expect(response).to render_template :edit
+          end
         end
       end
 
@@ -139,9 +171,13 @@ module Socializer
             .to change(Person::Employment, :count).by(-1)
         end
 
-        it "redirects to people#show" do
-          delete :destroy, params: delete_attributes
-          expect(response).to redirect_to user
+        context "redirects to people#show" do
+          before do
+            delete :destroy, params: delete_attributes
+          end
+
+          it { expect(response).to redirect_to user }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end

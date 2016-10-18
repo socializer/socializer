@@ -12,34 +12,48 @@ module Socializer
 
       # GET /people/1/employments/new
       def new
-        @employment = employments.new
+        respond_to do |format|
+          format.html { render :new, locals: { employment: employments.new } }
+        end
       end
 
       # GET /people/1/addresses/1/edit
       def edit
-        @employment = find_employment
+        respond_to do |format|
+          format.html { render :edit, locals: { employment: find_employment } }
+        end
       end
 
       # POST /people/1/employments
       def create
-        @employment = employments.create!(params[:person_employment])
+        employment = employments.build(params[:person_employment])
 
-        redirect_to current_user
+        if employment.save
+          flash[:notice] = t("socializer.model.create", model: "Employment")
+          redirect_to current_user
+        else
+          render :new
+        end
       end
 
       # PATCH/PUT /people/1/employments/1
       def update
-        @employment = find_employment
-        @employment.update!(params[:person_employment])
+        employment = find_employment
 
-        redirect_to current_user
+        if employment.update(params[:person_employment])
+          flash[:notice] = t("socializer.model.update", model: "Employment")
+          redirect_to current_user
+        else
+          render :edit
+        end
       end
 
       # DELETE /people/1/employments/1
       def destroy
-        @employment = find_employment
-        @employment.destroy
+        employment = find_employment
+        employment.destroy
 
+        flash[:notice] = t("socializer.model.destroy", model: "Employment")
         redirect_to current_user
       end
 
@@ -50,7 +64,7 @@ module Socializer
       end
 
       def find_employment
-        employments.find_by(id: params[:id])
+        @find_employment ||= employments.find_by(id: params[:id])
       end
     end
   end
