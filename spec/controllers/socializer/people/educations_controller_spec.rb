@@ -102,7 +102,7 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "does not save the new contribution in the database" do
+          it "does not save the new education in the database" do
             expect { post :create, params: invalid_attributes }
               .not_to change(Person::Education, :count)
           end
