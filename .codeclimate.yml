@@ -12,9 +12,9 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-        mass_threshold: 30
-      - javascript
+        ruby:
+          mass_threshold: 30
+        javascript:
   eslint:
     enabled: true
   fixme:
