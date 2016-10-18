@@ -133,8 +133,5 @@ module Socializer
     def reset_unread_notifications
       update!(unread_notifications_count: 0) if unread_notifications_count > 0
     end
-
-    # private
-
   end
 end
