@@ -128,6 +128,8 @@ module Socializer
             patch :update, params: update_attributes
           end
 
+          it { expect(response).to have_http_status(:found) }
+
           it "redirects to people#show" do
             expect(response).to redirect_to user
           end
@@ -148,6 +150,8 @@ module Socializer
           before do
             patch :update, params: update_attributes
           end
+
+          it { expect(response).to have_http_status(:ok) }
 
           it "does not change the attributes" do
             employment.reload
