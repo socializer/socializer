@@ -1,11 +1,11 @@
 <% content_for :toolbar do %>
-  <%= render "socializer/people/toolbar", person: @person %>
+  <%= render "socializer/people/toolbar", person: person %>
 <% end %>
 
-<h1><%= @person.display_name %></h1>
+<h1><%= person.display_name %></h1>
 
 <ul class="activities">
-<% @likes.each do |activity| %>
+<% likes.each do |activity| %>
   <%= render activity.object.decorate %>
 <% end %>
 </ul>

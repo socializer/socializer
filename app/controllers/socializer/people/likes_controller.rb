@@ -12,8 +12,14 @@ module Socializer
 
       # GET people/1/likes
       def index
-        @person = Person.find_by(id: params[:id]).decorate
-        @likes  = @person.likes
+        person = Person.find_by(id: params[:id]).decorate
+        likes  = person.likes
+
+        respond_to do |format|
+          format.html do
+            render :index, locals: { person: person, likes: likes }
+          end
+        end
       end
     end
   end

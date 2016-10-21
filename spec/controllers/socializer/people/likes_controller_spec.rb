@@ -38,12 +38,8 @@ module Socializer
           expect(response).to render_template :index
         end
 
-        it "assigns @person" do
-          expect(assigns(:person)).to match(user)
-        end
-
-        it "assigns @likes" do
-          expect(assigns(:likes)).to match_array(likes)
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
         end
       end
     end
