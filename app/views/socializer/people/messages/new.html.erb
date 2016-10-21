@@ -1,9 +1,9 @@
 <% content_for :toolbar do %>
-  <%= render "socializer/people/toolbar", person: @person %>
+  <%= render "socializer/people/toolbar", person: person %>
 <% end %>
 
 <h1>Send a message</h1>
 
 <div data-behavior="message-from-<%= dom_id(@person).dasherize %>">
-  <%= render "socializer/notes/form", note: @note, title: @title, current_id: @current_id %>
+  <%= render "socializer/notes/form", note: note, title: @title, current_id: current_id %>
 </div>

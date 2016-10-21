@@ -12,9 +12,15 @@ module Socializer
 
       # GET people/1/messages/new
       def new
-        @person = Person.find_by(id: params[:id]).decorate
-        @current_id = @person.guid
-        @note = Note.new
+        person = Person.find_by(id: params[:id]).decorate
+
+        respond_to do |format|
+          format.html do
+            render :new, locals: { person: person,
+                                   current_id: person.guid,
+                                   note: Note.new }
+          end
+        end
       end
     end
   end

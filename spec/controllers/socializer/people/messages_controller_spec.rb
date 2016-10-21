@@ -37,14 +37,6 @@ module Socializer
           expect(assigns(:person)).to match(user)
         end
 
-        it "assigns @current_id" do
-          expect(assigns(:current_id)).to match(user.guid)
-        end
-
-        it "assigns @note" do
-          expect(assigns(:note)).to be_a_new(Note)
-        end
-
         it "renders the :new template" do
           expect(response).to render_template :new
         end
