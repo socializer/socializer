@@ -14,6 +14,11 @@ module Socializer
         person_link: { display_name: "test", url: "http://test.org" } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_link: { display_name: "", url: nil } }
+    end
+
     let(:link) do
       user.links.create!(valid_attributes[:person_link])
     end
@@ -72,10 +77,6 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
-        it "assigns a new Person::Link to @link" do
-          expect(assigns(:link)).to be_a_new(Person::Link)
-        end
-
         it "renders the :new template" do
           expect(response).to render_template :new
         end
@@ -95,17 +96,21 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new employment in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Link, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
       describe "GET #edit" do
         before do
           get :edit, params: { id: link, person_id: user }
-        end
-
-        it "assigns the requested link to @link" do
-          expect(assigns(:link)).to eq link
         end
 
         it "renders the :edit template" do
@@ -115,27 +120,64 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-          it "redirects to people#show" do
+          before do
             patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:found) }
+
+          it "redirects to people#show" do
             expect(response).to redirect_to user
+          end
+
+          it "changes the attributes" do
+            link.reload
+            expect(link.display_name).to eq("updated content")
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          let(:update_attributes) do
+            { id: link,
+              person_id: user,
+              person_link: { display_name: "" } }
+          end
+
+          before do
+            patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:ok) }
+
+          it "does not change the attributes" do
+            link.reload
+            expect(link.display_name).not_to eq("")
+          end
+
+          it "renders the :edit template" do
+            expect(response).to render_template :edit
+          end
         end
       end
 
       describe "DELETE #destroy" do
+        let(:delete_attributes) do
+          { id: link, person_id: user }
+        end
+
         it "deletes the link" do
           link
-          expect { delete :destroy, params: { id: link, person_id: user } }
+          expect { delete :destroy, params: delete_attributes }
             .to change(Person::Link, :count).by(-1)
         end
 
-        it "redirects to people#show" do
-          delete :destroy, params: { id: link, person_id: user }
-          expect(response).to redirect_to user
+        context "redirects to people#show" do
+          before do
+            delete :destroy, params: delete_attributes
+          end
+
+          it { expect(response).to redirect_to user }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end
