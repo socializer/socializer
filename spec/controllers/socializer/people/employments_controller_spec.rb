@@ -166,7 +166,7 @@ module Socializer
 
       describe "DELETE #destroy" do
         let(:delete_attributes) do
-          { id: employment, person_id: user}
+          { id: employment, person_id: user }
         end
 
         it "deletes the employment" do
