@@ -53,7 +53,7 @@ module Socializer
         phone = find_phone
         phone.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Address")
+        flash[:notice] = t("socializer.model.destroy", model: "Phone")
         redirect_to current_user
       end
 
