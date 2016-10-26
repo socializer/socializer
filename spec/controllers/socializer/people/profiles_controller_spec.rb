@@ -14,6 +14,11 @@ module Socializer
         person_profile: { display_name: "test", url: "http://test.org" } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_profile: { display_name: "", url: nil } }
+    end
+
     let(:profile) do
       user.profiles.create!(valid_attributes[:person_profile])
     end
@@ -71,9 +76,7 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
-        it "assigns a new Person::Profile to @profile" do
-          expect(assigns(:profile)).to be_a_new(Person::Profile)
-        end
+        it { expect(response).to have_http_status(:ok) }
 
         it "renders the :new template" do
           expect(response).to render_template :new
@@ -87,14 +90,28 @@ module Socializer
               .to change(Person::Profile, :count).by(1)
           end
 
-          it "redirects to people#show" do
-            post :create, params: valid_attributes
-            expect(response).to redirect_to user
+          context "redirects to people#show" do
+            before do
+              post :create, params: valid_attributes
+            end
+
+            it { expect(response).to redirect_to user }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new address in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Place, :count)
+          end
+
+          it { expect(response).to have_http_status(:ok) }
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
@@ -103,9 +120,7 @@ module Socializer
           get :edit, params: { id: profile, person_id: user }
         end
 
-        it "assigns the requested profile to @profile" do
-          expect(assigns(:profile)).to eq profile
-        end
+        it { expect(response).to have_http_status(:ok) }
 
         it "renders the :edit template" do
           expect(response).to render_template :edit
@@ -114,14 +129,43 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-          it "redirects to people#show" do
+          before do
             patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:found) }
+
+          it "redirects to people#show" do
             expect(response).to redirect_to user
+          end
+
+          it "changes the attributes" do
+            profile.reload
+            expect(profile.display_name).to eq("updated content")
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          let(:update_attributes) do
+            { id: profile,
+              person_id: user,
+              person_profile: { display_name: "" } }
+          end
+
+          before do
+            patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:ok) }
+
+          it "does not change the attributes" do
+            profile.reload
+            expect(profile.display_name).not_to eq("")
+          end
+
+          it "renders the :edit template" do
+            expect(response).to render_template :edit
+          end
         end
       end
 
@@ -132,9 +176,13 @@ module Socializer
             .to change(Person::Profile, :count).by(-1)
         end
 
-        it "redirects to people#show" do
-          delete :destroy, params: { id: profile, person_id: user }
-          expect(response).to redirect_to user
+        context "redirects to people#show" do
+          before do
+            delete :destroy, params: { id: profile, person_id: user }
+          end
+
+          it { expect(response).to redirect_to user }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end

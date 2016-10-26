@@ -12,34 +12,48 @@ module Socializer
 
       # GET /people/1/profiles/new
       def new
-        @profile = profiles.new
+        respond_to do |format|
+          format.html { render :new, locals: { profile: profiles.new } }
+        end
       end
 
       # GET /people/1/profiles/1/edit
       def edit
-        @profile = find_profile
+        respond_to do |format|
+          format.html { render :edit, locals: { profile: find_profile } }
+        end
       end
 
       # POST /people/1/profiles
       def create
-        @profile = profiles.create!(params[:person_profile])
+        profile = profiles.build(params[:person_profile])
 
-        redirect_to current_user
+        if profile.save
+          flash[:notice] = t("socializer.model.create", model: "Profile")
+          redirect_to current_user
+        else
+          render :new
+        end
       end
 
       # PATCH/PUT /people/1/profiles/1
       def update
-        @profile = find_profile
-        @profile.update!(params[:person_profile])
+        profile = find_profile
 
-        redirect_to current_user
+        if profile.update(params[:person_profile])
+          flash[:notice] = t("socializer.model.update", model: "Profile")
+          redirect_to current_user
+        else
+          render :edit
+        end
       end
 
       # DELETE /people/1/profiles/1
       def destroy
-        @profile = find_profile
-        @profile.destroy
+        profile = find_profile
+        profile.destroy
 
+        flash[:notice] = t("socializer.model.destroy", model: "Profile")
         redirect_to current_user
       end
 
@@ -50,7 +64,7 @@ module Socializer
       end
 
       def find_profile
-        profiles.find_by(id: params[:id])
+        @find_profile ||= profiles.find_by(id: params[:id])
       end
     end
   end
