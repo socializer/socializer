@@ -81,6 +81,8 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
+        it { expect(response).to have_http_status(:ok) }
+
         it "renders the :new template" do
           expect(response).to render_template :new
         end
@@ -93,9 +95,13 @@ module Socializer
               .to change(Person::Employment, :count).by(1)
           end
 
-          it "redirects to people#show" do
-            post :create, params: valid_attributes
-            expect(response).to redirect_to user
+          context "redirects to people#show" do
+            before do
+              post :create, params: valid_attributes
+            end
+
+            it { expect(response).to redirect_to user }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
@@ -104,6 +110,8 @@ module Socializer
             expect { post :create, params: invalid_attributes }
               .not_to change(Person::Employment, :count)
           end
+
+          it { expect(response).to have_http_status(:ok) }
 
           it "re-renders the :new template" do
             post :create, params: invalid_attributes
@@ -116,6 +124,8 @@ module Socializer
         before do
           get :edit, params: { id: employment, person_id: user }
         end
+
+        it { expect(response).to have_http_status(:ok) }
 
         it "renders the :edit template" do
           expect(response).to render_template :edit
