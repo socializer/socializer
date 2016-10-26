@@ -12,34 +12,48 @@ module Socializer
 
       # GET /people/1/places/new
       def new
-        @place = places.new
+        respond_to do |format|
+          format.html { render :new, locals: { place: places.new } }
+        end
       end
 
       # GET /people/1/places/1/edit
       def edit
-        @place = find_place
+        respond_to do |format|
+          format.html { render :edit, locals: { place: find_place } }
+        end
       end
 
       # POST /people/1/places
       def create
-        @place = places.create!(params[:person_place])
+        place = places.build(params[:person_place])
 
-        redirect_to current_user
+        if place.save
+          flash[:notice] = t("socializer.model.create", model: "Place")
+          redirect_to current_user
+        else
+          render :new
+        end
       end
 
       # PATCH/PUT /people/1/places/1
       def update
-        @place = find_place
-        @place.update!(params[:person_place])
+        place = find_place
 
-        redirect_to current_user
+        if place.update(params[:person_place])
+          flash[:notice] = t("socializer.model.update", model: "Place")
+          redirect_to current_user
+        else
+          render :edit
+        end
       end
 
       # DELETE /people/1/places/1
       def destroy
-        @place = find_place
-        @place.destroy
+        place = find_place
+        place.destroy
 
+        flash[:notice] = t("socializer.model.destroy", model: "Place")
         redirect_to current_user
       end
 
@@ -50,7 +64,7 @@ module Socializer
       end
 
       def find_place
-        places.find_by(id: params[:id])
+        @find_place ||= places.find_by(id: params[:id])
       end
     end
   end
