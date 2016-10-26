@@ -14,9 +14,15 @@ module Socializer
         person_phone: { category: :home, label: 1, number: "1234567890" } }
     end
 
+    let(:invalid_attributes) do
+      { person_id: user,
+        person_phone: { category: :home, label: nil, number: "" } }
+    end
+
     let(:phone) do
       user.phones.create!(valid_attributes[:person_phone])
     end
+
     let(:update_attributes) do
       { id: phone,
         person_id: user,
@@ -71,9 +77,7 @@ module Socializer
           get :new, params: { person_id: user }
         end
 
-        it "assigns a new Person::Phone to @phone" do
-          expect(assigns(:phone)).to be_a_new(Person::Phone)
-        end
+        it { expect(response).to have_http_status(:ok) }
 
         it "renders the :new template" do
           expect(response).to render_template :new
@@ -87,14 +91,28 @@ module Socializer
               .to change(Person::Phone, :count).by(1)
           end
 
-          it "redirects to people#show" do
-            post :create, params: valid_attributes
-            expect(response).to redirect_to user
+          context "redirects to people#show" do
+            before do
+              post :create, params: valid_attributes
+            end
+
+            it { expect(response).to redirect_to user }
+            it { expect(response).to have_http_status(:found) }
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new address in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Person::Phone, :count)
+          end
+
+          it { expect(response).to have_http_status(:ok) }
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 
@@ -103,9 +121,7 @@ module Socializer
           get :edit, params: { id: phone, person_id: user }
         end
 
-        it "assigns the requested phone to @phone" do
-          expect(assigns(:phone)).to eq phone
-        end
+        it { expect(response).to have_http_status(:ok) }
 
         it "renders the :edit template" do
           expect(response).to render_template :edit
@@ -114,14 +130,43 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-          it "redirects to people#show" do
+          before do
             patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:found) }
+
+          it "redirects to people#show" do
             expect(response).to redirect_to user
+          end
+
+          it "changes the attributes" do
+            phone.reload
+            expect(phone.number).to eq("6666666666")
           end
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          let(:update_attributes) do
+            { id: phone,
+              person_id: user,
+              person_phone: { number: "" } }
+          end
+
+          before do
+            patch :update, params: update_attributes
+          end
+
+          it { expect(response).to have_http_status(:ok) }
+
+          it "does not change the attributes" do
+            phone.reload
+            expect(phone.number).not_to eq("")
+          end
+
+          it "renders the :edit template" do
+            expect(response).to render_template :edit
+          end
         end
       end
 
@@ -132,9 +177,13 @@ module Socializer
             .to change(Person::Phone, :count).by(-1)
         end
 
-        it "redirects to people#show" do
-          delete :destroy, params: { id: phone, person_id: user }
-          expect(response).to redirect_to user
+        context "redirects to people#show" do
+          before do
+            delete :destroy, params: { id: phone, person_id: user }
+          end
+
+          it { expect(response).to redirect_to user }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end

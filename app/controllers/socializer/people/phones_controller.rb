@@ -12,34 +12,48 @@ module Socializer
 
       # GET /people/1/phones/new
       def new
-        @phone = phones.new
+        respond_to do |format|
+          format.html { render :new, locals: { phone: phones.new } }
+        end
       end
 
       # GET /people/1/phones/1/edit
       def edit
-        @phone = find_phone
+        respond_to do |format|
+          format.html { render :edit, locals: { phone: find_phone } }
+        end
       end
 
       # POST /people/1/phones
       def create
-        @phone = phones.create!(params[:person_phone])
+        phone = phones.build(params[:person_phone])
 
-        redirect_to current_user
+        if phone.save
+          flash[:notice] = t("socializer.model.create", model: "Phone")
+          redirect_to current_user
+        else
+          render :new
+        end
       end
 
       # PATCH/PUT /people/1/phones/1
       def update
-        @phone = find_phone
-        @phone.update!(params[:person_phone])
+        phone = find_phone
 
-        redirect_to current_user
+        if phone.update(params[:person_phone])
+          flash[:notice] = t("socializer.model.update", model: "Phone")
+          redirect_to current_user
+        else
+          render :edit
+        end
       end
 
       # DELETE /people/1/phones/1
       def destroy
-        @phone = find_phone
-        @phone.destroy
+        phone = find_phone
+        phone.destroy
 
+        flash[:notice] = t("socializer.model.destroy", model: "Address")
         redirect_to current_user
       end
 
@@ -50,7 +64,7 @@ module Socializer
       end
 
       def find_phone
-        phones.find_by(id: params[:id])
+        @find_phone ||= phones.find_by(id: params[:id])
       end
     end
   end
