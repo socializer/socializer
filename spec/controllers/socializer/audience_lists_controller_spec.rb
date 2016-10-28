@@ -22,7 +22,7 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { should use_before_action(:authenticate_user) }
+      it { is_expected.to use_before_action(:authenticate_user) }
 
       describe "GET #index" do
         before do
