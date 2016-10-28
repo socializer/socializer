@@ -13,7 +13,7 @@ module Socializer
     let(:user) { create(:person) }
 
     it { is_expected.to use_before_action(:set_locale) }
-    it { should_not use_before_action(:authenticate_user) }
+    it { is_expected.not_to use_before_action(:authenticate_user) }
 
     describe "when not logged in" do
       before do
