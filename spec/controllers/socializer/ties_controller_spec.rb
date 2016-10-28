@@ -22,6 +22,10 @@ module Socializer
       { tie: { circle_id: circle.id, contact_id: user.activity_object.id } }
     end
 
+    let(:invalid_attributes) do
+      { tie: { circle_id: nil, contact_id: user.activity_object.id } }
+    end
+
     describe "when not logged in" do
       describe "POST #create" do
         it "requires login" do
@@ -55,19 +59,24 @@ module Socializer
               .to change(Tie, :count).by(1)
           end
 
-          it "returns http ok" do
-            post :create, params: valid_attributes, format: :js
-            expect(response).to have_http_status(:ok)
-          end
+          context "renders the :create template" do
+            before do
+              post :create, params: valid_attributes, format: :js
+            end
 
-          it "renders the :create template" do
-            post :create, params: valid_attributes, format: :js
-            expect(response).to render_template(:create)
+            it { expect(response).to have_http_status(:ok) }
+            it { expect(response).to render_template(:create) }
           end
         end
 
         context "with invalid attributes" do
           it "is a pending example"
+          # it "does not save the new address in the database" do
+          #   expect { post :create, params: invalid_attributes, format: :js }
+          #     .not_to change(Tie, :count)
+          # end
+          #
+          # it { expect(response).to have_http_status(:ok) }
         end
       end
 
@@ -78,22 +87,13 @@ module Socializer
             .to change(Tie, :count).by(-1)
         end
 
-        context "check the variables and redirect" do
+        context "redirects to circles#show" do
           before do
             delete :destroy, params: { id: tie }
           end
 
-          it "assigns @tie" do
-            expect(assigns(:tie)).to eq tie
-          end
-
-          it "assigns @circle" do
-            expect(assigns(:circle)).to eq circle
-          end
-
-          it "redirects to circles#show" do
-            expect(response).to redirect_to circle
-          end
+          it { expect(response).to redirect_to circle }
+          it { expect(response).to have_http_status(:found) }
         end
       end
     end
