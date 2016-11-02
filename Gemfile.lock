@@ -165,7 +165,7 @@ GEM
     hashie (3.4.6)
     highline (1.7.8)
     i18n (0.7.0)
-    i18n-tasks (0.9.5)
+    i18n-tasks (0.9.6)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       easy_translate (>= 0.5.0)
@@ -386,7 +386,7 @@ DEPENDENCIES
   cucumber-rails (~> 1.4.5)
   database_cleaner (~> 1.5.3)
   factory_girl_rails (~> 4.7.0)
-  i18n-tasks (~> 0.9.5)
+  i18n-tasks (~> 0.9.6)
   inch (~> 0.7.1)
   protected_attributes_continued
   pry (~> 0.10.4)

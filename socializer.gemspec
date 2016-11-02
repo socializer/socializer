@@ -50,7 +50,7 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # spec.add_development_dependency("capybara",             "~> 2.5.0")
   spec.add_development_dependency("factory_girl_rails",   "~> 4.7.0")
-  spec.add_development_dependency("i18n-tasks",           "~> 0.9.5")
+  spec.add_development_dependency("i18n-tasks",           "~> 0.9.6")
   spec.add_development_dependency("inch",                 "~> 0.7.1")
   spec.add_development_dependency("shoulda-matchers",     "~> 3.1.1")
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
