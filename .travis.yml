@@ -19,7 +19,7 @@ env:
   - DB=sqlite
 rvm:
   # - 2.2.4
-  - 2.3.1
+  - 2.3.3
 matrix:
   fast_finish: true
 addons:
