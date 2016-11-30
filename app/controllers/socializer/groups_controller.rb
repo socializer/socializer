@@ -11,6 +11,7 @@ module Socializer
 
     # GET /groups
     def index
+      render :index
     end
 
     # GET /groups/1
