@@ -20,7 +20,7 @@ PATH
       rails (~> 5.0.0.1)
       sass-rails (~> 5.0.6)
       simple_form (~> 3.3.1)
-      uglifier (>= 3.0.3)
+      uglifier (>= 3.0.4)
 
 GEM
   remote: https://rubygems.org/
