@@ -5,6 +5,7 @@ AllCops:
     - "**/Rakefile"
     - "**/config.ru"
     - "db/migrate/**/*"
+    - "Gemfile"
   Exclude:
     - "bin/**/*"
     - "spec/dummy/**/*"
