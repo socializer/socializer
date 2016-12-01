@@ -24,10 +24,10 @@ end
 
 group :development, :test do
   gem "byebug", "~> 9.0.6"
-  gem "rspec-rails", "~> 3.5.2"
   gem "capybara", "~> 2.10.2"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
+  gem "rspec-rails", "~> 3.5.2"
 end
 
 # TODO: Remove. add these gems to help with the transition to Rails 5:
