@@ -15,8 +15,8 @@ module Socializer
                                helper_specs: false,
                                routing_specs: true,
                                controller_specs: true,
-      generator.integration_tool false
                                request_specs: true
+      generator.integration_tool :rspec
       generator.fixture_replacement :factory_girl, dir: "spec/factories"
     end
   end
