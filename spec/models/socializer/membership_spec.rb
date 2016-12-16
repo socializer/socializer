@@ -49,7 +49,7 @@ module Socializer
           let(:result) { Membership.active }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.present?).to be false }
+          it { expect(result.exists?).to be false }
         end
 
         context "active records" do
@@ -66,7 +66,7 @@ module Socializer
           let(:result) { Membership.inactive }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.present?).to be false }
+          it { expect(result.exists?).to be false }
         end
 
         context "inactive records" do
@@ -91,7 +91,7 @@ module Socializer
           let(:result) { Membership.with_member_id(member_id: user.guid) }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.present?).to be false }
+          it { expect(result.exists?).to be false }
         end
 
         context "person has memberships" do
@@ -104,7 +104,7 @@ module Socializer
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
 
           context "has memberships" do
-            it { expect(result.present?).to be true }
+            it { expect(result.exists?).to be true }
             it { expect(result.first.group_id).to eq group.id }
             it { expect(result.first.member_id).to eq user.guid }
           end

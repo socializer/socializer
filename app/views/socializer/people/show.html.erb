@@ -124,7 +124,7 @@
           <span class="text-muted">
             <!-- TODO: Create a partial -->
             <!-- TODO: Need a decorator method -->
-            <% if @person.employments.present? %>
+            <% if @person.employments.exists? %>
               <ul class="list-unstyled">
               <% @person.employments.decorate.each do |employment| %>
                 <li>
@@ -159,7 +159,7 @@
           <span class="text-muted">
           <!-- TODO: Create a partial -->
           <!-- TODO: Need a decorator method -->
-          <% if @person.educations.present? %>
+          <% if @person.educations.exists? %>
             <ul class="list-unstyled">
             <% @person.educations.decorate.each do |education| %>
               <li>
@@ -368,7 +368,7 @@
         </p>
 
         <!-- TODO: Need a decorator method -->
-        <% if @person.profiles.present? %>
+        <% if @person.profiles.exists? %>
           <ul class="list-unstyled">
           <!-- TODO: Create a partial -->
           <% @person.profiles.each do |profile| %>
@@ -391,7 +391,7 @@
         </p>
 
         <!-- TODO: Need a decorator method -->
-        <% if @person.contributions.present? %>
+        <% if @person.contributions.exists? %>
           <ul class="list-unstyled">
           <!-- TODO: Create a partial -->
           <% @person.contributions.each do |contribution| %>
@@ -414,7 +414,7 @@
         </p>
 
         <!-- TODO: Need a decorator method -->
-        <% if @person.links.present? %>
+        <% if @person.links.exists? %>
           <ul class="list-unstyled">
           <!-- TODO: Create a partial -->
           <% @person.links.each do |link| %>

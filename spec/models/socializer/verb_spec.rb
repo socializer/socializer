@@ -37,7 +37,7 @@ module Socializer
           let(:result) { Verb.with_display_name(name: "none") }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.present?).to be(false) }
+          it { expect(result.exists?).to be(false) }
         end
       end
     end

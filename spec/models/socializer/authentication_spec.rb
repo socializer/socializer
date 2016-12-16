@@ -38,7 +38,7 @@ module Socializer
           let(:result) { Authentication.with_provider(provider: "none") }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.present?).to be(false) }
+          it { expect(result.exists?).to be(false) }
         end
       end
 
@@ -47,7 +47,7 @@ module Socializer
         let(:result) { Authentication.not_with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-        it { expect(result.present?).to be(false) }
+        it { expect(result.exists?).to be(false) }
       end
     end
 

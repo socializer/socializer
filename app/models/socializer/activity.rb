@@ -314,7 +314,7 @@ module Socializer
     #
     # @return [TrueClass, FalseClass]
     def comments?
-      comments.present?
+      comments.exists?
     end
 
     # Retrieves the comments for an activity
