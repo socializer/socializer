@@ -46,6 +46,7 @@ module Socializer
     # Create the audience list
     #
     # @return [Array]
+    # DISCUSS: Should this return a Set instead of an Array
     def call
       audiences = [merge_icon(list: privacy_hash(privacy_symbol: :public),
                               icon: "fa-globe")]

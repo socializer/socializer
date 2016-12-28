@@ -50,7 +50,7 @@ module Socializer
     end
 
     def object_ids_array
-      if %w(Fixnum String).include?(object_ids.class.name)
+      if Set.new(%w(Fixnum String)).include?(object_ids.class.name)
         return object_ids.split(",")
       end
 
@@ -58,7 +58,7 @@ module Socializer
     end
 
     def audience_privacy(audience_id:)
-      not_limited = %W(#{public_privacy} #{circles_privacy})
+      not_limited = Set.new(%W(#{public_privacy} #{circles_privacy}))
 
       @audience_privacy ||= if not_limited.include?(audience_id)
                               audience_id

@@ -73,7 +73,7 @@ module Socializer
     # @return [String]
     #
     def avatar_url
-      avatar_providers = %w(FACEBOOK LINKEDIN TWITTER)
+      avatar_providers = Set.new(%w(FACEBOOK LINKEDIN TWITTER))
 
       # REFACTOR: Should an authentications decorator be created? If so,
       # override the image_url method using this
