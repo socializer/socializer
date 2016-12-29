@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency("rails",                "~> 5.0.1")
-  spec.add_dependency("jquery-rails",         "~> 4.2.1")
+  spec.add_dependency("jquery-rails",         "~> 4.2.2")
   # Added "jquery-ui-rails" for drag and drop
   spec.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   spec.add_dependency("sass-rails",           "~> 5.0.6")
