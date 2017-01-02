@@ -36,6 +36,15 @@ module Socializer
       ActivityField.new(content: content) if content.present?
     end
 
+    def activity_attributes
+      {
+        actor_id:           actor_id,
+        activity_object_id: activity_object_id,
+        target_id:          target_id,
+        verb:               Verb.find_or_create_by(display_name: verb)
+      }
+    end
+
     # Add an audience to the activity
     #
     # @param activity: [Socializer::Activity] The activity to add the audience
@@ -80,12 +89,8 @@ module Socializer
     end
 
     def create_activity
-      Activity.create! do |activity|
-        activity.actor_id           = actor_id
-        activity.activity_object_id = activity_object_id
-        activity.target_id          = target_id if target_id.present?
-        activity.verb               = Verb.find_or_create_by(display_name: verb)
-        activity.activity_field     = activity_field
+      Activity.create!(activity_attributes) do |activity|
+        activity.activity_field = activity_field
 
         add_audience_to_activity(activity: activity) if object_ids.present?
       end
