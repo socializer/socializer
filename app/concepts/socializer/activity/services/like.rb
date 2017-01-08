@@ -15,25 +15,27 @@ module Socializer
       # Service object for liking a Socializer::Activity
       #
       # @example
-      #   Activity::Services::Like.new(actor: current_user,
-      #                                activity_object: @likable).call
+      #   Activity::Services::Like.new(actor: current_user)
+      #                           .call(activity_object: @likable)
       class Like
         PUBLIC = Socializer::Audience.privacy.public.value.freeze
 
         # Initializer
         #
         # @param [Socializer::Person] actor: the person that likes the activity
-        # @param [Socialicer::ActivityObject] activity_object: the
-        # Socialicer::ActivityObject being liked
-        def initialize(actor:, activity_object:)
+        def initialize(actor:)
           @actor = actor
-          @activity_object = activity_object
         end
 
         # Creates the [Socializer::Activity]
         #
+        # @param [Socialicer::ActivityObject] activity_object: the
+        # Socialicer::ActivityObject being liked
+        #
         # @return [Socializer::Activity]
-        def call
+        def call(activity_object:)
+          @activity_object = activity_object
+
           return Socializer::Activity.none if blocked?
 
           activity = create_activity

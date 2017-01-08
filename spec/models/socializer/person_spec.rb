@@ -143,8 +143,8 @@ module Socializer
 
       before do
         Activity::Services::Like
-          .new(actor: liking_person,
-               activity_object: liked_activity_object).call
+          .new(actor: liking_person)
+          .call(activity_object: liked_activity_object)
       end
 
       it { expect(liking_person.likes.count.size).to eq(1) }

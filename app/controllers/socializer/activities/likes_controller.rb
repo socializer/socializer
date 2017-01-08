@@ -24,8 +24,8 @@ module Socializer
 
       # POST /activities/1/like
       def create
-        Activity::Services::Like.new(actor: current_user,
-                                     activity_object: find_likable).call
+        Activity::Services::Like.new(actor: current_user)
+                                .call(activity_object: find_likable)
 
         respond_to do |format|
           format.js do
@@ -36,8 +36,8 @@ module Socializer
 
       # DELETE /activities/1/unlike
       def destroy
-        Activity::Services::Unlike.new(actor: current_user,
-                                       activity_object: find_likable).call
+        Activity::Services::Unlike.new(actor: current_user)
+                                  .call(activity_object: find_likable)
 
         respond_to do |format|
           format.js do

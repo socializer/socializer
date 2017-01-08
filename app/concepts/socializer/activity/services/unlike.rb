@@ -15,8 +15,8 @@ module Socializer
       # Service object for unliking a Socializer::Activity
       #
       # @example
-      #   Activity::Services::Unlike.new(actor: current_user,
-      #                                  activity_object: @likable).call
+      #   Activity::Services::Unlike.new(actor: current_user)
+      #                             .call(activity_object: @likable)
       class Unlike < Like
         private
 

@@ -8,18 +8,17 @@ module Socializer
       RSpec.describe Unlike, type: :service do
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
-        let(:like) { Like.new(unlike_attributes) }
-        let(:unlike) { Unlike.new(unlike_attributes) }
-        let(:results) { unlike.call }
+        let(:like) { Like.new(actor: liking_person) }
+        let(:unlike) { Unlike.new(actor: liking_person) }
+        let(:results) { unlike.call(unlike_attributes) }
 
         let(:unlike_attributes) do
-          { actor: liking_person,
-            activity_object: liked_activity_object }
+          { activity_object: liked_activity_object }
         end
 
         context "check return type when unliking a liked object" do
           before do
-            like.call
+            like.call(unlike_attributes)
           end
 
           it { expect(results.persisted?).to eq(true) }
@@ -29,8 +28,8 @@ module Socializer
 
         context "check the like_count and liked_by" do
           before do
-            like.call
-            unlike.call
+            like.call(unlike_attributes)
+            unlike.call(unlike_attributes)
 
             liked_activity_object.reload
           end
@@ -41,7 +40,7 @@ module Socializer
 
         context "can't unlike without a like" do
           before do
-            unlike.call
+            unlike.call(unlike_attributes)
 
             liked_activity_object.reload
           end

@@ -8,12 +8,11 @@ module Socializer
       RSpec.describe Like, type: :service do
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
-        let(:like) { Like.new(like_attributes) }
-        let(:results) { like.call }
+        let(:like) { Like.new(actor: liking_person) }
+        let(:results) { like.call(like_attributes) }
 
         let(:like_attributes) do
-          { actor: liking_person,
-            activity_object: liked_activity_object }
+          { activity_object: liked_activity_object }
         end
 
         it { expect(results.persisted?).to eq(true) }
@@ -22,7 +21,7 @@ module Socializer
 
         context "check the like_count and liked_by" do
           before do
-            like.call
+            like.call(like_attributes)
 
             liked_activity_object.reload
           end
@@ -33,8 +32,8 @@ module Socializer
 
         context "can't like again" do
           before do
-            like.call
-            like.call
+            like.call(like_attributes)
+            like.call(like_attributes)
 
             liked_activity_object.reload
           end
