@@ -30,8 +30,8 @@ module Socializer
 
         # TODO: Need a validator to validate params - dry-validation
         # TODO: Pass the validator into the service
-        Activity::Services::Share.new(actor: current_user,
-                                      params: share).call
+        Activity::Services::Share.new(actor: current_user)
+                                 .call(params: share)
 
         flash[:notice] = flash_message(action: :create,
                                        activity_object: activity_object)

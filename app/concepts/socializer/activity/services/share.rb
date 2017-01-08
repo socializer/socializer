@@ -15,34 +15,45 @@ module Socializer
       # Service object for sharing a Socializer::Activity
       #
       # @example
-      #   Activity::Services::Share.new(actor: current_user,
-      #                                 params: params[:share]).call
+      #   Activity::Services::Share.new(actor: current_user)
+      #                            .call(params: params[:share])
       class Share
         # Initializer
         #
         # @param [Socializer::Person] actor: the person sharing the activity
-        # @param [ActionController::Parameters] params: the share parameters
-        # from the request
-        def initialize(actor:, params:)
+        def initialize(actor:)
           @actor_guid = actor.guid
-          @activity_object_id = params[:activity_id]
-          @content = params[:content]
-          @object_ids = params[:object_ids].split(",")
+          # @activity_object_id = params[:activity_id]
+          # @content = params[:content]
+          # @object_ids = params[:object_ids].split(",")
         end
 
         # Creates the [Socializer::Activity]
         #
+        # @param [ActionController::Parameters] params: the share parameters
+        # from the request
+        #
         # @return [Socializer::Activity]
-        def call
+        def call(params:)
+          parse_params(params: params)
+
           Socializer::CreateActivity
-            .new(actor_id: @actor_guid,
-                 activity_object_id: @activity_object_id,
+            .new(actor_id: actor_guid,
+                 activity_object_id: activity_object_id,
                  verb: verb,
-                 object_ids: @object_ids,
-                 content: @content).call
+                 object_ids: object_ids,
+                 content: content).call
         end
 
         private
+
+        attr_reader :actor_guid, :activity_object_id, :object_ids, :content
+
+        def parse_params(params:)
+          @activity_object_id = params[:activity_id]
+          @content = params[:content]
+          @object_ids = params[:object_ids].split(",")
+        end
 
         # The verb to use when sharing an [Socializer::ActivityObject]
         #

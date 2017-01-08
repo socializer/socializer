@@ -8,7 +8,7 @@ module Socializer
       RSpec.describe Share, type: :service do
         let(:activity_object) { create(:activity_object) }
         let(:actor) { create(:person) }
-        let(:share) { Share.new(actor: actor, params: share_attributes) }
+        let(:share) { Share.new(actor: actor) }
 
         let(:object_ids) do
           Socializer::Audience.privacy.find_value(:public).value
@@ -20,7 +20,7 @@ module Socializer
             content: "Share" }
         end
 
-        let(:results) { share.call }
+        let(:results) { share.call(params: share_attributes) }
 
         it { expect(results.persisted?).to eq(true) }
         it { expect(results.actor_id).to eq(actor.guid) }
@@ -35,7 +35,7 @@ module Socializer
               content: nil }
           end
 
-          let(:results) { share.call }
+          let(:results) { share.call(params: share_attributes) }
 
           it { expect(results.activity_field_content).to eq(nil) }
         end
