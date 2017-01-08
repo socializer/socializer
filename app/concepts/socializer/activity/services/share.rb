@@ -23,9 +23,6 @@ module Socializer
         # @param [Socializer::Person] actor: the person sharing the activity
         def initialize(actor:)
           @actor_guid = actor.guid
-          # @activity_object_id = params[:activity_id]
-          # @content = params[:content]
-          # @object_ids = params[:object_ids].split(",")
         end
 
         # Creates the [Socializer::Activity]
