@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-facebook",    "~> 4.0.0")
   spec.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   spec.add_dependency("omniauth-openid",      "~> 1.0.1")
-  spec.add_dependency("omniauth-twitter",     "~> 1.2.1")
+  spec.add_dependency("omniauth-twitter",     "~> 1.3.0")
   spec.add_dependency("simple_form",          "~> 3.4.0")
   spec.add_dependency("country_select",       "~> 3.0.0")
 
