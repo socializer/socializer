@@ -20,8 +20,6 @@ module Socializer
       it do
         is_expected.to allow_mass_assignment_of(:unread_notifications_count)
       end
-
-      it { is_expected.to allow_mass_assignment_of(:object_ids) }
     end
 
     context "relationships" do
