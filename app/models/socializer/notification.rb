@@ -13,7 +13,8 @@ module Socializer
 
     # Relationships
     belongs_to :activity, inverse_of: :notifications
-    belongs_to :activity_object, inverse_of: :notifications # Person, Group, ...
+    belongs_to :activity_object, inverse_of: :notifications,
+                                 counter_cache: :unread_notifications_count
 
     # Validations
     validates :activity_id, presence: true
@@ -23,8 +24,6 @@ module Socializer
     scope :newest_first, -> { order(created_at: :desc) }
 
     # Callbacks
-    # Increment the number of unread notifications
-    after_commit { activity_object.increment_unread_notifications_count }
 
     # Class methods - Public
 

@@ -135,19 +135,6 @@ module Socializer
       end
     end
 
-    context "#increment_unread_notifications_count" do
-      let(:activity_object) do
-        create(:activity_object)
-      end
-
-      before do
-        activity_object.increment_unread_notifications_count
-        activity_object.reload
-      end
-
-      it { expect(activity_object.unread_notifications_count).to eq(1) }
-    end
-
     context "#reset_unread_notifications" do
       let(:activity_object) do
         create(:activity_object, unread_notifications_count: 10)

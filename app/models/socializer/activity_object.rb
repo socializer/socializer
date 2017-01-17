@@ -125,11 +125,6 @@ module Socializer
       people
     end
 
-    # Increments the unread_notifications_count by 1 and saves the record
-    def increment_unread_notifications_count
-      increment!(:unread_notifications_count)
-    end
-
     # Reset unread_notifications_count to 0
     def reset_unread_notifications
       update!(unread_notifications_count: 0) if unread_notifications_count > 0
