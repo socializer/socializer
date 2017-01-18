@@ -49,8 +49,8 @@ module Socializer
 
         def create_activity
           Socializer::CreateActivity
-            .new(actor_id: @actor.guid,
-                 activity_object_id: @activity_object.id,
+            .new(actor_id: actor.guid,
+                 activity_object_id: activity_object.id,
                  verb: verb,
                  object_ids: PUBLIC).call
         end
@@ -60,14 +60,14 @@ module Socializer
         # @return [TrueClass, FalseClass] returns true if the record could
         # be saved
         def change_like_count
-          @activity_object.increment!(:like_count)
+          activity_object.increment!(:like_count)
         end
 
         # Return true if creating the [Socializer::Activity] shoud not proceed
         #
         # @return [TrueClass, FalseClass]
         def blocked?
-          @actor.likes?(@activity_object)
+          actor.likes?(activity_object)
         end
 
         # The verb to use when liking an [Socializer::ActivityObject]
