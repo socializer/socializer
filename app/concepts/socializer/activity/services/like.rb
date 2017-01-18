@@ -60,7 +60,7 @@ module Socializer
         # @return [TrueClass, FalseClass] returns true if the record could
         # be saved
         def change_like_count
-          activity_object.increment!(:like_count)
+          activity_object.increment(:like_count).save
         end
 
         # Return true if creating the [Socializer::Activity] shoud not proceed
