@@ -13,7 +13,7 @@ end
 
 group :test do
   gem "codeclimate-test-reporter", require: nil
-  gem "coveralls", "~> 0.8.18", require: false
+  gem "coveralls", "~> 0.8.19", require: false
   gem "cucumber-rails", "~> 1.4.5", require: false
   gem "database_cleaner", "~> 1.5.3"
   gem "simplecov", "~> 0.12.0", require: false
