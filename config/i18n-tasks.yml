@@ -66,6 +66,7 @@ search:
   exclude:
     - app/assets/images
     - app/assets/fonts
+    - app/assets/videos
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -107,3 +108,16 @@ ignore_missing:
 ## Ignore these keys completely:
 # ignore:
 #  - kaminari.*
+
+## Sometimes, it isn't possible for i18n-tasks to match the key correctly,
+## e.g. in case of a relative key defined in a helper method.
+## In these cases you can use the built-in PatternMapper to map patterns to keys, e.g.:
+#
+# <%# I18n::Tasks.add_scanner 'I18n::Tasks::Scanners::PatternMapper',
+#       only: %w(*.html.haml *.html.slim),
+#       patterns: [['= title\b', '.page_title']] %>
+#
+# The PatternMapper can also match key literals via a special %{key} interpolation, e.g.:
+#
+# <%# I18n::Tasks.add_scanner 'I18n::Tasks::Scanners::PatternMapper',
+#       patterns: [['\bSpree\.t[( ]\s*%{key}', 'spree.%{key}']] %>
