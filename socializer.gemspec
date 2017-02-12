@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("draper",               "~> 3.0.0.pre1")
   spec.add_dependency("elasticsearch-rails",  "~> 0.1.9")
   spec.add_dependency("enumerize",            "~> 2.0.1")
-  spec.add_dependency("omniauth",             "~> 1.4.2")
+  spec.add_dependency("omniauth",             "~> 1.5.0")
   spec.add_dependency("omniauth-identity",    "~> 1.1.1")
   spec.add_dependency("omniauth-facebook",    "~> 4.0.0")
   spec.add_dependency("omniauth-linkedin",    "~> 0.2.0")
