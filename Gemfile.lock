@@ -90,7 +90,7 @@ GEM
       xpath (~> 2.0)
     code_analyzer (0.4.7)
       sexp_processor
-    codeclimate-test-reporter (1.0.5)
+    codeclimate-test-reporter (1.0.6)
       simplecov
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -364,7 +364,7 @@ GEM
       unicode-display_width (~> 1.1.1)
     thor (0.19.4)
     thread (0.2.2)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.6)
     tins (1.13.2)
     tzinfo (1.2.2)
