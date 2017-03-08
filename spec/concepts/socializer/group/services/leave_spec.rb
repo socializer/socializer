@@ -26,11 +26,11 @@ module Socializer
             let(:public_group) { create(:group, privacy: :public) }
             let(:group) { public_group }
 
-            it "it destroys the membership" do
+            it "destroys the membership" do
               expect(membership).to be_nil
             end
 
-            it "it has 1 member" do
+            it "has 1 member" do
               expect(public_group.members.size).to eq(1)
             end
           end
