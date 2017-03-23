@@ -59,7 +59,7 @@ module Socializer
     end
 
     def object_ids_array
-      if Set.new(%w(Fixnum String)).include?(object_ids.class.name)
+      if Set.new(%w(Integer String)).include?(object_ids.class.name)
         return object_ids.split(",")
       end
 

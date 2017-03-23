@@ -32,7 +32,7 @@ module Socializer
 
     # Find memberships where the member_id is equal to the given member_id
     #
-    # @param member_id: [Fixnum]
+    # @param member_id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_member_id(member_id:)

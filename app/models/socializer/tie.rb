@@ -32,7 +32,7 @@ module Socializer
 
     # Find ties where the circle_id is equal to the given circle_id
     #
-    # @param circle_id: [Fixnum]
+    # @param circle_id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_circle_id(circle_id:)
@@ -41,7 +41,7 @@ module Socializer
 
     # Find ties where the contact_id is equal to the given contact_id
     #
-    # @param contact_id: [Fixnum]
+    # @param contact_id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_contact_id(contact_id:)

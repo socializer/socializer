@@ -69,7 +69,7 @@ module Socializer
 
     # Find activitiy objects where the id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_id(id:)

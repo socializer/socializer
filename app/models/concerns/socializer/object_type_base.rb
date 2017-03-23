@@ -40,7 +40,7 @@ module Socializer
 
     # Returns the id from the related activity_object
     #
-    # @return [Fixnum]
+    # @return [Integer]
     def guid
       activity_object.id
     end

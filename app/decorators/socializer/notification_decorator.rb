@@ -19,7 +19,7 @@ module Socializer
 
     # Return the CSS class for the notification
     #
-    # @param index: [Fixnum] Index of the item in the enum
+    # @param index: [Integer] Index of the item in the enum
     #
     # @return [type] [description]
     def card_class(index:)

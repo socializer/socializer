@@ -47,7 +47,7 @@ module Socializer
 
     # Find circles where the id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_id(id:)
@@ -56,7 +56,7 @@ module Socializer
 
     # Find circles where the author_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_author_id(id:)

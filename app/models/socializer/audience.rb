@@ -32,7 +32,7 @@ module Socializer
 
     # Find audiences where the activity_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_activity_id(id:)
@@ -41,7 +41,7 @@ module Socializer
 
     # Find audiences where the activity_object_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_activity_object_id(id:)

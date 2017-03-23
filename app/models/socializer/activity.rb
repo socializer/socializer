@@ -64,7 +64,7 @@ module Socializer
 
     # Find activities where the id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_id(id:)
@@ -73,7 +73,7 @@ module Socializer
 
     # Find activities where the activity_object_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_activity_object_id(id:)
@@ -82,7 +82,7 @@ module Socializer
 
     # Find activities where the actor_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_actor_id(id:)
@@ -91,7 +91,7 @@ module Socializer
 
     # Find activities where the target_id is equal to the given id
     #
-    # @param id: [Fixnum]
+    # @param id: [Integer]
     #
     # @return [ActiveRecord::Relation]
     def self.with_target_id(id:)
@@ -114,9 +114,9 @@ module Socializer
     #                                <tt>circles</tt>,
     #                                <tt>groups</tt>
     #
-    # @param  actor_uid: [FixNum] unique identifier of the previously typed
+    # @param  actor_uid: [Integer] unique identifier of the previously typed
     # provider
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.stream(viewer_id:)
@@ -127,9 +127,9 @@ module Socializer
     # We only want to display a single activity. Make sure the viewer is
     # allowed to do so.
     #
-    # @param  actor_uid: [FixNum] unique identifier of the previously typed
+    # @param  actor_uid: [Integer] unique identifier of the previously typed
     # provider
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.activity_stream(actor_uid:, viewer_id:)
@@ -138,9 +138,9 @@ module Socializer
 
     # Display all activities for a given circle
     #
-    # @param  actor_uid: [FixNum] unique identifier of the previously typed
+    # @param  actor_uid: [Integer] unique identifier of the previously typed
     # provider
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     #
@@ -160,9 +160,9 @@ module Socializer
     # This is a group. display everything that was posted to this group as
     # audience
     #
-    # @param  actor_uid: [FixNum] unique identifier of the previously typed
+    # @param  actor_uid: [Integer] unique identifier of the previously typed
     # provider
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.group_stream(actor_uid:, viewer_id:)
@@ -175,9 +175,9 @@ module Socializer
     # This is a user profile. display everything about them that you are
     # allowed to see
     #
-    # @param  actor_uid: [FixNum] unique identifier of the previously typed
+    # @param  actor_uid: [Integer] unique identifier of the previously typed
     # provider
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.person_stream(actor_uid:, viewer_id:)
@@ -189,7 +189,7 @@ module Socializer
 
     # Build the stream query
     #
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.stream_query(viewer_id:)
@@ -295,7 +295,7 @@ module Socializer
 
     # Limitied group subquery
     #
-    # @param  viewer_id: [FixNum] who wants to see the activity stream
+    # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [ActiveRecord::Relation]
     def self.limited_group_subquery(viewer_id)
