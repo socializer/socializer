@@ -12,6 +12,7 @@ module Socializer
         describe "when the group and person arguments are nil" do
           context ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: nil, person: nil) }
+
             it { expect { service }.to raise_error(ArgumentError) }
           end
         end
@@ -19,6 +20,7 @@ module Socializer
         describe "when the group argument is nil" do
           context ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: nil, person: person) }
+
             it { expect { service }.to raise_error(ArgumentError) }
           end
         end
@@ -26,6 +28,7 @@ module Socializer
         describe "when the person argument is nil" do
           context ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: group, person: nil) }
+
             it { expect { service }.to raise_error(ArgumentError) }
           end
         end

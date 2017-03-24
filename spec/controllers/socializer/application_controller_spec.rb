@@ -34,6 +34,7 @@ module Socializer
           end
 
           let(:user) { create(:person, :english) }
+
           it { expect(I18n.locale.to_s).to eq(user.language) }
         end
 
@@ -44,6 +45,7 @@ module Socializer
           end
 
           let(:language) { request.env["HTTP_ACCEPT_LANGUAGE"] }
+
           it { expect(I18n.locale.to_s).to eq(language) }
         end
       end

@@ -7,17 +7,20 @@ module Socializer
     describe "when the person argument is nil" do
       context ".new should raise an ArgumentError" do
         let(:add_default_circles) { AddDefaultCircles.new(person: nil) }
+
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
 
       context ".call should raise an ArgumentError" do
         let(:add_default_circles) { AddDefaultCircles.call(person: nil) }
+
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
     end
 
     describe "when the person argument is the wrong type" do
       let(:add_default_circles) { AddDefaultCircles.new(person: Activity.new) }
+
       it { expect { add_default_circles }.to raise_error(ArgumentError) }
     end
 

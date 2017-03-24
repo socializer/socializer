@@ -89,6 +89,7 @@ module Socializer
     context "#circles" do
       let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
+
       it { expect(person.circles).to be_a(circles.class) }
       it { expect(person.circles).to eq(circles) }
     end
@@ -96,6 +97,7 @@ module Socializer
     context "#comments" do
       let(:person) { build(:person_comments) }
       let(:comments) { person.activity_object.comments }
+
       it { expect(person.comments).to be_a(comments.class) }
       it { expect(person.comments).to eq(comments) }
     end
@@ -103,6 +105,7 @@ module Socializer
     context "#groups" do
       let(:person) { build(:person_groups) }
       let(:groups) { person.activity_object.groups }
+
       it { expect(person.groups).to be_a(groups.class) }
       it { expect(person.groups).to eq(groups) }
     end
@@ -110,6 +113,7 @@ module Socializer
     context "#notes" do
       let(:person) { build(:person_notes) }
       let(:notes) { person.activity_object.notes }
+
       it { expect(person.notes).to be_a(notes.class) }
       it { expect(person.notes).to eq(notes) }
     end
@@ -124,6 +128,7 @@ module Socializer
 
     context "#contacts" do
       let(:person) { build(:person_circles) }
+
       # TODO: Test return values
       it do
         expect(person.contacts)
@@ -133,6 +138,7 @@ module Socializer
 
     context "#contact_of" do
       let(:person) { build(:person_circles) }
+
       # TODO: Test return values
       it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
     end

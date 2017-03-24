@@ -106,31 +106,37 @@ module Socializer
     context "check activitable_type predicates" do
       context "#activity?" do
         let(:activity_object) { build(:activity_object_activity) }
+
         it { expect(activity_object.activity?).to be_truthy }
       end
 
       context "#circle?" do
         let(:activity_object) { build(:activity_object_circle) }
+
         it { expect(activity_object.circle?).to be_truthy }
       end
 
       context "#comment?" do
         let(:activity_object) { build(:activity_object_comment) }
+
         it { expect(activity_object.comment?).to be_truthy }
       end
 
       context "#group?" do
         let(:activity_object) { build(:activity_object_group) }
+
         it { expect(activity_object.group?).to be_truthy }
       end
 
       context "#note?" do
         let(:activity_object) { build(:activity_object) }
+
         it { expect(activity_object.note?).to be_truthy }
       end
 
       context "#person?" do
         let(:activity_object) { build(:activity_object_person) }
+
         it { expect(activity_object.person?).to be_truthy }
       end
     end

@@ -50,6 +50,7 @@ module Socializer
 
       context "read is true" do
         let(:notification) { build(:notification, read: true) }
+
         it { expect(notification.unread?).to be false }
       end
     end

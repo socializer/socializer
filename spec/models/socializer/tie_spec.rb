@@ -59,6 +59,7 @@ module Socializer
 
         context "nil" do
           let(:tie) { build(:tie, contact_id: nil) }
+
           it { expect(tie.contact_id).to eq(nil) }
         end
       end

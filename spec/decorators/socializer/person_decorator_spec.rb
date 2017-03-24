@@ -33,6 +33,7 @@ module Socializer
       context "occupation" do
         context "when nil" do
           let(:message) { "What do you do?" }
+
           it { expect(decorated_person.occupation).to eq(message) }
         end
 
@@ -47,6 +48,7 @@ module Socializer
       context "other_names" do
         context "without a value" do
           let(:message) { "For example: maiden name, alternate spellings" }
+
           it { expect(decorated_person.other_names).to eq(message) }
         end
 
@@ -61,6 +63,7 @@ module Socializer
       context "relationship" do
         context "when unknown" do
           let(:message) { "Seeing anyone?" }
+
           it { expect(decorated_person.relationship).to eq(message) }
         end
 
@@ -77,6 +80,7 @@ module Socializer
       context "skills" do
         context "when nil" do
           let(:message) { "What are your skills?" }
+
           it { expect(decorated_person.skills).to eq(message) }
         end
 
@@ -140,10 +144,12 @@ module Socializer
 
       context "when the provider is gravatar" do
         let(:avatar_url) { "http://www.gravatar.com/avatar/" }
+
         it { expect(decorated_person.avatar_url).to include(avatar_url) }
 
         context "with a blank email" do
           let(:person) { build(:person, email: nil) }
+
           it { expect(decorated_person.avatar_url).to eq(nil) }
         end
       end
