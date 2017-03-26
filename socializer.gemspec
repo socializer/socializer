@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   spec.add_dependency("sass-rails",           "~> 5.0.6")
   spec.add_dependency("coffee-rails",         "~> 4.2.1")
-  spec.add_dependency("uglifier",             ">= 3.1.9")
+  spec.add_dependency("uglifier",             ">= 3.1.10")
   spec.add_dependency("bcrypt",               "~> 3.1.11")
   spec.add_dependency("bootstrap-sass",       "~> 3.3.7")
   spec.add_dependency("draper",               "~> 3.0.0.pre1")
