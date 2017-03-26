@@ -12,7 +12,7 @@ class CreateSocializerActivityObjects < ActiveRecord::Migration[4.2]
     end
 
     add_index :socializer_activity_objects,
-              [:activitable_type, :activitable_id],
+              %i(activitable_type activitable_id),
               name: "index_activity_objects_on_activitable"
   end
 end
