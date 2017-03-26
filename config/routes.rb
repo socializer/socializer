@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 Socializer::Engine.routes.draw do
-  match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
-  match "/auth/failure", to: "sessions#failure", via: [:get, :post]
+  match "/auth/:provider/callback", to: "sessions#create", via: %i(get post)
+  match "/auth/failure", to: "sessions#failure", via: %i(get post)
   match "/signin", to: "sessions#new", as: :signin, via: :get
-  match "/signout", to: "sessions#destroy", as: :signout, via: [:get, :delete]
+  match "/signout", to: "sessions#destroy", as: :signout, via: %i(get delete)
 
   get "/activities/:id/comment", to: "comments#new", as: :comment_activity
 
-  resources :activities, only: [:index, :destroy] do
+  resources :activities, only: %i(index destroy) do
     resources :activities, only: [:index], controller: "activities/activities"
 
     member do
@@ -27,7 +27,7 @@ Socializer::Engine.routes.draw do
   end
 
   resources :audience_lists,  only: [:index]
-  resources :authentications, only: [:index, :destroy]
+  resources :authentications, only: %i(index destroy)
 
   resources :circles do
     resources :activities, only: [:index], controller: "circles/activities"
@@ -40,7 +40,7 @@ Socializer::Engine.routes.draw do
   end
 
   # Not a good idea to create comments that don"t belong to something else
-  resources :comments, only: [:new, :create, :edit, :update, :destroy]
+  resources :comments, only: %i(new create edit update destroy)
 
   namespace :groups do
     get "joinable", to: "joinable#index"
@@ -59,55 +59,55 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :memberships, only: [:create, :destroy] do
+  resources :memberships, only: %i(create destroy) do
     member do
       post "confirm", to: "memberships/confirm#create"
       delete "decline", to: "memberships/decline#destroy"
     end
   end
 
-  resources :notes, except: [:index, :show]
-  resources :notifications, only: [:index, :show]
+  resources :notes, except: %i(index show)
+  resources :notifications, only: %i(index show)
 
   # TODO: Enable shallow routes
-  resources :people, only: [:index, :show, :edit, :update] do
+  resources :people, only: %i(index show edit update) do
     resources :activities, only: [:index], controller: "people/activities"
 
     # TODO: Should these be nested under people since they act on current user?
     #       maybe namespace under profile?
-    resources :person_addresses, except: [:index, :show],
+    resources :person_addresses, except: %i(index show),
                                  controller: "people/addresses",
                                  path: "addresses"
 
     # TODO: See if this works with namespaced models
-    # resources :addresses, except: [:index, :show],
+    # resources :addresses, except: %i(index show),
     #                       controller: "people/addresses"
 
-    resources :person_contributions, except: [:index, :show],
+    resources :person_contributions, except: %i(index show),
                                      controller: "people/contributions",
                                      path: "contributions"
 
-    resources :person_educations, except: [:index, :show],
+    resources :person_educations, except: %i(index show),
                                   controller: "people/educations",
                                   path: "educations"
 
-    resources :person_employments, except: [:index, :show],
+    resources :person_employments, except: %i(index show),
                                    controller: "people/employments",
                                    path: "employments"
 
-    resources :person_links, except: [:index, :show],
+    resources :person_links, except: %i(index show),
                              controller: "people/links",
                              path: "links"
 
-    resources :person_phones, except: [:index, :show],
+    resources :person_phones, except: %i(index show),
                               controller: "people/phones",
                               path: "phones"
 
-    resources :person_places, except: [:index, :show],
+    resources :person_places, except: %i(index show),
                               controller: "people/places",
                               path: "places"
 
-    resources :person_profiles, except: [:index, :show],
+    resources :person_profiles, except: %i(index show),
                                 controller: "people/profiles",
                                 path: "profiles"
 
@@ -117,7 +117,7 @@ Socializer::Engine.routes.draw do
     end
   end
 
-  resources :ties, only: [:create, :destroy]
+  resources :ties, only: %i(create destroy)
 
   # Example root that gets defined for a logged in user
   # get "/",
