@@ -68,3 +68,7 @@ Style/SpaceBeforeFirstArg:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+  Exclude:
+    - "features/support/env.rb"
+    - "lib/tasks/cucumber.rake"
+    - "script/cucumber"
