@@ -8,6 +8,9 @@ AllCops:
     - "Gemfile"
   Exclude:
     - "bin/**/*"
+    - "features/support/env.rb"
+    - "lib/tasks/cucumber.rake"
+    - "script/cucumber"
     - "spec/dummy/**/*"
     - "vendor/**/*"
 
@@ -44,8 +47,6 @@ Metrics/LineLength:
   Exclude:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
-    - "features/support/env.rb"
-    - "script/cucumber"
 
 Metrics/MethodLength:
   Enabled: true
@@ -68,7 +69,3 @@ Style/SpaceBeforeFirstArg:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-  Exclude:
-    - "features/support/env.rb"
-    - "lib/tasks/cucumber.rake"
-    - "script/cucumber"
