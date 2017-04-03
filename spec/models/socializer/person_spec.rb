@@ -5,7 +5,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe Person, type: :model do
     let(:person) { build(:person) }
-    let(:valid_providers) { %w(TWITTER FACEBOOK LINKEDIN GRAVATAR) }
+    let(:valid_providers) { %w[TWITTER FACEBOOK LINKEDIN GRAVATAR] }
 
     it "has a valid factory" do
       expect(person).to be_valid

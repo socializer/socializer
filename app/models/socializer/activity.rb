@@ -196,7 +196,7 @@ module Socializer
     def self.stream_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these
       # verbs
-      verbs_of_interest = %w(post share)
+      verbs_of_interest = %w[post share]
       query = joins(:audiences, :verb)
               .merge(Verb.with_display_name(name: verbs_of_interest))
               .with_target_id(id: nil)

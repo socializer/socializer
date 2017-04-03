@@ -82,8 +82,8 @@ module Socializer
     # has_many :contacts, through: :circles
 
     # Validations
-    validates :avatar_provider, inclusion: %w( TWITTER FACEBOOK LINKEDIN
-                                               GRAVATAR )
+    validates :avatar_provider, inclusion: %w[TWITTER FACEBOOK LINKEDIN
+                                              GRAVATAR]
 
     # Named Scopes
 
@@ -174,7 +174,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def likes
-      verbs_of_interest = %w(like unlike)
+      verbs_of_interest = %w[like unlike]
 
       query = Activity.joins(:verb)
                       .with_actor_id(id: guid)
@@ -194,7 +194,7 @@ module Socializer
     # @return [TrueClass] if the person likes the object
     # @return [FalseClass] if the person does not like the object
     def likes?(object)
-      verbs_of_interest = %w(like unlike)
+      verbs_of_interest = %w[like unlike]
 
       query = Activity.joins(:verb)
                       .with_activity_object_id(id: object.id)
