@@ -11,7 +11,7 @@ class CreateSocializerAudiences < ActiveRecord::Migration[4.2]
     end
 
     add_index :socializer_audiences,
-              %i(activity_id activity_object_id),
+              %i[activity_id activity_object_id],
               unique: true,
               name: "index_audiences_on_activity_id__activity_object_id"
 

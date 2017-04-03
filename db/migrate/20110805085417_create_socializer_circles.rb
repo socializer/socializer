@@ -11,6 +11,6 @@ class CreateSocializerCircles < ActiveRecord::Migration[4.2]
     end
 
     add_index :socializer_circles, :author_id
-    add_index :socializer_circles, %i(display_name author_id), unique: true
+    add_index :socializer_circles, %i[display_name author_id], unique: true
   end
 end
