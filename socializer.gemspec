@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   spec.add_dependency("sass-rails",           "~> 5.0.6")
   spec.add_dependency("coffee-rails",         "~> 4.2.1")
-  spec.add_dependency("uglifier",             ">= 3.1.11")
+  spec.add_dependency("uglifier",             ">= 3.1.12")
   spec.add_dependency("bcrypt",               "~> 3.1.11")
   spec.add_dependency("bootstrap-sass",       "~> 3.3.7")
   spec.add_dependency("draper",               "~> 3.0.0.pre1")
@@ -56,7 +56,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("shoulda-matchers",     "~> 3.1.1")
   spec.add_development_dependency("database_cleaner",     "~> 1.4.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.18.0")
-  spec.add_development_dependency("rubocop",              "~> 0.48.0")
+  spec.add_development_dependency("rubocop",              "~> 0.48.1")
   spec.add_development_dependency("rubocop-rspec",        "~> 1.15.0")
   spec.add_development_dependency("scss_lint",            "~> 0.52.0")
 end
