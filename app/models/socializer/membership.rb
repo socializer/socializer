@@ -26,10 +26,22 @@ module Socializer
     # Validations
 
     # Named Scopes
-    scope :active, -> { where(active: true) }
-    scope :inactive, -> { where(active: false) }
 
     # Class Methods
+
+    # Find memberships where active is true
+    #
+    # @return [ActiveRecord::Relation]
+    def self.active
+      where(active: true)
+    end
+
+    # Find memberships where active is false
+    #
+    # @return [ActiveRecord::Relation]
+    def self.inactive
+      where(active: false)
+    end
 
     # Find memberships where the member_id is equal to the given member_id
     #

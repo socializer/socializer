@@ -22,8 +22,22 @@ module Socializer
       validates :person, presence: true
 
       # Named Scopes
-      scope :current, -> { where(current: true) }
-      scope :previous, -> { where(current: false) }
+
+      # Class Methods
+
+      # Find places where current is true
+      #
+      # @return [ActiveRecord::Relation]
+      def self.current
+        where(current: true)
+      end
+
+      # Find places where current is false
+      #
+      # @return [ActiveRecord::Relation]
+      def self.previous
+        where(current: false)
+      end
     end
   end
 end

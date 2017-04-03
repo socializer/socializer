@@ -56,12 +56,18 @@ module Socializer
     validates :verb, presence: true
 
     # Named Scopes
-    scope :newest_first, -> { order(created_at: :desc) }
 
     delegate :content, to: :activity_field, prefix: true, allow_nil: true
     delegate :display_name, to: :verb, prefix: true
 
     # Class Methods
+
+    # Order records by created_at in descending order
+    #
+    # @return [ActiveRecord::Relation]
+    def self.newest_first
+      order(created_at: :desc)
+    end
 
     # Find activities where the id is equal to the given id
     #

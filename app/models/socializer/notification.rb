@@ -22,9 +22,15 @@ module Socializer
     validates :activity_object_id, presence: true
 
     # Named Scopes
-    scope :newest_first, -> { order(created_at: :desc) }
 
     # Callbacks
+
+    # Order records by created_at in descending order
+    #
+    # @return [ActiveRecord::Relation]
+    def self.newest_first
+      order(created_at: :desc)
+    end
 
     # Class methods - Public
 

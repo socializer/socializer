@@ -30,6 +30,17 @@ module Socializer
       it { is_expected.to validate_presence_of(:activity_object_id) }
     end
 
+    context "scopes" do
+      context "newest_first" do
+        let(:sql) { Notification.newest_first.to_sql }
+
+        it do
+          expect(sql)
+            .to include('ORDER BY "socializer_notifications"."created_at" DESC')
+        end
+      end
+    end
+
     context "#mark_as_read" do
       let(:notification) { build(:notification, read: false) }
 
