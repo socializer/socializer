@@ -331,7 +331,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scss_lint (0.52.0)
+    scss_lint (0.53.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
     sexp_processor (4.8.0)
@@ -404,7 +404,7 @@ DEPENDENCIES
   rspec-rails (~> 3.5.2)
   rubocop (~> 0.48.1)
   rubocop-rspec (~> 1.15.0)
-  scss_lint (~> 0.52.0)
+  scss_lint (~> 0.53.0)
   shoulda-matchers (~> 3.1.1)
   simplecov (~> 0.14.1)
   socializer!
