@@ -32,6 +32,8 @@ module Socializer
       is_expected.to enumerize(:label)
         .in(:current_contributor, :past_contributor)
         .with_default(:current_contributor)
+        .with_predicates(true)
+        .with_scope(true)
     end
   end
 end

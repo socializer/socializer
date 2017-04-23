@@ -54,13 +54,18 @@ module Socializer
       is_expected
         .to enumerize(:gender).in(:unknown, :female, :male)
         .with_default(:unknown)
+        .with_predicates(true)
+        .with_scope(true)
     end
 
     it do
       is_expected
         .to enumerize(:relationship)
         .in(:unknown, :single, :relationship, :engaged, :married, :complicated,
-            :open, :widowed, :domestic, :civil).with_default(:unknown)
+            :open, :widowed, :domestic, :civil)
+        .with_default(:unknown)
+        .with_predicates(true)
+        .with_scope(true)
     end
 
     it ".create_with_omniauth" do

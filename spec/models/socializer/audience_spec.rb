@@ -63,6 +63,8 @@ module Socializer
         .to enumerize(:privacy)
         .in(:public, :circles, :limited)
         .with_default(:public)
+        .with_predicates(true)
+        .with_scope(true)
     end
 
     context "#object" do

@@ -82,6 +82,8 @@ module Socializer
       is_expected
         .to enumerize(:privacy).in(:public, :restricted, :private)
         .with_default(:public)
+        .with_predicates(true)
+        .with_scope(true)
     end
 
     it { is_expected.to respond_to(:author) }
