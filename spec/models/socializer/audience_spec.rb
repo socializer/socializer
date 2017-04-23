@@ -59,8 +59,7 @@ module Socializer
     end
 
     it do
-      is_expected
-        .to enumerize(:privacy)
+      is_expected.to enumerize(:privacy)
         .in(:public, :circles, :limited)
         .with_default(:public)
         .with_predicates(true)
