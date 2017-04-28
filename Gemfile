@@ -1,5 +1,18 @@
 source "https://rubygems.org"
 
+# Declare your gem's dependencies in socializer.gemspec.
+# Bundler will treat runtime dependencies like base dependencies, and
+# development dependencies will be added by default to the :development group.
+gemspec
+
+# Declare any dependencies that are still in development here instead of in
+# your gemspec. These might include edge Rails or gems from your path or
+# Git. Remember to move these dependencies to your gemspec before releasing
+# your gem to rubygems.org.
+
+# To use a debugger
+# gem 'byebug', group: [:development, :test]
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -14,7 +27,7 @@ end
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "coveralls", "~> 0.8.21", require: false
-  gem "cucumber-rails", "~> 1.4.5", require: false
+  # gem "cucumber-rails", "~> 1.4.5", require: false
   gem "database_cleaner", "~> 1.5.3"
   gem "simplecov", "~> 0.14.1", require: false
 
@@ -27,7 +40,7 @@ group :development, :test do
   gem "capybara", "~> 2.13.0"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
-  gem "rspec-rails", "~> 3.5.2"
+  gem "rspec-rails", "~> 3.6.0.beta2"
 end
 
 # TODO: Remove. add these gems to help with the transition to Rails 5:
