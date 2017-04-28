@@ -8,7 +8,7 @@ end
 gemspec
 
 group :development do
-  gem "coffeelint", "~> 1.14.0"
+  gem "coffeelint", "~> 1.16.0"
 end
 
 group :test do

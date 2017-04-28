@@ -100,7 +100,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    coffeelint (1.14.0)
+    coffeelint (1.16.0)
       coffee-script
       execjs
       json
@@ -388,7 +388,7 @@ DEPENDENCIES
   byebug (~> 9.0.6)
   capybara (~> 2.13.0)
   codeclimate-test-reporter
-  coffeelint (~> 1.14.0)
+  coffeelint (~> 1.16.0)
   coveralls (~> 0.8.21)
   cucumber-rails (~> 1.4.5)
   database_cleaner (~> 1.5.3)
