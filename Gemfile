@@ -15,7 +15,7 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "coveralls", "~> 0.8.21", require: false
   gem "cucumber-rails", "~> 1.4.5", require: false
-  gem "database_cleaner", "~> 1.5.3"
+  gem "database_cleaner", "~> 1.6.0"
   gem "simplecov", "~> 0.14.1", require: false
 
   # TODO: Update test so rails-controller-testing can be removed
@@ -27,7 +27,7 @@ group :development, :test do
   gem "capybara", "~> 2.14.0"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
-  gem "rspec-rails", "~> 3.5.2"
+  gem "rspec-rails", "~> 3.6.0"
 end
 
 # TODO: Remove. add these gems to help with the transition to Rails 5:
