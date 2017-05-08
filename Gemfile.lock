@@ -6,7 +6,7 @@ PATH
       bootstrap-sass (~> 3.3.7)
       coffee-rails (~> 4.2.1)
       country_select (~> 3.0.0)
-      draper (~> 3.0.0.pre1)
+      draper (~> 3.0.0)
       elasticsearch-rails (~> 5.0.1)
       enumerize (~> 2.1.1)
       jquery-rails (~> 4.3.1)
