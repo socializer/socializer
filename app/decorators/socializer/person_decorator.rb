@@ -108,13 +108,11 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
-      # TODO: Use tag.img once size works or re-qork for width & height
-      # helpers.tag.img(src: avatar_url, size: size, class: css_class, alt: alt,
-      #                 title: title,
-      #                 data: { behavior: "tooltip-on-hover" })
-      helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt,
-                                    title: title,
-                                    data: { behavior: "tooltip-on-hover" })
+      width, height = parse_size(size: size) if size
+
+      helpers.tag.img(src: avatar_url, class: css_class, alt: alt,
+                      title: title, width: width, height: height,
+                      data: { behavior: "tooltip-on-hover" })
     end
 
     # Creates a link to the persons profile with their avatar as the content
@@ -190,6 +188,14 @@ module Socializer
     def gravatar_url
       return if email.blank?
       "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
+    end
+
+    def parse_size(size:)
+      size = size.to_s
+
+      return size.split("x") if /\A\d+x\d+\z/.match?(size)
+
+      [size, size] if /\A\d+\z/.match?(size)
     end
 
     def toolbar_dropdown(list)
