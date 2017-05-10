@@ -37,7 +37,7 @@
       <div class="col-sm-6 col-md-4", data-object-id="<%= user.guid %>", data-person-name="<%= user.display_name %>", data-behavior="draggable">
         <article class="media panel panel-default">
           <section class="media-object">
-            <%= link_to(image_tag(user.avatar_url), user) %>
+            <%= link_to(tag.img(src: user.avatar_url), user) %>
           </section>
 
           <section class="media-body">

@@ -1,6 +1,6 @@
 <article class="media panel panel-default" data-activityid="<%= activity.guid %>">
   <section class="media-object">
-    <%= link_to(image_tag(activity.actor.decorate.avatar_url), activity.actor) %>
+    <%= link_to(tag.img(src: activity.actor.decorate.avatar_url), activity.actor) %>
   </section>
 
   <section class="media-body">
@@ -36,13 +36,13 @@
 
         <%# Comment button %>
         <% if activity.activitable_object.note? || activity.activitable_object.activity? %>
-          <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-comments-o"), comment_activity_path(activity), class: "btn btn-default", title: "Comment", data: { behavior: "tooltip-on-hover" }) %>
+          <%= link_to(tag.span(class: "fa fa-fw fa-comments-o"), comment_activity_path(activity), class: "btn btn-default", title: "Comment", data: { behavior: "tooltip-on-hover" }) %>
         <% end %>
 
         <%# Share button %>
         <%# TODO: Need a Share count %>
         <% if activity.activitable_object.note?  %>
-          <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-share"), new_share_activity_path(activity.activity_object), class: "btn btn-default", title: "Share", data: { behavior: "tooltip-on-hover" }) %>
+          <%= link_to(tag.span(class: "fa fa-fw fa-share"), new_share_activity_path(activity.activity_object), class: "btn btn-default", title: "Share", data: { behavior: "tooltip-on-hover" }) %>
         <% end %>
       </div>
     </footer>

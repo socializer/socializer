@@ -12,7 +12,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: "time" do
+    #     helpers.tag.span, class: "time" do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -108,6 +108,10 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
+      # TODO: Use tag.img once size works or re-qork for width & height
+      # helpers.tag.img(src: avatar_url, size: size, class: css_class, alt: alt,
+      #                 title: title,
+      #                 data: { behavior: "tooltip-on-hover" })
       helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt,
                                     title: title,
                                     data: { behavior: "tooltip-on-hover" })
@@ -189,9 +193,9 @@ module Socializer
     end
 
     def toolbar_dropdown(list)
-      helpers.content_tag(:li, class: "dropdown") do
+      helpers.tag.li(class: "dropdown") do
         dropdown_link +
-          helpers.content_tag(:ul, class: "dropdown-menu") do
+          helpers.tag.ul(class: "dropdown-menu") do
             toolbar_links(list)
           end
       end
@@ -199,8 +203,7 @@ module Socializer
 
     def dropdown_link
       css_class = "dropdown-toggle"
-      icon      = helpers.content_tag(:span, nil,
-                                      class: "fa fa-angle-down fa-fw")
+      icon      = helpers.tag.span(class: "fa fa-angle-down fa-fw")
 
       # i18n-tasks-use t("socializer.shared.toolbar.more")
       content = [helpers.t("socializer.shared.toolbar.more"), icon]
@@ -250,7 +253,7 @@ module Socializer
       url        = helpers.public_send("#{url_prefix}_activities_path", item.id)
       class_name = toolbar_item_class(url: url)
 
-      helpers.content_tag(:li) do
+      helpers.tag.li do
         helpers.link_to(item.display_name, url, class: class_name)
       end
     end

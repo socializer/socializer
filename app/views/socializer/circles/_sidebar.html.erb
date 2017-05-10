@@ -3,6 +3,6 @@
 <ul class="small-contact-list">
 <% circle.ties.each do |tie| %>
   <!-- TODO: Should this use tie.contact.link_to_avatar ? -->
-  <li><%= link_to image_tag(tie.contact.decorate.avatar_url, title: tie.contact.display_name, data: { behavior: "tooltip-on-hover" }), person_activities_path(person_id: tie.contact.id) %>
+  <li><%= link_to tag.img(src: tie.contact.decorate.avatar_url, title: tie.contact.display_name, data: { behavior: "tooltip-on-hover" }), person_activities_path(person_id: tie.contact.id) %>
 <% end %>
 </ul>
