@@ -14,7 +14,7 @@ end
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "coveralls", "~> 0.8.21", require: false
-  gem "cucumber-rails", "~> 1.5.0", require: false
+  # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner", "~> 1.6.1"
   gem "simplecov", "~> 0.14.1", require: false
 
