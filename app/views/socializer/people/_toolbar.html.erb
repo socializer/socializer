@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-user") + t(".profile"), person_activities_path(person_id: current_user.id), class: "navbar-brand") %>
+        <%= link_to(tag.span(class: "fa fa-fw fa-user") + t(".profile"), person_activities_path(person_id: current_user.id), class: "navbar-brand") %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

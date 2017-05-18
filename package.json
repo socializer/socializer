@@ -1,0 +1,9 @@
+{
+  "name": "socializer",
+  "private": true,
+  "version": "0.1.13",
+  "description": "Rails engine to make your projects social.",
+  "repository": "https://github.com/socializer/socializer.git",
+  "license": "MIT",
+  "dependencies": {}
+}

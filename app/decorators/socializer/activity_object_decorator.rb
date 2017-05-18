@@ -12,7 +12,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: "time" do
+    #     helpers.tag.span(class: 'time') do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -69,9 +69,7 @@ module Socializer
       content = []
       like_count = model.like_count
 
-      content << helpers.content_tag(:span,
-                                     nil,
-                                     class: "fa fa-fw fa-thumbs-o-up")
+      content << helpers.tag.span(class: "fa fa-fw fa-thumbs-o-up")
 
       content << like_count.to_s if like_count > 0
       helpers.safe_join(content)

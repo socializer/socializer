@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to(content_tag(:span, nil, class: "fa fa-fw fa-users") + t(".groups"), groups_path, class: "navbar-brand") %>
+        <%= link_to(tag.span(class: "fa fa-fw fa-users") + t(".groups"), groups_path, class: "navbar-brand") %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +23,7 @@
             <li class="<%= "active" if current_page?(groups_pending_invites_path) %>"><%= link_to(t(".pending_invites"), groups_pending_invites_path) %></li>
 
             <li class="dropdown">
-              <%= link_to("More #{content_tag(:span, nil, class: "fa fa-angle-down fa-fw")}".html_safe, nil, class: "dropdown-toggle", data: { toggle: "dropdown" }) %>
+              <%= link_to("More #{tag.span(class: "fa fa-angle-down fa-fw")}".html_safe, nil, class: "dropdown-toggle", data: { toggle: "dropdown" }) %>
               <ul class="dropdown-menu">
                 <li class="<%= "active" if current_page?(groups_public_path) %>"><%= link_to(t(".public"), groups_public_path) %></li>
                 <li class="<%= "active" if current_page?(groups_restricted_path) %>"><%= link_to(t(".restricted"), groups_restricted_path) %></li>

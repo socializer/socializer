@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 # coding: utf-8
 
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
 require "socializer/version"
 
+# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.required_ruby_version = "~> 2.4.1"
-
   s.name          = "socializer"
   s.version       = Socializer::VERSION
   s.authors       = ["Dominic Goulet"]
@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.add_dependency("rails",                "~> 5.0.3")
+  s.required_ruby_version = "~> 2.4.1"
+
+  s.add_dependency("rails",                "~> 5.1.1")
   s.add_dependency("jquery-rails",         "~> 4.3.1")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")

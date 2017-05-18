@@ -33,8 +33,8 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: { id: user },
-                         person: { tagline: "This is a tagline" }
+          patch :update, params: { id: user,
+                                   person: { tagline: "This is a tagline" } }
 
           expect(response).to redirect_to root_path
         end
@@ -92,8 +92,8 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, params: { id: user },
-                           person: { tagline: "This is a tagline" }
+            patch :update, params: { id: user,
+                                     person: { tagline: "This is a tagline" } }
 
             expect(response).to redirect_to user
           end

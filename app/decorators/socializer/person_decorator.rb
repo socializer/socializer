@@ -12,7 +12,7 @@ module Socializer
     # `helpers` (aka `h`). You can override attributes, for example:
     #
     #   def created_at
-    #     helpers.content_tag :span, class: "time" do
+    #     helpers.tag.span, class: "time" do
     #       object.created_at.strftime("%a %m/%d/%y")
     #     end
     #   end
@@ -108,9 +108,11 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
-      helpers.image_tag(avatar_url, size: size, class: css_class, alt: alt,
-                                    title: title,
-                                    data: { behavior: "tooltip-on-hover" })
+      width, height = parse_size(size: size) if size
+
+      helpers.tag.img(src: avatar_url, class: css_class, alt: alt,
+                      title: title, width: width, height: height,
+                      data: { behavior: "tooltip-on-hover" })
     end
 
     # Creates a link to the persons profile with their avatar as the content
@@ -188,10 +190,18 @@ module Socializer
       "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
     end
 
+    def parse_size(size:)
+      size = size.to_s
+
+      return size.split("x") if /\A\d+x\d+\z/.match?(size)
+
+      [size, size] if /\A\d+\z/.match?(size)
+    end
+
     def toolbar_dropdown(list)
-      helpers.content_tag(:li, class: "dropdown") do
+      helpers.tag.li(class: "dropdown") do
         dropdown_link +
-          helpers.content_tag(:ul, class: "dropdown-menu") do
+          helpers.tag.ul(class: "dropdown-menu") do
             toolbar_links(list)
           end
       end
@@ -199,8 +209,7 @@ module Socializer
 
     def dropdown_link
       css_class = "dropdown-toggle"
-      icon      = helpers.content_tag(:span, nil,
-                                      class: "fa fa-angle-down fa-fw")
+      icon      = helpers.tag.span(class: "fa fa-angle-down fa-fw")
 
       # i18n-tasks-use t("socializer.shared.toolbar.more")
       content = [helpers.t("socializer.shared.toolbar.more"), icon]
@@ -245,14 +254,18 @@ module Socializer
     # refactored to use that method from the ApplicationDecorator. See the
     # toolbar partials for the initial requirements
     def toolbar_link(item)
-      item       = toolbar_object(object: item)
-      url_prefix = item.class.name.demodulize.downcase
-      url        = helpers.public_send("#{url_prefix}_activities_path", item.id)
+      item = toolbar_object(object: item)
+      url  = toolbar_link_url(item: item)
       class_name = toolbar_item_class(url: url)
 
-      helpers.content_tag(:li) do
+      helpers.tag.li do
         helpers.link_to(item.display_name, url, class: class_name)
       end
+    end
+
+    def toolbar_link_url(item:)
+      url_prefix = item.class.name.demodulize.downcase
+      helpers.public_send("#{url_prefix}_activities_path", item.id)
     end
   end
 end

@@ -40,9 +40,9 @@ module Socializer
 
           it { expect(liked_activity_object.like_count).to eq(1) }
 
-          it "must be Socializer::Activity::ActiveRecord_Relation" do
+          it "must be ActiveRecord::Relation" do
             expect(results)
-              .to be_kind_of(Socializer::Activity::ActiveRecord_Relation)
+              .to be_kind_of(ActiveRecord::Relation)
           end
         end
       end

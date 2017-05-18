@@ -4,7 +4,7 @@
       <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
       </button>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%= tag.div(msg, :id => "flash_#{name}") %>
     </div>
   <% end %>
 <% end %>

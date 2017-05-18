@@ -1,11 +1,11 @@
 <h1><%= t(".welcome") %></h1>
 <h2><%= t(".sub_heading") %></h2>
 <p>
-  <%= link_to(content_tag(:span, nil, class:"fa fa-facebook", title: "Facebook", data: { behavior: "tooltip-on-hover" }), signin_path(:facebook), class: "btn btn-social-icon btn-facebook") %>
-  <%= link_to(content_tag(:span, nil, class:"fa fa-twitter", title: "Twitter", data: { behavior: "tooltip-on-hover" }), signin_path(:twitter), class: "btn btn-social-icon btn-twitter") %>
-  <%= link_to(content_tag(:span, nil, class:"fa fa-linkedin", title: "LinkedIn", data: { behavior: "tooltip-on-hover" }), signin_path(:linkedin), class: "btn btn-social-icon btn-linkedin") %>
-  <%= link_to(content_tag(:span, nil, class:"fa fa-yahoo", title: "Yahoo", data: { behavior: "tooltip-on-hover" }), signin_path(:yahoo), class: "btn btn-social-icon btn-yahoo") %>
-  <%= link_to(content_tag(:span, nil, class:"fa fa-google", title: "Google", data: { behavior: "tooltip-on-hover" }), signin_path(:google), class: "btn btn-social-icon btn-google") %>
+  <%= link_to(tag.span(class:"fa fa-facebook", title: "Facebook", data: { behavior: "tooltip-on-hover" }), signin_path(:facebook), class: "btn btn-social-icon btn-facebook") %>
+  <%= link_to(tag.span(class:"fa fa-twitter", title: "Twitter", data: { behavior: "tooltip-on-hover" }), signin_path(:twitter), class: "btn btn-social-icon btn-twitter") %>
+  <%= link_to(tag.span(class:"fa fa-linkedin", title: "LinkedIn", data: { behavior: "tooltip-on-hover" }), signin_path(:linkedin), class: "btn btn-social-icon btn-linkedin") %>
+  <%= link_to(tag.span(class:"fa fa-yahoo", title: "Yahoo", data: { behavior: "tooltip-on-hover" }), signin_path(:yahoo), class: "btn btn-social-icon btn-yahoo") %>
+  <%= link_to(tag.span(class:"fa fa-google", title: "Google", data: { behavior: "tooltip-on-hover" }), signin_path(:google), class: "btn btn-social-icon btn-google") %>
 </p>
 <p>
   <strong><%= t(".local_account_query")%></strong>
