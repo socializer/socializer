@@ -254,14 +254,18 @@ module Socializer
     # refactored to use that method from the ApplicationDecorator. See the
     # toolbar partials for the initial requirements
     def toolbar_link(item)
-      item       = toolbar_object(object: item)
-      url_prefix = item.class.name.demodulize.downcase
-      url        = helpers.public_send("#{url_prefix}_activities_path", item.id)
+      item = toolbar_object(object: item)
+      url  = toolbar_link_url(item: item)
       class_name = toolbar_item_class(url: url)
 
       helpers.tag.li do
         helpers.link_to(item.display_name, url, class: class_name)
       end
+    end
+
+    def toolbar_link_url(item:)
+      url_prefix = item.class.name.demodulize.downcase
+      helpers.public_send("#{url_prefix}_activities_path", item.id)
     end
   end
 end
