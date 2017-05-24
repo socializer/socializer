@@ -2,6 +2,9 @@ inherit_from: ../.rubocop.yml
 
 require: rubocop-rspec
 
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
 Metrics/LineLength:
   Enabled: true
 
@@ -16,9 +19,6 @@ Style/BlockDelimiters:
     - spec/factories/**/*.rb
 
 Style/Documentation:
-  Enabled: false
-
-Style/SpaceInsideHashLiteralBraces:
   Enabled: false
 
 Style/SymbolProc:
