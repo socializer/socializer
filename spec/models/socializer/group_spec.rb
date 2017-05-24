@@ -80,8 +80,8 @@ module Socializer
 
     it do
       is_expected
-        .to enumerize(:privacy).in(:public, :restricted, :private)
-        .with_default(:public)
+        .to enumerize(:privacy)
+        .in(:public, :restricted, :private).with_default(:public)
         .with_predicates(true)
         .with_scope(true)
     end

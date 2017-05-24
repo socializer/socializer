@@ -51,8 +51,8 @@ module Socializer
     end
 
     it do
-      is_expected.to enumerize(:gender).in(:unknown, :female, :male)
-        .with_default(:unknown)
+      is_expected.to enumerize(:gender)
+        .in(:unknown, :female, :male).with_default(:unknown)
         .with_predicates(true)
         .with_scope(true)
     end

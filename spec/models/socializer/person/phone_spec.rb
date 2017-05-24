@@ -27,15 +27,15 @@ module Socializer
     end
 
     it do
-      is_expected.to enumerize(:category).in(:home, :work)
-        .with_default(:home)
+      is_expected.to enumerize(:category)
+        .in(:home, :work).with_default(:home)
         .with_predicates(true)
         .with_scope(true)
     end
 
     it do
-      is_expected.to enumerize(:label).in(:phone, :mobile, :fax)
-        .with_default(:phone)
+      is_expected.to enumerize(:label)
+        .in(:phone, :mobile, :fax).with_default(:phone)
         .with_predicates(true)
         .with_scope(true)
     end
