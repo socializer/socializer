@@ -4,7 +4,7 @@ PATH
     socializer (0.1.13)
       bcrypt (~> 3.1.11)
       bootstrap-sass (~> 3.3.7)
-      coffee-rails (~> 4.2.1)
+      coffee-rails (~> 4.2.2)
       country_select (~> 3.0.0)
       draper (~> 3.0.0)
       elasticsearch-rails (~> 5.0.1)
@@ -93,9 +93,9 @@ GEM
     codeclimate-test-reporter (1.0.7)
       simplecov
     coderay (1.1.1)
-    coffee-rails (4.2.1)
+    coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -192,7 +192,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
-    oauth (0.5.2)
+    oauth (0.5.3)
     oauth2 (1.3.1)
       faraday (>= 0.8, < 0.12)
       jwt (~> 1.0)
@@ -360,7 +360,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    xpath (2.0.0)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
     yard (0.8.7.6)
 
