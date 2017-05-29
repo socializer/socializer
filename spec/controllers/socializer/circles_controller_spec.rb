@@ -17,6 +17,10 @@ module Socializer
       { circle: { author_id: user.guid, display_name: "Test" } }
     end
 
+    let(:invalid_attributes) do
+      { circle: { author_id: user.guid, display_name: "" } }
+    end
+
     let(:update_attributes) do
       { id: circle,
         circle: { display_name: "Test1" } }
@@ -137,7 +141,15 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new circle in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Circle, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 

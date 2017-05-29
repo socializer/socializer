@@ -136,7 +136,7 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "does not save the new circle in the database" do
+          it "does not save the new group in the database" do
             expect { post :create, params: invalid_attributes }
               .not_to change(Group, :count)
           end
