@@ -35,7 +35,9 @@ module Socializer
     # GET /comments/1/edit
     def edit
       respond_to do |format|
-        format.html { render :edit, locals: { comment: find_comment } }
+        format.html do
+          render :edit, locals: { comment: find_comment, target_id: nil }
+        end
       end
     end
 
