@@ -13,19 +13,23 @@ module Socializer
     # GET /comments/new
     def new
       respond_to do |format|
-        format.html { render :new, locals: { comment: Comment.new } }
+        format.html do
+          render :new, locals: { comment: Comment.new, target_id: params[:id] }
+        end
       end
     end
 
     # POST /comments
     def create
-      current_user.comments.create!(params[:comment]) do |comment|
-        comment.activity_verb = "add"
-        comment.scope = Audience.privacy.find_value(:public)
-      end
+      comment = build_comment
 
-      flash[:notice] = t("socializer.model.create", model: "Comment")
-      redirect_to activities_path
+      if comment.save
+        notice = t("socializer.model.create", model: "Comment")
+        redirect_to activities_path, notice: notice
+      else
+        render :new, locals: { comment: comment,
+                               target_id: comment.activity_target_id }
+      end
     end
 
     # GET /comments/1/edit
@@ -52,6 +56,13 @@ module Socializer
     end
 
     private
+
+    def build_comment
+      current_user.comments.build(params[:comment]) do |comment|
+        comment.activity_verb = "add"
+        comment.scope = Audience.privacy.find_value(:public)
+      end
+    end
 
     def find_comment
       @find_comment ||= current_user.comments.find_by(id: params[:id])
