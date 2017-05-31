@@ -149,7 +149,7 @@ GEM
       activesupport (>= 4.2.0)
     hashie (3.5.5)
     highline (1.7.8)
-    i18n (0.8.1)
+    i18n (0.8.4)
     i18n-tasks (0.9.15)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)

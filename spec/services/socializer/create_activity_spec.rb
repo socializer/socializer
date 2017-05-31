@@ -21,8 +21,9 @@ module Socializer
     end
 
     context ".call" do
-      context "with no required attributes it should raise RecordInvalid" do
-        it { expect { ac.call }.to raise_error(Errors::RecordInvalid) }
+      context "with no required attributes" do
+        it { expect(ac.call).to be_kind_of(Activity) }
+        it { expect(ac.call.persisted?).to be false }
       end
 
       context "with the required attributes" do
