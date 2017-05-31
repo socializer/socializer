@@ -22,6 +22,13 @@ module Socializer
                    activity_id: note.guid } }
       end
 
+      let(:invalid_attributes) do
+        { id: note,
+          share: { content: "",
+                   object_ids: object_ids,
+                   activity_id: nil } }
+      end
+
       describe "when not logged in" do
         describe "GET #new" do
           it "requires login" do
@@ -72,11 +79,15 @@ module Socializer
           end
 
           context "with invalid attributes" do
-            it "is a pending example"
-            # it "re-renders the :new template" do
-            #   post :create, invalid_attributes
-            #   expect(response).to render_template :new
-            # end
+            it "does not save the new share in the database" do
+              expect { post :create, params: invalid_attributes }
+                .not_to change(Activity, :count)
+            end
+
+            it "re-renders the :new template" do
+              post :create, params: invalid_attributes
+              expect(response).to render_template :new
+            end
           end
         end
       end
