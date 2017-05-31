@@ -1,7 +1,8 @@
 require "rails_helper"
 
 module Socializer
+  # rubocop:disable RSpec/EmptyExampleGroup
   RSpec.describe ApplicationMailer, type: :mailer do
-    it "is a pending example"
   end
+  # rubocop:enable RSpec/EmptyExampleGroup
 end
