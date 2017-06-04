@@ -19,6 +19,8 @@ module Socializer
       #   Activity::Services::Share.new(actor: current_user)
       #                            .call(params: params[:share])
       class Share
+        # TODO: Need to add some validations for required params
+
         # Initializer
         #
         # @param [Socializer::Person] actor: the person sharing the activity

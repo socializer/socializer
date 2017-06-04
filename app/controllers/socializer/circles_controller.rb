@@ -43,10 +43,13 @@ module Socializer
     # POST /circles
     def create
       circle = current_user.circles.build(params[:circle])
-      circle.save!
 
-      flash[:notice] = t("socializer.model.create", model: "Circle")
-      redirect_to contacts_circles_path
+      if circle.save
+        flash[:notice] = t("socializer.model.create", model: "Circle")
+        redirect_to contacts_circles_path
+      else
+        render :new, locals: { circle: circle }
+      end
     end
 
     # PATCH/PUT /circles/1

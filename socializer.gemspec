@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency("simple_form",          "~> 3.5.0")
   s.add_dependency("country_select",       "~> 3.0.0")
 
-  s.add_development_dependency("bundler",              "~> 1.15.0")
+  s.add_development_dependency("bundler",              "~> 1.15.1")
   s.add_development_dependency("rake",                 "~> 12.0.0")
   s.add_development_dependency("sqlite3",              "~> 1.3.13")
   # s.add_development_dependency("rspec-rails",          "~> 3.6.0")

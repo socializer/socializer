@@ -31,13 +31,18 @@ module Socializer
 
         # TODO: Need a validator to validate params - dry-validation
         # TODO: Pass the validator into the service
-        Activity::Services::Share.new(actor: current_user)
-                                 .call(params: share)
+        activity = Activity::Services::Share.new(actor: current_user)
+                                            .call(params: share)
 
-        flash[:notice] = flash_message(action: :create,
-                                       activity_object: activity_object)
+        if activity.persisted?
+          notice = flash_message(action: :create,
+                                 activity_object: activity_object)
 
-        redirect_to activities_path
+          redirect_to activities_path, notice: notice
+        else
+          render :new, locals: { activity_object: activity_object,
+                                 share: share }
+        end
       end
 
       private

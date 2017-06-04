@@ -1,9 +1,9 @@
 require "rails_helper"
 
 module Socializer
+  # rubocop:disable RSpec/EmptyExampleGroup
   RSpec.describe ApplicationJob, type: :job do
     include ActiveJob::TestHelper
-
-    it "is a pending example"
   end
+  # rubocop:enable RSpec/EmptyExampleGroup
 end

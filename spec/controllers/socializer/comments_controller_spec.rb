@@ -22,6 +22,11 @@ module Socializer
                    activity_target_id: note.guid } }
     end
 
+    let(:invalid_attributes) do
+      { comment: { content: "",
+                   activity_target_id: note.guid } }
+    end
+
     let(:update_attributes) do
       { id: comment,
         comment: { content: "This is a comment update" } }
@@ -94,7 +99,15 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is a pending example"
+          it "does not save the new comment in the database" do
+            expect { post :create, params: invalid_attributes }
+              .not_to change(Comment, :count)
+          end
+
+          it "re-renders the :new template" do
+            post :create, params: invalid_attributes
+            expect(response).to render_template :new
+          end
         end
       end
 

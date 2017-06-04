@@ -1,6 +1,6 @@
 <%= simple_form_for(comment) do |f| %>
   <%= f.input :content, label: false, input_html: { autofocus: true } %>
-  <%= f.input :activity_target_id,  as: :hidden, input_html: { value: params[:id] } %>
+  <%= f.input :activity_target_id,  as: :hidden, input_html: { value: target_id } %>
 
   <%= f.button :submit, t(".submit"), class: "btn-success action-button" %>
 <% end %>

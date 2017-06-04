@@ -26,9 +26,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def call
-      return create_activity if valid?
-
-      raise(Errors::RecordInvalid, record_invalid_message)
+      create_activity
     end
 
     private
@@ -90,7 +88,7 @@ module Socializer
     end
 
     def create_activity
-      Activity.create!(activity_attributes) do |activity|
+      Activity.create(activity_attributes) do |activity|
         activity.activity_field = activity_field
 
         add_audience_to_activity(activity: activity) if object_ids.present?
