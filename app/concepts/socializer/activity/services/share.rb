@@ -21,8 +21,6 @@ module Socializer
       #   Activity::Services::Share.new(actor: current_user)
       #                            .call(params: params[:share])
       class Share
-        # TODO: Need to add some validations for required params
-
         # Initializer
         #
         extend Dry::Initializer
@@ -39,24 +37,23 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          parse_params(params: params)
-
-          Socializer::CreateActivity
-            .new(actor_id: actor_guid,
-                 activity_object_id: activity_object_id,
-                 verb: verb,
-                 object_ids: object_ids,
-                 content: content).call
+          Socializer::CreateActivity.new(validate_params(params: params)).call
         end
 
         private
 
-        attr_reader :actor_guid, :activity_object_id, :object_ids, :content
+        def validate_params(params:)
+          result = Activity::Contract::Share.call(params)
 
-        def parse_params(params:)
-          @activity_object_id = params[:activity_id]
-          @content = params[:content]
-          @object_ids = params[:object_ids].split(",")
+          share_attributes(attributes: result.output)
+        end
+
+        def share_attributes(attributes:)
+          { actor_id: actor.guid,
+            activity_object_id: attributes[:activity_id],
+            verb: verb,
+            object_ids: attributes[:object_ids],
+            content: attributes[:content] }
         end
 
         # The verb to use when sharing an [Socializer::ActivityObject]

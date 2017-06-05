@@ -15,9 +15,11 @@ module Socializer
         end
 
         let(:share_attributes) do
-          { activity_id: activity_object.id,
+          ActionController::Parameters.new(
+            activity_id: activity_object.id,
             object_ids: object_ids,
-            content: "Share" }
+            content: "Share"
+          )
         end
 
         let(:results) { share.call(params: share_attributes) }
@@ -30,9 +32,11 @@ module Socializer
 
         context "with no content" do
           let(:share_attributes) do
-            { activity_id: activity_object.id,
+            ActionController::Parameters.new(
+              activity_id: activity_object.id,
               object_ids: object_ids,
-              content: nil }
+              content: nil
+            )
           end
 
           let(:results) { share.call(params: share_attributes) }

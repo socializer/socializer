@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
   s.add_dependency("draper",               "~> 3.0.0")
 
   s.add_dependency("dry-initializer",      "~> 1.4.1")
+  s.add_dependency("dry-validation",       "~> 0.10.7")
+
   s.add_dependency("elasticsearch-rails",  "~> 5.0.1")
   s.add_dependency("enumerize",            "~> 2.1.2")
   s.add_dependency("omniauth",             "~> 1.6.1")
