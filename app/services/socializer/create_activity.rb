@@ -9,7 +9,6 @@ module Socializer
   #
   class CreateActivity
     include ActiveModel::Model
-    include Utilities::Message
 
     attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
                   :object_ids, :content

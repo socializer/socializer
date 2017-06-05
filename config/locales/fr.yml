@@ -81,7 +81,6 @@ fr:
           private:
             cannot_self_join: Cannot self-join a private group, you need to be invited
           still_has_members: cannot delete a group that has members in it.
-        wrong_instance_type: "%{argument} must be an instance of '%{valid_class}' not '%{invalid_class}'"
     groups:
       card:
         confirm: Confirm
