@@ -27,6 +27,8 @@ module Socializer
         option :group, Dry::Types["any"].constrained(type: Group),
                reader: :private
 
+        # Adds the person keyword argument to the initializer, ensures the tyoe
+        # is [Socializer::Person], and creates a private reader
         option :person, Dry::Types["any"].constrained(type: Person),
                reader: :private
 
