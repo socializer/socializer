@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-initializer"
+
 #
 # Namespace for the Socializer engine
 #
@@ -23,10 +25,12 @@ module Socializer
 
         # Initializer
         #
-        # @param [Socializer::Person] actor: the person sharing the activity
-        def initialize(actor:)
-          @actor_guid = actor.guid
-        end
+        extend Dry::Initializer
+
+        # Adds the actor keyword argument to the initializer, ensures the tyoe
+        # is [Socializer::Person], and creates a private reader
+        option :actor, Dry::Types["any"].constrained(type: Person),
+               reader: :private
 
         # Creates the [Socializer::Activity]
         #
