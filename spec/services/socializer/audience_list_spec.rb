@@ -5,23 +5,29 @@ require "rails_helper"
 module Socializer
   RSpec.describe AudienceList, type: :service do
     describe "when the person argument is nil" do
-      context ".new should raise an ArgumentError" do
+      context ".new should raise an Dry::Types::ConstraintError" do
         let(:audience_list) { AudienceList.new(person: nil, query: nil) }
 
-        it { expect { audience_list }.to raise_error(ArgumentError) }
+        it do
+          expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
+        end
       end
 
-      context ".call should raise an ArgumentError" do
+      context ".call should raise an Dry::Types::ConstraintError" do
         let(:audience_list) { AudienceList.call(person: nil, query: nil) }
 
-        it { expect { audience_list }.to raise_error(ArgumentError) }
+        it do
+          expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
+        end
       end
     end
 
     describe "when the person argument is the wrong type" do
       let(:audience_list) { AudienceList.new(person: Activity.new) }
 
-      it { expect { audience_list }.to raise_error(ArgumentError) }
+      it do
+        expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
+      end
     end
 
     context ".call" do

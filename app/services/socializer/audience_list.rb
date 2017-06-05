@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-initializer"
+
 #
 # Namespace for the Socializer engine
 #
@@ -8,25 +10,18 @@ module Socializer
   # Build the audience list that is used in the notes and shares forms
   #
   class AudienceList
-    include ActiveModel::Model
-    include Utilities::Message
-
-    attr_reader :person
-
-    validates :person, presence: true, type: Socializer::Person
-
     # Initializer
     #
-    # @param person: [Socializer:Person] the person to build the list for
-    # @param query: nil [String] Used to filter the audience list.
-    #
-    # @return [Socializer:AudienceList] returns an instance of AudienceList
-    def initialize(person:, query: nil)
-      @person = person
-      @query  = query
+    extend Dry::Initializer
 
-      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
-    end
+    # Adds the person keyword argument to the initializer, ensures the tyoe
+    # is [Socializer::Person], and creates a private reader
+    option :person, Dry::Types["any"].constrained(type: Person),
+           reader: :private
+
+    # Adds the query keyword argument to the initializer
+    # and creates a private reader
+    option :query, reader: :private, optional: true
 
     # Class Methods
 
@@ -67,7 +62,7 @@ module Socializer
 
     private
 
-    # Build the audience list for @person with the passed in type and @query
+    # Build the audience list for person with the passed in type and query
     #
     # @param type [Symbol/String]
     #
@@ -77,14 +72,14 @@ module Socializer
     # the passed in type
     def audience_list(type:)
       tableized_type = type.to_s.tableize
-      return Person.none unless @person.respond_to?(tableized_type)
+      return Person.none unless person.respond_to?(tableized_type)
 
-      query  = @person.public_send(tableized_type)
-      result = select_display_name_alias_and_guids(query: query)
+      type_results = person.public_send(tableized_type)
+      result       = select_display_name_alias_and_guids(query: type_results)
 
-      return result if @query.blank?
+      return result if query.blank?
 
-      result.display_name_like(query: "%#{@query}%")
+      result.display_name_like(query: "%#{query}%")
     end
 
     def merge_icon(list:, icon:)
@@ -104,9 +99,9 @@ module Socializer
     # and guid
     # for all records that match the query
     def person_list
-      return Person.none if @query.blank?
+      return Person.none if query.blank?
       result = select_display_name_alias_and_guids(query: Person)
-      result.display_name_like(query: "%#{@query}%")
+      result.display_name_like(query: "%#{query}%")
     end
 
     # Returns a {Hash} containing the value and text for the privacy level
