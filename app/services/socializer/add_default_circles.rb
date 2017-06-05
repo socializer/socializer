@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-initializer"
+
 #
 # Namespace for the Socializer engine
 #
@@ -8,25 +10,14 @@ module Socializer
   # Add the default circles for the person
   #
   class AddDefaultCircles
-    include ActiveModel::Model
-    include Utilities::Message
-
-    attr_reader :person
-
-    validates :person, presence: true, type: Socializer::Person
-
     # Initializer
     #
-    # @param person: [Socializer:Person] the person to create the default
-    # circles for
-    #
-    # @return [Socializer:AddDefaultCircles] returns an instance of
-    # AddDefaultCircles
-    def initialize(person:)
-      @person = person
+    extend Dry::Initializer
 
-      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
-    end
+    # Adds the person keyword argument to the initializer, ensures the tyoe
+    # is [Socializer::Person], and creates a private reader
+    option :person, Dry::Types["any"].constrained(type: Person),
+           reader: :private
 
     # Class Methods
 
@@ -61,7 +52,7 @@ module Socializer
     private
 
     def create_circle(display_name:, content: nil)
-      circles = @person.activity_object.circles
+      circles = person.activity_object.circles
       circles.create!(display_name: display_name, content: content)
     end
 

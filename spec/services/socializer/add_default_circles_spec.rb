@@ -5,23 +5,32 @@ require "rails_helper"
 module Socializer
   RSpec.describe AddDefaultCircles, type: :service do
     describe "when the person argument is nil" do
-      context ".new should raise an ArgumentError" do
+      context ".new should raise an Dry::Types::ConstraintError" do
         let(:add_default_circles) { AddDefaultCircles.new(person: nil) }
 
-        it { expect { add_default_circles }.to raise_error(ArgumentError) }
+        it do
+          expect { add_default_circles }
+            .to raise_error(Dry::Types::ConstraintError)
+        end
       end
 
-      context ".call should raise an ArgumentError" do
+      context ".call should raise an Dry::Types::ConstraintError" do
         let(:add_default_circles) { AddDefaultCircles.call(person: nil) }
 
-        it { expect { add_default_circles }.to raise_error(ArgumentError) }
+        it do
+          expect { add_default_circles }
+            .to raise_error(Dry::Types::ConstraintError)
+        end
       end
     end
 
     describe "when the person argument is the wrong type" do
       let(:add_default_circles) { AddDefaultCircles.new(person: Activity.new) }
 
-      it { expect { add_default_circles }.to raise_error(ArgumentError) }
+      it do
+        expect { add_default_circles }
+          .to raise_error(Dry::Types::ConstraintError)
+      end
     end
 
     context ".call" do
