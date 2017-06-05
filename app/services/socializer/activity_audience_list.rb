@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-initializer"
+
 #
 # Namespace for the Socializer engine
 #
@@ -8,25 +10,14 @@ module Socializer
   # Prepares the list to display in the tooltip
   #
   class ActivityAudienceList
-    include ActiveModel::Model
-    include Utilities::Message
-
-    attr_reader :activity
-
-    validates :activity, presence: true, type: Socializer::Activity
-
     # Initializer
     #
-    # @param activity: [Socializer:Activity] the activity to build the
-    # audience for
-    #
-    # @return [Socializer:ActivityAudienceList] returns an instance of
-    # ActivityAudienceList
-    def initialize(activity:)
-      @activity = activity
+    extend Dry::Initializer
 
-      raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
-    end
+    # Adds the activity keyword argument to the initializer, ensures the tyoe
+    # is [Socializer::Activity], and creates a private reader
+    option :activity, Dry::Types["any"].constrained(type: Activity),
+           reader: :private
 
     # Class Methods
 
@@ -49,7 +40,7 @@ module Socializer
     def call
       list = []
 
-      @activity.audiences.each do |audience|
+      activity.audiences.each do |audience|
         if audience.public?
           message = I18n.t("tooltip.public",
                            scope: "socializer.activities.audiences.index")
@@ -59,7 +50,7 @@ module Socializer
         list.concat(audience_list(audience: audience))
       end
 
-      list.unshift(@activity.activitable_actor.activitable.display_name)
+      list.unshift(activity.activitable_actor.activitable.display_name)
     end
 
     private
@@ -73,7 +64,7 @@ module Socializer
     end
 
     def circles_audience_list
-      @activity.actor.contacts.pluck(:display_name)
+      activity.actor.contacts.pluck(:display_name)
     end
 
     # In the case of LIMITED audience, then go through all the audience
