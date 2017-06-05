@@ -10,9 +10,11 @@ module Socializer
         let(:actor) { create(:person) }
         let(:share) { Share.new(actor: actor) }
 
-        let(:object_ids) do
+        let(:public_privacy) do
           Socializer::Audience.privacy.find_value(:public).value
         end
+
+        let(:object_ids) { public_privacy }
 
         let(:share_attributes) do
           ActionController::Parameters.new(
@@ -42,6 +44,22 @@ module Socializer
           let(:results) { share.call(params: share_attributes) }
 
           it { expect(results.activity_field_content).to eq(nil) }
+        end
+
+        context "object_ids as an array" do
+          let(:object_ids) { [public_privacy, circles_privacy] }
+
+          let(:circles_privacy) do
+            Socializer::Audience.privacy.find_value(:circles).value
+          end
+
+          let(:results) { share.call(params: share_attributes) }
+          let(:public_audience) { results.audiences.where(privacy: "public") }
+          let(:circles_audience) { results.audiences.where(privacy: "circles") }
+
+          it { expect(public_audience.present?).to eq(true) }
+          it { expect(circles_audience.present?).to eq(true) }
+          it { expect(results.persisted?).to eq(true) }
         end
       end
     end

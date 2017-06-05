@@ -19,9 +19,7 @@ module Socializer
       #   result = Activity::Contract::Share.call(params)
       Share = Dry::Validation.Form do
         required(:activity_id).filled(:int?)
-        # FIXME: Need to account for Array or String
-        # required(:object_ids).each(:str?)
-        required(:object_ids).filled(:str?) # (:array?) # works with .Schema
+        required(:object_ids).each(:str?)
         required(:content).maybe(:str?)
       end
     end

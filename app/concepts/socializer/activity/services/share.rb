@@ -48,6 +48,7 @@ module Socializer
           share_attributes(attributes: result.output)
         end
 
+        # TODO: Should this be a dry-struct?
         def share_attributes(attributes:)
           { actor_id: actor.guid,
             activity_object_id: attributes[:activity_id],
