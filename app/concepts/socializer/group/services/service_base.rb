@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-initializer"
+
 #
 # Namespace for the Socializer engine
 #
@@ -16,28 +18,17 @@ module Socializer
       # Base class for Group::Service
       #
       class ServiceBase
-        include ActiveModel::Model
-        include Utilities::Message
-
-        attr_reader :group, :person
-
-        validates :group, presence: true, type: Socializer::Group
-        validates :person, presence: true, type: Socializer::Person
-
         # Initializer
         #
-        # @param [Socializer:Group] group: the group to invite the person to
-        # @param [Socializer:Person] person: the person that is being invited
-        # to the group
-        #
-        # @return [Socializer::Group::Services] returns an instance of
-        # the object that inherits from [ServiceBase]
-        def initialize(group:, person:)
-          @group  = group
-          @person = person
+        extend Dry::Initializer
 
-          raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
-        end
+        # Adds the group keyword argument to the initializer, ensures the tyoe
+        # is [Socializer::Group], and creates a private reader
+        option :group, Dry::Types["any"].constrained(type: Group),
+               reader: :private
+
+        option :person, Dry::Types["any"].constrained(type: Person),
+               reader: :private
 
         # @return [Socializer:Membership/FalseClass] Deletes the record in the
         # database and freezes this instance to reflect that no changes should

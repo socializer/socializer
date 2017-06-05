@@ -10,26 +10,32 @@ module Socializer
         let(:person) { build(:person) }
 
         describe "when the group and person arguments are nil" do
-          context ".new should raise an ArgumentError" do
+          context ".new should raise an Dry::Types::ConstraintError" do
             let(:service) { ServiceBase.new(group: nil, person: nil) }
 
-            it { expect { service }.to raise_error(ArgumentError) }
+            it do
+              expect { service }.to raise_error(Dry::Types::ConstraintError)
+            end
           end
         end
 
         describe "when the group argument is nil" do
-          context ".new should raise an ArgumentError" do
+          context ".new should raise an Dry::Types::ConstraintError" do
             let(:service) { ServiceBase.new(group: nil, person: person) }
 
-            it { expect { service }.to raise_error(ArgumentError) }
+            it do
+              expect { service }.to raise_error(Dry::Types::ConstraintError)
+            end
           end
         end
 
         describe "when the person argument is nil" do
-          context ".new should raise an ArgumentError" do
+          context ".new should raise an Dry::Types::ConstraintError" do
             let(:service) { ServiceBase.new(group: group, person: nil) }
 
-            it { expect { service }.to raise_error(ArgumentError) }
+            it do
+              expect { service }.to raise_error(Dry::Types::ConstraintError)
+            end
           end
         end
 
