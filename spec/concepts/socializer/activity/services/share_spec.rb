@@ -46,7 +46,21 @@ module Socializer
           it { expect(results.activity_field_content).to eq(nil) }
         end
 
-        context "object_ids as an array" do
+        context "#object_ids as nil" do
+          let(:object_ids) { "" }
+          let(:results) { share.call(params: share_attributes) }
+
+          it { expect(results.persisted?).to eq(false) }
+        end
+
+        context "#object_ids as an array of non strings" do
+          let(:object_ids) { [1, 2, 3] }
+          let(:results) { share.call(params: share_attributes) }
+
+          it { expect(results.persisted?).to eq(false) }
+        end
+
+        context "#object_ids as an array of strings" do
           let(:object_ids) { [public_privacy, circles_privacy] }
 
           let(:circles_privacy) do
