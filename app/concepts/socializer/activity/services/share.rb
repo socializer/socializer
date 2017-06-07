@@ -43,19 +43,15 @@ module Socializer
         private
 
         def validate_params(params:)
-          if params.key?(:activity_id)
-            params[:activity_object_id] = params.delete(:activity_id)
-          end
+          attributes = share_attributes(attributes: params)
 
-          result = Activity::Contract::Share.call(params)
-
-          share_attributes(attributes: result.output)
+          Activity::Contract::Share.call(attributes).output
         end
 
         # TODO: Should this be a dry-struct?
         def share_attributes(attributes:)
           { actor_id: actor.guid,
-            activity_object_id: attributes[:activity_object_id],
+            activity_object_id: attributes[:activity_id],
             verb: verb,
             object_ids: attributes[:object_ids],
             content: attributes[:content] }
