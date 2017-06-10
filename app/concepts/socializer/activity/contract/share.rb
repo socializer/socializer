@@ -22,7 +22,7 @@ module Socializer
         required(:activity_object_id).filled(:int?)
         required(:verb).filled(:str?)
         required(:object_ids)
-          .filled { str? | each(:str?) & included_in?(Audience.privacy.values) }
+          .filled { str? | each(str?: included_in?(Audience.privacy.values)) }
         required(:content).maybe(:str?)
       end
     end
