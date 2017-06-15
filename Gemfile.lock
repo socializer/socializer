@@ -71,7 +71,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.1)
+    autoprefixer-rails (7.1.1.2)
       execjs
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.5)
@@ -81,7 +81,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
-    capybara (2.14.2)
+    capybara (2.14.3)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -315,7 +315,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scss_lint (0.53.0)
+    scss_lint (0.54.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
     sexp_processor (4.9.0)
@@ -370,7 +370,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.15.1)
   byebug (~> 9.0.6)
-  capybara (~> 2.14.2)
+  capybara (~> 2.14.3)
   codeclimate-test-reporter
   coffeelint (~> 1.16.0)
   coveralls (~> 0.8.21)
@@ -387,7 +387,7 @@ DEPENDENCIES
   rspec-rails (~> 3.6.0)
   rubocop (~> 0.49.1)
   rubocop-rspec (~> 1.15.1)
-  scss_lint (~> 0.53.0)
+  scss_lint (~> 0.54.0)
   shoulda-matchers (~> 3.1.1)
   simplecov (~> 0.14.1)
   socializer!
