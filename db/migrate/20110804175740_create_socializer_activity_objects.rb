@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerActivityObjects < ActiveRecord::Migration[4.2]
+class CreateSocializerActivityObjects < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_activity_objects do |t|
       t.integer  :activitable_id,             null: false
@@ -8,7 +8,7 @@ class CreateSocializerActivityObjects < ActiveRecord::Migration[4.2]
       t.integer  :like_count,                 default: 0
       t.integer  :unread_notifications_count, default: 0
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_activity_objects,

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class CreateSocializerCircles < ActiveRecord::Migration[4.2]
+class CreateSocializerCircles < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_circles do |t|
       t.integer  :author_id,    null: false
       t.string   :display_name, null: false
       t.text     :content
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_circles, :author_id

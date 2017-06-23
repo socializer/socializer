@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CreateSocializerPersonEducations < ActiveRecord::Migration[4.2]
+class CreateSocializerPersonEducations < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_educations do |t|
-      t.integer  :person_id, null: false
+      t.integer  :person_id, null: false, foreign_key: true
       # TODO: change school_name to name
       t.string   :school_name, null: false
       t.string   :major_or_field_of_study
@@ -13,7 +13,7 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration[4.2]
       # TODO: change courses_description to description
       t.text     :courses_description
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_person_educations, :person_id

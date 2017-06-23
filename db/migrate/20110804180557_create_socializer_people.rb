@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerPeople < ActiveRecord::Migration[4.2]
+class CreateSocializerPeople < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_people do |t|
       t.string   :display_name
@@ -27,7 +27,7 @@ class CreateSocializerPeople < ActiveRecord::Migration[4.2]
       t.integer  :relationship
       t.string   :other_names
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end

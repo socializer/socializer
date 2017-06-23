@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CreateSocializerPersonEmployments < ActiveRecord::Migration[4.2]
+class CreateSocializerPersonEmployments < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_employments do |t|
-      t.integer  :person_id, null: false
+      t.integer  :person_id, null: false, foreign_key: true
       # TODO: change employer_name to name
       t.string   :employer_name, null: false
       # TODO: change job_title to title
@@ -14,7 +14,7 @@ class CreateSocializerPersonEmployments < ActiveRecord::Migration[4.2]
       # TODO: change job_description to description
       t.text     :job_description
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_person_employments, :person_id

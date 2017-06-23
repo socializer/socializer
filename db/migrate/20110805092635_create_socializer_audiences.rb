@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class CreateSocializerAudiences < ActiveRecord::Migration[4.2]
+class CreateSocializerAudiences < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_audiences do |t|
-      t.integer  :activity_id, null: false
-      t.integer  :activity_object_id
+      t.integer  :activity_id, null: false, foreign_key: true
+      t.integer  :activity_object_id, foreign_key: true
       t.string   :privacy, null: false
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_audiences,
