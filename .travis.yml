@@ -23,15 +23,20 @@ cache:
 script:
   - "bundle exec rspec"
   - "bundle exec codeclimate-test-reporter"
-env:
-  - DB=postgres
-  - DB=mysql
-  - DB=sqlite
+
+# env:
+#   - DB=postgres
+#   - DB=mysql
+#   - DB=sqlite
 
 rvm:
   # - 2.2.4
   # - 2.3.3
   - 2.4.1
+
+gemfile:
+  - gemfiles/gemfile.pg
+  - gemfiles/gemfile.mysql
 
 matrix:
   fast_finish: true
