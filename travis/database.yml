@@ -1,18 +1,20 @@
-sqlite:
+sqlite: &sqlite
   adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
+  database: db/<%= Rails.env %>.sqlite3
 
-mysql:
+mysql: &mysql
   adapter: mysql2
-  database: socializer_test
   username: travis
   encoding: utf8
+  password:
+  database: socializer_<%= Rails.env %>
 
-postgres:
+postgresql: &postgresql
   adapter: postgresql
-  database: travis_ci_test
   username: postgres
+  password:
+  database: socializer_<%= Rails.env %>
+  min_messages: ERROR
 
 defaults: &defaults
   pool: 5

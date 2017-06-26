@@ -45,7 +45,7 @@ matrix:
   include:
     - rvm: 2.4.1
       gemfile: Gemfile
-      env: DB=sqlite3
+      env: DB=sqlite
     - rvm: 2.4.1
       gemfile: gemfiles/gemfile.pg
       env: DB=postgres
