@@ -10,6 +10,7 @@ before_install:
 
 
 before_script:
+  - cp travis/database.yml config/database.yml
   - bundle update
   - bundle exec rails dummy:app --trace
   - bundle exec rails app:db:migrate RAILS_ENV=test
@@ -29,18 +30,31 @@ script:
 #   - DB=mysql
 #   - DB=sqlite
 
-rvm:
-  # - 2.2.4
-  # - 2.3.3
-  - 2.4.1
+# rvm:
+#   # - 2.2.4
+#   # - 2.3.3
+#   - 2.4.1
 
-gemfile:
-  - Gemfile
-  - gemfiles/gemfile.pg
-  - gemfiles/gemfile.mysql
+# gemfile:
+#   - Gemfile
+#   - gemfiles/gemfile.pg
+#   - gemfiles/gemfile.mysql
 
 matrix:
   fast_finish: true
+  include:
+    - rvm: 2.4.1
+      gemfile: Gemfile
+      env: DB=sqlite
+    - rvm: 2.4.1
+      gemfile: gemfiles/gemfile.pg
+      env: DB=postgres
+      services: postgresql
+    - rvm: 2.4.1
+      gemfile: gemfiles/gemfile.mysql
+      env: DB=mysql
+      services: mysql
+
 addons:
   code_climate:
     repo_token: 08c7e43e5cdaf0614c7e61dcf6279865630cb6992fa9f1f09856f72fd641218b

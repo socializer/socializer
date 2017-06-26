@@ -1,0 +1,30 @@
+sqlite:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
+
+mysql:
+  adapter: mysql2
+  database: socializer_test
+  username: travis
+  encoding: utf8
+
+postgres:
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
+
+defaults: &defaults
+  pool: 5
+  timeout: 500
+  host: localhost
+  <<: *<%= ENV['DB'] || "postgresql" %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
