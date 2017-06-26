@@ -18,8 +18,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gemspec
-
 group :development do
   gem "coffeelint", "~> 1.16.0"
 end
