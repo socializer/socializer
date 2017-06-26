@@ -4,12 +4,12 @@ sqlite: &sqlite
 
 mysql: &mysql
   adapter: mysql2
-  username: travis
+  username: root
   encoding: utf8
   password:
   database: socializer_<%= Rails.env %>
 
-postgresql: &postgresql
+postgres: &postgres
   adapter: postgresql
   username: postgres
   password:
