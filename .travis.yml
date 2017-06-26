@@ -13,6 +13,8 @@ before_script:
   - bundle update
   - bundle exec rails dummy:app --trace
   - cp travis/database.yml spec/dummy/config/database.yml
+  - mysql -e 'CREATE DATABASE socializer_test;'
+  - psql -c 'create database socializer_test;' -U postgres
   - bundle exec rails app:db:migrate RAILS_ENV=test
 
 cache:
