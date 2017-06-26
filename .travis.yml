@@ -10,9 +10,9 @@ before_install:
 
 
 before_script:
-  - cp travis/database.yml config/database.yml
   - bundle update
   - bundle exec rails dummy:app --trace
+  - cp travis/database.yml spec/dummy/config/database.yml
   - bundle exec rails app:db:migrate RAILS_ENV=test
 
 cache:
