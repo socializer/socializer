@@ -27,35 +27,39 @@ script:
   - "bundle exec rspec"
   - "bundle exec codeclimate-test-reporter"
 
-# env:
-#   - DB=postgres
-#   - DB=mysql
-#   - DB=sqlite
+env:
+  - DB=postgres
+  - DB=mysql
+  - DB=sqlite
 
-# rvm:
-#   # - 2.2.4
-#   # - 2.3.3
-#   - 2.4.1
+rvm:
+  # - 2.2.4
+  # - 2.3.3
+  - 2.4.1
 
-# gemfile:
-#   - Gemfile
-#   - gemfiles/gemfile.pg
-#   - gemfiles/gemfile.mysql
+gemfile:
+  - Gemfile
+  - gemfiles/gemfile.pg
+  - gemfiles/gemfile.mysql
+
+services:
+  - postgresql
+  - mysql
 
 matrix:
   fast_finish: true
-  include:
-    - rvm: 2.4.1
-      gemfile: Gemfile
-      env: DB=sqlite
-    - rvm: 2.4.1
-      gemfile: gemfiles/gemfile.pg
-      env: DB=postgres
-      services: postgresql
-    - rvm: 2.4.1
-      gemfile: gemfiles/gemfile.mysql
-      env: DB=mysql
-      services: mysql
+  # include:
+  #   - rvm: 2.4.1
+  #     gemfile: Gemfile
+  #     env: DB=sqlite
+  #   - rvm: 2.4.1
+  #     gemfile: gemfiles/gemfile.pg
+  #     env: DB=postgres
+  #     services: postgresql
+  #   - rvm: 2.4.1
+  #     gemfile: gemfiles/gemfile.mysql
+  #     env: DB=mysql
+  #     services: mysql
 
 addons:
   code_climate:
