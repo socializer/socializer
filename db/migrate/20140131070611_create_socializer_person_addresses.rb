@@ -3,7 +3,7 @@
 class CreateSocializerPersonAddresses < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_addresses do |t|
-      t.integer  :person_id, null: false, foreign_key: true
+      t.references :person, null: false
       t.integer  :category, null: false
       # TODO: What's label for
       t.integer  :label
@@ -17,7 +17,9 @@ class CreateSocializerPersonAddresses < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :socializer_person_addresses, :person_id
-    add_foreign_key :socializer_person_addresses, :socializer_people
+    add_foreign_key :socializer_person_addresses, :socializer_people,
+                    column: :person_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

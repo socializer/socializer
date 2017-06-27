@@ -3,14 +3,16 @@
 class CreateSocializerPersonPlaces < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_places do |t|
-      t.integer  :person_id, null: false, foreign_key: true
+      t.references :person, null: false
       t.string   :city_name
       t.boolean  :current, default: false
 
       t.timestamps
     end
 
-    add_index :socializer_person_places, :person_id
-    add_foreign_key :socializer_person_places, :socializer_people
+    add_foreign_key :socializer_person_places, :socializer_people,
+                    column: :person_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

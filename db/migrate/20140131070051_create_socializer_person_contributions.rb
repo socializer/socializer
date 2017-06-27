@@ -3,7 +3,7 @@
 class CreateSocializerPersonContributions < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_contributions do |t|
-      t.integer  :person_id, null: false, foreign_key: true
+      t.references :person, null: false
       t.string   :display_name, null: false
       t.integer  :label, null: false
       t.string   :url, null: false
@@ -12,7 +12,9 @@ class CreateSocializerPersonContributions < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :socializer_person_contributions, :person_id
-    add_foreign_key :socializer_person_contributions, :socializer_people
+    add_foreign_key :socializer_person_contributions, :socializer_people,
+                    column: :person_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

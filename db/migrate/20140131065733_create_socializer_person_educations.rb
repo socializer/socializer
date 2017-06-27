@@ -3,7 +3,7 @@
 class CreateSocializerPersonEducations < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_educations do |t|
-      t.integer  :person_id, null: false, foreign_key: true
+      t.references :person, null: false
       # TODO: change school_name to name
       t.string   :school_name, null: false
       t.string   :major_or_field_of_study
@@ -16,7 +16,9 @@ class CreateSocializerPersonEducations < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :socializer_person_educations, :person_id
-    add_foreign_key :socializer_person_educations, :socializer_people
+    add_foreign_key :socializer_person_educations, :socializer_people,
+                    column: :person_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end
