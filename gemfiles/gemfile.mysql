@@ -41,7 +41,7 @@ group :development, :test do
   gem "rspec-rails", "~> 3.6.0"
 end
 
-gem 'mysql2', '~> 0.4.6'
+gem "mysql2", "~> 0.4.6"
 
 # TODO: Remove. add these gems to help with the transition to Rails 5:
 gem "protected_attributes_continued"
