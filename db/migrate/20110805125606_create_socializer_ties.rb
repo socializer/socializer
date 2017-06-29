@@ -3,13 +3,15 @@
 class CreateSocializerTies < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_ties do |t|
-      t.integer  :contact_id, null: false
-      t.integer  :circle_id, null: false
+      t.integer :contact_id, index: true, null: false
+      t.references :circle, null: false
 
       t.timestamps
     end
 
-    add_index :socializer_ties, :contact_id
-    add_index :socializer_ties, :circle_id
+    add_foreign_key :socializer_ties, :socializer_circles,
+                    column: :circle_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end
