@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20140131070951) do
 
-  create_table "socializer_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_activities", force: :cascade do |t|
     t.integer "actor_id", null: false
     t.integer "activity_object_id", null: false
-    t.bigint "verb_id", null: false
+    t.integer "verb_id", null: false
     t.integer "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["verb_id"], name: "index_socializer_activities_on_verb_id"
   end
 
-  create_table "socializer_activity_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_activity_fields", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "activity_id", null: false
+    t.integer "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_socializer_activity_fields_on_activity_id"
   end
 
-  create_table "socializer_activity_objects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_activity_objects", force: :cascade do |t|
     t.integer "activitable_id", null: false
     t.string "activitable_type", null: false
     t.integer "like_count", default: 0
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["activitable_type", "activitable_id"], name: "index_activity_objects_on_activitable"
   end
 
-  create_table "socializer_audiences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "activity_object_id"
+  create_table "socializer_audiences", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "activity_object_id"
     t.string "privacy", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["privacy"], name: "index_socializer_audiences_on_privacy"
   end
 
-  create_table "socializer_authentications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_authentications", force: :cascade do |t|
     t.integer "person_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["provider"], name: "index_socializer_authentications_on_provider"
   end
 
-  create_table "socializer_circles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_circles", force: :cascade do |t|
     t.integer "author_id", null: false
     t.string "display_name", null: false
     t.text "content"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["display_name", "author_id"], name: "index_socializer_circles_on_display_name_and_author_id", unique: true
   end
 
-  create_table "socializer_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_comments", force: :cascade do |t|
     t.integer "author_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -84,16 +84,16 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["author_id"], name: "index_socializer_comments_on_author_id"
   end
 
-  create_table "socializer_group_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "group_id", null: false
+  create_table "socializer_group_categories", force: :cascade do |t|
+    t.integer "group_id", null: false
     t.string "display_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_socializer_group_categories_on_group_id"
   end
 
-  create_table "socializer_group_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "group_id", null: false
+  create_table "socializer_group_links", force: :cascade do |t|
+    t.integer "group_id", null: false
     t.string "display_name", null: false
     t.string "url", null: false
     t.datetime "created_at", null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["group_id"], name: "index_socializer_group_links_on_group_id"
   end
 
-  create_table "socializer_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_groups", force: :cascade do |t|
     t.integer "author_id", null: false
     t.string "display_name", null: false
     t.integer "privacy", null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["privacy"], name: "index_socializer_groups_on_privacy"
   end
 
-  create_table "socializer_identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_identities", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["email"], name: "index_socializer_identities_on_email", unique: true
   end
 
-  create_table "socializer_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "group_id", null: false
+  create_table "socializer_memberships", force: :cascade do |t|
+    t.integer "group_id", null: false
     t.integer "member_id", null: false
     t.boolean "active"
     t.datetime "created_at", null: false
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["member_id"], name: "index_socializer_memberships_on_member_id"
   end
 
-  create_table "socializer_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_notes", force: :cascade do |t|
     t.integer "author_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -142,9 +142,9 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["author_id"], name: "index_socializer_notes_on_author_id"
   end
 
-  create_table "socializer_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "activity_object_id", null: false
+  create_table "socializer_notifications", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "activity_object_id", null: false
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["activity_object_id"], name: "index_socializer_notifications_on_activity_object_id"
   end
 
-  create_table "socializer_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_people", force: :cascade do |t|
     t.string "display_name"
     t.string "email"
     t.string "language"
@@ -174,8 +174,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "socializer_person_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_addresses", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.integer "category", null: false
     t.integer "label"
     t.string "line1", null: false
@@ -189,8 +189,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_addresses_on_person_id"
   end
 
-  create_table "socializer_person_contributions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_contributions", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "display_name", null: false
     t.integer "label", null: false
     t.string "url", null: false
@@ -200,8 +200,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_contributions_on_person_id"
   end
 
-  create_table "socializer_person_educations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_educations", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "school_name", null: false
     t.string "major_or_field_of_study"
     t.date "started_on", null: false
@@ -213,8 +213,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_educations_on_person_id"
   end
 
-  create_table "socializer_person_employments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_employments", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "employer_name", null: false
     t.string "job_title"
     t.date "started_on", null: false
@@ -226,8 +226,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_employments_on_person_id"
   end
 
-  create_table "socializer_person_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_links", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "display_name", null: false
     t.string "url", null: false
     t.datetime "created_at", null: false
@@ -235,8 +235,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_links_on_person_id"
   end
 
-  create_table "socializer_person_phones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_phones", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.integer "category", null: false
     t.integer "label", null: false
     t.string "number", null: false
@@ -245,8 +245,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_phones_on_person_id"
   end
 
-  create_table "socializer_person_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_places", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "city_name"
     t.boolean "current", default: false
     t.datetime "created_at", null: false
@@ -254,8 +254,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_places_on_person_id"
   end
 
-  create_table "socializer_person_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "person_id", null: false
+  create_table "socializer_person_profiles", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "display_name", null: false
     t.string "url", null: false
     t.datetime "created_at", null: false
@@ -263,38 +263,20 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.index ["person_id"], name: "index_socializer_person_profiles_on_person_id"
   end
 
-  create_table "socializer_ties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_ties", force: :cascade do |t|
     t.integer "contact_id", null: false
-    t.bigint "circle_id", null: false
+    t.integer "circle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["circle_id"], name: "index_socializer_ties_on_circle_id"
     t.index ["contact_id"], name: "index_socializer_ties_on_contact_id"
   end
 
-  create_table "socializer_verbs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "socializer_verbs", force: :cascade do |t|
     t.string "display_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["display_name"], name: "index_socializer_verbs_on_display_name", unique: true
   end
 
-  add_foreign_key "socializer_activities", "socializer_verbs", column: "verb_id", on_delete: :cascade
-  add_foreign_key "socializer_activity_fields", "socializer_activities", column: "activity_id", on_delete: :cascade
-  add_foreign_key "socializer_audiences", "socializer_activities", column: "activity_id", on_delete: :cascade
-  add_foreign_key "socializer_audiences", "socializer_activity_objects", column: "activity_object_id", on_delete: :cascade
-  add_foreign_key "socializer_group_categories", "socializer_groups", column: "group_id", on_delete: :cascade
-  add_foreign_key "socializer_group_links", "socializer_groups", column: "group_id", on_delete: :cascade
-  add_foreign_key "socializer_memberships", "socializer_groups", column: "group_id", on_delete: :cascade
-  add_foreign_key "socializer_notifications", "socializer_activities", column: "activity_id", on_delete: :cascade
-  add_foreign_key "socializer_notifications", "socializer_activity_objects", column: "activity_object_id", on_delete: :cascade
-  add_foreign_key "socializer_person_addresses", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_contributions", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_educations", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_employments", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_links", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_phones", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_places", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_person_profiles", "socializer_people", column: "person_id", on_delete: :cascade
-  add_foreign_key "socializer_ties", "socializer_circles", column: "circle_id", on_delete: :cascade
 end
