@@ -1,19 +1,23 @@
 # frozen_string_literal: true
 
-class CreateSocializerNotifications < ActiveRecord::Migration[4.2]
+class CreateSocializerNotifications < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_notifications do |t|
-      t.integer :activity_id
-      t.integer :activity_object_id
+      t.references :activity, null: false
+      t.references :activity_object, null: false
       t.boolean :read, default: false
 
-      t.timestamps null: false
+      t.timestamps
     end
 
-    add_index :socializer_notifications, :activity_id
-    add_index :socializer_notifications, :activity_object_id
+    add_foreign_key :socializer_notifications, :socializer_activities,
+                    column: :activity_id,
+                    primary_key: "id",
+                    on_delete: :cascade
 
-    add_foreign_key :socializer_notifications, :socializer_activities
-    add_foreign_key :socializer_notifications, :socializer_activity_objects
+    add_foreign_key :socializer_notifications, :socializer_activity_objects,
+                    column: :activity_object_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

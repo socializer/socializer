@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class CreateSocializerAudiences < ActiveRecord::Migration[4.2]
+class CreateSocializerAudiences < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_audiences do |t|
-      t.integer  :activity_id, null: false
-      t.integer  :activity_object_id
-      t.string   :privacy, null: false
+      t.references :activity, null: false
+      t.references :activity_object
+      t.string :privacy, index: true, null: false
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :socializer_audiences,
@@ -15,6 +15,14 @@ class CreateSocializerAudiences < ActiveRecord::Migration[4.2]
               unique: true,
               name: "index_audiences_on_activity_id__activity_object_id"
 
-    add_index :socializer_audiences, :privacy
+    add_foreign_key :socializer_audiences, :socializer_activities,
+                    column: :activity_id,
+                    primary_key: "id",
+                    on_delete: :cascade
+
+    add_foreign_key :socializer_audiences, :socializer_activity_objects,
+                    column: :activity_object_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

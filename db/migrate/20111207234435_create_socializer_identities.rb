@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class CreateSocializerIdentities < ActiveRecord::Migration[4.2]
+class CreateSocializerIdentities < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_identities do |t|
-      t.string :name
-      t.string :email
-      t.string :password_digest
+      t.string :name, null: false
+      t.string :email, null: false
+      t.string :password_digest, null: false
 
-      t.timestamps null: false
+      t.timestamps
     end
     add_index :socializer_identities, :email, unique: true
   end

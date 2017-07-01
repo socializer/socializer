@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
-class CreateSocializerMemberships < ActiveRecord::Migration[4.2]
+class CreateSocializerMemberships < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_memberships do |t|
-      t.integer  :group_id
-      t.integer  :member_id
-      t.boolean  :active
+      t.references :group, null: false
+      t.integer :member_id, index: true, null: false
+      t.boolean :active
 
-      t.timestamps null: false
+      t.timestamps
     end
 
-    add_index :socializer_memberships, :group_id
-    add_index :socializer_memberships, :member_id
+    add_foreign_key :socializer_memberships, :socializer_groups,
+                    column: :group_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

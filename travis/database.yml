@@ -1,0 +1,32 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/<%= Rails.env %>.sqlite3
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  encoding: utf8
+  password:
+  database: socializer_<%= Rails.env %>
+
+postgres: &postgres
+  adapter: postgresql
+  username: postgres
+  password:
+  database: socializer_<%= Rails.env %>
+  min_messages: ERROR
+
+defaults: &defaults
+  pool: 5
+  timeout: 500
+  host: localhost
+  <<: *<%= ENV['DB'] || "postgresql" %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

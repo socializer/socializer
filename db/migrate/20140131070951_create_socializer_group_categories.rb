@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
-class CreateSocializerGroupCategories < ActiveRecord::Migration[4.2]
+class CreateSocializerGroupCategories < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_group_categories do |t|
-      t.integer :group_id,     null: false
+      t.references :group, null: false
       t.string  :display_name, null: false
 
-      t.timestamps null: false
+      t.timestamps
     end
 
-    add_index :socializer_group_categories, :group_id
-    add_foreign_key :socializer_group_categories, :socializer_groups
+    add_foreign_key :socializer_group_categories, :socializer_groups,
+                    column: :group_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end

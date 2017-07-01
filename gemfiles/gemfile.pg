@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Declare your gem's dependencies in socializer.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
-gemspec
+gemspec path: "../"
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -35,11 +35,13 @@ end
 
 group :development, :test do
   gem "byebug", "~> 9.0.6"
-  gem "capybara", "~> 2.14.4"
+  gem "capybara", "~> 2.14.3"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
   gem "rspec-rails", "~> 3.6.0"
 end
+
+gem "pg", "~> 0.21.0"
 
 # TODO: Remove. add these gems to help with the transition to Rails 5:
 gem "protected_attributes_continued"

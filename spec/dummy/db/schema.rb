@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id", "activity_object_id"], name: "index_audiences_on_activity_id__activity_object_id", unique: true
+    t.index ["activity_id"], name: "index_socializer_audiences_on_activity_id"
+    t.index ["activity_object_id"], name: "index_socializer_audiences_on_activity_object_id"
     t.index ["privacy"], name: "index_socializer_audiences_on_privacy"
   end
 
@@ -114,17 +116,17 @@ ActiveRecord::Schema.define(version: 20140131070951) do
   end
 
   create_table "socializer_identities", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_socializer_identities_on_email", unique: true
   end
 
   create_table "socializer_memberships", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "member_id"
+    t.integer "group_id", null: false
+    t.integer "member_id", null: false
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -141,8 +143,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
   end
 
   create_table "socializer_notifications", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "activity_object_id"
+    t.integer "activity_id", null: false
+    t.integer "activity_object_id", null: false
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -188,8 +190,8 @@ ActiveRecord::Schema.define(version: 20140131070951) do
   end
 
   create_table "socializer_person_contributions", force: :cascade do |t|
-    t.string "display_name", null: false
     t.integer "person_id", null: false
+    t.string "display_name", null: false
     t.integer "label", null: false
     t.string "url", null: false
     t.boolean "current", default: false
@@ -225,9 +227,9 @@ ActiveRecord::Schema.define(version: 20140131070951) do
   end
 
   create_table "socializer_person_links", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "display_name", null: false
     t.string "url", null: false
-    t.integer "person_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_socializer_person_links_on_person_id"

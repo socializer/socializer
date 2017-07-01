@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
-class CreateSocializerPersonLinks < ActiveRecord::Migration[4.2]
+class CreateSocializerPersonLinks < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_person_links do |t|
+      t.references :person, null: false
       t.string   :display_name, null: false
       t.string   :url, null: false
-      t.integer  :person_id, null: false
 
-      t.timestamps null: false
+      t.timestamps
     end
 
-    add_index :socializer_person_links, :person_id
-    add_foreign_key :socializer_person_links, :socializer_people
+    add_foreign_key :socializer_person_links, :socializer_people,
+                    column: :person_id,
+                    primary_key: "id",
+                    on_delete: :cascade
   end
 end
