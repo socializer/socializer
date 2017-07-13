@@ -143,7 +143,7 @@ GEM
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
-    dry-types (0.10.3)
+    dry-types (0.11.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
       dry-container (~> 0.3)
