@@ -4,7 +4,7 @@ class CreateSocializerGroupCategories < ActiveRecord::Migration[5.1]
   def change
     create_table :socializer_group_categories do |t|
       t.references :group, null: false
-      t.string  :display_name, null: false
+      t.string :display_name, null: false
 
       t.timestamps
     end
