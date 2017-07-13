@@ -37,24 +37,39 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          Socializer::CreateActivity.new(validate_params(params: params)).call
+          @params = params
+          @result = Activity::Contract::Share.call(share_attributes)
+
+          if result.success?
+            Socializer::CreateActivity.new(result.output).call
+          else
+            validation_errors
+          end
         end
 
         private
 
-        def validate_params(params:)
-          attributes = share_attributes(attributes: params)
-
-          Activity::Contract::Share.call(attributes).output
-        end
+        attr_reader :params, :result
 
         # TODO: Should this be a dry-struct?
-        def share_attributes(attributes:)
+        def share_attributes
           { actor_id: actor.guid,
-            activity_object_id: attributes[:activity_id],
+            activity_object_id: params[:activity_id],
             verb: verb,
-            object_ids: attributes[:object_ids],
-            content: attributes[:content] }
+            object_ids: params[:object_ids],
+            content: params[:content] }
+        end
+
+        def validation_errors
+          activity = Activity.new
+
+          result.messages.each do |field, messages|
+            messages.each do |message|
+              activity.errors.add(field, message)
+            end
+          end
+
+          activity
         end
 
         # The verb to use when sharing an [Socializer::ActivityObject]
