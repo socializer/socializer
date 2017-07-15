@@ -49,7 +49,7 @@ module Socializer
 
         private
 
-        attr_reader :params, :result
+        attr_reader :activity, :params, :result
 
         # TODO: Should this be a dry-struct?
         def share_attributes
@@ -60,13 +60,17 @@ module Socializer
             content: params[:content] }
         end
 
+        def add_errors_to_activity(field:, messages:)
+          messages.each do |message|
+            activity.errors.add(field, message)
+          end
+        end
+
         def validation_errors
-          activity = Activity.new
+          @activity = Activity.new
 
           result.messages.each do |field, messages|
-            messages.each do |message|
-              activity.errors.add(field, message)
-            end
+            add_errors_to_activity(field: field, messages: messages)
           end
 
           activity
