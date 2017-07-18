@@ -368,7 +368,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.15.1)
+  bundler (~> 1.15.2)
   byebug (~> 9.0.6)
   capybara (~> 2.14.4)
   codeclimate-test-reporter
