@@ -90,6 +90,8 @@ GEM
       xpath (~> 2.0)
     code_analyzer (0.4.7)
       sexp_processor
+    codeclimate-test-reporter (1.0.7)
+      simplecov
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -369,6 +371,7 @@ DEPENDENCIES
   bundler (~> 1.15.3)
   byebug (~> 9.0.6)
   capybara (~> 2.14.4)
+  codeclimate-test-reporter
   coffeelint (~> 1.16.0)
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.6.1)
