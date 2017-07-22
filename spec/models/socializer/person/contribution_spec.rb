@@ -10,13 +10,6 @@ module Socializer
       expect(contribution).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:display_name) }
-      it { is_expected.to allow_mass_assignment_of(:label) }
-      it { is_expected.to allow_mass_assignment_of(:url) }
-      it { is_expected.to allow_mass_assignment_of(:current) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:person) }
     end

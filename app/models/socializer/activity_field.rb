@@ -8,8 +8,6 @@ module Socializer
   # Activity Field model
   #
   class ActivityField < ApplicationRecord
-    attr_accessible :content, :activity
-
     # Relationships
     belongs_to :activity, inverse_of: :activity_field
 

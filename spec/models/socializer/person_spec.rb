@@ -11,26 +11,6 @@ module Socializer
       expect(person).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:display_name) }
-      it { is_expected.to allow_mass_assignment_of(:email) }
-      it { is_expected.to allow_mass_assignment_of(:language) }
-      it { is_expected.to allow_mass_assignment_of(:avatar_provider) }
-      it { is_expected.to allow_mass_assignment_of(:tagline) }
-      it { is_expected.to allow_mass_assignment_of(:introduction) }
-      it { is_expected.to allow_mass_assignment_of(:bragging_rights) }
-      it { is_expected.to allow_mass_assignment_of(:occupation) }
-      it { is_expected.to allow_mass_assignment_of(:skills) }
-      it { is_expected.to allow_mass_assignment_of(:gender) }
-      it { is_expected.to allow_mass_assignment_of(:looking_for_friends) }
-      it { is_expected.to allow_mass_assignment_of(:looking_for_dating) }
-      it { is_expected.to allow_mass_assignment_of(:looking_for_relationship) }
-      it { is_expected.to allow_mass_assignment_of(:looking_for_networking) }
-      it { is_expected.to allow_mass_assignment_of(:birthdate) }
-      it { is_expected.to allow_mass_assignment_of(:relationship) }
-      it { is_expected.to allow_mass_assignment_of(:other_names) }
-    end
-
     context "relationships" do
       it { is_expected.to have_one(:activity_object) }
       it { is_expected.to have_many(:authentications) }

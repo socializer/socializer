@@ -16,8 +16,6 @@ module Socializer
     enumerize :privacy, in: %w[public circles limited],
                         default: :public, predicates: true, scope: true
 
-    attr_accessible :activity_id, :privacy
-
     # Relationships
     belongs_to :activity, inverse_of: :audiences
     belongs_to :activity_object, inverse_of: :audiences, optional: true

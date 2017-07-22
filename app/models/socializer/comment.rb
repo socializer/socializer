@@ -12,8 +12,6 @@ module Socializer
   class Comment < ApplicationRecord
     include ObjectTypeBase
 
-    attr_accessible :content
-
     # Relationships
     belongs_to :activity_author, class_name: "ActivityObject",
                                  foreign_key: "author_id",

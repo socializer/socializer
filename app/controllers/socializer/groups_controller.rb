@@ -43,7 +43,7 @@ module Socializer
 
     # POST /groups
     def create
-      group = current_user.groups.build(params[:group])
+      group = current_user.groups.build(group_params)
 
       if group.save
         flash[:notice] = t("socializer.model.create", model: "Group")
@@ -56,7 +56,7 @@ module Socializer
     # PATCH/PUT /groups/1
     def update
       group = find_group
-      group.update!(params[:group])
+      group.update!(group_params)
 
       flash[:notice] = t("socializer.model.update", model: "Group")
       redirect_to group_path(group)
@@ -73,6 +73,11 @@ module Socializer
 
     def find_group
       @find_group ||= current_user.groups.find_by(id: params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def group_params
+      params.require(:group).permit(:display_name, :privacy, :tagline, :about)
     end
   end
 end

@@ -12,8 +12,6 @@ module Socializer
     # URLs related to the {Socializer::Group group}
     #
     class Link < ApplicationRecord
-      attr_accessible :display_name, :url
-
       # Relationships
       belongs_to :group
 

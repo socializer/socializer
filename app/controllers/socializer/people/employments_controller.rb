@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/employments
       def create
-        employment = employments.build(params[:person_employment])
+        employment = employments.build(person_employment_params)
 
         if employment.save
           flash[:notice] = t("socializer.model.create", model: "Employment")
@@ -41,7 +41,7 @@ module Socializer
       def update
         employment = find_employment
 
-        if employment.update(params[:person_employment])
+        if employment.update(person_employment_params)
           flash[:notice] = t("socializer.model.update", model: "Employment")
           redirect_to current_user
         else
@@ -66,6 +66,13 @@ module Socializer
 
       def find_employment
         @find_employment ||= employments.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_employment_params
+        params.require(:person_employment)
+              .permit(:employer_name, :job_title, :started_on, :ended_on,
+                      :current, :job_description)
       end
     end
   end

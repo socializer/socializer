@@ -10,18 +10,6 @@ module Socializer
       expect(activity_object).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:scope) }
-      it { is_expected.to allow_mass_assignment_of(:object_ids) }
-      it { is_expected.to allow_mass_assignment_of(:activitable_id) }
-      it { is_expected.to allow_mass_assignment_of(:activitable_type) }
-      it { is_expected.to allow_mass_assignment_of(:like_count) }
-
-      it do
-        is_expected.to allow_mass_assignment_of(:unread_notifications_count)
-      end
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:activitable) }
 

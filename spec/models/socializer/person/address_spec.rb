@@ -10,15 +10,6 @@ module Socializer
       expect(address).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:line1) }
-      it { is_expected.to allow_mass_assignment_of(:line2) }
-      it { is_expected.to allow_mass_assignment_of(:city) }
-      it { is_expected.to allow_mass_assignment_of(:postal_code_or_zip) }
-      it { is_expected.to allow_mass_assignment_of(:province_or_state) }
-      it { is_expected.to allow_mass_assignment_of(:country) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:person) }
     end

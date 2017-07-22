@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/phones
       def create
-        phone = phones.build(params[:person_phone])
+        phone = phones.build(person_phone_params)
 
         if phone.save
           flash[:notice] = t("socializer.model.create", model: "Phone")
@@ -41,7 +41,7 @@ module Socializer
       def update
         phone = find_phone
 
-        if phone.update(params[:person_phone])
+        if phone.update(person_phone_params)
           flash[:notice] = t("socializer.model.update", model: "Phone")
           redirect_to current_user
         else
@@ -66,6 +66,11 @@ module Socializer
 
       def find_phone
         @find_phone ||= phones.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_phone_params
+        params.require(:person_phone).permit(:label, :number)
       end
     end
   end

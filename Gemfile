@@ -41,5 +41,3 @@ group :development, :test do
   gem "rspec-rails", "~> 3.6.0"
 end
 
-# TODO: Remove. add these gems to help with the transition to Rails 5:
-gem "protected_attributes_continued"

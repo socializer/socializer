@@ -10,11 +10,6 @@ module Socializer
       expect(audience).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:activity_id) }
-      it { is_expected.to allow_mass_assignment_of(:privacy) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:activity).inverse_of(:audiences) }
       # FIXME: Test for optional: true

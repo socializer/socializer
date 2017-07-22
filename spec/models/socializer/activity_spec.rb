@@ -10,14 +10,6 @@ module Socializer
       expect(activity).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:verb) }
-      it { is_expected.to allow_mass_assignment_of(:circles) }
-      it { is_expected.to allow_mass_assignment_of(:actor_id) }
-      it { is_expected.to allow_mass_assignment_of(:activity_object_id) }
-      it { is_expected.to allow_mass_assignment_of(:target_id) }
-    end
-
     context "relationships" do
       # FIXME: Test for optional: true
       it { is_expected.to belong_to(:parent) }

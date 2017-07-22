@@ -42,7 +42,7 @@ module Socializer
     # PATCH/PUT /notes/1
     def update
       note = find_note
-      note.update!(params[:note])
+      note.update!(note_params)
 
       flash[:notice] = t("socializer.model.update", model: "Note")
       redirect_to activities_path
@@ -73,10 +73,15 @@ module Socializer
     end
 
     def create_note
-      current_user.activity_object.notes.create!(params[:note]) do |note|
+      current_user.activity_object.notes.create!(note_params) do |note|
         note.object_ids    = note.object_ids.split(",")
         note.activity_verb = "post"
       end
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def note_params
+      params.require(:note).permit(:activity_verb, :content, :object_ids)
     end
   end
 end

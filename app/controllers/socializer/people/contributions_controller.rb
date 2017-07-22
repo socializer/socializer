@@ -31,7 +31,7 @@ module Socializer
 
       # POST /people/1/contributions
       def create
-        contribution = contributions.build(params[:person_contribution])
+        contribution = contributions.build(person_contribution_params)
 
         if contribution.save
           flash[:notice] = t("socializer.model.create", model: "Contribution")
@@ -44,7 +44,7 @@ module Socializer
       # PATCH/PUT /people/1/contributions/1
       def update
         contribution = find_contribution
-        contribution.update!(params[:person_contribution])
+        contribution.update!(person_contribution_params)
 
         flash[:notice] = t("socializer.model.update", model: "Contribution")
         redirect_to current_user
@@ -67,6 +67,12 @@ module Socializer
 
       def find_contribution
         @find_contribution ||= contributions.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_contribution_params
+        params.require(:person_contribution)
+              .permit(:display_name, :label, :url, :current)
       end
     end
   end

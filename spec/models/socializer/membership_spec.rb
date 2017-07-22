@@ -20,12 +20,6 @@ module Socializer
       expect(membership).to be_valid
     end
 
-    describe "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:group_id) }
-      it { is_expected.to allow_mass_assignment_of(:active) }
-      it { is_expected.to allow_mass_assignment_of(:activity_member) }
-    end
-
     describe "relationships" do
       it { is_expected.to belong_to(:group).inverse_of(:memberships) }
 

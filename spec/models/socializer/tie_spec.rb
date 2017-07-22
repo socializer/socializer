@@ -11,10 +11,6 @@ module Socializer
       expect(tie).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:contact_id) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
 

@@ -10,8 +10,6 @@ module Socializer
   # Identifies the action that the activity describes.
   #
   class Verb < ApplicationRecord
-    attr_accessible :display_name
-
     # Relationships
     has_many :activities, inverse_of: :verb
 

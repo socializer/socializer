@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/links
       def create
-        link = links.build(params[:person_link])
+        link = links.build(person_link_params)
 
         if link.save
           flash[:notice] = t("socializer.model.create", model: "Link")
@@ -41,7 +41,7 @@ module Socializer
       def update
         link = find_link
 
-        if link.update(params[:person_link])
+        if link.update(person_link_params)
           flash[:notice] = t("socializer.model.update", model: "Link")
           redirect_to current_user
         else
@@ -66,6 +66,11 @@ module Socializer
 
       def find_link
         @find_link ||= links.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_link_params
+        params.require(:person_link).permit(:display_name, :url)
       end
     end
   end

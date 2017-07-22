@@ -42,7 +42,7 @@ module Socializer
 
     # POST /circles
     def create
-      circle = current_user.circles.build(params[:circle])
+      circle = current_user.circles.build(circle_params)
 
       if circle.save
         flash[:notice] = t("socializer.model.create", model: "Circle")
@@ -55,7 +55,7 @@ module Socializer
     # PATCH/PUT /circles/1
     def update
       circle = find_circle
-      circle.update!(params[:circle])
+      circle.update!(circle_params)
 
       flash[:notice] = t("socializer.model.update", model: "Circle")
       redirect_to circle
@@ -72,6 +72,11 @@ module Socializer
 
     def find_circle
       @find_circle ||= current_user.circles.find_by(id: params[:id]).decorate
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def circle_params
+      params.require(:circle).permit(:display_name, :content)
     end
   end
 end

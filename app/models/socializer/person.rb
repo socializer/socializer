@@ -20,13 +20,6 @@ module Socializer
     #                             default: :gravatar,
     #                             predicates: true, scope: true
 
-    attr_accessible :display_name, :email, :language, :avatar_provider,
-                    :tagline, :introduction, :bragging_rights, :occupation,
-                    :skills, :gender, :looking_for_friends,
-                    :looking_for_dating, :looking_for_relationship,
-                    :looking_for_networking, :birthdate, :relationship,
-                    :other_names
-
     enumerize :gender, in: { unknown: 0, female: 1, male: 2 },
                        default: :unknown, predicates: true, scope: true
 

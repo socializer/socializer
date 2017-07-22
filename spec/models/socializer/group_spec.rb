@@ -10,12 +10,6 @@ module Socializer
       expect(group).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:display_name) }
-      it { is_expected.to allow_mass_assignment_of(:privacy) }
-      it { is_expected.to allow_mass_assignment_of(:author_id) }
-    end
-
     context "relationships" do
       it do
         is_expected

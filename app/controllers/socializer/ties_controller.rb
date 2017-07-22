@@ -12,8 +12,6 @@ module Socializer
 
     # POST /ties
     def create
-      tie_params = params[:tie]
-
       circle = Circle.find_by(id: tie_params[:circle_id])
       tie = circle.add_contact(tie_params[:contact_id])
 
@@ -42,6 +40,11 @@ module Socializer
       flash[:notice] = t("socializer.model.tie.#{action.to_s.downcase}",
                          person_name: tie.contact.display_name,
                          circle_name: circle.display_name)
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def tie_params
+      params.require(:tie).permit(:contact_id, :circle_id)
     end
   end
 end

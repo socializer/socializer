@@ -20,8 +20,6 @@ module Socializer
       enumerize :label, in: { phone: 1, mobile: 2, fax: 3 }, default: :phone,
                         predicates: true, scope: true
 
-      attr_accessible :label, :number
-
       # Relationships
       belongs_to :person
 
