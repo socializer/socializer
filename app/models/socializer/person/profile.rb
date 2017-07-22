@@ -13,8 +13,6 @@ module Socializer
     # For example: Twitter, Facebook, etc.
     #
     class Profile < ApplicationRecord
-      attr_accessible :display_name, :url
-
       # Relationships
       belongs_to :person
 

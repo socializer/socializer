@@ -10,11 +10,6 @@ module Socializer
       expect(phone).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:label) }
-      it { is_expected.to allow_mass_assignment_of(:number) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:person) }
     end

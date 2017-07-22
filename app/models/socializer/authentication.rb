@@ -10,8 +10,6 @@ module Socializer
   # Tracks the authentication provders for each {Socializer::Person person}.
   #
   class Authentication < ApplicationRecord
-    attr_accessible :provider, :uid, :image_url
-
     # Relationships
     belongs_to :person
 

@@ -10,11 +10,6 @@ module Socializer
       expect(circle).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:display_name) }
-      it { is_expected.to allow_mass_assignment_of(:content) }
-    end
-
     context "relationships" do
       it do
         is_expected

@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/educations
       def create
-        education = educations.build(params[:person_education])
+        education = educations.build(person_education_params)
 
         if education.save
           flash[:notice] = t("socializer.model.create", model: "Education")
@@ -41,7 +41,7 @@ module Socializer
       def update
         education = find_education
 
-        if education.update(params[:person_education])
+        if education.update(person_education_params)
           flash[:notice] = t("socializer.model.update", model: "Education")
           redirect_to current_user
         else
@@ -66,6 +66,13 @@ module Socializer
 
       def find_education
         @find_education ||= educations.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_education_params
+        params.require(:person_education)
+              .permit(:school_name, :major_or_field_of_study, :started_on,
+                      :ended_on, :current, :courses_description)
       end
     end
   end

@@ -12,9 +12,6 @@ module Socializer
     # Where the {Socializer::Person person} has gone to school
     #
     class Education < ApplicationRecord
-      attr_accessible :school_name, :major_or_field_of_study, :started_on,
-                      :ended_on, :current, :courses_description
-
       # Relationships
       belongs_to :person
 

@@ -27,7 +27,7 @@ module Socializer
 
     # PATCH/PUT /people/1
     def update
-      current_user.update!(params[:person])
+      current_user.update!(person_params)
 
       flash[:notice] = t("socializer.model.update", model: "Person")
       redirect_to current_user
@@ -37,6 +37,17 @@ module Socializer
 
     def find_person
       Person.find_by(id: params[:id]).decorate
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def person_params
+      params.require(:person)
+            .permit(:display_name, :email, :language, :avatar_provider,
+                    :tagline, :introduction, :bragging_rights, :occupation,
+                    :skills, :gender, :looking_for_friends,
+                    :looking_for_dating, :looking_for_relationship,
+                    :looking_for_networking, :birthdate, :relationship,
+                    :other_names)
     end
   end
 end

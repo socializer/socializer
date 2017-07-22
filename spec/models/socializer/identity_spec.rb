@@ -10,13 +10,6 @@ module Socializer
       expect(identity).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:name) }
-      it { is_expected.to allow_mass_assignment_of(:email) }
-      it { is_expected.to allow_mass_assignment_of(:password) }
-      it { is_expected.to allow_mass_assignment_of(:password_confirmation) }
-    end
-
     context "validations" do
       subject { identity }
 

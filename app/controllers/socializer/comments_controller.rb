@@ -44,7 +44,7 @@ module Socializer
     # PATCH/PUT /comments/1
     def update
       comment = find_comment
-      comment.update!(params[:comment])
+      comment.update!(comment_params)
 
       flash[:notice] = t("socializer.model.update", model: "Comment")
       redirect_to activities_path
@@ -60,7 +60,7 @@ module Socializer
     private
 
     def build_comment
-      current_user.comments.build(params[:comment]) do |comment|
+      current_user.comments.build(comment_params) do |comment|
         comment.activity_verb = "add"
         comment.scope = Audience.privacy.find_value(:public)
       end
@@ -68,6 +68,11 @@ module Socializer
 
     def find_comment
       @find_comment ||= current_user.comments.find_by(id: params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def comment_params
+      params.require(:comment).permit(:content)
     end
   end
 end

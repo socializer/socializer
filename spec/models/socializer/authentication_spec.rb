@@ -10,12 +10,6 @@ module Socializer
       expect(authentication).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:provider) }
-      it { is_expected.to allow_mass_assignment_of(:uid) }
-      it { is_expected.to allow_mass_assignment_of(:image_url) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:person) }
     end

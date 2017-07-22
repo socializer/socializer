@@ -11,10 +11,6 @@ module Socializer
       expect(notification).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:read) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:activity).inverse_of(:notifications) }
 

@@ -11,8 +11,6 @@ module Socializer
   # {Socializer::Person}
   #
   class Membership < ApplicationRecord
-    attr_accessible :group_id, :active, :activity_member
-
     # Relationships
     belongs_to :group, inverse_of: :memberships
     belongs_to :activity_member, class_name: "ActivityObject",

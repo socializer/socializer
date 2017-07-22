@@ -10,11 +10,6 @@ module Socializer
       expect(place).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:city_name) }
-      it { is_expected.to allow_mass_assignment_of(:current) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:person) }
     end

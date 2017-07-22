@@ -10,10 +10,6 @@ module Socializer
       expect(group_category).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:display_name) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:group) }
     end

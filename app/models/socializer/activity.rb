@@ -16,8 +16,6 @@ module Socializer
   class Activity < ApplicationRecord
     include ObjectTypeBase
 
-    attr_accessible :verb, :circles, :actor_id, :activity_object_id, :target_id
-
     # Relationships
     belongs_to :parent, class_name: "Activity",
                         foreign_key: "target_id",

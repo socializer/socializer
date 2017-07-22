@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
   s.add_dependency("simple_form",          "~> 3.5.0")
   s.add_dependency("country_select",       "~> 3.1.0")
 
-  s.add_development_dependency("bundler",              "~> 1.15.2")
+  s.add_development_dependency("bundler",              "~> 1.15.3")
   s.add_development_dependency("rake",                 "~> 12.0.0")
   s.add_development_dependency("sqlite3",              "~> 1.3.13")
   # s.add_development_dependency("rspec-rails",          "~> 3.6.0")
@@ -57,7 +57,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # s.add_development_dependency("capybara",             "~> 2.5.0")
   s.add_development_dependency("factory_girl_rails",   "~> 4.8.0")
-  s.add_development_dependency("i18n-tasks",           "~> 0.9.15")
+  s.add_development_dependency("i18n-tasks",           "~> 0.9.16")
   s.add_development_dependency("inch",                 "~> 0.7.1")
   s.add_development_dependency("shoulda-matchers",     "~> 3.1.2")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")

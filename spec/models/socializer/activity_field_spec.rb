@@ -10,11 +10,6 @@ module Socializer
       expect(activity_field).to be_valid
     end
 
-    context "mass assignment" do
-      it { is_expected.to allow_mass_assignment_of(:content) }
-      it { is_expected.to allow_mass_assignment_of(:activity) }
-    end
-
     context "relationships" do
       it { is_expected.to belong_to(:activity) }
     end

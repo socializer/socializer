@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/profiles
       def create
-        profile = profiles.build(params[:person_profile])
+        profile = profiles.build(person_profile_params)
 
         if profile.save
           flash[:notice] = t("socializer.model.create", model: "Profile")
@@ -41,7 +41,7 @@ module Socializer
       def update
         profile = find_profile
 
-        if profile.update(params[:person_profile])
+        if profile.update(person_profile_params)
           flash[:notice] = t("socializer.model.update", model: "Profile")
           redirect_to current_user
         else
@@ -66,6 +66,11 @@ module Socializer
 
       def find_profile
         @find_profile ||= profiles.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_profile_params
+        params.require(:person_profile).permit(:display_name, :url)
       end
     end
   end

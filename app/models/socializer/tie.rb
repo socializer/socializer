@@ -11,8 +11,6 @@ module Socializer
   # {Socializer::Person}
   #
   class Tie < ApplicationRecord
-    attr_accessible :contact_id
-
     # Relationships
     belongs_to :circle, inverse_of: :ties
     belongs_to :activity_contact, class_name: "ActivityObject",

@@ -10,8 +10,6 @@ module Socializer
   # The system informing you that something of interest has occurred for you.
   #
   class Notification < ApplicationRecord
-    attr_accessible :read
-
     # Relationships
     belongs_to :activity, inverse_of: :notifications
     belongs_to :activity_object, inverse_of: :notifications,

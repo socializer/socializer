@@ -18,8 +18,6 @@ module Socializer
                         default: :current_contributor, predicates: true,
                         scope: true
 
-      attr_accessible :display_name, :label, :url, :current
-
       # Relationships
       belongs_to :person
 

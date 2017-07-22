@@ -13,8 +13,6 @@ module Socializer
     # interested in.
     #
     class Category < ApplicationRecord
-      attr_accessible :display_name
-
       # Relationships
       belongs_to :group
 

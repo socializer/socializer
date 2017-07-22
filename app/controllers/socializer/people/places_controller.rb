@@ -27,7 +27,7 @@ module Socializer
 
       # POST /people/1/places
       def create
-        place = places.build(params[:person_place])
+        place = places.build(person_place_params)
 
         if place.save
           flash[:notice] = t("socializer.model.create", model: "Place")
@@ -41,7 +41,7 @@ module Socializer
       def update
         place = find_place
 
-        if place.update(params[:person_place])
+        if place.update(person_place_params)
           flash[:notice] = t("socializer.model.update", model: "Place")
           redirect_to current_user
         else
@@ -66,6 +66,11 @@ module Socializer
 
       def find_place
         @find_place ||= places.find_by(id: params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def person_place_params
+        params.require(:person_place).permit(:city_name, :current)
       end
     end
   end
