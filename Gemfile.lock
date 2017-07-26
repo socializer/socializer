@@ -88,7 +88,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    code_analyzer (0.4.7)
+    code_analyzer (0.4.8)
       sexp_processor
     codeclimate-test-reporter (1.0.7)
       simplecov
@@ -221,7 +221,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    parallel (1.11.2)
+    parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
@@ -259,9 +259,9 @@ GEM
       rails
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_best_practices (1.18.1)
+    rails_best_practices (1.19.0)
       activesupport
-      code_analyzer (>= 0.4.3)
+      code_analyzer (>= 0.4.8)
       erubis
       i18n
       json
@@ -347,7 +347,7 @@ GEM
     thor (0.19.4)
     thread (0.2.2)
     thread_safe (0.3.6)
-    tilt (2.0.7)
+    tilt (2.0.8)
     tins (1.15.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
@@ -379,7 +379,7 @@ DEPENDENCIES
   pry (~> 0.10.4)
   rails-controller-testing
   rails-dummy (~> 0.0.4)
-  rails_best_practices (~> 1.18.1)
+  rails_best_practices (~> 1.19.0)
   rake (~> 12.0.0)
   rspec-rails (~> 3.6.0)
   rubocop (~> 0.49.1)
