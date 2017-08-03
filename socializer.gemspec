@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = "~> 2.4.1"
 
-  s.add_dependency("rails",                "~> 5.1.2")
+  s.add_dependency("rails",                "~> 5.1.3")
   s.add_dependency("jquery-rails",         "~> 4.3.1")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
