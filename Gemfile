@@ -35,7 +35,7 @@ end
 
 group :development, :test do
   gem "byebug", "~> 9.0.6"
-  gem "capybara", "~> 2.15.0"
+  gem "capybara", "~> 2.15.1"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
   gem "rspec-rails", "~> 3.6.0"
