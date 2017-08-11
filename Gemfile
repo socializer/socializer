@@ -38,6 +38,6 @@ group :development, :test do
   gem "capybara", "~> 2.15.1"
   gem "pry", "~> 0.10.4"
   gem "rails-dummy", "~> 0.0.4"
-  gem "rspec-rails", "~> 3.6.0"
+  gem "rspec-rails", "~> 3.6.1"
 end
 
