@@ -146,7 +146,7 @@ module Socializer
           user.activity_object.notes.create!(valid_attributes[:note])
         end
 
-        context "returns success" do
+        context "format.js returns success" do
           before do
             delete :destroy, params: { id: note }, format: :js
           end
