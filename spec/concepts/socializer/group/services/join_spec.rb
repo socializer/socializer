@@ -38,7 +38,7 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(public_group.privacy.public?).to be_truthy
+              expect(public_group.privacy).to be_public
             end
 
             it "member? is false" do
