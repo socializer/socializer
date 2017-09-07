@@ -42,7 +42,7 @@ module Socializer
             end
 
             it "member? is false" do
-              expect(public_group.member?(person)).to be_falsey
+              expect(public_group).not_to be_member(person)
             end
 
             context "and a person joins it" do
@@ -55,7 +55,7 @@ module Socializer
               end
 
               it "member? is true" do
-                expect(public_group.member?(person)).to be_truthy
+                expect(public_group).to be_member(person)
               end
 
               # The factory adds a person to the public group by default
