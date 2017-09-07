@@ -81,45 +81,43 @@ module Socializer
         end
       end
 
-      describe "POST #create" do
-        context "with valid attributes" do
-          context "format.html" do
-            it "saves the new note in the database" do
-              expect { post :create, params: valid_attributes }
-                .to change(Note, :count).by(1)
-            end
-
-            it "redirects to activities#index" do
-              post :create, params: valid_attributes
-              expect(response).to redirect_to activities_path
-            end
+      describe "POST #create with valid attributes" do
+        context "format.html" do
+          it "saves the new note in the database" do
+            expect { post :create, params: valid_attributes }
+              .to change(Note, :count).by(1)
           end
 
-          context "format.js" do
-            before do
-              request.env["HTTP_ACCEPT"] = "application/javascript"
-            end
-
-            it "saves the new note in the database" do
-              expect { post :create, params: valid_attributes, format: :js }
-                .to change(Note, :count).by(1)
-            end
-
-            it "returns http ok" do
-              post :create, params: valid_attributes, format: :js
-              expect(response).to have_http_status(:ok)
-            end
-
-            it "renders the :create template" do
-              post :create, params: valid_attributes, format: :js
-              expect(response).to render_template(:create)
-            end
+          it "redirects to activities#index" do
+            post :create, params: valid_attributes
+            expect(response).to redirect_to activities_path
           end
         end
 
-        context "with invalid attributes" do
-          it "is a pending example"
+        context "format.js" do
+          before do
+            request.env["HTTP_ACCEPT"] = "application/javascript"
+          end
+
+          it "saves the new note in the database" do
+            expect { post :create, params: valid_attributes, format: :js }
+              .to change(Note, :count).by(1)
+          end
+
+          it "returns http ok" do
+            post :create, params: valid_attributes, format: :js
+            expect(response).to have_http_status(:ok)
+          end
+
+          it "renders the :create template" do
+            post :create, params: valid_attributes, format: :js
+            expect(response).to render_template(:create)
+          end
         end
+      end
+
+      describe "POST #create with invalid attributes" do
+        it "is a pending example"
       end
 
       describe "GET #edit" do
@@ -132,17 +130,15 @@ module Socializer
         end
       end
 
-      describe "PATCH #update" do
-        context "with valid attributes" do
-          it "redirects to activities#index" do
-            patch :update, params: update_attributes
-            expect(response).to redirect_to activities_path
-          end
+      describe "PATCH #update with valid attributes" do
+        it "redirects to activities#index" do
+          patch :update, params: update_attributes
+          expect(response).to redirect_to activities_path
         end
+      end
 
-        context "with invalid attributes" do
-          it "is a pending example"
-        end
+      describe "PATCH #update with invalid attributes" do
+        it "is a pending example"
       end
 
       describe "DELETE #destroy" do
