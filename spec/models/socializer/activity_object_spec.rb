@@ -107,7 +107,7 @@ module Socializer
       context "#comment?" do
         let(:activity_object) { build(:activity_object_comment) }
 
-        it { expect(activity_object.comment?).to be_truthy }
+        it { expect(activity_object).to be_comment }
       end
 
       context "#group?" do
