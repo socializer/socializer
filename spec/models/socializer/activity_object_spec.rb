@@ -119,7 +119,7 @@ module Socializer
       context "#note?" do
         let(:activity_object) { build(:activity_object) }
 
-        it { expect(activity_object.note?).to be_truthy }
+        it { expect(activity_object).to be_note }
       end
 
       context "#person?" do
