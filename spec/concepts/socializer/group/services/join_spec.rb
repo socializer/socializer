@@ -109,7 +109,7 @@ module Socializer
             end
 
             it "has the right privacy level" do
-              expect(restricted_group.privacy.restricted?).to be_truthy
+              expect(restricted_group.privacy).to be_restricted
             end
 
             context "and a person joins it" do
