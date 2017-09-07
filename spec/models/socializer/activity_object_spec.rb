@@ -113,7 +113,7 @@ module Socializer
       context "#group?" do
         let(:activity_object) { build(:activity_object_group) }
 
-        it { expect(activity_object.group?).to be_truthy }
+        it { expect(activity_object).to be_group }
       end
 
       context "#note?" do
