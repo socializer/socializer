@@ -84,7 +84,7 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(private_group.privacy.private?).to be_truthy
+              expect(private_group.privacy).to be_private
             end
 
             it "cannot be joined" do
