@@ -43,8 +43,7 @@ module Socializer
 
     has_many :members, through: :activity_members,
                        source: :activitable,
-                       source_type: "Socializer::Person" # ,
-                      #  dependent: :destroy
+                       source_type: "Socializer::Person"
 
     # Validations
     validates :activity_author, presence: true

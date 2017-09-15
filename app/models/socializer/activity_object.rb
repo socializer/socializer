@@ -22,16 +22,18 @@ module Socializer
     has_one :group,
             through: :self_reference,
             source: :activitable,
-            source_type: Group.name
+            source_type: Group.name,
+            dependent: :destroy
 
     has_one :person,
             through: :self_reference,
             source: :activitable,
-            source_type: Person.name
+            source_type: Person.name,
+            dependent: :destroy
 
-    has_many :notifications, inverse_of: :activity_object
-    has_many :audiences, inverse_of: :activity_object # , dependent: :destroy
-    has_many :activities, through: :audiences
+    has_many :notifications, inverse_of: :activity_object, dependent: :destroy
+    has_many :audiences, inverse_of: :activity_object, dependent: :destroy
+    has_many :activities, through: :audiences, dependent: :destroy
 
     has_many :actor_activities, class_name: "Activity",
                                 foreign_key: "actor_id",
@@ -45,14 +47,31 @@ module Socializer
                                  foreign_key: "target_id",
                                  dependent: :destroy
 
-    has_many :notes,    foreign_key: "author_id", inverse_of: :activity_author
-    has_many :comments, foreign_key: "author_id", inverse_of: :activity_author
-    has_many :groups,   foreign_key: "author_id", inverse_of: :activity_author
-    has_many :circles,  foreign_key: "author_id", inverse_of: :activity_author
-    has_many :contacts, through: :circles
+    has_many :notes,
+             foreign_key: "author_id",
+             inverse_of: :activity_author,
+             dependent: :destroy
+
+    has_many :comments,
+             foreign_key: "author_id",
+             inverse_of: :activity_author,
+             dependent: :destroy
+
+    has_many :groups,
+             foreign_key: "author_id",
+             inverse_of: :activity_author,
+             dependent: :destroy
+
+    has_many :circles,
+             foreign_key: "author_id",
+             inverse_of: :activity_author,
+             dependent: :destroy
+
+    has_many :contacts, through: :circles, dependent: :destroy
 
     has_many :ties, foreign_key: "contact_id",
-                    inverse_of: :activity_contact
+                    inverse_of: :activity_contact,
+                    dependent: :destroy
 
     has_many :memberships,
              -> { Membership.active },
