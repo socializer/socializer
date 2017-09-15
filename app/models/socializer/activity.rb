@@ -33,20 +33,25 @@ module Socializer
 
     belongs_to :verb, inverse_of: :activities
 
-    has_one :activity_field, inverse_of: :activity
+    has_one :activity_field,
+            inverse_of: :activity,
+            dependent: :destroy
 
     has_one :actor, through: :activitable_actor,
                     source: :activitable,
-                    source_type: "Socializer::Person"
+                    source_type: "Socializer::Person",
+                    dependent: :destroy
 
-    has_many :audiences, inverse_of: :activity # , dependent: :destroy
-    has_many :activity_objects, through: :audiences
+    has_many :audiences, inverse_of: :activity, dependent: :destroy
+    has_many :activity_objects, through: :audiences, dependent: :destroy
 
     has_many :children, class_name: "Activity",
                         foreign_key: "target_id",
                         dependent: :destroy
 
-    has_many :notifications, inverse_of: :activity
+    has_many :notifications,
+             inverse_of: :activity,
+             dependent: :destroy
 
     # Validations
     validates :activitable_actor, presence: true

@@ -19,7 +19,8 @@ module Socializer
 
     has_one :author, through: :activity_author,
                      source: :activitable,
-                     source_type: "Socializer::Person"
+                     source_type: "Socializer::Person",
+                     dependent: :destroy
 
     # Validations
     validates :activity_author, presence: true
