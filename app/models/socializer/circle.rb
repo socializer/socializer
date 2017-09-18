@@ -24,13 +24,15 @@ module Socializer
 
     has_one :author, through: :activity_author,
                      source: :activitable,
-                     source_type: "Socializer::Person"
+                     source_type: "Socializer::Person",
+                     dependent: :destroy
 
-    has_many :ties, inverse_of: :circle
-    has_many :activity_contacts, through: :ties
+    has_many :ties, inverse_of: :circle, dependent: :destroy
+    has_many :activity_contacts, through: :ties, dependent: :destroy
     has_many :contacts, through: :activity_contacts,
                         source: :activitable,
-                        source_type: "Socializer::Person"
+                        source_type: "Socializer::Person",
+                        dependent: :destroy
 
     # Validations
     validates :activity_author, presence: true

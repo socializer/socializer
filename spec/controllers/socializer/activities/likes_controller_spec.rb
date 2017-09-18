@@ -74,7 +74,7 @@ module Socializer
 
         # Make sure that the note is not liked before liking it.
         it "no likes for the note before liking it" do
-          expect(user.likes?(note_activity.activity_object)).to be_falsey
+          expect(user).not_to be_likes(note_activity.activity_object)
         end
 
         describe "GET #index" do
@@ -102,7 +102,7 @@ module Socializer
           end
 
           it "likes the note after liking it" do
-            expect(user.likes?(note_activity.activity_object)).to be_truthy
+            expect(user).to be_likes(note_activity.activity_object)
           end
         end
 
@@ -116,7 +116,7 @@ module Socializer
           end
 
           it "does not like the note anymore" do
-            expect(user.likes?(note_activity.activity_object)).to be_falsey
+            expect(user).not_to be_likes(note_activity.activity_object)
           end
         end
       end

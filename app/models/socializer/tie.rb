@@ -19,7 +19,8 @@ module Socializer
 
     has_one :contact, through: :activity_contact,
                       source: :activitable,
-                      source_type: "Socializer::Person"
+                      source_type: "Socializer::Person",
+                      dependent: :destroy
 
     # Validations
     validates :circle, presence: true

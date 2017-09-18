@@ -24,7 +24,8 @@ module Socializer
 
     has_one :author, through: :activity_author,
                      source: :activitable,
-                     source_type: "Socializer::Person"
+                     source_type: "Socializer::Person",
+                     dependent: :destroy
 
     has_many :links, class_name: "Group::Link",
                      foreign_key: "group_id",
@@ -34,7 +35,7 @@ module Socializer
                           foreign_key: "group_id",
                           dependent: :destroy
 
-    has_many :memberships, inverse_of: :group
+    has_many :memberships, inverse_of: :group # , dependent: :destroy
 
     has_many :activity_members,
              -> { merge(Membership.active) },

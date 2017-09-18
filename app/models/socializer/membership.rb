@@ -19,7 +19,8 @@ module Socializer
 
     has_one :member, through: :activity_member,
                      source: :activitable,
-                     source_type: "Socializer::Person"
+                     source_type: "Socializer::Person",
+                     dependent: :destroy
 
     # Validations
 

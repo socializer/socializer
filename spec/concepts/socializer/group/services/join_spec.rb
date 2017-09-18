@@ -38,11 +38,11 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(public_group.privacy.public?).to be_truthy
+              expect(public_group.privacy).to be_public
             end
 
             it "member? is false" do
-              expect(public_group.member?(person)).to be_falsey
+              expect(public_group).not_to be_member(person)
             end
 
             context "and a person joins it" do
@@ -55,7 +55,7 @@ module Socializer
               end
 
               it "member? is true" do
-                expect(public_group.member?(person)).to be_truthy
+                expect(public_group).to be_member(person)
               end
 
               # The factory adds a person to the public group by default
@@ -84,7 +84,7 @@ module Socializer
             end
 
             it "is has the right privacy level" do
-              expect(private_group.privacy.private?).to be_truthy
+              expect(private_group.privacy).to be_private
             end
 
             it "cannot be joined" do
@@ -109,7 +109,7 @@ module Socializer
             end
 
             it "has the right privacy level" do
-              expect(restricted_group.privacy.restricted?).to be_truthy
+              expect(restricted_group.privacy).to be_restricted
             end
 
             context "and a person joins it" do

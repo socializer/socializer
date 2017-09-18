@@ -11,7 +11,7 @@ module Socializer
   #
   class Verb < ApplicationRecord
     # Relationships
-    has_many :activities, inverse_of: :verb
+    has_many :activities, inverse_of: :verb, dependent: :destroy
 
     # Validations
     validates :display_name, presence: true, uniqueness: true

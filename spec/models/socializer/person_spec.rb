@@ -136,7 +136,7 @@ module Socializer
       end
 
       it { expect(liking_person.likes.count.size).to eq(1) }
-      it { expect(liking_person.likes?(liked_activity_object)).to be_truthy }
+      it { expect(liking_person).to be_likes(liked_activity_object) }
     end
 
     it "#pending_membership_invites" do

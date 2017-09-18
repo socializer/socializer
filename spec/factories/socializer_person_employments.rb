@@ -5,7 +5,7 @@
 FactoryGirl.define do
   factory :person_employment, class: Socializer::Person::Employment do
     employer_name "Some Company"
-    started_on Date.new(2014, 12, 3)
+    started_on { Date.new(2014, 12, 3) }
     ended_on nil
     current true
     association :person, factory: :person

@@ -111,7 +111,7 @@ fr:
       ownerships:
         index:
           delete: supprimer
-          edit: "éditer"
+          edit: éditer
           header:
             one: You own 1 group
             other: You own %{count} groups

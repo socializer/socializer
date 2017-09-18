@@ -95,37 +95,37 @@ module Socializer
       context "#activity?" do
         let(:activity_object) { build(:activity_object_activity) }
 
-        it { expect(activity_object.activity?).to be_truthy }
+        it { expect(activity_object).to be_activity }
       end
 
       context "#circle?" do
         let(:activity_object) { build(:activity_object_circle) }
 
-        it { expect(activity_object.circle?).to be_truthy }
+        it { expect(activity_object).to be_circle }
       end
 
       context "#comment?" do
         let(:activity_object) { build(:activity_object_comment) }
 
-        it { expect(activity_object.comment?).to be_truthy }
+        it { expect(activity_object).to be_comment }
       end
 
       context "#group?" do
         let(:activity_object) { build(:activity_object_group) }
 
-        it { expect(activity_object.group?).to be_truthy }
+        it { expect(activity_object).to be_group }
       end
 
       context "#note?" do
         let(:activity_object) { build(:activity_object) }
 
-        it { expect(activity_object.note?).to be_truthy }
+        it { expect(activity_object).to be_note }
       end
 
       context "#person?" do
         let(:activity_object) { build(:activity_object_person) }
 
-        it { expect(activity_object.person?).to be_truthy }
+        it { expect(activity_object).to be_person }
       end
     end
 
