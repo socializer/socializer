@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ActiveSupport::Inflector::Inflections do
+RSpec.describe ActiveSupport::Inflector do
   context "singularize" do
     context "returns the singular form of a word" do
       it { expect("ties".singularize(:en)).to eq("tie") }
