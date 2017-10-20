@@ -19,7 +19,7 @@ git_source(:github) do |repo_name|
 end
 
 group :development do
-  gem "coffeelint", "~> 1.16.0"
+  gem "coffeelint", "~> 1.16.1"
 end
 
 group :test do
