@@ -2,7 +2,7 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :activity, class: Socializer::Activity do
     association :activity_object, factory: :activity_object
     association :verb, factory: :verb

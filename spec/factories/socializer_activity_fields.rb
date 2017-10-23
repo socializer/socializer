@@ -2,7 +2,7 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :activity_field, class: Socializer::ActivityField do
     content "This is My Text"
     association :activity, factory: :activity

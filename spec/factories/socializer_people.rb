@@ -2,7 +2,7 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :person, class: Socializer::Person do
     sequence(:display_name) { |n| "name#{n}" }
     sequence(:email) { |n| "name#{n}@example.com" }

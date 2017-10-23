@@ -2,7 +2,7 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :circle, class: Socializer::Circle do
     sequence(:display_name) { |n| "Friends no#{n}" }
     content "This is some content"
