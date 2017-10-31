@@ -366,7 +366,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.15.4)
+  bundler (~> 1.16.0)
   byebug (~> 9.1.0)
   capybara (~> 2.15.4)
   codeclimate-test-reporter
@@ -391,4 +391,4 @@ DEPENDENCIES
   sqlite3 (~> 1.3.13)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
