@@ -12,6 +12,7 @@ AllCops:
     - "lib/tasks/cucumber.rake"
     - "script/cucumber"
     - "spec/dummy/**/*"
+    - "spec/i18n_spec.rb"
     - "vendor/**/*"
 
   # Cop names are not displayed in offense messages by default. Change behavior
