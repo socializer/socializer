@@ -52,7 +52,7 @@ authentications to your account. This will be used later on to share your activi
 
 Add this line to your application's Gemfile:
 
-    gem 'socializer', github: 'dominicgoulet/socializer'
+    gem 'socializer', github: 'socializer/socializer'
 
 And then execute:
 
