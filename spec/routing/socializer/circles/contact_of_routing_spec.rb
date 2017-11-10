@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Circles::ContactOfController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/circles/contact_of")
           .to route_to("socializer/circles/contact_of#index")
@@ -28,7 +28,7 @@ module Socializer
         expect(post: "/circles/contact_of").not_to be_routable
       end
 
-      context "does not route to #update" do
+      context "when it does not route to #update" do
         it { expect(patch: "/circles/contact_of/1").not_to be_routable }
         it { expect(put: "/circles/contact_of/1").not_to be_routable }
       end

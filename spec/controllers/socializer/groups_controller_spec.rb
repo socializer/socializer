@@ -31,7 +31,7 @@ module Socializer
       { group: { author_id: user.guid, display_name: "", privacy: nil } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index
@@ -82,7 +82,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -176,7 +176,7 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
-        context "cannot delete a group that has members" do
+        context "when it cannot delete a group that has members" do
           it "deletes the group" do
             group
             expect { delete :destroy, params: { id: group } }
@@ -184,7 +184,7 @@ module Socializer
           end
         end
 
-        context "can delete a group that has no members" do
+        context "when it can delete a group that has no members" do
           before do
             Group::Services::Leave.new(group: group, person: user).call
           end

@@ -10,7 +10,7 @@ module Socializer
       expect(group).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it do
         is_expected
           .to belong_to(:activity_author)
@@ -45,7 +45,7 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_presence_of(:privacy) }
@@ -58,8 +58,8 @@ module Socializer
       end
     end
 
-    context "scopes" do
-      context "with_display_name" do
+    context "with scopes" do
+      describe "with_display_name" do
         let(:sql) { Group.with_display_name(name: "Group").to_sql }
 
         let(:expected) do
@@ -103,7 +103,7 @@ module Socializer
         create(:group, privacy: :private)
       end
 
-      context "cannot be deleted" do
+      describe "it cannot be deleted" do
         before do
           group_with_members.destroy
         end

@@ -26,7 +26,7 @@ module Socializer
       { tie: { circle_id: nil, contact_id: user.activity_object.id } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "POST #create" do
         it "requires login" do
           post :create, params: valid_attributes, format: :js
@@ -42,7 +42,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -59,7 +59,7 @@ module Socializer
               .to change(Tie, :count).by(1)
           end
 
-          context "renders the :create template" do
+          describe "it renders the :create template" do
             before do
               post :create, params: valid_attributes, format: :js
             end
@@ -87,7 +87,7 @@ module Socializer
             .to change(Tie, :count).by(-1)
         end
 
-        context "redirects to circles#show" do
+        describe "it redirects to circles#show" do
           before do
             delete :destroy, params: { id: tie }
           end

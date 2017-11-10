@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe CommentsController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "does not route to #index" do
         expect(get: "/comments").not_to be_routable
       end

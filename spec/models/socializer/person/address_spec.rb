@@ -10,11 +10,11 @@ module Socializer
       expect(address).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:person) }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:category) }
       it { is_expected.to validate_presence_of(:person) }
       it { is_expected.to validate_presence_of(:line1) }

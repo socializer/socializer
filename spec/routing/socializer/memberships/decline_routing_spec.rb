@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Memberships::DeclineController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "does not route to #index" do
         expect(get: "/memberships/1/decline").not_to be_routable
       end
@@ -27,7 +27,7 @@ module Socializer
         expect(post: "/memberships/1/decline").not_to be_routable
       end
 
-      context "does not route to #update" do
+      context "when it does not route to #update" do
         it { expect(patch: "/memberships/1/decline/1").not_to be_routable }
         it { expect(put: "/memberships/1/decline/1").not_to be_routable }
       end

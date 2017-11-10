@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe AuthenticationsController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/authentications")
           .to route_to("socializer/authentications#index")

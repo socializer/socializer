@@ -10,17 +10,17 @@ module Socializer
       expect(place).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:person) }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:city_name) }
       it { is_expected.to validate_presence_of(:person) }
     end
 
-    context "scopes" do
-      context "current and previous" do
+    context "with scopes" do
+      describe "current and previous" do
         let(:place) { create(:person_place) }
 
         before { place }

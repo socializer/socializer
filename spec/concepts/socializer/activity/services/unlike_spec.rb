@@ -16,7 +16,7 @@ module Socializer
           { activity_object: liked_activity_object }
         end
 
-        context "check return type when unliking a liked object" do
+        context "when unliking a liked object, check return type" do
           before do
             like.call(unlike_attributes)
           end
@@ -26,7 +26,7 @@ module Socializer
           it { expect(results).to be_kind_of(Socializer::Activity) }
         end
 
-        context "check the like_count and liked_by" do
+        describe "check the like_count and liked_by" do
           before do
             like.call(unlike_attributes)
             unlike.call(unlike_attributes)
@@ -38,7 +38,7 @@ module Socializer
           it { expect(liked_activity_object.liked_by.size).to eq(0) }
         end
 
-        context "can't unlike without a like" do
+        context "with no like, can't unlike" do
           before do
             unlike.call(unlike_attributes)
 

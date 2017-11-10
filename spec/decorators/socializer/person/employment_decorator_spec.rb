@@ -8,11 +8,11 @@ module Socializer
     let(:decorated_employment) { Person::EmploymentDecorator.new(employment) }
 
     describe "ended_on" do
-      context "is nil" do
+      context "when nil" do
         it { expect(decorated_employment.ended_on).to eq(nil) }
       end
 
-      context "is a date" do
+      context "when it is a date" do
         let(:date) { Date.new(2015, 12, 3) }
         let(:employment) { create(:person_employment, ended_on: date) }
         let(:ended_on) { date.to_s(:long_ordinal) }
@@ -22,7 +22,7 @@ module Socializer
     end
 
     describe "formatted_employment" do
-      context "without job_title or job_description" do
+      context "with no job_title or job_description" do
         let(:employment_value) do
           "Some Company<br>" \
           "#{decorated_employment.started_on_to_ended_on}"
@@ -49,7 +49,7 @@ module Socializer
         end
       end
 
-      context "without job_title with job_description" do
+      context "with no job_title with job_description" do
         let(:employment) do
           create(:person_employment, job_description: "Description")
         end

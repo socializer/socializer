@@ -5,13 +5,13 @@ require "rails_helper"
 module Socializer
   RSpec.describe AudienceList, type: :service do
     describe "when the person argument is nil" do
-      context ".new should raise an ArgumentError" do
+      describe ".new should raise an ArgumentError" do
         let(:audience_list) { AudienceList.new(person: nil, query: nil) }
 
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
 
-      context ".call should raise an ArgumentError" do
+      describe ".call should raise an ArgumentError" do
         let(:audience_list) { AudienceList.call(person: nil, query: nil) }
 
         it { expect { audience_list }.to raise_error(ArgumentError) }
@@ -24,7 +24,7 @@ module Socializer
       it { expect { audience_list }.to raise_error(ArgumentError) }
     end
 
-    context ".call" do
+    describe ".call" do
       let(:person) { create(:person_circles) }
       let(:public) { { id: "public", name: "Public" } }
       let(:circles) { { id: "circles", name: "Circles" } }

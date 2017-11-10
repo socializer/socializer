@@ -37,16 +37,16 @@ module Socializer
       end
     end
 
-    describe "scopes" do
-      context "active" do
-        context "no active records" do
+    context "with scopes" do
+      describe "active" do
+        context "when no active records" do
           let(:result) { Membership.active }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be false }
         end
 
-        context "active records" do
+        context "with active records" do
           before { create(:socializer_membership, active: true) }
           let(:result) { Membership.active }
 
@@ -55,15 +55,15 @@ module Socializer
         end
       end
 
-      context "inactive" do
-        context "no inactive records" do
+      describe "inactive" do
+        context "when no inactive records" do
           let(:result) { Membership.inactive }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be false }
         end
 
-        context "inactive records" do
+        context "with inactive records" do
           before { create(:socializer_membership, active: false) }
           let(:result) { Membership.inactive }
 
@@ -72,7 +72,7 @@ module Socializer
         end
       end
 
-      context "with_member_id" do
+      describe "with_member_id" do
         let(:sql) { Membership.with_member_id(member_id: 1).to_sql }
 
         it do
@@ -80,7 +80,7 @@ module Socializer
             .to include('WHERE "socializer_memberships"."member_id" = 1')
         end
 
-        context "person has no memberships" do
+        context "when person has no memberships" do
           let(:user) { create(:person) }
           let(:result) { Membership.with_member_id(member_id: user.guid) }
 
@@ -88,7 +88,7 @@ module Socializer
           it { expect(result.exists?).to be false }
         end
 
-        context "person has memberships" do
+        context "when person has memberships" do
           let(:result) { Membership.with_member_id(member_id: user.guid) }
 
           before do
@@ -97,7 +97,7 @@ module Socializer
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
 
-          context "has memberships" do
+          context "when they have memberships" do
             it { expect(result.exists?).to be true }
             it { expect(result.first.group_id).to eq group.id }
             it { expect(result.first.member_id).to eq user.guid }

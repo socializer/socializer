@@ -32,7 +32,7 @@ module Socializer
         comment: { content: "This is a comment update" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new
@@ -69,7 +69,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 

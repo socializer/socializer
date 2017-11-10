@@ -13,7 +13,7 @@ module Socializer
       create(:group, activity_author: user.activity_object)
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "POST #create" do
         let(:invited_user) { create(:person) }
 
@@ -24,7 +24,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 

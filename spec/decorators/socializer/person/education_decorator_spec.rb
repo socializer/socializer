@@ -8,11 +8,11 @@ module Socializer
     let(:decorated_education) { Person::EducationDecorator.new(education) }
 
     describe "ended_on" do
-      context "is nil" do
+      context "when nil" do
         it { expect(decorated_education.ended_on).to eq(nil) }
       end
 
-      context "is a date" do
+      context "when it is a date" do
         let(:date) { Date.new(2015, 12, 3) }
         let(:education) { create(:person_education, ended_on: date) }
         let(:ended_on) { date.to_s(:long_ordinal) }
@@ -35,7 +35,7 @@ module Socializer
         end
       end
 
-      context "without major_or_field_of_study" do
+      context "with no major_or_field_of_study" do
         let(:education) do
           create(:person_education, major_or_field_of_study: nil)
         end

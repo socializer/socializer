@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Groups::OwnershipsController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/groups/ownerships")
           .to route_to("socializer/groups/ownerships#index")
@@ -28,7 +28,7 @@ module Socializer
         expect(post: "/groups/ownerships").not_to be_routable
       end
 
-      context "does not route to #update" do
+      context "when it does not route to #update" do
         it { expect(patch: "/groups/ownerships/1").not_to be_routable }
         it { expect(put: "/groups/ownerships/1").not_to be_routable }
       end

@@ -5,13 +5,13 @@ require "rails_helper"
 module Socializer
   RSpec.describe ActivityAudienceList, type: :service do
     describe "when the activity argument is nil" do
-      context ".new should raise an ArgumentError" do
+      describe ".new should raise an ArgumentError" do
         let(:audience_list) { ActivityAudienceList.new(activity: nil) }
 
         it { expect { audience_list }.to raise_error(ArgumentError) }
       end
 
-      context ".call should raise an ArgumentError" do
+      describe ".call should raise an ArgumentError" do
         let(:audience_list) { ActivityAudienceList.call(activity: nil) }
 
         it { expect { audience_list }.to raise_error(ArgumentError) }
@@ -25,7 +25,7 @@ module Socializer
     end
 
     describe ".call" do
-      context "without an audience" do
+      context "when no audience" do
         let(:activity) { create(:activity) }
 
         let(:audience_list) do
@@ -52,7 +52,7 @@ module Socializer
           Activity.find_by(activity_object_id: note.activity_object.id)
         end
 
-        context "public" do
+        context "when public" do
           let(:audience_list) do
             ActivityAudienceList.new(activity: activity).call
           end
@@ -65,7 +65,7 @@ module Socializer
           it { expect(audience_list.first).to eq(tooltip_public) }
         end
 
-        context "that is circles" do
+        context "when it is circles" do
           before do
             AddDefaultCircles.call(person: person)
           end
@@ -90,7 +90,7 @@ module Socializer
           it { expect(audience_list.first).to start_with("name") }
         end
 
-        context "that is limited" do
+        context "when it is limited" do
           before do
             AddDefaultCircles.call(person: person)
           end

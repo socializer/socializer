@@ -29,7 +29,7 @@ module Socializer
         person_profile: { display_name: "updated content" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new, params: { person_id: user }
@@ -65,7 +65,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -90,7 +90,7 @@ module Socializer
               .to change(Person::Profile, :count).by(1)
           end
 
-          context "redirects to people#show" do
+          describe "it redirects to people#show" do
             before do
               post :create, params: valid_attributes
             end
@@ -176,7 +176,7 @@ module Socializer
             .to change(Person::Profile, :count).by(-1)
         end
 
-        context "redirects to people#show" do
+        describe "it redirects to people#show" do
           before do
             delete :destroy, params: { id: profile, person_id: user }
           end

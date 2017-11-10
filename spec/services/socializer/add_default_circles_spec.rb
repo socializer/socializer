@@ -5,13 +5,13 @@ require "rails_helper"
 module Socializer
   RSpec.describe AddDefaultCircles, type: :service do
     describe "when the person argument is nil" do
-      context ".new should raise an ArgumentError" do
+      describe ".new should raise an ArgumentError" do
         let(:add_default_circles) { AddDefaultCircles.new(person: nil) }
 
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
 
-      context ".call should raise an ArgumentError" do
+      describe ".call should raise an ArgumentError" do
         let(:add_default_circles) { AddDefaultCircles.call(person: nil) }
 
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
@@ -24,7 +24,7 @@ module Socializer
       it { expect { add_default_circles }.to raise_error(ArgumentError) }
     end
 
-    context ".call" do
+    describe ".call" do
       let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
 

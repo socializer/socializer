@@ -11,7 +11,7 @@ module Socializer
       expect(tie).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:circle).inverse_of(:ties) }
 
       it do
@@ -30,13 +30,13 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:circle) }
       it { is_expected.to validate_presence_of(:activity_contact) }
     end
 
-    context "scopes" do
-      context "with_circle_id" do
+    context "with scopes" do
+      describe "with_circle_id" do
         let(:sql) { Tie.with_circle_id(circle_id: 1).to_sql }
 
         it do
@@ -44,7 +44,7 @@ module Socializer
         end
       end
 
-      context "with_contact_id" do
+      describe "with_contact_id" do
         let(:sql) { Tie.with_contact_id(contact_id: 1).to_sql }
 
         it do
@@ -53,7 +53,7 @@ module Socializer
 
         it { expect(tie.contact_id).to eq(contact.id) }
 
-        context "nil" do
+        context "when nil" do
           let(:tie) { build(:tie, contact_id: nil) }
 
           it { expect(tie.contact_id).to eq(nil) }

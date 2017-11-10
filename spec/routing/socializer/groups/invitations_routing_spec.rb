@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Groups::ActivitiesController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "does not route to #index" do
         expect(get: "/groups/1/invitations").not_to be_routable
       end
@@ -30,7 +30,7 @@ module Socializer
                        person_id: "1")
       end
 
-      context "does not route to #update" do
+      context "when it does not route to #update" do
         it { expect(patch: "/groups/1/invitations/1").not_to be_routable }
         it { expect(put: "/groups/1/invitations/1").not_to be_routable }
       end

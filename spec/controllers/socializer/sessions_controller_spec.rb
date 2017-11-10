@@ -20,12 +20,12 @@ module Socializer
             .to change { Person.count }.by(1)
         end
 
-        context "successfully creates a session" do
-          context "before the create action" do
+        context "when a session is successfully created" do
+          describe "before the create action" do
             it { expect(cookies.signed[:user_id]).to be_nil }
           end
 
-          context "after the create action" do
+          describe "after the create action" do
             before do
               post :create, params: { provider: :identity }
             end
@@ -76,12 +76,12 @@ module Socializer
         post :create, params: { provider: :identity }
       end
 
-      context "resets the session" do
-        context "before the destroy action" do
+      describe "resets the session" do
+        describe "before the destroy action" do
           it { expect(cookies.signed[:user_id]).not_to be_nil }
         end
 
-        context "after the destroy action" do
+        describe "after the destroy action" do
           before do
             delete :destroy
           end

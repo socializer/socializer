@@ -36,7 +36,7 @@ module Socializer
       Activity.activity_stream(stream_attributes).decorate
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index, params: { activity_id: activity }
@@ -45,7 +45,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 

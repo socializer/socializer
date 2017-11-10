@@ -23,7 +23,7 @@ module Socializer
     let(:result) { CreateActivity.new(activity_attributes).call }
     let(:activity) { result.decorate }
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index
@@ -39,7 +39,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -60,7 +60,7 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
-        context "returns success" do
+        context "when it returns success" do
           before do
             delete :destroy, params: { id: activity }, format: :js
           end

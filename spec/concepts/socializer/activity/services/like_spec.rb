@@ -19,7 +19,7 @@ module Socializer
         it { expect(results.verb.display_name).to eq("like") }
         it { expect(results).to be_kind_of(Socializer::Activity) }
 
-        context "check the like_count and liked_by" do
+        describe "check the like_count and liked_by" do
           before do
             like.call(like_attributes)
 
@@ -30,7 +30,7 @@ module Socializer
           it { expect(liked_activity_object.liked_by.size).to eq(1) }
         end
 
-        context "can't like again" do
+        context "when liked you can't like again" do
           before do
             like.call(like_attributes)
             like.call(like_attributes)

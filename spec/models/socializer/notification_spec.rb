@@ -11,7 +11,7 @@ module Socializer
       expect(notification).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:activity).inverse_of(:notifications) }
 
       it do
@@ -21,13 +21,13 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activity_id) }
       it { is_expected.to validate_presence_of(:activity_object_id) }
     end
 
-    context "scopes" do
-      context "newest_first" do
+    context "with scopes" do
+      describe "newest_first" do
         let(:sql) { Notification.newest_first.to_sql }
 
         it do
@@ -37,25 +37,25 @@ module Socializer
       end
     end
 
-    context "#mark_as_read" do
+    describe "#mark_as_read" do
       let(:notification) { build(:notification, read: false) }
 
       it { expect(notification.read).to be false }
 
-      context "read is false" do
+      context "when read is false" do
         before { notification.mark_as_read }
         it { expect(notification.read).to be true }
       end
     end
 
-    context "#unread?" do
+    describe "#unread?" do
       let(:notification) { build(:notification, read: false) }
 
-      context "read is false" do
+      context "when read is false" do
         it { expect(notification.unread?).to be true }
       end
 
-      context "read is true" do
+      context "when read is true" do
         let(:notification) { build(:notification, read: true) }
 
         it { expect(notification.unread?).to be false }

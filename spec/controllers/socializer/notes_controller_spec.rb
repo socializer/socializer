@@ -24,7 +24,7 @@ module Socializer
         note: { content: "updated content" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new
@@ -61,7 +61,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -82,7 +82,7 @@ module Socializer
       end
 
       describe "POST #create with valid attributes" do
-        context "format.html" do
+        describe "format.html" do
           it "saves the new note in the database" do
             expect { post :create, params: valid_attributes }
               .to change(Note, :count).by(1)
@@ -94,7 +94,7 @@ module Socializer
           end
         end
 
-        context "format.js" do
+        describe "format.js" do
           before do
             request.env["HTTP_ACCEPT"] = "application/javascript"
           end
@@ -146,7 +146,7 @@ module Socializer
           user.activity_object.notes.create!(valid_attributes[:note])
         end
 
-        context "format.js returns success" do
+        context "when format.js returns success" do
           before do
             delete :destroy, params: { id: note }, format: :js
           end

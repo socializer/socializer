@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe People::LinksController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "does not route to #index" do
         expect(get: "/people/1/links").not_to be_routable
       end

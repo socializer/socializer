@@ -8,13 +8,13 @@ module Socializer
     let(:person) { create(:person) }
     let(:decorated_person) { PersonDecorator.new(person) }
 
-    context "attributes" do
-      context "birthdate" do
-        context "not specified" do
+    context "with attributes" do
+      describe "birthdate" do
+        context "when not specified" do
           it { expect(decorated_person.birthdate).to be nil }
         end
 
-        context "specified" do
+        context "when specified" do
           let(:person) do
             build(:person, birthdate: Time.zone.now - 10.years)
           end
@@ -26,11 +26,11 @@ module Socializer
         end
       end
 
-      context "gender" do
+      describe "gender" do
         it { expect(decorated_person.gender).to eq("Unknown") }
       end
 
-      context "occupation" do
+      describe "occupation" do
         context "when nil" do
           let(:message) { "What do you do?" }
 
@@ -45,8 +45,8 @@ module Socializer
         end
       end
 
-      context "other_names" do
-        context "without a value" do
+      describe "other_names" do
+        context "when no value" do
           let(:message) { "For example: maiden name, alternate spellings" }
 
           it { expect(decorated_person.other_names).to eq(message) }
@@ -60,7 +60,7 @@ module Socializer
         end
       end
 
-      context "relationship" do
+      describe "relationship" do
         context "when unknown" do
           let(:message) { "Seeing anyone?" }
 
@@ -77,7 +77,7 @@ module Socializer
         end
       end
 
-      context "skills" do
+      describe "skills" do
         context "when nil" do
           let(:message) { "What are your skills?" }
 
@@ -93,7 +93,7 @@ module Socializer
       end
     end
 
-    context "#avatar_url" do
+    describe "#avatar_url" do
       context "when the provider is Facebook, LinkedIn, or Twitter" do
         let(:authentication_attributes) do
           { provider: provider.downcase,
@@ -105,7 +105,7 @@ module Socializer
           create(:person, avatar_provider: provider)
         end
 
-        context "it should be Facebook" do
+        context "when it should be Facebook" do
           before do
             person.authentications.create(authentication_attributes)
           end
@@ -117,7 +117,7 @@ module Socializer
           end
         end
 
-        context "it should be LinkedIn" do
+        context "when it should be LinkedIn" do
           before do
             person.authentications.create(authentication_attributes)
           end
@@ -129,7 +129,7 @@ module Socializer
           end
         end
 
-        context "it should be Twitter" do
+        context "when it should be Twitter" do
           before do
             person.authentications.create(authentication_attributes)
           end
@@ -155,8 +155,8 @@ module Socializer
       end
     end
 
-    context "contacts_count" do
-      context "without contacts" do
+    describe "contacts_count" do
+      context "when no contacts" do
         it { expect(decorated_person.contacts_count).to eq("0 people") }
       end
 
@@ -165,17 +165,17 @@ module Socializer
       end
     end
 
-    context "contact_of_count" do
-      context "not a contact of anyone" do
+    describe "contact_of_count" do
+      context "when not a contact of anyone" do
         it { expect(decorated_person.contact_of_count).to eq("0 people") }
       end
 
-      context "is a contact of someone" do
+      context "when a contact of someone" do
         it "is pending"
       end
     end
 
-    context "image_tag_avatar" do
+    describe "image_tag_avatar" do
       let(:person) { create(:person) }
 
       context "with no image_url" do
@@ -251,7 +251,7 @@ module Socializer
       end
     end
 
-    context "link_to_avatar" do
+    describe "link_to_avatar" do
       let(:person) { create(:person) }
       let(:result) { decorated_person.link_to_avatar }
 
@@ -267,7 +267,7 @@ module Socializer
       it { expect(result).to include(image_tag_avatar) }
     end
 
-    context "looking_for" do
+    describe "looking_for" do
       context "with no looking_for attributes set" do
         let(:string) { "Who are you looking for?" }
 
@@ -313,7 +313,7 @@ module Socializer
       end
     end
 
-    context "toolbar_stream_links" do
+    describe "toolbar_stream_links" do
       let(:person) { create(:person) }
 
       let(:friends) { Circle.with_display_name(name: "Friends").first }
