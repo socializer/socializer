@@ -275,7 +275,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.2)
       rake
-    rake (12.2.1)
+    rake (12.3.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -386,7 +386,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-dummy (~> 0.0.4)
   rails_best_practices (~> 1.19.0)
-  rake (~> 12.2.1)
+  rake (~> 12.3.0)
   rspec-rails (~> 3.7.1)
   rubocop (~> 0.51.0)
   rubocop-rspec (~> 1.20.1)
