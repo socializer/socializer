@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency("omniauth-openid",      "~> 1.0.1")
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
   s.add_dependency("rails",                "~> 5.1.4")
-  s.add_dependency("sass-rails",           "~> 5.0.6")
+  s.add_dependency("sass-rails",           "~> 5.0.7")
   s.add_dependency("simple_form",          "~> 3.5.0")
   s.add_dependency("uglifier",             ">= 3.2.0")
 
@@ -59,6 +59,6 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.19.0")
   s.add_development_dependency("rubocop",              "~> 0.51.0")
-  s.add_development_dependency("rubocop-rspec",        "~> 1.20.0")
+  s.add_development_dependency("rubocop-rspec",        "~> 1.20.1")
   s.add_development_dependency("scss_lint",            "~> 0.56.0")
 end
