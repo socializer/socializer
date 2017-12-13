@@ -19,16 +19,20 @@ module Socializer
     # Relationships
     belongs_to :parent, class_name: "Activity",
                         foreign_key: "target_id",
-                        optional: true
+                        optional: true,
+                        inverse_of: :children
 
     belongs_to :activitable_actor,  class_name: "ActivityObject",
-                                    foreign_key: "actor_id"
+                                    foreign_key: "actor_id",
+                                    inverse_of: :actor_activities
 
     belongs_to :activitable_object, class_name: "ActivityObject",
-                                    foreign_key: "activity_object_id"
+                                    foreign_key: "activity_object_id",
+                                    inverse_of: :object_activities
 
     belongs_to :activitable_target, class_name: "ActivityObject",
                                     foreign_key: "target_id",
+                                    inverse_of: :target_activities,
                                     optional: true
 
     belongs_to :verb, inverse_of: :activities
@@ -47,7 +51,8 @@ module Socializer
 
     has_many :children, class_name: "Activity",
                         foreign_key: "target_id",
-                        dependent: :destroy
+                        dependent: :destroy,
+                        inverse_of: :parent
 
     has_many :notifications,
              inverse_of: :activity,

@@ -37,15 +37,18 @@ module Socializer
 
     has_many :actor_activities, class_name: "Activity",
                                 foreign_key: "actor_id",
-                                dependent: :destroy
+                                dependent: :destroy,
+                                inverse_of: :activitable_actor
 
     has_many :object_activities, class_name: "Activity",
                                  foreign_key: "activity_object_id",
-                                 dependent: :destroy
+                                 dependent: :destroy,
+                                 inverse_of: :activitable_object
 
     has_many :target_activities, class_name: "Activity",
                                  foreign_key: "target_id",
-                                 dependent: :destroy
+                                 dependent: :destroy,
+                                 inverse_of: :activitable_target
 
     has_many :notes,
              foreign_key: "author_id",

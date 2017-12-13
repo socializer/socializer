@@ -14,7 +14,7 @@ module Socializer
     #
     class Profile < ApplicationRecord
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :profiles
 
       # Validations
       validates :display_name, presence: true

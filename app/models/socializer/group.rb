@@ -29,11 +29,13 @@ module Socializer
 
     has_many :links, class_name: "Group::Link",
                      foreign_key: "group_id",
-                     dependent: :destroy
+                     dependent: :destroy,
+                     inverse_of: :group
 
     has_many :categories, class_name: "Group::Category",
                           foreign_key: "group_id",
-                          dependent: :destroy
+                          dependent: :destroy,
+                          inverse_of: :group
 
     has_many :memberships, inverse_of: :group # , dependent: :destroy
 

@@ -13,7 +13,7 @@ module Socializer
     #
     class Link < ApplicationRecord
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :links
 
       # Validations
       validates :display_name, presence: true

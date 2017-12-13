@@ -19,7 +19,7 @@ module Socializer
                         scope: true
 
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :contributions
 
       # Validations
       validates :display_name, presence: true
