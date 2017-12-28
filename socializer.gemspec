@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency("jquery-rails",         "~> 4.3.1")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
-  s.add_dependency("omniauth",             "~> 1.7.1")
+  s.add_dependency("omniauth",             "~> 1.8.1")
   s.add_dependency("omniauth-facebook",    "~> 4.0.0")
   s.add_dependency("omniauth-identity",    "~> 1.1.1")
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
