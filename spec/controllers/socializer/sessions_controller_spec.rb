@@ -56,7 +56,7 @@ module Socializer
 
           it "creates an authentication" do
             expect { post :create, params: { provider: :identity } }
-              .to change { Authentication.count }.by(1)
+              .to change(Authentication, :count).by(1)
           end
 
           it "redirects the user to the authentications url" do
