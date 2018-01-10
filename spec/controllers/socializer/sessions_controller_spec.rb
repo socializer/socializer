@@ -17,7 +17,7 @@ module Socializer
       context "when a Person does not exist" do
         it "successfully creates a user" do
           expect { post :create, params: { provider: :identity } }
-            .to change { Person.count }.by(1)
+            .to change(Person, :count).by(1)
         end
 
         context "when a session is successfully created" do
@@ -51,7 +51,7 @@ module Socializer
 
           it "does not create a user" do
             expect { post :create, params: { provider: :identity } }
-              .to change { Person.count }.by(0)
+              .to change(Person, :count).by(0)
           end
 
           it "creates an authentication" do
