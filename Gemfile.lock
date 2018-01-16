@@ -128,8 +128,7 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
-    easy_translate (0.5.0)
-      json
+    easy_translate (0.5.1)
       thread
       thread_safe
     elasticsearch-rails (5.0.2)
@@ -152,10 +151,10 @@ GEM
     highline (1.7.10)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.19)
+    i18n-tasks (0.9.20)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
-      easy_translate (>= 0.5.0)
+      easy_translate (>= 0.5.1)
       erubi
       highline (>= 1.7.3)
       i18n
@@ -383,7 +382,7 @@ DEPENDENCIES
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.6.2)
   factory_bot_rails (~> 4.8.2)
-  i18n-tasks (~> 0.9.19)
+  i18n-tasks (~> 0.9.20)
   inch (~> 0.7.1)
   mysql2 (~> 0.4.6)
   pg (~> 1.0.0)
