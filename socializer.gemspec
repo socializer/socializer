@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # coding: utf-8
 
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "socializer/version"
