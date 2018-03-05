@@ -1,9 +1,9 @@
-# Socializer [![License](https://img.shields.io/:license-mit-blue.svg?style=flat)](http://opensource.org/licenses/mit-license.php) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
+# Socializer [![GitHub license](https://img.shields.io/github/license/socializer/socializer.svg?style=flat-square)](https://github.com/socializer/socializer/blob/master/LICENSE) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
 
-[![Build status](https://img.shields.io/travis/socializer/socializer/master.svg?style=flat)](https://travis-ci.org/socializer/socializer)
-[![Coverage Status](https://img.shields.io/coveralls/socializer/socializer.svg?style=flat)](https://coveralls.io/r/socializer/socializer?branch=master)
+[![Build Status](https://travis-ci.org/socializer/socializer.svg?branch=master)](https://travis-ci.org/socializer/socializer)
+[![Coverage Status](https://coveralls.io/repos/github/socializer/socializer/badge.svg?branch=master)](https://coveralls.io/github/socializer/socializer?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/597d0f0dd08d9ec1dba5/maintainability)](https://codeclimate.com/github/socializer/socializer/maintainability)
-[![Gemnasium](https://img.shields.io/gemnasium/socializer/socializer.svg?style=flat)](https://gemnasium.com/socializer/socializer)
+[![Dependency Status](https://gemnasium.com/badges/github.com/socializer/socializer.svg)](https://gemnasium.com/github.com/socializer/socializer)
 [![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master&style=flat)](http://inch-ci.org/github/socializer/socializer)
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
