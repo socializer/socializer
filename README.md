@@ -1,4 +1,4 @@
-# Socializer [![GitHub license](https://img.shields.io/github/license/socializer/socializer.svg?style=flat-square)](https://github.com/socializer/socializer/blob/master/LICENSE) [![Gem Version](https://img.shields.io/gem/v/socializer.svg?style=flat)](https://rubygems.org/gems/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
+# Socializer [![Gem Version](https://badge.fury.io/rb/socializer.svg)](https://badge.fury.io/rb/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
 
 [![Build Status](https://travis-ci.org/socializer/socializer.svg?branch=master)](https://travis-ci.org/socializer/socializer)
 [![Coverage Status](https://coveralls.io/repos/github/socializer/socializer/badge.svg?branch=master)](https://coveralls.io/github/socializer/socializer?branch=master)
