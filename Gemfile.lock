@@ -8,7 +8,7 @@ PATH
       country_select (~> 3.1.1)
       draper (~> 3.0.1)
       elasticsearch-rails (~> 5.0.2)
-      enumerize (~> 2.2.1)
+      enumerize (~> 2.2.2)
       jquery-rails (~> 4.3.1)
       jquery-ui-rails (~> 6.0.1)
       omniauth (~> 1.8.1)
@@ -132,7 +132,7 @@ GEM
       thread
       thread_safe
     elasticsearch-rails (5.0.2)
-    enumerize (2.2.1)
+    enumerize (2.2.2)
       activesupport (>= 3.2)
     erubi (1.7.0)
     erubis (2.7.0)
