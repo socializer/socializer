@@ -151,7 +151,7 @@ GEM
     highline (1.7.10)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.20)
+    i18n-tasks (0.9.21)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       easy_translate (>= 0.5.1)
@@ -159,7 +159,7 @@ GEM
       highline (>= 1.7.3)
       i18n
       parser (>= 2.2.3.0)
-      rainbow (~> 2.2)
+      rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
     i18n_data (0.8.0)
     inch (0.8.0.rc2)
@@ -274,8 +274,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbow (2.2.2)
-      rake
+    rainbow (3.0.0)
     rake (12.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -382,7 +381,7 @@ DEPENDENCIES
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.6.2)
   factory_bot_rails (~> 4.8.2)
-  i18n-tasks (~> 0.9.20)
+  i18n-tasks (~> 0.9.21)
   inch (~> 0.8.0.rc2)
   mysql2 (~> 0.4.6)
   pg (~> 1.0.0)
