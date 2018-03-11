@@ -70,7 +70,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.1.0)
+    autoprefixer-rails (8.1.0.1)
       execjs
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.5)
@@ -260,13 +260,13 @@ GEM
       rails
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_best_practices (1.19.0)
+    rails_best_practices (1.19.1)
       activesupport
       code_analyzer (>= 0.4.8)
       erubis
       i18n
       json
-      require_all
+      require_all (~> 1.5.0)
       ruby-progressbar
     railties (5.1.5)
       actionpack (= 5.1.5)
@@ -388,7 +388,7 @@ DEPENDENCIES
   pry (~> 0.11.3)
   rails-controller-testing
   rails-dummy (~> 0.0.4)
-  rails_best_practices (~> 1.19.0)
+  rails_best_practices (~> 1.19.1)
   rake (~> 12.3.0)
   rspec-rails (~> 3.7.2)
   rubocop (~> 0.53.0)
