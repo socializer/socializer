@@ -223,7 +223,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.12.1)
-    parser (2.5.0.3)
+    parser (2.5.0.4)
       ast (~> 2.4.0)
     pg (1.0.0)
     powerpack (0.1.1)
@@ -256,7 +256,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-dummy (0.0.4)
+    rails-dummy (0.0.5)
       rails
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
@@ -387,7 +387,7 @@ DEPENDENCIES
   pg (~> 1.0.0)
   pry (~> 0.11.3)
   rails-controller-testing
-  rails-dummy (~> 0.0.4)
+  rails-dummy (~> 0.0.5)
   rails_best_practices (~> 1.19.1)
   rake (~> 12.3.0)
   rspec-rails (~> 3.7.2)
