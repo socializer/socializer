@@ -9,21 +9,21 @@ module Socializer
     # Create a user nad link
     let(:user) { create(:person) }
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { person_id: user,
         person_link: { display_name: "test", url: "http://test.org" } }
     end
 
-    let(:invalid_attributes) do
+    let(:invalid_params) do
       { person_id: user,
         person_link: { display_name: "", url: nil } }
     end
 
     let(:link) do
-      user.links.create!(valid_attributes[:person_link])
+      user.links.create!(valid_params[:person_link])
     end
 
-    let(:update_attributes) do
+    let(:update_params) do
       { id: link,
         person_id: user,
         person_link: { display_name: "updated content" } }
@@ -39,7 +39,7 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, params: valid_attributes
+          post :create, params: valid_params
           expect(response).to redirect_to root_path
         end
       end
@@ -53,7 +53,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: update_attributes
+          patch :update, params: update_params
           expect(response).to redirect_to root_path
         end
       end
@@ -85,24 +85,24 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new link in the database" do
-            expect { post :create, params: valid_attributes }
+            expect { post :create, params: valid_params }
               .to change(Person::Link, :count).by(1)
           end
 
           it "redirects to people#show" do
-            post :create, params: valid_attributes
+            post :create, params: valid_params
             expect(response).to redirect_to user
           end
         end
 
         context "with invalid attributes" do
           it "does not save the new employment in the database" do
-            expect { post :create, params: invalid_attributes }
+            expect { post :create, params: invalid_params }
               .not_to change(Person::Link, :count)
           end
 
           it "re-renders the :new template" do
-            post :create, params: invalid_attributes
+            post :create, params: invalid_params
             expect(response).to render_template :new
           end
         end
@@ -121,7 +121,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           before do
-            patch :update, params: update_attributes
+            patch :update, params: update_params
           end
 
           it { expect(response).to have_http_status(:found) }
@@ -137,14 +137,14 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          let(:update_attributes) do
+          let(:update_params) do
             { id: link,
               person_id: user,
               person_link: { display_name: "" } }
           end
 
           before do
-            patch :update, params: update_attributes
+            patch :update, params: update_params
           end
 
           it { expect(response).to have_http_status(:ok) }

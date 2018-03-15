@@ -6,17 +6,17 @@ module Socializer
   RSpec.describe AuthenticationsController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    # Create a user, authentication, and valid_attributes
+    # Create a user, authentication, and valid_params
     let(:user) { create(:person) }
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { authentication: { provider: "facebook",
                           uid: user.id,
                           person: user } }
     end
 
     let(:authentication) do
-      create(:authentication, valid_attributes[:authentication])
+      create(:authentication, valid_params[:authentication])
     end
 
     context "when not logged in" do
