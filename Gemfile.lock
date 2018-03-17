@@ -190,7 +190,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.4.10)
-    nio4r (2.2.0)
+    nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     oauth (0.5.4)
@@ -256,7 +256,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-dummy (0.0.5)
+    rails-dummy (0.0.6)
       rails
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
@@ -387,7 +387,7 @@ DEPENDENCIES
   pg (~> 1.0.0)
   pry (~> 0.11.3)
   rails-controller-testing
-  rails-dummy (~> 0.0.5)
+  rails-dummy (~> 0.0.6)
   rails_best_practices (~> 1.19.1)
   rake (~> 12.3.0)
   rspec-rails (~> 3.7.2)
