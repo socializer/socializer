@@ -162,7 +162,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
     i18n_data (0.8.0)
-    inch (0.8.0.rc2)
+    inch (0.8.0)
       pry
       sparkr (>= 0.2.0)
       term-ansicolor
@@ -189,7 +189,6 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.5.0)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -225,7 +224,6 @@ GEM
     parallel (1.12.1)
     parser (2.5.0.5)
       ast (~> 2.4.0)
-    pg (1.0.0)
     powerpack (0.1.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -382,9 +380,7 @@ DEPENDENCIES
   database_cleaner (~> 1.6.2)
   factory_bot_rails (~> 4.8.2)
   i18n-tasks (~> 0.9.21)
-  inch (~> 0.8.0.rc2)
-  mysql2 (~> 0.5.0)
-  pg (~> 1.0.0)
+  inch (~> 0.8.0)
   pry (~> 0.11.3)
   rails-controller-testing
   rails-dummy (= 0.0.7)

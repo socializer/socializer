@@ -42,4 +42,3 @@ group :development, :test do
   gem "rails-dummy", "= 0.0.7"
   gem "rspec-rails", "~> 3.7.2"
 end
-
