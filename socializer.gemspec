@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.add_dependency("rails",                "~> 5.1.6")
   s.add_dependency("sass-rails",           "~> 5.0.7")
   s.add_dependency("simple_form",          "~> 4.0.0")
-  s.add_dependency("uglifier",             ">= 4.1.8")
+  s.add_dependency("uglifier",             ">= 4.1.9")
 
   s.add_development_dependency("bundler",              "~> 1.16.0")
   s.add_development_dependency("rake",                 "~> 12.3.1")
