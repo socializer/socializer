@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency("draper",               "~> 3.0.1")
   s.add_dependency("elasticsearch-rails",  "~> 5.0.2")
   s.add_dependency("enumerize",            "~> 2.2.2")
-  s.add_dependency("jquery-rails",         "~> 4.3.1")
+  s.add_dependency("jquery-rails",         "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   s.add_dependency("omniauth",             "~> 1.8.1")
