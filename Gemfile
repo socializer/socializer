@@ -28,7 +28,7 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "coveralls", "~> 0.8.21", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
-  gem "database_cleaner", "~> 1.6.2"
+  gem "database_cleaner", "~> 1.7.0"
   gem "simplecov", "~> 0.14.1", require: false
 
   # TODO: Update test so rails-controller-testing can be removed

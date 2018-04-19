@@ -119,7 +119,7 @@ GEM
       thor (~> 0.19.4)
       tins (~> 1.6)
     crass (1.0.4)
-    database_cleaner (1.6.2)
+    database_cleaner (1.7.0)
     diff-lcs (1.3)
     docile (1.1.5)
     draper (3.0.1)
@@ -377,7 +377,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffeelint (~> 1.16.1)
   coveralls (~> 0.8.21)
-  database_cleaner (~> 1.6.2)
+  database_cleaner (~> 1.7.0)
   factory_bot_rails (~> 4.8.2)
   i18n-tasks (~> 0.9.21)
   inch (~> 0.8.0)
