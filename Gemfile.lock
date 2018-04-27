@@ -100,8 +100,6 @@ GEM
       nokogiri (~> 1.8)
     code_analyzer (0.4.8)
       sexp_processor
-    codeclimate-test-reporter (1.0.7)
-      simplecov
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -395,7 +393,6 @@ DEPENDENCIES
   byebug (~> 10.0.2)
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
-  codeclimate-test-reporter
   coffeelint (~> 1.16.1)
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.7.0)
