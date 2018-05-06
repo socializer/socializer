@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("inch",                 "~> 0.8.0")
   s.add_development_dependency("shoulda-matchers",     "~> 3.1.2")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
-  s.add_development_dependency("rails_best_practices", "~> 1.19.1")
+  s.add_development_dependency("rails_best_practices", "~> 1.19.2")
   s.add_development_dependency("rubocop",              "~> 0.55.0")
   s.add_development_dependency("rubocop-rspec",        "~> 1.25.1")
   s.add_development_dependency("scss_lint",            "~> 0.57.0")
