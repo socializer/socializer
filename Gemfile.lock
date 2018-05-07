@@ -402,7 +402,7 @@ DEPENDENCIES
   pry (~> 0.11.3)
   rails-controller-testing
   rails-dummy (= 0.0.7)
-  rails_best_practices (~> 1.19.1)
+  rails_best_practices (~> 1.19.2)
   rake (~> 12.3.1)
   rspec-rails (~> 3.7.2)
   rubocop (~> 0.55.0)
