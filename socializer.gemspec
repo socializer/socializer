@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = "~> 2.5.1"
 
-  s.add_dependency("bcrypt",               "~> 3.1.11")
+  s.add_dependency("bcrypt",               "~> 3.1.12")
   s.add_dependency("bootstrap-sass",       "~> 3.3.7")
   s.add_dependency("coffee-rails",         "~> 4.2.2")
   s.add_dependency("country_select",       "~> 3.1.1")
