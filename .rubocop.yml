@@ -1,11 +1,5 @@
 AllCops:
   # Include gemspec and Rakefile
-  Include:
-    - "**/*.gemspec"
-    - "**/Rakefile"
-    - "**/config.ru"
-    - "db/migrate/**/*"
-    - "Gemfile"
   Exclude:
     - "bin/**/*"
     - "features/support/env.rb"
@@ -14,6 +8,7 @@ AllCops:
     - "spec/dummy/**/*"
     - "spec/i18n_spec.rb"
     - "vendor/**/*"
+    - ".git/**/*"
 
   # Cop names are not displayed in offense messages by default. Change behavior
   # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
