@@ -36,6 +36,7 @@ module Socializer
           expect(response).to redirect_to root_path
         end
       end
+
       describe "POST #create" do
         it "requires login" do
           post :create, params: valid_params
