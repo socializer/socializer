@@ -44,6 +44,7 @@ module Socializer
 
       context "when read is false" do
         before { notification.mark_as_read }
+
         it { expect(notification.read).to be true }
       end
     end

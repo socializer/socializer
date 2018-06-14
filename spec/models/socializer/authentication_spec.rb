@@ -23,6 +23,7 @@ module Socializer
     context "with scopes" do
       describe "with_provider" do
         before { create(:authentication, provider: "identity") }
+
         let(:result) { Authentication.with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -38,6 +39,7 @@ module Socializer
 
       describe "not_with_provider" do
         before { create(:authentication, provider: "identity") }
+
         let(:result) { Authentication.not_with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }

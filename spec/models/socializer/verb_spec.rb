@@ -24,6 +24,7 @@ module Socializer
     context "with scopes" do
       describe "with_display_name" do
         before { create(:verb, display_name: "post") }
+
         let(:result) { Verb.with_display_name(name: "post") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }

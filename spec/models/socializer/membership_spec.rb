@@ -48,6 +48,7 @@ module Socializer
 
         context "with active records" do
           before { create(:socializer_membership, active: true) }
+
           let(:result) { Membership.active }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -65,6 +66,7 @@ module Socializer
 
         context "with inactive records" do
           before { create(:socializer_membership, active: false) }
+
           let(:result) { Membership.inactive }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
