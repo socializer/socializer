@@ -20,7 +20,7 @@ PATH
       rails (~> 5.2.0)
       sass-rails (~> 5.0.7)
       simple_form (~> 4.0.1)
-      uglifier (>= 4.1.10)
+      uglifier (>= 4.1.12)
 
 GEM
   remote: https://rubygems.org/
@@ -76,7 +76,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.6.3)
+    autoprefixer-rails (8.6.4)
       execjs
     bcrypt (3.1.12)
     bcrypt-ruby (3.1.5)
@@ -376,7 +376,7 @@ GEM
     tins (1.16.3)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
