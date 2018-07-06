@@ -7,7 +7,7 @@ PATH
       coffee-rails (~> 4.2.2)
       country_select (~> 3.1.1)
       draper (~> 3.0.1)
-      elasticsearch-rails (~> 5.0.2)
+      elasticsearch-rails (~> 5.1.0)
       enumerize (~> 2.2.2)
       jquery-rails (~> 4.3.3)
       jquery-ui-rails (~> 6.0.1)
@@ -140,7 +140,7 @@ GEM
     easy_translate (0.5.1)
       thread
       thread_safe
-    elasticsearch-rails (5.0.2)
+    elasticsearch-rails (5.1.0)
     enumerize (2.2.2)
       activesupport (>= 3.2)
     erubi (1.7.1)
@@ -376,7 +376,7 @@ GEM
     tins (1.16.3)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.12)
+    uglifier (4.1.14)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
