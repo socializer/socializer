@@ -273,7 +273,7 @@ GEM
       rails
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_best_practices (1.19.2)
+    rails_best_practices (1.19.3)
       activesupport
       code_analyzer (>= 0.4.8)
       erubis
@@ -404,7 +404,7 @@ DEPENDENCIES
   pry (~> 0.11.3)
   rails-controller-testing
   rails-dummy (= 0.0.7)
-  rails_best_practices (~> 1.19.2)
+  rails_best_practices (~> 1.19.3)
   rake (~> 12.3.1)
   rspec-rails (~> 3.7.2)
   rubocop (~> 0.58.1)
@@ -417,4 +417,4 @@ DEPENDENCIES
   sqlite3 (~> 1.3.13)
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
