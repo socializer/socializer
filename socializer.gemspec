@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("bundler",              "~> 1.16.0")
   s.add_development_dependency("rake",                 "~> 12.3.1")
   s.add_development_dependency("sqlite3",              "~> 1.3.13")
-  # s.add_development_dependency("rspec-rails",          "~> 3.6.0")
+  # s.add_development_dependency("rspec-rails",          "~> 3.8.0")
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
   # s.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # s.add_development_dependency("capybara",             "~> 2.5.0")
