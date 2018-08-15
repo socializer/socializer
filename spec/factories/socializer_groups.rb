@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :group, class: Socializer::Group do
     sequence(:display_name) { |n| "Public group #{n}" }
-    privacy :public
+    privacy { :public }
     association :activity_author, factory: :activity_object_person
   end
 end

@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :socializer_membership, class: Socializer::Membership do
-    active true
+    active { true }
     association :group, factory: :group
     association :activity_member, factory: :activity_object_person
   end
