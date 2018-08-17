@@ -29,7 +29,7 @@ module Socializer
                    activity_id: nil } }
       end
 
-      describe "when not logged in" do
+      context "when not logged in" do
         describe "GET #new" do
           it "requires login" do
             get :new, params: { id: note.guid }
@@ -45,7 +45,7 @@ module Socializer
         end
       end
 
-      describe "when logged in" do
+      context "when logged in" do
         # Setting the current user
         before { cookies.signed[:user_id] = user.guid }
 

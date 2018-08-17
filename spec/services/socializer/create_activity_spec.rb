@@ -14,7 +14,7 @@ module Socializer
         verb: "post" }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:actor_id) }
       it { is_expected.to validate_presence_of(:activity_object_id) }
       it { is_expected.to validate_presence_of(:verb) }
@@ -22,7 +22,7 @@ module Socializer
       it { expect(ac.valid?).to be false }
     end
 
-    context ".call" do
+    describe ".call" do
       context "with no required attributes" do
         it { expect(ac.call).to be_kind_of(Activity) }
         it { expect(ac.call.persisted?).to be false }

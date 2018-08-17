@@ -37,15 +37,18 @@ module Socializer
 
     has_many :actor_activities, class_name: "Activity",
                                 foreign_key: "actor_id",
-                                dependent: :destroy
+                                dependent: :destroy,
+                                inverse_of: :activitable_actor
 
     has_many :object_activities, class_name: "Activity",
                                  foreign_key: "activity_object_id",
-                                 dependent: :destroy
+                                 dependent: :destroy,
+                                 inverse_of: :activitable_object
 
     has_many :target_activities, class_name: "Activity",
                                  foreign_key: "target_id",
-                                 dependent: :destroy
+                                 dependent: :destroy,
+                                 inverse_of: :activitable_target
 
     has_many :notes,
              foreign_key: "author_id",
@@ -145,7 +148,8 @@ module Socializer
 
     # Reset unread_notifications_count to 0
     def reset_unread_notifications
-      update!(unread_notifications_count: 0) if unread_notifications_count > 0
+      return if unread_notifications_count.zero?
+      update!(unread_notifications_count: 0)
     end
   end
 end

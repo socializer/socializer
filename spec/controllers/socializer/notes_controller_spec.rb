@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 
-# require "rails_helper"
+require "rails_helper"
 
 module Socializer
   RSpec.describe NotesController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    # Create a user, note, privacy, valid_attributes
+    # Create a user, note, privacy, valid_params
     let(:user) { create(:person) }
 
     let(:note) do
       create(:note, activity_author: user.activity_object)
     end
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { note: { content: "Test",
                 object_ids: "public",
                 activity_verb: "post" } }
     end
 
-    let(:update_attributes) do
+    let(:update_params) do
       { id: note,
         note: { content: "updated content" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new
@@ -34,7 +34,7 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, params: valid_attributes
+          post :create, params: valid_params
           expect(response).to redirect_to root_path
         end
       end
@@ -48,7 +48,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: update_attributes
+          patch :update, params: update_params
           expect(response).to redirect_to root_path
         end
       end
@@ -61,7 +61,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -82,35 +82,35 @@ module Socializer
       end
 
       describe "POST #create with valid attributes" do
-        context "format.html" do
+        describe "format.html" do
           it "saves the new note in the database" do
-            expect { post :create, params: valid_attributes }
+            expect { post :create, params: valid_params }
               .to change(Note, :count).by(1)
           end
 
           it "redirects to activities#index" do
-            post :create, params: valid_attributes
+            post :create, params: valid_params
             expect(response).to redirect_to activities_path
           end
         end
 
-        context "format.js" do
+        describe "format.js" do
           before do
             request.env["HTTP_ACCEPT"] = "application/javascript"
           end
 
           it "saves the new note in the database" do
-            expect { post :create, params: valid_attributes, format: :js }
+            expect { post :create, params: valid_params, format: :js }
               .to change(Note, :count).by(1)
           end
 
           it "returns http ok" do
-            post :create, params: valid_attributes, format: :js
+            post :create, params: valid_params, format: :js
             expect(response).to have_http_status(:ok)
           end
 
           it "renders the :create template" do
-            post :create, params: valid_attributes, format: :js
+            post :create, params: valid_params, format: :js
             expect(response).to render_template(:create)
           end
         end
@@ -132,7 +132,7 @@ module Socializer
 
       describe "PATCH #update with valid attributes" do
         it "redirects to activities#index" do
-          patch :update, params: update_attributes
+          patch :update, params: update_params
           expect(response).to redirect_to activities_path
         end
       end
@@ -143,10 +143,10 @@ module Socializer
 
       describe "DELETE #destroy" do
         let(:note) do
-          user.activity_object.notes.create!(valid_attributes[:note])
+          user.activity_object.notes.create!(valid_params[:note])
         end
 
-        context "format.js returns success" do
+        context "when format.js returns success" do
           before do
             delete :destroy, params: { id: note }, format: :js
           end

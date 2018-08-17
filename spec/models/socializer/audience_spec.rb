@@ -10,13 +10,13 @@ module Socializer
       expect(audience).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:activity).inverse_of(:audiences) }
       # FIXME: Test for optional: true
       it { is_expected.to belong_to(:activity_object).inverse_of(:audiences) }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:privacy) }
       # it { is_expected.to validate_presence_of(:activity_id) }
       #
@@ -33,8 +33,8 @@ module Socializer
       # end
     end
 
-    context "scopes" do
-      context "with_activity_id" do
+    context "with scopes" do
+      describe "with_activity_id" do
         let(:sql) { Audience.with_activity_id(id: 1).to_sql }
 
         it do
@@ -43,7 +43,7 @@ module Socializer
         end
       end
 
-      context "with_activity_object_id" do
+      describe "with_activity_object_id" do
         let(:sql) { Audience.with_activity_object_id(id: 1).to_sql }
 
         it do
@@ -61,7 +61,7 @@ module Socializer
         .with_scope(true)
     end
 
-    context "#object" do
+    describe "#object" do
       let(:activitable) { audience.activity_object.activitable }
 
       it { expect(audience.object).to be_a(activitable.class) }

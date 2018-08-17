@@ -7,8 +7,8 @@ module Socializer
     let(:circle) { build(:circle) }
     let(:decorated_circle) { CircleDecorator.new(circle) }
 
-    context "ties_count" do
-      context "without ties" do
+    describe "ties_count" do
+      context "with no ties" do
         it { expect(decorated_circle.ties_count).to eq("0 people") }
       end
 

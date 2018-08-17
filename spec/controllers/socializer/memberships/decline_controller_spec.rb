@@ -22,7 +22,7 @@ module Socializer
       create(:socializer_membership, membership_attributes)
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "DELETE #destroy" do
         it "requires login" do
           delete :destroy, params: { id: membership.id }
@@ -31,7 +31,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -45,7 +45,7 @@ module Socializer
               .to change(Membership, :count).by(-1)
           end
 
-          context "redirects to groups#pending_invites" do
+          describe "it redirects to groups#pending_invites" do
             before do
               delete :destroy, params: { id: membership.id }
             end

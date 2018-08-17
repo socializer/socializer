@@ -10,7 +10,7 @@ module Socializer
       expect(activity_object).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:activitable) }
 
       it do
@@ -57,12 +57,12 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activitable) }
     end
 
-    context "scopes" do
-      context "with_id" do
+    context "with scopes" do
+      describe "with_id" do
         let(:sql) { ActivityObject.with_id(id: 1).to_sql }
 
         it do
@@ -71,7 +71,7 @@ module Socializer
         end
       end
 
-      context "with_activitable_type" do
+      describe "with_activitable_type" do
         let(:sql) do
           ActivityObject.with_activitable_type(type: Comment.name).to_sql
         end
@@ -91,45 +91,45 @@ module Socializer
 
     it { is_expected.to respond_to(:scope) }
 
-    context "check activitable_type predicates" do
-      context "#activity?" do
+    describe "check activitable_type predicates" do
+      describe "#activity?" do
         let(:activity_object) { build(:activity_object_activity) }
 
         it { expect(activity_object).to be_activity }
       end
 
-      context "#circle?" do
+      describe "#circle?" do
         let(:activity_object) { build(:activity_object_circle) }
 
         it { expect(activity_object).to be_circle }
       end
 
-      context "#comment?" do
+      describe "#comment?" do
         let(:activity_object) { build(:activity_object_comment) }
 
         it { expect(activity_object).to be_comment }
       end
 
-      context "#group?" do
+      describe "#group?" do
         let(:activity_object) { build(:activity_object_group) }
 
         it { expect(activity_object).to be_group }
       end
 
-      context "#note?" do
+      describe "#note?" do
         let(:activity_object) { build(:activity_object) }
 
         it { expect(activity_object).to be_note }
       end
 
-      context "#person?" do
+      describe "#person?" do
         let(:activity_object) { build(:activity_object_person) }
 
         it { expect(activity_object).to be_person }
       end
     end
 
-    context "#reset_unread_notifications" do
+    describe "#reset_unread_notifications" do
       let(:activity_object) do
         create(:activity_object, unread_notifications_count: 10)
       end
@@ -141,7 +141,7 @@ module Socializer
       it { expect(activity_object.unread_notifications_count).to eq(0) }
     end
 
-    context "#attribute_type_of" do
+    describe "#attribute_type_of" do
       it "when type is 'Activity" do
         activity_object.activitable_type = "Socializer::Activity"
         expect(activity_object.send("activity?")).to be_truthy

@@ -71,7 +71,7 @@ module Socializer
 
       content << helpers.tag.span(class: "fa fa-fw fa-thumbs-o-up")
 
-      content << like_count.to_s if like_count > 0
+      content << like_count.to_s if like_count.positive?
       helpers.safe_join(content)
     end
 

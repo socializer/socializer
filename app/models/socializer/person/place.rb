@@ -13,7 +13,7 @@ module Socializer
     #
     class Place < ApplicationRecord
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :places
 
       # Validations
       validates :city_name, presence: true

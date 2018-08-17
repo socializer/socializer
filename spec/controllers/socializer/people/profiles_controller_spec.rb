@@ -9,36 +9,37 @@ module Socializer
     # Create a user nad profile
     let(:user) { create(:person) }
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { person_id: user,
         person_profile: { display_name: "test", url: "http://test.org" } }
     end
 
-    let(:invalid_attributes) do
+    let(:invalid_params) do
       { person_id: user,
         person_profile: { display_name: "", url: nil } }
     end
 
     let(:profile) do
-      user.profiles.create!(valid_attributes[:person_profile])
+      user.profiles.create!(valid_params[:person_profile])
     end
 
-    let(:update_attributes) do
+    let(:update_params) do
       { id: profile,
         person_id: user,
         person_profile: { display_name: "updated content" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new, params: { person_id: user }
           expect(response).to redirect_to root_path
         end
       end
+
       describe "POST #create" do
         it "requires login" do
-          post :create, params: valid_attributes
+          post :create, params: valid_params
           expect(response).to redirect_to root_path
         end
       end
@@ -52,7 +53,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: update_attributes
+          patch :update, params: update_params
           expect(response).to redirect_to root_path
         end
       end
@@ -65,7 +66,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -86,13 +87,13 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new profile in the database" do
-            expect { post :create, params: valid_attributes }
+            expect { post :create, params: valid_params }
               .to change(Person::Profile, :count).by(1)
           end
 
-          context "redirects to people#show" do
+          describe "it redirects to people#show" do
             before do
-              post :create, params: valid_attributes
+              post :create, params: valid_params
             end
 
             it { expect(response).to redirect_to user }
@@ -102,14 +103,14 @@ module Socializer
 
         context "with invalid attributes" do
           it "does not save the new address in the database" do
-            expect { post :create, params: invalid_attributes }
+            expect { post :create, params: invalid_params }
               .not_to change(Person::Place, :count)
           end
 
           it { expect(response).to have_http_status(:ok) }
 
           it "re-renders the :new template" do
-            post :create, params: invalid_attributes
+            post :create, params: invalid_params
             expect(response).to render_template :new
           end
         end
@@ -130,7 +131,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           before do
-            patch :update, params: update_attributes
+            patch :update, params: update_params
           end
 
           it { expect(response).to have_http_status(:found) }
@@ -146,14 +147,14 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          let(:update_attributes) do
+          let(:update_params) do
             { id: profile,
               person_id: user,
               person_profile: { display_name: "" } }
           end
 
           before do
-            patch :update, params: update_attributes
+            patch :update, params: update_params
           end
 
           it { expect(response).to have_http_status(:ok) }
@@ -176,7 +177,7 @@ module Socializer
             .to change(Person::Profile, :count).by(-1)
         end
 
-        context "redirects to people#show" do
+        describe "it redirects to people#show" do
           before do
             delete :destroy, params: { id: profile, person_id: user }
           end

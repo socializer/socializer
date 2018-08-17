@@ -9,7 +9,7 @@ module Socializer
     let(:decorated_address) { Person::AddressDecorator.new(address) }
 
     describe "formatted_address" do
-      context "without line2" do
+      context "with no line2" do
         let(:address_value) do
           "282 Kevin Brook<br>" \
           "Imogeneborough, California 58517<br>US"

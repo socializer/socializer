@@ -10,7 +10,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
 
 # This file is copied to spec/ when you run "rails generate rspec:install"
 ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../dummy/config/environment", __FILE__)
+require File.expand_path("dummy/config/environment", __dir__)
 require "rspec/rails"
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), "../")

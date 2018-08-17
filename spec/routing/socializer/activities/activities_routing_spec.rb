@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Activities::ActivitiesController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/activities/1/activities")
           .to route_to("socializer/activities/activities#index",
@@ -29,7 +29,7 @@ module Socializer
         expect(post: "/activities/1/activities").not_to be_routable
       end
 
-      context "does not route to #update" do
+      context "when it does not route to #update" do
         it { expect(patch: "/activities/1/activities/1").not_to be_routable }
         it { expect(put: "/activities/1/activities/1").not_to be_routable }
       end

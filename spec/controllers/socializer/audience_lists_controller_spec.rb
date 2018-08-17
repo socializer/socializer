@@ -9,7 +9,7 @@ module Socializer
     # Create a user
     let(:user) { create(:person) }
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index, format: :json
@@ -18,7 +18,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -29,18 +29,18 @@ module Socializer
           get :index, format: :json
         end
 
-        context "returns default values" do
+        context "when it returns default values" do
           let(:json) { JSON.parse(response.body) }
 
           it { expect(json.count).to eq(2) }
 
-          context "public" do
+          context "when public" do
             it { expect(json.first["id"]).to match("public") }
             it { expect(json.first["name"]).to match("Public") }
             it { expect(json.first["icon"]).to match("fa-globe") }
           end
 
-          context "circles" do
+          context "when circles" do
             it { expect(json.last["id"]).to match("circles") }
             it { expect(json.last["name"]).to match("Circles") }
             it { expect(json.last["icon"]).to match("fa-google-circles") }

@@ -21,7 +21,7 @@ module Socializer
 
           let(:membership) { Membership.find_by(membership_attributes) }
 
-          describe "when the group is public" do
+          context "when the group is public" do
             let(:public_group) { create(:group, privacy: :public) }
             let(:group) { public_group }
 
@@ -45,7 +45,7 @@ module Socializer
               expect(public_group).not_to be_member(person)
             end
 
-            context "and a person joins it" do
+            context "when a person joins it" do
               before do
                 join.call
               end
@@ -112,7 +112,7 @@ module Socializer
               expect(restricted_group.privacy).to be_restricted
             end
 
-            context "and a person joins it" do
+            context "when a person joins it" do
               before do
                 join.call
               end

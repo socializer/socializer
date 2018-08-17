@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=08c7e43e5cdaf0614c7e61dcf6279865630cb6992fa9f1f09856f72fd641218b
+
 language: ruby
 dist: trusty
 sudo: false
@@ -16,6 +20,9 @@ before_script:
   - mysql -e 'CREATE DATABASE socializer_test;'
   - psql -c 'create database socializer_test;' -U postgres
   - bundle exec rails app:db:migrate RAILS_ENV=test
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 cache:
   bundler: true
@@ -25,20 +32,22 @@ cache:
 
 script:
   - "bundle exec rspec"
-  - "bundle exec codeclimate-test-reporter"
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 matrix:
   fast_finish: true
   # FIXME: resolve errors when running against postgres and mysql
   include:
-    - rvm: 2.4.1
+    - rvm: 2.5.1
       gemfile: Gemfile
       env: DB=sqlite
-    # - rvm: 2.4.1
+    # - rvm: 2.4.3
     #   gemfile: gemfiles/gemfile.pg
     #   env: DB=postgres
     #   services: postgresql
-    # - rvm: 2.4.1
+    # - rvm: 2.4.3
     #   gemfile: gemfiles/gemfile.mysql
     #   env: DB=mysql
     #   services: mysql

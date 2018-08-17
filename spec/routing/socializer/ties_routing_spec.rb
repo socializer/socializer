@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe TiesController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/ties").not_to be_routable
       end

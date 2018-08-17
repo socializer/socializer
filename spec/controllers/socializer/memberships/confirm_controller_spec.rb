@@ -23,7 +23,7 @@ module Socializer
       create(:socializer_membership, membership_attributes)
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "POST #create" do
         it "requires login" do
           post :create, params: { id: membership.id }
@@ -32,7 +32,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -40,12 +40,12 @@ module Socializer
 
       describe "POST #create" do
         context "with valid attributes" do
-          context "confirm the membership" do
-            context "before the #create actions" do
+          context "with confirm the membership" do
+            context "when before the #create actions" do
               it { expect(membership.active).to be false }
             end
 
-            context "after the #create actions" do
+            context "when after the #create actions" do
               before do
                 post :create, params: { id: membership.id }
               end
@@ -55,7 +55,7 @@ module Socializer
             end
           end
 
-          context "redirects to groups#show" do
+          describe "it redirects to groups#show" do
             before do
               post :create, params: { id: membership.id }
             end

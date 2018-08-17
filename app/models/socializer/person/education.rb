@@ -13,7 +13,7 @@ module Socializer
     #
     class Education < ApplicationRecord
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :educations
 
       # Validations
       validates :person, presence: true

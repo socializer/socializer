@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe PagesController, type: :routing do
     routes { Socializer::Engine.routes }
 
-    describe "routing" do
+    context "with routing" do
       it "routes to #index" do
         expect(get: "/").to route_to("socializer/pages#index")
       end

@@ -2,11 +2,11 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :person_contribution, class: Socializer::Person::Contribution do
     sequence(:display_name) { |n| "Contribution #{n}" }
-    url "http://test.org"
-    label :current_contributor
+    url { "http://test.org" }
+    label { :current_contributor }
     association :person, factory: :person
   end
 end

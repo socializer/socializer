@@ -21,7 +21,7 @@ module Socializer
                         predicates: true, scope: true
 
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :phones
 
       # Validations
       validates :category, presence: true

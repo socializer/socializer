@@ -18,7 +18,7 @@ module Socializer
                            default: :home, predicates: true, scope: true
 
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :addresses
 
       # Validations
       validates :category, presence: true

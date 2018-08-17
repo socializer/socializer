@@ -2,18 +2,18 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :person, class: Socializer::Person do
     sequence(:display_name) { |n| "name#{n}" }
     sequence(:email) { |n| "name#{n}@example.com" }
-    avatar_provider "GRAVATAR"
+    avatar_provider { "GRAVATAR" }
 
     trait :english do
-      language "en"
+      language { "en" }
     end
 
     trait :french do
-      language "fr"
+      language { "fr" }
     end
 
     factory :person_circles, class: Socializer::Person do

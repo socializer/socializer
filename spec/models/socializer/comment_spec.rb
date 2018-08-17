@@ -10,7 +10,7 @@ module Socializer
       expect(comment).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it do
         is_expected
           .to belong_to(:activity_author)
@@ -25,7 +25,7 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:content) }
     end

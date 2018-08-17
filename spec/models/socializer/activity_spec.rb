@@ -10,7 +10,7 @@ module Socializer
       expect(activity).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       # FIXME: Test for optional: true
       it { is_expected.to belong_to(:parent) }
       it { is_expected.to belong_to(:activitable_actor) }
@@ -31,14 +31,14 @@ module Socializer
       it { is_expected.to have_many(:notifications).inverse_of(:activity) }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activitable_actor) }
       it { is_expected.to validate_presence_of(:activitable_object) }
       it { is_expected.to validate_presence_of(:verb) }
     end
 
-    context "scopes" do
-      context "newest_first" do
+    context "with scopes" do
+      describe "newest_first" do
         let(:sql) { Activity.newest_first.to_sql }
 
         it do
@@ -47,7 +47,7 @@ module Socializer
         end
       end
 
-      context "with_id" do
+      describe "with_id" do
         let(:sql) { Activity.with_id(id: 1).to_sql }
 
         it do
@@ -55,7 +55,7 @@ module Socializer
         end
       end
 
-      context "with_activity_object_id" do
+      describe "with_activity_object_id" do
         let(:sql) { Activity.with_activity_object_id(id: 1).to_sql }
 
         let(:expected) do
@@ -67,7 +67,7 @@ module Socializer
         end
       end
 
-      context "with_actor_id" do
+      describe "with_actor_id" do
         let(:sql) { Activity.with_actor_id(id: 1).to_sql }
 
         it do
@@ -76,7 +76,7 @@ module Socializer
         end
       end
 
-      context "with_target_id" do
+      describe "with_target_id" do
         let(:sql) { Activity.with_target_id(id: 1).to_sql }
 
         it do
@@ -100,10 +100,10 @@ module Socializer
         .as(:display_name)
     end
 
-    context "#comments" do
+    describe "#comments" do
       it { expect(activity.comments?).to eq(false) }
 
-      context "to be true" do
+      describe "expected to be true" do
         let(:activity) { create(:activity) }
         let(:scope) { Audience.privacy.find_value(:public) }
 
@@ -129,7 +129,7 @@ module Socializer
     it { expect(activity.object).to be_kind_of(Socializer::Note) }
     it { expect(activity.target).to be_kind_of(Socializer::Group) }
 
-    context ".stream" do
+    describe ".stream" do
       let(:activity_object_person) do
         build(:activity_object_person)
       end

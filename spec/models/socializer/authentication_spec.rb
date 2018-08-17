@@ -10,19 +10,20 @@ module Socializer
       expect(authentication).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to belong_to(:person) }
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:person) }
       it { is_expected.to validate_presence_of(:provider) }
       it { is_expected.to validate_presence_of(:uid) }
     end
 
-    context "scopes" do
-      context "with_provider" do
+    context "with scopes" do
+      describe "with_provider" do
         before { create(:authentication, provider: "identity") }
+
         let(:result) { Authentication.with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -36,8 +37,9 @@ module Socializer
         end
       end
 
-      context "not_with_provider" do
+      describe "not_with_provider" do
         before { create(:authentication, provider: "identity") }
+
         let(:result) { Authentication.not_with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
@@ -50,7 +52,7 @@ module Socializer
 
       it { expect(last_authentication.person.authentications.count).to eq(1) }
 
-      context "cannot be deleted" do
+      describe "it cannot be deleted" do
         before do
           last_authentication.destroy
         end

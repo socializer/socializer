@@ -13,7 +13,7 @@ module Socializer
     #
     class Employment < ApplicationRecord
       # Relationships
-      belongs_to :person
+      belongs_to :person, inverse_of: :employments
 
       # Validations
       validates :person, presence: true

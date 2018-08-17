@@ -11,7 +11,7 @@ module Socializer
       expect(person).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to have_one(:activity_object) }
       it { is_expected.to have_many(:authentications) }
       it { is_expected.to have_many(:addresses) }
@@ -23,7 +23,7 @@ module Socializer
       it { is_expected.to have_many(:places) }
     end
 
-    context "validations" do
+    context "with validations" do
       it do
         is_expected
           .to validate_inclusion_of(:avatar_provider).in_array(valid_providers)
@@ -49,7 +49,7 @@ module Socializer
       expect(Socializer::Person).to respond_to(:create_with_omniauth)
     end
 
-    context "#services" do
+    describe "#services" do
       let(:authentications_attributes) do
         { provider: "facebook", image_url: "http://facebook.com", uid: 1 }
       end
@@ -68,7 +68,7 @@ module Socializer
       end
     end
 
-    context "#circles" do
+    describe "#circles" do
       let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
 
@@ -76,7 +76,7 @@ module Socializer
       it { expect(person.circles).to eq(circles) }
     end
 
-    context "#comments" do
+    describe "#comments" do
       let(:person) { build(:person_comments) }
       let(:comments) { person.activity_object.comments }
 
@@ -84,7 +84,7 @@ module Socializer
       it { expect(person.comments).to eq(comments) }
     end
 
-    context "#groups" do
+    describe "#groups" do
       let(:person) { build(:person_groups) }
       let(:groups) { person.activity_object.groups }
 
@@ -92,7 +92,7 @@ module Socializer
       it { expect(person.groups).to eq(groups) }
     end
 
-    context "#notes" do
+    describe "#notes" do
       let(:person) { build(:person_notes) }
       let(:notes) { person.activity_object.notes }
 
@@ -108,7 +108,7 @@ module Socializer
       expect(person).to respond_to(:received_notifications)
     end
 
-    context "#contacts" do
+    describe "#contacts" do
       let(:person) { build(:person_circles) }
 
       # TODO: Test return values
@@ -118,14 +118,14 @@ module Socializer
       end
     end
 
-    context "#contact_of" do
+    describe "#contact_of" do
       let(:person) { build(:person_circles) }
 
       # TODO: Test return values
       it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
     end
 
-    context "#likes and #likes?" do
+    describe "#likes and #likes?" do
       let(:liking_person) { create(:person) }
       let(:liked_activity_object) { create(:activity_object) }
 
@@ -143,7 +143,7 @@ module Socializer
       expect(person).to respond_to(:pending_membership_invites)
     end
 
-    context "accepts known avatar_provider" do
+    context "when it accepts known avatar_provider" do
       it "when it is 'FACEBOOK'" do
         expect(build(:person, avatar_provider: "FACEBOOK")).to be_valid
       end
@@ -161,7 +161,7 @@ module Socializer
       end
     end
 
-    context "rejects unknown avatar_provider" do
+    context "when it rejects unknown avatar_provider" do
       it "when it is 'IDENTITY'" do
         expect(build(:person, avatar_provider: "IDENTITY")).to be_invalid
       end

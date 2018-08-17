@@ -10,7 +10,7 @@ module Socializer
       expect(circle).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it do
         is_expected
           .to belong_to(:activity_author)
@@ -37,7 +37,7 @@ module Socializer
       end
     end
 
-    context "validations" do
+    context "with validations" do
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:display_name) }
 
@@ -50,14 +50,14 @@ module Socializer
       end
     end
 
-    context "scopes" do
-      context "with_id" do
+    context "with scopes" do
+      describe "with_id" do
         let(:sql) { Circle.with_id(id: 1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_circles"."id" = 1') }
       end
 
-      context "with_author_id" do
+      describe "with_author_id" do
         let(:sql) { Circle.with_author_id(id: 1).to_sql }
 
         it do
@@ -65,7 +65,7 @@ module Socializer
         end
       end
 
-      context "with_display_name" do
+      describe "with_display_name" do
         let(:sql) { Circle.with_display_name(name: "Friends").to_sql }
 
         let(:expected) do
@@ -78,7 +78,7 @@ module Socializer
       end
     end
 
-    context "author" do
+    describe "author" do
       # TODO: Test return values
       it { expect(circle.author).to be_kind_of(Socializer::Person) }
     end
@@ -94,7 +94,7 @@ module Socializer
       it { expect(circle_with_contacts.ties.size).to be(1) }
       it { expect(circle_with_contacts.contacts.size).to be(1) }
 
-      context "and removing it" do
+      describe "and removing it" do
         before do
           circle_with_contacts.remove_contact(1)
           circle_with_contacts.reload

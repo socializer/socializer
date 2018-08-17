@@ -10,7 +10,7 @@ module Socializer
       ActivityObjectDecorator.new(activity_object)
     end
 
-    context "demodulized_type" do
+    describe "demodulized_type" do
       it { expect(decorated_activity_object.demodulized_type).to eq("Note") }
 
       it do
@@ -19,8 +19,8 @@ module Socializer
       end
     end
 
-    context "link_to_like_or_unlike" do
-      context "to return nil when no current_user" do
+    describe "link_to_like_or_unlike" do
+      context "when no current_user it returns nil " do
         before do
           allow(helper).to receive(:current_user).and_return(nil)
         end
@@ -39,7 +39,7 @@ module Socializer
         let(:person) { Person.first }
         let(:result) { decorated_activity_object.link_to_like_or_unlike }
 
-        context "does not like" do
+        context "when does not like" do
           let(:url) { like_activity_path(activity_object) }
 
           let(:selector) do
@@ -51,7 +51,7 @@ module Socializer
           it { expect(result).to have_selector(selector) }
         end
 
-        context "does like" do
+        context "when does like" do
           before do
             Activity::Services::Like.new(actor: person)
                                     .call(activity_object: activity_object)

@@ -9,8 +9,8 @@ module Socializer
         let(:group) { build(:group) }
         let(:person) { build(:person) }
 
-        describe "when the group and person arguments are nil" do
-          context ".new should raise an Dry::Types::ConstraintError" do
+        context "when the group and person arguments are nil" do
+          describe ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: nil, person: nil) }
 
             it do
@@ -19,8 +19,8 @@ module Socializer
           end
         end
 
-        describe "when the group argument is nil" do
-          context ".new should raise an Dry::Types::ConstraintError" do
+        context "when the group argument is nil" do
+          describe ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: nil, person: person) }
 
             it do
@@ -29,8 +29,8 @@ module Socializer
           end
         end
 
-        describe "when the person argument is nil" do
-          context ".new should raise an Dry::Types::ConstraintError" do
+        context "when the person argument is nil" do
+          describe ".new should raise an ArgumentError" do
             let(:service) { ServiceBase.new(group: group, person: nil) }
 
             it do

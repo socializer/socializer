@@ -2,10 +2,10 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :authentication, class: Socializer::Authentication do
-    provider "identity"
-    uid "1"
+    provider { "identity" }
+    uid { "1" }
     association :person, factory: :person
   end
 end

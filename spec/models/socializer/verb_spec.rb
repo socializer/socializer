@@ -10,20 +10,21 @@ module Socializer
       expect(verb).to be_valid
     end
 
-    context "relationships" do
+    context "with relationships" do
       it { is_expected.to have_many(:activities) }
     end
 
-    context "validations" do
+    context "with validations" do
       subject { verb }
 
       it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_uniqueness_of(:display_name) }
     end
 
-    context "scopes" do
-      context "with_display_name" do
+    context "with scopes" do
+      describe "with_display_name" do
         before { create(:verb, display_name: "post") }
+
         let(:result) { Verb.with_display_name(name: "post") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }

@@ -6,20 +6,20 @@ module Socializer
   RSpec.describe AuthenticationsController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    # Create a user, authentication, and valid_attributes
+    # Create a user, authentication, and valid_params
     let(:user) { create(:person) }
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { authentication: { provider: "facebook",
                           uid: user.id,
                           person: user } }
     end
 
     let(:authentication) do
-      create(:authentication, valid_attributes[:authentication])
+      create(:authentication, valid_params[:authentication])
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index
@@ -35,7 +35,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -56,7 +56,7 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
-        context "cannot delete the last authentication" do
+        context "when it cannot delete the last authentication" do
           it "deletes the authentication" do
             authentication
             expect { delete :destroy, params: { id: authentication } }
@@ -64,7 +64,7 @@ module Socializer
           end
         end
 
-        context "can delete when it is not the last authentication" do
+        context "when it can delete when it is not the last authentication" do
           let(:authentication_attributes) do
             { provider: "identity", uid: user.id, person: user }
           end

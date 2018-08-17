@@ -17,7 +17,7 @@ module Socializer
       Activity.circle_stream(actor_uid: circle.id, viewer_id: user.id).decorate
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #index" do
         it "requires login" do
           get :index, params: { circle_id: circle }
@@ -26,7 +26,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 

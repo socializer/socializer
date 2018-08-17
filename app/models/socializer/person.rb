@@ -39,35 +39,43 @@ module Socializer
     has_many :authentications, dependent: :destroy
     has_many :addresses, class_name: "Person::Address",
                          foreign_key: "person_id",
-                         dependent: :destroy
+                         dependent: :destroy,
+                         inverse_of: :person
 
     has_many :contributions, class_name: "Person::Contribution",
                              foreign_key: "person_id",
-                             dependent: :destroy
+                             dependent: :destroy,
+                             inverse_of: :person
 
     has_many :educations, class_name: "Person::Education",
                           foreign_key: "person_id",
-                          dependent: :destroy
+                          dependent: :destroy,
+                          inverse_of: :person
 
     has_many :employments, class_name: "Person::Employment",
                            foreign_key: "person_id",
-                           dependent: :destroy
+                           dependent: :destroy,
+                           inverse_of: :person
 
     has_many :links, class_name: "Person::Link",
                      foreign_key: "person_id",
-                     dependent: :destroy
+                     dependent: :destroy,
+                     inverse_of: :person
 
     has_many :phones, class_name: "Person::Phone",
                       foreign_key: "person_id",
-                      dependent: :destroy
+                      dependent: :destroy,
+                      inverse_of: :person
 
     has_many :places, class_name: "Person::Place",
                       foreign_key: "person_id",
-                      dependent: :destroy
+                      dependent: :destroy,
+                      inverse_of: :person
 
     has_many :profiles, class_name: "Person::Profile",
                         foreign_key: "person_id",
-                        dependent: :destroy
+                        dependent: :destroy,
+                        inverse_of: :person
 
     # TODO: May be able replace the circles and contacts delegates. Should be
     #       able to create circles through this relationship
@@ -148,7 +156,7 @@ module Socializer
     # @return [Socializer::Notification] Returns a collection of
     # {Socializer::Notification notifications}
     def received_notifications
-      @notifications ||= activity_object.notifications.newest_first
+      @received_notifications ||= activity_object.notifications.newest_first
     end
 
     # A collection of {Socializer::Person people} this person is a contact of

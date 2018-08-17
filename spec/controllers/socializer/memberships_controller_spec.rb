@@ -21,7 +21,7 @@ module Socializer
 
     let(:valid_attributes) { { membership: { group_id: group.id } } }
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "POST #create" do
         it "requires login" do
           post :create, params: valid_attributes
@@ -37,7 +37,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -51,7 +51,7 @@ module Socializer
               .to change(Membership, :count).by(1)
           end
 
-          context "redirects to groups#show" do
+          describe "it redirects to groups#show" do
             before do
               post :create, params: valid_attributes
             end

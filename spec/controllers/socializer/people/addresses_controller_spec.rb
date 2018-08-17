@@ -9,7 +9,7 @@ module Socializer
     # Create a user nad address
     let(:user) { create(:person) }
 
-    let(:valid_attributes) do
+    let(:valid_params) do
       { person_id: user,
         person_address: { category: :home,
                           line1: "282 Kevin Brook",
@@ -19,7 +19,7 @@ module Socializer
                           country: "US" } }
     end
 
-    let(:invalid_attributes) do
+    let(:invalid_params) do
       { person_id: user,
         person_address: { category: nil,
                           line1: "",
@@ -30,16 +30,16 @@ module Socializer
     end
 
     let(:address) do
-      user.addresses.create!(valid_attributes[:person_address])
+      user.addresses.create!(valid_params[:person_address])
     end
 
-    let(:update_attributes) do
+    let(:update_params) do
       { id: address,
         person_id: user,
         person_address: { label: "updated content" } }
     end
 
-    describe "when not logged in" do
+    context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
           get :new, params: { person_id: user}
@@ -49,7 +49,7 @@ module Socializer
 
       describe "POST #create" do
         it "requires login" do
-          post :create, params: valid_attributes
+          post :create, params: valid_params
           expect(response).to redirect_to root_path
         end
       end
@@ -63,7 +63,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: update_attributes
+          patch :update, params: update_params
           expect(response).to redirect_to root_path
         end
       end
@@ -76,7 +76,7 @@ module Socializer
       end
     end
 
-    describe "when logged in" do
+    context "when logged in" do
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
@@ -95,13 +95,13 @@ module Socializer
       describe "POST #create" do
         context "with valid attributes" do
           it "saves the new address in the database" do
-            expect { post :create, params: valid_attributes }
+            expect { post :create, params: valid_params }
               .to change(Person::Address, :count).by(1)
           end
 
-          context "redirects to people#show" do
+          describe "it redirects to people#show" do
             before do
-              post :create, params: valid_attributes
+              post :create, params: valid_params
             end
 
             it { expect(response).to redirect_to user }
@@ -111,12 +111,12 @@ module Socializer
 
         context "with invalid attributes" do
           it "does not save the new address in the database" do
-            expect { post :create, params: invalid_attributes }
+            expect { post :create, params: invalid_params }
               .not_to change(Person::Address, :count)
           end
 
           it "re-renders the :new template" do
-            post :create, params: invalid_attributes
+            post :create, params: invalid_params
             expect(response).to render_template :new
           end
         end
@@ -135,7 +135,7 @@ module Socializer
       describe "PATCH #update" do
         context "with valid attributes" do
           it "redirects to people#show" do
-            patch :update, params: update_attributes
+            patch :update, params: update_params
             expect(response).to redirect_to user
           end
         end
@@ -152,7 +152,7 @@ module Socializer
             .to change(Person::Address, :count).by(-1)
         end
 
-        context "redirects to people#show" do
+        describe "it redirects to people#show" do
           before do
             delete :destroy, params: { id: address, person_id: user }
           end

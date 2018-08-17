@@ -2,9 +2,9 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :activity_object, class: Socializer::ActivityObject do
-    unread_notifications_count 0
+    unread_notifications_count { 0 }
     association :activitable, factory: :note
 
     factory :activity_object_activity, class: Socializer::ActivityObject do

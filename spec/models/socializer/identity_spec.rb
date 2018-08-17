@@ -10,7 +10,7 @@ module Socializer
       expect(identity).to be_valid
     end
 
-    context "validations" do
+    context "with validations" do
       subject { identity }
 
       it { is_expected.to validate_presence_of(:name) }
