@@ -36,7 +36,7 @@ module Socializer
         it { expect(ac.call.persisted?).to be true }
       end
 
-      context "#object_ids" do
+      context "when #object_ids set" do
         let(:ac) { CreateActivity.new(activity_attributes) }
 
         let(:public_privacy) do
@@ -58,7 +58,7 @@ module Socializer
         let(:public_audience) { results.audiences.where(privacy: "public") }
         let(:circles_audience) { results.audiences.where(privacy: "circles") }
 
-        context "as a String" do
+        context "with a String" do
           let(:object_ids) { public_privacy }
 
           it { expect(results.persisted?).to eq(true) }
@@ -66,7 +66,7 @@ module Socializer
           it { expect(circles_audience.present?).to eq(false) }
         end
 
-        context "as an Array" do
+        context "with an Array" do
           let(:object_ids) { [public_privacy, circles_privacy] }
 
           it { expect(results.persisted?).to eq(true) }
