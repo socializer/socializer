@@ -19,7 +19,7 @@ module Socializer
       #
       # @example
       #   result = Activity::Contract::Share.call(params)
-      Share = Dry::Validation.Form do
+      Share = Dry::Validation.Params do
         required(:actor_id).filled(:int?)
         required(:activity_object_id).filled(:int?)
         required(:verb).filled(:str?)
