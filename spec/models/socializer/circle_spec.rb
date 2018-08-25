@@ -12,7 +12,7 @@ module Socializer
 
     context "with relationships" do
       it do
-        is_expected
+        expect(circle)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
@@ -20,7 +20,7 @@ module Socializer
       end
 
       it do
-        is_expected
+        expect(circle)
           .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
@@ -30,7 +30,7 @@ module Socializer
       it { is_expected.to have_many(:activity_contacts).through(:ties) }
 
       it do
-        is_expected
+        expect(circle)
           .to have_many(:contacts)
           .through(:activity_contacts)
           .source(:activitable)
@@ -43,7 +43,7 @@ module Socializer
 
       it "check uniqueness of display_name" do
         create(:circle)
-        is_expected
+        expect(circle)
           .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
           .case_insensitive

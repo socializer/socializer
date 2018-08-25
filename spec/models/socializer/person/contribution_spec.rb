@@ -22,7 +22,7 @@ module Socializer
     end
 
     it do
-      is_expected.to enumerize(:label)
+      expect(contribution).to enumerize(:label)
         .in(:current_contributor, :past_contributor)
         .with_default(:current_contributor)
         .with_predicates(true)

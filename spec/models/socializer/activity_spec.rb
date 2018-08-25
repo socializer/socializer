@@ -20,7 +20,7 @@ module Socializer
       it { is_expected.to belong_to(:verb) }
 
       it do
-        is_expected
+        expect(activity)
           .to have_one(:actor).through(:activitable_actor).source(:activitable)
       end
 
@@ -87,14 +87,14 @@ module Socializer
     end
 
     it do
-      is_expected
+      expect(activity)
         .to delegate_method(:activity_field_content)
         .to(:activity_field)
         .as(:content)
     end
 
     it do
-      is_expected
+      expect(activity)
         .to delegate_method(:verb_display_name)
         .to(:verb)
         .as(:display_name)

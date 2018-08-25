@@ -24,7 +24,7 @@ module Socializer
       it { is_expected.to belong_to(:group).inverse_of(:memberships) }
 
       it do
-        is_expected
+        expect(membership)
           .to belong_to(:activity_member)
           .class_name("ActivityObject")
           .with_foreign_key("member_id")
@@ -32,7 +32,7 @@ module Socializer
       end
 
       it do
-        is_expected
+        expect(membership)
           .to have_one(:member).through(:activity_member).source(:activitable)
       end
     end

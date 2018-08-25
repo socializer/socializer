@@ -12,7 +12,7 @@ module Socializer
 
     context "with relationships" do
       it do
-        is_expected
+        expect(note)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
@@ -20,7 +20,7 @@ module Socializer
       end
 
       it do
-        is_expected
+        expect(note)
           .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
