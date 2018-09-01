@@ -320,7 +320,7 @@ GEM
       rubocop (>= 0.58.0)
     ruby-openid (2.7.0)
     ruby-progressbar (1.10.0)
-    rubyzip (1.2.1)
+    rubyzip (1.2.2)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
