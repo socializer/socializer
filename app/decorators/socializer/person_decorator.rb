@@ -56,6 +56,7 @@ module Socializer
       relationship = model.relationship
 
       return "Seeing anyone?" if relationship.unknown?
+
       relationship.titleize
     end
 
@@ -187,6 +188,7 @@ module Socializer
 
     def gravatar_url
       return if email.blank?
+
       "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
     end
 
@@ -243,6 +245,7 @@ module Socializer
     # @return [Socializer::Group]
     def toolbar_object(object:)
       return object.group if object.is_a?(Socializer::Membership)
+
       object
     end
 
