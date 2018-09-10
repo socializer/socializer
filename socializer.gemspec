@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency("country_select",       "~> 3.1.1")
   s.add_dependency("draper",               "~> 3.0.1")
 
-  s.add_dependency("dry-initializer",      "~> 2.5.0")
+  s.add_dependency("dry-initializer",      "~> 2.6.0")
   s.add_dependency("dry-validation",       "~> 0.12.2")
 
   s.add_dependency("elasticsearch-rails",  "~> 5.1.0")
