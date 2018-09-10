@@ -149,6 +149,7 @@ module Socializer
     # Reset unread_notifications_count to 0
     def reset_unread_notifications
       return if unread_notifications_count.zero?
+
       update!(unread_notifications_count: 0)
     end
   end

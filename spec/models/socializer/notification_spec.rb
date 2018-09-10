@@ -15,7 +15,7 @@ module Socializer
       it { is_expected.to belong_to(:activity).inverse_of(:notifications) }
 
       it do
-        is_expected.to belong_to(:activity_object)
+        expect(notification).to belong_to(:activity_object)
           .inverse_of(:notifications)
           .counter_cache(:unread_notifications_count)
       end

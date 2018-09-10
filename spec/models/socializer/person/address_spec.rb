@@ -25,7 +25,7 @@ module Socializer
     end
 
     it do
-      is_expected.to enumerize(:category)
+      expect(address).to enumerize(:category)
         .in(:home, :work)
         .with_default(:home)
         .with_predicates(true)

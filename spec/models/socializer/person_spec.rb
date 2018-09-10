@@ -25,20 +25,20 @@ module Socializer
 
     context "with validations" do
       it do
-        is_expected
+        expect(person)
           .to validate_inclusion_of(:avatar_provider).in_array(valid_providers)
       end
     end
 
     it do
-      is_expected.to enumerize(:gender)
+      expect(person).to enumerize(:gender)
         .in(:unknown, :female, :male).with_default(:unknown)
         .with_predicates(true)
         .with_scope(true)
     end
 
     it do
-      is_expected.to enumerize(:relationship)
+      expect(person).to enumerize(:relationship)
         .in(:unknown, :single, :relationship, :engaged, :married, :complicated,
             :open, :widowed, :domestic, :civil)
         .with_default(:unknown)

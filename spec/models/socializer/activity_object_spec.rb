@@ -14,27 +14,28 @@ module Socializer
       it { is_expected.to belong_to(:activitable) }
 
       it do
-        is_expected.to have_one(:self_reference)
+        expect(activity_object).to have_one(:self_reference)
           .class_name("ActivityObject")
           .with_foreign_key("id")
       end
 
       # FIXME: Test for source_type when available
       it do
-        is_expected.to have_one(:group)
+        expect(activity_object).to have_one(:group)
           .through(:self_reference)
           .source(:activitable)
       end
 
       # FIXME: Test for source_type when available
       it do
-        is_expected.to have_one(:person)
+        expect(activity_object).to have_one(:person)
           .through(:self_reference)
           .source(:activitable)
       end
 
       it do
-        is_expected.to have_many(:notifications).inverse_of(:activity_object)
+        expect(activity_object).to have_many(:notifications)
+          .inverse_of(:activity_object)
       end
 
       it { is_expected.to have_many(:audiences).inverse_of(:activity_object) }
@@ -50,7 +51,7 @@ module Socializer
       it { is_expected.to have_many(:ties).inverse_of(:activity_contact) }
 
       it do
-        is_expected
+        expect(activity_object)
           .to have_many(:memberships)
           .conditions(active: true)
           .inverse_of(:activity_member)

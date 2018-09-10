@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency("dry-initializer",      "~> 2.6.0")
   s.add_dependency("dry-validation",       "~> 0.12.2")
 
-  s.add_dependency("elasticsearch-rails",  "~> 5.1.0")
+  s.add_dependency("elasticsearch-rails",  "~> 6.0.0")
   s.add_dependency("enumerize",            "~> 2.2.2")
   s.add_dependency("jquery-rails",         "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
@@ -55,13 +55,13 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
   # s.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # s.add_development_dependency("capybara",             "~> 2.5.0")
-  s.add_development_dependency("factory_bot_rails",    "~> 4.11.0")
-  s.add_development_dependency("i18n-tasks",           "~> 0.9.23")
+  s.add_development_dependency("factory_bot_rails",    "~> 4.11.1")
+  s.add_development_dependency("i18n-tasks",           "~> 0.9.24")
   s.add_development_dependency("inch",                 "~> 0.8.0")
   s.add_development_dependency("shoulda-matchers",     "~> 3.1.2")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.19.3")
-  s.add_development_dependency("rubocop",              "~> 0.58.2")
-  s.add_development_dependency("rubocop-rspec",        "~> 1.28.0")
+  s.add_development_dependency("rubocop",              "~> 0.59.0")
+  s.add_development_dependency("rubocop-rspec",        "~> 1.29.1")
   s.add_development_dependency("scss_lint",            "~> 0.57.0")
 end

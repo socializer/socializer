@@ -84,6 +84,7 @@ module Socializer
 
     def merge_icon(list:, icon:)
       return list.merge(icon: icon) if list.is_a?(Hash)
+
       list = list.to_a unless list.is_a?(Array)
 
       list.map do |item|
@@ -99,7 +100,8 @@ module Socializer
     # and guid
     # for all records that match the query
     def person_list
-      return Person.none if query.blank?
+      return Person.none if @query.blank?
+
       result = select_display_name_alias_and_guids(query: Person)
       result.display_name_like(query: "%#{query}%")
     end

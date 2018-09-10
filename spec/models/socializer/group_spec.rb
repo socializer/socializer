@@ -12,7 +12,7 @@ module Socializer
 
     context "with relationships" do
       it do
-        is_expected
+        expect(group)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
@@ -20,7 +20,7 @@ module Socializer
       end
 
       it do
-        is_expected
+        expect(group)
           .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
@@ -31,14 +31,14 @@ module Socializer
       it { is_expected.to have_many(:memberships).inverse_of(:group) }
 
       it do
-        is_expected
+        expect(group)
           .to have_many(:activity_members)
           .through(:memberships)
           .conditions(socializer_memberships: { active: true })
       end
 
       it do
-        is_expected
+        expect(group)
           .to have_many(:members)
           .through(:activity_members)
           .source(:activitable)
@@ -51,7 +51,7 @@ module Socializer
       it { is_expected.to validate_presence_of(:privacy) }
       it "check uniqueness of display_name" do
         create(:group)
-        is_expected
+        expect(group)
           .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
           .case_insensitive
@@ -73,7 +73,7 @@ module Socializer
     end
 
     it do
-      is_expected
+      expect(group)
         .to enumerize(:privacy)
         .in(:public, :restricted, :private).with_default(:public)
         .with_predicates(true)
