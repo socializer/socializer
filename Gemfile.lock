@@ -20,7 +20,7 @@ PATH
       rails (~> 5.2.1)
       sass-rails (~> 5.0.7)
       simple_form (~> 4.0.1)
-      uglifier (>= 4.1.18)
+      uglifier (>= 4.1.19)
 
 GEM
   remote: https://rubygems.org/
@@ -371,7 +371,7 @@ GEM
     tins (1.16.3)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.18)
+    uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
