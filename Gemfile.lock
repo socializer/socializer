@@ -158,7 +158,7 @@ GEM
     highline (2.0.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.25)
+    i18n-tasks (0.9.27)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -396,7 +396,7 @@ DEPENDENCIES
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.7.0)
   factory_bot_rails (~> 4.11.1)
-  i18n-tasks (~> 0.9.25)
+  i18n-tasks (~> 0.9.27)
   inch (~> 0.8.0)
   pry (~> 0.11.3)
   rails-controller-testing
