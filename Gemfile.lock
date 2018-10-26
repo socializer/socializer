@@ -310,14 +310,14 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    rubocop (0.59.2)
+    rubocop (0.60.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (~> 1.0, >= 1.0.1)
+      unicode-display_width (~> 1.4.0)
     rubocop-rspec (1.30.0)
       rubocop (>= 0.58.0)
     ruby-openid (2.7.0)
@@ -388,7 +388,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16.0)
+  bundler (~> 1.17.1)
   byebug (~> 10.0.2)
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
@@ -404,7 +404,7 @@ DEPENDENCIES
   rails_best_practices (~> 1.19.3)
   rake (~> 12.3.1)
   rspec-rails (~> 3.8.1)
-  rubocop (~> 0.59.2)
+  rubocop (~> 0.60.0)
   rubocop-rspec (~> 1.30.0)
   scss_lint (~> 0.57.1)
   selenium-webdriver
@@ -414,4 +414,4 @@ DEPENDENCIES
   sqlite3 (~> 1.3.13)
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
