@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.add_dependency("simple_form",          "~> 4.0.1")
   s.add_dependency("uglifier",             ">= 4.1.19")
 
-  s.add_development_dependency("bundler",              "~> 1.16.0")
+  s.add_development_dependency("bundler",              "~> 1.17.1")
   s.add_development_dependency("rake",                 "~> 12.3.1")
   s.add_development_dependency("sqlite3",              "~> 1.3.13")
   # s.add_development_dependency("rspec-rails",          "~> 3.8.1")
