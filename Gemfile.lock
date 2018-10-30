@@ -158,13 +158,14 @@ GEM
     highline (2.0.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.27)
+    i18n-tasks (0.9.28)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
       highline (>= 2.0.0)
       i18n
       parser (>= 2.2.3.0)
+      rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
     i18n_data (0.8.0)
@@ -233,7 +234,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.12.1)
-    parser (2.5.1.2)
+    parser (2.5.3.0)
       ast (~> 2.4.0)
     powerpack (0.1.2)
     pry (0.11.3)
@@ -270,6 +271,9 @@ GEM
       rails
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.1.2)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     rails_best_practices (1.19.3)
       activesupport
       code_analyzer (>= 0.4.8)
@@ -396,7 +400,7 @@ DEPENDENCIES
   coveralls (~> 0.8.21)
   database_cleaner (~> 1.7.0)
   factory_bot_rails (~> 4.11.1)
-  i18n-tasks (~> 0.9.27)
+  i18n-tasks (~> 0.9.28)
   inch (~> 0.8.0)
   pry (~> 0.11.3)
   rails-controller-testing
