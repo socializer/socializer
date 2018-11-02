@@ -30,10 +30,10 @@ group :test do
   gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
-  gem "coveralls", "~> 0.8.21", require: false
+  gem "coveralls", "~> 0.8.22", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner", "~> 1.7.0"
-  gem "simplecov", "~> 0.14.1", require: false
+  gem "simplecov", "~> 0.16.1", require: false
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
