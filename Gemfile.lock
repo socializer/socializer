@@ -237,7 +237,7 @@ GEM
     parser (2.5.3.0)
       ast (~> 2.4.0)
     powerpack (0.1.2)
-    pry (0.11.3)
+    pry (0.12.0)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
@@ -402,7 +402,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.11.1)
   i18n-tasks (~> 0.9.28)
   inch (~> 0.8.0)
-  pry (~> 0.11.3)
+  pry (~> 0.12.0)
   rails-controller-testing
   rails-dummy (= 0.0.7)
   rails_best_practices (~> 1.19.4)
