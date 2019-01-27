@@ -322,7 +322,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
-    rubocop-rspec (1.31.0)
+    rubocop-rspec (1.32.0)
       rubocop (>= 0.60.0)
     ruby-openid (2.7.0)
     ruby-progressbar (1.10.0)
@@ -409,7 +409,7 @@ DEPENDENCIES
   rake (~> 12.3.2)
   rspec-rails (~> 3.8.2)
   rubocop (~> 0.63.1)
-  rubocop-rspec (~> 1.31.0)
+  rubocop-rspec (~> 1.32.0)
   scss_lint (~> 0.57.1)
   selenium-webdriver
   shoulda-matchers (~> 3.1.2)
