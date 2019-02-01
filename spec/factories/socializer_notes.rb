@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :note, class: Socializer::Note do
-    association :activity_author, factory: :activity_object_person
+    association :activity_author, factory: :activity_object_person, strategy: :create
     content { "This is a note" }
   end
 end

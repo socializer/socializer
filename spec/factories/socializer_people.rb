@@ -17,19 +17,19 @@ FactoryBot.define do
     end
 
     factory :person_circles, class: Socializer::Person do
-      association :activity_object, factory: :activity_object_circle
+      association :activity_object, factory: :activity_object_circle, strategy: :create
     end
 
     factory :person_comments, class: Socializer::Person do
-      association :activity_object, factory: :activity_object_comment
+      association :activity_object, factory: :activity_object_comment, strategy: :create
     end
 
     factory :person_groups, class: Socializer::Person do
-      association :activity_object, factory: :activity_object_group
+      association :activity_object, factory: :activity_object_group, strategy: :create
     end
 
     factory :person_notes, class: Socializer::Person do
-      association :activity_object, factory: :activity_object
+      association :activity_object, factory: :activity_object, strategy: :create
     end
   end
 end
