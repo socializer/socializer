@@ -30,6 +30,7 @@ RSpec.configure do |config|
       MSG
 
     end
+
     DatabaseCleaner.clean_with(:truncation)
   end
 
