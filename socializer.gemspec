@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
   s.add_dependency("rails",                "~> 5.2.2")
   s.add_dependency("sass-rails",           "~> 5.0.7")
-  s.add_dependency("simple_form",          "~> 4.0.1")
+  s.add_dependency("simple_form",          "~> 4.1.0")
   s.add_dependency("uglifier",             ">= 4.1.19")
 
   s.add_development_dependency("bundler",              "~> 2.0.1")
