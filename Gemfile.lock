@@ -76,7 +76,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.4.10.2)
+    autoprefixer-rails (9.5.0)
       execjs
     bcrypt (3.1.12)
     bcrypt-ruby (3.1.5)
@@ -231,7 +231,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.14.0)
-    parser (2.6.0.0)
+    parser (2.6.2.0)
       ast (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -344,7 +344,7 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
-    sexp_processor (4.11.0)
+    sexp_processor (4.12.0)
     shoulda-matchers (4.0.1)
       activesupport (>= 4.2.0)
     simple_form (4.1.0)
