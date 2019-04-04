@@ -230,7 +230,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    parallel (1.16.1)
+    parallel (1.17.0)
     parser (2.6.2.0)
       ast (~> 2.4.0)
     pry (0.12.2)
@@ -311,7 +311,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    rubocop (0.66.0)
+    rubocop (0.67.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
@@ -408,7 +408,7 @@ DEPENDENCIES
   rails_best_practices (~> 1.19.4)
   rake (~> 12.3.2)
   rspec-rails (~> 3.8.2)
-  rubocop (~> 0.66.0)
+  rubocop (~> 0.67.1)
   rubocop-rspec (~> 1.32.0)
   scss_lint (~> 0.57.1)
   selenium-webdriver
