@@ -51,7 +51,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
   # s.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # s.add_development_dependency("capybara",             "~> 2.5.0")
-  s.add_development_dependency("factory_bot_rails",    "~> 5.0.1")
+  s.add_development_dependency("factory_bot_rails",    "~> 5.0.2")
   s.add_development_dependency("i18n-tasks",           "~> 0.9.29")
   s.add_development_dependency("inch",                 "~> 0.8.0")
   s.add_development_dependency("shoulda-matchers",     "~> 4.0.1")
