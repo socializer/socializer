@@ -27,7 +27,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "coveralls", "~> 0.8.22", require: false
+  gem "coveralls", "~> 0.8.23", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner", "~> 1.7.0"
   gem "simplecov", "~> 0.16.1", require: false
