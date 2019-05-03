@@ -332,7 +332,7 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
-    scss_lint (0.57.1)
+    scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
     selenium-webdriver (3.142.0)
@@ -408,7 +408,7 @@ DEPENDENCIES
   rubocop (~> 0.68.1)
   rubocop-performance (~> 1.1.0)
   rubocop-rspec (~> 1.32.0)
-  scss_lint (~> 0.57.1)
+  scss_lint (~> 0.58.0)
   shoulda-matchers (~> 4.0.1)
   simplecov (~> 0.16.1)
   socializer!

@@ -60,5 +60,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop",              "~> 0.68.1")
   s.add_development_dependency("rubocop-performance",  "~> 1.1.0")
   s.add_development_dependency("rubocop-rspec",        "~> 1.32.0")
-  s.add_development_dependency("scss_lint",            "~> 0.57.1")
+  s.add_development_dependency("scss_lint",            "~> 0.58.0")
 end
