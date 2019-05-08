@@ -335,7 +335,7 @@ GEM
     scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
-    selenium-webdriver (3.142.0)
+    selenium-webdriver (3.142.1)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     sexp_processor (4.12.0)
@@ -375,7 +375,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.5.0)
     unicode_utils (1.4.0)
-    webdrivers (3.8.0)
+    webdrivers (3.9.0)
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
@@ -413,7 +413,7 @@ DEPENDENCIES
   simplecov (~> 0.16.1)
   socializer!
   sqlite3 (~> 1.4.1)
-  webdrivers (~> 3.8)
+  webdrivers (~> 3.9)
 
 BUNDLED WITH
    2.0.1
