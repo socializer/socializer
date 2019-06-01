@@ -257,8 +257,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-dummy (0.0.7)
-      rails
+    rails-dummy (0.1.0)
+      railties
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails-i18n (5.1.3)
@@ -404,7 +404,7 @@ DEPENDENCIES
   inch (~> 0.8.0)
   pry (~> 0.12.2)
   rails-controller-testing
-  rails-dummy (= 0.0.7)
+  rails-dummy (= 0.1.0)
   rails_best_practices (~> 1.19.4)
   rake (~> 12.3.2)
   rspec-rails (~> 3.8.2)
