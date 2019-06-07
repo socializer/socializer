@@ -30,9 +30,7 @@ RSpec.configure do |config|
       MSG
 
     end
-  end
 
-  config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -41,20 +39,17 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :feature) do
-    # :rack_test driver"s Rack app under test shares database connection
-    # with the specs, so we can use transaction strategy for speed.
-    shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    # :rack_test driver's Rack app under test shares database connection
+    # with the specs, so continue to use transaction strategy for speed.
+    current_driver = Capybara.current_driver == :rack_test
+    driver_shares_db_connection_with_specs = current_driver
 
-    DatabaseCleaner.strategy = if shares_db_connection_with_specs
-                                 :transaction
-                               else
-                                 # Non-:rack_test driver is probably a driver
-                                 # for a JavaScript browser with a Rack app
-                                 # under test that does *not* share a database
-                                 # connection with the specs, so we must use
-                                 # truncation strategy.
-                                 :truncation
-                               end
+    unless driver_shares_db_connection_with_specs
+      # Driver is probably for an external browser with an app
+      # under test that does *not* share a database connection with the
+      # specs, so use truncation strategy.
+      DatabaseCleaner.strategy = :truncation
+    end
   end
 
   config.before do

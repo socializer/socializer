@@ -1,3 +1,7 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
   Exclude:
     - "bin/**/*"
@@ -27,7 +31,7 @@ AllCops:
   StyleGuideCopsOnly: false
   # What version of the Ruby interpreter is the inspected code intended to
   # run on? (If there is more than one, set this to the lowest version.)
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
 
 Layout/AlignHash:
   Exclude:
@@ -55,11 +59,6 @@ Metrics/LineLength:
     - "config/initializers/simple_form_bootstrap.rb"
 
 Metrics/MethodLength:
-  Enabled: true
-
-# By default, the rails cops are not run. Override in project or home
-# directory .rubocop.yml files, or by giving the -R/--rails option.
-Rails:
   Enabled: true
 
 Style/RegexpLiteral:

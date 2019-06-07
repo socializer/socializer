@@ -14,10 +14,10 @@ gemspec
 # your gem to rubygems.org.
 
 group :development, :test do
-  gem "byebug", "~> 10.0.2"
+  gem "byebug", "~> 11.0.1"
   gem "pry", "~> 0.12.2"
-  gem "rails-dummy", "= 0.0.7"
-  gem "rspec-rails", "~> 3.8.1"
+  gem "rails-dummy", "= 0.1.0"
+  gem "rspec-rails", "~> 3.8.2"
 end
 
 group :development do
@@ -27,13 +27,11 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "selenium-webdriver"
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem "chromedriver-helper"
-  gem "coveralls", "~> 0.8.22", require: false
+  gem "coveralls", "~> 0.8.23", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner", "~> 1.7.0"
   gem "simplecov", "~> 0.16.1", require: false
+  gem "webdrivers", "~> 4.0"
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
