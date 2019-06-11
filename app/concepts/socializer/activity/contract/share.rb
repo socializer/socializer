@@ -18,7 +18,8 @@ module Socializer
       # Contract object for vaidating a share for Socializer::Activity
       #
       # @example
-      #   result = Activity::Contract::Share.call(params)
+      #   contract= Activity::Contract::Share.new
+      #   result = contract.call(params)
       class Share < Dry::Validation::Contract
         params do
           required(:actor_id).filled(:integer)
