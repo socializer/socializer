@@ -58,7 +58,8 @@ module Socializer
 
       # Only allow a trusted parameter "white list" through.
       def share_params
-        params.require(:share).permit(:activity_id, :content, :object_ids)
+        # params.require(:share).permit(:activity_id, :content, :object_ids)
+        params[:share].to_unsafe_hash
       end
     end
   end
