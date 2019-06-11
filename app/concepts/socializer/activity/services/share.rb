@@ -37,11 +37,12 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          @params = params
-          @result = Activity::Contract::Share.call(share_attributes)
+          contract = Activity::Contract::Share.new
+          @params  = params
+          @result  = contract.call(share_attributes)
 
           if result.success?
-            Socializer::CreateActivity.new(result.output).call
+            Socializer::CreateActivity.new(result.to_h).call
           else
             validation_errors
           end
@@ -60,17 +61,11 @@ module Socializer
             content: params[:content] }
         end
 
-        def add_errors_to_activity(field:, messages:)
-          messages.each do |message|
-            activity.errors.add(field, message)
-          end
-        end
-
         def validation_errors
           @activity = Activity.new
 
-          result.messages.each do |field, messages|
-            add_errors_to_activity(field: field, messages: messages)
+          result.errors.to_h.each do |key, value|
+            activity.errors.add(key, value)
           end
 
           activity

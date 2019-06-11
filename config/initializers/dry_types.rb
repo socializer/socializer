@@ -6,5 +6,5 @@ require "dry-types"
 # Namespace for dry-type types
 #
 module Types
-  include Dry::Types.module
+  include Dry.Types()
 end

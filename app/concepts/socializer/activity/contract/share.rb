@@ -15,17 +15,21 @@ module Socializer
     #
     module Contract
       #
-      # Contract object for vaidating a shRE for Socializer::Activity
+      # Contract object for vaidating a share for Socializer::Activity
       #
       # @example
       #   result = Activity::Contract::Share.call(params)
-      Share = Dry::Validation.Params do
-        required(:actor_id).filled(:int?)
-        required(:activity_object_id).filled(:int?)
-        required(:verb).filled(:str?)
-        required(:object_ids)
-          .filled { str? | each(str?: included_in?(Audience.privacy.values)) }
-        required(:content).maybe(:str?)
+      class Share < Dry::Validation::Contract
+        params do
+          required(:actor_id).filled(:integer)
+          required(:activity_object_id).filled(:integer)
+          required(:verb).filled(:string)
+          required(:object_ids).filled do
+            str? | array? & each { included_in?(Audience.privacy.values) }
+            # str? | array? & each { str? } & included_in?(Audience.privacy.values)
+          end
+          required(:content).maybe(:string)
+        end
       end
     end
   end
