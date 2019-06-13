@@ -1,7 +1,6 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=08c7e43e5cdaf0614c7e61dcf6279865630cb6992fa9f1f09856f72fd641218b
-    - ENGINE=Socializer
 
 language: ruby
 dist: trusty
@@ -15,9 +14,7 @@ before_install:
 
 
 before_script:
-  - bundle install
   - bundle update
-  - bundle list bootsnap
   - bundle exec rails dummy:app --trace
   - cp travis/database.yml spec/dummy/config/database.yml
   - mysql -e 'CREATE DATABASE socializer_test;'
