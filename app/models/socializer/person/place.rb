@@ -34,7 +34,8 @@ module Socializer
       #
       # @return [ActiveRecord::Relation]
       def self.previous
-        where(current: false)
+        # FIXME: where(current: false) should work
+        where.not(current: true)
       end
     end
   end
