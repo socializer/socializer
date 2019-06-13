@@ -40,7 +40,7 @@ matrix:
   fast_finish: true
   # FIXME: resolve errors when running against postgres and mysql
   include:
-    - rvm: 2.5.3
+    - rvm: 2.6.3
       gemfile: Gemfile
       env: DB=sqlite
     # - rvm: 2.4.3
