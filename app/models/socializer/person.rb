@@ -118,12 +118,9 @@ module Socializer
         user.display_name = auth_info.name
         user.email = auth_info.email
         image_url = auth_info.image
+        avatar_provider = image_url.blank? ? "GRAVATAR" : auth_provider.upcase
 
-        user.avatar_provider = if image_url.blank?
-                                 "GRAVATAR"
-                               else
-                                 auth_provider.upcase
-                               end
+        user.avatar_provider = avatar_provider
 
         user.authentications.build(provider: auth_provider,
                                    uid: auth.uid, image_url: image_url)
