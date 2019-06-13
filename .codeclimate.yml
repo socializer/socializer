@@ -1,5 +1,5 @@
 ---
-engines:
+plugins:
   brakeman:
     enabled: true
   bundler-audit:
@@ -23,6 +23,7 @@ engines:
     enabled: true
   rubocop:
     enabled: true
+    channel: rubocop-0-71
   scss-lint:
     enabled: true
 ratings:
@@ -40,7 +41,7 @@ ratings:
   - "**.js"
   - "**.jsx"
   - "**.module"
-exclude_paths:
+exclude_patterns:
 - config/
 - db/
 - features/
