@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency("draper",               "~> 3.0.1")
 
   s.add_dependency("dry-initializer",      "~> 3.0.1")
-  s.add_dependency("dry-validation",       "~> 1.0.0")
+  s.add_dependency("dry-validation",       "~> 1.1.0")
 
   s.add_dependency("elasticsearch-rails",  "~> 6.0.0")
   s.add_dependency("enumerize",            "~> 2.2.2")
