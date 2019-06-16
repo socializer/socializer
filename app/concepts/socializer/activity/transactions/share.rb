@@ -47,7 +47,7 @@ module Socializer
         private
 
         def validate(input)
-          contract = Activity::Contract::Share.new
+          contract = Activity::Contracts::Share.new
           result = contract.call(share_params(params: input))
 
           if result.success?

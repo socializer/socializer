@@ -39,7 +39,7 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          contract = Activity::Contract::Share.new
+          contract = Activity::Contracts::Share.new
           @params  = params
           @result  = contract.call(share_attributes)
 
