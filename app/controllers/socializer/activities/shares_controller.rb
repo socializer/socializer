@@ -28,19 +28,21 @@ module Socializer
       def create
         activity_object = find_activity_object(id: share_params[:activity_id])
 
-        # TODO: Need a validator to validate params - dry-validation
-        # TODO: Pass the validator into the service
-        activity = Activity::Services::Share.new(actor: current_user)
-                                            .call(params: share_params)
+        transaction = Activity::Transactions::Share.new
+        transaction.call(share_params) do |result|
+          result.success do
+            notice = flash_message(action: :create,
+                                   activity_object: activity_object)
 
-        if activity.persisted?
-          notice = flash_message(action: :create,
-                                 activity_object: activity_object)
+            redirect_to activities_path, notice: notice
+          end
 
-          redirect_to activities_path, notice: notice
-        else
-          render :new, locals: { activity_object: activity_object,
-                                 share: share_params }
+          result.failure :validate do |errors|
+            @activity = Activity.new
+            @errors = errors
+            render :new, locals: { activity_object: activity_object,
+                                   share: share_params }
+          end
         end
       end
 
@@ -59,7 +61,11 @@ module Socializer
       # Only allow a trusted parameter "white list" through.
       def share_params
         # params.require(:share).permit(:activity_id, :content, :object_ids)
-        params[:share].to_unsafe_hash
+
+        share_params = params[:share].to_unsafe_hash.symbolize_keys.clone
+        share_params[:actor_id] = current_user.guid
+
+        share_params
       end
     end
   end
