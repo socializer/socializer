@@ -24,7 +24,7 @@ module Socializer
         params do
           required(:actor_id).filled(:integer)
           required(:activity_object_id).filled(:integer)
-          required(:verb).filled(:string)
+          required(:verb).filled(:string, included_in?: "share")
           required(:object_ids).filled do
             str? | array? & each { included_in?(Audience.privacy.values) }
             # str? | array? & each do
