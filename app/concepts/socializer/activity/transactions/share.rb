@@ -57,7 +57,13 @@ module Socializer
         end
 
         def create(input)
-          Success(Socializer::CreateActivity.new(input.to_h).call)
+          activity = Socializer::CreateActivity.new(input.to_h).call
+
+          if activity.persisted?
+            Success(activity)
+          else
+            Failure(activity)
+          end
         end
 
         def share_params(params:)
