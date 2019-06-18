@@ -55,7 +55,7 @@ module Socializer
 
       def flash_message(action:, activity_object:)
         t("socializer.model.#{action}",
-          model: activity_object.decorate.demodulized_type)
+          model: activity_object.activitable_type.demodulize)
       end
 
       # Only allow a trusted parameter "white list" through.
