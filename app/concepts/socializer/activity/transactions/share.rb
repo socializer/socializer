@@ -21,8 +21,7 @@ module Socializer
       #
       # @example
       #   transaction = Activity::Transaction::Share.new
-      #   transaction.with_step_args(validate: [actor_id: current_user.guid])
-      #              .call(params) dp |result|
+      #   transaction.call(params) dp |result|
       #     result.success do |share|
       #       puts "Created result for #{share.activity_object}!"
       #     end
