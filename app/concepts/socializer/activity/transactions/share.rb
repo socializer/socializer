@@ -42,6 +42,7 @@ module Socializer
         # around :transaction, with: :transaction
         step :validate
         step :create
+        step :notice
 
         private
 
@@ -64,6 +65,14 @@ module Socializer
           else
             Failure(activity)
           end
+        end
+
+        def notice(activity)
+          activity_object = activity.activitable_object
+          model = activity_object.activitable_type.demodulize
+          notice = I18n.t("socializer.model.create", model: model)
+
+          Success(activity: activity, notice: notice)
         end
 
         def share_params(params:)

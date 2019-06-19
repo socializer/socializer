@@ -30,11 +30,8 @@ module Socializer
 
         transaction = Activity::Transactions::Share.new
         transaction.call(share_params) do |result|
-          result.success do
-            notice = flash_message(action: :create,
-                                   activity_object: activity_object)
-
-            redirect_to activities_path, notice: notice
+          result.success do |share|
+            redirect_to activities_path, notice: share[:notice]
           end
 
           result.failure :validate do |errors|
@@ -51,11 +48,6 @@ module Socializer
       # TODO: Add to ActivityObject
       def find_activity_object(id:)
         @find_activity_object ||= ActivityObject.find_by(id: id)
-      end
-
-      def flash_message(action:, activity_object:)
-        t("socializer.model.#{action}",
-          model: activity_object.activitable_type.demodulize)
       end
 
       # Only allow a trusted parameter "white list" through.
