@@ -67,7 +67,7 @@ module Socializer
             end
 
             let(:message) do
-              t("socializer.model.create",
+              t("socializer.model.share",
                 model: "Note")
             end
 
