@@ -365,8 +365,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-performance (1.3.0)
-      rubocop (>= 0.68.0)
+    rubocop-performance (1.4.0)
+      rubocop (>= 0.71.0)
     rubocop-rails (2.0.1)
       rack (>= 1.1)
       rubocop (>= 0.70.0)
@@ -463,7 +463,7 @@ DEPENDENCIES
   rake (~> 12.3.2)
   rspec-rails (~> 3.8.2)
   rubocop (~> 0.71.0)
-  rubocop-performance (~> 1.3.0)
+  rubocop-performance (~> 1.4.0)
   rubocop-rails (~> 2.0.1)
   rubocop-rspec (~> 1.33.0)
   scss_lint (~> 0.58.0)
@@ -474,4 +474,4 @@ DEPENDENCIES
   webdrivers (~> 4.0)
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
