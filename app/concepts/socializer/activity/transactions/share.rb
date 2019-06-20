@@ -70,7 +70,7 @@ module Socializer
         def notice(activity)
           activity_object = activity.activitable_object
           model = activity_object.activitable_type.demodulize
-          notice = I18n.t("socializer.model.create", model: model)
+          notice = I18n.t("socializer.model.share", model: model)
 
           Success(activity: activity, notice: notice)
         end
