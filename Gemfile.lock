@@ -9,7 +9,7 @@ PATH
       draper (~> 3.0.1)
       dry-initializer (~> 3.0.1)
       dry-transaction (~> 0.13.0)
-      dry-validation (~> 1.1.0)
+      dry-validation (~> 1.1.1)
       elasticsearch-rails (~> 6.0.0)
       enumerize (~> 2.2.2)
       jquery-rails (~> 4.3.3)
