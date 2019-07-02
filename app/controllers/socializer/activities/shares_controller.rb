@@ -26,24 +26,28 @@ module Socializer
 
       # POST /activities/1/share
       def create
-        activity_object = find_activity_object(id: share_params[:activity_id])
-
-        transaction = Activity::Transactions::Share.new
-        transaction.call(share_params) do |result|
-          result.success do |share|
-            redirect_to activities_path, notice: share[:notice]
+        share = Activity::Services::Share.new(actor: current_user)
+        share.call(params: share_params) do |result|
+          result.success do |activity|
+            redirect_to activities_path, notice: activity[:notice]
           end
 
-          result.failure :validate do |errors|
-            @activity = Activity.new
-            @errors = errors
-            render :new, locals: { activity_object: activity_object,
-                                   share: share_params }
+          result.failure do |failure|
+            create_failure(failure: failure)
           end
         end
       end
 
       private
+
+      def create_failure(failure:)
+        @activity = failure[:share]
+        @errors = failure[:errors]
+        activity_object = find_activity_object(id: params[:activity_id])
+
+        render :new, locals: { activity_object: activity_object,
+                               share: share_params }
+      end
 
       # TODO: Add to ActivityObject
       def find_activity_object(id:)
@@ -55,7 +59,7 @@ module Socializer
         # params.require(:share).permit(:activity_id, :content, :object_ids)
 
         share_params = params[:share].to_unsafe_hash.symbolize_keys.clone
-        share_params[:actor_id] = current_user.guid
+        # share_params[:actor_id] = current_user.guid
 
         share_params
       end

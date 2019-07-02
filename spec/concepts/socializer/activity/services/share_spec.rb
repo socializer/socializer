@@ -21,10 +21,10 @@ module Socializer
             activity_id: activity_object.id,
             object_ids: object_ids,
             content: "Share"
-          )
+          ).to_unsafe_hash.symbolize_keys
         end
 
-        let(:results) { share.call(params: share_attributes) }
+        let(:results) { share.call(params: share_attributes).success[:share] }
 
         it { expect(results.persisted?).to eq(true) }
         it { expect(results.actor_id).to eq(actor.guid) }
@@ -38,24 +38,24 @@ module Socializer
               activity_id: activity_object.id,
               object_ids: object_ids,
               content: nil
-            )
+            ).to_unsafe_hash.symbolize_keys
           end
 
-          let(:results) { share.call(params: share_attributes) }
+          let(:results) { share.call(params: share_attributes).success[:share] }
 
           it { expect(results.activity_field_content).to eq(nil) }
         end
 
         context "when #object_ids is nil" do
           let(:object_ids) { "" }
-          let(:results) { share.call(params: share_attributes) }
+          let(:results) { share.call(params: share_attributes).failure[:share] }
 
           it { expect(results.persisted?).to eq(false) }
         end
 
         context "when #object_ids is an array of non strings" do
           let(:object_ids) { [1, 2, 3] }
-          let(:results) { share.call(params: share_attributes) }
+          let(:results) { share.call(params: share_attributes).failure[:share] }
 
           it { expect(results.persisted?).to eq(false) }
         end
@@ -67,7 +67,7 @@ module Socializer
             Socializer::Audience.privacy.find_value(:circles).value
           end
 
-          let(:results) { share.call(params: share_attributes) }
+          let(:results) { share.call(params: share_attributes).success[:share] }
           let(:public_audience) { results.audiences.where(privacy: "public") }
           let(:circles_audience) { results.audiences.where(privacy: "circles") }
 
