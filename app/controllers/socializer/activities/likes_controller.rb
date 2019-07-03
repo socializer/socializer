@@ -44,12 +44,19 @@ module Socializer
 
       # DELETE /activities/1/unlike
       def destroy
-        Activity::Services::Unlike.new(actor: current_user)
-                                  .call(activity_object: find_likable)
+        unlike = Activity::Services::Unlike.new(actor: current_user)
+        unlike.call(activity_object: find_likable) do |result|
+          result.success do |activity|
+            respond_to do |format|
+              format.js do
+                activity = activity[:activity_object].activitable.decorate
+                render :destroy, locals: { activity: activity }
+              end
+            end
+          end
 
-        respond_to do |format|
-          format.js do
-            render :destroy, locals: { activity: find_activity }
+          result.failure :validate do |errors|
+            @errors = errors
           end
         end
       end
