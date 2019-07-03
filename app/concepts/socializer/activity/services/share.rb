@@ -124,15 +124,15 @@ module Socializer
           Success(notice)
         end
 
-        def validation_errors
-          @activity = Activity.new
+        # def validation_errors
+        #   @activity = Activity.new
 
-          result.errors.to_h.each do |key, value|
-            activity.errors.add(key, value)
-          end
+        #   result.errors.to_h.each do |key, value|
+        #     activity.errors.add(key, value)
+        #   end
 
-          activity
-        end
+        #   activity
+        # end
 
         # The verb to use when sharing an [Socializer::ActivityObject]
         #
