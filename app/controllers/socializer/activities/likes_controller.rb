@@ -67,10 +67,6 @@ module Socializer
         @find_likable ||= ActivityObject.find_by(id: params[:id])
       end
 
-      def find_activity
-        @find_activity ||= find_likable.activitable.decorate
-      end
-
       # Never trust parameters from the scary internet, only allow the white
       # list through.
       def like_params
