@@ -59,12 +59,11 @@ module Socializer
           validated = yield validate(like_params)
           activity = yield create(validated)
 
-          return Success(activity: activity, activity_object: activity_object) if activity.persisted?
+          if activity.persisted?
+            return Success(activity: activity, activity_object: activity_object)
+          end
 
           Failure(activity)
-          # activity = create_activity
-          # change_like_count # if activity.present?
-          # activity
         end
 
         private
