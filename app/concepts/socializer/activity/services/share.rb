@@ -23,8 +23,8 @@ module Socializer
       # @example
       #   share = Activity::Services::Share.new(actor: current_user)
       #   share.call(params: share_params) do |result|
-      #     result.success do |share|
-      #       redirect_to activities_path, notice: share[:notice]
+      #     result.success do |activity|
+      #       redirect_to activities_path, notice: activity[:notice]
       #     end
       #
       #     result.failure do |failure|
@@ -57,17 +57,17 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          validated = yield validate(params)
-          share = yield create(validated)
+          validated = yield validate(share_params(params: params))
+          activity = yield create(validated)
 
-          if share.persisted?
-            notice = yield success_message(activity: share)
+          if activity.persisted?
+            notice = yield success_message(activity: activity)
 
-            return Success(share: share, notice: notice)
+            return Success(activity: activity, notice: notice)
           end
 
           # TODO: Should this use validation errors?
-          Failure(share)
+          Failure(activity)
 
           # contract = Activity::Contracts::Share.new
           # @params  = params
@@ -86,7 +86,7 @@ module Socializer
 
         def validate(params)
           contract = Activity::Contracts::Share.new
-          result = contract.call(share_params(params: params))
+          result = contract.call(params)
 
           if result.success?
             Success(result)
@@ -94,7 +94,7 @@ module Socializer
             # result.errors
             # result.errors(full: true).values
             # TODO: Should this use validation errors?
-            Failure(share: Activity.new, errors: result.errors.to_h)
+            Failure(activity: Activity.new, errors: result.errors.to_h)
           end
         end
 
