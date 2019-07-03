@@ -24,7 +24,7 @@ module Socializer
         params do
           required(:actor_id).filled(:integer)
           required(:activity_object_id).filled(:integer)
-          required(:verb).filled(:string, included_in?: ["like", "unlike"])
+          required(:verb).filled(:string, included_in?: "like")
           required(:object_ids)
             .filled(:string, included_in?: Audience.privacy.public.value)
         end
