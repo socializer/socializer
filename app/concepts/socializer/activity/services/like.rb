@@ -111,6 +111,10 @@ module Socializer
           actor.likes?(activity_object)
         end
 
+        # Returns an instance of the Socializer::Activity::Contracts::Like
+        # class
+        #
+        #  @return [Socializer::Activity::Contracts::Like]
         def contract
           @contract ||= Activity::Contracts::Like.new
         end
