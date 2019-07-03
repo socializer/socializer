@@ -124,7 +124,7 @@ module Socializer
           activity_object.increment(:like_count).save
         end
 
-      # The verb to use when liking an [Socializer::ActivityObject]
+        # The verb to use when liking an [Socializer::ActivityObject]
         #
         # @return [String]
         def verb
