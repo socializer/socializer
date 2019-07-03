@@ -10,7 +10,7 @@ module Socializer
         let(:liked_activity_object) { create(:activity_object) }
         let(:like) { Like.new(actor: liking_person) }
         let(:unlike) { Unlike.new(actor: liking_person) }
-        let(:results) { unlike.call(unlike_attributes) }
+        let(:results) { unlike.call(unlike_attributes).success[:activity] }
 
         let(:unlike_attributes) do
           { activity_object: liked_activity_object }
@@ -39,6 +39,8 @@ module Socializer
         end
 
         context "with no like, can't unlike" do
+          let(:results) { unlike.call(unlike_attributes).failure }
+
           before do
             unlike.call(unlike_attributes)
 

@@ -36,6 +36,10 @@ module Socializer
           !actor.likes?(activity_object)
         end
 
+        def contract
+          contract ||= Activity::Contracts::Unlike.new
+        end
+
         # The verb to use when unliking an [Socializer::ActivityObject]
         #
         # @return [String]

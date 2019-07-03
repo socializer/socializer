@@ -9,7 +9,7 @@ module Socializer
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
         let(:like) { Like.new(actor: liking_person) }
-        let(:results) { like.call(like_attributes) }
+        let(:results) { like.call(like_attributes).success[:activity] }
 
         let(:like_attributes) do
           { activity_object: liked_activity_object }
@@ -31,6 +31,8 @@ module Socializer
         end
 
         context "when liked you can't like again" do
+          let(:results) { like.call(like_attributes).failure }
+
           before do
             like.call(like_attributes)
             like.call(like_attributes)

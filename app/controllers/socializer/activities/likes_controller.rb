@@ -25,14 +25,29 @@ module Socializer
 
       # POST /activities/1/like
       def create
-        Activity::Services::Like.new(actor: current_user)
-                                .call(activity_object: find_likable)
+        like = Activity::Services::Like.new(actor: current_user)
+        like.call(activity_object: find_likable) do |result|
+          result.success do |activity|
+            respond_to do |format|
+              format.js do
+                render :create, locals: { activity: find_activity }
+              end
+            end
+          end
 
-        respond_to do |format|
-          format.js do
-            render :create, locals: { activity: find_activity }
+          result.failure :validate do |errors|
+            @errors = errors
           end
         end
+
+        # Activity::Services::Like.new(actor: current_user)
+        #                         .call(activity_object: find_likable)
+
+        # respond_to do |format|
+        #   format.js do
+        #     render :create, locals: { activity: find_activity }
+        #   end
+        # end
       end
 
       # DELETE /activities/1/unlike
@@ -59,9 +74,15 @@ module Socializer
 
       # Never trust parameters from the scary internet, only allow the white
       # list through.
-      # def like_params
-      #   params.require(:like).permit(:actor_id, :activity_object_id)
-      # end
+      def like_params
+        # params.require(:like).permit(:actor_id, :activity_object_id)
+
+        like_params = params.to_unsafe_hash.symbolize_keys.clone
+        like_params.delete_if { |key, _value| key != :id }
+        # like_params[:actor_id] = current_user.guid
+
+        like_params
+      end
     end
   end
 end
