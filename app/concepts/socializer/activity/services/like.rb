@@ -113,7 +113,7 @@ module Socializer
         end
 
         def contract
-          contract ||= Activity::Contracts::Like.new
+          @contract ||= Activity::Contracts::Like.new
         end
 
         # Increment the like_count for the [Socializer::ActivityObject]

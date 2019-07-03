@@ -37,7 +37,7 @@ module Socializer
         end
 
         def contract
-          contract ||= Activity::Contracts::Unlike.new
+          @contract ||= Activity::Contracts::Unlike.new
         end
 
         # The verb to use when unliking an [Socializer::ActivityObject]
