@@ -30,7 +30,8 @@ module Socializer
           result.success do |activity|
             respond_to do |format|
               format.js do
-                render :create, locals: { activity: find_activity }
+                activity = activity[:activity_object].activitable.decorate
+                render :create, locals: { activity: activity }
               end
             end
           end
