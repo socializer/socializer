@@ -39,15 +39,6 @@ module Socializer
             @errors = errors
           end
         end
-
-        # Activity::Services::Like.new(actor: current_user)
-        #                         .call(activity_object: find_likable)
-
-        # respond_to do |format|
-        #   format.js do
-        #     render :create, locals: { activity: find_activity }
-        #   end
-        # end
       end
 
       # DELETE /activities/1/unlike
