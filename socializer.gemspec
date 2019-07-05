@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
-  s.add_dependency("draper",               "~> 3.0.1")
+  s.add_dependency("draper",               "~> 3.1.0")
 
   s.add_dependency("dry-initializer",      "~> 3.0.1")
   s.add_dependency("dry-matcher",          "~> 0.7.0")
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency("dry-validation",       "~> 1.1.1")
 
   s.add_dependency("elasticsearch-rails",  "~> 6.0.0")
-  s.add_dependency("enumerize",            "~> 2.2.2")
+  s.add_dependency("enumerize",            "~> 2.3.1")
   s.add_dependency("jquery-rails",         "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
