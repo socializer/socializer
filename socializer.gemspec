@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
-  s.add_dependency("draper",               "~> 3.0.1")
+  s.add_dependency("draper",               "~> 3.1.0")
   s.add_dependency("elasticsearch-rails",  "~> 6.0.0")
   s.add_dependency("enumerize",            "~> 2.3.1")
   s.add_dependency("jquery-rails",         "~> 4.3.3")
