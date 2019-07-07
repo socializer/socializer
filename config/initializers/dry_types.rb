@@ -10,4 +10,6 @@ module Types
 
   StrippedString = Types::String.constructor(&:strip)
   LowercaseString = Types::String.constructor(&:downcase)
+
+  ActivityVerbs = Types::String.enum("add", "like", "post", "share", "unlike")
 end
