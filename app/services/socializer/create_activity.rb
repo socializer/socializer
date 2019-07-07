@@ -8,6 +8,10 @@ module Socializer
   # Service object for creating a Socializer::Activity
   #
   class CreateActivity
+    CIRCLES_PRIVACY = Socializer::Audience.privacy.circles.value.freeze
+    LIMITED_PRIVACY = Socializer::Audience.privacy.limited.value.freeze
+    PUBLIC_PRIVACY = Socializer::Audience.privacy.public.value.freeze
+
     include ActiveModel::Model
 
     attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
@@ -51,8 +55,8 @@ module Socializer
       object_ids_array.each do |audience_id|
         privacy  = audience_privacy(audience_id: audience_id)
         audience = activity.audiences.build(privacy: privacy)
-
-        audience.activity_object_id = audience_id if privacy == limited_privacy
+        audience.activity_object_id = audience_id if privacy == LIMITED_PRIVACY
+        audience.save
       end
     end
 
@@ -65,23 +69,15 @@ module Socializer
     end
 
     def audience_privacy(audience_id:)
-      not_limited = Set.new(%W[#{public_privacy} #{circles_privacy}])
+      not_limited = Set.new(%W[#{PUBLIC_PRIVACY} #{CIRCLES_PRIVACY}])
 
       return audience_id if not_limited.include?(audience_id)
 
-      limited_privacy
+      LIMITED_PRIVACY
     end
 
-    def circles_privacy
-      @circles_privacy ||= Audience.privacy.circles.value
-    end
 
-    def limited_privacy
-      @limited_privacy ||= Audience.privacy.limited.value
-    end
 
-    def public_privacy
-      @public_privacy ||= Audience.privacy.public.value
     end
 
     def create_activity
