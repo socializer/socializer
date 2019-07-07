@@ -21,15 +21,17 @@ module Socializer
       #   contract = Activity::Contracts::Share.new
       #   result = contract.call(params)
       class Share < Dry::Validation::Contract
+        PRIVACY = Audience.privacy.values.freeze
+
         params do
           required(:actor_id).filled(:integer)
           required(:activity_object_id).filled(:integer)
           required(:verb).filled(:string, included_in?: "share")
           required(:object_ids).filled do
-            str? | array? & each { included_in?(Audience.privacy.values) }
+            str? | array? & each { included_in?(PRIVACY) }
             # str? | array? & each do
             #   str?
-            # end & included_in?(Audience.privacy.values)
+            # end & included_in?(PRIVACY)
           end
           required(:content).maybe(:string)
         end

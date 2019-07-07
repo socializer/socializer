@@ -14,6 +14,10 @@ module Socializer
   # Activities follow the {http://activitystrea.ms/ Activity Streams} standard.
   #
   class Activity < ApplicationRecord
+    CIRCLES_PRIVACY = Socializer::Audience.privacy.circles.value.freeze
+    LIMITED_PRIVACY = Socializer::Audience.privacy.limited.value.freeze
+    PUBLIC_PRIVACY = Socializer::Audience.privacy.public.value.freeze
+
     include ObjectTypeBase
 
     # Relationships
@@ -226,11 +230,10 @@ module Socializer
     # Create/Use scopes. This one might be called viewer_in_circles
     # Audience.with_privacy(:circles).where(viewer_literal.in(circles_subquery))
     def self.circles_grouping(viewer_id:)
-      circles_privacy   ||= Audience.privacy.circles.value
       viewer_literal    ||= viewer_literal(viewer_id: viewer_id)
       @circles_grouping ||= audience_table
-                            .grouping(privacy_field.eq(circles_privacy)
-                              .and(viewer_literal.in(circles_subquery)))
+                            .grouping(privacy_field.eq(CIRCLES_PRIVACY)
+                              .and(viewer_literal.in(CIRCLES_PRIVACY)))
     end
     private_class_method :circles_grouping
 
@@ -241,10 +244,9 @@ module Socializer
     #   .where(viewer_literal.in(limited_circle_subquery))...
     def self.limited_grouping(viewer_id:)
       activity_object_id = audience_table[:activity_object_id]
-      limited_privacy    = Audience.privacy.limited.value
       viewer_literal     = viewer_literal(viewer_id: viewer_id)
       @limited_grouping ||= audience_table
-                            .grouping(privacy_field.eq(limited_privacy)
+                            .grouping(privacy_field.eq(LIMITED_PRIVACY)
                                   .and(viewer_literal
                                     .in(limited_circle_subquery)
                                     .or(activity_object_id
@@ -258,9 +260,8 @@ module Socializer
     # Create/Use scopes.
     # Audience.with_privacy(:public)...
     def self.public_grouping(viewer_id:)
-      public_privacy   ||= Audience.privacy.public.value
       @public_grouping ||= audience_table
-                           .grouping(privacy_field.eq(public_privacy)
+                           .grouping(privacy_field.eq(PUBLIC_PRIVACY)
                             .or(circles_grouping(viewer_id: viewer_id)))
     end
     private_class_method :public_grouping

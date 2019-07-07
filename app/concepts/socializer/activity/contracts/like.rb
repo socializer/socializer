@@ -21,12 +21,13 @@ module Socializer
       #   contract = Activity::Contracts::Like.new
       #   result = contract.call(params)
       class Like < Dry::Validation::Contract
+        PUBLIC = Socializer::Audience.privacy.public.value.freeze
+
         params do
           required(:actor_id).filled(:integer)
           required(:activity_object_id).filled(:integer)
           required(:verb).filled(:string, included_in?: "like")
-          required(:object_ids)
-            .filled(:string, included_in?: Audience.privacy.public.value)
+          required(:object_ids).filled(:string, included_in?: PUBLIC)
         end
       end
     end
