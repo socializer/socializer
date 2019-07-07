@@ -34,10 +34,6 @@ module Socializer
 
     private
 
-    def activity_field
-      ActivityField.new(content: content) if content.present?
-    end
-
     def activity_attributes
       {
         actor_id: actor_id,
@@ -76,16 +72,27 @@ module Socializer
       LIMITED_PRIVACY
     end
 
-
-
-    end
-
     def create_activity
-      Activity.create(activity_attributes) do |activity|
-        activity.activity_field = activity_field
+      activity = Activity.none
+
+      ActiveRecord::Base.transaction do
+        activity = Activity.create(activity_attributes)
+        activity.create_activity_field(content: content) if content.present?
 
         add_audience_to_activity(activity: activity) if object_ids.present?
       end
+
+      activity
+    end
+
+    #
+    # The verb to use when creating an [Socializer::ActivityObject]
+    #
+    # @param [String] name The display name for the verb
+    #
+    # @return [Socializer::Verb]
+    #
+
     end
   end
 end
