@@ -39,7 +39,7 @@ module Socializer
         actor_id: actor_id,
         activity_object_id: activity_object_id,
         target_id: target_id,
-        verb: Verb.find_or_create_by(display_name: verb)
+        verb: activity_verb(name: verb)
       }
     end
 
@@ -92,7 +92,11 @@ module Socializer
     #
     # @return [Socializer::Verb]
     #
+    def activity_verb(name:)
+      contract = Verb::Contracts::Create.new
+      result = contract.call(display_name: name)
 
+      Verb.find_or_create_by(result.to_h)
     end
   end
 end
