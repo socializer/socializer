@@ -82,8 +82,6 @@ module Socializer
 
         private
 
-        attr_reader :activity, :params, :result
-
         def validate(params)
           contract = Activity::Contracts::Share.new
           result = contract.call(params)
