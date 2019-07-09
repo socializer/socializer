@@ -57,7 +57,7 @@ module Socializer
     end
 
     def object_ids_array
-      if Set.new(%w[Integer String]).include?(object_ids.class.name)
+      if Set.new([Integer, String]).include?(object_ids.class)
         return object_ids.split(",")
       end
 
