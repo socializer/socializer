@@ -83,14 +83,17 @@ module Socializer
 
         def create(params)
           ActiveRecord::Base.transaction do
-            activity = Socializer::CreateActivity.new(params.to_h).call
-            change_like_count
+            activity = Activity::Services::Create.new(actor: actor)
+            activity.call(params: params.to_h) do |result|
+              result.success do |success|
+                change_like_count
+                Success(success[:activity])
+              end
 
-            if activity.persisted?
-              Success(activity)
-            else
-              Failure(activity)
-              raise ActiveRecord::Rollback
+              result.failure do |failure|
+                Failure(failure[:activity])
+                # raise ActiveRecord::Rollback
+              end
             end
           end
         end

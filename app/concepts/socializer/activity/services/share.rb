@@ -97,12 +97,15 @@ module Socializer
         end
 
         def create(params)
-          activity = Socializer::CreateActivity.new(params.to_h).call
+          activity = Activity::Services::Create.new(actor: actor)
+          activity.call(params: params.to_h) do |result|
+            result.success do |success|
+              Success(success[:activity])
+            end
 
-          if activity.persisted?
-            Success(activity)
-          else
-            Failure(activity)
+            result.failure do |failure|
+              Failure(failure[:activity])
+            end
           end
         end
 
