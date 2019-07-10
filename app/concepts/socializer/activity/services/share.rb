@@ -67,7 +67,7 @@ module Socializer
           end
 
           # TODO: Should this use validation errors?
-          Failure(activity)
+          Failure(activity: activity)
 
           # contract = Activity::Contracts::Share.new
           # @params  = params
