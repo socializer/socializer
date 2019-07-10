@@ -28,8 +28,12 @@ module Socializer
           required(:activity_object_id).filled(:integer)
           optional(:target_id).maybe(:integer)
           required(:verb).filled(type?: Verb)
+          # FIXME: The object_ids is causing an issue. should allow integers
+          #        too. The Integers should be a valid Circle. Check in a rule.
+          #        The str? should also be checked against PRIVACY
           optional(:object_ids).filled do
-            str? | array? & each { included_in?(PRIVACY) }
+            included_in?(PRIVACY) |
+              array? & each { included_in?(PRIVACY) | int? } | int?
             # str? | array? & each do
             #   str?  & included_in?(PRIVACY)
             # end
