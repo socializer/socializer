@@ -7,21 +7,20 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, note, and an activity
-    let(:user) { create(:person) }
+    let(:actor) { create(:person) }
+    let(:activity) { Activity::Services::Create.new(actor: actor) }
+    let(:result) { activity.call(params: activity_attributes) }
+    let(:decorated) { result.success[:activity].decorate }
 
     let(:note) do
-      create(:note, activity_author: user.activity_object)
+      create(:note, activity_author: actor.activity_object)
     end
 
     let(:activity_attributes) do
-      { actor_id: user.guid,
-        activity_object_id: note.guid,
+      { activity_object_id: note.guid,
         verb: "post",
         object_ids: "public" }
     end
-
-    let(:result) { CreateActivity.new(activity_attributes).call }
-    let(:activity) { result.decorate }
 
     context "when not logged in" do
       describe "GET #index" do
@@ -33,7 +32,7 @@ module Socializer
 
       describe "DELETE #destroy" do
         it "requires login" do
-          delete :destroy, params: { id: activity }, format: :js
+          delete :destroy, params: { id: decorated }, format: :js
           expect(response).to redirect_to root_path
         end
       end
@@ -41,7 +40,7 @@ module Socializer
 
     context "when logged in" do
       # Setting the current user
-      before { cookies.signed[:user_id] = user.guid }
+      before { cookies.signed[:user_id] = actor.guid }
 
       it { is_expected.to use_before_action(:authenticate_user) }
 
@@ -62,7 +61,7 @@ module Socializer
       describe "DELETE #destroy" do
         context "when it returns success" do
           before do
-            delete :destroy, params: { id: activity }, format: :js
+            delete :destroy, params: { id: decorated }, format: :js
           end
 
           it "returns http success" do
@@ -75,8 +74,8 @@ module Socializer
         end
 
         it "deletes the activity" do
-          activity
-          expect { delete :destroy, params: { id: activity }, format: :js }
+          decorated
+          expect { delete :destroy, params: { id: decorated }, format: :js }
             .to change(Activity, :count).by(-1)
         end
       end

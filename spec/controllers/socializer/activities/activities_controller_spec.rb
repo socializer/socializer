@@ -7,29 +7,23 @@ module Socializer
     routes { Socializer::Engine.routes }
 
     # Create a user, activity, and activities
-    let(:user) { create(:person) }
+    let(:actor) { create(:person) }
+    let(:activity) { Activity::Services::Create.new(actor: actor) }
+    let(:result) { activity.call(params: creator_attributes) }
+    let(:decorated) { result.success[:activity].decorate }
 
     let(:note) do
-      create(:note, activity_author: user.activity_object)
+      create(:note, activity_author: actor.activity_object)
     end
 
     let(:creator_attributes) do
-      { actor_id: user.guid,
-        activity_object_id: note.guid,
+      { activity_object_id: note.guid,
         verb: "post",
         object_ids: "public" }
     end
 
-    let(:result) do
-      CreateActivity.new(creator_attributes).call
-    end
-
-    let(:activity) do
-      result.decorate
-    end
-
     let(:stream_attributes) do
-      { actor_uid: activity.id, viewer_id: user.id }
+      { actor_uid: decorated.id, viewer_id: actor.id }
     end
 
     let(:activities) do
@@ -47,13 +41,13 @@ module Socializer
 
     context "when logged in" do
       # Setting the current user
-      before { cookies.signed[:user_id] = user.guid }
+      before { cookies.signed[:user_id] = actor.guid }
 
       it { is_expected.to use_before_action(:authenticate_user) }
 
       describe "GET #index" do
         before do
-          get :index, params: { activity_id: activity }
+          get :index, params: { activity_id: decorated }
         end
 
         it "returns http success" do

@@ -58,15 +58,28 @@ module Socializer
     #           Create a Collaborating Object
     def append_to_activity_stream
       # the `return if activity_verb.blank?` guard is needed to block the
-      # create! method when
-      # creating shares, likes, unlikes, etc
+      # create! method when creating shares, likes, unlikes, etc
       return if activity_verb.blank?
 
-      CreateActivity.new(actor_id: author_id,
-                         activity_object_id: guid,
-                         target_id: activity_target_id,
-                         verb: activity_verb,
-                         object_ids: object_ids).call
+      actor = ActivityObject.find_by(id: author_id).activitable
+      activity = Activity::Services::Create.new(actor: actor)
+
+      activity.call(params: activity_params) do |result|
+        result.success do |success|
+          success[:activity]
+        end
+
+        result.failure do |failure|
+          failure
+        end
+      end
+    end
+
+    def activity_params
+      { activity_object_id: guid,
+        target_id: activity_target_id,
+        verb: activity_verb,
+        object_ids: object_ids }
     end
   end
 end
