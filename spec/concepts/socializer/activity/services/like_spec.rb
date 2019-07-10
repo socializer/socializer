@@ -6,9 +6,9 @@ module Socializer
   class Activity
     module Services
       RSpec.describe Like, type: :service do
-        let(:liking_person) { create(:person) }
+        let(:actor) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
-        let(:like) { Like.new(actor: liking_person) }
+        let(:like) { Like.new(actor: actor) }
         let(:results) { like.call(like_attributes).success[:activity] }
 
         let(:like_attributes) do
@@ -45,6 +45,46 @@ module Socializer
           it "must be ActiveRecord::Relation" do
             expect(results)
               .to be_kind_of(ActiveRecord::Relation)
+          end
+        end
+
+        context "with validate" do
+          let(:result) { like.validate(attributes) }
+
+          # context "when validation is successful" do
+          #   let(:attributes) do
+          #     { actor_id: actor.guid,
+          #       activity_object_id: liked_activity_object.id,
+          #       object_ids: "public",
+          #       verb: "like" }
+          #   end
+
+          #   it { expect(result).to be_success }
+          #   it { expect(result.success.values.to_h).to eq(attributes) }
+          # end
+
+          context "when validation fails" do
+            let(:attributes) { { } }
+            let(:errors) { result.failure[:errors] }
+            let(:issues) do
+              { actor_id: ["is missing"],
+                activity_object_id: ["is missing"],
+                object_ids: ["is missing"],
+                verb: ["is missing"] }
+            end
+
+            it { expect(result).to be_failure }
+            it { expect(errors).to eql(issues) }
+          end
+        end
+
+        context "with .create" do
+          context "with invalid attributes" do
+            let(:result) { like.create({}) }
+            let(:failure) { result.failure }
+
+            it { expect(result).to be_failure }
+            it { expect(failure.persisted?).to eq(false) }
           end
         end
       end
