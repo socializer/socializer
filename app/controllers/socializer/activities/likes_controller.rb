@@ -64,7 +64,7 @@ module Socializer
       private
 
       def find_likable
-        @find_likable ||= ActivityObject.find_by(id: params[:id])
+        @find_likable ||= ActivityObject.find_by(id: like_params[:id])
       end
 
       # Never trust parameters from the scary internet, only allow the white
@@ -74,7 +74,6 @@ module Socializer
 
         like_params = params.to_unsafe_hash.symbolize_keys.clone
         like_params.delete_if { |key, _value| key != :id }
-        # like_params[:actor_id] = current_user.guid
 
         like_params
       end
