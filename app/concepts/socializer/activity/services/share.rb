@@ -68,16 +68,6 @@ module Socializer
 
           # TODO: Should this use validation errors?
           Failure(activity: activity)
-
-          # contract = Activity::Contracts::Share.new
-          # @params  = params
-          # @result  = contract.call(share_attributes)
-
-          # if result.success?
-          #   Socializer::CreateActivity.new(result.to_h).call
-          # else
-          #   validation_errors
-          # end
         end
 
         private
