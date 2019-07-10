@@ -36,7 +36,7 @@ module Socializer
             end
           end
 
-          result.failure :validate do |errors|
+          result.failure do |errors|
             @errors = errors
           end
         end
@@ -55,7 +55,7 @@ module Socializer
             end
           end
 
-          result.failure :validate do |errors|
+          result.failure do |errors|
             @errors = errors
           end
         end
