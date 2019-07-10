@@ -52,6 +52,8 @@ module Socializer
 
         context "when #object_ids is nil" do
           let(:object_ids) { "" }
+          let(:result) { share.call(params: share_attributes) }
+          let(:errors) { result.failure[:errors] }
           let(:results) do
             share.call(params: share_attributes).failure[:activity]
           end
@@ -85,6 +87,33 @@ module Socializer
           it { expect(results.persisted?).to eq(true) }
           it { expect(public_audience.present?).to eq(true) }
           it { expect(circles_audience.present?).to eq(true) }
+        end
+
+        context "with .create" do
+          context "with valid attributes" do
+            let(:result) { share.create(attributes) }
+            let(:success) { result.success }
+            let(:verb) { create(:verb, display_name: "share") }
+
+            let(:attributes) do
+              { actor_id: actor.guid,
+                activity_object_id: activity_object.id,
+                object_ids: object_ids,
+                verb: verb,
+                content: "Share" }
+            end
+
+            it { expect(result).to be_success }
+            it { expect(success.persisted?).to eq(true) }
+          end
+
+          context "with invalid attributes" do
+            let(:result) { share.create({}) }
+            let(:failure) { result.failure }
+
+            it { expect(result).to be_failure }
+            it { expect(failure.persisted?).to eq(false) }
+          end
         end
       end
     end
