@@ -31,9 +31,9 @@ module Socializer
           # FIXME: The object_ids is causing an issue. should allow integers
           #        too. The Integers should be a valid Circle. Check in a rule.
           #        The str? should also be checked against PRIVACY
-          optional(:object_ids).filled do
-            included_in?(PRIVACY) |
-              array? & each { included_in?(PRIVACY) | int? } | int?
+          optional(:object_ids).maybe do
+            included_in?(PRIVACY) | int? |
+              array? & each { included_in?(PRIVACY) | int? }
             # str? | array? & each do
             #   str? & included_in?(PRIVACY)
             # end
