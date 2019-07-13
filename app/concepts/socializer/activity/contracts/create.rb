@@ -35,7 +35,7 @@ module Socializer
             included_in?(PRIVACY) |
               array? & each { included_in?(PRIVACY) | int? } | int?
             # str? | array? & each do
-            #   str?  & included_in?(PRIVACY)
+            #   str? & included_in?(PRIVACY)
             # end
           end
           optional(:content).maybe(:string)
