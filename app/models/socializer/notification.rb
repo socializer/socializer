@@ -106,7 +106,7 @@ module Socializer
                     .with_id(id: parent_contact_id)
                     .merge(Tie.with_contact_id(contact_id: child_contact_id))
                     .pluck(:id)
-                    .present?
+                    .any?
     end
     private_class_method :person_in_circle?
   end
