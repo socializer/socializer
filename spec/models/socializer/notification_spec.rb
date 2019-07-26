@@ -28,7 +28,7 @@ module Socializer
 
     context "with scopes" do
       describe "newest_first" do
-        let(:sql) { Notification.newest_first.to_sql }
+        let(:sql) { described_class.newest_first.to_sql }
 
         it do
           expect(sql)

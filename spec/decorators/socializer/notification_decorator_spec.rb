@@ -5,7 +5,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe NotificationDecorator, type: :decorator do
     let(:notification) { create(:notification) }
-    let(:decorated_notification) { NotificationDecorator.new(notification) }
+    let(:decorated_notification) { described_class.new(notification) }
 
     before do
       person = create(:person)

@@ -7,7 +7,7 @@ module Socializer
     let(:activity_object) { create(:activity_object) }
 
     let(:decorated_activity_object) do
-      ActivityObjectDecorator.new(activity_object)
+      described_class.new(activity_object)
     end
 
     describe "demodulized_type" do

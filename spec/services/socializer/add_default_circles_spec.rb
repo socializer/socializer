@@ -6,20 +6,20 @@ module Socializer
   RSpec.describe AddDefaultCircles, type: :service do
     describe "when the person argument is nil" do
       describe ".new should raise an ArgumentError" do
-        let(:add_default_circles) { AddDefaultCircles.new(person: nil) }
+        let(:add_default_circles) { described_class.new(person: nil) }
 
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
 
       describe ".call should raise an ArgumentError" do
-        let(:add_default_circles) { AddDefaultCircles.call(person: nil) }
+        let(:add_default_circles) { described_class.call(person: nil) }
 
         it { expect { add_default_circles }.to raise_error(ArgumentError) }
       end
     end
 
     describe "when the person argument is the wrong type" do
-      let(:add_default_circles) { AddDefaultCircles.new(person: Activity.new) }
+      let(:add_default_circles) { described_class.new(person: Activity.new) }
 
       it { expect { add_default_circles }.to raise_error(ArgumentError) }
     end
@@ -29,7 +29,7 @@ module Socializer
       let(:circles) { person.activity_object.circles }
 
       before do
-        AddDefaultCircles.call(person: person)
+        described_class.call(person: person)
       end
 
       it { expect(person.activity_object.circles.size).to eq(4) }

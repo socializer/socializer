@@ -38,7 +38,7 @@ module Socializer
 
     context "with scopes" do
       describe "with_activity_id" do
-        let(:sql) { Audience.with_activity_id(id: 1).to_sql }
+        let(:sql) { described_class.with_activity_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -47,7 +47,7 @@ module Socializer
       end
 
       describe "with_activity_object_id" do
-        let(:sql) { Audience.with_activity_object_id(id: 1).to_sql }
+        let(:sql) { described_class.with_activity_object_id(id: 1).to_sql }
 
         it do
           expect(sql)

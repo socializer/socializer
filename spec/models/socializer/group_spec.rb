@@ -60,7 +60,7 @@ module Socializer
 
     context "with scopes" do
       describe "with_display_name" do
-        let(:sql) { Group.with_display_name(name: "Group").to_sql }
+        let(:sql) { described_class.with_display_name(name: "Group").to_sql }
 
         let(:expected) do
           %q(WHERE "socializer_groups"."display_name" = 'Group')

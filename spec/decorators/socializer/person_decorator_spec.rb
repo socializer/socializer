@@ -6,7 +6,7 @@ include Socializer::Engine.routes.url_helpers
 module Socializer
   RSpec.describe PersonDecorator, type: :decorator do
     let(:person) { create(:person) }
-    let(:decorated_person) { PersonDecorator.new(person) }
+    let(:decorated_person) { described_class.new(person) }
 
     context "with attributes" do
       describe "birthdate" do

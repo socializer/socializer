@@ -40,7 +40,7 @@ module Socializer
     context "with scopes" do
       describe "active" do
         context "when no active records" do
-          let(:result) { Membership.active }
+          let(:result) { described_class.active }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be false }
@@ -49,7 +49,7 @@ module Socializer
         context "with active records" do
           before { create(:socializer_membership, active: true) }
 
-          let(:result) { Membership.active }
+          let(:result) { described_class.active }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.first.active).to be true }
@@ -58,7 +58,7 @@ module Socializer
 
       describe "inactive" do
         context "when no inactive records" do
-          let(:result) { Membership.inactive }
+          let(:result) { described_class.inactive }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be false }
@@ -67,7 +67,7 @@ module Socializer
         context "with inactive records" do
           before { create(:socializer_membership, active: false) }
 
-          let(:result) { Membership.inactive }
+          let(:result) { described_class.inactive }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.first.active).to be false }
@@ -75,7 +75,7 @@ module Socializer
       end
 
       describe "with_member_id" do
-        let(:sql) { Membership.with_member_id(member_id: 1).to_sql }
+        let(:sql) { described_class.with_member_id(member_id: 1).to_sql }
 
         it do
           expect(sql)
@@ -84,14 +84,14 @@ module Socializer
 
         context "when person has no memberships" do
           let(:user) { create(:person) }
-          let(:result) { Membership.with_member_id(member_id: user.guid) }
+          let(:result) { described_class.with_member_id(member_id: user.guid) }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be false }
         end
 
         context "when person has memberships" do
-          let(:result) { Membership.with_member_id(member_id: user.guid) }
+          let(:result) { described_class.with_member_id(member_id: user.guid) }
 
           before do
             membership

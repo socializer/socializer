@@ -8,7 +8,7 @@ module Socializer
       RSpec.describe Like, type: :service do
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
-        let(:like) { Like.new(actor: liking_person) }
+        let(:like) { described_class.new(actor: liking_person) }
         let(:results) { like.call(like_attributes) }
 
         let(:like_attributes) do

@@ -16,7 +16,7 @@ module Socializer
           end
 
           let(:join) do
-            Group::Services::Join.new(group: group, person: person)
+            described_class.new(group: group, person: person)
           end
 
           let(:membership) { Membership.find_by(membership_attributes) }
