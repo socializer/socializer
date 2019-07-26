@@ -24,13 +24,13 @@ module Socializer
       describe "with_provider" do
         before { create(:authentication, provider: "identity") }
 
-        let(:result) { Authentication.with_provider(provider: "identity") }
+        let(:result) { described_class.with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.first.provider).to eq("identity") }
 
         context "when the provider is not found" do
-          let(:result) { Authentication.with_provider(provider: "none") }
+          let(:result) { described_class.with_provider(provider: "none") }
 
           it { expect(result).to be_kind_of(ActiveRecord::Relation) }
           it { expect(result.exists?).to be(false) }
@@ -40,7 +40,7 @@ module Socializer
       describe "not_with_provider" do
         before { create(:authentication, provider: "identity") }
 
-        let(:result) { Authentication.not_with_provider(provider: "identity") }
+        let(:result) { described_class.not_with_provider(provider: "identity") }
 
         it { expect(result).to be_kind_of(ActiveRecord::Relation) }
         it { expect(result.exists?).to be(false) }

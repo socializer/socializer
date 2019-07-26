@@ -51,7 +51,7 @@ Gem::Specification.new do |s|
   s.add_dependency("uglifier",             ">= 4.1.19")
 
   s.add_development_dependency("bundler",              "~> 2.0.1")
-  s.add_development_dependency("rake",                 "~> 12.3.2")
+  s.add_development_dependency("rake",                 "~> 12.3.3")
   s.add_development_dependency("sqlite3",              "~> 1.4.1")
   # s.add_development_dependency("rspec-rails",          "~> 3.8.1")
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
@@ -66,6 +66,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop",              "~> 0.73.0")
   s.add_development_dependency("rubocop-performance",  "~> 1.4.0")
   s.add_development_dependency("rubocop-rails",        "~> 2.2.1")
-  s.add_development_dependency("rubocop-rspec",        "~> 1.33.0")
+  s.add_development_dependency("rubocop-rspec",        "~> 1.34.0")
   s.add_development_dependency("scss_lint",            "~> 0.58.0")
 end

@@ -8,7 +8,7 @@ module Socializer
       RSpec.describe Share, type: :service do
         let(:activity_object) { create(:activity_object) }
         let(:actor) { create(:person) }
-        let(:share) { Share.new(actor: actor) }
+        let(:share) { described_class.new(actor: actor) }
 
         let(:public_privacy) do
           Socializer::Audience.privacy.find_value(:public).value

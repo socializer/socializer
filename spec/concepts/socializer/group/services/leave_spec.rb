@@ -19,7 +19,7 @@ module Socializer
 
           before do
             Group::Services::Join.new(group: group, person: person).call
-            Group::Services::Leave.new(group: group, person: person).call
+            described_class.new(group: group, person: person).call
           end
 
           describe "when the group is public" do

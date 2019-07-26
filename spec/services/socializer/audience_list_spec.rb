@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe AudienceList, type: :service do
     describe "when the person argument is nil" do
       describe ".new should raise an ArgumentError" do
-        let(:audience_list) { AudienceList.new(person: nil, query: nil) }
+        let(:audience_list) { described_class.new(person: nil, query: nil) }
 
         it do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -14,7 +14,7 @@ module Socializer
       end
 
       describe ".call should raise an ArgumentError" do
-        let(:audience_list) { AudienceList.call(person: nil, query: nil) }
+        let(:audience_list) { described_class.call(person: nil, query: nil) }
 
         it do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -23,7 +23,7 @@ module Socializer
     end
 
     describe "when the person argument is the wrong type" do
-      let(:audience_list) { AudienceList.new(person: Activity.new) }
+      let(:audience_list) { described_class.new(person: Activity.new) }
 
       it do
         expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -41,7 +41,7 @@ module Socializer
 
       context "with no query" do
         let(:audience_list) do
-          AudienceList.new(person: person, query: nil).call
+          described_class.new(person: person, query: nil).call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }
@@ -64,7 +64,7 @@ module Socializer
 
       context "with query" do
         let(:audience_list) do
-          AudienceList.new(person: person, query: "friends").call
+          described_class.new(person: person, query: "friends").call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }

@@ -52,13 +52,13 @@ module Socializer
 
     context "with scopes" do
       describe "with_id" do
-        let(:sql) { Circle.with_id(id: 1).to_sql }
+        let(:sql) { described_class.with_id(id: 1).to_sql }
 
         it { expect(sql).to include('WHERE "socializer_circles"."id" = 1') }
       end
 
       describe "with_author_id" do
-        let(:sql) { Circle.with_author_id(id: 1).to_sql }
+        let(:sql) { described_class.with_author_id(id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_circles"."author_id" = 1')
@@ -66,7 +66,7 @@ module Socializer
       end
 
       describe "with_display_name" do
-        let(:sql) { Circle.with_display_name(name: "Friends").to_sql }
+        let(:sql) { described_class.with_display_name(name: "Friends").to_sql }
 
         let(:expected) do
           %q(WHERE "socializer_circles"."display_name" = 'Friends')

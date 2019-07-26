@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe ActivityAudienceList, type: :service do
     describe "when the activity argument is nil" do
       describe ".new should raise an ArgumentError" do
-        let(:audience_list) { ActivityAudienceList.new(activity: nil) }
+        let(:audience_list) { described_class.new(activity: nil) }
 
         it do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -14,7 +14,7 @@ module Socializer
       end
 
       describe ".call should raise an ArgumentError" do
-        let(:audience_list) { ActivityAudienceList.call(activity: nil) }
+        let(:audience_list) { described_class.call(activity: nil) }
 
         it do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -23,7 +23,7 @@ module Socializer
     end
 
     describe "when the activity argument is the wrong type" do
-      let(:audience_list) { ActivityAudienceList.new(activity: Person.new) }
+      let(:audience_list) { described_class.new(activity: Person.new) }
 
       it do
         expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
@@ -35,7 +35,7 @@ module Socializer
         let(:activity) { create(:activity) }
 
         let(:audience_list) do
-          ActivityAudienceList.new(activity: activity).call
+          described_class.new(activity: activity).call
         end
 
         it { expect(audience_list).to be_kind_of(Array) }
@@ -60,7 +60,7 @@ module Socializer
 
         context "when public" do
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).call
+            described_class.new(activity: activity).call
           end
 
           let(:tooltip_public) do
@@ -89,7 +89,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).call
+            described_class.new(activity: activity).call
           end
 
           it { expect(audience_list.size).to eq(1) }
@@ -118,7 +118,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            ActivityAudienceList.new(activity: activity).call
+            described_class.new(activity: activity).call
           end
 
           it { expect(audience_list.size).to eq(1) }

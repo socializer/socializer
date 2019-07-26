@@ -37,7 +37,7 @@ module Socializer
 
     context "with scopes" do
       describe "newest_first" do
-        let(:sql) { Activity.newest_first.to_sql }
+        let(:sql) { described_class.newest_first.to_sql }
 
         it do
           expect(sql)
@@ -46,7 +46,7 @@ module Socializer
       end
 
       describe "with_id" do
-        let(:sql) { Activity.with_id(id: 1).to_sql }
+        let(:sql) { described_class.with_id(id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_activities"."id" = 1')
@@ -54,7 +54,7 @@ module Socializer
       end
 
       describe "with_activity_object_id" do
-        let(:sql) { Activity.with_activity_object_id(id: 1).to_sql }
+        let(:sql) { described_class.with_activity_object_id(id: 1).to_sql }
 
         let(:expected) do
           'WHERE "socializer_activities"."activity_object_id" = 1'
@@ -66,7 +66,7 @@ module Socializer
       end
 
       describe "with_actor_id" do
-        let(:sql) { Activity.with_actor_id(id: 1).to_sql }
+        let(:sql) { described_class.with_actor_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -75,7 +75,7 @@ module Socializer
       end
 
       describe "with_target_id" do
-        let(:sql) { Activity.with_target_id(id: 1).to_sql }
+        let(:sql) { described_class.with_target_id(id: 1).to_sql }
 
         it do
           expect(sql)
@@ -145,30 +145,30 @@ module Socializer
       end
 
       # TODO: Test return values
-      it { expect { Activity.stream }.to raise_error(ArgumentError) }
+      it { expect { described_class.stream }.to raise_error(ArgumentError) }
 
       it do
-        expect(Activity.stream(viewer_id: person.id))
+        expect(described_class.stream(viewer_id: person.id))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(Activity.activity_stream(common_stream_attributes))
+        expect(described_class.activity_stream(common_stream_attributes))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(Activity.circle_stream(common_stream_attributes))
+        expect(described_class.circle_stream(common_stream_attributes))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(Activity.group_stream(group_stream_attributes))
+        expect(described_class.group_stream(group_stream_attributes))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(Activity.person_stream(common_stream_attributes))
+        expect(described_class.person_stream(common_stream_attributes))
           .to be_kind_of(ActiveRecord::Relation)
       end
     end

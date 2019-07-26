@@ -6,7 +6,7 @@ include Socializer::Engine.routes.url_helpers
 module Socializer
   RSpec.describe Person::PhoneDecorator, type: :decorator do
     let(:phone) { create(:person_phone, label: :phone) }
-    let(:decorated_phone) { Person::PhoneDecorator.new(phone) }
+    let(:decorated_phone) { described_class.new(phone) }
 
     describe "label_and_number" do
       let(:label) { "Phone : 6666666666" }

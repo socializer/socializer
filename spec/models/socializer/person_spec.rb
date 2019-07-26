@@ -46,7 +46,7 @@ module Socializer
     end
 
     it ".create_with_omniauth" do
-      expect(Socializer::Person).to respond_to(:create_with_omniauth)
+      expect(described_class).to respond_to(:create_with_omniauth)
     end
 
     describe "#services" do

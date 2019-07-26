@@ -5,7 +5,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe Person::EmploymentDecorator, type: :decorator do
     let(:employment) { create(:person_employment) }
-    let(:decorated_employment) { Person::EmploymentDecorator.new(employment) }
+    let(:decorated_employment) { described_class.new(employment) }
 
     describe "ended_on" do
       context "when nil" do

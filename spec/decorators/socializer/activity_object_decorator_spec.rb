@@ -7,7 +7,7 @@ module Socializer
     let(:activity_object) { create(:activity_object) }
 
     let(:decorated_activity_object) do
-      ActivityObjectDecorator.new(activity_object)
+      described_class.new(activity_object)
     end
 
     describe "link_to_like_or_unlike" do

@@ -5,7 +5,7 @@ require "rails_helper"
 module Socializer
   RSpec.describe CircleDecorator, type: :decorator do
     let(:circle) { build(:circle) }
-    let(:decorated_circle) { CircleDecorator.new(circle) }
+    let(:decorated_circle) { described_class.new(circle) }
 
     describe "ties_count" do
       context "with no ties" do
@@ -14,7 +14,7 @@ module Socializer
 
       context "with 1 tie" do
         let(:circle) { create(:circle, :with_ties) }
-        let(:decorated_circle) { CircleDecorator.new(circle) }
+        let(:decorated_circle) { described_class.new(circle) }
 
         it { expect(decorated_circle.ties_count).to eq("1 person") }
       end
@@ -24,7 +24,7 @@ module Socializer
           create(:circle, :with_ties, number_of_ties: 4)
         end
 
-        let(:decorated_circle) { CircleDecorator.new(circle) }
+        let(:decorated_circle) { described_class.new(circle) }
 
         it { expect(decorated_circle.ties_count).to eq("4 people") }
       end

@@ -6,7 +6,7 @@ include Socializer::Engine.routes.url_helpers
 module Socializer
   RSpec.describe Person::AddressDecorator, type: :decorator do
     let(:address) { create(:person_address) }
-    let(:decorated_address) { Person::AddressDecorator.new(address) }
+    let(:decorated_address) { described_class.new(address) }
 
     describe "formatted_address" do
       context "with no line2" do

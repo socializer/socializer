@@ -37,7 +37,7 @@ module Socializer
 
     context "with scopes" do
       describe "with_circle_id" do
-        let(:sql) { Tie.with_circle_id(circle_id: 1).to_sql }
+        let(:sql) { described_class.with_circle_id(circle_id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1')
@@ -45,7 +45,7 @@ module Socializer
       end
 
       describe "with_contact_id" do
-        let(:sql) { Tie.with_contact_id(contact_id: 1).to_sql }
+        let(:sql) { described_class.with_contact_id(contact_id: 1).to_sql }
 
         it do
           expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1')

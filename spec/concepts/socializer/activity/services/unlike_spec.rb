@@ -9,7 +9,7 @@ module Socializer
         let(:liking_person) { create(:person) }
         let(:liked_activity_object) { create(:activity_object) }
         let(:like) { Like.new(actor: liking_person) }
-        let(:unlike) { Unlike.new(actor: liking_person) }
+        let(:unlike) { described_class.new(actor: liking_person) }
         let(:results) { unlike.call(unlike_attributes).success[:activity] }
 
         let(:unlike_attributes) do
