@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency("dry-initializer",      "~> 3.0.1")
   s.add_dependency("dry-matcher",          "~> 0.8.0")
-  s.add_dependency("dry-monads",           "~> 1.2")
+  s.add_dependency("dry-monads",           "~> 1.3")
   s.add_dependency("dry-validation",       "~> 1.2.1")
 
   s.add_dependency("elasticsearch-rails",  "~> 6.0.0")
