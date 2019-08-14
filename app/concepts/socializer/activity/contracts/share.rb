@@ -28,10 +28,7 @@ module Socializer
           required(:activity_object_id).filled(:integer)
           required(:verb).filled(:string, included_in?: "share")
           required(:object_ids).filled do
-            str? | array? & each { included_in?(PRIVACY) }
-            # str? | array? & each do
-            #   str?
-            # end & included_in?(PRIVACY)
+            str? | each { included_in?(PRIVACY) }
           end
           required(:content).maybe(:string)
         end
