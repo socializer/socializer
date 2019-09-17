@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   s.add_dependency("omniauth",             "~> 1.9.0")
   s.add_dependency("omniauth-facebook",    "~> 5.0.0")
-  s.add_dependency("omniauth-identity",    "~> 1.1.1")
+  s.add_dependency("omniauth-identity",    "~> 1.1.2")
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   s.add_dependency("omniauth-openid",      "~> 1.0.1")
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
