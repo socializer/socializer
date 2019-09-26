@@ -22,7 +22,11 @@ class CreateSocializerAudiences < ActiveRecord::Migration[5.1]
 
     add_foreign_key :socializer_audiences, :socializer_activity_objects,
                     column: :activity_object_id,
-                    primary_key: "id",
-                    on_delete: :cascade
+                    primary_key: "id"
+    # REVIEW: Can on_delete work with optional relationships
+    # REVIEW: Does on_delete work with optional relationships with Postgres?
+    # REVIEW: Does on_delete work with optional relationships with Rails > 6.0 & SQLite
+    # ,
+    # on_delete: :cascade
   end
 end
