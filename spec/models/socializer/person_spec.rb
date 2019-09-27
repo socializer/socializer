@@ -62,6 +62,7 @@ module Socializer
 
       it { expect(person.services.to_sql).to include("!= 'identity'") }
       it { expect(person.services.count).to eq(1) }
+
       it "Socializer::Person#services should eq facebook" do
         expect(person.services.find_by(provider: "facebook").provider)
           .to eq("facebook")
