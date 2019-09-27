@@ -4,6 +4,8 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe VERSION do
+    subject(:version) { Socializer::VERSION }
+
     let(:gemspec_path) { Engine.root.join("socializer.gemspec").to_s }
     let(:specification) { Gem::Specification.load(gemspec_path) }
 
@@ -11,7 +13,7 @@ module Socializer
     it { is_expected.to match_regex(/\d+.\d+.\d+(-[a-zA-Z0-9]+)*/) }
     it { is_expected.not_to be_nil }
 
-    it { expect(Socializer::VERSION.frozen?).to be true }
-    it { expect(Socializer::VERSION).to eq(specification.version.to_s) }
+    it { expect(version.frozen?).to be true }
+    it { expect(version).to eq(specification.version.to_s) }
   end
 end

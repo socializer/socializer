@@ -49,6 +49,7 @@ module Socializer
       it { is_expected.to validate_presence_of(:activity_author) }
       it { is_expected.to validate_presence_of(:display_name) }
       it { is_expected.to validate_presence_of(:privacy) }
+
       it "check uniqueness of display_name" do
         create(:group)
         expect(group)
