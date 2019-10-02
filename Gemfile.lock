@@ -225,7 +225,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.17.0)
-    parser (2.6.4.1)
+    parser (2.6.5.0)
       ast (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
