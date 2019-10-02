@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = "~> 2.6.4"
+  s.required_ruby_version = "~> 2.6.5"
 
   s.add_dependency("bcrypt",               "~> 3.1.12")
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
@@ -64,7 +64,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.19.4")
   s.add_development_dependency("rubocop",              "~> 0.75.0")
-  s.add_development_dependency("rubocop-performance",  "~> 1.4.1")
+  s.add_development_dependency("rubocop-performance",  "~> 1.5.0")
   s.add_development_dependency("rubocop-rails",        "~> 2.3.2")
   s.add_development_dependency("rubocop-rspec",        "~> 1.36.0")
   s.add_development_dependency("scss_lint",            "~> 0.58.0")
