@@ -19,7 +19,7 @@ PATH
       omniauth-twitter (~> 1.4.0)
       rails (~> 5.2.3)
       sass-rails (~> 6.0.0)
-      simple_form (~> 5.0.0)
+      simple_form (~> 5.0.1)
       uglifier (>= 4.1.19)
 
 GEM
@@ -150,7 +150,7 @@ GEM
       activesupport (>= 4.2.0)
     hashie (3.6.0)
     highline (2.0.2)
-    i18n (1.6.0)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.29)
       activesupport (>= 4.0.2)
@@ -345,7 +345,7 @@ GEM
     sexp_processor (4.13.0)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
-    simple_form (5.0.0)
+    simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.16.1)
