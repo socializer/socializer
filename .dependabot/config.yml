@@ -1,0 +1,14 @@
+# https://dependabot.com/docs/config-file/
+
+version: 1
+
+update_configs:
+  - package_manager: "ruby:bundler"
+    directory: "/"
+    update_schedule: "weekly"
+    # Apply default reviewer and label to created pull requests
+    default_reviewers:
+      - "acmetech"
+    default_labels:
+      - "dependencies"
+    version_requirement_updates: "increase_versions"
