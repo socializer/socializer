@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Declare your gem's dependencies in socializer.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -12,11 +15,6 @@ gemspec path: "../.."
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
 
 group :development do
   gem "coffeelint", "~> 1.16.0"
