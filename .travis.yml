@@ -44,11 +44,11 @@ matrix:
       gemfile: Gemfile
       env: DB=sqlite
     # - rvm: 2.4.3
-    #   gemfile: gemfiles/gemfile.pg
+    #   gemfile: gemfiles/gemfile.pg/Gemfile
     #   env: DB=postgres
     #   services: postgresql
     # - rvm: 2.4.3
-    #   gemfile: gemfiles/gemfile.mysql
+    #   gemfile: gemfiles/gemfile.mysql/Gemfile
     #   env: DB=mysql
     #   services: mysql
 
