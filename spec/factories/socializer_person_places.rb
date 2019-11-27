@@ -3,7 +3,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do
-  factory :person_place, class: Socializer::Person::Place do
+  factory :person_place, class: "Socializer::Person::Place" do
     city_name { "name" }
     current { true }
     association :person, factory: :person
