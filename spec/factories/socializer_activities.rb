@@ -3,7 +3,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do
-  factory :activity, class: Socializer::Activity do
+  factory :activity, class: "Socializer::Activity" do
     association :activity_object, factory: :activity_object
     association :verb, factory: :verb
     association :activitable_actor, factory: :activity_object_person
