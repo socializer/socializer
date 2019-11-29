@@ -54,7 +54,9 @@ jobs:
         bundle install --jobs 4 --retry 3 --without documentation
 
     - name: "Run rspec"
-      run: bundle exec rspec
+      run: |
+        bundle exec rails app:db:migrate RAILS_ENV=test
+        bundle exec rspec
 
     - name: Run RuboCop
       run: |
