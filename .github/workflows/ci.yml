@@ -20,17 +20,18 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Cache Ruby
-    - uses: actions/cache@preview
-      id: cache
+      uses: actions/cache@preview
+      id: ruby-cache
       with:
         path: ~/local/rubies
         key: ruby-2.6.5
 
-    - name: Set up Ruby 2.6.5
-    - uses: clupprich/ruby-build-action@master
+    - name: Install Ruby 2.6.5
+      uses: clupprich/ruby-build-action@master
       id: ruby
       with:
         ruby-version: 2.6.5
+        cache-available: ${{ steps.ruby-cache.outputs.cache-hit == 'true' }}
 
     - name: "Cache gems"
       uses: actions/cache@v1
