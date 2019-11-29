@@ -58,11 +58,11 @@ jobs:
         bundle exec rails app:db:migrate RAILS_ENV=test
         bundle exec rspec
 
-    - name: Run RuboCop
-      run: |
-        bundle exec rubocop --parallel
-
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Run RuboCop
+      run: |
+        bundle exec rubocop --parallel
