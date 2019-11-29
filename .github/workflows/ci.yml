@@ -33,6 +33,11 @@ jobs:
         ruby-version: 2.6.5
         cache-available: ${{ steps.ruby-cache.outputs.cache-hit == 'true' }}
 
+    - name: Insall sqlite
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y sqlite3
+
     - name: "Cache gems"
       uses: actions/cache@v1
       with:
@@ -40,11 +45,6 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
-
-    - name: Insall sqlite
-      run: |
-        apt-get update
-        apt-get install -y sqlite3
 
     - name: "Install gems"
       run: |
