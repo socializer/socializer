@@ -43,7 +43,8 @@ jobs:
 
     - name: Insall sqlite
       run: |
-        apt-get install sqlite3
+        apt-get update
+        apt-get install -y sqlite3
 
     - name: "Install gems"
       run: |
