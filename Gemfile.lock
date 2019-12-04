@@ -74,7 +74,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.7.2)
+    autoprefixer-rails (9.7.3)
       execjs
     bcrypt (3.1.13)
     bcrypt-ruby (3.1.5)
@@ -192,7 +192,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.6)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
     oauth2 (1.4.2)
