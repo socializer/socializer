@@ -2,11 +2,11 @@ inherit_from: ../.rubocop.yml
 
 require: rubocop-rspec
 
+Layout/LineLength:
+  Enabled: true
+
 Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
-
-Metrics/LineLength:
-  Enabled: true
 
 Metrics/ModuleLength:
   Enabled: false
