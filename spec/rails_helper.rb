@@ -23,7 +23,9 @@ ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), "../")
 # end with _spec.rb. You can configure this pattern with with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
+Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].sort.each do |file|
+  require file
+end
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
