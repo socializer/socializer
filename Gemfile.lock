@@ -409,7 +409,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
+    sqlite3 (1.4.2)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
     terminal-table (1.8.0)
@@ -462,7 +462,7 @@ DEPENDENCIES
   shoulda-matchers (~> 4.1.2)
   simplecov (~> 0.16.1)
   socializer!
-  sqlite3 (~> 1.4.1)
+  sqlite3 (~> 1.4.2)
   webdrivers (~> 4.0)
 
 BUNDLED WITH
