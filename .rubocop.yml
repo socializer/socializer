@@ -37,6 +37,13 @@ Layout/HashAlignment:
   Exclude:
     - "config/initializers/simple_form.rb"
 
+Layout/LineLength:
+  # Max: 120
+  Enabled: true
+  Exclude:
+    - "config/initializers/simple_form.rb"
+    - "config/initializers/simple_form_bootstrap.rb"
+
 Layout/SpaceBeforeFirstArg:
   Enabled: true
 
@@ -49,13 +56,6 @@ Metrics/BlockLength:
     - "spec/**/*.rb"
     - "**/*.gemspec"
     - "config/routes.rb"
-    - "config/initializers/simple_form_bootstrap.rb"
-
-Metrics/LineLength:
-  # Max: 120
-  Enabled: true
-  Exclude:
-    - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
 Metrics/MethodLength:
