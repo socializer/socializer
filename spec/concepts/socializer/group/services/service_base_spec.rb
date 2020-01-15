@@ -48,5 +48,13 @@ module Socializer
         end
       end
     end
+
+    describe ".call" do
+      let(:service) do
+        described_class.new(group: group, person: person).call
+      end
+
+      it { expect { service }.to raise_error(NotImplementedError) }
+    end
   end
 end

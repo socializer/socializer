@@ -3,9 +3,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do
-  factory :group, class: Socializer::Group do
-    sequence(:display_name) { |n| "Public group #{n}" }
-    privacy { :public }
+  factory :note, class: "Socializer::Note" do
     association :activity_author, factory: :activity_object_person
+    content { "This is a note" }
   end
 end

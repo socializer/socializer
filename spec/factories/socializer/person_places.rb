@@ -3,9 +3,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do
-  factory :person_link, class: Socializer::Person::Link do
-    display_name { "test" }
-    url { "http://test.org" }
+  factory :person_place, class: "Socializer::Person::Place" do
+    city_name { "name" }
+    current { true }
     association :person, factory: :person
   end
 end

@@ -3,10 +3,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_bot
 
 FactoryBot.define do
-  factory :person_phone, class: Socializer::Person::Phone do
-    category { :home }
-    number { "6666666666" }
-    label { :phone }
+  factory :person_link, class: "Socializer::Person::Link" do
+    display_name { "test" }
+    url { "http://test.org" }
     association :person, factory: :person
   end
 end

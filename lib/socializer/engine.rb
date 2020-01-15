@@ -19,7 +19,7 @@ module Socializer
                                request_specs: true
       generator.helper false
       generator.integration_tool :rspec
-      generator.fixture_replacement :factory_girl, dir: "spec/factories"
+      generator.fixture_replacement :factory_bot, dir: "spec/factories"
     end
   end
 end

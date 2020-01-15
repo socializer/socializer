@@ -116,6 +116,10 @@ module Socializer
           end
         end
       end
+
+      let(:results) { share.call(params: share_attributes) }
+
+      it { expect(results.activity_field_content).to eq(nil) }
     end
   end
 end
