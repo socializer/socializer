@@ -3,90 +3,86 @@
 require "rails_helper"
 
 module Socializer
-  class Activity
-    module Services
-      RSpec.describe Like, type: :service do
-        let(:actor) { create(:person) }
-        let(:liked_activity_object) { create(:activity_object) }
-        let(:like) { described_class.new(actor: actor) }
-        let(:results) { like.call(like_attributes).success[:activity] }
+  RSpec.describe Activity::Services::Like, type: :service do
+    let(:actor) { create(:person) }
+    let(:liked_activity_object) { create(:activity_object) }
+    let(:like) { described_class.new(actor: actor) }
+    let(:results) { like.call(like_attributes).success[:activity] }
 
-        let(:like_attributes) do
-          { activity_object: liked_activity_object }
+    let(:like_attributes) do
+      { activity_object: liked_activity_object }
+    end
+
+    it { expect(results.persisted?).to eq(true) }
+    it { expect(results.verb.display_name).to eq("like") }
+    it { expect(results).to be_kind_of(Socializer::Activity) }
+
+    describe "check the like_count and liked_by" do
+      before do
+        like.call(like_attributes)
+
+        liked_activity_object.reload
+      end
+
+      it { expect(liked_activity_object.like_count).to eq(1) }
+      it { expect(liked_activity_object.liked_by.size).to eq(1) }
+    end
+
+    context "when liked you can't like again" do
+      let(:results) { like.call(like_attributes).failure }
+
+      before do
+        like.call(like_attributes)
+        like.call(like_attributes)
+
+        liked_activity_object.reload
+      end
+
+      it { expect(liked_activity_object.like_count).to eq(1) }
+
+      it "must be ActiveRecord::Relation" do
+        expect(results)
+          .to be_kind_of(ActiveRecord::Relation)
+      end
+    end
+
+    context "with validate" do
+      let(:result) { like.validate(attributes) }
+
+      # context "when validation is successful" do
+      #   let(:attributes) do
+      #     { actor_id: actor.guid,
+      #       activity_object_id: liked_activity_object.id,
+      #       object_ids: "public",
+      #       verb: "like" }
+      #   end
+
+      #   it { expect(result).to be_success }
+      #   it { expect(result.success.values.to_h).to eq(attributes) }
+      # end
+
+      context "when validation fails" do
+        let(:attributes) { { } }
+        let(:errors) { result.failure[:errors] }
+        let(:issues) do
+          { actor_id: ["is missing"],
+            activity_object_id: ["is missing"],
+            object_ids: ["is missing"],
+            verb: ["is missing"] }
         end
 
-        it { expect(results.persisted?).to eq(true) }
-        it { expect(results.verb.display_name).to eq("like") }
-        it { expect(results).to be_kind_of(Socializer::Activity) }
+        it { expect(result).to be_failure }
+        it { expect(errors).to eql(issues) }
+      end
+    end
 
-        describe "check the like_count and liked_by" do
-          before do
-            like.call(like_attributes)
+    context "with .create" do
+      context "with invalid attributes" do
+        let(:result) { like.create({}) }
+        let(:failure) { result.failure }
 
-            liked_activity_object.reload
-          end
-
-          it { expect(liked_activity_object.like_count).to eq(1) }
-          it { expect(liked_activity_object.liked_by.size).to eq(1) }
-        end
-
-        context "when liked you can't like again" do
-          let(:results) { like.call(like_attributes).failure }
-
-          before do
-            like.call(like_attributes)
-            like.call(like_attributes)
-
-            liked_activity_object.reload
-          end
-
-          it { expect(liked_activity_object.like_count).to eq(1) }
-
-          it "must be ActiveRecord::Relation" do
-            expect(results)
-              .to be_kind_of(ActiveRecord::Relation)
-          end
-        end
-
-        context "with validate" do
-          let(:result) { like.validate(attributes) }
-
-          # context "when validation is successful" do
-          #   let(:attributes) do
-          #     { actor_id: actor.guid,
-          #       activity_object_id: liked_activity_object.id,
-          #       object_ids: "public",
-          #       verb: "like" }
-          #   end
-
-          #   it { expect(result).to be_success }
-          #   it { expect(result.success.values.to_h).to eq(attributes) }
-          # end
-
-          context "when validation fails" do
-            let(:attributes) { { } }
-            let(:errors) { result.failure[:errors] }
-            let(:issues) do
-              { actor_id: ["is missing"],
-                activity_object_id: ["is missing"],
-                object_ids: ["is missing"],
-                verb: ["is missing"] }
-            end
-
-            it { expect(result).to be_failure }
-            it { expect(errors).to eql(issues) }
-          end
-        end
-
-        context "with .create" do
-          context "with invalid attributes" do
-            let(:result) { like.create({}) }
-            let(:failure) { result.failure }
-
-            it { expect(result).to be_failure }
-            it { expect(failure.persisted?).to eq(false) }
-          end
-        end
+        it { expect(result).to be_failure }
+        it { expect(failure.persisted?).to eq(false) }
       end
     end
   end
