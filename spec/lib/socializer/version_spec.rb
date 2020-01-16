@@ -4,7 +4,7 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe VERSION do
-    subject(:version) { Socializer::VERSION }
+    let(:version) { subject }
 
     let(:gemspec_path) { Engine.root.join("socializer.gemspec").to_s }
     let(:specification) { Gem::Specification.load(gemspec_path) }
