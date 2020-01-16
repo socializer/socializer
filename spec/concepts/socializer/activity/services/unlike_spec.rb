@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Activity::Services::Unlike, type: :service do
     let(:liking_person) { create(:person) }
     let(:liked_activity_object) { create(:activity_object) }
-    let(:like) { Like.new(actor: liking_person) }
+    let(:like) { Activity::Services::Like.new(actor: liking_person) }
     let(:unlike) { described_class.new(actor: liking_person) }
     let(:results) { unlike.call(unlike_attributes).success[:activity] }
 
