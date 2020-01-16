@@ -83,11 +83,7 @@ module Socializer
       let(:circles_audience) { results.audiences.where(privacy: "circles") }
 
       it { expect(results.persisted?).to eq(true) }
-      it do
-        byebug
-        expect(public_audience.present?).to eq(true)
-      end
-      # it { expect(public_audience.present?).to eq(true) }
+      it { expect(public_audience.present?).to eq(true) }
       it { expect(circles_audience.present?).to eq(true) }
     end
 
