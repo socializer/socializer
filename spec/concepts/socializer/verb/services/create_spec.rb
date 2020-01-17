@@ -23,12 +23,15 @@ module Socializer
         it { expect(failure).to be_kind_of(Verb) }
         it { expect(failure.persisted?).to be false }
 
+        # FIXME: Use I18n
         it { expect(errors[:display_name]).to eq(["must be filled"]) }
       end
 
       context "with required attributes" do
         let(:success) { result.success[:verb] }
         let(:notice) { result.success[:notice] }
+        let(:model) { success.class.name.demodulize }
+        let(:notice_I18n) { I18n.t("socializer.model.create", model: model) }
 
         it { expect(result).to be_success }
         it { expect(success.valid?).to be true }
@@ -37,8 +40,7 @@ module Socializer
 
         it { expect(notice).to be_a String }
         it { expect(notice).not_to be_nil }
-        it { expect(notice).to eq("Verb was successfully created.") }
-
+        it { expect(notice).to eq(notice_I18n) }
       end
     end
   end
