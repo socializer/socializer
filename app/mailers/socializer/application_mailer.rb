@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_dependency "socializer/application_controller"
+
 #
 # Namespace for the Socializer engine
 #
