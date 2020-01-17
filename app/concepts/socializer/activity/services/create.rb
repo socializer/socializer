@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry-initializer"
+require "dry/initializer"
 require "dry/monads/result"
 require "dry/monads/do/all"
 require "dry/matcher/result_matcher"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry-validation"
+require "dry/validation"
 
 #
 # Namespace for the Socializer engine

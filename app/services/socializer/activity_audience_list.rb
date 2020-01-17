@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry-initializer"
+require "dry/initializer"
 
 #
 # Namespace for the Socializer engine
