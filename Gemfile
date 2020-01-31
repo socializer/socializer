@@ -29,7 +29,7 @@ group :test do
   gem "capybara", ">= 2.15", "< 4.0"
   gem "coveralls_reborn", "~> 0.14.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
-  gem "database_cleaner", "~> 1.7.0"
+  gem "database_cleaner", "~> 1.8.0"
   gem "simplecov", "~> 0.17.0", require: false
   gem "webdrivers", "~> 4.0"
 
