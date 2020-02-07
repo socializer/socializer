@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
-  s.add_dependency("draper",               "~> 3.1.0")
+  s.add_dependency("draper",               "~> 4.0.0")
 
   s.add_dependency("dry-initializer",      "~> 3.0.3")
   s.add_dependency("dry-matcher",          "~> 0.8.3")
@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
   s.add_dependency("rails",                "~> 5.2.4")
   s.add_dependency("sass-rails",           "~> 6.0.0")
-  s.add_dependency("simple_form",          "~> 5.0.1")
+  s.add_dependency("simple_form",          "~> 5.0.2")
   s.add_dependency("uglifier",             ">= 4.1.19")
 
   s.add_development_dependency("bundler",              "~> 2.1.1")
