@@ -108,8 +108,8 @@ GEM
       execjs
       json
     concurrent-ruby (1.1.6)
-    countries (3.0.0)
-      i18n_data (~> 0.8.0)
+    countries (3.0.1)
+      i18n_data (~> 0.10.0)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
     country_select (4.0.0)
@@ -164,7 +164,7 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    i18n_data (0.8.0)
+    i18n_data (0.10.0)
     inch (0.8.0)
       pry
       sparkr (>= 0.2.0)
