@@ -117,7 +117,7 @@ module Socializer
       end
 
       describe "POST #create with invalid attributes" do
-        it "is a pending example"
+        pending
       end
 
       describe "GET #edit" do
@@ -138,7 +138,7 @@ module Socializer
       end
 
       describe "PATCH #update with invalid attributes" do
-        it "is a pending example"
+        pending
       end
 
       describe "DELETE #destroy" do
