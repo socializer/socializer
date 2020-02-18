@@ -21,5 +21,14 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
