@@ -351,7 +351,7 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.18.3)
+    simplecov (0.18.4)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.1)
@@ -419,7 +419,7 @@ DEPENDENCIES
   rubocop-rspec (~> 1.38.1)
   scss_lint (~> 0.59.0)
   shoulda-matchers (~> 4.3.0)
-  simplecov (~> 0.18.1)
+  simplecov (~> 0.18.4)
   socializer!
   sqlite3 (~> 1.4.1)
   webdrivers (~> 4.0)
