@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
-  s.add_dependency("draper",               "~> 4.0.0")
+  s.add_dependency("draper",               "~> 4.0.1")
 
   s.add_dependency("dry-initializer",      "~> 3.0.3")
   s.add_dependency("dry-matcher",          "~> 0.8.3")
@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rails_best_practices", "~> 1.20.0")
   s.add_development_dependency("rubocop",              "~> 0.80.1")
   s.add_development_dependency("rubocop-performance",  "~> 1.5.2")
-  s.add_development_dependency("rubocop-rails",        "~> 2.4.2")
+  s.add_development_dependency("rubocop-rails",        "~> 2.5.0")
   s.add_development_dependency("rubocop-rspec",        "~> 1.38.1")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
 end
