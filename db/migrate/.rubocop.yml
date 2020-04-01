@@ -6,6 +6,12 @@ Layout/EmptyLineBetweenDefs:
 Layout/LineLength:
   Enabled: false
 
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
 Metrics/AbcSize:
   Enabled: false
 

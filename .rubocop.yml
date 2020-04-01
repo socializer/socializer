@@ -47,6 +47,12 @@ Layout/LineLength:
 Layout/SpaceBeforeFirstArg:
   Enabled: true
 
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
