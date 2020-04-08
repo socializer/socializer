@@ -114,9 +114,7 @@ module Socializer
       auth_info = auth.info
       auth_provider = auth.provider
 
-      create! do |user|
-        user.display_name = auth_info.name
-        user.email = auth_info.email
+      create!(display_name: auth_info.name, email: auth_info.email) do |user|
         image_url = auth_info.image
         avatar_provider = image_url.blank? ? "GRAVATAR" : auth_provider.upcase
 
