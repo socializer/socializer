@@ -23,15 +23,9 @@ module Socializer
     enumerize :gender, in: { unknown: 0, female: 1, male: 2 },
                        default: :unknown, predicates: true, scope: true
 
-    enumerize :relationship, in: { unknown: 0,
-                                   single: 1,
-                                   relationship: 2,
-                                   engaged: 3,
-                                   married: 4,
-                                   complicated: 5,
-                                   open: 6,
-                                   widowed: 7,
-                                   domestic: 8,
+    enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2,
+                                   engaged: 3, married: 4, complicated: 5,
+                                   open: 6, widowed: 7, domestic: 8,
                                    civil: 9 },
                              default: :unknown, predicates: true, scope: true
 
