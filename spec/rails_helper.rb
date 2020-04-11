@@ -43,6 +43,9 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  # Eliminate the need to use I18n.t(). With this we can use t()
+  config.include ActionView::Helpers::TranslationHelper
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
