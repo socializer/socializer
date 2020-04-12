@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
     t.integer "activity_object_id", null: false
     t.integer "verb_id", null: false
     t.integer "target_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_object_id"], name: "index_socializer_activities_on_activity_object_id"
     t.index ["actor_id"], name: "index_socializer_activities_on_actor_id"
     t.index ["target_id"], name: "index_socializer_activities_on_target_id"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
     t.string "provider", null: false
     t.string "uid", null: false
     t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["person_id"], name: "index_socializer_authentications_on_person_id"
     t.index ["provider"], name: "index_socializer_authentications_on_provider"
   end
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
     t.integer "author_id", null: false
     t.string "display_name", null: false
     t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_socializer_circles_on_author_id"
     t.index ["display_name", "author_id"], name: "index_socializer_circles_on_display_name_and_author_id", unique: true
   end
@@ -137,8 +137,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
   create_table "socializer_notes", force: :cascade do |t|
     t.integer "author_id", null: false
     t.text "content", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_socializer_notes_on_author_id"
   end
 
@@ -170,8 +170,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
     t.date "birthdate"
     t.integer "relationship"
     t.string "other_names"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "socializer_person_addresses", force: :cascade do |t|
@@ -274,8 +274,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_193144) do
 
   create_table "socializer_verbs", force: :cascade do |t|
     t.string "display_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["display_name"], name: "index_socializer_verbs_on_display_name", unique: true
   end
 
