@@ -21,5 +21,25 @@ module Socializer
       generator.integration_tool :rspec
       generator.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    initializer "webpacker.proxy" do |app|
+      insert_middleware = begin
+                            MyEngine.webpacker.config.dev_server.present?
+                          rescue
+                            nil
+                        end
+      next unless insert_middleware
+
+      app.middleware.insert_before(
+        0, Webpacker::DevServerProxy,
+        ssl_verify_none: true,
+        webpacker: MyEngine.webpacker
+      )
+
+      config.app_middleware.use(
+        Rack::Static,
+        urls: ["/socializer-packs"], root: "socializer/public"
+      )
+    end
   end
 end
