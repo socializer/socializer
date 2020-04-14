@@ -23,7 +23,7 @@ namespace :socializer do
     end
 
     desc "Compile JavaScript packs using webpack for production with digests"
-    task compile: [:yarn_install, :environment] do
+    task compile: %i[yarn_install environment] do
       Webpacker.with_node_env("production") do
         ensure_log_goes_to_stdout do
           if Socializer.webpacker.commands.compile
