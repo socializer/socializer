@@ -24,7 +24,7 @@ module Socializer
 
     initializer "webpacker.proxy" do |app|
       insert_middleware = begin
-                            MyEngine.webpacker.config.dev_server.present?
+                            Socializer.webpacker.config.dev_server.present?
                           rescue
                             nil
                         end
@@ -33,7 +33,7 @@ module Socializer
       app.middleware.insert_before(
         0, Webpacker::DevServerProxy,
         ssl_verify_none: true,
-        webpacker: MyEngine.webpacker
+        webpacker: Socializer.webpacker
       )
 
       config.app_middleware.use(
