@@ -25,7 +25,7 @@ module Socializer
     initializer "webpacker.proxy" do |app|
       insert_middleware = begin
                           Socializer.webpacker.config.dev_server.present?
-                          rescue
+                          rescue StandardError
                             nil
                         end
       next unless insert_middleware
