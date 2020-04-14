@@ -16,7 +16,7 @@ end
 namespace :socializer do
   namespace :webpacker do
     desc "Install deps with yarn"
-    task :yarn_install do
+    task yarn_install: :environment do
       Dir.chdir(File.join(__dir__, "../..")) do
         system "yarn install --no-progress --production"
       end
