@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-OmniAuth.config.allowed_request_methods = [:post]
-# OmniAuth.config.before_request_phase = TokenVerifier.new
-
 require "omniauth"
 require "omniauth-identity"
 require "omniauth-facebook"
