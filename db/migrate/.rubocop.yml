@@ -9,6 +9,9 @@ Layout/LineLength:
 Lint/RaiseException:
   Enabled: true
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Lint/StructNewOverride:
   Enabled: true
 
