@@ -30,6 +30,9 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
+Style/ExponentialNotation:
+  Enabled: true
+
 Style/HashEachMethods:
   Enabled: true
 
