@@ -21,6 +21,8 @@ module Socializer
       #   contract = Verb::Contracts::Create.new
       #   result = contract.call(params)
       class Create < Dry::Validation::Contract
+        Dry::Validation.load_extensions(:monads)
+
         params do
           required(:display_name).filled(Types::ActivityVerbs)
         end

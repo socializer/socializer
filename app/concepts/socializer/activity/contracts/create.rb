@@ -21,6 +21,8 @@ module Socializer
       #   contract = Activity::Contracts::Create.new
       #   result = contract.call(params)
       class Create < Dry::Validation::Contract
+        Dry::Validation.load_extensions(:monads)
+
         PRIVACY = Audience.privacy.values.freeze
 
         params do

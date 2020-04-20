@@ -21,6 +21,8 @@ module Socializer
       #   contract = Note::Contracts::Create.new
       #   result = contract.call(params)
       class Create < Dry::Validation::Contract
+        Dry::Validation.load_extensions(:monads)
+
         params do
           required(:activity_verb).filled(:string, included_in?: "post")
           # TODO: Consider creating a Type for object_ids

@@ -21,6 +21,8 @@ module Socializer
       #   contract = Activity::Contracts::Share.new
       #   result = contract.call(params)
       class Share < Dry::Validation::Contract
+        Dry::Validation.load_extensions(:monads)
+
         PRIVACY = Audience.privacy.values.freeze
 
         params do
