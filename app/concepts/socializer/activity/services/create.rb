@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require "dry/initializer"
-require "dry/monads/result"
-require "dry/monads/do/all"
 require "dry/matcher/result_matcher"
 
 #
@@ -20,7 +18,9 @@ module Socializer
       #
       # Service object for creating a Socializer::Activity
       #
-      class Create
+      class Create < Base::Operation
+        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
+
         CIRCLES_PRIVACY = Socializer::Audience.privacy.circles.value.freeze
         LIMITED_PRIVACY = Socializer::Audience.privacy.limited.value.freeze
         PUBLIC_PRIVACY = Socializer::Audience.privacy.public.value.freeze
@@ -28,10 +28,6 @@ module Socializer
         # Initializer
         #
         extend Dry::Initializer
-
-        include Dry::Monads::Result::Mixin
-        include Dry::Monads::Do::All
-        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
 
         # Adds the actor keyword argument to the initializer, ensures the tyoe
         # is [Socializer::Person], and creates a private reader
@@ -48,9 +44,7 @@ module Socializer
           validated = yield validate(activity_params(params: params))
           activity = yield create(validated.to_h)
 
-          return Success(activity: activity) if activity.persisted?
-
-          Failure(activity: activity)
+          Success(activity)
         end
 
         private
@@ -59,14 +53,7 @@ module Socializer
 
         def validate(params)
           contract = Activity::Contracts::Create.new
-          result = contract.call(params)
-
-          if result.success?
-            Success(result)
-          else
-            # result.errors(full: true).values
-            Failure(activity: Activity.new, errors: result.errors.to_h)
-          end
+          contract.call(params).to_monad
         end
 
         def create(params)

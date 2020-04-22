@@ -19,17 +19,18 @@ module Socializer
     context "with .call" do
       context "with no required attributes" do
         let(:result) { activity.call(params: {}) }
-        let(:failure) { result.failure[:activity] }
+        let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(failure.valid?).to be false }
-        it { expect(failure).to be_kind_of(Activity) }
-        it { expect(failure.persisted?).to be false }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
+
+        it { expect(failure.errors).not_to be_nil }
       end
 
       context "with the required attributes" do
         let(:result) { activity.call(params: attributes) }
-        let(:success) { result.success[:activity] }
+        let(:success) { result.success }
 
         it { expect(result).to be_success }
         it { expect(success.valid?).to be true }
@@ -39,7 +40,7 @@ module Socializer
 
       context "when #object_ids set" do
         let(:result) { activity.call(params: attributes) }
-        let(:success) { result.success[:activity] }
+        let(:success) { result.success }
 
         let(:attributes) do
           { actor_id: actor.guid,

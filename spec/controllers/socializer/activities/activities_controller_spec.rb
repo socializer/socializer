@@ -10,7 +10,7 @@ module Socializer
     let(:actor) { create(:person) }
     let(:activity) { Activity::Services::Create.new(actor: actor) }
     let(:result) { activity.call(params: creator_attributes) }
-    let(:decorated) { result.success[:activity].decorate }
+    let(:decorated) { result.success.decorate }
 
     let(:note) do
       create(:note, activity_author: actor.activity_object)

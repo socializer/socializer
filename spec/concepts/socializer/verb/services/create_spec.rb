@@ -15,13 +15,12 @@ module Socializer
     context "with .call" do
       context "with no required attributes" do
         let(:display_name) { nil }
-        let(:failure) { result.failure[:verb] }
-        let(:errors) { result.failure[:errors] }
+        let(:failure) { result.failure }
+        let(:errors) { result.failure.errors }
 
         it { expect(result).to be_failure }
-        it { expect(failure.valid?).to be false }
-        it { expect(failure).to be_kind_of(Verb) }
-        it { expect(failure.persisted?).to be false }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
 
         # FIXME: Use I18n
         it { expect(errors[:display_name]).to eq(["must be filled"]) }

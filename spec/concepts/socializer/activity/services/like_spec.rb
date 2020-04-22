@@ -82,7 +82,10 @@ module Socializer
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(failure.persisted?).to eq(false) }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
+
+        it { expect(failure.errors).not_to be_nil }
       end
     end
   end

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "dry/initializer"
-require "dry/monads/result"
-require "dry/monads/do/all"
-require "dry/matcher/result_matcher"
 
 #
 # Namespace for the Socializer engine
@@ -29,16 +26,12 @@ module Socializer
       #     result.failure do |failure|
       #     end
       #   end
-      class Like
+      class Like < Base::Operation
         PUBLIC = Socializer::Audience.privacy.public.value.freeze
 
         # Initializer
         #
         extend Dry::Initializer
-
-        include Dry::Monads::Result::Mixin
-        include Dry::Monads::Do::All
-        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
 
         # Adds the actor keyword argument to the initializer, ensures the tyoe
         # is [Socializer::Person], and creates a private reader
@@ -57,7 +50,7 @@ module Socializer
           return Failure(Socializer::Activity.none) if blocked?
 
           validated = yield validate(like_params)
-          activity = yield create(validated)
+          activity = yield create(validated.to_h)
 
           if activity.persisted?
             return Success(activity: activity, activity_object: activity_object)
@@ -73,28 +66,19 @@ module Socializer
         def validate(params)
           result = contract.call(params)
 
-          if result.success?
-            Success(result)
-          else
-            # Failure(result.errors)
-            Failure(activity: Activity.new, errors: result.errors.to_h)
-          end
+          return Success(result) if result.success?
+
+          Failure(activity: Activity.new, errors: result.errors.to_h)
         end
 
         def create(params)
           ActiveRecord::Base.transaction do
             activity = Activity::Services::Create.new(actor: actor)
-            activity.call(params: params.to_h) do |result|
-              result.success do |success|
-                change_like_count
-                Success(success[:activity])
-              end
+            result = yield activity.call(params: params)
 
-              result.failure do |failure|
-                Failure(failure[:activity])
-                # raise ActiveRecord::Rollback
-              end
-            end
+            yield change_like_count
+
+            Success(result)
           end
         end
 
@@ -127,7 +111,11 @@ module Socializer
         # @return [TrueClass, FalseClass] returns true if the record could
         # be saved
         def change_like_count
-          activity_object.increment(:like_count).save
+          result = activity_object.increment(:like_count).save
+
+          return Success(result) if result
+
+          Failure(result)
         end
 
         # The verb to use when liking an [Socializer::ActivityObject]

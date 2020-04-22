@@ -41,31 +41,33 @@ module Socializer
         ).to_unsafe_hash.symbolize_keys
       end
 
-      let(:results) do
-        share.call(params: share_attributes).success[:activity]
-      end
-
       it { expect(results.activity_field_content).to eq(nil) }
     end
 
     context "when #object_ids is nil" do
       let(:object_ids) { "" }
       let(:result) { share.call(params: share_attributes) }
-      let(:errors) { result.failure[:errors] }
-      let(:results) do
-        share.call(params: share_attributes).failure[:activity]
-      end
+      let(:failure) { result.failure }
+      let(:errors) { result.failure.errors }
 
-      it { expect(results.persisted?).to eq(false) }
+      it { expect(result).to be_failure }
+      it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+      it { expect(failure.success?).to be false }
+
+      it { expect(errors).not_to be_nil }
     end
 
     context "when #object_ids is an array of non strings" do
       let(:object_ids) { [1, 2, 3] }
-      let(:results) do
-        share.call(params: share_attributes).failure[:activity]
-      end
+      let(:result) { share.call(params: share_attributes) }
+      let(:failure) { result.failure }
+      let(:errors) { result.failure.errors }
 
-      it { expect(results.persisted?).to eq(false) }
+      it { expect(result).to be_failure }
+      it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+      it { expect(failure.success?).to be false }
+
+      it { expect(errors).not_to be_nil }
     end
 
     context "when #object_ids is an array of strings" do
@@ -73,10 +75,6 @@ module Socializer
 
       let(:circles_privacy) do
         Socializer::Audience.privacy.find_value(:circles).value
-      end
-
-      let(:results) do
-        share.call(params: share_attributes).success[:activity]
       end
 
       let(:public_audience) { results.audiences.where(privacy: "public") }
@@ -110,7 +108,10 @@ module Socializer
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(failure.persisted?).to eq(false) }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
+
+        it { expect(failure.errors).not_to be_nil }
       end
     end
   end

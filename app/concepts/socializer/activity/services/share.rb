@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "dry/initializer"
-require "dry/monads/result"
-require "dry/monads/do/all"
-require "dry/matcher/result_matcher"
 
 #
 # Namespace for the Socializer engine
@@ -36,14 +33,10 @@ module Socializer
       #                              share: share_params }
       #     end
       #   end
-      class Share
+      class Share < Base::Operation
         # Initializer
         #
         extend Dry::Initializer
-
-        include Dry::Monads::Result::Mixin
-        include Dry::Monads::Do::All
-        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
 
         # Adds the actor keyword argument to the initializer, ensures the tyoe
         # is [Socializer::Person], and creates a private reader
@@ -58,45 +51,23 @@ module Socializer
         # @return [Socializer::Activity]
         def call(params:)
           validated = yield validate(share_params(params: params))
-          activity = yield create(validated)
+          activity = yield create(validated.to_h)
 
-          if activity.persisted?
-            notice = yield success_message(activity: activity)
+          notice = yield success_message(activity: activity)
 
-            return Success(activity: activity, notice: notice)
-          end
-
-          # TODO: Should this use validation errors?
-          Failure(activity: activity)
+          Success(activity: activity, notice: notice)
         end
 
         private
 
         def validate(params)
           contract = Activity::Contracts::Share.new
-          result = contract.call(params)
-
-          if result.success?
-            Success(result)
-          else
-            # result.errors
-            # result.errors(full: true).values
-            # TODO: Should this use validation errors?
-            Failure(activity: Activity.new, errors: result.errors.to_h)
-          end
+          contract.call(params).to_monad
         end
 
         def create(params)
           activity = Activity::Services::Create.new(actor: actor)
-          activity.call(params: params.to_h) do |result|
-            result.success do |success|
-              Success(success[:activity])
-            end
-
-            result.failure do |failure|
-              Failure(failure[:activity])
-            end
-          end
+          activity.call(params: params)
         end
 
         def share_params(params:)

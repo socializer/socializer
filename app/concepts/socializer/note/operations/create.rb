@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require "dry/initializer"
-require "dry/monads/result"
-require "dry/monads/do/all"
-require "dry/matcher/result_matcher"
 
 #
 # Namespace for the Socializer engine
@@ -33,14 +30,10 @@ module Socializer
       #       @errors = failure[:errors]
       #     end
       #   end
-      class Create
+      class Create < Base::Operation
         # Initializer
         #
         extend Dry::Initializer
-
-        include Dry::Monads::Result::Mixin
-        include Dry::Monads::Do::All
-        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
 
         # Adds the actor keyword argument to the initializer, ensures the tyoe
         # is [Socializer::Person], and creates a private reader
@@ -57,36 +50,20 @@ module Socializer
           validated = yield validate(note_params(params))
           note = yield create(validated.to_h)
 
-          if note.persisted?
-            notice = yield success_message(note: note)
+          notice = yield success_message(note: note)
 
-            return Success(note: note, notice: notice)
-          end
-
-          # TODO: Should this use validation errors?
-          Failure(note)
+          Success(note: note, notice: notice)
         end
 
         private
 
         def validate(params)
           contract = Note::Contracts::Create.new
-          result = contract.call(params.to_h)
-
-          if result.success?
-            Success(result)
-          else
-            # result.errors
-            # result.errors(full: true).values
-            # TODO: Should this use validation errors?
-            Failure(note: Note.new, errors: result.errors.to_h)
-          end
+          contract.call(params.to_h).to_monad
         end
 
         def create(params)
-          note = actor.activity_object.notes.create(params)
-
-          note.persisted? ? Success(note) : Failure(note)
+          Success(actor.activity_object.notes.create(params))
         end
 
         def success_message(note:)

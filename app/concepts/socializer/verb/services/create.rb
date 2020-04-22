@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require "dry/initializer"
-require "dry/monads/result"
-require "dry/monads/do/all"
-require "dry/matcher/result_matcher"
-
 #
 # Namespace for the Socializer engine
 #
@@ -33,11 +28,7 @@ module Socializer
       #       @errors = failure[:errors]
       #     end
       #   end
-      class Create
-        include Dry::Monads::Result::Mixin
-        include Dry::Monads::Do::All
-        include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
-
+      class Create < Base::Operation
         # Creates the [Socializer::Verb]
         #
         # @param [ActionController::Parameters] params: the verb parameters
@@ -48,36 +39,20 @@ module Socializer
           validated = yield validate(params)
           verb = yield create(validated.to_h)
 
-          if verb.persisted?
-            notice = yield success_message(verb: verb)
+          notice = yield success_message(verb: verb)
 
-            return Success(verb: verb, notice: notice)
-          end
-
-          # TODO: Should this use validation errors?
-          Failure(verb)
+          Success(verb: verb, notice: notice)
         end
 
         private
 
         def validate(params)
           contract = Verb::Contracts::Create.new
-          result = contract.call(params)
-
-          if result.success?
-            Success(result)
-          else
-            # result.errors
-            # result.errors(full: true).values
-            # TODO: Should this use validation errors?
-            Failure(verb: Verb.new, errors: result.errors.to_h)
-          end
+          contract.call(params).to_monad
         end
 
         def create(params)
-          verb = Verb.create(params)
-
-          verb.persisted? ? Success(verb) : Failure(verb)
+          Success(Verb.create(params))
         end
 
         def success_message(verb:)

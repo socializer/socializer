@@ -25,13 +25,12 @@ module Socializer
     context "with .call" do
       context "with no required attributes" do
         let(:attributes) { { } }
-        let(:failure) { result.failure[:note] }
-        let(:errors) { result.failure[:errors] }
+        let(:failure) { result.failure }
+        let(:errors) { result.failure.errors }
 
         it { expect(result).to be_failure }
-        it { expect(failure.valid?).to be false }
-        it { expect(failure).to be_kind_of(Note) }
-        it { expect(failure.persisted?).to be false }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
 
         it { expect(errors).not_to be_nil }
         # FIXME: Use I18n

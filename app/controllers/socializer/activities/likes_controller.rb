@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry/monads"
+
 #
 # Namespace for the Socializer engine
 #
@@ -9,6 +11,8 @@ module Socializer
     # Likes controller
     #
     class LikesController < ApplicationController
+      include Dry::Monads[:result]
+
       before_action :authenticate_user
 
       # GET /activities/1/likes
@@ -26,18 +30,16 @@ module Socializer
       # POST /activities/1/like
       def create
         like = Activity::Services::Like.new(actor: current_user)
-        like.call(activity_object: find_likable) do |result|
-          result.success do |activity|
-            respond_to do |format|
-              format.js do
-                activity = activity[:activity_object].activitable.decorate
-                render :create, locals: { activity: activity }
-              end
-            end
-          end
+        result = like.call(activity_object: find_likable)
 
-          result.failure do |errors|
-            @errors = errors
+        return @errors = result.failure.errors.to_h if result.failure?
+
+        activity = result.success[:activity].decorate
+
+        respond_to do |format|
+          format.js do
+            # activity = activity.activity_object.activitable.decorate
+            render :create, locals: { activity: activity }
           end
         end
       end
@@ -45,20 +47,34 @@ module Socializer
       # DELETE /activities/1/unlike
       def destroy
         unlike = Activity::Services::Unlike.new(actor: current_user)
-        unlike.call(activity_object: find_likable) do |result|
-          result.success do |activity|
-            respond_to do |format|
-              format.js do
-                activity = activity[:activity_object].activitable.decorate
-                render :destroy, locals: { activity: activity }
-              end
-            end
-          end
+        result = unlike.call(activity_object: find_likable)
 
-          result.failure do |errors|
-            @errors = errors
+        # return @errors = result.failure.errors.to_h if result.failure?
+        return if result.failure?
+
+        activity = result.success[:activity].decorate
+
+        respond_to do |format|
+          format.js do
+            # activity = activity.activity_object.activitable.decorate
+            render :destroy, locals: { activity: activity }
           end
         end
+
+        # unlike.call(activity_object: find_likable) do |result|
+        #   result.success do |activity|
+        #     respond_to do |format|
+        #       format.js do
+        #         activity = activity[:activity_object].activitable.decorate
+        #         render :destroy, locals: { activity: activity }
+        #       end
+        #     end
+        #   end
+
+        #   result.failure do |errors|
+        #     @errors = errors
+        #   end
+        # end
       end
 
       private

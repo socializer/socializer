@@ -27,22 +27,19 @@ module Socializer
       # POST /activities/1/share
       def create
         share = Activity::Services::Share.new(actor: current_user)
-        share.call(params: share_params) do |result|
-          result.success do |activity|
-            redirect_to activities_path, notice: activity[:notice]
-          end
+        result = share.call(params: share_params)
+        notice = result.success[:notice] if result.success?
 
-          result.failure do |failure|
-            create_failure(failure: failure)
-          end
-        end
+        return redirect_to activities_path, notice: notice if result.success?
+
+        create_failure(failure: result.failure)
       end
 
       private
 
       def create_failure(failure:)
-        @activity = failure[:share]
-        @errors = failure[:errors]
+        # @activity = Activity.new
+        @errors = failure.errors.to_h
         activity_object = find_activity_object(id: params[:activity_id])
 
         render :new, locals: { activity_object: activity_object,
