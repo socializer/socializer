@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "dry/validation"
-
 #
 # Namespace for the Socializer engine
 #
@@ -20,9 +18,7 @@ module Socializer
       # @example
       #   contract = Activity::Contracts::Share.new
       #   result = contract.call(params)
-      class Share < Dry::Validation::Contract
-        Dry::Validation.load_extensions(:monads)
-
+      class Share < Base::Contract
         PRIVACY = Audience.privacy.values.freeze
 
         params do

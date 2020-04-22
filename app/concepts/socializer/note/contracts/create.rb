@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "dry/validation"
-
 #
 # Namespace for the Socializer engine
 #
@@ -20,9 +18,7 @@ module Socializer
       # @example
       #   contract = Note::Contracts::Create.new
       #   result = contract.call(params)
-      class Create < Dry::Validation::Contract
-        Dry::Validation.load_extensions(:monads)
-
+      class Create < Base::Contract
         params do
           required(:activity_verb).filled(:string, included_in?: "post")
           # TODO: Consider creating a Type for object_ids

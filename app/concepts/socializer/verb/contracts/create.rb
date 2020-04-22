@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry/validation"
+# require "dry/validation"
 
 #
 # Namespace for the Socializer engine
@@ -20,8 +20,9 @@ module Socializer
       # @example
       #   contract = Verb::Contracts::Create.new
       #   result = contract.call(params)
-      class Create < Dry::Validation::Contract
-        Dry::Validation.load_extensions(:monads)
+      # class Create < Dry::Validation::Contract
+      class Create < Base::Contract
+        # Dry::Validation.load_extensions(:monads)
 
         params do
           required(:display_name).filled(Types::ActivityVerbs)
