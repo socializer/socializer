@@ -9,6 +9,9 @@ Layout/LineLength:
 Lint/RaiseException:
   Enabled: true
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Lint/StructNewOverride:
   Enabled: true
 
@@ -26,6 +29,9 @@ Style/BlockDelimiters:
 
 Style/Documentation:
   Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
 
 Style/HashEachMethods:
   Enabled: true

@@ -44,6 +44,9 @@ Layout/LineLength:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Layout/SpaceBeforeFirstArg:
   Enabled: true
 
@@ -65,6 +68,9 @@ Metrics/BlockLength:
     - "config/initializers/simple_form_bootstrap.rb"
 
 Metrics/MethodLength:
+  Enabled: true
+
+Style/ExponentialNotation:
   Enabled: true
 
 Style/HashEachMethods:
