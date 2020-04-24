@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency("dry-monads",           "~> 1.3")
   s.add_dependency("dry-validation",       "~> 1.5.0")
 
-  s.add_dependency("elasticsearch-rails",  "~> 7.0.0")
+  s.add_dependency("elasticsearch-rails",  "~> 7.1.0")
   s.add_dependency("enumerize",            "~> 2.3.1")
   s.add_dependency("jquery-rails",         "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
