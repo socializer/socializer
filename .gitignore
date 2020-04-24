@@ -50,8 +50,6 @@ rerun.txt
 pickle-email-*.html
 pkg/
 
-/config/initializers/omniauth.rb
-
 .idea
 .vscode/*
 

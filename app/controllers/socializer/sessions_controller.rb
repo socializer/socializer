@@ -8,16 +8,17 @@ module Socializer
   # Sessions controller
   #
   class SessionsController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: :create
+
     # GET|POST /auth/facebook/callback
     def create
-      auth      = request.env["omniauth.auth"]
-      user_auth = Authentication.find_by(provider: auth.provider,
-                                         uid: auth.uid)
+      user_auth = Authentication.find_by(provider: auth_hash.provider,
+                                         uid: auth_hash.uid)
 
       return login(user_auth.person) if user_auth.present?
 
-      add_authentication(auth) if signed_in?
-      create_authentication(auth) unless signed_in?
+      add_authentication(auth_hash) if signed_in?
+      create_authentication(auth_hash) unless signed_in?
     end
 
     # GET|DELETE /signout
@@ -49,6 +50,12 @@ module Socializer
     def login(user)
       cookies.signed[:user_id] = { domain: :all, value: user.id.to_s }
       redirect_to root_url
+    end
+
+    protected
+
+    def auth_hash
+      request.env["omniauth.auth"]
     end
   end
 end
