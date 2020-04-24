@@ -9,7 +9,10 @@ module Socializer
 
     before do
       person = create(:person)
-      allow(helper).to receive(:current_user).and_return(person)
+
+      without_partial_double_verification do
+        allow(helper).to receive(:current_user).and_return(person)
+      end
     end
 
     describe "card_class" do

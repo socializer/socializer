@@ -13,7 +13,9 @@ module Socializer
     describe "link_to_like_or_unlike" do
       context "when no current_user it returns nil " do
         before do
-          allow(helper).to receive(:current_user).and_return(nil)
+          without_partial_double_verification do
+            allow(helper).to receive(:current_user).and_return(nil)
+          end
         end
 
         it do
@@ -24,7 +26,9 @@ module Socializer
       context "with current_user" do
         before do
           person = create(:person)
-          allow(helper).to receive(:current_user).and_return(person)
+          without_partial_double_verification do
+            allow(helper).to receive(:current_user).and_return(person)
+          end
         end
 
         let(:person) { Person.first }
