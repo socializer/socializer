@@ -60,11 +60,11 @@ And then execute:
 
 Then:
 
-    rake socializer:install:migrations
+    bin/rails socializer:install:migrations
 
 Don't forget to migrate your database:
 
-    rake db:migrate
+    bin/rails db:migrate
 
 ## Getting Started
 
