@@ -6,7 +6,9 @@ require_dependency "socializer/application_controller"
 # Namespace for the Socializer engine
 #
 module Socializer
-  # Base class for mail models
+  #
+  # Application mailer
+  #
   class ApplicationMailer < ActionMailer::Base
     default from: "from@example.com"
     layout "mailer"
