@@ -23,15 +23,9 @@ module Socializer
     enumerize :gender, in: { unknown: 0, female: 1, male: 2 },
                        default: :unknown, predicates: true, scope: true
 
-    enumerize :relationship, in: { unknown: 0,
-                                   single: 1,
-                                   relationship: 2,
-                                   engaged: 3,
-                                   married: 4,
-                                   complicated: 5,
-                                   open: 6,
-                                   widowed: 7,
-                                   domestic: 8,
+    enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2,
+                                   engaged: 3, married: 4, complicated: 5,
+                                   open: 6, widowed: 7, domestic: 8,
                                    civil: 9 },
                              default: :unknown, predicates: true, scope: true
 
@@ -114,9 +108,7 @@ module Socializer
       auth_info = auth.info
       auth_provider = auth.provider
 
-      create! do |user|
-        user.display_name = auth_info.name
-        user.email = auth_info.email
+      create!(display_name: auth_info.name, email: auth_info.email) do |user|
         image_url = auth_info.image
         avatar_provider = image_url.blank? ? "GRAVATAR" : auth_provider.upcase
 
