@@ -14,7 +14,7 @@ gemspec
 # your gem to rubygems.org.
 
 group :development, :test do
-  gem "byebug", "~> 11.1.1"
+  gem "byebug"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
   gem "rspec-rails", "~> 4.0.0"
