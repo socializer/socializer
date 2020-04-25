@@ -41,7 +41,8 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          validated = yield validate(activity_params(params: params))
+          attributes = activity_params(params: params)
+          validated = yield validate(attributes)
           activity = yield create(validated.to_h)
 
           Success(activity)
