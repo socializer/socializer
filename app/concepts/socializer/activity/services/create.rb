@@ -73,11 +73,15 @@ module Socializer
         def activity_params(params:)
           @content = params.delete(:content)
           @object_ids = params[:object_ids]
+          verb = verb(name: params.delete(:verb))
 
           activity_params = { actor_id: actor.guid,
-                              verb: verb(name: params.delete(:verb)) }
+                              verb: verb.success }
 
           params.merge(activity_params)
+
+          rescue NoMethodError => e
+            Failure(e.message)
           # {
           #   actor_id: actor_id,
           #   activity_object_id: activity_object_id,
