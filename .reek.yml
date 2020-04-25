@@ -1,0 +1,16 @@
+### Generic smell configuration
+
+detectors:
+#   IrresponsibleModule:
+#     exclude:
+#       - spec/
+  NestedIterators:
+    max_allowed_nesting: 2
+    ignore_iterators:
+      - tap
+      - success
+      - failure
+  TooManyStatements:
+    max_statements: 9
+  UtilityFunction:
+    public_methods_only: true
