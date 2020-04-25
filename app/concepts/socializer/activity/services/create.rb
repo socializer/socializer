@@ -100,6 +100,7 @@ module Socializer
             audience = activity.audiences.build(privacy: privacy)
 
             if privacy == LIMITED_PRIVACY
+              # FIXME: can't assign a string to an id field. Audience.privacy is string based
               audience.activity_object_id = audience_id
             end
 
@@ -130,11 +131,14 @@ module Socializer
         #
         # @return [Socializer::Verb]
         #
+        # FIXME: Should return a monad and be called with yield
         def verb(name:)
           contract = Verb::Contracts::Create.new
-          result = contract.call(display_name: name)
+          result = contract.call(display_name: name).to_monad
 
-          Verb.find_or_create_by(result.to_h)
+          verb = Verb.find_or_create_by(result.success.to_h) if result.success?
+
+          verb.persisted? ? Success(verb) : Failure(Verb.none)
         end
       end
     end
