@@ -73,10 +73,10 @@ module Socializer
         def activity_params(params:)
           @content = params.delete(:content)
           @object_ids = params[:object_ids]
-          verb = verb(name: params.delete(:verb))
+          verb = yield verb(name: params.delete(:verb))
 
           activity_params = { actor_id: actor.guid,
-                              verb: verb.success }
+                              verb: verb }
 
           params.merge(activity_params)
 
