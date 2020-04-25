@@ -8,7 +8,8 @@ module Socializer
     let(:activity_object) { create(:activity_object) }
     let(:actor) { create(:person) }
     let(:object_ids) { { } }
-    let(:verb) { build(:verb, display_name: "post") }
+    let(:verb) { build(:verb, display_name: "post").display_name }
+    let(:result) { activity.call(params: attributes) }
 
     let(:attributes) do
       { actor_id: actor.guid,
@@ -18,7 +19,7 @@ module Socializer
 
     context "with .call" do
       context "with no required attributes" do
-        let(:result) { activity.call(params: {}) }
+        let(:attributes) {}
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
@@ -29,7 +30,6 @@ module Socializer
       end
 
       context "with the required attributes" do
-        let(:result) { activity.call(params: attributes) }
         let(:success) { result.success }
 
         it { expect(result).to be_success }
@@ -39,7 +39,6 @@ module Socializer
       end
 
       context "when #object_ids set" do
-        let(:result) { activity.call(params: attributes) }
         let(:success) { result.success }
 
         let(:attributes) do
@@ -99,8 +98,9 @@ module Socializer
     end
 
     context "with .create" do
+      let(:verb) { build(:verb, display_name: "post") }
+
       context "with valid attributes" do
-        let(:result) { activity.create(attributes) }
         let(:success) { result.success }
 
         it { expect(result).to be_success }
@@ -108,11 +108,11 @@ module Socializer
       end
 
       context "with invalid attributes" do
-        let(:result) { activity.create({}) }
+        let(:attributes) {}
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(failure.persisted?).to eq(false) }
+        it { expect(failure.success?).to eq(false) }
       end
     end
   end

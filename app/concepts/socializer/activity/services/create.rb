@@ -100,7 +100,8 @@ module Socializer
             audience = activity.audiences.build(privacy: privacy)
 
             if privacy == LIMITED_PRIVACY
-              # FIXME: can't assign a string to an id field. Audience.privacy is string based
+              # FIXME: can't assign a string to an id field.
+              #        Audience.privacy is string based
               audience.activity_object_id = audience_id
             end
 
