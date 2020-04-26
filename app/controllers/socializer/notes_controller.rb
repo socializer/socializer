@@ -74,8 +74,8 @@ module Socializer
 
     def create_note
       note = Note::Operations::Create.new(actor: current_user)
-      note_para = params[:note].to_unsafe_hash.symbolize_keys.clone
-      result = note.call(params: note_para)
+      attributes = params[:note].to_unsafe_hash.symbolize_keys.clone
+      result = note.call(params: attributes)
 
       return result.success[:note] if result.success?
 
