@@ -87,9 +87,9 @@ module Socializer
 
     context "with .create" do
       context "with valid attributes" do
+        let(:verb) { create(:verb, display_name: "share").display_name }
         let(:result) { share.create(attributes) }
         let(:success) { result.success }
-        let(:verb) { create(:verb, display_name: "share") }
 
         let(:attributes) do
           { actor_id: actor.guid,
