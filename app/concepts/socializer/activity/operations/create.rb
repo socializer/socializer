@@ -79,9 +79,9 @@ module Socializer
                               verb: verb }
 
           params.merge(activity_params)
+        rescue NoMethodError => e
+          Failure(e.message)
 
-          rescue NoMethodError => e
-            Failure(e.message)
           # {
           #   actor_id: actor_id,
           #   activity_object_id: activity_object_id,
