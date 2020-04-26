@@ -52,11 +52,7 @@ module Socializer
           validated = yield validate(like_params)
           activity = yield create(validated.to_h)
 
-          if activity.persisted?
-            return Success(activity: activity, activity_object: activity_object)
-          end
-
-          Failure(activity)
+          Success(activity: activity, activity_object: activity_object)
         end
 
         private
@@ -64,11 +60,7 @@ module Socializer
         attr_reader :activity_object
 
         def validate(params)
-          result = contract.call(params)
-
-          return Success(result) if result.success?
-
-          Failure(activity: Activity.new, errors: result.errors.to_h)
+          contract.call(params).to_monad
         end
 
         def create(params)
@@ -113,9 +105,7 @@ module Socializer
         def change_like_count
           result = activity_object.increment(:like_count).save
 
-          return Success(result) if result
-
-          Failure(result)
+          result ? Success(result) : Failure(result)
         end
 
         # The verb to use when liking an [Socializer::ActivityObject]

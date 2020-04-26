@@ -28,9 +28,7 @@ module Socializer
         def change_like_count
           result = activity_object.decrement(:like_count).save
 
-          return Success(result) if result
-
-          Failure(result)
+          result ? Success(result) : Failure(result)
         end
 
         # Return true if creating the [Socializer::Activity] shoud not proceed
