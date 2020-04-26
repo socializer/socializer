@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerIdentities < ActiveRecord::Migration[5.1]
+class CreateSocializerIdentities < ActiveRecord::Migration[6.0]
   def change
     create_table :socializer_identities do |t|
       t.string :name, null: false

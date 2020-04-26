@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency("dry-validation",       "~> 1.5.0")
   s.add_dependency("elasticsearch-rails",  "~> 7.1.0")
   s.add_dependency("enumerize",            "~> 2.3.1")
-  s.add_dependency("jquery-rails",         "~> 4.3.3")
+  # s.add_dependency("jquery-rails",         "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   s.add_dependency("omniauth",             "~> 1.9.1")
@@ -43,10 +43,12 @@ Gem::Specification.new do |s|
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   s.add_dependency("omniauth-openid",      "~> 1.0.1")
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
-  s.add_dependency("rails",                "~> 5.2.4")
+  s.add_dependency("rails",                "~> 6.0.2")
   s.add_dependency("sass-rails",           "~> 6.0.0")
   s.add_dependency("simple_form",          "~> 5.0.2")
   s.add_dependency("uglifier",             ">= 4.1.19")
+  # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+  s.add_dependency("webpacker",            "~> 5.1")
 
   s.add_development_dependency("bundler",              "~> 2.1.1")
   s.add_development_dependency("rake",                 "~> 13.0.1")
@@ -55,7 +57,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
   # s.add_development_dependency("cucumber-rails",     "~> 1.4.0")
   # s.add_development_dependency("capybara",             "~> 2.5.0")
-  s.add_development_dependency("factory_bot_rails",    "~> 5.1.1")
+  s.add_development_dependency("factory_bot_rails",    "~> 5.2.0")
   s.add_development_dependency("i18n-tasks",           "~> 0.9.31")
   s.add_development_dependency("inch",                 "~> 0.8.0")
   s.add_development_dependency("shoulda-matchers",     "~> 4.3.0")

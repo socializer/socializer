@@ -1,9 +1,14 @@
 {
   "name": "socializer",
   "private": true,
-  "version": "0.1.13",
   "description": "Rails engine to make your projects social.",
   "repository": "https://github.com/socializer/socializer.git",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "@rails/ujs": "^6.0.0"
+  },
+  "version": "0.1.13",
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
 }
