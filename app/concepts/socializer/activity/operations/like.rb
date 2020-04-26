@@ -11,14 +11,14 @@ module Socializer
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Operation related objects
     #
-    module Services
+    module Operations
       #
       # Service object for liking a Socializer::Activity
       #
       # @example
-      #   like = Activity::Services::Like.new(actor: current_user)
+      #   like = Activity::Operations::Like.new(actor: current_user)
       #   like.call(params: like_params) do |result|
       #     result.success do |activity|
       #     end
@@ -65,7 +65,7 @@ module Socializer
 
         def create(params)
           ActiveRecord::Base.transaction do
-            activity = Activity::Services::Create.new(actor: actor)
+            activity = Activity::Operations::Create.new(actor: actor)
             result = yield activity.call(params: params)
 
             yield change_like_count

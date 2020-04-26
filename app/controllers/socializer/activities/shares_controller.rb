@@ -26,7 +26,7 @@ module Socializer
 
       # POST /activities/1/share
       def create
-        share = Activity::Services::Share.new(actor: current_user)
+        share = Activity::Operations::Share.new(actor: current_user)
         result = share.call(params: share_params)
         notice = result.success[:notice] if result.success?
 

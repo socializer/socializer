@@ -131,7 +131,7 @@ module Socializer
       let(:liked_activity_object) { create(:activity_object) }
 
       before do
-        Activity::Services::Like
+        Activity::Operations::Like
           .new(actor: liking_person)
           .call(activity_object: liked_activity_object)
       end

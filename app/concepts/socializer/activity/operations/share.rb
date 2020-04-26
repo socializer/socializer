@@ -11,14 +11,14 @@ module Socializer
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Operation related objects
     #
-    module Services
+    module Operations
       #
       # Service object for sharing a Socializer::Activity
       #
       # @example
-      #   share = Activity::Services::Share.new(actor: current_user)
+      #   share = Activity::Operations::Share.new(actor: current_user)
       #   share.call(params: share_params) do |result|
       #     result.success do |activity|
       #       redirect_to activities_path, notice: activity[:notice]
@@ -66,7 +66,7 @@ module Socializer
         end
 
         def create(params)
-          activity = Activity::Services::Create.new(actor: actor)
+          activity = Activity::Operations::Create.new(actor: actor)
           activity.call(params: params)
         end
 

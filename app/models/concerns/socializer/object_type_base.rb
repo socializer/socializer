@@ -62,7 +62,7 @@ module Socializer
       return if activity_verb.blank?
 
       actor = ActivityObject.find_by(id: author_id).activitable
-      activity = Activity::Services::Create.new(actor: actor)
+      activity = Activity::Operations::Create.new(actor: actor)
 
       activity.call(params: activity_params) do |result|
         result.success do |success|

@@ -9,14 +9,14 @@ module Socializer
   #
   class Verb
     #
-    # Namespace for Service related objects
+    # Namespace for Operation related objects
     #
-    module Services
+    module Operations
       #
       # Service object for creating a Socializer::Verb
       #
       # @example
-      #   verb = Verb::Services::Create.new
+      #   verb = Verb::Operations::Create.new
       #   verb.call(params: verb_params) do |result|
       #     result.success do |success|
       #       verb = success[:verb]

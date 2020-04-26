@@ -12,9 +12,9 @@ module Socializer
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Operation related objects
     #
-    module Services
+    module Operations
       #
       # Service object for creating a Socializer::Activity
       #

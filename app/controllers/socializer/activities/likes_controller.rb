@@ -29,7 +29,7 @@ module Socializer
 
       # POST /activities/1/like
       def create
-        like = Activity::Services::Like.new(actor: current_user)
+        like = Activity::Operations::Like.new(actor: current_user)
         result = like.call(activity_object: find_likable)
 
         return @errors = result.failure.errors.to_h if result.failure?
@@ -46,7 +46,7 @@ module Socializer
 
       # DELETE /activities/1/unlike
       def destroy
-        unlike = Activity::Services::Unlike.new(actor: current_user)
+        unlike = Activity::Operations::Unlike.new(actor: current_user)
         result = unlike.call(activity_object: find_likable)
 
         # return @errors = result.failure.errors.to_h if result.failure?
