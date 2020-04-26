@@ -112,10 +112,6 @@ module Socializer
       context "with valid attributes" do
         let(:success) { result.success }
 
-        it 'does something' do
-          byebug
-          expect(result).to be_success
-        end
         it { expect(result).to be_success }
         it { expect(success.persisted?).to eq(true) }
       end
@@ -125,7 +121,7 @@ module Socializer
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(failure.success?).to eq(false) }
+        it { expect(failure.persisted?).to eq(false) }
       end
     end
   end
