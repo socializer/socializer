@@ -63,16 +63,13 @@ module Socializer
 
       context "when validation fails" do
         let(:attributes) { { } }
-        let(:errors) { result.failure[:errors] }
-        let(:issues) do
-          { actor_id: ["is missing"],
-            activity_object_id: ["is missing"],
-            object_ids: ["is missing"],
-            verb: ["is missing"] }
-        end
+        let(:failure) { result.failure }
 
         it { expect(result).to be_failure }
-        it { expect(errors).to eql(issues) }
+        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        it { expect(failure.success?).to be false }
+
+        it { expect(failure.errors).not_to be_nil }
       end
     end
 
