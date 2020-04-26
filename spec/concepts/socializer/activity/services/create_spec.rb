@@ -89,7 +89,15 @@ module Socializer
         end
 
         context "with limited privacy" do
-          let(:object_ids) { limited_privacy }
+          before do
+            AddDefaultCircles.call(person: actor)
+          end
+
+          let(:family) do
+            Circle.find_by(author_id: actor.guid, display_name: "Family")
+          end
+
+          let(:object_ids) { [family.id] }
 
           it { expect(success.persisted?).to eq(true) }
           it { expect(limited_audience.present?).to eq(true) }
@@ -99,10 +107,15 @@ module Socializer
 
     context "with .create" do
       let(:verb) { build(:verb, display_name: "post") }
+      let(:result) { activity.create(attributes) }
 
       context "with valid attributes" do
         let(:success) { result.success }
 
+        it 'does something' do
+          byebug
+          expect(result).to be_success
+        end
         it { expect(result).to be_success }
         it { expect(success.persisted?).to eq(true) }
       end
