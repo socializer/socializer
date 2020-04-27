@@ -74,17 +74,10 @@ module Socializer
 
     def create_note
       note = Note::Operations::Create.new(actor: current_user)
-      attributes = params[:note].to_unsafe_hash.symbolize_keys.clone
+      attributes = note_params.to_h.symbolize_keys
       result = note.call(params: attributes)
 
-      return result.success[:note] if result.success?
-
-      result.failure[:note] if result.failure?
-
-      # current_user.activity_object.notes.create!(note_params) do |note|
-      #   note.object_ids    = note.object_ids.split(",")
-      #   note.activity_verb = "post"
-      # end
+      result.success? ? result.success[:note] : result.failure[:note]
     end
 
     # Only allow a trusted parameter "white list" through.
