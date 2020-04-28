@@ -49,7 +49,6 @@ module Socializer
         def call(params:)
           validated = yield validate(note_params(params))
           note = yield create(validated.to_h)
-
           notice = yield success_message(note: note)
 
           Success(note: note, notice: notice)
