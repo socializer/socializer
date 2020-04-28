@@ -30,7 +30,7 @@ module Socializer
         education = educations.build(person_education_params)
 
         if education.save
-          flash[:notice] = t("socializer.model.create", model: "Education")
+          flash.notice = t("socializer.model.create", model: "Education")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         education = find_education
 
         if education.update(person_education_params)
-          flash[:notice] = t("socializer.model.update", model: "Education")
+          flash.notice = t("socializer.model.update", model: "Education")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         education = find_education
         education.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Education")
+        flash.notice = t("socializer.model.destroy", model: "Education")
         redirect_to current_user
       end
 

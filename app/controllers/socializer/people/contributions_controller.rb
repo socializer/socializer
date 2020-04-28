@@ -34,7 +34,7 @@ module Socializer
         contribution = contributions.build(person_contribution_params)
 
         if contribution.save
-          flash[:notice] = t("socializer.model.create", model: "Contribution")
+          flash.notice = t("socializer.model.create", model: "Contribution")
           redirect_to current_user
         else
           render :new
@@ -46,7 +46,7 @@ module Socializer
         contribution = find_contribution
         contribution.update!(person_contribution_params)
 
-        flash[:notice] = t("socializer.model.update", model: "Contribution")
+        flash.notice = t("socializer.model.update", model: "Contribution")
         redirect_to current_user
       end
 
@@ -55,7 +55,7 @@ module Socializer
         contribution = find_contribution
         contribution.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Contribution")
+        flash.notice = t("socializer.model.destroy", model: "Contribution")
         redirect_to current_user
       end
 

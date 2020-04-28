@@ -30,7 +30,7 @@ module Socializer
         address = addresses.build(person_address_params)
 
         if address.save
-          flash[:notice] = t("socializer.model.create", model: "Address")
+          flash.notice = t("socializer.model.create", model: "Address")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         address = find_address
         address.update!(person_address_params)
 
-        flash[:notice] = t("socializer.model.update", model: "Address")
+        flash.notice = t("socializer.model.update", model: "Address")
         redirect_to current_user
       end
 
@@ -51,7 +51,7 @@ module Socializer
         address = find_address
         address.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Address")
+        flash.notice = t("socializer.model.destroy", model: "Address")
         redirect_to current_user
       end
 

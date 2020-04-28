@@ -45,7 +45,7 @@ module Socializer
       circle = current_user.circles.build(circle_params)
 
       if circle.save
-        flash[:notice] = t("socializer.model.create", model: "Circle")
+        flash.notice = t("socializer.model.create", model: "Circle")
         redirect_to contacts_circles_path
       else
         render :new, locals: { circle: circle }
@@ -57,7 +57,7 @@ module Socializer
       circle = find_circle
       circle.update!(circle_params)
 
-      flash[:notice] = t("socializer.model.update", model: "Circle")
+      flash.notice = t("socializer.model.update", model: "Circle")
       redirect_to circle
     end
 

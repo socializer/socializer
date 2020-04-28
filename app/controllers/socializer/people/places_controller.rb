@@ -30,7 +30,7 @@ module Socializer
         place = places.build(person_place_params)
 
         if place.save
-          flash[:notice] = t("socializer.model.create", model: "Place")
+          flash.notice = t("socializer.model.create", model: "Place")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         place = find_place
 
         if place.update(person_place_params)
-          flash[:notice] = t("socializer.model.update", model: "Place")
+          flash.notice = t("socializer.model.update", model: "Place")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         place = find_place
         place.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Place")
+        flash.notice = t("socializer.model.destroy", model: "Place")
         redirect_to current_user
       end
 

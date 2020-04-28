@@ -30,7 +30,7 @@ module Socializer
         link = links.build(person_link_params)
 
         if link.save
-          flash[:notice] = t("socializer.model.create", model: "Link")
+          flash.notice = t("socializer.model.create", model: "Link")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         link = find_link
 
         if link.update(person_link_params)
-          flash[:notice] = t("socializer.model.update", model: "Link")
+          flash.notice = t("socializer.model.update", model: "Link")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         link = find_link
         link.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Link")
+        flash.notice = t("socializer.model.destroy", model: "Link")
         redirect_to current_user
       end
 

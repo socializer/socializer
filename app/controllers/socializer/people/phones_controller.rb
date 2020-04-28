@@ -30,7 +30,7 @@ module Socializer
         phone = phones.build(person_phone_params)
 
         if phone.save
-          flash[:notice] = t("socializer.model.create", model: "Phone")
+          flash.notice = t("socializer.model.create", model: "Phone")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         phone = find_phone
 
         if phone.update(person_phone_params)
-          flash[:notice] = t("socializer.model.update", model: "Phone")
+          flash.notice = t("socializer.model.update", model: "Phone")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         phone = find_phone
         phone.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Phone")
+        flash.notice = t("socializer.model.destroy", model: "Phone")
         redirect_to current_user
       end
 

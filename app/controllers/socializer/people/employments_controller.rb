@@ -30,7 +30,7 @@ module Socializer
         employment = employments.build(person_employment_params)
 
         if employment.save
-          flash[:notice] = t("socializer.model.create", model: "Employment")
+          flash.notice = t("socializer.model.create", model: "Employment")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         employment = find_employment
 
         if employment.update(person_employment_params)
-          flash[:notice] = t("socializer.model.update", model: "Employment")
+          flash.notice = t("socializer.model.update", model: "Employment")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         employment = find_employment
         employment.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Employment")
+        flash.notice = t("socializer.model.destroy", model: "Employment")
         redirect_to current_user
       end
 

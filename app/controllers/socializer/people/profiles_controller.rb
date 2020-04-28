@@ -30,7 +30,7 @@ module Socializer
         profile = profiles.build(person_profile_params)
 
         if profile.save
-          flash[:notice] = t("socializer.model.create", model: "Profile")
+          flash.notice = t("socializer.model.create", model: "Profile")
           redirect_to current_user
         else
           render :new
@@ -42,7 +42,7 @@ module Socializer
         profile = find_profile
 
         if profile.update(person_profile_params)
-          flash[:notice] = t("socializer.model.update", model: "Profile")
+          flash.notice = t("socializer.model.update", model: "Profile")
           redirect_to current_user
         else
           render :edit
@@ -54,7 +54,7 @@ module Socializer
         profile = find_profile
         profile.destroy
 
-        flash[:notice] = t("socializer.model.destroy", model: "Profile")
+        flash.notice = t("socializer.model.destroy", model: "Profile")
         redirect_to current_user
       end
 

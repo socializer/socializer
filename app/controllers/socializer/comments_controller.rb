@@ -46,7 +46,7 @@ module Socializer
       comment = find_comment
       comment.update!(comment_params)
 
-      flash[:notice] = t("socializer.model.update", model: "Comment")
+      flash.notice = t("socializer.model.update", model: "Comment")
       redirect_to activities_path
     end
 
