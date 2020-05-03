@@ -361,8 +361,8 @@ GEM
     reverse_markdown (1.4.0)
       nokogiri
     rexml (3.2.4)
-    rspec-core (3.9.1)
-      rspec-support (~> 3.9.1)
+    rspec-core (3.9.2)
+      rspec-support (~> 3.9.3)
     rspec-expectations (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
@@ -377,7 +377,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.2)
+    rspec-support (3.9.3)
     rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -429,7 +429,7 @@ GEM
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
     sixarm_ruby_unaccent (1.2.0)
-    solargraph (0.39.5)
+    solargraph (0.39.6)
       backport (~> 1.1)
       benchmark
       bundler (>= 1.17.2)
