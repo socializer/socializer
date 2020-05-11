@@ -7,7 +7,7 @@ SimpleCov.start "rails" do
   # Add source groups
   add_group("Contracts") { |src| src.filename.include?("/contract") }
   add_group "Decorators", "app/decorators"
-  add_group "Services", %w(app/services)
+  add_group "Services", %w[app/services]
   add_group("Operations") { |src| src.filename.include?("/operations") }
 
   # Exclude these paths from analysis
