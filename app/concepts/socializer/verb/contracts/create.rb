@@ -24,6 +24,7 @@ module Socializer
       class Create < Base::Contract
         # Dry::Validation.load_extensions(:monads)
 
+        # TODO: Need to validate case insensitive uniqueness
         params do
           required(:display_name).filled(Types::ActivityVerbs)
         end
