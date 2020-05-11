@@ -33,6 +33,9 @@ AllCops:
   # run on? (If there is more than one, set this to the lowest version.)
   TargetRubyVersion: 2.6
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/HashAlignment:
   Exclude:
     - "config/initializers/simple_form.rb"
@@ -85,6 +88,9 @@ Style/HashTransformValues:
 Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
+
+Style/SlicingWithRange:
+  Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
