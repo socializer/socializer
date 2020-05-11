@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # https://github.com/colszowka/simplecov#using-simplecov-for-centralized-config
 SimpleCov.start "rails" do
   # see https://github.com/colszowka/simplecov/blob/master/lib/simplecov/defaults.rb
@@ -9,6 +11,6 @@ SimpleCov.start "rails" do
   add_group("Operations")   { |src| src.filename.include?("/operations") }
 
   # Exclude these paths from analysis
-  add_filter 'vendor'
-  add_filter 'bundle'
+  add_filter "vendor"
+  add_filter "bundle"
 end

@@ -3,6 +3,9 @@ require: rubocop-rails
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/LineLength:
   Enabled: false
 
@@ -40,6 +43,9 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/SlicingWithRange:
   Enabled: true
 
 Style/StringLiterals:
