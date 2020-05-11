@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # https://github.com/colszowka/simplecov#using-simplecov-for-centralized-config
 SimpleCov.start "rails" do
   # see https://github.com/colszowka/simplecov/blob/master/lib/simplecov/defaults.rb
