@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Verb::Operations::Create, type: :service do
+  RSpec.describe Verb::Operations::Create, type: :operation do
     let(:verb) { described_class.new }
     let(:result) { verb.call(params: attributes) }
     let(:display_name) { Types::ActivityVerbs["post"] }

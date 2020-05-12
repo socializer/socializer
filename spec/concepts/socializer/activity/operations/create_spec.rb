@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Activity::Operations::Create, type: :service do
+  RSpec.describe Activity::Operations::Create, type: :operation do
     let(:activity) { described_class.new(actor: actor) }
     let(:activity_object) { create(:activity_object) }
     let(:actor) { create(:person) }

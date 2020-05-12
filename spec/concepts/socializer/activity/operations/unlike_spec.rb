@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Activity::Operations::Unlike, type: :service do
+  RSpec.describe Activity::Operations::Unlike, type: :operation do
     let(:liking_person) { create(:person) }
     let(:liked_activity_object) { create(:activity_object) }
     let(:like) { Activity::Operations::Like.new(actor: liking_person) }
