@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# require "dry/validation"
-
 #
 # Namespace for the Socializer engine
 #
@@ -22,12 +20,18 @@ module Socializer
       #   result = contract.call(params)
       # class Create < Dry::Validation::Contract
       class Create < Base::Contract
-        # Dry::Validation.load_extensions(:monads)
+        # Adds the record keyword argument to the initializer, ensures the tyoe
+        # is [Socializer::Verb], creates a private reader, and defaults to
+        # Socializer::Verb.new
+        option :record, Dry::Types["any"].constrained(type: Verb),
+               reader: :private, default: proc { Verb.new }
 
         # TODO: Need to validate case insensitive uniqueness
         params do
           required(:display_name).filled(Types::ActivityVerbs)
         end
+
+        rule(:display_name).validate(unique: :display_name)
       end
     end
   end
