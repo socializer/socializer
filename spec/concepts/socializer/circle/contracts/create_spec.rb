@@ -13,6 +13,12 @@ module Socializer
       { display_name: "Display Name", content: "Some content." }
     end
 
+    context "when record is not specified" do
+      let(:contract) { described_class.new(actor: actor) }
+
+      it { expect(result).to be_success }
+    end
+
     context "when attributes are specified" do
       it "is valid" do
         expect(result).to be_success
