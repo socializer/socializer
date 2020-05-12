@@ -37,7 +37,7 @@ module Socializer
         params do
           # display_name is unique scoped to the author_id, not case sensitive
           required(:display_name).filled(:string)
-          required(:content).maybe(:string)
+          optional(:content).filled(:string)
         end
 
         # Preferred syntax would be:
