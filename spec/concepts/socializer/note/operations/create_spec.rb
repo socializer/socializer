@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Note::Operations::Create, type: :service do
+  RSpec.describe Note::Operations::Create, type: :operation do
     let(:note) { described_class.new(actor: actor) }
     let(:result) { note.call(params: attributes) }
     let(:activity_verb) { Types::ActivityVerbs["post"] }
