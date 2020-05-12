@@ -28,12 +28,18 @@ module Socializer
         end
       end
 
-      register_macro(:unique) do |macro:|
+      register_macro(:unique) do |context:, macro:|
         attr_name = macro.args[0]
-        klass = record.class
+        scope = context[:scope]
 
-        unless klass.where.not(id: record.id).where(attr_name => value).empty?
-          key.failure("must be unique")
+        klass = record.class
+        query = klass.where(klass.arel_table[attr_name].matches(value))
+        query = query.merge(klass.where(scope)) if scope
+
+        unless klass.where.not(id: record.id).merge(query).empty?
+          message = "'#{value}' must be unique"
+          message += " for '#{actor.display_name}" if scope
+          key.failure(message)
         end
       end
     end
