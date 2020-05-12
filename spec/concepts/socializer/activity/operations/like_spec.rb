@@ -72,18 +72,5 @@ module Socializer
         it { expect(failure.errors).not_to be_nil }
       end
     end
-
-    context "with .create" do
-      context "with invalid attributes" do
-        let(:result) { like.create({}) }
-        let(:failure) { result.failure }
-
-        it { expect(result).to be_failure }
-        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
-        it { expect(failure.success?).to be false }
-
-        it { expect(failure.errors).not_to be_nil }
-      end
-    end
   end
 end

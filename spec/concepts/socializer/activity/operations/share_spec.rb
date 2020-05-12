@@ -84,35 +84,5 @@ module Socializer
       it { expect(public_audience.present?).to eq(true) }
       it { expect(circles_audience.present?).to eq(true) }
     end
-
-    context "with .create" do
-      context "with valid attributes" do
-        let(:verb) { create(:verb, display_name: "share").display_name }
-        let(:result) { share.create(attributes) }
-        let(:success) { result.success }
-
-        let(:attributes) do
-          { actor_id: actor.guid,
-            activity_object_id: activity_object.id,
-            object_ids: object_ids,
-            verb: verb,
-            content: "Share" }
-        end
-
-        it { expect(result).to be_success }
-        it { expect(success.persisted?).to eq(true) }
-      end
-
-      context "with invalid attributes" do
-        let(:result) { share.create({}) }
-        let(:failure) { result.failure }
-
-        it { expect(result).to be_failure }
-        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
-        it { expect(failure.success?).to be false }
-
-        it { expect(failure.errors).not_to be_nil }
-      end
-    end
   end
 end

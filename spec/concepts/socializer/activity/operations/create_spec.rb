@@ -104,25 +104,5 @@ module Socializer
         end
       end
     end
-
-    context "with .create" do
-      let(:verb) { build(:verb, display_name: "post") }
-      let(:result) { activity.create(attributes) }
-
-      context "with valid attributes" do
-        let(:success) { result.success }
-
-        it { expect(result).to be_success }
-        it { expect(success.persisted?).to eq(true) }
-      end
-
-      context "with invalid attributes" do
-        let(:attributes) {}
-        let(:failure) { result.failure }
-
-        it { expect(result).to be_failure }
-        it { expect(failure.persisted?).to eq(false) }
-      end
-    end
   end
 end
