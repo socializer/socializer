@@ -42,14 +42,15 @@ module Socializer
 
     # POST /circles
     def create
-      circle = current_user.circles.build(circle_params)
+      circle = Circle::Operations::Create.new(actor: current_user)
+      result = circle.call(params: circle_params)
 
-      if circle.save
-        flash.notice = t("socializer.model.create", model: "Circle")
-        redirect_to contacts_circles_path
-      else
-        render :new, locals: { circle: circle }
-      end
+      return create_failure(failure: result.failure) if result.failure?
+
+      notice = result.success[:notice] if result.success?
+
+      flash.notice = notice
+      redirect_to contacts_circles_path
     end
 
     # PATCH/PUT /circles/1
@@ -70,13 +71,22 @@ module Socializer
 
     private
 
+    def create_failure(failure:)
+      @errors = failure.errors.to_h
+      circle = current_user.circles.build(circle_params)
+
+      render :new, locals: { circle: circle }
+    end
+
     def find_circle
       @find_circle ||= current_user.circles.find_by(id: params[:id]).decorate
     end
 
     # Only allow a trusted parameter "white list" through.
     def circle_params
-      params.require(:circle).permit(:display_name, :content)
+      params.require(:circle).permit(:display_name,
+                                     :content).to_h.symbolize_keys
+      # params.require(:circle).permit(:display_name, :content)
     end
   end
 end

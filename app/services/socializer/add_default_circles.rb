@@ -52,8 +52,9 @@ module Socializer
     private
 
     def create_circle(display_name:, content: nil)
-      circles = person.activity_object.circles
-      circles.create!(display_name: display_name, content: content)
+      params = { display_name: display_name, content: content }
+      operation = Circle::Operations::Create.new(actor: person)
+      operation.call(params: params)
     end
 
     def acquaintances_content
