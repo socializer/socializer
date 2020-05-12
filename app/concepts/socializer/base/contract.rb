@@ -20,7 +20,6 @@ module Socializer
       config.messages.default_locale = :en
       config.messages.top_namespace = :socializer
 
-      option :record, optional: true
 
       register_macro(:email_format) do
         unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
