@@ -50,8 +50,6 @@ module Socializer
         it { expect(success).to be_kind_of(Note) }
         it { expect(success.persisted?).to be true }
 
-        it { expect(notice).to be_a String }
-        it { expect(notice).not_to be_nil }
         it { expect(notice).to eq(notice_I18n) }
       end
     end
