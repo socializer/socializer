@@ -47,7 +47,7 @@ module Socializer
 
       return create_failure(failure: result.failure) if result.failure?
 
-      notice = result.success[:notice] if result.success?
+      notice = result.success[:notice]
 
       flash.notice = notice
       redirect_to contacts_circles_path
