@@ -15,7 +15,7 @@ module Socializer
     #
     module Contracts
       #
-      # Contract object for vaidating Socializer::Verb
+      # Contract object for validating Socializer::Verb
       #
       # @example
       #   circle = Socializer::Circle.new
