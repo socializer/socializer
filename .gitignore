@@ -57,6 +57,10 @@ rerun.txt
 pickle-email-*.html
 pkg/
 
+# Nova Project Configuration
+.nova/Configuration.json
+
+
 .idea
 .vscode/*
 
