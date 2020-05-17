@@ -30,7 +30,7 @@ module Socializer
 
         # Creates the [Socializer::Activity]
         #
-        # @param [Socialicer::ActivityObject] activity_object: the
+        # @param [Socializer::ActivityObject] activity_object: the
         # Socialicer::ActivityObject being liked
         #
         # @return [Socializer::Activity]
