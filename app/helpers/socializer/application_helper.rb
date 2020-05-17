@@ -20,7 +20,7 @@ module Socializer
 
     # Build the sign path for the given provider
     #
-    # @param provider [String/Symbol]
+    # @param provider [String]/[Symbol]
     #
     # @return [String]
     def signin_path(provider)
