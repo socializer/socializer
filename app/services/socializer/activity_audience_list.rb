@@ -17,10 +17,10 @@ module Socializer
 
     # Initializer
     #
-    # @param activity: [Socializer:Activity] the activity to build the
+    # @param activity: [Socializer::Activity] the activity to build the
     # audience for
     #
-    # @return [Socializer:ActivityAudienceList] returns an instance of
+    # @return [Socializer::ActivityAudienceList] returns an instance of
     # ActivityAudienceList
     def initialize(activity:)
       @activity = activity
