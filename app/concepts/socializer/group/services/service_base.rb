@@ -32,7 +32,7 @@ module Socializer
         option :person, Dry::Types["any"].constrained(type: Person),
                reader: :private
 
-        # @return [Socializer:Membership/FalseClass] Deletes the record in the
+        # @return [Socializer::Membership] Deletes the record in the
         # database and freezes this instance to reflect that no changes should
         # be made (since they can't be persisted). If the before_destroy
         # callback returns false the action is cancelled and leave returns
