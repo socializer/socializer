@@ -123,7 +123,7 @@ module Socializer
     #
     # @param query: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Person]
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end
@@ -150,7 +150,7 @@ module Socializer
 
     # A collection of {Socializer::Person people} this person is a contact of
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Person]
     def contact_of
       @contact_of ||= Person.distinct
                             .joins(activity_object: { circles: :ties })
@@ -162,7 +162,7 @@ module Socializer
     # @example
     #   current_user.likes
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def likes
       verbs_of_interest = %w[like unlike]
 
