@@ -179,7 +179,7 @@ module Socializer
     # @example
     #   current_user.likes?(object)
     #
-    # @param object [type]
+    # @param [Socializer::ActivityObject] object
     #
     # @return [TrueClass] if the person likes the object
     # @return [FalseClass] if the person does not like the object
