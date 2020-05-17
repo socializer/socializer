@@ -11,7 +11,7 @@ domains: []
 reporters:
 - rubocop
 # - require_not_found
-# - typecheck
+- typecheck
 - update_errors
 require_paths: []
 max_files: 5000
