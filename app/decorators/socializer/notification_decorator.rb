@@ -24,6 +24,7 @@ module Socializer
     #
     # @return [type] [description]
     def card_class(index:)
+      byebug
       classname = "panel-default"
       classname = "panel-default bg-muted" if model.read
 
