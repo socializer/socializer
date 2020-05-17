@@ -30,7 +30,7 @@ module Socializer
     #
     # @param provider: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Authentication]
     def self.with_provider(provider:)
       where(provider: provider.downcase)
     end
@@ -39,7 +39,7 @@ module Socializer
     #
     # @param provider: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Authentication]
     def self.not_with_provider(provider:)
       where.not(provider: provider.downcase)
     end
