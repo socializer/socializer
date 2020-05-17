@@ -73,8 +73,8 @@ module Socializer
     #
     # @return [Socializer::Person] Person.none is returned if type is
     # unknown
-    # @return [Socializer::Group] or [Socializer::Circle] Returns the name and guid of
-    # the passed in type
+    # @return [Socializer::Group] or [Socializer::Circle] Returns the name
+    # and guid of the passed in type
     def audience_list(type:)
       tableized_type = type.to_s.tableize
       return Person.none unless @person.respond_to?(tableized_type)
