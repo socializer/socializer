@@ -24,7 +24,7 @@ module Socializer
     #
     # @param name: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Verb]
     def self.with_display_name(name:)
       where(display_name: name)
     end
