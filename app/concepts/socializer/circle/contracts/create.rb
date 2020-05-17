@@ -23,13 +23,13 @@ module Socializer
       #                                            actor: current_user)
       #   result = contract.call(params)
       class Create < Base::Contract
-        # Adds the record keyword argument to the initializer, ensures the tyoe
+        # Adds the record keyword argument to the initializer, ensures the type
         # is [Socializer::Circle], creates a private reader, and defaults to
         # Socializer::Circle.new
         option :record, Dry::Types["any"].constrained(type: Circle),
                reader: :private, default: proc { Circle.new }
 
-        # Adds the actor keyword argument to the initializer, ensures the tyoe
+        # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
         option :actor, Dry::Types["any"].constrained(type: Person),
                reader: :private
