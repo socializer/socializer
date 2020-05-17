@@ -102,10 +102,10 @@ module Socializer
 
     # Creates an image tag for the persons avatar
     #
-    # @param size: nil [String]
-    # @param css_class: nil [String]
-    # @param alt: "Avatar" [String]
-    # @param title: nil [String]
+    # @param [String] size: nil
+    # @param [String] css_class: nil
+    # @param [String] alt: "Avatar"
+    # @param [String] title: nil
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
@@ -225,7 +225,8 @@ module Socializer
     #
     # @param url: [String] The url to check
     #
-    # @return [String/Nil] Returns "active" if the url is the current page.
+    # @return [String]/[NilClass] Returns "active" if the url is the
+    # current page.
     def toolbar_item_class(url:)
       "active" if helpers.current_page?(url)
     end
