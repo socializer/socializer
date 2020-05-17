@@ -31,7 +31,7 @@ module Socializer
       class Create < Base::Operation
         # Creates the [Socializer::Verb]
         #
-        # @param [ActionController::Parameters] params: the verb parameters
+        # @param [Hash] params: the verb parameters
         # from the request
         #
         # @return [Socializer::Verb]

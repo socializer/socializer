@@ -36,7 +36,7 @@ module Socializer
 
         # Creates the [Socializer::Activity]
         #
-        # @param [ActionController::Parameters] params: the activity parameters
+        # @param [Hash] params: the activity parameters
         # from the request
         #
         # @return [Socializer::Activity]

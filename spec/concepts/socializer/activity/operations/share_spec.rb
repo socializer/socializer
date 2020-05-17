@@ -15,11 +15,11 @@ module Socializer
     let(:object_ids) { public_privacy }
 
     let(:share_attributes) do
-      ActionController::Parameters.new(
+      {
         activity_id: activity_object.id,
         object_ids: object_ids,
         content: "Share"
-      ).to_unsafe_hash.symbolize_keys
+      }
     end
 
     let(:results) do
@@ -34,11 +34,11 @@ module Socializer
 
     context "with no content" do
       let(:share_attributes) do
-        ActionController::Parameters.new(
+        {
           activity_id: activity_object.id,
           object_ids: object_ids,
           content: nil
-        ).to_unsafe_hash.symbolize_keys
+        }
       end
 
       it { expect(results.activity_field_content).to eq(nil) }
