@@ -42,11 +42,7 @@ module Socializer
 
         rule(:object_ids) do
           # byebug
-          if value.is_a?(Integer)
-            check_circle(id: value, key: key)
-            # circle = Circle.find_by(id: value)
-            # key.failure("could not be found") if circle.blank?
-          end
+          check_circle(id: value, key: key) if value.is_a?(Integer)
         end
 
         rule(:object_ids) do
@@ -55,8 +51,6 @@ module Socializer
               next unless item.is_a?(Integer)
 
               check_circle(id: item, key: key)
-              # circle = Circle.find_by(id: item)
-              # key.failure("could not be found") if circle.blank?
             end
           end
         end
