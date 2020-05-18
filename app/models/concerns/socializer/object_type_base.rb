@@ -64,15 +64,21 @@ module Socializer
       actor = ActivityObject.find_by(id: author_id).activitable
       activity = Activity::Operations::Create.new(actor: actor)
 
-      activity.call(params: activity_params) do |result|
-        result.success do |success|
-          success[:activity]
-        end
+      result = activity.call(params: activity_params)
 
-        result.failure do |failure|
-          failure
-        end
-      end
+      return result.success[:activity] if result.success?
+
+      result.failure
+      # REVIEW: Should the this or the above be used?
+      # activity.call(params: activity_params) do |result|
+      #   result.success do |success|
+      #     success[:activity]
+      #   end
+
+      #   result.failure do |failure|
+      #     failure
+      #   end
+      # end
     end
 
     def activity_params
