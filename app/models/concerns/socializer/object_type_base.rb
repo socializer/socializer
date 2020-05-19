@@ -28,7 +28,7 @@ module Socializer
     module ClassMethods
       # Joins the activity object and retrieves the activity_objects.id
       #
-      # @return [ActiveRecord::Relation]
+      # @return the Socializer model class.
       def guids
         # FIXME: Rails 5.0 - https://github.com/rails/rails/pull/13555 -
         #        Allows using relation name when querying joins/includes

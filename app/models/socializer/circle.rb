@@ -50,7 +50,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Circle]
     def self.with_id(id:)
       where(id: id)
     end
@@ -59,7 +59,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Circle]
     def self.with_author_id(id:)
       where(author_id: id)
     end
@@ -68,7 +68,7 @@ module Socializer
     #
     # @param name: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Circle]
     def self.with_display_name(name:)
       where(display_name: name)
     end
@@ -77,7 +77,7 @@ module Socializer
     #
     # @param query: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Circle]
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end

@@ -30,14 +30,14 @@ module Socializer
 
     # Find memberships where active is true
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Membership]
     def self.active
       where(active: true)
     end
 
     # Find memberships where active is false
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Membership]
     def self.inactive
       where(active: false)
     end
@@ -46,7 +46,7 @@ module Socializer
     #
     # @param member_id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Membership]
     def self.with_member_id(member_id:)
       where(member_id: member_id)
     end
