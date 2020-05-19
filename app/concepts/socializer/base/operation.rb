@@ -15,10 +15,10 @@ module Socializer
     # Base operation class
     #
     class Operation
-      def self.inherited(klass)
+      def self.inherited(operation)
         super
 
-        klass.class_eval do
+        operation.class_eval do
           include Dry::Monads[:result, :do]
           include Dry::Monads::Do.for(:call)
         end
