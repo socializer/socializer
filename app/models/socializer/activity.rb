@@ -76,7 +76,7 @@ module Socializer
 
     # Order records by created_at in descending order
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.newest_first
       order(created_at: :desc)
     end
@@ -85,7 +85,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.with_id(id:)
       where(id: id)
     end
@@ -94,7 +94,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
@@ -103,7 +103,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.with_actor_id(id:)
       where(actor_id: id)
     end
@@ -112,7 +112,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.with_target_id(id:)
       where(target_id: id)
     end
@@ -137,7 +137,7 @@ module Socializer
     # provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.stream(viewer_id:)
       person_id = Person.find_by(id: viewer_id).guid
       stream_query(viewer_id: person_id).newest_first.distinct
@@ -150,7 +150,7 @@ module Socializer
     # provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.activity_stream(actor_uid:, viewer_id:)
       stream_query(viewer_id: viewer_id).with_id(id: actor_uid).distinct
     end
@@ -161,7 +161,7 @@ module Socializer
     # provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     #
     # FIXME: Should display notes even if circle has no members and the owner
     #        is viewing it.
@@ -183,7 +183,7 @@ module Socializer
     # provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
 
@@ -198,7 +198,7 @@ module Socializer
     # provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
       stream_query(viewer_id: viewer_id).with_actor_id(id: person_id).distinct
@@ -210,7 +210,7 @@ module Socializer
     #
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Activity]
     def self.stream_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these
       # verbs
@@ -286,7 +286,7 @@ module Socializer
     # Ensure the audience is CIRCLES and then make sure that the viewer is in
     # those circles
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Array]
     def self.circles_subquery
       # Retrieve the author's unique identifier
       subquery = ActivityObject.joins(:person).pluck(:id)
@@ -300,7 +300,7 @@ module Socializer
     # viewer is part of a group that is the target audience, or that the viewer
     # is the target audience.
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Array]
     def self.limited_circle_subquery
       # Retrieve the circle's unique identifier related to the audience (when
       # the audience is not a circle, this query will simply return nothing)
@@ -313,7 +313,7 @@ module Socializer
     #
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Array]
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
                     .merge(Membership.with_member_id(member_id: viewer_id))
@@ -335,7 +335,7 @@ module Socializer
 
     # Retrieves the comments for an activity
     #
-    # @return [ActiveRecord::AssociationRelation] a collection of
+    # @return [Socializer::Activity] a collection of
     # {Socializer::Activity} objects
     def comments
       activitable_type =
