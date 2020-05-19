@@ -125,8 +125,8 @@ module Socializer
     end
 
     def select_display_name_alias_and_guids(query:)
-      klass              = query.base_class
-      display_name_alias = klass.arel_table[:display_name].as("name")
+      model              = query.base_class
+      display_name_alias = model.arel_table[:display_name].as("name")
       query.select(display_name_alias).guids
     end
   end

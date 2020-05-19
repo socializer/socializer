@@ -31,11 +31,11 @@ module Socializer
         attr_name = macro.args[0]
         scope = context[:scope]
 
-        klass = record.class
-        query = klass.where(klass.arel_table[attr_name].matches(value))
-        query = query.merge(klass.where(scope)) if scope
+        model = record.class
+        query = model.where(model.arel_table[attr_name].matches(value))
+        query = query.merge(model.where(scope)) if scope
 
-        unless klass.where.not(id: record.id).merge(query).empty?
+        unless model.where.not(id: record.id).merge(query).empty?
           message = "'#{value}' must be unique"
           message += " for '#{actor.display_name}" if scope
           key.failure(message)
