@@ -27,7 +27,7 @@ module Socializer
         # is [Socializer::Circle], creates a private reader, and defaults to
         # Socializer::Circle.new
         option :record, Dry::Types["any"].constrained(type: Circle),
-               reader: :private, default: proc { Circle.new }
+               reader: :private, default: -> { Circle.new }
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader

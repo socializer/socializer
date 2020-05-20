@@ -24,7 +24,7 @@ module Socializer
         # is [Socializer::Verb], creates a private reader, and defaults to
         # Socializer::Verb.new
         option :record, Dry::Types["any"].constrained(type: Verb),
-               reader: :private, default: proc { Verb.new }
+               reader: :private, default: -> { Verb.new }
 
         # TODO: Need to validate case insensitive uniqueness
         params do
