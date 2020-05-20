@@ -26,13 +26,13 @@ module Socializer
         # Adds the record keyword argument to the initializer, ensures the type
         # is [Socializer::Circle], creates a private reader, and defaults to
         # Socializer::Circle.new
-        option :record, Dry::Types["any"].constrained(type: Circle),
-               reader: :private, default: -> { Circle.new }
+        option :record, type: Dry::Types["any"].constrained(type: Circle),
+                        reader: :private, default: -> { Circle.new }
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
-        option :actor, Dry::Types["any"].constrained(type: Person),
-               reader: :private
+        option :actor, type: Dry::Types["any"].constrained(type: Person),
+                       reader: :private
 
         params do
           # display_name is unique scoped to the author_id, not case sensitive

@@ -16,8 +16,8 @@ module Socializer
 
     # Adds the activity keyword argument to the initializer, ensures the tyoe
     # is [Socializer::Activity], and creates a private reader
-    option :activity, Dry::Types["any"].constrained(type: Activity),
-           reader: :private
+    option :activity, type: Dry::Types["any"].constrained(type: Activity),
+                      reader: :private
 
     # Class Methods
 

@@ -37,12 +37,12 @@ module Socializer
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
-        option :actor, Dry::Types["any"].constrained(type: Person),
-               reader: :private
+        option :actor, type: Dry::Types["any"].constrained(type: Person),
+                       reader: :private
 
         # Creates the [Socializer::Note]
         #
-        # @param [ActionController::Parameters] params: the note parameters
+        # @param [Hash] params: the note parameters
         # from the request
         #
         # @return [Socializer::Note]

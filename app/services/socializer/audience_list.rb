@@ -16,8 +16,8 @@ module Socializer
 
     # Adds the person keyword argument to the initializer, ensures the tyoe
     # is [Socializer::Person], and creates a private reader
-    option :person, Dry::Types["any"].constrained(type: Person),
-           reader: :private
+    option :person, type: Dry::Types["any"].constrained(type: Person),
+                    reader: :private
 
     # Adds the query keyword argument to the initializer
     # and creates a private reader
