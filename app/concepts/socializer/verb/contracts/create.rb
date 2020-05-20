@@ -26,7 +26,6 @@ module Socializer
         option :record, type: Dry::Types["any"].constrained(type: Verb),
                         reader: :private, default: -> { Verb.new }
 
-        # TODO: Need to validate case insensitive uniqueness
         params do
           required(:display_name).filled(Types::ActivityVerbs)
         end

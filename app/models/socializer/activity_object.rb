@@ -126,7 +126,7 @@ module Socializer
     # A list of people that like this activity object
     #
     # @return [Array]
-    # REFACTOR: DRY this up. Reduce database calls
+    # REFACTOR: DRY this up. Look into using AREL.
     def liked_by
       # subquery = Activity.where(activity_object_id: id)
       # people   = Person.joins(activity_object: { actor_activities: :verb })

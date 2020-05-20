@@ -69,7 +69,7 @@ module Socializer
       return result.success[:activity] if result.success?
 
       result.failure
-      # REVIEW: Should the this or the above be used?
+      # REVIEW: Should this or the above be used?
       # activity.call(params: activity_params) do |result|
       #   result.success do |success|
       #     success[:activity]
