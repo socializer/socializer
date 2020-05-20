@@ -40,6 +40,14 @@ module Socializer
         option :actor, type: Dry::Types["any"].constrained(type: Person),
                        reader: :private
 
+        # # Adds the contract keyword argument to the initializer, ensures the
+        # # type is [Circle::Contracts::Create], and creates a private reader.
+        # # REVIEW: Should the contract be passed in?
+        # option :contract,
+        #        type: Dry::Types["any"].constrained(type: Circle::Contracts::Create),
+        #        reader: :private,
+        #        default: -> { Circle::Contracts::Create.new(actor: actor) }
+
         # Creates the [Socializer::Circle]
         #
         # @param [Hash] params: the circle parameters
