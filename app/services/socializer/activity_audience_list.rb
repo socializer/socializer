@@ -14,10 +14,9 @@ module Socializer
     #
     extend Dry::Initializer
 
-    # Adds the activity keyword argument to the initializer, ensures the tyoe
+    # Adds the activity keyword argument to the initializer, ensures the type
     # is [Socializer::Activity], and creates a private reader
-    option :activity, type: Dry::Types["any"].constrained(type: Activity),
-                      reader: :private
+    option :activity, type: Types.Strict(Activity), reader: :private
 
     # Class Methods
 
