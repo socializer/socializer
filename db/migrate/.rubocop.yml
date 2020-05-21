@@ -1,5 +1,8 @@
 require: rubocop-rails
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
