@@ -44,7 +44,8 @@ Layout/HashAlignment:
     - "config/initializers/simple_form.rb"
 
 Layout/LineLength:
-  # Max: 120
+  Description: 'Limit lines to 80 characters.'
+  Max: 80
   Enabled: true
   Exclude:
     - "config/initializers/simple_form.rb"
