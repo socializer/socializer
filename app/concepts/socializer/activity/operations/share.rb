@@ -40,8 +40,7 @@ module Socializer
 
         # Adds the actor keyword argument to the initializer, ensures the tyoe
         # is [Socializer::Person], and creates a private reader
-        option :actor, type: Dry::Types["any"].constrained(type: Person),
-                       reader: :private
+        option :actor, type: Types.Strict(Person), reader: :private
 
         # Creates the [Socializer::Activity]
         #

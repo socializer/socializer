@@ -37,14 +37,17 @@ module Socializer
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader.
-        option :actor, type: Dry::Types["any"].constrained(type: Person),
-                       reader: :private
+        # REVIEW: Try using this type: Instance(Person) - It work, at least
+        # in the tests
+        # option :actor, type: Dry::Types["any"].constrained(type: Person),
+        #                reader: :private
+        option :actor, type: Types.Strict(Person), reader: :private
 
         # # Adds the contract keyword argument to the initializer, ensures the
         # # type is [Circle::Contracts::Create], and creates a private reader.
-        # # REVIEW: Should the contract be passed in?
+        # REVIEW: Should the contract be passed in?
         # option :contract,
-        #        type: Dry::Types["any"].constrained(type: Circle::Contracts::Create),
+        #        type: Types.Strict(Circle::Contracts::Create),
         #        reader: :private,
         #        default: -> { Circle::Contracts::Create.new(actor: actor) }
 
