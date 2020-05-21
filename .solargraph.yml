@@ -10,7 +10,7 @@ require: []
 domains: []
 reporters:
 - rubocop
-- require_not_found
+# - require_not_found
 - typecheck
 - update_errors
 require_paths: []
