@@ -13,14 +13,14 @@ module Socializer
     #
     module Contracts
       #
-      # Contract object for vaidating Socializer::Verb
+      # Contract object for validating Socializer::Verb
       #
       # @example
       #   contract = Verb::Contracts::Create.new
       #   result = contract.call(params)
       # class Create < Dry::Validation::Contract
       class Create < Base::Contract
-        # Adds the record keyword argument to the initializer, ensures the tyoe
+        # Adds the record keyword argument to the initializer, ensures the type
         # is [Socializer::Verb], creates a private reader, and defaults to
         # Socializer::Verb.new
         option :record, type: Types.Strict(Verb), reader: :private,

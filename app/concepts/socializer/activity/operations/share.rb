@@ -38,7 +38,7 @@ module Socializer
         #
         extend Dry::Initializer
 
-        # Adds the actor keyword argument to the initializer, ensures the tyoe
+        # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
         option :actor, type: Types.Strict(Person), reader: :private
 
