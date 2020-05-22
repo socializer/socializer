@@ -40,7 +40,7 @@ module Socializer
         # Creates the [Socializer::Activity]
         #
         # @param [Socializer::ActivityObject] activity_object: the
-        # Socialicer::ActivityObject being liked
+        # Socializer::ActivityObject being liked
         #
         # @return [Dry::Monads::Result::Success] or
         # [Dry::Monads::Result::Failure]

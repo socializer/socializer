@@ -7,7 +7,7 @@
 #
 module Socializer
   #
-  # Namespace for Verb related objects
+  # Namespace for Circle related objects
   #
   class Circle
     #
@@ -15,7 +15,7 @@ module Socializer
     #
     module Contracts
       #
-      # Contract object for validating Socializer::Verb
+      # Contract object for validating Socializer::Circle
       #
       # @example
       #   circle = Socializer::Circle.new
