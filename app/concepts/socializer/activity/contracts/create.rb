@@ -41,7 +41,6 @@ module Socializer
         end
 
         rule(:object_ids) do
-          # byebug
           check_circle(id: value, key: key) if value.is_a?(Integer)
         end
 

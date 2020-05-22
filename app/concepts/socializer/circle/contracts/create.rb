@@ -34,7 +34,6 @@ module Socializer
         option :actor, type: Types.Strict(Person), reader: :private
 
         params do
-          # display_name is unique scoped to the author_id, not case sensitive
           required(:display_name).filled(:string)
           optional(:content).filled(:string)
         end
