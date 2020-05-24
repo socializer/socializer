@@ -83,7 +83,7 @@ module Socializer
           like_params
         end
 
-        # Return true if creating the [Socializer::Activity] shoud not proceed
+        # Return true if creating the [Socializer::Activity] should not proceed
         #
         # @return [TrueClass, FalseClass]
         def blocked?
