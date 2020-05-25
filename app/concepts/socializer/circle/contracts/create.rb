@@ -46,9 +46,6 @@ module Socializer
         end
 
         rule(:display_name).validate(unique: :display_name)
-        # rule(:display_name).validate(unique1: :display_name) do
-        #   @_context[:scope] = { author_id: actor.id }
-        # end
       end
     end
   end
