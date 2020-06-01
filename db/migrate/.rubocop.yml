@@ -12,6 +12,9 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/LineLength:
   Enabled: false
 
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
 Lint/RaiseException:
   Enabled: true
 
@@ -47,6 +50,12 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
 
 Style/SlicingWithRange:
   Enabled: true
