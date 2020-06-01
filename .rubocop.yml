@@ -51,6 +51,9 @@ Layout/LineLength:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
@@ -87,6 +90,12 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
   Enabled: true
 
 Style/RegexpLiteral:
