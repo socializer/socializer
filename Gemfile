@@ -14,23 +14,24 @@ gemspec
 # your gem to rubygems.org.
 
 group :development, :test do
-  gem "byebug", "~> 11.0.1"
-  gem "pry", "~> 0.12.2"
+  gem "byebug"
+  gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
-  gem "rspec-rails", "~> 3.9.0"
+  gem "rspec-rails", "~> 4.0.1"
 end
 
 group :development do
   gem "coffeelint", "~> 1.16.1"
+  gem "listen"
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "coveralls", "~> 0.8.23", require: false
+  gem "coveralls_reborn", "~> 0.16.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
-  gem "database_cleaner", "~> 1.7.0"
-  gem "simplecov", "~> 0.16.1", require: false
+  gem "database_cleaner-active_record", "~> 1.8"
+  gem "simplecov", "~> 0.18.5", require: false
   gem "webdrivers", "~> 4.0"
 
   # TODO: Update test so rails-controller-testing can be removed

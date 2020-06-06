@@ -1,15 +1,33 @@
 require: rubocop-rails
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
 Layout/EmptyLineBetweenDefs:
   Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: false
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Lint/RaiseException:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
 
 Metrics/AbcSize:
   Enabled: false
 
 Metrics/ClassLength:
-  Enabled: false
-
-Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
@@ -20,6 +38,27 @@ Style/BlockDelimiters:
 
 Style/Documentation:
   Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

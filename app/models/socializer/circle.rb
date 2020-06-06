@@ -88,9 +88,9 @@ module Socializer
     #
     # @param contact_id [Integer] The guid of the person to add to the circle
     #
-    # @return [Socializer:Circle/ActiveRecord::RecordInvalid] The resulting
-    # object is returned if validations passes.
-    # Raises ActiveRecord::RecordInvalid when the record is invalid.
+    # @return [Socializer::Tie] The resulting object is returned if
+    # validations passes. Raises [ActiveRecord::RecordInvalid] when the
+    # record is invalid.
     def add_contact(contact_id)
       ties.create!(contact_id: contact_id)
     end
@@ -99,10 +99,10 @@ module Socializer
     #
     # @param contact_id [Integer] The guid of the person to add to the circle
     #
-    # @return [Socializer:Circle/FalseClass] Deletes the record in the database
-    # and freezes this instance to reflect that no changes should be made
-    # (since they can"t be persisted). If the before_destroy callback returns
-    # false the action is cancelled and remove_contact returns false.
+    # @return [Socializer::Tie]/[FalseClass] Deletes the record in the
+    # database and freezes this instance to reflect that no changes should
+    # be made (since they can"t be persisted). If the before_destroy callback
+    # returns false the action is cancelled and remove_contact returns false.
     def remove_contact(contact_id)
       tie = ties.find_by(contact_id: contact_id)
       tie.destroy

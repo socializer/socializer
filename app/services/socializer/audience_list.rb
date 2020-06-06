@@ -17,10 +17,10 @@ module Socializer
 
     # Initializer
     #
-    # @param person: [Socializer:Person] the person to build the list for
+    # @param person: [Socializer::Person] the person to build the list for
     # @param query: nil [String] Used to filter the audience list.
     #
-    # @return [Socializer:AudienceList] returns an instance of AudienceList
+    # @return [Socializer::AudienceList] returns an instance of AudienceList
     def initialize(person:, query: nil)
       @person = person
       @query  = query
@@ -33,7 +33,7 @@ module Socializer
     # Invoke the AudienceList. This is the primary public API method.
     # Create the audience list
     #
-    # @param person: [Socializer:Person] the person to build the list for
+    # @param person: [Socializer::Person] the person to build the list for
     # @param query: nil [String] Used to filter the audience list.
     #
     # @return [Array]
@@ -69,12 +69,12 @@ module Socializer
 
     # Build the audience list for @person with the passed in type and @query
     #
-    # @param type [Symbol/String]
+    # @param type [Symbol] or [String]
     #
-    # @return [ActiveRecord::NullRelation] Person.none is returned if type is
+    # @return [Socializer::Person] Person.none is returned if type is
     # unknown
-    # @return [ActiveRecord::AssociationRelation] Returns the name and guid of
-    # the passed in type
+    # @return [Socializer::Group] or [Socializer::Circle] Returns the name
+    # and guid of the passed in type
     def audience_list(type:)
       tableized_type = type.to_s.tableize
       return Person.none unless @person.respond_to?(tableized_type)
@@ -99,15 +99,18 @@ module Socializer
 
     # Build the list of people based on the query
     #
-    # @return [ActiveRecord::NullRelation] If query is nil or "", Person.none
+    # @return [Socializer::Person] If query is nil or "", Person.none
     # is returned
     # @return [ActiveRecord::Relation] If a query is provided the display_name
     # and guid
     # for all records that match the query
+    #
+    # @return [Socializer::Person]
     def person_list
       return Person.none if @query.blank?
 
       result = select_display_name_alias_and_guids(query: Person)
+
       result.display_name_like(query: "%#{@query}%")
     end
 

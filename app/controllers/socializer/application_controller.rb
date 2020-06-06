@@ -9,6 +9,7 @@ module Socializer
   #
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
+    # skip_before_action :verify_authenticity_token
 
     helper_method :current_user
     helper_method :signed_in?
@@ -65,9 +66,9 @@ module Socializer
     def person
       cookie_user_id = cookies.signed[:user_id]
 
-      @person ||= if cookie_user_id.present?
-                    Person.find_by(id: cookie_user_id).decorate
-                  end
+      return if cookie_user_id.blank?
+
+      @person ||= Person.find_by(id: cookie_user_id).decorate
     end
   end
 end

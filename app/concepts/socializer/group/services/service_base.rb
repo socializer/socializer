@@ -26,8 +26,8 @@ module Socializer
 
         # Initializer
         #
-        # @param [Socializer:Group] group: the group to invite the person to
-        # @param [Socializer:Person] person: the person that is being invited
+        # @param [Socializer::Group] group: the group to invite the person to
+        # @param [Socializer::Person] person: the person that is being invited
         # to the group
         #
         # @return [Socializer::Group::Services] returns an instance of
@@ -39,7 +39,7 @@ module Socializer
           raise(ArgumentError, errors.full_messages.to_sentence) unless valid?
         end
 
-        # @return [Socializer:Membership/FalseClass] Deletes the record in the
+        # @return [Socializer::Membership] Deletes the record in the
         # database and freezes this instance to reflect that no changes should
         # be made (since they can't be persisted). If the before_destroy
         # callback returns false the action is cancelled and leave returns

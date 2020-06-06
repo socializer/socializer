@@ -66,7 +66,7 @@ module Socializer
     #
     # @param name: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.with_display_name(name:)
       where(display_name: name)
     end
@@ -75,35 +75,35 @@ module Socializer
     #
     # @param query: [String]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end
 
     # Return all groups with a privacy of public
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.public
       with_privacy(:public)
     end
 
     # Return all groups with a privacy of restricted
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.restricted
       with_privacy(:restricted)
     end
 
     # Return all groups with a privacy of private
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.private
       with_privacy(:private)
     end
 
     # Return all groups with a privacy of public or restricted
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Group]
     def self.joinable
       with_privacy(:public, :restricted)
     end

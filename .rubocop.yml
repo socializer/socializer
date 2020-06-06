@@ -33,11 +33,37 @@ AllCops:
   # run on? (If there is more than one, set this to the lowest version.)
   TargetRubyVersion: 2.6
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/HashAlignment:
   Exclude:
     - "config/initializers/simple_form.rb"
 
+Layout/LineLength:
+  Description: 'Limit lines to 80 characters.'
+  Max: 80
+  Enabled: true
+  Exclude:
+    - "config/initializers/simple_form.rb"
+    - "config/initializers/simple_form_bootstrap.rb"
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Layout/SpaceBeforeFirstArg:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
   Enabled: true
 
 Metrics/BlockLength:
@@ -51,19 +77,33 @@ Metrics/BlockLength:
     - "config/routes.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
-Metrics/LineLength:
-  # Max: 120
-  Enabled: true
-  Exclude:
-    - "config/initializers/simple_form.rb"
-    - "config/initializers/simple_form_bootstrap.rb"
-
 Metrics/MethodLength:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
   Enabled: true
 
 Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
+
+Style/SlicingWithRange:
+  Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

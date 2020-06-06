@@ -29,6 +29,19 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore the RSpec state file
+spec/examples.txt
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+.yardoc/
+
+
 
 #
 # Review the ignored items below
@@ -45,8 +58,6 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 pkg/
-
-/config/initializers/omniauth.rb
 
 .idea
 .vscode/*

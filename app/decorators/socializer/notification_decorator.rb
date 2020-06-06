@@ -22,7 +22,7 @@ module Socializer
     #
     # @param index: [Integer] Index of the item in the enum
     #
-    # @return [type] [description]
+    # @return [String] [description]
     def card_class(index:)
       classname = "panel-default"
       classname = "panel-default bg-muted" if model.read

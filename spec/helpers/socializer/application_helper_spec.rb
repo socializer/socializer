@@ -15,7 +15,9 @@ module Socializer
 
       context "when false" do
         before do
-          allow(helper).to receive(:current_user).and_return(nil)
+          without_partial_double_verification do
+            allow(helper).to receive(:current_user).and_return(nil)
+          end
         end
 
         it { expect(helper.current_user?(person)).to be false }
@@ -23,7 +25,9 @@ module Socializer
 
       context "when true" do
         before do
-          allow(helper).to receive(:current_user).and_return(person)
+          without_partial_double_verification do
+            allow(helper).to receive(:current_user).and_return(person)
+          end
         end
 
         it { expect(helper.current_user?(person)).to be true }

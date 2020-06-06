@@ -25,7 +25,7 @@ module Socializer
 
     # Order records by created_at in descending order
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Notification]
     def self.newest_first
       order(created_at: :desc)
     end
@@ -58,7 +58,7 @@ module Socializer
 
     # Marks the notification as read
     #
-    # @return [boolean]
+    # @return [Socializer::Notification]
     def mark_as_read
       update!(read: true)
     end

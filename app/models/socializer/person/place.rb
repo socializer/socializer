@@ -25,17 +25,16 @@ module Socializer
 
       # Find places where current is true
       #
-      # @return [ActiveRecord::Relation]
+      # @return [Socializer::Person::Place]
       def self.current
         where(current: true)
       end
 
       # Find places where current is false
       #
-      # @return [ActiveRecord::Relation]
+      # @return [Socializer::Person::Place]
       def self.previous
-        # FIXME: where(current: false) should work
-        where.not(current: true)
+        where(current: false)
       end
     end
   end

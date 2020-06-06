@@ -16,9 +16,9 @@ module Socializer
       # Add a member to a group
       #
       class Join < ServiceBase
-        # @return [Socializer:Membership/ActiveRecord::RecordInvalid] The
-        # resulting object is returned if validations passes.
-        # Raises ActiveRecord::RecordInvalid when the record is invalid.
+        # @return [Socializer::Membership] The resulting object is returned if
+        # validations passes. Raises [ActiveRecord::RecordInvalid] when the
+        # record is invalid.
         def call
           privacy = group.privacy
 

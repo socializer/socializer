@@ -19,7 +19,9 @@ before_script:
   - cp travis/database.yml spec/dummy/config/database.yml
   - mysql -e 'CREATE DATABASE socializer_test;'
   - psql -c 'create database socializer_test;' -U postgres
-  - bundle exec rails app:db:migrate RAILS_ENV=test
+  - bin/rails app:db:environment:set RAILS_ENV=test
+  - bin/rails app:db:migrate RAILS_ENV=test
+  - bin/rails app:db:reset RAILS_ENV=test
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
@@ -40,7 +42,7 @@ matrix:
   fast_finish: true
   # FIXME: resolve errors when running against postgres and mysql
   include:
-    - rvm: 2.6.5
+    - rvm: 2.6.6
       gemfile: Gemfile
       env: DB=sqlite
     # - rvm: 2.4.3

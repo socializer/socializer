@@ -33,7 +33,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Audience]
     def self.with_activity_id(id:)
       where(activity_id: id)
     end
@@ -42,7 +42,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [ActiveRecord::Relation]
+    # @return [Socializer::Audience]
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
