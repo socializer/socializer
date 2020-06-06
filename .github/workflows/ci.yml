@@ -24,13 +24,13 @@ jobs:
       id: ruby-cache
       with:
         path: ~/local/rubies
-        key: ruby-2.6.5
+        key: ruby-2.6.6
 
-    - name: Install Ruby 2.6.5
+    - name: Install Ruby 2.6.6
       uses: clupprich/ruby-build-action@master
       id: ruby
       with:
-        ruby-version: 2.6.5
+        ruby-version: 2.6.6
         cache-available: ${{ steps.ruby-cache.outputs.cache-hit == 'true' }}
 
     - name: Insall sqlite
