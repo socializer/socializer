@@ -306,7 +306,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (1.7.0)
+    regexp_parser (1.7.1)
     request_store (1.5.0)
       rack (>= 1.4)
     require_all (3.0.0)
@@ -383,6 +383,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
+    simplecov-lcov (0.8.0)
     sixarm_ruby_unaccent (1.2.0)
     solargraph (0.39.8)
       backport (~> 1.1)
@@ -469,6 +470,7 @@ DEPENDENCIES
   scss_lint (~> 0.59.0)
   shoulda-matchers (~> 4.3.0)
   simplecov (~> 0.18.5)
+  simplecov-lcov (~> 0.8.0)
   socializer!
   solargraph
   sqlite3 (~> 1.4.1)
