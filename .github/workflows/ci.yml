@@ -54,12 +54,21 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
 
-    - name: "Run rspec"
+    - name: "Prepare the database"
       run: |
         bin/rails app:db:environment:set RAILS_ENV=test
         bin/rails app:db:migrate RAILS_ENV=test
         bin/rails app:db:reset RAILS_ENV=test
+
+    - name: "Run rspec"
+      run: |
         bundle exec rspec
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage/.resultset.json
 
     - name: Run RuboCop
       run: |
