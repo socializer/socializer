@@ -27,11 +27,10 @@ jobs:
         key: ruby-2.6.6
 
     - name: Install Ruby 2.6.6
-      uses: clupprich/ruby-build-action@master
+      uses: ruby/setup-ruby@v1
       id: ruby
       with:
-        ruby-version: 2.6.6
-        cache-available: ${{ steps.ruby-cache.outputs.cache-hit == 'true' }}
+        ruby-version: .ruby-version
 
     - name: Insall sqlite
       run: |
