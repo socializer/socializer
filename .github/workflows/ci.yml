@@ -67,8 +67,3 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Rubocop Linter Action
-      uses: andrewmcodes/rubocop-linter-action@v3.2.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
