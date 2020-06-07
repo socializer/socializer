@@ -30,7 +30,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       id: ruby
       with:
-        ruby-version: .ruby-version
+        ruby-version: 2.6.6
 
     - name: Insall sqlite
       run: |
