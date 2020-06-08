@@ -28,7 +28,7 @@ module Socializer
 
       it { is_expected.to have_many(:links) }
       it { is_expected.to have_many(:categories) }
-      it { is_expected.to have_many(:memberships).inverse_of(:group) }
+      it { is_expected.to have_many(:memberships) }
 
       it do
         expect(group)
