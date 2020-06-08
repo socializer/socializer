@@ -41,7 +41,6 @@ module Socializer
                                 inverse_of: :activitable_actor
 
     has_many :object_activities, class_name: "Activity",
-                                 foreign_key: "activity_object_id",
                                  dependent: :destroy,
                                  inverse_of: :activitable_object
 
