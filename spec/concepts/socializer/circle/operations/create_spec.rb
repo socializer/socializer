@@ -29,14 +29,14 @@ module Socializer
         let(:success) { result.success[:circle] }
         let(:notice) { result.success[:notice] }
         let(:model) { success.class.name.demodulize }
-        let(:notice_I18n) { I18n.t("socializer.model.create", model: model) }
+        let(:notice_i18n) { I18n.t("socializer.model.create", model: model) }
 
         it { expect(result).to be_success }
         it { expect(success.valid?).to be true }
         it { expect(success).to be_kind_of(Circle) }
         it { expect(success.persisted?).to be true }
 
-        it { expect(notice).to eq(notice_I18n) }
+        it { expect(notice).to eq(notice_i18n) }
       end
 
       context "when display_name is not unique" do
