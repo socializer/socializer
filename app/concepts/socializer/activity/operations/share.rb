@@ -51,8 +51,7 @@ module Socializer
         def call(params:)
           validated = yield validate(share_params(params: params))
           activity = yield create(validated.to_h)
-
-          notice = yield success_message(activity: activity)
+          notice = yield success_notice(activity: activity)
 
           Success(activity: activity, notice: notice)
         end
@@ -77,12 +76,12 @@ module Socializer
           params.merge(share_params)
         end
 
-        def success_message(activity:)
+        def success_notice(activity:)
           activity_object = activity.activitable_object
-          model = activity_object.activitable_type.demodulize
-          notice = I18n.t("socializer.model.share", model: model)
-
-          Success(notice)
+          model = activity_object.activitable # _type.demodulize
+          # notice = I18n.t("socializer.model.share", model: model)
+          # Success(notice)
+          success_message(instance: model, action: "share")
         end
 
         # def validation_errors

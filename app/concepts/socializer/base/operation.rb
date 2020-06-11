@@ -23,6 +23,15 @@ module Socializer
           include Dry::Monads::Do.for(:call)
         end
       end
+
+      private
+
+      def success_message(instance:, action:)
+        model = instance.class.name.demodulize
+        notice = I18n.t("socializer.model.#{action}", model: model)
+
+        Success(notice)
+      end
     end
   end
 end

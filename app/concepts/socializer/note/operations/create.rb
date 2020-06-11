@@ -48,7 +48,7 @@ module Socializer
         def call(params:)
           validated = yield validate(note_params(params))
           note = yield create(validated.to_h)
-          notice = yield success_message(note: note)
+          notice = yield success_message(instance: note, action: "create")
 
           Success(note: note, notice: notice)
         end
@@ -64,11 +64,7 @@ module Socializer
           Success(actor.activity_object.notes.create(params))
         end
 
-        def success_message(note:)
-          model = note.class.name.demodulize
-          notice = I18n.t("socializer.model.create", model: model)
 
-          Success(notice)
         end
 
         def note_params(params)

@@ -57,7 +57,7 @@ module Socializer
         def call(params:)
           validated = yield validate(params)
           circle = yield create(validated.to_h)
-          notice = yield success_message(circle: circle)
+          notice = yield success_message(instance: circle, action: "create")
 
           Success(circle: circle, notice: notice)
         end
@@ -72,13 +72,6 @@ module Socializer
         def create(params)
           circles = actor.activity_object.circles
           Success(circles.create!(params))
-        end
-
-        def success_message(circle:)
-          model = circle.class.name.demodulize
-          notice = I18n.t("socializer.model.create", model: model)
-
-          Success(notice)
         end
       end
     end

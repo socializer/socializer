@@ -38,8 +38,7 @@ module Socializer
         def call(params:)
           validated = yield validate(params)
           verb = yield create(validated.to_h)
-
-          notice = yield success_message(verb: verb)
+          notice = yield success_message(instance: verb, action: "create")
 
           Success(verb: verb, notice: notice)
         end
@@ -53,13 +52,6 @@ module Socializer
 
         def create(params)
           Success(Verb.create(params))
-        end
-
-        def success_message(verb:)
-          model = verb.class.name.demodulize
-          notice = I18n.t("socializer.model.create", model: model)
-
-          Success(notice)
         end
       end
     end
