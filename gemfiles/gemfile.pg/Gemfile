@@ -13,33 +13,29 @@ gemspec path: "../.."
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use a debugger
-# gem 'byebug', group: [:development, :test]
+group :development, :test do
+  gem "byebug"
+  gem "pry-rails"
+  gem "rails-dummy", "= 0.1.0"
+  gem "rspec-rails", "~> 4.0.1"
+end
 
 group :development do
-  gem "coffeelint", "~> 1.16.0"
+  gem "coffeelint", "~> 1.16.1"
+  gem "listen"
 end
 
 group :test do
-  # gem "codeclimate-test-reporter", require: nil
-  gem "coveralls", "~> 0.8.21", require: false
+  # Adds support for Capybara system testing and selenium driver
+  gem "capybara", ">= 2.15", "< 4.0"
+  gem "coveralls_reborn", "~> 0.16.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
-  gem "database_cleaner", "~> 1.6.1"
-  gem "simplecov", "~> 0.14.1", require: false
+  gem "database_cleaner-active_record", "~> 1.8"
+  gem "simplecov", "~> 0.18.5", require: false
+  gem "webdrivers", "~> 4.0"
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
 end
 
-group :development, :test do
-  gem "byebug", "~> 9.0.6"
-  gem "capybara", "~> 2.14.3"
-  gem "pry", "~> 0.10.4"
-  gem "rails-dummy", "~> 0.0.4"
-  gem "rspec-rails", "~> 3.6.0"
-end
-
 gem "pg", "~> 0.21.0"
-
-# TODO: Remove. add these gems to help with the transition to Rails 5:
-gem "protected_attributes_continued"
