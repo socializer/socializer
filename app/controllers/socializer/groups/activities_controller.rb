@@ -13,7 +13,7 @@ module Socializer
 
       # GET /groups/1/activities
       def index
-        group_id = params.fetch(:group_id) { nil }
+        group_id = params.fetch(:group_id, nil)
         group    = Group.find_by(id: group_id).decorate
         # @current_id = @group.guid
         # TODO: makes sense to have stream or activities as an instance
