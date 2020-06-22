@@ -12,7 +12,7 @@ module Socializer
 
     # GET /audience_lists
     def index
-      query = params.fetch(:q) { nil }
+      query = params.fetch(:q, nil)
 
       respond_to do |format|
         format.json do

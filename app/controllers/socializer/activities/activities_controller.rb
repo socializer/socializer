@@ -13,7 +13,7 @@ module Socializer
 
       # GET activities/1/activities
       def index
-        activity_id = params.fetch(:activity_id) { nil }
+        activity_id = params.fetch(:activity_id, nil)
 
         # TODO: makes sense to have stream or activities as an instance
         #       method so we can do
