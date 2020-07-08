@@ -75,12 +75,10 @@ module Socializer
         end
 
         def like_params
-          like_params = { actor_id: actor.guid,
-                          activity_object_id: activity_object.id,
-                          object_ids: PUBLIC,
-                          verb: verb }
-
-          like_params
+          { actor_id: actor.guid,
+            activity_object_id: activity_object.id,
+            object_ids: PUBLIC,
+            verb: verb }
         end
 
         # Return true if creating the [Socializer::Activity] should not proceed

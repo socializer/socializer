@@ -55,9 +55,7 @@ module Socializer
       def share_params
         # params.require(:share).permit(:activity_id, :content, :object_ids)
 
-        share_params = params[:share].to_unsafe_hash.symbolize_keys.clone
-
-        share_params
+        params[:share].to_unsafe_hash.symbolize_keys.clone
       end
     end
   end
