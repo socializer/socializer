@@ -36,6 +36,9 @@ AllCops:
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
@@ -107,13 +110,25 @@ Performance/StringInclude:
 Style/AccessorGrouping:
   Enabled: true
 
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
 Style/ExponentialNotation:
   Enabled: true
 
 Style/BisectedAttrAccessor:
   Enabled: true
 
+Style/HashAsLastArrayItem:
+  Enabled: true
+
 Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
   Enabled: true
 
 Style/HashTransformKeys:
@@ -126,6 +141,9 @@ Style/RedundantAssignment:
   Enabled: true
 
 Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
   Enabled: true
 
 Style/RedundantRegexpCharacterClass:

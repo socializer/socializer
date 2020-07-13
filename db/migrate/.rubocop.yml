@@ -3,6 +3,9 @@ require: rubocop-rails
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
@@ -60,11 +63,17 @@ Performance/StringInclude:
 Style/AccessorGrouping:
   Enabled: true
 
+Style/ArrayCoercion:
+  Enabled: true
+
 Style/BisectedAttrAccessor:
   Enabled: true
 
 Style/BlockDelimiters:
   Enabled: false
+
+Style/CaseLikeIf:
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
@@ -72,7 +81,13 @@ Style/Documentation:
 Style/ExponentialNotation:
   Enabled: true
 
+Style/HashAsLastArrayItem:
+  Enabled: true
+
 Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
   Enabled: true
 
 Style/HashTransformKeys:
@@ -85,6 +100,9 @@ Style/RedundantAssignment:
   Enabled: true
 
 Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
   Enabled: true
 
 Style/RedundantRegexpCharacterClass:
