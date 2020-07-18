@@ -432,7 +432,7 @@ GEM
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
     sixarm_ruby_unaccent (1.2.0)
-    solargraph (0.39.11)
+    solargraph (0.39.12)
       backport (~> 1.1)
       benchmark
       bundler (>= 1.17.2)
