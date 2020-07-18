@@ -28,11 +28,12 @@ module Socializer
       def create
         share = Activity::Operations::Share.new(actor: current_user)
         result = share.call(params: share_params)
-        notice = result.success[:notice] if result.success?
 
-        return redirect_to activities_path, notice: notice if result.success?
+        return create_failure(failure: result.failure) if result.failure?
 
-        create_failure(failure: result.failure)
+        notice = result.success[:notice]
+
+        redirect_to activities_path, notice: notice
       end
 
       private
@@ -54,7 +55,6 @@ module Socializer
       # Only allow a trusted parameter "white list" through.
       def share_params
         # params.require(:share).permit(:activity_id, :content, :object_ids)
-
         params[:share].to_unsafe_hash.symbolize_keys.clone
       end
     end
