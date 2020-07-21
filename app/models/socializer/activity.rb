@@ -165,7 +165,7 @@ module Socializer
     #
     def self.circle_stream(actor_uid:, viewer_id:)
       circles = Circle.with_id(id: actor_uid)
-                      .with_author_id(id: viewer_id).pluck(:id)
+                      .with_author_id(id: viewer_id).ids
 
       followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
@@ -288,8 +288,8 @@ module Socializer
     # @return [Array]
     def self.circles_subquery
       # Retrieve the author's unique identifier
-      subquery = ActivityObject.joins(:person).pluck(:id)
-      Circle.with_author_id(id: subquery).pluck(:id)
+      subquery = ActivityObject.joins(:person).ids
+      Circle.with_author_id(id: subquery).ids
     end
     private_class_method :circles_subquery
 
@@ -303,7 +303,7 @@ module Socializer
     def self.limited_circle_subquery
       # Retrieve the circle's unique identifier related to the audience (when
       # the audience is not a circle, this query will simply return nothing)
-      subquery = Circle.joins(activity_object: :audiences).pluck(:id)
+      subquery = Circle.joins(activity_object: :audiences).ids
       Tie.with_circle_id(circle_id: subquery).pluck(:contact_id)
     end
     private_class_method :limited_circle_subquery
@@ -316,7 +316,7 @@ module Socializer
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
                     .merge(Membership.with_member_id(member_id: viewer_id))
-                    .pluck(:id)
+                    .ids
     end
     private_class_method :limited_group_subquery
 
