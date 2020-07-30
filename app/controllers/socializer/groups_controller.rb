@@ -43,14 +43,15 @@ module Socializer
 
     # POST /groups
     def create
-      group = current_user.groups.build(group_params)
+      operation = Group::Operations::Create.new(actor: current_user)
+      result = operation.call(params: group_params)
 
-      if group.save
-        flash.notice = t("socializer.model.create", model: "Group")
-        redirect_to group_path(group)
-      else
-        render :new
-      end
+      return create_failure(failure: result.failure) if result.failure?
+
+      success = result.success
+
+      flash.notice = success[:notice]
+      redirect_to group_path(success[:group])
     end
 
     # PATCH/PUT /groups/1
@@ -71,13 +72,24 @@ module Socializer
 
     private
 
+    def create_failure(failure:)
+      @errors = failure.errors.to_h
+      group = current_user.groups.build(group_params)
+
+      render :new, locals: { group: group }
+    end
+
     def find_group
       @find_group ||= current_user.groups.find_by(id: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def group_params
-      params.require(:group).permit(:display_name, :privacy, :tagline, :about)
+      # TODO: Uncomment me
+      params[:group].to_unsafe_hash.symbolize_keys
+      # params.require(:group).permit(:display_name, :privacy, :tagline, :about)
+      #       .to_h.symbolize_keys
+      # params.require(:group).permit(:display_name, :privacy, :tagline, :about)
     end
   end
 end

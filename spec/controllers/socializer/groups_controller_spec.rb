@@ -18,7 +18,7 @@ module Socializer
     end
 
     let(:privacy) do
-      Socializer::Group.privacy.find_value(:public).value
+      Socializer::Group.privacy.find_value(:public)
     end
 
     let(:valid_attributes) do
