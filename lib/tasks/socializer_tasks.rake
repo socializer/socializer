@@ -7,7 +7,7 @@
 
 def ensure_log_goes_to_stdout
   old_logger = Webpacker.logger
-  Webpacker.logger = ActiveSupport::Logger.new(STDOUT)
+  Webpacker.logger = ActiveSupport::Logger.new($stdout)
   yield
 ensure
   Webpacker.logger = old_logger
