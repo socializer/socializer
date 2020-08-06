@@ -33,12 +33,6 @@ AllCops:
   # run on? (If there is more than one, set this to the lowest version.)
   TargetRubyVersion: 2.6
 
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-
-Lint/DuplicateElsifCondition:
-  Enabled: true
-
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
@@ -54,19 +48,52 @@ Layout/LineLength:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
-Lint/MixedRegexpCaptureTypes:
-  Enabled: true
-
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
 Layout/SpaceBeforeFirstArg:
   Enabled: true
 
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/DuplicateRescueException:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/FloatComparison:
+  Enabled: true
+
+Lint/MissingSuper:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
+
 Lint/RaiseException:
   Enabled: true
 
+Lint/SelfAssignment:
+  Enabled: true
+
 Lint/StructNewOverride:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+Lint/UnreachableLoop:
   Enabled: true
 
 Metrics/BlockLength:
@@ -152,13 +179,19 @@ Style/AccessorGrouping:
 Style/ArrayCoercion:
   Enabled: true
 
+Style/BisectedAttrAccessor:
+  Enabled: true
+
 Style/CaseLikeIf:
   Enabled: true
 
 Style/ExponentialNotation:
   Enabled: true
 
-Style/BisectedAttrAccessor:
+Style/ExplicitBlockArgument:
+  Enabled: true
+
+Style/GlobalStdStream:
   Enabled: true
 
 Style/HashAsLastArrayItem:
@@ -174,6 +207,9 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/OptionalBooleanParameter:
   Enabled: true
 
 Style/RedundantAssignment:
@@ -195,7 +231,13 @@ Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
 
+Style/SingleArgumentDig:
+  Enabled: true
+
 Style/SlicingWithRange:
+  Enabled: true
+
+Style/StringConcatenation:
   Enabled: true
 
 Style/StringLiterals:

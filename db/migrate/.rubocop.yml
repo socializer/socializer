@@ -1,11 +1,5 @@
 require: rubocop-rails
 
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-
-Lint/DuplicateElsifCondition:
-  Enabled: true
-
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
@@ -15,16 +9,49 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/LineLength:
   Enabled: false
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/DuplicateRescueException:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/FloatComparison:
+  Enabled: true
+
+Lint/MissingSuper:
+  Enabled: true
+
 Lint/MixedRegexpCaptureTypes:
   Enabled: false
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
 
 Lint/RaiseException:
   Enabled: true
 
-Layout/SpaceAroundMethodCallOperator:
+Lint/SelfAssignment:
   Enabled: true
 
 Lint/StructNewOverride:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+Lint/UnreachableLoop:
   Enabled: true
 
 Metrics/AbcSize:
@@ -120,6 +147,12 @@ Style/Documentation:
 Style/ExponentialNotation:
   Enabled: true
 
+Style/ExplicitBlockArgument:
+  Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: true
+
 Style/HashAsLastArrayItem:
   Enabled: true
 
@@ -133,6 +166,9 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/OptionalBooleanParameter:
   Enabled: true
 
 Style/RedundantAssignment:
@@ -150,7 +186,13 @@ Style/RedundantRegexpCharacterClass:
 Style/RedundantRegexpEscape:
   Enabled: false
 
+Style/SingleArgumentDig:
+  Enabled: true
+
 Style/SlicingWithRange:
+  Enabled: true
+
+Style/StringConcatenation:
   Enabled: true
 
 Style/StringLiterals:
