@@ -2,6 +2,9 @@ inherit_from: ../../.rubocop.yml
 
 require: rubocop-rails
 
+Layout/LineLength:
+  Max: 120
+
 Metrics/AbcSize:
   Enabled: false
 
