@@ -4,6 +4,9 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe GroupDecorator, type: :decorator do
-    it "is a pending example"
+    it "is pending" do
+      pending "it has not been implemented yet."
+      raise
+    end
   end
 end
