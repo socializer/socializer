@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.add_dependency("simple_form",          "~> 5.0.2")
   s.add_dependency("uglifier",             ">= 4.1.19")
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-  s.add_dependency("webpacker",            "~> 5.1")
+  s.add_dependency("webpacker",            "~> 5.2")
 
   s.add_development_dependency("bundler",              "~> 2.1.1")
   s.add_development_dependency("rake",                 "~> 13.0.1")
@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop",              "~> 0.89.1")
   s.add_development_dependency("rubocop-performance",  "~> 1.7.1")
   s.add_development_dependency("rubocop-rails",        "~> 2.7.1")
-  s.add_development_dependency("rubocop-rspec",        "~> 1.42.0")
+  s.add_development_dependency("rubocop-rspec",        "~> 1.43.1")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
   s.add_development_dependency("solargraph")
 end
