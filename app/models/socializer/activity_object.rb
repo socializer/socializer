@@ -138,11 +138,7 @@ module Socializer
       unlikers = query.merge(Verb.with_display_name(name: "unlike"))
       people   = likers.map(&:actor)
 
-      unlikers.each do |activity|
-        people.delete_at people.index(activity.actor)
-      end
-
-      people
+      people.excluding(unlikers.map(&:actor))
     end
 
     # Reset unread_notifications_count to 0
