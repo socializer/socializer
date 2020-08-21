@@ -6,6 +6,7 @@ module Socializer
   RSpec.describe Circle::Contracts::Create, type: :contract do
     let(:contract) { described_class.new(record: record, actor: actor) }
     let(:result) { contract.call(attributes).to_monad }
+    let(:failure) { result.failure }
     let(:actor) { create(:person) }
     let(:record) { Socializer::Circle.new }
 
@@ -16,7 +17,7 @@ module Socializer
     context "when record is not specified" do
       let(:contract) { described_class.new(actor: actor) }
 
-      it { expect(result).to be_success }
+      specify { expect(result).to be_success }
     end
 
     context "when attributes are specified" do
@@ -27,12 +28,10 @@ module Socializer
 
     context "when attributes are not specified" do
       let(:attributes) { { } }
-      let(:failure) { result.failure }
 
-      it { expect(result).to be_failure }
-      it { expect(failure.success?).to be false }
-
-      it { expect(failure.errors).not_to be_nil }
+      specify { expect(result).to be_failure }
+      specify { expect(failure.success?).to be false }
+      specify { expect(failure.errors).not_to be_nil }
     end
 
     context "when display_name is not unique" do
@@ -44,10 +43,9 @@ module Socializer
         circle
       end
 
-      it { expect(result).to be_failure }
-      it { expect(failure.success?).to be false }
-
-      it { expect(failure.errors).not_to be_nil }
+      specify { expect(result).to be_failure }
+      specify { expect(failure.success?).to be false }
+      specify { expect(failure.errors).not_to be_nil }
     end
   end
 end

@@ -9,6 +9,7 @@ module Socializer
     let(:actor) { create(:person) }
     let(:display_name) { "Friends" }
     let(:content) { "Some content." }
+    let(:failure) { result.failure }
 
     let(:attributes) do
       { display_name: display_name, content: content }
@@ -22,7 +23,9 @@ module Socializer
         it { expect(result).to be_failure }
         it { expect(failure.success?).to be false }
 
-        it { expect(failure.errors).not_to be_nil }
+        specify { expect(result).to be_failure }
+        specify { expect(failure.success?).to be false }
+        specify { expect(failure.errors).not_to be_nil }
       end
 
       context "with required attributes" do
@@ -31,12 +34,16 @@ module Socializer
         let(:model) { success.class.name.demodulize }
         let(:notice_i18n) { I18n.t("socializer.model.create", model: model) }
 
-        it { expect(result).to be_success }
-        it { expect(success.valid?).to be true }
-        it { expect(success).to be_kind_of(Circle) }
-        it { expect(success.persisted?).to be true }
+        specify { expect(result).to be_success }
+        specify { expect(circle.valid?).to be true }
+        specify { expect(circle).to be_kind_of(Circle) }
+        specify { expect(circle.persisted?).to be true }
 
-        it { expect(notice).to eq(notice_i18n) }
+        specify do
+          model = circle.class.name.demodulize
+          notice_i18n = I18n.t("socializer.model.create", model: model)
+          expect(result.success[:notice]).to eq(notice_i18n)
+        end
       end
 
       context "when display_name is not unique" do
@@ -48,10 +55,9 @@ module Socializer
           circle
         end
 
-        it { expect(result).to be_failure }
-        it { expect(failure.success?).to be false }
-
-        it { expect(failure.errors).not_to be_nil }
+        specify { expect(result).to be_failure }
+        specify { expect(failure.success?).to be false }
+        specify { expect(failure.errors).not_to be_nil }
       end
     end
   end

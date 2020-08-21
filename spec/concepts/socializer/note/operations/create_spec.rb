@@ -5,8 +5,8 @@ require "rails_helper"
 module Socializer
   RSpec.describe Note::Operations::Create, type: :operation do
     let(:note) { described_class.new(actor: actor) }
-    let(:result) { note.call(params: attributes) }
     let(:activity_verb) { Types::ActivityVerbs["post"] }
+    let(:result) { described_class.new(actor: actor).call(params: attributes) }
     let(:actor) { create(:person) }
 
     let(:public_privacy) do
@@ -28,29 +28,29 @@ module Socializer
         let(:failure) { result.failure }
         let(:errors) { result.failure.errors }
 
-        it { expect(result).to be_failure }
-        it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
-        it { expect(failure.success?).to be false }
+        specify { expect(result).to be_failure }
+        specify { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
+        specify { expect(result.failure.success?).to be false }
 
-        it { expect(errors).not_to be_nil }
+        specify { expect(errors).not_to be_nil }
         # FIXME: Use I18n
-        it { expect(errors[:activity_verb]).to eq(["is missing"]) }
-        it { expect(errors[:object_ids]).to eq(["is missing"]) }
-        it { expect(errors[:content]).to eq(["is missing"]) }
+        specify { expect(errors[:object_ids]).to eq(["is missing"]) }
+        specify { expect(errors[:content]).to eq(["is missing"]) }
       end
 
       context "with required attributes" do
-        let(:success) { result.success[:note] }
-        let(:notice) { result.success[:notice] }
-        let(:model) { success.class.name.demodulize }
-        let(:notice_i18n) { I18n.t("socializer.model.create", model: model) }
+        let(:note) { result.success[:note] }
 
-        it { expect(result).to be_success }
-        it { expect(success.valid?).to be true }
-        it { expect(success).to be_kind_of(Note) }
-        it { expect(success.persisted?).to be true }
+        let(:notice_i18n) do
+          I18n.t("socializer.model.create",
+                 model: note.class.name.demodulize)
+        end
 
-        it { expect(notice).to eq(notice_i18n) }
+        specify { expect(result).to be_success }
+        specify { expect(note.valid?).to be true }
+        specify { expect(note).to be_kind_of(Note) }
+        specify { expect(note.persisted?).to be true }
+        specify { expect(result.success[:notice]).to eq(notice_i18n) }
       end
     end
   end

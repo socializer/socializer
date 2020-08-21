@@ -29,21 +29,21 @@ module Socializer
     context "when attributes are not specified" do
       let(:attributes) { { } }
 
-      it { expect(result).to be_failure }
-      # it { expect(result.errors[:display_name]).to eq(["is missing"]) }
+      specify { expect(result).to be_failure }
+      # specify { expect(result.errors[:display_name]).to eq(["is missing"]) }
     end
 
     context "when attributes are invalid" do
       describe "when activity_verb is not 'post'" do
         let(:activity_verb) { Types::ActivityVerbs["like"] }
 
-        it { expect(result).to be_failure }
+        specify { expect(result).to be_failure }
       end
 
       describe "when content is empty" do
         let(:content) { nil }
 
-        it { expect(result).to be_failure }
+        specify { expect(result).to be_failure }
       end
     end
   end

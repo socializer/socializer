@@ -7,6 +7,7 @@ module Socializer
     let(:contract) { described_class.new(record: record) }
     let(:result) { contract.call(attributes).to_monad }
     let(:record) { Socializer::Verb.new }
+    let(:failure) { result.failure }
 
     let(:attributes) do
       { display_name: "unlike" }
@@ -20,40 +21,30 @@ module Socializer
 
     context "when attributes are not specified" do
       let(:attributes) { { } }
-      let(:failure) { result.failure }
 
-      it { expect(result).to be_failure }
-      it { expect(failure.success?).to be false }
-
-      it { expect(failure.errors).not_to be_nil }
+      specify { expect(result).to be_failure }
+      specify { expect(failure.success?).to be false }
+      specify { expect(failure.errors).not_to be_nil }
     end
 
     context "when attributes are invalid" do
-      let(:valid_verbs) { Types::ActivityVerbs }
-      let(:failure) { result.failure }
-
       let(:attributes) do
         { display_name: "bob" }
       end
 
-      it { expect(result).to be_failure }
-      it { expect(failure.success?).to be false }
-
-      it { expect(failure.errors).not_to be_nil }
+      specify { expect(result).to be_failure }
+      specify { expect(failure.success?).to be false }
+      specify { expect(failure.errors).not_to be_nil }
     end
 
     context "when display_name is not unique" do
-      let(:verb) { Verb.create!(attributes) }
-      let(:failure) { result.failure }
-
       before do
-        verb
+        Verb.create!(attributes)
       end
 
-      it { expect(result).to be_failure }
-      it { expect(failure.success?).to be false }
-
-      it { expect(failure.errors).not_to be_nil }
+      specify { expect(result).to be_failure }
+      specify { expect(failure.success?).to be false }
+      specify { expect(failure.errors).not_to be_nil }
     end
   end
 end
