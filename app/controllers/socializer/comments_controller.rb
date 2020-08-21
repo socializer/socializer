@@ -71,7 +71,6 @@ module Socializer
 
     def build_comment
       current_user.comments.build(comment_params) do |comment|
-        # comment.activity_verb = Types::ActivityVerbs["add"]
         comment.scope = Audience.privacy.find_value(:public)
       end
     end
