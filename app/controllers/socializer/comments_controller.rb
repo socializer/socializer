@@ -21,15 +21,25 @@ module Socializer
 
     # POST /comments
     def create
-      comment = build_comment
+      operation = Comment::Operations::Create.new(actor: current_user)
+      result = operation.call(params: comment_params)
 
-      if comment.save
-        notice = t("socializer.model.create", model: "Comment")
-        redirect_to activities_path, notice: notice
-      else
-        render :new, locals: { comment: comment,
-                               target_id: comment.activity_target_id }
-      end
+      return create_failure(failure: result.failure) if result.failure?
+
+      success = result.success
+
+      flash.notice = success[:notice]
+      redirect_to activities_path
+
+      # comment = build_comment
+
+      # if comment.save
+      #   notice = t("socializer.model.create", model: "Comment")
+      #   redirect_to activities_path, notice: notice
+      # else
+      #   render :new, locals: { comment: comment,
+      #                          target_id: comment.activity_target_id }
+      # end
     end
 
     # GET /comments/1/edit
@@ -60,13 +70,19 @@ module Socializer
     private
 
     def build_comment
-      # DISCUSS: Should verbs be hard coded into the contracts or be
-      #          passed from the operation into the contract?
-      #          Verbs should not be passed in by the controller!
       current_user.comments.build(comment_params) do |comment|
-        comment.activity_verb = Types::ActivityVerbs["add"]
+        # comment.activity_verb = Types::ActivityVerbs["add"]
         comment.scope = Audience.privacy.find_value(:public)
       end
+    end
+
+    def create_failure(failure:)
+      @errors = failure.errors.to_h
+      comment = build_comment
+      # group = current_user.groups.build(group_params)
+
+      render :new, locals: { comment: comment,
+                             target_id: comment.activity_target_id }
     end
 
     def find_comment
@@ -75,7 +91,8 @@ module Socializer
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:content)
+      # params.require(:comment).permit(:content)
+      params.require(:comment).permit(:content).to_h.symbolize_keys
     end
   end
 end

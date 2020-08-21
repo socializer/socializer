@@ -90,6 +90,7 @@ module Socializer
 
         # TODO: Need the verb for creating a group?
         # def Verb
+        #   Types::ActivityVerbs["create"]
         # end
       end
     end

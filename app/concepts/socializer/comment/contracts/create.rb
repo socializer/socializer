@@ -5,29 +5,25 @@
 #
 module Socializer
   #
-  # Namespace for Note related objects
+  # Namespace for Comment related objects
   #
-  class Note
+  class Comment
     #
     # Namespace for Contract related objects
     #
     module Contracts
       #
-      # Contract object for validating Socializer::Note
+      # Contract object for validating Socializer::Comment
       #
       # @example
-      #   contract = Note::Contracts::Create.new
+      #   contract = Comment::Contracts::Create.new
       #   result = contract.call(params)
       class Create < Base::Contract
-        VERB = Types::ActivityVerbs["post"].freeze
+        VERB = Types::ActivityVerbs["add"].freeze
 
         params do
           # TODO: Rename :activity_verb to :verb
           required(:activity_verb).filled(:string, included_in?: VERB)
-          # TODO: Consider creating a Type for object_ids
-          required(:object_ids).filled do
-            str? | int? | each { str? | int? }
-          end
           required(:content).filled(:string)
         end
       end
