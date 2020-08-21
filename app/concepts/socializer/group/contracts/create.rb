@@ -38,9 +38,9 @@ module Socializer
         params do
           required(:display_name).filled(:string)
           required(:privacy).filled(:string, included_in?: PRIVACY)
-          optional(:content).filled(:string)
           optional(:tagline).filled(:string)
           optional(:about).filled(:string)
+          optional(:location).filled(:string)
         end
 
         # Preferred syntax would be:
