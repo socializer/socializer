@@ -64,7 +64,7 @@ module Socializer
       #          passed from the operation into the contract?
       #          Verbs should not be passed in by the controller!
       current_user.comments.build(comment_params) do |comment|
-        comment.activity_verb = "add"
+        comment.activity_verb = Types::ActivityVerbs["add"]
         comment.scope = Audience.privacy.find_value(:public)
       end
     end

@@ -68,19 +68,15 @@ module Socializer
         end
 
         def note_params(params)
-          # "content"=>"Test", "object_ids"=>"public" come from the controller
-          # note_params = { activity_verb: verb }
-
-          # params.merge(note_params)
-          params
+          params.merge({ activity_verb: verb })
         end
 
-        # # The verb to use when sharing an [Socializer::ActivityObject]
-        # #
-        # # @return [String]
-        # def verb
-        #   Types::ActivityVerbs["post"]
-        # end
+        # The verb to use when sharing an [Socializer::ActivityObject]
+        #
+        # @return [String]
+        def verb
+          Types::ActivityVerbs["post"]
+        end
       end
     end
   end

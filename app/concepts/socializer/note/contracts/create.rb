@@ -20,6 +20,7 @@ module Socializer
       #   result = contract.call(params)
       class Create < Base::Contract
         params do
+          # TODO: Rename :activity_verb to :verb
           required(:activity_verb).filled(:string, included_in?: "post")
           # TODO: Consider creating a Type for object_ids
           required(:object_ids).filled do

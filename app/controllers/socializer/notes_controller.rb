@@ -82,7 +82,8 @@ module Socializer
 
     # Only allow a trusted parameter "white list" through.
     def note_params
-      params.require(:note).permit(:activity_verb, :content, :object_ids)
+      params.require(:note).permit(:content,
+                                   :object_ids).to_h.symbolize_keys
     end
   end
 end

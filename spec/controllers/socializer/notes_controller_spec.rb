@@ -14,12 +14,8 @@ module Socializer
     end
 
     let(:valid_params) do
-      # DISCUSS: Should verbs be hard coded into the contracts or be
-      #          passed from the operation into the contract?
-      #          Verbs should not be passed in by the controller!
       { note: { content: "Test",
-                object_ids: "public",
-                activity_verb: "post" } }
+                object_ids: "public" } }
     end
 
     let(:update_params) do
@@ -151,8 +147,13 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
+        let(:result) do
+          Note::Operations::Create.new(actor: user)
+                                  .call(params: valid_params[:note])
+        end
+
         let(:note) do
-          user.activity_object.notes.create!(valid_params[:note])
+          result.success[:note]
         end
 
         context "when format.js returns success" do
