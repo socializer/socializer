@@ -60,6 +60,9 @@ module Socializer
     private
 
     def build_comment
+      # DISCUSS: Should verbs be hard coded into the contracts or be
+      #          passed from the operation into the contract?
+      #          Verbs should not be passed in by the controller!
       current_user.comments.build(comment_params) do |comment|
         comment.activity_verb = "add"
         comment.scope = Audience.privacy.find_value(:public)

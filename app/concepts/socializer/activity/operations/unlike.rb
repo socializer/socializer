@@ -51,7 +51,7 @@ module Socializer
         # @return [String]
         #
         def verb
-          "unlike"
+          Types::ActivityVerbs["unlike"]
         end
       end
     end

@@ -110,7 +110,7 @@ module Socializer
         #
         # @return [String]
         def verb
-          "like"
+          Types::ActivityVerbs["like"]
         end
       end
     end

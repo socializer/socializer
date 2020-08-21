@@ -79,7 +79,7 @@ module Socializer
         # #
         # # @return [String]
         # def verb
-        #   "post"
+        #   Types::ActivityVerbs["post"]
         # end
       end
     end

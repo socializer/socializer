@@ -98,7 +98,7 @@ module Socializer
         #
         # @return [String]
         def verb
-          "share"
+          Types::ActivityVerbs["share"]
         end
       end
     end
