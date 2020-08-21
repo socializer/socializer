@@ -20,7 +20,7 @@ module Socializer
           end
         end
 
-        it { expect(helper.current_user?(person)).to be false }
+        specify { expect(helper.current_user?(person)).to be false }
       end
 
       context "when true" do
@@ -30,7 +30,14 @@ module Socializer
           end
         end
 
-        it { expect(helper.current_user?(person)).to be true }
+        specify { expect(helper.current_user?(person)).to be true }
+      end
+    end
+
+    describe "#current_webpacker_instance" do
+      specify do
+        expect(helper.current_webpacker_instance)
+          .to be_kind_of(Webpacker::Instance)
       end
     end
   end
