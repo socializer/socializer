@@ -7,11 +7,11 @@ module Socializer
     let(:actor) { create(:person) }
     let(:liked_activity_object) { create(:activity_object) }
     let(:like) { described_class.new(actor: actor) }
-    let(:results) { like.call(like_attributes).success[:activity] }
 
-    let(:like_attributes) do
-      { activity_object: liked_activity_object }
+    let(:results) do
+      like.call(activity_object: liked_activity_object).success[:activity]
     end
+
 
     it { expect(results.persisted?).to eq(true) }
     it { expect(results.verb.display_name).to eq("like") }
@@ -19,7 +19,7 @@ module Socializer
 
     describe "check the like_count and liked_by" do
       before do
-        like.call(like_attributes)
+        like.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end
@@ -29,11 +29,11 @@ module Socializer
     end
 
     context "when liked you can't like again" do
-      let(:results) { like.call(like_attributes).failure }
+      let(:results) { like.call(activity_object: liked_activity_object).failure }
 
       before do
-        like.call(like_attributes)
-        like.call(like_attributes)
+        like.call(activity_object: liked_activity_object)
+        like.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end
