@@ -8,15 +8,11 @@ module Socializer
     let(:liked_activity_object) { create(:activity_object) }
     let(:like) { Activity::Services::Like.new(actor: liking_person) }
     let(:unlike) { described_class.new(actor: liking_person) }
-    let(:results) { unlike.call(unlike_attributes) }
-
-    let(:unlike_attributes) do
-      { activity_object: liked_activity_object }
-    end
+    let(:results) { unlike.call(activity_object: liked_activity_object) }
 
     context "when unliking a liked object, check return type" do
       before do
-        like.call(unlike_attributes)
+        like.call(activity_object: liked_activity_object)
       end
 
       it { expect(results.persisted?).to eq(true) }
@@ -26,8 +22,8 @@ module Socializer
 
     describe "check the like_count and liked_by" do
       before do
-        like.call(unlike_attributes)
-        unlike.call(unlike_attributes)
+        like.call(activity_object: liked_activity_object)
+        unlike.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end
@@ -38,7 +34,7 @@ module Socializer
 
     context "with no like, can't unlike" do
       before do
-        unlike.call(unlike_attributes)
+        unlike.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end

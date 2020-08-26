@@ -7,11 +7,7 @@ module Socializer
     let(:liking_person) { create(:person) }
     let(:liked_activity_object) { create(:activity_object) }
     let(:like) { described_class.new(actor: liking_person) }
-    let(:results) { like.call(like_attributes) }
-
-    let(:like_attributes) do
-      { activity_object: liked_activity_object }
-    end
+    let(:results) { like.call(activity_object: liked_activity_object) }
 
     it { expect(results.persisted?).to eq(true) }
     it { expect(results.verb.display_name).to eq("like") }
@@ -19,7 +15,7 @@ module Socializer
 
     describe "check the like_count and liked_by" do
       before do
-        like.call(like_attributes)
+        like.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end
@@ -30,8 +26,8 @@ module Socializer
 
     context "when liked you can't like again" do
       before do
-        like.call(like_attributes)
-        like.call(like_attributes)
+        like.call(activity_object: liked_activity_object)
+        like.call(activity_object: liked_activity_object)
 
         liked_activity_object.reload
       end
