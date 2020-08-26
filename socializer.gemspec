@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   s.add_dependency("omniauth",             "~> 1.9.1")
-  s.add_dependency("omniauth-facebook",    "~> 6.0.0")
+  s.add_dependency("omniauth-facebook",    "~> 7.0.0")
   s.add_dependency("omniauth-identity",    "~> 1.1.1")
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   s.add_dependency("omniauth-openid",      "~> 1.0.1")
@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("factory_bot_rails",    "~> 6.1.0")
   s.add_development_dependency("i18n-tasks",           "~> 0.9.31")
   s.add_development_dependency("inch",                 "~> 0.8.0")
-  s.add_development_dependency("shoulda-matchers",     "~> 4.3.0")
+  s.add_development_dependency("shoulda-matchers",     "~> 4.4.0")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.20.0")
   s.add_development_dependency("rubocop",              "~> 0.89.1")
