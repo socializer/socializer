@@ -23,7 +23,7 @@ module Socializer
 
       Notification.create_for_activity(activity.model)
 
-      flash.notice = t("socializer.model.create", model: "Note")
+      flash.notice = result.success[:notice]
 
       respond_to do |format|
         format.html { redirect_to activities_path }
