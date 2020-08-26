@@ -136,14 +136,6 @@ module Socializer
       let(:person) { activity_object_person.activitable }
       let(:group) { activity_object_group.activitable }
 
-      let(:common_stream_attributes) do
-        { actor_uid: person.id, viewer_id: person.id }
-      end
-
-      let(:group_stream_attributes) do
-        { actor_uid: group.id, viewer_id: person.id }
-      end
-
       # TODO: Test return values
       it { expect { described_class.stream }.to raise_error(ArgumentError) }
 
@@ -153,22 +145,26 @@ module Socializer
       end
 
       it do
-        expect(described_class.activity_stream(common_stream_attributes))
+        expect(described_class
+                 .activity_stream(actor_uid: person.id, viewer_id: person.id))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(described_class.circle_stream(common_stream_attributes))
+        expect(described_class
+                 .circle_stream(actor_uid: person.id, viewer_id: person.id))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(described_class.group_stream(group_stream_attributes))
+        expect(described_class
+                 .group_stream(actor_uid: group.id, viewer_id: person.id))
           .to be_kind_of(ActiveRecord::Relation)
       end
 
       it do
-        expect(described_class.person_stream(common_stream_attributes))
+        expect(described_class
+                 .person_stream(actor_uid: person.id, viewer_id: person.id))
           .to be_kind_of(ActiveRecord::Relation)
       end
     end
