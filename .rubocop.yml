@@ -31,7 +31,7 @@ AllCops:
   StyleGuideCopsOnly: false
   # What version of the Ruby interpreter is the inspected code intended to
   # run on? (If there is more than one, set this to the lowest version.)
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
