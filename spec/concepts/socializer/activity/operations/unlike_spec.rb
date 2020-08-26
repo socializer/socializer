@@ -36,7 +36,9 @@ module Socializer
     end
 
     context "with no like, can't unlike" do
-      let(:results) { unlike.call(activity_object: liked_activity_object).failure }
+      let(:results) do
+        unlike.call(activity_object: liked_activity_object).failure
+      end
 
       before do
         unlike.call(activity_object: liked_activity_object)

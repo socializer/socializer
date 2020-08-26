@@ -28,7 +28,9 @@ module Socializer
     end
 
     context "when liked you can't like again" do
-      let(:results) { like.call(activity_object: liked_activity_object).failure }
+      let(:results) do
+        like.call(activity_object: liked_activity_object).failure
+      end
 
       before do
         like.call(activity_object: liked_activity_object)
