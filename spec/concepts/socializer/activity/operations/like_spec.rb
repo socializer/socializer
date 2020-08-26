@@ -12,7 +12,6 @@ module Socializer
       like.call(activity_object: liked_activity_object).success[:activity]
     end
 
-
     it { expect(results.persisted?).to eq(true) }
     it { expect(results.verb.display_name).to eq("like") }
     it { expect(results).to be_kind_of(Socializer::Activity) }
