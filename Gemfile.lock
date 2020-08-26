@@ -374,7 +374,7 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
     sexp_processor (4.15.0)
-    shoulda-matchers (4.3.0)
+    shoulda-matchers (4.4.0)
       activesupport (>= 4.2.0)
     simple_form (5.0.2)
       actionpack (>= 5.0)
@@ -467,7 +467,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.7.1)
   rubocop-rspec (~> 1.43.2)
   scss_lint (~> 0.59.0)
-  shoulda-matchers (~> 4.3.0)
+  shoulda-matchers (~> 4.4.0)
   simplecov (~> 0.18.5)
   socializer!
   solargraph
