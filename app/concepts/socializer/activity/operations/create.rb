@@ -20,6 +20,7 @@ module Socializer
       #
       class Create < Base::Operation
         include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
+        include Dry::Monads[:try]
 
         CIRCLES_PRIVACY = Socializer::Audience.privacy.circles.value.freeze
         LIMITED_PRIVACY = Socializer::Audience.privacy.limited.value.freeze
@@ -129,15 +130,13 @@ module Socializer
         # @param [String] name The display name for the verb
         #
         # @return [Socializer::Verb]
-        #
-        # FIXME: Should return a monad and be called with yield
         def verb(name:)
           contract = Verb::Contracts::Create.new
           result = contract.call(display_name: name).to_monad
 
-          verb = Verb.find_or_create_by(result.success.to_h) if result.success?
-
-          verb.persisted? ? Success(verb) : Failure(Verb.none)
+          Try(ActiveRecord::RecordInvalid) do
+            Verb.find_or_create_by!(result.success.to_h)
+          end.to_result
         end
       end
     end
