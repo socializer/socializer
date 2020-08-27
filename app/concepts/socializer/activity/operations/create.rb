@@ -71,6 +71,8 @@ module Socializer
         end
 
         def activity_params(params:)
+          return if params.blank?
+
           @content = params.delete(:content)
           @object_ids = params[:object_ids]
           verb = yield verb(name: params.delete(:verb))
@@ -78,10 +80,13 @@ module Socializer
           activity_params = { actor_id: actor.guid,
                               verb: verb }
 
+          # Try(NoMethodError) { params.merge(activity_params) }.value!
+
           params.merge(activity_params)
-          # REVIEW: Look into the Try and Maybe monads here
-        rescue NoMethodError => e
-          Failure(e.message)
+          # REVIEW: Look into the Try and Maybe monads here. Maybe better when
+          #         calling activity_params.
+        # rescue NoMethodError => e
+        #   Failure(e.message)
         end
 
         # Add an audience to the activity
