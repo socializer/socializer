@@ -85,8 +85,8 @@ module Socializer
           params.merge(activity_params)
           # REVIEW: Look into the Try and Maybe monads here. Maybe better when
           #         calling activity_params.
-        # rescue NoMethodError => e
-        #   Failure(e.message)
+          # rescue NoMethodError => e
+          #   Failure(e.message)
         end
 
         # Add an audience to the activity
