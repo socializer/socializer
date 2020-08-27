@@ -82,13 +82,6 @@ module Socializer
           # REVIEW: Look into the Try and Maybe monads here
         rescue NoMethodError => e
           Failure(e.message)
-
-          # {
-          #   actor_id: actor_id,
-          #   activity_object_id: activity_object_id,
-          #   target_id: target_id,
-          #   verb: verb(name: verb)
-          # }
         end
 
         # Add an audience to the activity
