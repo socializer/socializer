@@ -56,7 +56,8 @@ module Socializer
     # DELETE /notes/1
     def destroy
       note = find_note
-      activity_guid = activity_for_note(note: note).guid
+      activity = Activity.find_by(activity_object_id: note.guid).decorate
+      activity_guid = activity.guid
       note.destroy
 
       respond_to do |format|
@@ -68,10 +69,6 @@ module Socializer
     end
 
     private
-
-    def activity_for_note(note:)
-      Activity.find_by(activity_object_id: note.guid).decorate
-    end
 
     def create_note
       note = Note::Operations::Create.new(actor: current_user)
