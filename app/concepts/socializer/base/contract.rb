@@ -2,6 +2,9 @@
 
 require "dry/validation"
 
+Dry::Validation.load_extensions(:monads)
+Dry::Validation.load_extensions(:predicates_as_macros)
+
 #
 # Namespace for the Socializer engine
 #
@@ -14,7 +17,7 @@ module Socializer
     # Base contract class
     #
     class Contract < Dry::Validation::Contract
-      Dry::Validation.load_extensions(:monads)
+      import_predicates_as_macros
 
       config.messages.backend = :i18n
       config.messages.default_locale = :en
