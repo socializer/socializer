@@ -47,10 +47,13 @@ module Socializer
         # @return [Socializer::Note]
         def call(params:)
           validated = yield validate(note_params(params))
-          note = yield create(validated.to_h)
-          notice = yield success_message(instance: note, action: "create")
+          result = yield create(validated.to_h)
+          notice = yield success_message(instance: result[:note],
+                                         action: "create")
 
-          Success(note: note, notice: notice)
+          Success(note: result[:note],
+                  activity: result[:activity],
+                  notice: notice)
         end
 
         private
@@ -61,10 +64,18 @@ module Socializer
         end
 
         def create(params)
-          Success(actor.activity_object.notes.create(params))
-        end
+          note = Note.none
+          activity = Activity.none
 
+          ActiveRecord::Base.transaction do
+            note = actor.activity_object.notes.create(params)
+            activity = Activity.find_by(activity_object_id: note.guid)
+            Notification.create_for_activity(activity)
+          end
 
+          Failure(note) unless note.persisted?
+
+          Success(note: note, activity: activity)
         end
 
         def note_params(params)

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry/monads"
+
 #
 # Namespace for the Socializer engine
 #
@@ -8,6 +10,8 @@ module Socializer
   # Notes controller
   #
   class NotesController < ApplicationController
+    include Dry::Monads[:result]
+
     before_action :authenticate_user
 
     # GET /notes/new
@@ -19,18 +23,19 @@ module Socializer
 
     # POST /notes
     def create
-      activity = activity_for_note(note: create_note)
+      case create_note
+      in Success(result)
+        flash.notice = result[:notice]
 
-      Notification.create_for_activity(activity.model)
-
-      flash.notice = result.success[:notice]
-
-      respond_to do |format|
-        format.html { redirect_to activities_path }
-        format.js do
-          render :create, locals: { activity: activity, note: Note.new,
-                                    current_id: nil, title: "Activity stream" }
+        respond_to do |format|
+          format.html { redirect_to activities_path }
+          format.js { create_render_js(activity: result[:activity]) }
         end
+      in Failure(result)
+        # flash.alert = "Note was not created."
+        @errors = result.errors.to_h
+        # @user = User.new(user_params)
+        # render :new
       end
     end
 
@@ -68,16 +73,19 @@ module Socializer
       Activity.find_by(activity_object_id: note.guid).decorate
     end
 
-    def find_note
-      current_user.activity_object.notes.find_by(id: params[:id])
-    end
-
     def create_note
       note = Note::Operations::Create.new(actor: current_user)
-      attributes = note_params.to_h.symbolize_keys
-      result = note.call(params: attributes)
+      note.call(params: note_params)
+    end
 
-      result.success? ? result.success[:note] : result.failure[:note]
+    def create_render_js(activity:)
+      render :create, locals: { activity: activity,
+                                note: Note.new, current_id: nil,
+                                title: "Activity stream" }
+    end
+
+    def find_note
+      current_user.activity_object.notes.find_by(id: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
