@@ -22,7 +22,7 @@ module Socializer
         content: content }
     end
 
-    context "with .call" do
+    describe ".call" do
       context "with no required attributes" do
         let(:attributes) { { } }
         let(:failure) { result.failure }

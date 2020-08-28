@@ -15,7 +15,7 @@ module Socializer
       { display_name: display_name, content: content }
     end
 
-    context "with .call" do
+    describe ".call" do
       context "with no required attributes" do
         let(:display_name) { nil }
         let(:failure) { result.failure }

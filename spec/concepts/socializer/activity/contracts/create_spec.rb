@@ -42,14 +42,14 @@ module Socializer
       specify { expect(result.errors[:content]).to be_nil }
     end
 
-    context "when #object_ids is an Integer" do
-      describe "and the circle don't exist" do
+    describe "when #object_ids is an Integer" do
+      context "when the circle does't exist" do
         let(:object_ids) { 1 }
 
         specify { expect(result).to be_failure }
       end
 
-      describe "and the circle exists" do
+      context "when the circle exists" do
         let(:circle) { create(:circle) }
         let(:object_ids) { circle.id }
 
@@ -57,18 +57,18 @@ module Socializer
       end
     end
 
-    context "when #object_ids is an array of Integers" do
-      describe "and the circles doesn't exist" do
+    describe "when #object_ids is an array of Integers" do
+      context "when the circles doesn't exist" do
         let(:object_ids) { [1, 2, 3] }
 
         specify { expect(result).to be_failure }
       end
 
-      describe "and the circles do exists" do
         let(:circle1) { create(:circle) }
         let(:circle2) { create(:circle) }
         let(:circle3) { create(:circle) }
         let(:object_ids) { [circle1.id, circle2.id, circle3.id] }
+      context "when the circles do exists" do
 
         specify { expect(result).to be_success }
       end

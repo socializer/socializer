@@ -17,7 +17,7 @@ module Socializer
         verb: verb }
     end
 
-    context "with .call" do
+    describe ".call" do
       context "with no required attributes" do
         let(:attributes) {}
         let(:failure) { result.failure }
