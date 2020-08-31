@@ -21,9 +21,9 @@ module Socializer
     end
 
     describe "relationships" do
-      it { is_expected.to belong_to(:group).inverse_of(:memberships) }
+      specify { is_expected.to belong_to(:group).inverse_of(:memberships) }
 
-      it do
+      specify do
         expect(membership)
           .to belong_to(:activity_member)
           .class_name("ActivityObject")
@@ -31,7 +31,7 @@ module Socializer
           .inverse_of(:memberships)
       end
 
-      it do
+      specify do
         expect(membership)
           .to have_one(:member).through(:activity_member).source(:activitable)
       end
@@ -42,8 +42,8 @@ module Socializer
         context "when no active records" do
           let(:result) { described_class.active }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.exists?).to be false }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.exists?).to be false }
         end
 
         context "with active records" do
@@ -51,8 +51,8 @@ module Socializer
 
           let(:result) { described_class.active }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.first.active).to be true }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.first.active).to be true }
         end
       end
 
@@ -60,8 +60,8 @@ module Socializer
         context "when no inactive records" do
           let(:result) { described_class.inactive }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.exists?).to be false }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.exists?).to be false }
         end
 
         context "with inactive records" do
@@ -69,15 +69,15 @@ module Socializer
 
           let(:result) { described_class.inactive }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.first.active).to be false }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.first.active).to be false }
         end
       end
 
       describe "with_member_id" do
         let(:sql) { described_class.with_member_id(member_id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql)
             .to include('WHERE "socializer_memberships"."member_id" = 1')
         end
@@ -86,8 +86,8 @@ module Socializer
           let(:user) { create(:person) }
           let(:result) { described_class.with_member_id(member_id: user.guid) }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.exists?).to be false }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.exists?).to be false }
         end
 
         context "when person has memberships" do
@@ -97,19 +97,19 @@ module Socializer
             membership
           end
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
 
           context "when they have memberships" do
-            it { expect(result.exists?).to be true }
-            it { expect(result.first.group_id).to eq group.id }
-            it { expect(result.first.member_id).to eq user.guid }
+            specify { expect(result.exists?).to be true }
+            specify { expect(result.first.group_id).to eq group.id }
+            specify { expect(result.first.member_id).to eq user.guid }
           end
         end
       end
     end
 
     describe "#member" do
-      it { expect(membership.member).to eq(user) }
+      specify { expect(membership.member).to eq(user) }
     end
 
     describe "#confirm" do

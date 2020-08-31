@@ -11,7 +11,7 @@ module Socializer
     end
 
     context "with relationships" do
-      it do
+      specify do
         expect(circle)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
@@ -19,17 +19,17 @@ module Socializer
           .inverse_of(:circles)
       end
 
-      it do
+      specify do
         expect(circle)
           .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end
 
-      it { is_expected.to have_many(:ties).inverse_of(:circle) }
-      it { is_expected.to have_many(:activity_contacts).through(:ties) }
+      specify { is_expected.to have_many(:ties).inverse_of(:circle) }
+      specify { is_expected.to have_many(:activity_contacts).through(:ties) }
 
-      it do
+      specify do
         expect(circle)
           .to have_many(:contacts)
           .through(:activity_contacts)
@@ -38,8 +38,8 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:activity_author) }
-      it { is_expected.to validate_presence_of(:display_name) }
+      specify { is_expected.to validate_presence_of(:activity_author) }
+      specify { is_expected.to validate_presence_of(:display_name) }
 
       it "check uniqueness of display_name" do
         create(:circle)
@@ -54,13 +54,15 @@ module Socializer
       describe "with_id" do
         let(:sql) { described_class.with_id(id: 1).to_sql }
 
-        it { expect(sql).to include('WHERE "socializer_circles"."id" = 1') }
+        specify do
+          expect(sql).to include('WHERE "socializer_circles"."id" = 1')
+        end
       end
 
       describe "with_author_id" do
         let(:sql) { described_class.with_author_id(id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql).to include('WHERE "socializer_circles"."author_id" = 1')
         end
       end
@@ -72,7 +74,7 @@ module Socializer
           %q(WHERE "socializer_circles"."display_name" = 'Friends')
         end
 
-        it do
+        specify do
           expect(sql).to include(expected)
         end
       end
@@ -80,7 +82,7 @@ module Socializer
 
     describe "author" do
       # TODO: Test return values
-      it { expect(circle.author).to be_kind_of(Socializer::Person) }
+      specify { expect(circle.author).to be_kind_of(Socializer::Person) }
     end
 
     context "when adding a contact" do
@@ -91,8 +93,8 @@ module Socializer
         circle_with_contacts.reload
       end
 
-      it { expect(circle_with_contacts.ties.size).to be(1) }
-      it { expect(circle_with_contacts.contacts.size).to be(1) }
+      specify { expect(circle_with_contacts.ties.size).to be(1) }
+      specify { expect(circle_with_contacts.contacts.size).to be(1) }
 
       describe "and removing it" do
         before do
@@ -100,11 +102,11 @@ module Socializer
           circle_with_contacts.reload
         end
 
-        it { expect(circle_with_contacts.ties.size).to be(0) }
-        it { expect(circle_with_contacts.contacts.size).to be(0) }
+        specify { expect(circle_with_contacts.ties.size).to be(0) }
+        specify { expect(circle_with_contacts.contacts.size).to be(0) }
       end
     end
 
-    it { is_expected.to respond_to(:author) }
+    specify { is_expected.to respond_to(:author) }
   end
 end

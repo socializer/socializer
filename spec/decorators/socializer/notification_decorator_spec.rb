@@ -17,7 +17,7 @@ module Socializer
 
     describe "card_class" do
       context "when unread" do
-        it do
+        specify do
           expect(decorated_notification.card_class(index: 1))
             .to eq("panel-default")
         end
@@ -26,14 +26,14 @@ module Socializer
       context "when read" do
         let(:notification) { create(:notification, read: true) }
 
-        it do
+        specify do
           expect(decorated_notification.card_class(index: 1))
             .to eq("panel-default bg-muted")
         end
       end
 
       context "when index is <= the unread_notifications_count" do
-        it do
+        specify do
           expect(decorated_notification.card_class(index: 0))
             .to eq("panel-success bg-success")
         end

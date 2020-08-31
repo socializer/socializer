@@ -11,17 +11,17 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:person) }
+      specify { is_expected.to belong_to(:person) }
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:display_name) }
-      it { is_expected.to validate_presence_of(:label) }
-      it { is_expected.to validate_presence_of(:person) }
-      it { is_expected.to validate_presence_of(:url) }
+      specify { is_expected.to validate_presence_of(:display_name) }
+      specify { is_expected.to validate_presence_of(:label) }
+      specify { is_expected.to validate_presence_of(:person) }
+      specify { is_expected.to validate_presence_of(:url) }
     end
 
-    it do
+    specify do
       expect(contribution).to enumerize(:label)
         .in(:current_contributor, :past_contributor)
         .with_default(:current_contributor)

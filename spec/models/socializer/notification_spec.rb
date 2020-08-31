@@ -12,9 +12,9 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:activity).inverse_of(:notifications) }
+      specify { is_expected.to belong_to(:activity).inverse_of(:notifications) }
 
-      it do
+      specify do
         expect(notification).to belong_to(:activity_object)
           .inverse_of(:notifications)
           .counter_cache(:unread_notifications_count)
@@ -22,15 +22,15 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:activity_id) }
-      it { is_expected.to validate_presence_of(:activity_object_id) }
+      specify { is_expected.to validate_presence_of(:activity_id) }
+      specify { is_expected.to validate_presence_of(:activity_object_id) }
     end
 
     context "with scopes" do
       describe "newest_first" do
         let(:sql) { described_class.newest_first.to_sql }
 
-        it do
+        specify do
           expect(sql)
             .to include('ORDER BY "socializer_notifications"."created_at" DESC')
         end
@@ -40,12 +40,12 @@ module Socializer
     describe "#mark_as_read" do
       let(:notification) { build(:notification, read: false) }
 
-      it { expect(notification.read).to be false }
+      specify { expect(notification.read).to be false }
 
       context "when read is false" do
         before { notification.mark_as_read }
 
-        it { expect(notification.read).to be true }
+        specify { expect(notification.read).to be true }
       end
     end
 
@@ -53,13 +53,13 @@ module Socializer
       let(:notification) { build(:notification, read: false) }
 
       context "when read is false" do
-        it { expect(notification.unread?).to be true }
+        specify { expect(notification.unread?).to be true }
       end
 
       context "when read is true" do
         let(:notification) { build(:notification, read: true) }
 
-        it { expect(notification.unread?).to be false }
+        specify { expect(notification.unread?).to be false }
       end
     end
   end

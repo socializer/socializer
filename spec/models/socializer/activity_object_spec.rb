@@ -11,46 +11,60 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:activitable) }
+      specify { is_expected.to belong_to(:activitable) }
 
-      it do
+      specify do
         expect(activity_object).to have_one(:self_reference)
           .class_name("ActivityObject")
           .with_foreign_key("id")
       end
 
       # FIXME: Test for source_type when available
-      it do
+      specify do
         expect(activity_object).to have_one(:group)
           .through(:self_reference)
           .source(:activitable)
       end
 
       # FIXME: Test for source_type when available
-      it do
+      specify do
         expect(activity_object).to have_one(:person)
           .through(:self_reference)
           .source(:activitable)
       end
 
-      it do
+      specify do
         expect(activity_object).to have_many(:notifications)
           .inverse_of(:activity_object)
       end
 
-      it { is_expected.to have_many(:audiences).inverse_of(:activity_object) }
-      it { is_expected.to have_many(:activities).through(:audiences) }
-      it { is_expected.to have_many(:actor_activities) }
-      it { is_expected.to have_many(:object_activities) }
-      it { is_expected.to have_many(:target_activities) }
-      it { is_expected.to have_many(:notes).inverse_of(:activity_author) }
-      it { is_expected.to have_many(:comments).inverse_of(:activity_author) }
-      it { is_expected.to have_many(:groups).inverse_of(:activity_author) }
-      it { is_expected.to have_many(:circles).inverse_of(:activity_author) }
-      it { is_expected.to have_many(:contacts).through(:circles) }
-      it { is_expected.to have_many(:ties).inverse_of(:activity_contact) }
+      specify do
+        expect(activity_object).to have_many(:audiences)
+          .inverse_of(:activity_object)
+      end
 
-      it do
+      specify { is_expected.to have_many(:activities).through(:audiences) }
+      specify { is_expected.to have_many(:actor_activities) }
+      specify { is_expected.to have_many(:object_activities) }
+      specify { is_expected.to have_many(:target_activities) }
+      specify { is_expected.to have_many(:notes).inverse_of(:activity_author) }
+
+      specify do
+        expect(activity_object).to have_many(:comments)
+          .inverse_of(:activity_author)
+      end
+
+      specify { is_expected.to have_many(:groups).inverse_of(:activity_author) }
+
+      specify do
+        expect(activity_object).to have_many(:circles)
+          .inverse_of(:activity_author)
+      end
+
+      specify { is_expected.to have_many(:contacts).through(:circles) }
+      specify { is_expected.to have_many(:ties).inverse_of(:activity_contact) }
+
+      specify do
         expect(activity_object)
           .to have_many(:memberships)
           .conditions(active: true)
@@ -59,14 +73,14 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:activitable) }
+      specify { is_expected.to validate_presence_of(:activitable) }
     end
 
     context "with scopes" do
       describe "with_id" do
         let(:sql) { described_class.with_id(id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql)
             .to include('WHERE "socializer_activity_objects"."id" = 1')
         end
@@ -84,49 +98,49 @@ module Socializer
             ).squish
         end
 
-        it do
+        specify do
           expect(sql).to include(expected)
         end
       end
     end
 
-    it { is_expected.to respond_to(:scope) }
+    specify { is_expected.to respond_to(:scope) }
 
     describe "check activitable_type predicates" do
       describe "#activity?" do
         let(:activity_object) { build(:activity_object_activity) }
 
-        it { expect(activity_object).to be_activity }
+        specify { expect(activity_object).to be_activity }
       end
 
       describe "#circle?" do
         let(:activity_object) { build(:activity_object_circle) }
 
-        it { expect(activity_object).to be_circle }
+        specify { expect(activity_object).to be_circle }
       end
 
       describe "#comment?" do
         let(:activity_object) { build(:activity_object_comment) }
 
-        it { expect(activity_object).to be_comment }
+        specify { expect(activity_object).to be_comment }
       end
 
       describe "#group?" do
         let(:activity_object) { build(:activity_object_group) }
 
-        it { expect(activity_object).to be_group }
+        specify { expect(activity_object).to be_group }
       end
 
       describe "#note?" do
         let(:activity_object) { build(:activity_object) }
 
-        it { expect(activity_object).to be_note }
+        specify { expect(activity_object).to be_note }
       end
 
       describe "#person?" do
         let(:activity_object) { build(:activity_object_person) }
 
-        it { expect(activity_object).to be_person }
+        specify { expect(activity_object).to be_person }
       end
     end
 
@@ -139,7 +153,7 @@ module Socializer
         activity_object.reset_unread_notifications
       end
 
-      it { expect(activity_object.unread_notifications_count).to eq(0) }
+      specify { expect(activity_object.unread_notifications_count).to eq(0) }
     end
 
     describe "#attribute_type_of" do

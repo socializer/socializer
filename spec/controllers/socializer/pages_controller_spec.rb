@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe PagesController, type: :controller do
     routes { Socializer::Engine.routes }
 
-    it { is_expected.not_to use_before_action(:authenticate_user) }
+    specify { is_expected.not_to use_before_action(:authenticate_user) }
 
     describe "GET #index" do
       before do

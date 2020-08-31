@@ -11,7 +11,7 @@ module Socializer
     context "with attributes" do
       describe "birthdate" do
         context "when not specified" do
-          it { expect(decorated_person.birthdate).to be nil }
+          specify { expect(decorated_person.birthdate).to be nil }
         end
 
         context "when specified" do
@@ -19,7 +19,7 @@ module Socializer
             build(:person, birthdate: Time.zone.now - 10.years)
           end
 
-          it do
+          specify do
             expect(decorated_person.birthdate)
               .to eq(person.birthdate.to_s(:long_ordinal))
           end
@@ -27,21 +27,21 @@ module Socializer
       end
 
       describe "gender" do
-        it { expect(decorated_person.gender).to eq("Unknown") }
+        specify { expect(decorated_person.gender).to eq("Unknown") }
       end
 
       describe "occupation" do
         context "when nil" do
           let(:message) { "What do you do?" }
 
-          it { expect(decorated_person.occupation).to eq(message) }
+          specify { expect(decorated_person.occupation).to eq(message) }
         end
 
         context "when not nil" do
           let(:occupation) { "sleeping, eating, drinking" }
           let(:person) { create(:person, occupation: occupation) }
 
-          it { expect(decorated_person.occupation).to eq(occupation) }
+          specify { expect(decorated_person.occupation).to eq(occupation) }
         end
       end
 
@@ -49,14 +49,14 @@ module Socializer
         context "when no value" do
           let(:message) { "For example: maiden name, alternate spellings" }
 
-          it { expect(decorated_person.other_names).to eq(message) }
+          specify { expect(decorated_person.other_names).to eq(message) }
         end
 
         context "with a value" do
           let(:other_name) { "Mr Scary" }
           let(:person) { create(:person, other_names: other_name) }
 
-          it { expect(decorated_person.other_names).to eq(other_name) }
+          specify { expect(decorated_person.other_names).to eq(other_name) }
         end
       end
 
@@ -64,14 +64,14 @@ module Socializer
         context "when unknown" do
           let(:message) { "Seeing anyone?" }
 
-          it { expect(decorated_person.relationship).to eq(message) }
+          specify { expect(decorated_person.relationship).to eq(message) }
         end
 
         context "when not unknown" do
           let(:relationship) { "single" }
           let(:person) { create(:person, relationship: relationship) }
 
-          it do
+          specify do
             expect(decorated_person.relationship).to eq(relationship.titleize)
           end
         end
@@ -81,14 +81,14 @@ module Socializer
         context "when nil" do
           let(:message) { "What are your skills?" }
 
-          it { expect(decorated_person.skills).to eq(message) }
+          specify { expect(decorated_person.skills).to eq(message) }
         end
 
         context "when not nil" do
           let(:skills) { "sleeping, eating, drinking" }
           let(:person) { create(:person, skills: skills) }
 
-          it { expect(decorated_person.skills).to eq(skills) }
+          specify { expect(decorated_person.skills).to eq(skills) }
         end
       end
     end
@@ -112,7 +112,7 @@ module Socializer
 
           let(:provider) { "FACEBOOK" }
 
-          it do
+          specify do
             expect(decorated_person.avatar_url).to include(provider.downcase)
           end
         end
@@ -124,7 +124,7 @@ module Socializer
 
           let(:provider) { "LINKEDIN" }
 
-          it do
+          specify do
             expect(decorated_person.avatar_url).to include(provider.downcase)
           end
         end
@@ -136,7 +136,7 @@ module Socializer
 
           let(:provider) { "TWITTER" }
 
-          it do
+          specify do
             expect(decorated_person.avatar_url).to include(provider.downcase)
           end
         end
@@ -145,19 +145,19 @@ module Socializer
       context "when the provider is gravatar" do
         let(:avatar_url) { "http://www.gravatar.com/avatar/" }
 
-        it { expect(decorated_person.avatar_url).to include(avatar_url) }
+        specify { expect(decorated_person.avatar_url).to include(avatar_url) }
 
         context "with a blank email" do
           let(:person) { build(:person, email: nil) }
 
-          it { expect(decorated_person.avatar_url).to eq(nil) }
+          specify { expect(decorated_person.avatar_url).to eq(nil) }
         end
       end
     end
 
     describe "contacts_count" do
       context "when no contacts" do
-        it { expect(decorated_person.contacts_count).to eq("0 people") }
+        specify { expect(decorated_person.contacts_count).to eq("0 people") }
       end
 
       context "with contacts" do
@@ -170,7 +170,7 @@ module Socializer
 
     describe "contact_of_count" do
       context "when not a contact of anyone" do
-        it { expect(decorated_person.contact_of_count).to eq("0 people") }
+        specify { expect(decorated_person.contact_of_count).to eq("0 people") }
       end
 
       context "when a contact of someone" do
@@ -187,11 +187,11 @@ module Socializer
       context "with no image_url" do
         let(:result) { decorated_person.image_tag_avatar }
 
-        it do
+        specify do
           expect(result).to have_selector("img[alt=Avatar][src*=gravatar]")
         end
 
-        it { expect(result).to include(decorated_person.avatar_url) }
+        specify { expect(result).to include(decorated_person.avatar_url) }
       end
 
       context "with the size argument" do
@@ -204,7 +204,7 @@ module Socializer
             "img[alt=Avatar][src*=gravatar][width='50'][height='100']"
           end
 
-          it { expect(result).to have_selector(selector) }
+          specify { expect(result).to have_selector(selector) }
         end
 
         context "with number" do
@@ -216,7 +216,7 @@ module Socializer
             "img[alt=Avatar][src*=gravatar][width='100'][height='100']"
           end
 
-          it { expect(result).to have_selector(selector) }
+          specify { expect(result).to have_selector(selector) }
         end
       end
 
@@ -229,7 +229,7 @@ module Socializer
           "img[alt=Avatar][src*=gravatar][class='img']"
         end
 
-        it { expect(result).to have_selector(selector) }
+        specify { expect(result).to have_selector(selector) }
       end
 
       context "with the alt argument" do
@@ -241,7 +241,7 @@ module Socializer
           "img[alt='Different Text'][src*=gravatar]"
         end
 
-        it { expect(result).to have_selector(selector) }
+        specify { expect(result).to have_selector(selector) }
       end
 
       context "with the title argument" do
@@ -253,7 +253,7 @@ module Socializer
           "img[alt='Avatar'][src*=gravatar][title='Title Text']"
         end
 
-        it { expect(result).to have_selector(selector) }
+        specify { expect(result).to have_selector(selector) }
       end
     end
 
@@ -269,43 +269,43 @@ module Socializer
         helpers.person_activities_path(person_id: person.id)
       end
 
-      it { expect(result).to have_link("", href: person_activities_path) }
-      it { expect(result).to include(image_tag_avatar) }
+      specify { expect(result).to have_link("", href: person_activities_path) }
+      specify { expect(result).to include(image_tag_avatar) }
     end
 
     describe "looking_for" do
       context "with no looking_for attributes set" do
         let(:string) { "Who are you looking for?" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_friends true" do
         let(:person) { create(:person, looking_for_friends: true) }
         let(:string) { "Friends<br>" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_dating true" do
         let(:person) { create(:person, looking_for_dating: true) }
         let(:string) { "Dating<br>" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_relationship true" do
         let(:person) { create(:person, looking_for_relationship: true) }
         let(:string) { "Relationship<br>" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking_for_networking true" do
         let(:person) { create(:person, looking_for_networking: true) }
         let(:string) { "Networking<br>" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
 
       context "with looking for friends and dating are true" do
@@ -315,7 +315,7 @@ module Socializer
 
         let(:string) { "Friends<br>Dating<br>" }
 
-        it { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq(string) }
       end
     end
 
@@ -337,7 +337,7 @@ module Socializer
       let(:group_url) { group_activities_path(group.try(:id)) }
 
       context "with no circles or memberships" do
-        it { expect(decorated_person.toolbar_stream_links).to eq(nil) }
+        specify { expect(decorated_person.toolbar_stream_links).to eq(nil) }
       end
 
       context "with circles and no memberships" do
@@ -348,53 +348,53 @@ module Socializer
         let(:result) { decorated_person.toolbar_stream_links }
         let(:li_count) { person.circles.count + 1 }
 
-        it { expect(result.html_safe?).to be true }
+        specify { expect(result.html_safe?).to be true }
 
-        it do
+        specify do
           expect(result)
             .to have_link("Friends", href: friends_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Family", href: family_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Acquaintances", href: acquaintances_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Following", href: following_url)
         end
 
-        it do
+        specify do
           expect(result)
             .not_to have_link("Group", href: "/groups/1/activities")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("li", count: li_count)
         end
 
-        it do
+        specify do
           # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
             .to have_link(t("socializer.shared.toolbar.more"), href: "")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("li.dropdown")
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("ul.dropdown-menu")
         end
       end
@@ -409,51 +409,51 @@ module Socializer
         let(:result) { decorated_person.toolbar_stream_links }
         let(:li_count) { person.circles.count + person.groups.count + 1 }
 
-        it { expect(result.html_safe?).to be true }
+        specify { expect(result.html_safe?).to be true }
 
-        it do
+        specify do
           expect(result)
             .to have_link("Friends", href: friends_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Family", href: family_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Acquaintances", href: acquaintances_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Following", href: following_url)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_link("Group", href: group_url)
         end
 
-        it { expect(result).to have_selector("li", count: li_count) }
+        specify { expect(result).to have_selector("li", count: li_count) }
 
-        it do
+        specify do
           # i18n-tasks-use t("socializer.shared.toolbar.more")
           expect(result)
             .to have_link(t("socializer.shared.toolbar.more"), href: "")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("li.dropdown")
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("a.dropdown-toggle[data-toggle='dropdown']")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("ul.dropdown-menu")
         end
       end

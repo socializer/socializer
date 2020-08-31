@@ -11,7 +11,7 @@ module Socializer
     end
 
     context "with relationships" do
-      it do
+      specify do
         expect(note)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
@@ -19,7 +19,7 @@ module Socializer
           .inverse_of(:notes)
       end
 
-      it do
+      specify do
         expect(note)
           .to have_one(:author)
           .through(:activity_author)
@@ -28,11 +28,11 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:activity_author) }
-      it { is_expected.to validate_presence_of(:content) }
+      specify { is_expected.to validate_presence_of(:activity_author) }
+      specify { is_expected.to validate_presence_of(:content) }
     end
 
     # TODO: Test return values
-    it { expect(note.author).to be_kind_of(Socializer::Person) }
+    specify { expect(note.author).to be_kind_of(Socializer::Person) }
   end
 end

@@ -11,20 +11,20 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:person) }
+      specify { is_expected.to belong_to(:person) }
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:category) }
-      it { is_expected.to validate_presence_of(:person) }
-      it { is_expected.to validate_presence_of(:line1) }
-      it { is_expected.to validate_presence_of(:city) }
-      it { is_expected.to validate_presence_of(:province_or_state) }
-      it { is_expected.to validate_presence_of(:postal_code_or_zip) }
-      it { is_expected.to validate_presence_of(:country) }
+      specify { is_expected.to validate_presence_of(:category) }
+      specify { is_expected.to validate_presence_of(:person) }
+      specify { is_expected.to validate_presence_of(:line1) }
+      specify { is_expected.to validate_presence_of(:city) }
+      specify { is_expected.to validate_presence_of(:province_or_state) }
+      specify { is_expected.to validate_presence_of(:postal_code_or_zip) }
+      specify { is_expected.to validate_presence_of(:country) }
     end
 
-    it do
+    specify do
       expect(address).to enumerize(:category)
         .in(:home, :work)
         .with_default(:home)

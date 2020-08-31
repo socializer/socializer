@@ -11,12 +11,12 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:group) }
+      specify { is_expected.to belong_to(:group) }
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:group) }
-      it { is_expected.to validate_presence_of(:display_name) }
+      specify { is_expected.to validate_presence_of(:group) }
+      specify { is_expected.to validate_presence_of(:display_name) }
     end
   end
 end
