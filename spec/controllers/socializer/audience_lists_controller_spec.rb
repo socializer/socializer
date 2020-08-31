@@ -22,7 +22,7 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "GET #index" do
         before do
@@ -32,18 +32,18 @@ module Socializer
         context "when it returns default values" do
           let(:json) { JSON.parse(response.body) }
 
-          it { expect(json.count).to eq(2) }
+          specify { expect(json.count).to eq(2) }
 
           context "when public" do
-            it { expect(json.first["id"]).to match("public") }
-            it { expect(json.first["name"]).to match("Public") }
-            it { expect(json.first["icon"]).to match("fa-globe") }
+            specify { expect(json.first["id"]).to match("public") }
+            specify { expect(json.first["name"]).to match("Public") }
+            specify { expect(json.first["icon"]).to match("fa-globe") }
           end
 
           context "when circles" do
-            it { expect(json.last["id"]).to match("circles") }
-            it { expect(json.last["name"]).to match("Circles") }
-            it { expect(json.last["icon"]).to match("fa-google-circles") }
+            specify { expect(json.last["id"]).to match("circles") }
+            specify { expect(json.last["name"]).to match("Circles") }
+            specify { expect(json.last["icon"]).to match("fa-google-circles") }
           end
         end
 

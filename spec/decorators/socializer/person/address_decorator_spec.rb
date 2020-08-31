@@ -15,7 +15,7 @@ module Socializer
           "Imogeneborough, California 58517<br>US"
         end
 
-        it do
+        specify do
           expect(decorated_address.formatted_address).to eq(address_value)
         end
       end
@@ -29,7 +29,7 @@ module Socializer
           "US"
         end
 
-        it do
+        specify do
           expect(decorated_address.formatted_address).to eq(address_value)
         end
       end
@@ -38,7 +38,7 @@ module Socializer
     describe "city_province_or_state_postal_code" do
       let(:result) { "Imogeneborough, California 58517" }
 
-      it do
+      specify do
         expect(decorated_address.city_province_or_state_postal_code)
           .to eq(result)
       end

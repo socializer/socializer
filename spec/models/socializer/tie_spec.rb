@@ -12,9 +12,9 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:circle).inverse_of(:ties) }
+      specify { is_expected.to belong_to(:circle).inverse_of(:ties) }
 
-      it do
+      specify do
         expect(tie)
           .to belong_to(:activity_contact)
           .class_name("ActivityObject")
@@ -22,7 +22,7 @@ module Socializer
           .inverse_of(:ties)
       end
 
-      it do
+      specify do
         expect(tie)
           .to have_one(:contact)
           .through(:activity_contact)
@@ -31,15 +31,15 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:circle) }
-      it { is_expected.to validate_presence_of(:activity_contact) }
+      specify { is_expected.to validate_presence_of(:circle) }
+      specify { is_expected.to validate_presence_of(:activity_contact) }
     end
 
     context "with scopes" do
       describe "with_circle_id" do
         let(:sql) { described_class.with_circle_id(circle_id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql).to include('WHERE "socializer_ties"."circle_id" = 1')
         end
       end
@@ -47,21 +47,21 @@ module Socializer
       describe "with_contact_id" do
         let(:sql) { described_class.with_contact_id(contact_id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql).to include('WHERE "socializer_ties"."contact_id" = 1')
         end
 
-        it { expect(tie.contact_id).to eq(contact.id) }
+        specify { expect(tie.contact_id).to eq(contact.id) }
 
         context "when nil" do
           let(:tie) { build(:tie, contact_id: nil) }
 
-          it { expect(tie.contact_id).to eq(nil) }
+          specify { expect(tie.contact_id).to eq(nil) }
         end
       end
     end
 
     # TODO: Test return values
-    it { expect(tie.contact).to be_kind_of(Socializer::Person) }
+    specify { expect(tie.contact).to be_kind_of(Socializer::Person) }
   end
 end

@@ -76,7 +76,7 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "GET #new" do
         before do
@@ -130,7 +130,7 @@ module Socializer
             patch :update, params: update_params
           end
 
-          it { expect(response).to have_http_status(:found) }
+          specify { expect(response).to have_http_status(:found) }
 
           it "redirects to people#show" do
             expect(response).to redirect_to user
@@ -153,7 +153,7 @@ module Socializer
             patch :update, params: update_params
           end
 
-          it { expect(response).to have_http_status(:ok) }
+          specify { expect(response).to have_http_status(:ok) }
 
           it "does not change the attributes" do
             education.reload
@@ -182,8 +182,8 @@ module Socializer
             delete :destroy, params: delete_attributes
           end
 
-          it { expect(response).to redirect_to user }
-          it { expect(response).to have_http_status(:found) }
+          specify { expect(response).to redirect_to user }
+          specify { expect(response).to have_http_status(:found) }
         end
       end
     end

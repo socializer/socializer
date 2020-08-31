@@ -46,7 +46,7 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "POST #create" do
         before do
@@ -64,8 +64,8 @@ module Socializer
               post :create, params: valid_attributes, format: :js
             end
 
-            it { expect(response).to have_http_status(:ok) }
-            it { expect(response).to render_template(:create) }
+            specify { expect(response).to have_http_status(:ok) }
+            specify { expect(response).to render_template(:create) }
           end
         end
 
@@ -79,7 +79,7 @@ module Socializer
           #     .not_to change(Tie, :count)
           # end
           #
-          # it { expect(response).to have_http_status(:ok) }
+          # specify { expect(response).to have_http_status(:ok) }
         end
       end
 
@@ -95,8 +95,8 @@ module Socializer
             delete :destroy, params: { id: tie }
           end
 
-          it { expect(response).to redirect_to circle }
-          it { expect(response).to have_http_status(:found) }
+          specify { expect(response).to redirect_to circle }
+          specify { expect(response).to have_http_status(:found) }
         end
       end
     end

@@ -28,9 +28,9 @@ module Socializer
         expect(post: "/people/1/activities").not_to be_routable
       end
 
-      context "when it does not route to #update" do
-        it { expect(patch: "/people/1/activities/1").not_to be_routable }
-        it { expect(put: "/people/1/activities/1").not_to be_routable }
+      context "when specify does not route to #update" do
+        specify { expect(patch: "/people/1/activities/1").not_to be_routable }
+        specify { expect(put: "/people/1/activities/1").not_to be_routable }
       end
 
       it "does not route to #destroy" do

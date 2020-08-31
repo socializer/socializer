@@ -29,9 +29,9 @@ module Socializer
           .to route_to("socializer/activities/shares#create", id: "1")
       end
 
-      context "when it does not route to #update" do
-        it { expect(patch: "/activities/1/shares/1").not_to be_routable }
-        it { expect(put: "/activities/1/shares/1").not_to be_routable }
+      context "when specify does not route to #update" do
+        specify { expect(patch: "/activities/1/shares/1").not_to be_routable }
+        specify { expect(put: "/activities/1/shares/1").not_to be_routable }
       end
 
       it "does not route to #destroy" do

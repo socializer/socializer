@@ -12,8 +12,8 @@ module Socializer
 
     let(:user) { create(:person) }
 
-    it { is_expected.to use_before_action(:set_locale) }
-    it { is_expected.not_to use_before_action(:authenticate_user) }
+    specify { is_expected.to use_before_action(:set_locale) }
+    specify { is_expected.not_to use_before_action(:authenticate_user) }
 
     context "when not logged in" do
       before do
@@ -38,7 +38,7 @@ module Socializer
 
           let(:user) { create(:person, :english) }
 
-          it { expect(I18n.locale.to_s).to eq(user.language) }
+          specify { expect(I18n.locale.to_s).to eq(user.language) }
         end
 
         context "when the language is set in 'HTTP_ACCEPT_LANGUAGE'" do
@@ -49,7 +49,7 @@ module Socializer
 
           let(:language) { request.env["HTTP_ACCEPT_LANGUAGE"] }
 
-          it { expect(I18n.locale.to_s).to eq(language) }
+          specify { expect(I18n.locale.to_s).to eq(language) }
         end
       end
     end

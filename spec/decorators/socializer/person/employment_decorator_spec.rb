@@ -9,7 +9,7 @@ module Socializer
 
     describe "ended_on" do
       context "when nil" do
-        it { expect(decorated_employment.ended_on).to eq(nil) }
+        specify { expect(decorated_employment.ended_on).to eq(nil) }
       end
 
       context "when it is a date" do
@@ -17,7 +17,7 @@ module Socializer
         let(:employment) { create(:person_employment, ended_on: date) }
         let(:ended_on) { date.to_s(:long_ordinal) }
 
-        it { expect(decorated_employment.ended_on).to eq(ended_on) }
+        specify { expect(decorated_employment.ended_on).to eq(ended_on) }
       end
     end
 
@@ -28,7 +28,7 @@ module Socializer
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_employment.formatted_employment)
             .to eq(employment_value)
         end
@@ -43,7 +43,7 @@ module Socializer
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_employment.formatted_employment)
             .to eq(employment_value)
         end
@@ -60,7 +60,7 @@ module Socializer
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_employment.formatted_employment)
             .to eq(employment_value)
         end
@@ -79,7 +79,7 @@ module Socializer
           "#{decorated_employment.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_employment.formatted_employment)
             .to eq(employment_value)
         end
@@ -89,7 +89,7 @@ module Socializer
     describe "started_on" do
       let(:started_on) { Date.new(2014, 12, 3).to_s(:long_ordinal) }
 
-      it { expect(decorated_employment.started_on).to eq(started_on) }
+      specify { expect(decorated_employment.started_on).to eq(started_on) }
     end
 
     describe "started_on_to_ended_on" do
@@ -98,7 +98,9 @@ module Socializer
       context "when ended_on is nil" do
         let(:value) { "#{started_on} - present" }
 
-        it { expect(decorated_employment.started_on_to_ended_on).to eq(value) }
+        specify do
+          expect(decorated_employment.started_on_to_ended_on).to eq(value)
+        end
       end
 
       context "when ended_on is a date" do
@@ -111,7 +113,9 @@ module Socializer
         let(:ended_on) { date.to_s(:long_ordinal) }
         let(:value) { "#{started_on} - #{ended_on}" }
 
-        it { expect(decorated_employment.started_on_to_ended_on).to eq(value) }
+        specify do
+          expect(decorated_employment.started_on_to_ended_on).to eq(value)
+        end
       end
     end
   end

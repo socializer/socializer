@@ -35,7 +35,7 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "DELETE #destroy" do
         context "with valid attributes" do
@@ -50,8 +50,11 @@ module Socializer
               delete :destroy, params: { id: membership.id }
             end
 
-            it { expect(response).to redirect_to groups_pending_invites_path }
-            it { expect(response).to have_http_status(:found) }
+            specify do
+              expect(response).to redirect_to groups_pending_invites_path
+            end
+
+            specify { expect(response).to have_http_status(:found) }
           end
         end
 

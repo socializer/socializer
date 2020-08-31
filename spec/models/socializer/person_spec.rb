@@ -12,32 +12,32 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to have_one(:activity_object) }
-      it { is_expected.to have_many(:authentications) }
-      it { is_expected.to have_many(:addresses) }
-      it { is_expected.to have_many(:contributions) }
-      it { is_expected.to have_many(:educations) }
-      it { is_expected.to have_many(:employments) }
-      it { is_expected.to have_many(:links) }
-      it { is_expected.to have_many(:phones) }
-      it { is_expected.to have_many(:places) }
+      specify { is_expected.to have_one(:activity_object) }
+      specify { is_expected.to have_many(:authentications) }
+      specify { is_expected.to have_many(:addresses) }
+      specify { is_expected.to have_many(:contributions) }
+      specify { is_expected.to have_many(:educations) }
+      specify { is_expected.to have_many(:employments) }
+      specify { is_expected.to have_many(:links) }
+      specify { is_expected.to have_many(:phones) }
+      specify { is_expected.to have_many(:places) }
     end
 
     context "with validations" do
-      it do
+      specify do
         expect(person)
           .to validate_inclusion_of(:avatar_provider).in_array(valid_providers)
       end
     end
 
-    it do
+    specify do
       expect(person).to enumerize(:gender)
         .in(:unknown, :female, :male).with_default(:unknown)
         .with_predicates(true)
         .with_scope(true)
     end
 
-    it do
+    specify do
       expect(person).to enumerize(:relationship)
         .in(:unknown, :single, :relationship, :engaged, :married, :complicated,
             :open, :widowed, :domestic, :civil)
@@ -60,8 +60,8 @@ module Socializer
         person.authentications.create(authentications_attributes)
       end
 
-      it { expect(person.services.to_sql).to include("!= 'identity'") }
-      it { expect(person.services.count).to eq(1) }
+      specify { expect(person.services.to_sql).to include("!= 'identity'") }
+      specify { expect(person.services.count).to eq(1) }
 
       it "Socializer::Person#services should eq facebook" do
         expect(person.services.find_by(provider: "facebook").provider)
@@ -73,32 +73,32 @@ module Socializer
       let(:person) { build(:person_circles) }
       let(:circles) { person.activity_object.circles }
 
-      it { expect(person.circles).to be_a(circles.class) }
-      it { expect(person.circles).to eq(circles) }
+      specify { expect(person.circles).to be_a(circles.class) }
+      specify { expect(person.circles).to eq(circles) }
     end
 
     describe "#comments" do
       let(:person) { build(:person_comments) }
       let(:comments) { person.activity_object.comments }
 
-      it { expect(person.comments).to be_a(comments.class) }
-      it { expect(person.comments).to eq(comments) }
+      specify { expect(person.comments).to be_a(comments.class) }
+      specify { expect(person.comments).to eq(comments) }
     end
 
     describe "#groups" do
       let(:person) { build(:person_groups) }
       let(:groups) { person.activity_object.groups }
 
-      it { expect(person.groups).to be_a(groups.class) }
-      it { expect(person.groups).to eq(groups) }
+      specify { expect(person.groups).to be_a(groups.class) }
+      specify { expect(person.groups).to eq(groups) }
     end
 
     describe "#notes" do
       let(:person) { build(:person_notes) }
       let(:notes) { person.activity_object.notes }
 
-      it { expect(person.notes).to be_a(notes.class) }
-      it { expect(person.notes).to eq(notes) }
+      specify { expect(person.notes).to be_a(notes.class) }
+      specify { expect(person.notes).to eq(notes) }
     end
 
     it "#memberships" do
@@ -113,7 +113,7 @@ module Socializer
       let(:person) { build(:person_circles) }
 
       # TODO: Test return values
-      it do
+      specify do
         expect(person.contacts)
           .to be_kind_of(ActiveRecord::Associations::CollectionProxy)
       end
@@ -123,7 +123,9 @@ module Socializer
       let(:person) { build(:person_circles) }
 
       # TODO: Test return values
-      it { expect(person.contact_of).to be_kind_of(ActiveRecord::Relation) }
+      specify do
+        expect(person.contact_of).to be_kind_of(ActiveRecord::Relation)
+      end
     end
 
     describe "#likes and #likes?" do
@@ -136,8 +138,8 @@ module Socializer
           .call(activity_object: liked_activity_object)
       end
 
-      it { expect(liking_person.likes.count.size).to eq(1) }
-      it { expect(liking_person).to be_likes(liked_activity_object) }
+      specify { expect(liking_person.likes.count.size).to eq(1) }
+      specify { expect(liking_person).to be_likes(liked_activity_object) }
     end
 
     it "#pending_membership_invites" do

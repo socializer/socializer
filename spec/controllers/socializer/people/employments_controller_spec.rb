@@ -74,14 +74,14 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "GET #new" do
         before do
           get :new, params: { person_id: user }
         end
 
-        it { expect(response).to have_http_status(:ok) }
+        specify { expect(response).to have_http_status(:ok) }
 
         it "renders the :new template" do
           expect(response).to render_template :new
@@ -100,8 +100,8 @@ module Socializer
               post :create, params: valid_params
             end
 
-            it { expect(response).to redirect_to user }
-            it { expect(response).to have_http_status(:found) }
+            specify { expect(response).to redirect_to user }
+            specify { expect(response).to have_http_status(:found) }
           end
         end
 
@@ -111,7 +111,7 @@ module Socializer
               .not_to change(Person::Employment, :count)
           end
 
-          it { expect(response).to have_http_status(:ok) }
+          specify { expect(response).to have_http_status(:ok) }
 
           it "re-renders the :new template" do
             post :create, params: invalid_params
@@ -125,7 +125,7 @@ module Socializer
           get :edit, params: { id: employment, person_id: user }
         end
 
-        it { expect(response).to have_http_status(:ok) }
+        specify { expect(response).to have_http_status(:ok) }
 
         it "renders the :edit template" do
           expect(response).to render_template :edit
@@ -138,7 +138,7 @@ module Socializer
             patch :update, params: update_params
           end
 
-          it { expect(response).to have_http_status(:found) }
+          specify { expect(response).to have_http_status(:found) }
 
           it "redirects to people#show" do
             expect(response).to redirect_to user
@@ -161,7 +161,7 @@ module Socializer
             patch :update, params: update_params
           end
 
-          it { expect(response).to have_http_status(:ok) }
+          specify { expect(response).to have_http_status(:ok) }
 
           it "does not change the attributes" do
             employment.reload
@@ -190,8 +190,8 @@ module Socializer
             delete :destroy, params: delete_attributes
           end
 
-          it { expect(response).to redirect_to user }
-          it { expect(response).to have_http_status(:found) }
+          specify { expect(response).to redirect_to user }
+          specify { expect(response).to have_http_status(:found) }
         end
       end
     end
