@@ -36,13 +36,13 @@ module Socializer
       # Setting the current user
       before { cookies.signed[:user_id] = user.guid }
 
-      it { is_expected.to use_before_action(:authenticate_user) }
+      specify { is_expected.to use_before_action(:authenticate_user) }
 
       describe "POST #create" do
         context "with valid attributes" do
           context "with confirm the membership" do
             context "when before the #create actions" do
-              it { expect(membership.active).to be false }
+              specify { expect(membership.active).to be false }
             end
 
             context "when after the #create actions" do
@@ -50,8 +50,8 @@ module Socializer
                 post :create, params: { id: membership.id }
               end
 
-              it { expect(membership.reload.active).to eq(true) }
-              it { expect(response).to have_http_status(:found) }
+              specify { expect(membership.reload.active).to eq(true) }
+              specify { expect(response).to have_http_status(:found) }
             end
           end
 
@@ -60,8 +60,8 @@ module Socializer
               post :create, params: { id: membership.id }
             end
 
-            it { expect(response).to redirect_to membership.group }
-            it { expect(response).to have_http_status(:found) }
+            specify { expect(response).to redirect_to membership.group }
+            specify { expect(response).to have_http_status(:found) }
           end
         end
 

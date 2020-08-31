@@ -11,25 +11,25 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:activity).inverse_of(:audiences) }
+      specify { is_expected.to belong_to(:activity).inverse_of(:audiences) }
 
-      it do
+      specify do
         expect(audience)
           .to belong_to(:activity_object).optional.inverse_of(:audiences)
       end
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:privacy) }
-      # it { is_expected.to validate_presence_of(:activity_id) }
+      specify { is_expected.to validate_presence_of(:privacy) }
+      # specify { is_expected.to validate_presence_of(:activity_id) }
       #
-      # it do
+      # specify do
       #   is_expected
       #   .to validate_uniqueness_of(:activity_id)
       #     .scoped_to(:activity_object_id)
       # end
 
-      # it do
+      # specify do
       #   expect(create(:audience))
       #   .to validate_uniqueness_of(:activity_id)
       #     .scoped_to(:activity_object_id)
@@ -40,7 +40,7 @@ module Socializer
       describe "with_activity_id" do
         let(:sql) { described_class.with_activity_id(id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql)
             .to include('WHERE "socializer_audiences"."activity_id" = 1')
         end
@@ -49,14 +49,14 @@ module Socializer
       describe "with_activity_object_id" do
         let(:sql) { described_class.with_activity_object_id(id: 1).to_sql }
 
-        it do
+        specify do
           expect(sql)
             .to include('WHERE "socializer_audiences"."activity_object_id" = 1')
         end
       end
     end
 
-    it do
+    specify do
       expect(audience).to enumerize(:privacy)
         .in(:public, :circles, :limited)
         .with_default(:public)
@@ -67,8 +67,8 @@ module Socializer
     describe "#object" do
       let(:activitable) { audience.activity_object.activitable }
 
-      it { expect(audience.object).to be_a(activitable.class) }
-      it { expect(audience.object).to eq(activitable) }
+      specify { expect(audience.object).to be_a(activitable.class) }
+      specify { expect(audience.object).to eq(activitable) }
     end
   end
 end

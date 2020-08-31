@@ -11,14 +11,14 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to have_many(:activities) }
+      specify { is_expected.to have_many(:activities) }
     end
 
     context "with validations" do
       subject { verb }
 
-      it { is_expected.to validate_presence_of(:display_name) }
-      it { is_expected.to validate_uniqueness_of(:display_name) }
+      specify { is_expected.to validate_presence_of(:display_name) }
+      specify { is_expected.to validate_uniqueness_of(:display_name) }
     end
 
     context "with scopes" do
@@ -27,14 +27,14 @@ module Socializer
 
         let(:result) { described_class.with_display_name(name: "post") }
 
-        it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-        it { expect(result.first.display_name).to eq("post") }
+        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result.first.display_name).to eq("post") }
 
         context "when the name is not found" do
           let(:result) { described_class.with_display_name(name: "none") }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.exists?).to be(false) }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.exists?).to be(false) }
         end
       end
     end

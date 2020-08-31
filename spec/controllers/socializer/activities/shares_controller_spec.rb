@@ -49,7 +49,7 @@ module Socializer
         # Setting the current user
         before { cookies.signed[:user_id] = user.guid }
 
-        it { is_expected.to use_before_action(:authenticate_user) }
+        specify { is_expected.to use_before_action(:authenticate_user) }
 
         describe "GET #new" do
           # Visit the new page
@@ -75,7 +75,7 @@ module Socializer
               expect(response).to redirect_to activities_path
             end
 
-            it { is_expected.to set_flash[:notice].to(message) }
+            specify { is_expected.to set_flash[:notice].to(message) }
           end
 
           context "with invalid attributes" do

@@ -9,7 +9,7 @@ module Socializer
 
     describe "ended_on" do
       context "when nil" do
-        it { expect(decorated_education.ended_on).to eq(nil) }
+        specify { expect(decorated_education.ended_on).to eq(nil) }
       end
 
       context "when it is a date" do
@@ -17,7 +17,7 @@ module Socializer
         let(:education) { create(:person_education, ended_on: date) }
         let(:ended_on) { date.to_s(:long_ordinal) }
 
-        it { expect(decorated_education.ended_on).to eq(ended_on) }
+        specify { expect(decorated_education.ended_on).to eq(ended_on) }
       end
     end
 
@@ -29,7 +29,7 @@ module Socializer
           "#{decorated_education.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_education.formatted_education)
             .to eq(education_value)
         end
@@ -45,7 +45,7 @@ module Socializer
           "#{decorated_education.started_on_to_ended_on}"
         end
 
-        it do
+        specify do
           expect(decorated_education.formatted_education)
             .to eq(education_value)
         end
@@ -55,7 +55,7 @@ module Socializer
     describe "started_on" do
       let(:started_on) { Date.new(2012, 12, 3).to_s(:long_ordinal) }
 
-      it { expect(decorated_education.started_on).to eq(started_on) }
+      specify { expect(decorated_education.started_on).to eq(started_on) }
     end
 
     describe "started_on_to_ended_on" do
@@ -64,7 +64,9 @@ module Socializer
       context "when ended_on is nil" do
         let(:value) { "#{started_on} - present" }
 
-        it { expect(decorated_education.started_on_to_ended_on).to eq(value) }
+        specify do
+          expect(decorated_education.started_on_to_ended_on).to eq(value)
+        end
       end
 
       context "when ended_on is a date" do
@@ -77,7 +79,9 @@ module Socializer
         let(:ended_on) { date.to_s(:long_ordinal) }
         let(:value) { "#{started_on} - #{ended_on}" }
 
-        it { expect(decorated_education.started_on_to_ended_on).to eq(value) }
+        specify do
+          expect(decorated_education.started_on_to_ended_on).to eq(value)
+        end
       end
     end
   end

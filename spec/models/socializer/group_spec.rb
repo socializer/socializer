@@ -11,7 +11,7 @@ module Socializer
     end
 
     context "with relationships" do
-      it do
+      specify do
         expect(group)
           .to belong_to(:activity_author)
           .class_name("ActivityObject")
@@ -19,25 +19,25 @@ module Socializer
           .inverse_of(:groups)
       end
 
-      it do
+      specify do
         expect(group)
           .to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end
 
-      it { is_expected.to have_many(:links) }
-      it { is_expected.to have_many(:categories) }
-      it { is_expected.to have_many(:memberships) }
+      specify { is_expected.to have_many(:links) }
+      specify { is_expected.to have_many(:categories) }
+      specify { is_expected.to have_many(:memberships) }
 
-      it do
+      specify do
         expect(group)
           .to have_many(:activity_members)
           .through(:memberships)
           .conditions(socializer_memberships: { active: true })
       end
 
-      it do
+      specify do
         expect(group)
           .to have_many(:members)
           .through(:activity_members)
@@ -46,9 +46,9 @@ module Socializer
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:activity_author) }
-      it { is_expected.to validate_presence_of(:display_name) }
-      it { is_expected.to validate_presence_of(:privacy) }
+      specify { is_expected.to validate_presence_of(:activity_author) }
+      specify { is_expected.to validate_presence_of(:display_name) }
+      specify { is_expected.to validate_presence_of(:privacy) }
 
       it "check uniqueness of display_name" do
         create(:group)
@@ -67,13 +67,13 @@ module Socializer
           %q(WHERE "socializer_groups"."display_name" = 'Group')
         end
 
-        it do
+        specify do
           expect(sql).to include(expected)
         end
       end
     end
 
-    it do
+    specify do
       expect(group)
         .to enumerize(:privacy)
         .in(:public, :restricted, :private).with_default(:public)
@@ -81,8 +81,8 @@ module Socializer
         .with_scope(true)
     end
 
-    it { is_expected.to respond_to(:author) }
-    it { is_expected.to respond_to(:members) }
+    specify { is_expected.to respond_to(:author) }
+    specify { is_expected.to respond_to(:members) }
 
     context "when having no member" do
       let(:group_without_members) do
@@ -109,9 +109,9 @@ module Socializer
           group_with_members.destroy
         end
 
-        it { expect(group_with_members.destroyed?).to be false }
-        it { expect(group_with_members.errors.present?).to be true }
-        it { expect(group_with_members.memberships.count).to eq(1) }
+        specify { expect(group_with_members.destroyed?).to be false }
+        specify { expect(group_with_members.errors.present?).to be true }
+        specify { expect(group_with_members.memberships.count).to eq(1) }
       end
     end
   end

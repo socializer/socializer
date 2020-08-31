@@ -11,13 +11,13 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:person) }
+      specify { is_expected.to belong_to(:person) }
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:person) }
-      it { is_expected.to validate_presence_of(:provider) }
-      it { is_expected.to validate_presence_of(:uid) }
+      specify { is_expected.to validate_presence_of(:person) }
+      specify { is_expected.to validate_presence_of(:provider) }
+      specify { is_expected.to validate_presence_of(:uid) }
     end
 
     context "with scopes" do
@@ -26,14 +26,14 @@ module Socializer
 
         let(:result) { described_class.with_provider(provider: "identity") }
 
-        it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-        it { expect(result.first.provider).to eq("identity") }
+        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result.first.provider).to eq("identity") }
 
         context "when the provider is not found" do
           let(:result) { described_class.with_provider(provider: "none") }
 
-          it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-          it { expect(result.exists?).to be(false) }
+          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result.exists?).to be(false) }
         end
       end
 
@@ -42,24 +42,29 @@ module Socializer
 
         let(:result) { described_class.not_with_provider(provider: "identity") }
 
-        it { expect(result).to be_kind_of(ActiveRecord::Relation) }
-        it { expect(result.exists?).to be(false) }
+        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result.exists?).to be(false) }
       end
     end
 
     context "when last authentication for a person" do
       let(:last_authentication) { create(:authentication) }
 
-      it { expect(last_authentication.person.authentications.count).to eq(1) }
+      specify do
+        expect(last_authentication.person.authentications.count).to eq(1)
+      end
 
       describe "it cannot be deleted" do
         before do
           last_authentication.destroy
         end
 
-        it { expect(last_authentication.destroyed?).to be false }
-        it { expect(last_authentication.errors.present?).to be true }
-        it { expect(last_authentication.person.authentications.count).to eq(1) }
+        specify { expect(last_authentication.destroyed?).to be false }
+        specify { expect(last_authentication.errors.present?).to be true }
+
+        specify do
+          expect(last_authentication.person.authentications.count).to eq(1)
+        end
       end
     end
   end

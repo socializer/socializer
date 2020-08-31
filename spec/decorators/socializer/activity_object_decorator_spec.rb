@@ -11,9 +11,11 @@ module Socializer
     end
 
     describe "demodulized_type" do
-      it { expect(decorated_activity_object.demodulized_type).to eq("Note") }
+      specify do
+        expect(decorated_activity_object.demodulized_type).to eq("Note")
+      end
 
-      it do
+      specify do
         expect(decorated_activity_object.demodulized_type)
           .not_to include("Socializer::")
       end
@@ -27,7 +29,7 @@ module Socializer
           end
         end
 
-        it do
+        specify do
           expect(decorated_activity_object.link_to_like_or_unlike).to eq(nil)
         end
       end
@@ -51,8 +53,8 @@ module Socializer
             "a.btn.btn-default[data-method='post'][title=#{like}]"
           end
 
-          it { expect(result).to have_link("", href: url) }
-          it { expect(result).to have_selector(selector) }
+          specify { expect(result).to have_link("", href: url) }
+          specify { expect(result).to have_selector(selector) }
         end
 
         context "when does like" do
@@ -68,8 +70,8 @@ module Socializer
             "a.btn.btn-danger[data-method='delete'][title=#{unlike}]"
           end
 
-          it { expect(result).to have_link("", href: url) }
-          it { expect(result).to have_selector(selector) }
+          specify { expect(result).to have_link("", href: url) }
+          specify { expect(result).to have_selector(selector) }
         end
       end
     end

@@ -14,21 +14,21 @@ module Socializer
         let(:result) { decorated_activity.created_at_time_ago }
         let(:time_text) { created_at.strftime("%B %e, %Y %l:%M%P") }
 
-        it do
+        specify do
           expect(result).to have_selector("time", text: time_text)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("time[datetime='#{created_at.iso8601}']")
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("time[title='#{created_at.to_s(:short)}']")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("time[data-time-ago='moment.js']")
         end
       end
@@ -46,21 +46,21 @@ module Socializer
           "#{created_at.to_s(:short)} (edited #{updated_at.to_s(:short)})"
         end
 
-        it do
+        specify do
           expect(result).to have_selector("time", text: time_text)
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("time[datetime='#{created_at.iso8601}']")
         end
 
-        it do
+        specify do
           expect(result)
             .to have_selector("time[title='#{time_title}']")
         end
 
-        it do
+        specify do
           expect(result).to have_selector("time[data-time-ago='moment.js']")
         end
       end

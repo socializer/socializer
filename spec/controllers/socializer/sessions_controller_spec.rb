@@ -22,7 +22,7 @@ module Socializer
 
         context "when a session is successfully created" do
           describe "before the create action" do
-            it { expect(cookies.signed[:user_id]).to be_nil }
+            specify { expect(cookies.signed[:user_id]).to be_nil }
           end
 
           describe "after the create action" do
@@ -30,7 +30,7 @@ module Socializer
               post :create, params: { provider: :identity }
             end
 
-            it { expect(cookies.signed[:user_id]).not_to be_nil }
+            specify { expect(cookies.signed[:user_id]).not_to be_nil }
           end
         end
 
@@ -84,7 +84,7 @@ module Socializer
 
       describe "resets the session" do
         describe "before the destroy action" do
-          it { expect(cookies.signed[:user_id]).not_to be_nil }
+          specify { expect(cookies.signed[:user_id]).not_to be_nil }
         end
 
         describe "after the destroy action" do

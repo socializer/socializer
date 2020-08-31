@@ -11,24 +11,24 @@ module Socializer
     end
 
     context "with relationships" do
-      it { is_expected.to belong_to(:person) }
+      specify { is_expected.to belong_to(:person) }
     end
 
     context "with validations" do
-      it { is_expected.to validate_presence_of(:category) }
-      it { is_expected.to validate_presence_of(:label) }
-      it { is_expected.to validate_presence_of(:number) }
-      it { is_expected.to validate_presence_of(:person) }
+      specify { is_expected.to validate_presence_of(:category) }
+      specify { is_expected.to validate_presence_of(:label) }
+      specify { is_expected.to validate_presence_of(:number) }
+      specify { is_expected.to validate_presence_of(:person) }
     end
 
-    it do
+    specify do
       expect(phone).to enumerize(:category)
         .in(:home, :work).with_default(:home)
         .with_predicates(true)
         .with_scope(true)
     end
 
-    it do
+    specify do
       expect(phone).to enumerize(:label)
         .in(:phone, :mobile, :fax).with_default(:phone)
         .with_predicates(true)

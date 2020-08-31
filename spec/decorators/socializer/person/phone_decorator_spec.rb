@@ -11,7 +11,7 @@ module Socializer
     describe "label_and_number" do
       let(:label) { "Phone : 6666666666" }
 
-      it { expect(decorated_phone.label_and_number).to eq(label) }
+      specify { expect(decorated_phone.label_and_number).to eq(label) }
     end
   end
 end
