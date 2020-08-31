@@ -11,7 +11,7 @@ module Socializer
       describe ".new should raise an ArgumentError" do
         let(:service) { described_class.new(group: nil, person: nil) }
 
-        it do
+        specify do
           expect { service }.to raise_error(Dry::Types::ConstraintError)
         end
       end
@@ -21,7 +21,7 @@ module Socializer
       describe ".new should raise an ArgumentError" do
         let(:service) { described_class.new(group: nil, person: person) }
 
-        it do
+        specify do
           expect { service }.to raise_error(Dry::Types::ConstraintError)
         end
       end
@@ -31,7 +31,7 @@ module Socializer
       describe ".new should raise an ArgumentError" do
         let(:service) { described_class.new(group: group, person: nil) }
 
-        it do
+        specify do
           expect { service }.to raise_error(Dry::Types::ConstraintError)
         end
       end
@@ -42,7 +42,7 @@ module Socializer
         described_class.new(group: group, person: person).call
       end
 
-      it { expect { service }.to raise_error(NotImplementedError) }
+      specify { expect { service }.to raise_error(NotImplementedError) }
     end
   end
 end

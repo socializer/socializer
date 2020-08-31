@@ -8,7 +8,7 @@ module Socializer
       describe ".new should raise an ArgumentError" do
         let(:add_default_circles) { described_class.new(person: nil) }
 
-        it do
+        specify do
           expect { add_default_circles }
             .to raise_error(Dry::Types::ConstraintError)
         end
@@ -17,7 +17,7 @@ module Socializer
       describe ".call should raise an ArgumentError" do
         let(:add_default_circles) { described_class.call(person: nil) }
 
-        it do
+        specify do
           expect { add_default_circles }
             .to raise_error(Dry::Types::ConstraintError)
         end
@@ -27,7 +27,7 @@ module Socializer
     describe "when the person argument is the wrong type" do
       let(:add_default_circles) { described_class.new(person: Activity.new) }
 
-      it do
+      specify do
         expect { add_default_circles }
           .to raise_error(Dry::Types::ConstraintError)
       end
@@ -41,11 +41,11 @@ module Socializer
         described_class.call(person: person)
       end
 
-      it { expect(person.activity_object.circles.size).to eq(4) }
-      it { expect(circles.first.display_name).to eq("Friends") }
-      it { expect(circles.second.display_name).to eq("Family") }
-      it { expect(circles.third.display_name).to eq("Acquaintances") }
-      it { expect(circles.fourth.display_name).to eq("Following") }
+      specify { expect(person.activity_object.circles.size).to eq(4) }
+      specify { expect(circles.first.display_name).to eq("Friends") }
+      specify { expect(circles.second.display_name).to eq("Family") }
+      specify { expect(circles.third.display_name).to eq("Acquaintances") }
+      specify { expect(circles.fourth.display_name).to eq("Following") }
     end
   end
 end

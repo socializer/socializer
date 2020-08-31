@@ -23,7 +23,7 @@ module Socializer
         let(:public_group) { create(:group, privacy: :public) }
         let(:group) { public_group }
 
-        it { expect(public_group.memberships.size).to eq(2) }
+        specify { expect(public_group.memberships.size).to eq(2) }
 
         it "creates an inactive membership" do
           expect(membership.active).to be_falsey
@@ -34,7 +34,7 @@ module Socializer
         let(:private_group) { create(:group, privacy: :private) }
         let(:group) { private_group }
 
-        it { expect(private_group.memberships.size).to eq(2) }
+        specify { expect(private_group.memberships.size).to eq(2) }
 
         it "creates an inactive membership" do
           expect(membership.active).to be_falsey

@@ -8,7 +8,7 @@ module Socializer
       describe ".new should raise an ArgumentError" do
         let(:audience_list) { described_class.new(activity: nil) }
 
-        it do
+        specify do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
         end
       end
@@ -16,7 +16,7 @@ module Socializer
       describe ".call should raise an ArgumentError" do
         let(:audience_list) { described_class.call(activity: nil) }
 
-        it do
+        specify do
           expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
         end
       end
@@ -25,7 +25,7 @@ module Socializer
     describe "when the activity argument is the wrong type" do
       let(:audience_list) { described_class.new(activity: Person.new) }
 
-      it do
+      specify do
         expect { audience_list }.to raise_error(Dry::Types::ConstraintError)
       end
     end
@@ -38,9 +38,9 @@ module Socializer
           described_class.new(activity: activity).call
         end
 
-        it { expect(audience_list).to be_kind_of(Array) }
-        it { expect(audience_list.size).to eq(1) }
-        it { expect(audience_list.first).to start_with("name") }
+        specify { expect(audience_list).to be_kind_of(Array) }
+        specify { expect(audience_list.size).to eq(1) }
+        specify { expect(audience_list.first).to start_with("name") }
       end
 
       context "with an audience" do
@@ -67,8 +67,8 @@ module Socializer
             I18n.t("socializer.activities.audiences.index.tooltip.public")
           end
 
-          it { expect(audience_list.size).to eq(1) }
-          it { expect(audience_list.first).to eq(tooltip_public) }
+          specify { expect(audience_list.size).to eq(1) }
+          specify { expect(audience_list.first).to eq(tooltip_public) }
         end
 
         context "when it is circles" do
@@ -92,8 +92,8 @@ module Socializer
             described_class.new(activity: activity).call
           end
 
-          it { expect(audience_list.size).to eq(1) }
-          it { expect(audience_list.first).to start_with("name") }
+          specify { expect(audience_list.size).to eq(1) }
+          specify { expect(audience_list.first).to start_with("name") }
         end
 
         context "when it is limited" do
@@ -121,8 +121,8 @@ module Socializer
             described_class.new(activity: activity).call
           end
 
-          it { expect(audience_list.size).to eq(1) }
-          it { expect(audience_list.first).to start_with("name") }
+          specify { expect(audience_list.size).to eq(1) }
+          specify { expect(audience_list.first).to start_with("name") }
         end
       end
     end
