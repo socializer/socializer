@@ -2,28 +2,8 @@ inherit_from: ../.rubocop.yml
 
 require: rubocop-rspec
 
-Layout/LineLength:
-  Enabled: true
-
-Layout/SpaceInsideHashLiteralBraces:
-  Enabled: false
-
 Metrics/ModuleLength:
   Enabled: false
 
-RSpec/ExampleLength:
-  Enabled: true
-
-Style/BlockDelimiters:
-  Exclude:
-    - spec/factories/**/*.rb
-
 Style/Documentation:
-  Enabled: false
-
-Style/SymbolProc:
-  Exclude:
-    - spec/factories/**/*.rb
-
-Style/WordArray:
   Enabled: false
