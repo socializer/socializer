@@ -7,7 +7,3 @@ Metrics/ModuleLength:
 
 Style/Documentation:
   Enabled: false
-
-Style/SymbolProc:
-  Exclude:
-    - spec/factories/**/*.rb
