@@ -54,7 +54,7 @@ module Socializer
         specify { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
-          circles = Set.new(["Public", "Circles"])
+          circles = Set.new(%w[Public Circles])
           circles.merge(person.circles.pluck(:display_name))
 
           expect(audience_list.all? { |item| circles.include?(item[:name]) })
@@ -78,7 +78,7 @@ module Socializer
         specify { expect(audience_list.second).to include(circles) }
 
         it "contains the persons circles" do
-          circles = Set.new(["Public", "Circles"])
+          circles = Set.new(%w[Public Circles])
           friends = person.circles.with_display_name(name: "Friends")
           circles.merge(friends.pluck(:display_name))
 
