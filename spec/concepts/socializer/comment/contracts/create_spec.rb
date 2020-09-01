@@ -20,7 +20,7 @@ module Socializer
     end
 
     context "when attributes are not specified" do
-      let(:attributes) { { } }
+      let(:attributes) { {} }
 
       specify { expect(result).to be_failure }
     end

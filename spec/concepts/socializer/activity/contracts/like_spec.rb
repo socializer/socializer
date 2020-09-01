@@ -20,7 +20,7 @@ module Socializer
     end
 
     context "when attributes are not specified" do
-      let(:attributes) { { } }
+      let(:attributes) { {} }
 
       it { expect(result).to be_failure }
       it { expect(result.errors[:actor_id]).to eq(["is missing"]) }

@@ -63,7 +63,7 @@ module Socializer
       # end
 
       context "when validation fails" do
-        let(:attributes) { { } }
+        let(:attributes) { {} }
         let(:failure) { result.failure }
 
         it { expect(result).to be_failure }

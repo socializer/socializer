@@ -14,7 +14,7 @@ module Socializer
 
     describe ".call" do
       context "with no required attributes" do
-        let(:attributes) { { } }
+        let(:attributes) { {} }
         let(:errors) { result.failure.errors }
 
         specify { expect(result).to be_failure }
