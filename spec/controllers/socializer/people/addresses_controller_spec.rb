@@ -42,7 +42,7 @@ module Socializer
     context "when not logged in" do
       describe "GET #new" do
         it "requires login" do
-          get :new, params: { person_id: user}
+          get :new, params: { person_id: user }
           expect(response).to redirect_to root_path
         end
       end
