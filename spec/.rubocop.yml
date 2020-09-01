@@ -15,6 +15,3 @@ Style/Documentation:
 Style/SymbolProc:
   Exclude:
     - spec/factories/**/*.rb
-
-Style/WordArray:
-  Enabled: false
