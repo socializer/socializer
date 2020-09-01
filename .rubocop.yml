@@ -3,6 +3,7 @@ require:
   - rubocop-rails
 
 AllCops:
+  NewCops: enable
   Exclude:
     - "bin/**/*"
     - "features/support/env.rb"
@@ -33,8 +34,8 @@ AllCops:
   # run on? (If there is more than one, set this to the lowest version.)
   TargetRubyVersion: 2.7
 
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
+# Layout/EmptyLinesAroundAttributeAccessor:
+#   Enabled: true
 
 Layout/HashAlignment:
   Exclude:
@@ -48,53 +49,53 @@ Layout/LineLength:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
+# Layout/SpaceAroundMethodCallOperator:
+#   Enabled: true
 
-Layout/SpaceBeforeFirstArg:
-  Enabled: true
+# Layout/SpaceBeforeFirstArg:
+#   Enabled: true
 
-Lint/BinaryOperatorWithIdenticalOperands:
-  Enabled: true
+# Lint/BinaryOperatorWithIdenticalOperands:
+#   Enabled: true
 
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
+# Lint/DeprecatedOpenSSLConstant:
+#   Enabled: true
 
-Lint/DuplicateElsifCondition:
-  Enabled: true
+# Lint/DuplicateElsifCondition:
+#   Enabled: true
 
-Lint/DuplicateRescueException:
-  Enabled: true
+# Lint/DuplicateRescueException:
+#   Enabled: true
 
-Lint/EmptyConditionalBody:
-  Enabled: true
+# Lint/EmptyConditionalBody:
+#   Enabled: true
 
-Lint/FloatComparison:
-  Enabled: true
+# Lint/FloatComparison:
+#   Enabled: true
 
-Lint/MissingSuper:
-  Enabled: true
+# Lint/MissingSuper:
+#   Enabled: true
 
-Lint/MixedRegexpCaptureTypes:
-  Enabled: true
+# Lint/MixedRegexpCaptureTypes:
+#   Enabled: true
 
-Lint/OutOfRangeRegexpRef:
-  Enabled: true
+# Lint/OutOfRangeRegexpRef:
+#   Enabled: true
 
-Lint/RaiseException:
-  Enabled: true
+# Lint/RaiseException:
+#   Enabled: true
 
-Lint/SelfAssignment:
-  Enabled: true
+# Lint/SelfAssignment:
+#   Enabled: true
 
-Lint/StructNewOverride:
-  Enabled: true
+# Lint/StructNewOverride:
+#   Enabled: true
 
-Lint/TopLevelReturnWithArgument:
-  Enabled: true
+# Lint/TopLevelReturnWithArgument:
+#   Enabled: true
 
-Lint/UnreachableLoop:
-  Enabled: true
+# Lint/UnreachableLoop:
+#   Enabled: true
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
@@ -107,138 +108,138 @@ Metrics/BlockLength:
     - "config/routes.rb"
     - "config/initializers/simple_form_bootstrap.rb"
 
-Metrics/MethodLength:
-  Enabled: true
+# Metrics/MethodLength:
+#   Enabled: true
 
-Performance/AncestorsInclude:
-  Enabled: true
+# Performance/AncestorsInclude:
+#   Enabled: true
 
-Performance/BigDecimalWithNumericArgument:
-  Enabled: true
+# Performance/BigDecimalWithNumericArgument:
+#   Enabled: true
 
-Performance/RedundantSortBlock:
-  Enabled: true
+# Performance/RedundantSortBlock:
+#   Enabled: true
 
-Performance/RedundantStringChars:
-  Enabled: true
+# Performance/RedundantStringChars:
+#   Enabled: true
 
-Performance/ReverseFirst:
-  Enabled: true
+# Performance/ReverseFirst:
+#   Enabled: true
 
-Performance/SortReverse:
-  Enabled: true
+# Performance/SortReverse:
+#   Enabled: true
 
-Performance/Squeeze:
-  Enabled: true
+# Performance/Squeeze:
+#   Enabled: true
 
-Performance/StringInclude:
-  Enabled: true
+# Performance/StringInclude:
+#   Enabled: true
 
-Rails/ActiveRecordCallbacksOrder:
-  Enabled: true
+# Rails/ActiveRecordCallbacksOrder:
+#   Enabled: true
 
-Rails/FindById:
-  Enabled: true
+# Rails/FindById:
+#   Enabled: true
 
-Rails/Inquiry:
-  Enabled: true
+# Rails/Inquiry:
+#   Enabled: true
 
-Rails/MailerName:
-  Enabled: true
+# Rails/MailerName:
+#   Enabled: true
 
-Rails/MatchRoute:
-  Enabled: true
+# Rails/MatchRoute:
+#   Enabled: true
 
-Rails/NegateInclude:
-  Enabled: true
+# Rails/NegateInclude:
+#   Enabled: true
 
-Rails/Pluck:
-  Enabled: true
+# Rails/Pluck:
+#   Enabled: true
 
-Rails/PluckId:
-  Enabled: true
+# Rails/PluckId:
+#   Enabled: true
 
-Rails/PluckInWhere:
-  Enabled: true
+# Rails/PluckInWhere:
+#   Enabled: true
 
-Rails/RenderInline:
-  Enabled: true
+# Rails/RenderInline:
+#   Enabled: true
 
-Rails/RenderPlainText:
-  Enabled: true
+# Rails/RenderPlainText:
+#   Enabled: true
 
-Rails/ShortI18n:
-  Enabled: true
+# Rails/ShortI18n:
+#   Enabled: true
 
-Rails/WhereExists:
-  Enabled: true
+# Rails/WhereExists:
+#   Enabled: true
 
-Style/AccessorGrouping:
-  Enabled: true
+# Style/AccessorGrouping:
+#   Enabled: true
 
-Style/ArrayCoercion:
-  Enabled: true
+# Style/ArrayCoercion:
+#   Enabled: true
 
-Style/BisectedAttrAccessor:
-  Enabled: true
+# Style/BisectedAttrAccessor:
+#   Enabled: true
 
-Style/CaseLikeIf:
-  Enabled: true
+# Style/CaseLikeIf:
+#   Enabled: true
 
-Style/ExponentialNotation:
-  Enabled: true
+# Style/ExponentialNotation:
+#   Enabled: true
 
-Style/ExplicitBlockArgument:
-  Enabled: true
+# Style/ExplicitBlockArgument:
+#   Enabled: true
 
-Style/GlobalStdStream:
-  Enabled: true
+# Style/GlobalStdStream:
+#   Enabled: true
 
-Style/HashAsLastArrayItem:
-  Enabled: true
+# Style/HashAsLastArrayItem:
+#   Enabled: true
 
-Style/HashEachMethods:
-  Enabled: true
+# Style/HashEachMethods:
+#   Enabled: true
 
-Style/HashLikeCase:
-  Enabled: true
+# Style/HashLikeCase:
+#   Enabled: true
 
-Style/HashTransformKeys:
-  Enabled: true
+# Style/HashTransformKeys:
+#   Enabled: true
 
-Style/HashTransformValues:
-  Enabled: true
+# Style/HashTransformValues:
+#   Enabled: true
 
-Style/OptionalBooleanParameter:
-  Enabled: true
+# Style/OptionalBooleanParameter:
+#   Enabled: true
 
-Style/RedundantAssignment:
-  Enabled: true
+# Style/RedundantAssignment:
+#   Enabled: true
 
-Style/RedundantFetchBlock:
-  Enabled: true
+# Style/RedundantFetchBlock:
+#   Enabled: true
 
-Style/RedundantFileExtensionInRequire:
-  Enabled: true
+# Style/RedundantFileExtensionInRequire:
+#   Enabled: true
 
-Style/RedundantRegexpCharacterClass:
-  Enabled: true
+# Style/RedundantRegexpCharacterClass:
+#   Enabled: true
 
-Style/RedundantRegexpEscape:
-  Enabled: true
+# Style/RedundantRegexpEscape:
+#   Enabled: true
 
 Style/RegexpLiteral:
   Exclude:
     - "**/*.gemspec"
 
-Style/SingleArgumentDig:
-  Enabled: true
+# Style/SingleArgumentDig:
+#   Enabled: true
 
-Style/SlicingWithRange:
-  Enabled: true
+# Style/SlicingWithRange:
+#   Enabled: true
 
-Style/StringConcatenation:
-  Enabled: true
+# Style/StringConcatenation:
+#   Enabled: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
