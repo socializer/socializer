@@ -21,10 +21,8 @@ module Socializer
     include ObjectTypeBase
 
     # Relationships
-    belongs_to :parent, class_name: "Activity",
-                        foreign_key: "target_id",
-                        optional: true,
-                        inverse_of: :children
+    belongs_to :parent, class_name: "Activity", foreign_key: "target_id",
+                        optional: true, inverse_of: :children
 
     belongs_to :activitable_actor,  class_name: "ActivityObject",
                                     foreign_key: "actor_id",
@@ -41,26 +39,18 @@ module Socializer
 
     belongs_to :verb, inverse_of: :activities
 
-    has_one :activity_field,
-            inverse_of: :activity,
-            dependent: :destroy
+    has_one :activity_field, inverse_of: :activity, dependent: :destroy
 
-    has_one :actor, through: :activitable_actor,
-                    source: :activitable,
-                    source_type: "Socializer::Person",
-                    dependent: :destroy
+    has_one :actor, through: :activitable_actor, source: :activitable,
+                    source_type: "Socializer::Person", dependent: :destroy
 
     has_many :audiences, inverse_of: :activity, dependent: :destroy
     has_many :activity_objects, through: :audiences, dependent: :destroy
 
-    has_many :children, class_name: "Activity",
-                        foreign_key: "target_id",
-                        dependent: :destroy,
-                        inverse_of: :parent
+    has_many :children, class_name: "Activity", foreign_key: "target_id",
+                        dependent: :destroy, inverse_of: :parent
 
-    has_many :notifications,
-             inverse_of: :activity,
-             dependent: :destroy
+    has_many :notifications, inverse_of: :activity, dependent: :destroy
 
     # Validations
     validates :activitable_actor, presence: true
@@ -168,9 +158,7 @@ module Socializer
     #        Notes still don't show after adding people to the circles.
     #
     def self.circle_stream(actor_uid:, viewer_id:)
-      circles = Circle.with_id(id: actor_uid)
-                      .with_author_id(id: viewer_id).ids
-
+      circles = Circle.with_id(id: actor_uid).with_author_id(id: viewer_id).ids
       followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
       stream_query(viewer_id: viewer_id).with_actor_id(id: followed).distinct

@@ -55,9 +55,7 @@ module Socializer
     def relationship
       relationship = model.relationship
 
-      return "Seeing anyone?" if relationship.unknown?
-
-      relationship.titleize
+      relationship.unknown? ? "Seeing anyone?" : relationship.titleize
     end
 
     # Returns the skills value or "What are your skills?" when skills is nil
@@ -128,10 +126,8 @@ module Socializer
     #
     # @return [String]
     def looking_for
-      content = [looking_for_friends,
-                 looking_for_dating,
-                 looking_for_relationship,
-                 looking_for_networking]
+      content = [looking_for_friends, looking_for_dating,
+                 looking_for_relationship, looking_for_networking]
 
       content << looking_for_who if content.join.empty?
 
@@ -232,9 +228,7 @@ module Socializer
     end
 
     def toolbar_links(list)
-      links = list.map do |item|
-        toolbar_link(item)
-      end
+      links = list.map { |item| toolbar_link(item) }
 
       helpers.safe_join(links)
     end
