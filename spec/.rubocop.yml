@@ -5,10 +5,6 @@ require: rubocop-rspec
 Metrics/ModuleLength:
   Enabled: false
 
-Style/BlockDelimiters:
-  Exclude:
-    - spec/factories/**/*.rb
-
 Style/Documentation:
   Enabled: false
 
