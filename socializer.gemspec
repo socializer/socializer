@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = "~> 2.7.1"
 
-  s.add_dependency("bcrypt",               "~> 3.1.12")
+  s.add_dependency("bcrypt",               "~> 3.1.16")
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
@@ -60,8 +60,8 @@ Gem::Specification.new do |s|
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.20.0")
   s.add_development_dependency("rubocop",              "~> 0.90.0")
-  s.add_development_dependency("rubocop-performance",  "~> 1.7.1")
-  s.add_development_dependency("rubocop-rails",        "~> 2.7.1")
+  s.add_development_dependency("rubocop-performance",  "~> 1.8.0")
+  s.add_development_dependency("rubocop-rails",        "~> 2.8.0")
   s.add_development_dependency("rubocop-rspec",        "~> 1.43.2")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
   s.add_development_dependency("solargraph")
