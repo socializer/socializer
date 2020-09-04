@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     socializer (0.1.13)
-      bcrypt (~> 3.1.12)
+      bcrypt (~> 3.1.16)
       bootstrap-sass (~> 3.4.1)
       coffee-rails (~> 5.0.0)
       country_select (~> 4.0.0)
@@ -90,7 +90,7 @@ GEM
     autoprefixer-rails (9.8.6.3)
       execjs
     backport (1.1.2)
-    bcrypt (3.1.15)
+    bcrypt (3.1.16)
     benchmark (0.1.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
