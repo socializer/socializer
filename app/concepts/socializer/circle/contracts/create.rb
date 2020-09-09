@@ -26,12 +26,12 @@ module Socializer
         # Adds the record keyword argument to the initializer, ensures the type
         # is [Socializer::Circle], creates a private reader, and defaults to
         # Socializer::Circle.new
-        option :record, type: Types.Strict(Circle), reader: :private,
+        option :record, type: Types.Instance(Circle), reader: :private,
                         default: -> { Circle.new }
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
-        option :actor, type: Types.Strict(Person), reader: :private
+        option :actor, type: Types.Instance(Person), reader: :private
 
         params do
           required(:display_name).filled(:string)

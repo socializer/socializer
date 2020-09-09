@@ -16,7 +16,7 @@ module Socializer
 
     # Adds the activity keyword argument to the initializer, ensures the type
     # is [Socializer::Activity], and creates a private reader
-    option :activity, type: Types.Strict(Activity), reader: :private
+    option :activity, type: Types.Instance(Activity), reader: :private
 
     # Class Methods
 

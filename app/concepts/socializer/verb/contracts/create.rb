@@ -23,7 +23,7 @@ module Socializer
         # Adds the record keyword argument to the initializer, ensures the type
         # is [Socializer::Verb], creates a private reader, and defaults to
         # Socializer::Verb.new
-        option :record, type: Types.Strict(Verb), reader: :private,
+        option :record, type: Types.Instance(Verb), reader: :private,
                         default: -> { Verb.new }
 
         params do

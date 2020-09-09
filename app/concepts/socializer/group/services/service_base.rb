@@ -24,11 +24,11 @@ module Socializer
 
         # Adds the group keyword argument to the initializer, ensures the type
         # is [Socializer::Group], and creates a private reader
-        option :group, type: Types.Strict(Group), reader: :private
+        option :group, type: Types.Instance(Group), reader: :private
 
         # Adds the person keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
-        option :person, type: Types.Strict(Person), reader: :private
+        option :person, type: Types.Instance(Person), reader: :private
 
         # @return [Socializer::Membership] Deletes the record in the
         # database and freezes this instance to reflect that no changes should

@@ -32,7 +32,7 @@ module Socializer
 
         # Adds the actor keyword argument to the initializer, ensures the type
         # is [Socializer::Person], and creates a private reader
-        option :actor, type: Types.Strict(Person), reader: :private
+        option :actor, type: Types.Instance(Person), reader: :private
 
         # Creates the [Socializer::Activity]
         #

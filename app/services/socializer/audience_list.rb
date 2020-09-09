@@ -16,7 +16,7 @@ module Socializer
 
     # Adds the person keyword argument to the initializer, ensures the type
     # is [Socializer::Person], and creates a private reader
-    option :person, type: Types.Strict(Person), reader: :private
+    option :person, type: Types.Instance(Person), reader: :private
 
     # Adds the query keyword argument to the initializer
     # and creates a private reader
