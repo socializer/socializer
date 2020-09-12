@@ -23,6 +23,19 @@ module Socializer
       config.messages.default_locale = :en
       config.messages.top_namespace = :socializer
 
+      # TODO: Do we need a presence/exists macro to see if an id/integer
+      # exists in a specified model
+      #
+      # single association
+      # required(:actor_id).filled(is_record?: Person)
+      # many association
+      # required(:actor_ids).filled(:array?, is_record?: Person)
+      #
+      # rule(:actor_id).validate(is_record: Person)
+      # register_macro(:is_record) do |context:, macro:|
+      #   model = record.class
+      #   model.where(id: value).any?
+      # end
 
       register_macro(:email_format) do
         unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
@@ -33,6 +46,8 @@ module Socializer
       register_macro(:unique) do |context:, macro:|
         attr_name = macro.args[0]
         scope = context[:scope]
+        # # REVIEW: this works instead of using context
+        # scope = { author_id: actor.id } if actor
 
         model = record.class
         query = model.where(model.arel_table[attr_name].matches(value))
