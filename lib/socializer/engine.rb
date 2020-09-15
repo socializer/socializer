@@ -24,10 +24,10 @@ module Socializer
 
     initializer "webpacker.proxy" do |app|
       insert_middleware = begin
-                          Socializer.webpacker.config.dev_server.present?
-                          rescue StandardError
-                            nil
-                        end
+        Socializer.webpacker.config.dev_server.present?
+      rescue StandardError
+        nil
+      end
       next unless insert_middleware
 
       app.middleware.insert_before(
