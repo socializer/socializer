@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   # Added "jquery-ui-rails" for drag and drop
   s.add_dependency("jquery-ui-rails",      "~> 6.0.1")
   s.add_dependency("omniauth",             "~> 1.9.1")
-  s.add_dependency("omniauth-facebook",    "~> 7.0.0")
+  s.add_dependency("omniauth-facebook",    "~> 8.0.0")
   s.add_dependency("omniauth-identity",    "~> 2.0.0")
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   s.add_dependency("omniauth-openid",      "~> 1.0.1")
@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop",              "~> 0.93.1")
   s.add_development_dependency("rubocop-performance",  "~> 1.8.1")
   s.add_development_dependency("rubocop-rails",        "~> 2.8.1")
-  s.add_development_dependency("rubocop-rspec",        "~> 1.43.2")
+  s.add_development_dependency("rubocop-rspec",        "~> 1.44.0")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
   s.add_development_dependency("solargraph")
 end
