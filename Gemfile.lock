@@ -150,7 +150,7 @@ GEM
     elasticsearch-rails (7.1.1)
     enumerize (2.3.1)
       activesupport (>= 3.2)
-    erubi (1.9.0)
+    erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
