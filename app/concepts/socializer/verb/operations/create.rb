@@ -51,7 +51,7 @@ module Socializer
         end
 
         def create(params)
-          Success(Verb.create(params))
+          Try { Verb.create(params) }.to_result
         end
       end
     end

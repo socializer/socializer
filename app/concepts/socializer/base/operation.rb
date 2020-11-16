@@ -15,6 +15,8 @@ module Socializer
     # Base operation class
     #
     class Operation
+      include Dry::Monads[:try]
+
       def self.inherited(operation)
         super
 

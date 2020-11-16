@@ -20,7 +20,6 @@ module Socializer
       #
       class Create < Base::Operation
         include Dry::Matcher.for(:call, with: Dry::Matcher::ResultMatcher)
-        include Dry::Monads[:try]
 
         CIRCLES_PRIVACY = Socializer::Audience.privacy.circles.value.freeze
         LIMITED_PRIVACY = Socializer::Audience.privacy.limited.value.freeze

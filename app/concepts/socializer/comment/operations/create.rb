@@ -80,7 +80,7 @@ module Socializer
           # end
 
           # comment.persisted? ? Success(comment) : Failure(comment)
-          Success(actor.activity_object.comments.create(params))
+          Try { actor.activity_object.comments.create(params) }.to_result
         end
 
         def comment_params(params)

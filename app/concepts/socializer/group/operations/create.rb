@@ -70,7 +70,7 @@ module Socializer
         end
 
         def create(params)
-          Success(actor.groups.create!(params))
+          Try { actor.groups.create!(params) }.to_result
 
           # TODO: Need this after create is successful. Wrap in a transaction
           # with the group creation.

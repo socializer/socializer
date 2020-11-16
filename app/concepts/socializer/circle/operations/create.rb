@@ -71,7 +71,7 @@ module Socializer
 
         def create(params)
           circles = actor.activity_object.circles
-          Success(circles.create!(params))
+          Try { circles.create!(params) }.to_result
         end
       end
     end
