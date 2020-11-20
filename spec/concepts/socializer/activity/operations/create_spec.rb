@@ -19,8 +19,8 @@ module Socializer
 
     describe ".call" do
       context "with no required attributes" do
-        let(:attributes) {}
         let(:failure) { result.failure }
+        let(:attributes) { nil }
 
         it { expect(result).to be_failure }
         it { expect(result).to be_kind_of(Dry::Monads::Result::Failure) }
