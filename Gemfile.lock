@@ -192,7 +192,6 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
-    e2mmap (0.1.0)
     elasticsearch-rails (7.1.1)
     enumerize (2.3.1)
       activesupport (>= 3.2)
@@ -500,7 +499,7 @@ DEPENDENCIES
   shoulda-matchers (~> 4.4.1)
   simplecov (~> 0.19.1)
   socializer!
-
+  sqlite3 (~> 1.4.2)
   webdrivers (~> 4.0)
 
 BUNDLED WITH
