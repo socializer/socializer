@@ -64,6 +64,7 @@ jobs:
         bundle exec rspec
 
     - name: Coveralls
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
