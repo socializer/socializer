@@ -32,6 +32,7 @@ group :test do
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 1.8"
   gem "simplecov", "~> 0.19.1", require: false
+  gem "simplecov-lcov", require: false
   gem "webdrivers", "~> 4.0"
 
   # TODO: Update test so rails-controller-testing can be removed
