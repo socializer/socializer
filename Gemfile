@@ -30,7 +30,8 @@ group :test do
   # gem "capybara", ">= 2.15", "< 4.0"
   gem "capybara", github: "teamcapybara/capybara"
   # gem "coveralls_reborn", "~> 0.18.0", require: false
-  gem "coveralls_reborn", github: "tagliala/coveralls-ruby-reborn", require: false
+  gem "coveralls_reborn", github: "tagliala/coveralls-ruby-reborn",
+                          require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 1.8"
   gem "simplecov", "~> 0.20.0", require: false
