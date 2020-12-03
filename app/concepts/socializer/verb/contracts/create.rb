@@ -30,7 +30,7 @@ module Socializer
           required(:display_name).filled(Types::ActivityVerbs)
         end
 
-        rule(:display_name).validate(unique: :display_name)
+        rule(:display_name).validate(:uniqueness)
       end
     end
   end
