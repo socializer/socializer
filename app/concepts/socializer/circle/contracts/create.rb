@@ -45,7 +45,7 @@ module Socializer
           context[:scope] = { author_id: actor.id }
         end
 
-        rule(:display_name).validate(unique: :display_name)
+        rule(:display_name).validate(:uniqueness)
       end
     end
   end

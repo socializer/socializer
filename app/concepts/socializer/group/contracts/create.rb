@@ -44,13 +44,13 @@ module Socializer
         end
 
         # Preferred syntax would be:
-        # rule(:display_name).validate(unique: [:display_name,
+        # rule(:display_name).validate(uniqueness: [:display_name,
         #                              { author_id: actor.id }])
         rule(:display_name) do |context:|
           context[:scope] = { author_id: actor.id }
         end
 
-        rule(:display_name).validate(unique: :display_name)
+        rule(:display_name).validate(:uniqueness)
       end
     end
   end

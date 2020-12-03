@@ -43,14 +43,14 @@ module Socializer
         end
       end
 
-      register_macro(:unique) do |context:, macro:|
-        attr_name = macro.args[0]
+      register_macro(:uniqueness) do |context:, macro:|
+        # attr_name = macro.args[0]
         scope = context[:scope]
         # # REVIEW: this works instead of using context
         # scope = { author_id: actor.id } if actor
 
         model = record.class
-        query = model.where(model.arel_table[attr_name].matches(value))
+        query = model.where(model.arel_table[key_name].matches(value))
         query = query.merge(model.where(scope)) if scope
 
         unless model.where.not(id: record.id).merge(query).empty?
