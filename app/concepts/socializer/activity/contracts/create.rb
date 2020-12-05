@@ -13,7 +13,7 @@ module Socializer
     #
     module Contracts
       #
-      # Contract object for vaidating Socializer::Activity
+      # Contract object for validating Socializer::Activity
       #
       # @example
       #   contract = Activity::Contracts::Create.new
