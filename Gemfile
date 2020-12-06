@@ -23,6 +23,7 @@ end
 group :development do
   gem "coffeelint", "~> 1.16.1"
   gem "listen"
+  gem "solargraph", github: "castwide/solargraph"
 end
 
 group :test do
