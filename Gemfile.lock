@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/castwide/solargraph.git
-  revision: 9661f7c11886d98ba73db8543382e706430cfb05
+  revision: 5c40eed341433eff92eff869bae9ee30483c9892
   specs:
     solargraph (0.40.0)
       backport (~> 1.1)
@@ -133,7 +133,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.1)
-    autoprefixer-rails (10.0.3.0)
+    autoprefixer-rails (10.1.0.0)
       execjs
     backport (1.1.2)
     bcrypt (3.1.16)
@@ -406,7 +406,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.10.0)
-    rubocop (1.5.2)
+    rubocop (1.6.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
       rainbow (>= 2.2.2, < 4.0)
@@ -420,10 +420,10 @@ GEM
     rubocop-performance (1.9.1)
       rubocop (>= 0.90.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.8.1)
+    rubocop-rails (2.9.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
-      rubocop (>= 0.87.0)
+      rubocop (>= 0.90.0, < 2.0)
     rubocop-rake (0.5.1)
       rubocop
     rubocop-rspec (2.0.1)
@@ -531,9 +531,9 @@ DEPENDENCIES
   rails_best_practices (~> 1.20.0)
   rake (~> 13.0.1)
   rspec-rails (~> 4.0.1)
-  rubocop (~> 1.5.2)
+  rubocop (~> 1.6.0)
   rubocop-performance (~> 1.9.1)
-  rubocop-rails (~> 2.8.1)
+  rubocop-rails (~> 2.9.0)
   rubocop-rake (~> 0.5.1)
   rubocop-rspec (~> 2.0.1)
   scss_lint (~> 0.59.0)
