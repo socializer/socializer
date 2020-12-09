@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/castwide/solargraph.git
-  revision: 9661f7c11886d98ba73db8543382e706430cfb05
+  revision: 5c40eed341433eff92eff869bae9ee30483c9892
   specs:
     solargraph (0.40.0)
       backport (~> 1.1)
