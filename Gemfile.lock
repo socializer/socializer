@@ -365,9 +365,9 @@ GEM
     reverse_markdown (2.0.0)
       nokogiri
     rexml (3.2.4)
-    rspec-core (3.10.0)
+    rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
-    rspec-expectations (3.10.0)
+    rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-mocks (3.10.0)
@@ -381,7 +381,7 @@ GEM
       rspec-expectations (~> 3.10)
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
-    rspec-support (3.10.0)
+    rspec-support (3.10.1)
     rubocop (1.7.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -497,7 +497,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.25)
+    yard (0.9.26)
     zeitwerk (2.4.2)
 
 PLATFORMS
