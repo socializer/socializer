@@ -31,7 +31,7 @@ group :test do
   gem "coveralls_reborn", "~> 0.20.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 1.8"
-  gem "simplecov", "~> 0.20.0", require: false
+  gem "simplecov", "~> 0.21.2", require: false
   gem "webdrivers", "~> 4.0"
 
   # TODO: Update test so rails-controller-testing can be removed
