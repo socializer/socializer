@@ -438,7 +438,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.1.1)
+  bundler (~> 2.2.5)
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
@@ -467,4 +467,4 @@ DEPENDENCIES
   webdrivers (~> 4.0)
 
 BUNDLED WITH
-   2.1.4
+   2.2.5
