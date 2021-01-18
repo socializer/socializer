@@ -4,6 +4,8 @@
 SimpleCov.start "rails" do
   # see https://github.com/colszowka/simplecov/blob/master/lib/simplecov/defaults.rb
 
+  enable_coverage :branch # Only supported for Ruby >= 2.5
+
   # Add source groups
   add_group("Contracts") { |src| src.filename.include?("/contract") }
   add_group "Decorators", "app/decorators"
