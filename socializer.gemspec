@@ -69,5 +69,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop-rake",         "~> 0.5.1")
   s.add_development_dependency("rubocop-rspec",        "~> 2.1.0")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
-  # s.add_development_dependency("solargraph")
+  s.add_development_dependency("solargraph")
 end

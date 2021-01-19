@@ -97,7 +97,9 @@ GEM
     ast (2.4.1)
     autoprefixer-rails (10.2.0.0)
       execjs
+    backport (1.1.2)
     bcrypt (3.1.16)
+    benchmark (0.1.1)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -234,10 +236,15 @@ GEM
       sparkr (>= 0.2.0)
       term-ansicolor
       yard (~> 0.9.12)
+    jaro_winkler (1.5.4)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.5.1)
     jwt (2.2.2)
+    kramdown (2.3.0)
+      rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -359,6 +366,8 @@ GEM
     request_store (1.5.0)
       rack (>= 1.4)
     require_all (3.0.0)
+    reverse_markdown (2.0.0)
+      nokogiri
     rexml (3.2.4)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
@@ -436,9 +445,23 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
-    simplecov_json_formatter (0.1.2)
     simplecov-lcov (0.8.0)
+    simplecov_json_formatter (0.1.2)
     sixarm_ruby_unaccent (1.2.0)
+    solargraph (0.40.2)
+      backport (~> 1.1)
+      benchmark
+      bundler (>= 1.17.2)
+      e2mmap
+      jaro_winkler (~> 1.5)
+      kramdown (~> 2.3)
+      kramdown-parser-gfm (~> 1.1)
+      parser (~> 3.0)
+      reverse_markdown (>= 1.0.5, < 3)
+      rubocop (>= 0.52)
+      thor (~> 1.0)
+      tilt (~> 2.0)
+      yard (~> 0.9, >= 0.9.24)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     sparkr (0.4.1)
@@ -510,7 +533,7 @@ DEPENDENCIES
   scss_lint (~> 0.59.0)
   shoulda-matchers (~> 4.5.0)
   simplecov (~> 0.21.2)
-  simplecov-lcov (~> 0.8.0)
+  simplecov-lcov
   socializer!
   sqlite3 (~> 1.4.2)
   webdrivers (~> 4.0)
