@@ -535,6 +535,7 @@ DEPENDENCIES
   simplecov (~> 0.21.2)
   simplecov-lcov
   socializer!
+  solargraph
   sqlite3 (~> 1.4.2)
   webdrivers (~> 4.0)
 
