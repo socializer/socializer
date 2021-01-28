@@ -38,6 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency("omniauth-identity",    "~> 2.0.0")
   s.add_dependency("omniauth-linkedin",    "~> 0.2.0")
   s.add_dependency("omniauth-openid",      "~> 2.0.1")
+  s.add_dependency("omniauth-rails_csrf_protection")
   s.add_dependency("omniauth-twitter",     "~> 1.4.0")
   s.add_dependency("rails",                "~> 6.1.1")
   s.add_dependency("sass-rails",           "~> 6.0.0")
