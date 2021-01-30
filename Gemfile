@@ -38,3 +38,5 @@ group :test do
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
 end
+
+gem "draper", github: "drapergem/draper"
