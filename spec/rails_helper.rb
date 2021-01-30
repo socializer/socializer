@@ -48,7 +48,7 @@ require "rspec/rails"
 # root = Rails.root
 # Dir[root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 root = Socializer::Engine.root
-Dir[root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
+Dir[root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.

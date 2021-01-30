@@ -21,13 +21,13 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = "~> 2.7.2"
+  s.required_ruby_version = "~> 3.0.0"
 
   s.add_dependency("bcrypt",               "~> 3.1.16")
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
   s.add_dependency("country_select",       "~> 4.0.0")
-  s.add_dependency("draper",               "~> 4.0.1")
+  # s.add_dependency("draper",               "~> 4.0.1")
   s.add_dependency("dry-initializer",      "~> 3.0.4")
   s.add_dependency("dry-matcher",          "~> 0.8.3")
   s.add_dependency("dry-monads",           "~> 1.3")
