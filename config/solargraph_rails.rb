@@ -11,6 +11,9 @@
 # @!parse
 #   class ActionController::Base
 #     include ActionController::MimeResponds
+#     include ActionController::Redirecting
+#     include ActionController::StrongParameters
+#     include AbstractController::Rendering
 #     extend ActiveSupport::Callbacks::ClassMethods
 #     extend AbstractController::Callbacks::ClassMethods
 #   end
@@ -18,6 +21,7 @@
 #     extend ActiveRecord::QueryMethods
 #     extend ActiveRecord::FinderMethods
 #     extend ActiveRecord::Associations::ClassMethods
+#     extend ActiveRecord::Inheritance::ClassMethods
 #     include ActiveRecord::Persistence
 #   end
 # @!override ActiveRecord::FinderMethods#find
@@ -30,3 +34,13 @@
 #   @overload find(*args)
 #     @return [Array<self>]
 #   @return [self, Array<self>]
+# @!override ActiveRecord::QueryMethods#where
+#   @overload where(str)
+#     @param str [String]
+#     @return [Class<self>]
+#   @overload where(list)
+#     @param list [Array]
+#     @return [Class<self>]
+#   @overload where(**options)
+#     @param options [Hash]
+#     @return [Class<self>]
