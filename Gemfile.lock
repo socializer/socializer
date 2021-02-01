@@ -150,10 +150,10 @@ GEM
       thor (>= 0.20.3, < 2.0)
       tins (~> 1.16)
     crass (1.0.6)
-    database_cleaner (1.8.5)
-    database_cleaner-active_record (1.8.0)
-      activerecord
-      database_cleaner (~> 1.8.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.0)
     diff-lcs (1.4.4)
     docile (1.3.5)
     e2mmap (0.1.0)
@@ -480,7 +480,7 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
   coveralls_reborn (~> 0.20.0)
-  database_cleaner-active_record (~> 1.8)
+  database_cleaner-active_record (~> 2.0)
   draper!
   factory_bot_rails (~> 6.1.0)
   i18n-tasks (~> 0.9.33)
