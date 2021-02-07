@@ -48,7 +48,7 @@ module Socializer
       model.other_names || "For example: maiden name, alternate spellings"
     end
 
-    # Returnes the capitalized relationship or "Seeing anyone?" if the
+    # Returns the capitalized relationship or "Seeing anyone?" if the
     # relationship value is unknown
     #
     # @return [String]

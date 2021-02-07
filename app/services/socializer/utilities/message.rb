@@ -17,7 +17,7 @@ module Socializer
       # Creates an error message if the argument(s) passed to the
       # initializer are the wrong type
       #
-      # @param [NilClass], [Socializer::Person], [Socializer::Activity]
+      # @param [NilClass, Socializer::Person, Socializer::Activity]
       # instance: the model instance you will be acting on
       # @param [Class] valid_class: the instance type that should be passed in
       #
