@@ -1,10 +1,10 @@
 # Socializer [![Gem Version](https://badge.fury.io/rb/socializer.svg)](https://badge.fury.io/rb/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
 
 [![CI](https://github.com/socializer/socializer/workflows/CI/badge.svg)](https://github.com/socializer/socializer/actions?query=workflow%3ACI)
-[![Coverage Status](https://coveralls.io/repos/github/socializer/socializer/badge.svg?branch=master)](https://coveralls.io/github/socializer/socializer?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/socializer/socializer/badge.svg?branch=main)](https://coveralls.io/github/socializer/socializer?branch=main)
 [![Maintainability](https://api.codeclimate.com/v1/badges/597d0f0dd08d9ec1dba5/maintainability)](https://codeclimate.com/github/socializer/socializer/maintainability)
 [![Dependency Status](https://gemnasium.com/badges/github.com/socializer/socializer.svg)](https://gemnasium.com/github.com/socializer/socializer)
-[![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=master&style=flat)](http://inch-ci.org/github/socializer/socializer)
+[![Inline docs](http://inch-ci.org/github/socializer/socializer.svg?branch=main&style=flat)](http://inch-ci.org/github/socializer/socializer)
 
 Socializer is a rails engine fully dedicated to adding social network capabilities so you can focus
 on what really matters.
@@ -82,7 +82,7 @@ The todo list is as follows :
 
 ## If you want to contribute
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/socializer/socializer/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/socializer/socializer/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 The best way to contribute is to do one of the following :
 * Creating tests
@@ -93,4 +93,4 @@ The best way to contribute is to do one of the following :
 
 ## License ##
 
-Socializer is released under the [MIT License](https://github.com/socializer/socializer/blob/master/LICENSE)
+Socializer is released under the [MIT License](https://github.com/socializer/socializer/blob/main/LICENSE)
