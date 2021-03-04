@@ -180,7 +180,7 @@ GEM
     highline (2.0.3)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.33)
+    i18n-tasks (0.9.34)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -483,7 +483,7 @@ DEPENDENCIES
   database_cleaner-active_record (~> 2.0)
   draper!
   factory_bot_rails (~> 6.1.0)
-  i18n-tasks (~> 0.9.33)
+  i18n-tasks (~> 0.9.34)
   inch (~> 0.8.0)
   listen
   pry-rails
@@ -507,4 +507,4 @@ DEPENDENCIES
   webdrivers (~> 4.0)
 
 BUNDLED WITH
-   2.2.11
+   2.2.13
