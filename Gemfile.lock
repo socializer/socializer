@@ -141,7 +141,7 @@ GEM
       i18n_data (~> 0.10.0)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
-    country_select (5.0.0)
+    country_select (5.0.1)
       countries (~> 3.0)
       sort_alphabetical (~> 1.1)
     coveralls_reborn (0.20.0)
