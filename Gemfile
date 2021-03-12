@@ -17,7 +17,7 @@ group :development, :test do
   gem "byebug"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
-  gem "rspec-rails", "~> 4.1.0"
+  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :development do
