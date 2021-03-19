@@ -17,7 +17,7 @@ group :development, :test do
   gem "byebug"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
-  gem "rspec-rails", "~> 5.0.0"
+  gem "rspec-rails", "~> 5.0.1"
 end
 
 group :development do
@@ -28,7 +28,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "coveralls_reborn", "~> 0.20.0", require: false
+  gem "coveralls_reborn", "~> 0.21.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.21.2", require: false
