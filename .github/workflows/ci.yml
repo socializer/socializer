@@ -19,21 +19,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache Ruby
+    - name: "Cache Ruby"
       uses: actions/cache@v2
       id: ruby-cache
       with:
         path: ~/local/rubies
         key: ruby-3.0.1
 
-    - name: Install Ruby 3.0.1
+    - name: "Install Ruby 3.0.1"
       uses: ruby/setup-ruby@v1
       id: ruby
       with:
-        ruby-version: 3.0.1
+        ruby-version: '3.0.1'
         bundler-cache: true
 
-    - name: Insall sqlite
+    - name: "Insall sqlite"
       run: |
         sudo apt-get update
         sudo apt-get install libmysqlclient-dev libpq-dev libsqlite3-dev libncurses5-dev
