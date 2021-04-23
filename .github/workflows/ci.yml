@@ -39,13 +39,6 @@ jobs:
         sudo apt-get install libmysqlclient-dev libpq-dev libsqlite3-dev libncurses5-dev
         sudo apt-get install -y sqlite3
 
-    - name: "Install gems"
-      run: |
-        gem install bundler  --no-document
-        bundle config set without 'documentation'
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-
     - name: "Prepare the database"
       run: |
         bin/rails app:db:environment:set RAILS_ENV=test
