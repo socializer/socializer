@@ -163,10 +163,10 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_bot (6.1.0)
+    factory_bot (6.2.0)
       activesupport (>= 5.0.0)
-    factory_bot_rails (6.1.0)
-      factory_bot (~> 6.1.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     faraday (1.4.1)
       faraday-excon (~> 1.1)
@@ -448,7 +448,7 @@ GEM
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.1.0)
     tilt (2.0.10)
-    tins (1.28.0)
+    tins (1.29.0)
       sync
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -485,7 +485,7 @@ DEPENDENCIES
   coveralls_reborn (~> 0.22.0)
   database_cleaner-active_record (~> 2.0)
   draper!
-  factory_bot_rails (~> 6.1.0)
+  factory_bot_rails (~> 6.2.0)
   i18n-tasks (~> 0.9.34)
   inch (~> 0.8.0)
   listen
