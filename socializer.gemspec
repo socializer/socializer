@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency("bcrypt",               "~> 3.1.16")
   s.add_dependency("bootstrap-sass",       "~> 3.4.1")
   s.add_dependency("coffee-rails",         "~> 5.0.0")
-  s.add_dependency("country_select",       "~> 5.0.0")
+  s.add_dependency("country_select",       "~> 5.1.0")
   # s.add_dependency("draper",               "~> 4.0.1")
   s.add_dependency("elasticsearch-rails",  "~> 7.1.1")
   s.add_dependency("enumerize",            "~> 2.4.0")
@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency("simple_form",          "~> 5.1.0")
   s.add_dependency("uglifier",             ">= 4.1.19")
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-  s.add_dependency("webpacker",            "~> 5.3")
+  s.add_dependency("webpacker",            "~> 5.4")
 
   s.add_development_dependency("bundler",              "~> 2.2.7")
   s.add_development_dependency("rake",                 "~> 13.0.1")
