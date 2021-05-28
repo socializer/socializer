@@ -39,4 +39,4 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "draper", github: "drapergem/draper"
+# gem "draper", github: "drapergem/draper"
