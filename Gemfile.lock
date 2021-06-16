@@ -177,7 +177,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
@@ -242,7 +242,7 @@ GEM
       rack-protection
     omniauth-facebook (8.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-identity (3.0.8)
+    omniauth-identity (3.0.9)
       bcrypt
       omniauth
     omniauth-linkedin (0.2.0)
@@ -311,7 +311,7 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_best_practices (1.20.1)
+    rails_best_practices (1.21.0)
       activesupport
       code_analyzer (>= 0.5.2)
       erubis
@@ -354,7 +354,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.16.1)
+    rubocop (1.17.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -492,10 +492,10 @@ DEPENDENCIES
   pry-rails
   rails-controller-testing
   rails-dummy (= 0.1.0)
-  rails_best_practices (~> 1.20.1)
+  rails_best_practices (~> 1.21.0)
   rake (~> 13.0.1)
   rspec-rails (~> 5.0.1)
-  rubocop (~> 1.16.1)
+  rubocop (~> 1.17.0)
   rubocop-performance (~> 1.11.3)
   rubocop-rails (~> 2.10.1)
   rubocop-rake (~> 0.5.1)
