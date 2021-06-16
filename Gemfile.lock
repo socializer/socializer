@@ -12,7 +12,7 @@ PATH
       jquery-ui-rails (~> 6.0.1)
       omniauth (~> 2.0.4)
       omniauth-facebook (~> 8.0.0)
-      omniauth-identity (~> 3.0.8)
+      omniauth-identity (~> 3.0.9)
       omniauth-linkedin (~> 0.2.0)
       omniauth-openid (~> 2.0.1)
       omniauth-rails_csrf_protection
@@ -479,7 +479,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 2.2.7)
+  bundler (~> 2.2.20)
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
@@ -510,4 +510,4 @@ DEPENDENCIES
   webdrivers (~> 4.0)
 
 BUNDLED WITH
-   2.2.15
+   2.2.20

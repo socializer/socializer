@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
   s.add_dependency("webpacker",            "~> 5.4")
 
-  s.add_development_dependency("bundler",              "~> 2.2.7")
+  s.add_development_dependency("bundler",              "~> 2.2.20")
   s.add_development_dependency("rake",                 "~> 13.0.1")
   s.add_development_dependency("sqlite3",              "~> 1.4.1")
   # s.add_development_dependency("rspec-rails",          "~> 3.9.0")
