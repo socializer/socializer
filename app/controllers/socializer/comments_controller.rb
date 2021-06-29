@@ -70,7 +70,7 @@ module Socializer
       @find_comment ||= current_user.comments.find_by(id: params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a list of trusted parameters through.
     def comment_params
       params.require(:comment).permit(:content)
     end

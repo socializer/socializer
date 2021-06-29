@@ -68,7 +68,7 @@ module Socializer
         @find_phone ||= phones.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_phone_params
         params.require(:person_phone).permit(:label, :number)
       end

@@ -68,7 +68,7 @@ module Socializer
         @find_education ||= educations.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_education_params
         params.require(:person_education)
               .permit(:school_name, :major_or_field_of_study, :started_on,

@@ -56,7 +56,7 @@ module Socializer
           model: activity_object.decorate.demodulized_type)
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def share_params
         params.require(:share).permit(:activity_id, :content, :object_ids)
       end

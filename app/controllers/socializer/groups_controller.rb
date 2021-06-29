@@ -75,7 +75,7 @@ module Socializer
       @find_group ||= current_user.groups.find_by(id: params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a list of trusted parameters through.
     def group_params
       params.require(:group).permit(:display_name, :privacy, :tagline, :about)
     end

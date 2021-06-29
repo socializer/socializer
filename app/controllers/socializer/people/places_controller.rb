@@ -68,7 +68,7 @@ module Socializer
         @find_place ||= places.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_place_params
         params.require(:person_place).permit(:city_name, :current)
       end

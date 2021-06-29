@@ -39,7 +39,7 @@ module Socializer
       Person.find_by(id: params[:id]).decorate
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a list of trusted parameters through.
     def person_params
       params.require(:person)
             .permit(:display_name, :email, :language, :avatar_provider,

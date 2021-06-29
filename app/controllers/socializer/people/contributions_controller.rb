@@ -69,7 +69,7 @@ module Socializer
         @find_contribution ||= contributions.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_contribution_params
         params.require(:person_contribution)
               .permit(:display_name, :label, :url, :current)

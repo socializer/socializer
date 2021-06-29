@@ -31,7 +31,7 @@ module Socializer
 
     private
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a list of trusted parameters through.
     def membership_params
       params.require(:membership).permit(:group_id)
     end

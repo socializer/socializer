@@ -68,7 +68,7 @@ module Socializer
         @find_link ||= links.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_link_params
         params.require(:person_link).permit(:display_name, :url)
       end

@@ -65,7 +65,7 @@ module Socializer
         @find_address ||= addresses.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_address_params
         params.require(:person_address)
               .permit(:line1, :line2, :city, :postal_code_or_zip,

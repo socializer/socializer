@@ -68,7 +68,7 @@ module Socializer
         @find_employment ||= employments.find_by(id: params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
+      # Only allow a list of trusted parameters through.
       def person_employment_params
         params.require(:person_employment)
               .permit(:employer_name, :job_title, :started_on, :ended_on,
