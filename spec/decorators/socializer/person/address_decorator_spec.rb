@@ -12,7 +12,7 @@ module Socializer
       context "with no line2" do
         let(:address_value) do
           "282 Kevin Brook<br>" \
-          "Imogeneborough, California 58517<br>US"
+            "Imogeneborough, California 58517<br>US"
         end
 
         specify do
@@ -25,8 +25,8 @@ module Socializer
 
         let(:address_value) do
           "282 Kevin Brook<br>" \
-          "Apt. 123<br>Imogeneborough, California 58517<br>" \
-          "US"
+            "Apt. 123<br>Imogeneborough, California 58517<br>" \
+            "US"
         end
 
         specify do

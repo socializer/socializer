@@ -25,8 +25,8 @@ module Socializer
       context "with major_or_field_of_study" do
         let(:education_value) do
           "Hard Knocks<br>" \
-          "Slacking<br>" \
-          "#{decorated_education.started_on_to_ended_on}"
+            "Slacking<br>" \
+            "#{decorated_education.started_on_to_ended_on}"
         end
 
         specify do
@@ -42,7 +42,7 @@ module Socializer
 
         let(:education_value) do
           "Hard Knocks<br>" \
-          "#{decorated_education.started_on_to_ended_on}"
+            "#{decorated_education.started_on_to_ended_on}"
         end
 
         specify do

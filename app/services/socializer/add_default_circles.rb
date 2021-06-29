@@ -69,22 +69,22 @@ module Socializer
 
     def acquaintances_content
       "A good place to stick people you've met but " \
-      "aren't particularly close to."
+        "aren't particularly close to."
     end
 
     def family_content
       "Your close and extended family, with as " \
-      "many or as few in-laws as you want."
+        "many or as few in-laws as you want."
     end
 
     def following_content
       "People you don't know personally, but whose " \
-      "posts you find interesting."
+        "posts you find interesting."
     end
 
     def friends_content
       "Your real friends, the ones you feel " \
-      "comfortable sharing private details with."
+        "comfortable sharing private details with."
     end
   end
 end

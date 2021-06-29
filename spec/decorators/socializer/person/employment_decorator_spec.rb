@@ -25,7 +25,7 @@ module Socializer
       context "with no job_title or job_description" do
         let(:employment_value) do
           "Some Company<br>" \
-          "#{decorated_employment.started_on_to_ended_on}"
+            "#{decorated_employment.started_on_to_ended_on}"
         end
 
         specify do
@@ -39,8 +39,8 @@ module Socializer
 
         let(:employment_value) do
           "Some Company<br>" \
-          "My Title<br>" \
-          "#{decorated_employment.started_on_to_ended_on}"
+            "My Title<br>" \
+            "#{decorated_employment.started_on_to_ended_on}"
         end
 
         specify do
@@ -56,8 +56,8 @@ module Socializer
 
         let(:employment_value) do
           "Some Company<br>" \
-          "Description<br>" \
-          "#{decorated_employment.started_on_to_ended_on}"
+            "Description<br>" \
+            "#{decorated_employment.started_on_to_ended_on}"
         end
 
         specify do
@@ -74,9 +74,9 @@ module Socializer
 
         let(:employment_value) do
           "Some Company<br>" \
-          "My Title<br>" \
-          "Description<br>" \
-          "#{decorated_employment.started_on_to_ended_on}"
+            "My Title<br>" \
+            "Description<br>" \
+            "#{decorated_employment.started_on_to_ended_on}"
         end
 
         specify do
