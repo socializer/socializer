@@ -2,7 +2,7 @@
 
 # https://github.com/colszowka/simplecov#using-simplecov-for-centralized-config
 SimpleCov.start "rails" do
-  # see https://github.com/colszowka/simplecov/blob/master/lib/simplecov/defaults.rb
+  # see https://github.com/colszowka/simplecov/blob/main/lib/simplecov/defaults.rb
 
   enable_coverage :branch # Only supported for Ruby >= 2.5
 
