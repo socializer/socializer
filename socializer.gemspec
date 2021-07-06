@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.add_dependency("webpacker",            "~> 5.4")
 
   s.add_development_dependency("bundler",              "~> 2.2.20")
-  s.add_development_dependency("rake",                 "~> 13.0.1")
+  s.add_development_dependency("rake",                 "~> 13.0.3")
   s.add_development_dependency("sqlite3",              "~> 1.4.1")
   # s.add_development_dependency("rspec-rails",          "~> 3.9.0")
   # s.add_development_dependency("brakeman",             "~> 3.0.5")
@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("shoulda-matchers",     "~> 4.5.1")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.21.0")
-  s.add_development_dependency("rubocop",              "~> 1.18.2")
+  s.add_development_dependency("rubocop",              "~> 1.18.3")
   s.add_development_dependency("rubocop-performance",  "~> 1.11.3")
   s.add_development_dependency("rubocop-rails",        "~> 2.11.2")
   s.add_development_dependency("rubocop-rake",         "~> 0.6.0")
