@@ -266,7 +266,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.20.1)
-    parser (3.0.1.1)
+    parser (3.0.2.0)
       ast (~> 2.4.1)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -329,7 +329,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rainbow (3.0.0)
-    rake (13.0.5)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -496,7 +496,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-dummy (= 0.1.0)
   rails_best_practices (~> 1.21.0)
-  rake (~> 13.0.5)
+  rake (~> 13.0.6)
   rspec-rails (~> 5.0.1)
   rubocop (~> 1.18.3)
   rubocop-performance (~> 1.11.4)
