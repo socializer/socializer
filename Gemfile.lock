@@ -406,8 +406,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sexp_processor (4.15.3)
-    shoulda-matchers (4.5.1)
-      activesupport (>= 4.2.0)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -504,7 +504,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.4.0)
   scss_lint (~> 0.59.0)
-  shoulda-matchers (~> 4.5.1)
+  shoulda-matchers (~> 5.0.0)
   simplecov (~> 0.21.2)
   simplecov-lcov
   socializer!
@@ -513,4 +513,4 @@ DEPENDENCIES
   webdrivers (~> 4.0)
 
 BUNDLED WITH
-   2.2.22
+   2.2.23
