@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("shoulda-matchers",     "~> 5.0.0")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.21.0")
-  s.add_development_dependency("rubocop",              "~> 1.18.3")
+  s.add_development_dependency("rubocop",              "~> 1.18.4")
   s.add_development_dependency("rubocop-performance",  "~> 1.11.4")
   s.add_development_dependency("rubocop-rails",        "~> 2.11.3")
   s.add_development_dependency("rubocop-rake",         "~> 0.6.0")
