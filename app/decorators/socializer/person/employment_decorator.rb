@@ -73,7 +73,7 @@ module Socializer
       private
 
       def content_and_br(content:)
-        [content, helpers.tag("br", nil, true)]
+        [content, helpers.tag.br]
       end
 
       def job_title_with_br_or_empty

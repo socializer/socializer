@@ -154,7 +154,7 @@ module Socializer
     private
 
     def content_and_br(content:)
-      [content, helpers.tag("br", nil, true)]
+      [content, helpers.tag.br]
     end
 
     def looking_for_friends

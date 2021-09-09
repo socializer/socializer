@@ -61,7 +61,7 @@ module Socializer
       end
 
       def content_and_br(content:)
-        [content, helpers.tag("br", nil, true)]
+        [content, helpers.tag.br]
       end
     end
   end
