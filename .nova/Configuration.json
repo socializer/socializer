@@ -1,3 +1,4 @@
 {
-  "editor.default_syntax" : "ruby"
+  "editor.default_syntax" : "ruby",
+  "john-ellis.rubocop-nova.base-command" : "bundle exec rubocop"
 }

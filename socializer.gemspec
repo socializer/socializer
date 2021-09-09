@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rails_best_practices", "~> 1.21.0")
   s.add_development_dependency("rubocop",              "~> 1.20.0")
   s.add_development_dependency("rubocop-performance",  "~> 1.11.5")
-  s.add_development_dependency("rubocop-rails",        "~> 2.11.3")
+  s.add_development_dependency("rubocop-rails",        "~> 2.12.0")
   s.add_development_dependency("rubocop-rake",         "~> 0.6.0")
   s.add_development_dependency("rubocop-rspec",        "~> 2.4.0")
   s.add_development_dependency("scss_lint",            "~> 0.59.0")
