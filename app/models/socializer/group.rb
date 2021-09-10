@@ -35,7 +35,7 @@ module Socializer
                           dependent: :destroy,
                           inverse_of: :group
 
-    has_many :memberships # , dependent: :destroy
+    has_many :memberships, dependent: nil, inverse_of: :group
 
     has_many :activity_members,
              -> { merge(Membership.active) },

@@ -17,7 +17,10 @@ module Socializer
     # These relationships simplify the Activity.circles_subquery and
     # Activity.limited_group_subquery queries. By using these relationships we
     # no longer need to use Arel in those methods.
-    has_one :self_reference, class_name: "ActivityObject", foreign_key: :id
+    has_one :self_reference,
+            class_name: "ActivityObject",
+            foreign_key: :id,
+            dependent: nil
 
     has_one :group,
             through: :self_reference,
