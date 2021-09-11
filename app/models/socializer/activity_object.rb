@@ -81,7 +81,8 @@ module Socializer
     has_many :memberships,
              -> { Membership.active },
              foreign_key: "member_id",
-             inverse_of: :activity_member
+             inverse_of: :activity_member,
+             dependent: :destroy
 
     # Validations
     validates :activitable, presence: true
