@@ -132,7 +132,7 @@ GEM
     country_select (6.0.0)
       countries (~> 4.0)
       sort_alphabetical (~> 1.1)
-    coveralls_reborn (0.22.0)
+    coveralls_reborn (0.23.0)
       simplecov (>= 0.18.1, < 0.22.0)
       term-ansicolor (~> 1.6)
       thor (>= 0.20.3, < 2.0)
@@ -488,7 +488,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
-  coveralls_reborn (~> 0.22.0)
+  coveralls_reborn (~> 0.23.0)
   database_cleaner-active_record (~> 2.0)
   factory_bot_rails (~> 6.2.0)
   i18n-tasks (~> 0.9.34)
