@@ -4,7 +4,9 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe VERSION do
+    # rubocop:disable RSpec/DescribedClass
     subject(:version) { Socializer::VERSION }
+    # rubocop:enable RSpec/DescribedClass
 
     let(:gemspec_path) { Engine.root.join("socializer.gemspec").to_s }
     let(:specification) { Gem::Specification.load(gemspec_path) }
