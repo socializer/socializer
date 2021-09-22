@@ -22,7 +22,7 @@ module Socializer
     end
 
     describe "link_to_like_or_unlike" do
-      context "when no current_user it returns nil " do
+      context "when no current_user it returns nil" do
         before do
           without_partial_double_verification do
             allow(helper).to receive(:current_user).and_return(nil)
