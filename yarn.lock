@@ -223,9 +223,9 @@ clean-stack@^2.0.0:
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
 colorette@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.10.tgz#0cc871faead8b07227c9ad784f27a0d71f3794e2"
-  integrity sha512-tQ7Prvd+zU6EUsQVXJNqxJUZdZ4btI34jlp/W1N/bNyWsY55dxe2oSg+ss3COV4vKbWLVlwLJt5xMSCuZ3R4og==
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.12.tgz#7938ab254e7bb1bba29b0fd1b4cc168889ca4d74"
+  integrity sha512-lHID0PU+NtFzeNCwTL6JzUKdb6kDpyEjrwTD1H0cDZswTbsjLh2wTV2Eo2sNZLc0oSg0a5W1AI4Nj7bX4iIdjA==
 
 compressible@~2.0.16:
   version "2.0.18"
@@ -821,9 +821,9 @@ is-extglob@^2.1.1:
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
 is-glob@^4.0.1, is-glob@~4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
-  integrity sha512-5G0tKtBTFImOqDnLB2hG6Bp2qcKEFduo4tZu9MT/H6NQv/ghhy30o55ufafxJ/LdH79LLs2Kfrn85TLKyA7BUg==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.2.tgz#859fc2e731e58c902f99fcabccb75a7dd07d29d8"
+  integrity sha512-ZZTOjRcDjuAAAv2cTBQP/lL59ZTArx77+7UzHdWW/XB1mrfp7DEaVpKmZ0XIzx+M7AxfhKcqV+nMetUQmFifwg==
   dependencies:
     is-extglob "^2.1.1"
 
