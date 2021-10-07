@@ -8,13 +8,9 @@ module Socializer
     let(:actor) { create(:person) }
     let(:share) { described_class.new(actor: actor) }
 
-    let(:object_ids) do
-      Socializer::Audience.privacy.find_value(:public).value
-    end
-
     let(:share_attributes) do
       { activity_id: activity_object.id,
-        object_ids: object_ids,
+        object_ids: Socializer::Audience.privacy.find_value(:public).value,
         content: "Share" }
     end
 
@@ -27,13 +23,9 @@ module Socializer
     it { expect(results.activity_field_content).to eq("Share") }
 
     context "with no content" do
-      let(:share_attributes) do
-        { activity_id: activity_object.id,
-          object_ids: object_ids,
-          content: nil }
+      before do
+        share_attributes[:content] = nil
       end
-
-      let(:results) { share.call(params: share_attributes) }
 
       it { expect(results.activity_field_content).to eq(nil) }
     end

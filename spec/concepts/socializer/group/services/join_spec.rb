@@ -4,8 +4,6 @@ require "rails_helper"
 
 module Socializer
   RSpec.describe Group::Services::Join, type: :service do
-    let(:person) { build(:person) }
-
     describe ".call" do
       let(:person) { create(:person) }
 
