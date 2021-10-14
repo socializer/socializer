@@ -96,7 +96,7 @@ GEM
       execjs (~> 2)
     backport (1.2.0)
     bcrypt (3.1.16)
-    benchmark (0.1.1)
+    benchmark (0.2.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -208,7 +208,7 @@ GEM
     jaro_winkler (1.5.4)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.5.1)
+    json (2.6.0)
     jwt (2.3.0)
     kramdown (2.3.1)
       rexml
