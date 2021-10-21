@@ -402,7 +402,7 @@ GEM
       tilt
     scss_lint (0.59.0)
       sass (~> 3.5, >= 3.5.5)
-    selenium-webdriver (4.0.2)
+    selenium-webdriver (4.0.3)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
@@ -477,7 +477,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.26)
-    zeitwerk (2.5.0)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   x86_64-darwin-20
