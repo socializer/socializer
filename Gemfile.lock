@@ -318,7 +318,7 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_best_practices (1.21.0)
+    rails_best_practices (1.22.1)
       activesupport
       code_analyzer (>= 0.5.2)
       erubis
@@ -361,7 +361,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.22.2)
+    rubocop (1.22.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -409,7 +409,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
-    sexp_processor (4.15.3)
+    sexp_processor (4.16.0)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     simple_form (5.1.0)
@@ -499,10 +499,10 @@ DEPENDENCIES
   pry-rails
   rails-controller-testing
   rails-dummy (= 0.1.0)
-  rails_best_practices (~> 1.21.0)
+  rails_best_practices (~> 1.22.1)
   rake (~> 13.0.6)
   rspec-rails (~> 5.0.2)
-  rubocop (~> 1.22.2)
+  rubocop (~> 1.22.3)
   rubocop-performance (~> 1.11.5)
   rubocop-rails (~> 2.12.4)
   rubocop-rake (~> 0.6.0)
