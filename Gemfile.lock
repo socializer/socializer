@@ -190,7 +190,7 @@ GEM
     highline (2.0.3)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.34)
+    i18n-tasks (0.9.35)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -483,6 +483,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -493,7 +494,7 @@ DEPENDENCIES
   coveralls_reborn (~> 0.23.0)
   database_cleaner-active_record (~> 2.0)
   factory_bot_rails (~> 6.2.0)
-  i18n-tasks (~> 0.9.34)
+  i18n-tasks (~> 0.9.35)
   inch (~> 0.8.0)
   listen
   pry-rails
