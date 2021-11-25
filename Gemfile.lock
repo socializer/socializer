@@ -184,7 +184,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4)
-    globalid (0.5.2)
+    globalid (0.6.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
     highline (2.0.3)
@@ -270,7 +270,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.21.0)
-    parser (3.0.2.0)
+    parser (3.0.3.0)
       ast (~> 2.4.1)
     pry (0.14.1)
       coderay (~> 1.1)
