@@ -127,7 +127,7 @@ GEM
       execjs
       json
     concurrent-ruby (1.1.9)
-    countries (4.1.0)
+    countries (4.1.1)
       i18n_data (~> 0.13.1)
       sixarm_ruby_unaccent (~> 1.1)
     country_select (6.0.0)

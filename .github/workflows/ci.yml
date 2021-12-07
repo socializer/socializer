@@ -24,7 +24,7 @@ jobs:
       id: ruby-cache
       with:
         path: ~/local/rubies
-        key: ruby-3.0.2
+        key: ruby-3.0.3
 
     - name: "Install Ruby 3.0.x"
       uses: ruby/setup-ruby@v1
