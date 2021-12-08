@@ -270,7 +270,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.21.0)
-    parser (3.0.3.1)
+    parser (3.0.3.2)
       ast (~> 2.4.1)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -520,4 +520,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.2.32
+   2.2.33
