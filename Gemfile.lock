@@ -127,8 +127,8 @@ GEM
       execjs
       json
     concurrent-ruby (1.1.9)
-    countries (4.1.1)
-      i18n_data (~> 0.13.1)
+    countries (4.1.2)
+      i18n_data (~> 0.15.0)
       sixarm_ruby_unaccent (~> 1.1)
     country_select (6.0.0)
       countries (~> 4.0)
@@ -190,7 +190,7 @@ GEM
     highline (2.0.3)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.35)
+    i18n-tasks (0.9.36)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -200,7 +200,8 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    i18n_data (0.13.1)
+    i18n_data (0.15.0)
+      simple_po_parser (~> 1.1)
     inch (0.8.0)
       pry
       sparkr (>= 0.2.0)
@@ -415,6 +416,7 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simple_po_parser (1.1.5)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
