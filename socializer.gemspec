@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
   s.add_dependency("webpacker",            "~> 5.4")
 
-  s.add_development_dependency("bundler",              "~> 2.2.20")
+  s.add_development_dependency("bundler",              "~> 2.3.1")
   s.add_development_dependency("rake",                 "~> 13.0.6")
   s.add_development_dependency("sqlite3",              "~> 1.4.1")
   # s.add_development_dependency("rspec-rails",          "~> 3.9.0")
@@ -57,10 +57,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency("factory_bot_rails",    "~> 6.2.0")
   s.add_development_dependency("i18n-tasks",           "~> 0.9.35")
   s.add_development_dependency("inch",                 "~> 0.8.0")
-  s.add_development_dependency("shoulda-matchers",     "~> 5.0.0")
+  s.add_development_dependency("shoulda-matchers",     "~> 5.1.0")
   # s.add_development_dependency("database_cleaner",     "~> 1.6.0")
   s.add_development_dependency("rails_best_practices", "~> 1.22.1")
-  s.add_development_dependency("rubocop",              "~> 1.23.0")
+  s.add_development_dependency("rubocop",              "~> 1.24.0")
   s.add_development_dependency("rubocop-performance",  "~> 1.12.0")
   s.add_development_dependency("rubocop-rails",        "~> 2.12.4")
   s.add_development_dependency("rubocop-rake",         "~> 0.6.0")

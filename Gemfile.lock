@@ -143,7 +143,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    diff-lcs (1.4.4)
+    diff-lcs (1.5.0)
     docile (1.4.0)
     draper (4.0.2)
       actionpack (>= 5.0)
@@ -362,13 +362,13 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
-    rubocop (1.23.0)
+    rubocop (1.24.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.12.0, < 2.0)
+      rubocop-ast (>= 1.15.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.15.0)
@@ -411,7 +411,7 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sexp_processor (4.16.0)
-    shoulda-matchers (5.0.0)
+    shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
@@ -491,7 +491,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 2.2.20)
+  bundler (~> 2.3.1)
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
@@ -507,13 +507,13 @@ DEPENDENCIES
   rails_best_practices (~> 1.22.1)
   rake (~> 13.0.6)
   rspec-rails (~> 5.0.2)
-  rubocop (~> 1.23.0)
+  rubocop (~> 1.24.0)
   rubocop-performance (~> 1.12.0)
   rubocop-rails (~> 2.12.4)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.6.0)
   scss_lint (~> 0.59.0)
-  shoulda-matchers (~> 5.0.0)
+  shoulda-matchers (~> 5.1.0)
   simplecov (~> 0.21.2)
   simplecov-lcov
   socializer!
@@ -522,4 +522,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.2.33
+   2.3.1
