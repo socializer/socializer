@@ -159,32 +159,32 @@ module Socializer
     describe "#attribute_type_of" do
       it "when type is 'Activity" do
         activity_object.activitable_type = "Socializer::Activity"
-        expect(activity_object.send("activity?")).to be_truthy
+        expect(activity_object.send(:activity?)).to be_truthy
       end
 
       it "when type is 'Circle" do
         activity_object.activitable_type = "Socializer::Circle"
-        expect(activity_object.send("circle?")).to be_truthy
+        expect(activity_object.send(:circle?)).to be_truthy
       end
 
       it "when type is 'Comment" do
         activity_object.activitable_type = "Socializer::Comment"
-        expect(activity_object.send("comment?")).to be_truthy
+        expect(activity_object.send(:comment?)).to be_truthy
       end
 
       it "when type is 'Group" do
         activity_object.activitable_type = "Socializer::Group"
-        expect(activity_object.send("group?")).to be_truthy
+        expect(activity_object.send(:group?)).to be_truthy
       end
 
       it "when type is 'Note" do
         activity_object.activitable_type = "Socializer::Note"
-        expect(activity_object.send("note?")).to be_truthy
+        expect(activity_object.send(:note?)).to be_truthy
       end
 
       it "when type is 'Person" do
         activity_object.activitable_type = "Socializer::Person"
-        expect(activity_object.send("person?")).to be_truthy
+        expect(activity_object.send(:person?)).to be_truthy
       end
     end
   end
