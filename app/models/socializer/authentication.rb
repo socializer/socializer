@@ -15,7 +15,6 @@ module Socializer
 
     # Validations
     # TODO: Should a person only be allowed to have 1 provider of each type?
-    validates :person, presence: true
     validates :provider, presence: true
     validates :uid, presence: true
 

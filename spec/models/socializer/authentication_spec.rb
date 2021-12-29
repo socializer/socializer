@@ -15,7 +15,6 @@ module Socializer
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:person) }
       specify { is_expected.to validate_presence_of(:provider) }
       specify { is_expected.to validate_presence_of(:uid) }
     end

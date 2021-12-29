@@ -12,10 +12,22 @@ module Socializer
 
     context "with relationships" do
       specify { is_expected.to belong_to(:parent).optional }
-      specify { is_expected.to belong_to(:activitable_actor) }
-      specify { is_expected.to belong_to(:activitable_object) }
       specify { is_expected.to belong_to(:activitable_target).optional }
-      specify { is_expected.to belong_to(:verb) }
+      specify { is_expected.to belong_to(:verb).inverse_of(:activities) }
+
+      specify do
+        expect(activity).to belong_to(:activitable_actor)
+          .class_name("ActivityObject")
+          .with_foreign_key("actor_id")
+          .inverse_of(:actor_activities)
+      end
+
+      specify do
+        expect(activity).to belong_to(:activitable_object)
+          .class_name("ActivityObject")
+          .with_foreign_key("activity_object_id")
+          .inverse_of(:object_activities)
+      end
 
       specify do
         expect(activity)
@@ -29,11 +41,8 @@ module Socializer
       specify { is_expected.to have_many(:notifications).inverse_of(:activity) }
     end
 
-    context "with validations" do
-      specify { is_expected.to validate_presence_of(:activitable_actor) }
-      specify { is_expected.to validate_presence_of(:activitable_object) }
-      specify { is_expected.to validate_presence_of(:verb) }
-    end
+    # context "with validations" do
+    # end
 
     context "with scopes" do
       describe "newest_first" do

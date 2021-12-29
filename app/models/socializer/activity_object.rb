@@ -85,7 +85,6 @@ module Socializer
              dependent: :destroy
 
     # Validations
-    validates :activitable, presence: true
 
     # Named Scopes
 

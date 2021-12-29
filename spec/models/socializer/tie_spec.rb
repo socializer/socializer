@@ -15,25 +15,21 @@ module Socializer
       specify { is_expected.to belong_to(:circle).inverse_of(:ties) }
 
       specify do
-        expect(tie)
-          .to belong_to(:activity_contact)
+        expect(tie).to belong_to(:activity_contact)
           .class_name("ActivityObject")
           .with_foreign_key("contact_id")
           .inverse_of(:ties)
       end
 
       specify do
-        expect(tie)
-          .to have_one(:contact)
+        expect(tie).to have_one(:contact)
           .through(:activity_contact)
           .source(:activitable)
       end
     end
 
-    context "with validations" do
-      specify { is_expected.to validate_presence_of(:circle) }
-      specify { is_expected.to validate_presence_of(:activity_contact) }
-    end
+    # context "with validations" do
+    # end
 
     context "with scopes" do
       describe "with_circle_id" do

@@ -72,9 +72,8 @@ module Socializer
       end
     end
 
-    context "with validations" do
-      specify { is_expected.to validate_presence_of(:activitable) }
-    end
+    # context "with validations" do
+    # end
 
     context "with scopes" do
       describe "with_id" do

@@ -46,7 +46,6 @@ module Socializer
                        source_type: "Socializer::Person"
 
     # Validations
-    validates :activity_author, presence: true
     validates :display_name, presence: true,
                              uniqueness: { scope: :author_id,
                                            case_sensitive: false }

@@ -23,7 +23,6 @@ module Socializer
                      dependent: :destroy
 
     # Validations
-    validates :activity_author, presence: true
     validates :content, presence: true
   end
 end

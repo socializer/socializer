@@ -17,7 +17,6 @@ module Socializer
       belongs_to :group, inverse_of: :links
 
       # Validations
-      validates :group, presence: true
       validates :display_name, presence: true
     end
   end

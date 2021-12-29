@@ -12,23 +12,20 @@ module Socializer
 
     context "with relationships" do
       specify do
-        expect(note)
-          .to belong_to(:activity_author)
+        expect(note).to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
           .inverse_of(:notes)
       end
 
       specify do
-        expect(note)
-          .to have_one(:author)
+        expect(note).to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:activity_author) }
       specify { is_expected.to validate_presence_of(:content) }
     end
 

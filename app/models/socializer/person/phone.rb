@@ -27,7 +27,6 @@ module Socializer
       validates :category, presence: true
       validates :label, presence: true
       validates :number, presence: true
-      validates :person, presence: true
     end
   end
 end

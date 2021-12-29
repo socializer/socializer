@@ -11,12 +11,14 @@ module Socializer
     end
 
     context "with relationships" do
-      specify { is_expected.to belong_to(:activity) }
+      specify do
+        expect(activity_field).to belong_to(:activity)
+          .inverse_of(:activity_field)
+      end
     end
 
     context "with validations" do
       specify { is_expected.to validate_presence_of(:content) }
-      specify { is_expected.to validate_presence_of(:activity) }
     end
   end
 end

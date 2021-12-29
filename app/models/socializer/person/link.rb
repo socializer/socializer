@@ -17,7 +17,6 @@ module Socializer
 
       # Validations
       validates :display_name, presence: true
-      validates :person, presence: true
       validates :url, presence: true
     end
   end

@@ -12,16 +12,14 @@ module Socializer
 
     context "with relationships" do
       specify do
-        expect(group)
-          .to belong_to(:activity_author)
+        expect(group).to belong_to(:activity_author)
           .class_name("ActivityObject")
           .with_foreign_key("author_id")
           .inverse_of(:groups)
       end
 
       specify do
-        expect(group)
-          .to have_one(:author)
+        expect(group).to have_one(:author)
           .through(:activity_author)
           .source(:activitable)
       end
@@ -46,7 +44,6 @@ module Socializer
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:activity_author) }
       specify { is_expected.to validate_presence_of(:display_name) }
       specify { is_expected.to validate_presence_of(:privacy) }
 

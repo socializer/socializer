@@ -22,7 +22,6 @@ module Socializer
 
       # Validations
       validates :category, presence: true
-      validates :person, presence: true
       validates :line1, presence: true
       validates :city, presence: true
       validates :province_or_state, presence: true

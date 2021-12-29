@@ -11,12 +11,11 @@ module Socializer
     end
 
     context "with relationships" do
-      specify { is_expected.to belong_to(:person) }
+      specify { is_expected.to belong_to(:person).inverse_of(:addresses) }
     end
 
     context "with validations" do
       specify { is_expected.to validate_presence_of(:category) }
-      specify { is_expected.to validate_presence_of(:person) }
       specify { is_expected.to validate_presence_of(:line1) }
       specify { is_expected.to validate_presence_of(:city) }
       specify { is_expected.to validate_presence_of(:province_or_state) }

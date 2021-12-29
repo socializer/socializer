@@ -16,7 +16,6 @@ module Socializer
       belongs_to :person, inverse_of: :educations
 
       # Validations
-      validates :person, presence: true
       validates :school_name, presence: true
       validates :started_on, presence: true
     end

@@ -16,8 +16,6 @@ module Socializer
                                  counter_cache: :unread_notifications_count
 
     # Validations
-    validates :activity_id, presence: true
-    validates :activity_object_id, presence: true
 
     # Named Scopes
 
