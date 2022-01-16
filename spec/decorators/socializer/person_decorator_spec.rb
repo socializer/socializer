@@ -16,7 +16,7 @@ module Socializer
 
         context "when specified" do
           let(:person) do
-            build(:person, birthdate: Time.zone.now - 10.years)
+            build(:person, birthdate: 10.years.ago)
           end
 
           specify do
