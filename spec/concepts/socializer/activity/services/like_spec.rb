@@ -9,7 +9,7 @@ module Socializer
     let(:like) { described_class.new(actor: liking_person) }
     let(:results) { like.call(activity_object: liked_activity_object) }
 
-    it { expect(results.persisted?).to eq(true) }
+    it { expect(results.persisted?).to be(true) }
     it { expect(results.verb.display_name).to eq("like") }
     it { expect(results).to be_kind_of(Socializer::Activity) }
 

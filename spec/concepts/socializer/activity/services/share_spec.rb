@@ -16,7 +16,7 @@ module Socializer
 
     let(:results) { share.call(params: share_attributes) }
 
-    it { expect(results.persisted?).to eq(true) }
+    it { expect(results.persisted?).to be(true) }
     it { expect(results.actor_id).to eq(actor.guid) }
     it { expect(results.activity_object_id).to eq(activity_object.id) }
     it { expect(results.verb.display_name).to eq("share") }
@@ -27,7 +27,7 @@ module Socializer
         share_attributes[:content] = nil
       end
 
-      it { expect(results.activity_field_content).to eq(nil) }
+      it { expect(results.activity_field_content).to be_nil }
     end
   end
 end

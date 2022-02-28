@@ -30,7 +30,7 @@ module Socializer
         end
 
         specify do
-          expect(decorated_activity_object.link_to_like_or_unlike).to eq(nil)
+          expect(decorated_activity_object.link_to_like_or_unlike).to be_nil
         end
       end
 

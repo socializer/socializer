@@ -26,11 +26,11 @@ module Socializer
 
         context "with only current record" do
           it "current.present? should be true" do
-            expect(described_class.current.present?).to eq(true)
+            expect(described_class.current.present?).to be(true)
           end
 
           it "previous.empty? should be true" do
-            expect(described_class.previous.empty?).to eq(true)
+            expect(described_class.previous.empty?).to be(true)
           end
         end
 
@@ -40,11 +40,11 @@ module Socializer
           before { not_current_place }
 
           it "current.present? should be true" do
-            expect(described_class.current.present?).to eq(true)
+            expect(described_class.current.present?).to be(true)
           end
 
           it "previous.present? should be true" do
-            expect(described_class.previous.present?).to eq(true)
+            expect(described_class.previous.present?).to be(true)
           end
         end
       end

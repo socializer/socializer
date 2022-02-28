@@ -11,7 +11,7 @@ module Socializer
     context "with attributes" do
       describe "birthdate" do
         context "when not specified" do
-          specify { expect(decorated_person.birthdate).to be nil }
+          specify { expect(decorated_person.birthdate).to be_nil }
         end
 
         context "when specified" do
@@ -150,7 +150,7 @@ module Socializer
         context "with a blank email" do
           let(:person) { build(:person, email: nil) }
 
-          specify { expect(decorated_person.avatar_url).to eq(nil) }
+          specify { expect(decorated_person.avatar_url).to be_nil }
         end
       end
     end
@@ -337,7 +337,7 @@ module Socializer
       let(:group_url) { group_activities_path(group.try(:id)) }
 
       context "with no circles or memberships" do
-        specify { expect(decorated_person.toolbar_stream_links).to eq(nil) }
+        specify { expect(decorated_person.toolbar_stream_links).to be_nil }
       end
 
       context "with circles and no memberships" do

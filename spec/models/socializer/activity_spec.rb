@@ -108,7 +108,7 @@ module Socializer
     end
 
     describe "#comments" do
-      specify { expect(activity.comments?).to eq(false) }
+      specify { expect(activity.comments?).to be(false) }
 
       describe "expected to be true" do
         let(:activity) { create(:activity) }
@@ -127,7 +127,7 @@ module Socializer
           actor.comments.create!(comment_attributes)
         end
 
-        specify { expect(activity.comments?).to eq(true) }
+        specify { expect(activity.comments?).to be(true) }
       end
     end
 

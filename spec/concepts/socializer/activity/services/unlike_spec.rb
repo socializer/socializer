@@ -15,7 +15,7 @@ module Socializer
         like.call(activity_object: liked_activity_object)
       end
 
-      it { expect(results.persisted?).to eq(true) }
+      it { expect(results.persisted?).to be(true) }
       it { expect(results.verb.display_name).to eq("unlike") }
       it { expect(results).to be_kind_of(Socializer::Activity) }
     end

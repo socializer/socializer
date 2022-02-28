@@ -9,7 +9,7 @@ module Socializer
 
     describe "ended_on" do
       context "when nil" do
-        specify { expect(decorated_education.ended_on).to eq(nil) }
+        specify { expect(decorated_education.ended_on).to be_nil }
       end
 
       context "when it is a date" do

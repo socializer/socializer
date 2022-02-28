@@ -50,7 +50,7 @@ module Socializer
                 post :create, params: { id: membership.id }
               end
 
-              specify { expect(membership.reload.active).to eq(true) }
+              specify { expect(membership.reload.active).to be(true) }
               specify { expect(response).to have_http_status(:found) }
             end
           end

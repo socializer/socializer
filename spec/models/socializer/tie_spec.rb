@@ -52,7 +52,7 @@ module Socializer
         context "when nil" do
           let(:tie) { build(:tie, contact_id: nil) }
 
-          specify { expect(tie.contact_id).to eq(nil) }
+          specify { expect(tie.contact_id).to be_nil }
         end
       end
     end
