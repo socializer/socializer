@@ -17,7 +17,7 @@ PATH
       omniauth-openid (~> 2.0.1)
       omniauth-rails_csrf_protection
       omniauth-twitter (~> 1.4.0)
-      rails (~> 6.1.3)
+      rails (~> 6.1.5)
       sass-rails (~> 6.0.0)
       simple_form (~> 5.1.0)
       uglifier (>= 4.1.19)
