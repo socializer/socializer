@@ -334,7 +334,7 @@ module Socializer
       let(:family_url) { circle_activities_path(family.id) }
       let(:acquaintances_url) { circle_activities_path(acquaintances.id) }
       let(:following_url) { circle_activities_path(following.id) }
-      let(:group_url) { group_activities_path(group.try(:id)) }
+      let(:group_url) { group_activities_path(group&.id) }
 
       context "with no circles or memberships" do
         specify { expect(decorated_person.toolbar_stream_links).to be_nil }

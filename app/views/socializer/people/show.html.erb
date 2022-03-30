@@ -204,7 +204,7 @@
             <span class="pull-right">
               <%= link_to("Edit", edit_person_person_place_path(@person, @person.places.current)) %>
             </span>
-            <p><%= @person.places.current.first.try(:city_name) %></p>
+            <p><%= @person.places.current.first&.city_name %></p>
           </li>
           <li>
             <p>
