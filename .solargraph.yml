@@ -16,4 +16,4 @@ reporters:
 require_paths: []
 max_files: 5000
 plugins:
-  - solargraph-arc
+  - solargraph-rails
