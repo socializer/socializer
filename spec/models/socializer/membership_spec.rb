@@ -13,7 +13,7 @@ module Socializer
     let(:membership) do
       create(:socializer_membership,
              activity_member: user.activity_object,
-             group: group)
+             group:)
     end
 
     it "has a valid factory" do

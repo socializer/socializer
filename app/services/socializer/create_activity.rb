@@ -32,14 +32,14 @@ module Socializer
     private
 
     def activity_field
-      ActivityField.new(content: content) if content.present?
+      ActivityField.new(content:) if content.present?
     end
 
     def activity_attributes
       {
-        actor_id: actor_id,
-        activity_object_id: activity_object_id,
-        target_id: target_id,
+        actor_id:,
+        activity_object_id:,
+        target_id:,
         verb: Verb.find_or_create_by(display_name: verb)
       }
     end
@@ -50,8 +50,8 @@ module Socializer
     # to
     def add_audience_to_activity(activity:)
       object_ids_array.each do |audience_id|
-        privacy  = audience_privacy(audience_id: audience_id)
-        audience = activity.audiences.build(privacy: privacy)
+        privacy  = audience_privacy(audience_id:)
+        audience = activity.audiences.build(privacy:)
 
         audience.activity_object_id = audience_id if privacy == limited_privacy
       end
@@ -91,7 +91,7 @@ module Socializer
       Activity.create(activity_attributes) do |activity|
         activity.activity_field = activity_field
 
-        add_audience_to_activity(activity: activity) if object_ids.present?
+        add_audience_to_activity(activity:) if object_ids.present?
       end
     end
   end

@@ -34,7 +34,7 @@ module Socializer
     #
     # @return [Socializer::Tie]
     def self.with_circle_id(circle_id:)
-      where(circle_id: circle_id)
+      where(circle_id:)
     end
 
     # Find ties where the contact_id is equal to the given contact_id
@@ -43,7 +43,7 @@ module Socializer
     #
     # @return [Socializer::Tie]
     def self.with_contact_id(contact_id:)
-      where(contact_id: contact_id)
+      where(contact_id:)
     end
   end
 end

@@ -25,9 +25,9 @@ module Socializer
 
       if comment.save
         notice = t("socializer.model.create", model: "Comment")
-        redirect_to activities_path, notice: notice
+        redirect_to activities_path, notice:
       else
-        render :new, locals: { comment: comment,
+        render :new, locals: { comment:,
                                target_id: comment.activity_target_id }
       end
     end

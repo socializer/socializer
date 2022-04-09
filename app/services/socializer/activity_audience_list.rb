@@ -37,7 +37,7 @@ module Socializer
     #
     # @return [Array]
     def self.call(activity:)
-      new(activity: activity).call
+      new(activity:).call
     end
 
     # Instance Methods
@@ -56,7 +56,7 @@ module Socializer
           return [message]
         end
 
-        list.concat(audience_list(audience: audience))
+        list.concat(audience_list(audience:))
       end
 
       list.unshift(@activity.activitable_actor.activitable.display_name)
@@ -69,7 +69,7 @@ module Socializer
 
       activitable = audience.activity_object.activitable
 
-      limited_audience_list(activitable: activitable) if audience.limited?
+      limited_audience_list(activitable:) if audience.limited?
     end
 
     def circles_audience_list

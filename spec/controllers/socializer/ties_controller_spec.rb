@@ -11,7 +11,7 @@ module Socializer
     let(:circle) { create(:circle) }
 
     let(:tie_attributes) do
-      { activity_contact: user.activity_object, circle: circle }
+      { activity_contact: user.activity_object, circle: }
     end
 
     let(:tie) do

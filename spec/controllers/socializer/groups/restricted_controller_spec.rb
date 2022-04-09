@@ -14,7 +14,7 @@ module Socializer
     end
 
     let(:group_attributes) do
-      { activity_author: user.activity_object, privacy: privacy }
+      { activity_author: user.activity_object, privacy: }
     end
 
     let(:group) do

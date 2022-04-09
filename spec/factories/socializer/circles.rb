@@ -14,7 +14,7 @@ FactoryBot.define do
       end
 
       after :create do |circle, evaluator|
-        create_list :tie, evaluator.number_of_ties, circle: circle
+        create_list :tie, evaluator.number_of_ties, circle:
       end
     end
   end

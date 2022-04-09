@@ -18,10 +18,9 @@ module Socializer
         # TODO: makes sense to have stream or activities as an instance
         #       method so we can do
         #       @activity.activities(viewer_id: current_user.id)
-        activities = stream(activity_id: activity_id)
+        activities = stream(activity_id:)
 
-        render :index, locals: { activities: activities,
-                                 title: "Activity stream" }
+        render :index, locals: { activities:, title: "Activity stream" }
       end
 
       private

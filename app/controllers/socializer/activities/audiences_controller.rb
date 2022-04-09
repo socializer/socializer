@@ -14,7 +14,7 @@ module Socializer
       # GET activities/1/audience
       def index
         activity    = Activity.find_by(id: params[:id])
-        @object_ids = ActivityAudienceList.new(activity: activity).call
+        @object_ids = ActivityAudienceList.new(activity:).call
 
         respond_to do |format|
           format.html { render layout: false if request.xhr? }

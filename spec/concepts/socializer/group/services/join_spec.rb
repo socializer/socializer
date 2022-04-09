@@ -12,7 +12,7 @@ module Socializer
       end
 
       let(:join) do
-        described_class.new(group: group, person: person)
+        described_class.new(group:, person:)
       end
 
       let(:membership) { Membership.find_by(membership_attributes) }

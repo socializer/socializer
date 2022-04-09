@@ -96,7 +96,7 @@ module Socializer
     #
     # @return [Socializer::ActivityObject]
     def self.with_id(id:)
-      where(id: id)
+      where(id:)
     end
 
     # Find activitiy objects where the activitable_type is equal to the given
@@ -136,7 +136,7 @@ module Socializer
       # likers   = people.merge(Verb.by_display_name("like"))
       # unlikers = people.merge(Verb.by_display_name("unlike")).pluck(:id)
 
-      query    = Activity.joins(:verb).with_activity_object_id(id: id)
+      query    = Activity.joins(:verb).with_activity_object_id(id:)
       likers   = query.merge(Verb.with_display_name(name: "like"))
       unlikers = query.merge(Verb.with_display_name(name: "unlike"))
       people   = likers.map(&:actor)

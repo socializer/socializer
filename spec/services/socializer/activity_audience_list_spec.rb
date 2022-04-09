@@ -29,7 +29,7 @@ module Socializer
         let(:activity) { create(:activity) }
 
         let(:audience_list) do
-          described_class.new(activity: activity).call
+          described_class.new(activity:).call
         end
 
         specify { expect(audience_list).to be_kind_of(Array) }
@@ -54,7 +54,7 @@ module Socializer
 
         context "when public" do
           let(:audience_list) do
-            described_class.new(activity: activity).call
+            described_class.new(activity:).call
           end
 
           let(:tooltip_public) do
@@ -67,7 +67,7 @@ module Socializer
 
         context "when it is circles" do
           before do
-            AddDefaultCircles.call(person: person)
+            AddDefaultCircles.call(person:)
           end
 
           let(:note_attributes) do
@@ -83,7 +83,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            described_class.new(activity: activity).call
+            described_class.new(activity:).call
           end
 
           specify { expect(audience_list.size).to eq(1) }
@@ -92,7 +92,7 @@ module Socializer
 
         context "when it is limited" do
           before do
-            AddDefaultCircles.call(person: person)
+            AddDefaultCircles.call(person:)
           end
 
           let(:family) do
@@ -112,7 +112,7 @@ module Socializer
           end
 
           let(:audience_list) do
-            described_class.new(activity: activity).call
+            described_class.new(activity:).call
           end
 
           specify { expect(audience_list.size).to eq(1) }

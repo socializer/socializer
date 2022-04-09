@@ -16,7 +16,7 @@ module Socializer
       let(:membership) { Membership.find_by(membership_attributes) }
 
       before do
-        described_class.new(group: group, person: person).call
+        described_class.new(group:, person:).call
       end
 
       describe "when the group is public" do

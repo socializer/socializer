@@ -20,10 +20,10 @@ module Socializer
         #       method so we can do
         #       @group.activities(viewer_id: current_user.id)
 
-        activities = stream(group: group)
+        activities = stream(group:)
 
-        render :index, locals: { activities: activities,
-                                 group: group,
+        render :index, locals: { activities:,
+                                 group:,
                                  title: group.display_name }
       end
 

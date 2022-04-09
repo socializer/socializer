@@ -13,7 +13,7 @@ module Socializer
     #
     # @return [String] An HTML time tag
     def created_at_time_ago(options = {})
-      time_ago(options: options)
+      time_ago(options:)
     end
 
     private
@@ -26,9 +26,9 @@ module Socializer
     def time_ago(options: {})
       data = { behavior: "tooltip-on-hover", time_ago: "moment.js" }
 
-      options.reverse_merge!(title: created_updated_tooltip_text, data: data)
+      options.reverse_merge!(title: created_updated_tooltip_text, data:)
 
-      time_tag(options: options)
+      time_tag(options:)
     end
 
     def time_tag(options:)
@@ -50,8 +50,8 @@ module Socializer
     #
     # @return [String]
     def created_updated_tooltip_text(format: :short)
-      created_at = l(model.created_at.utc, format: format)
-      updated_at = l(model.updated_at.utc, format: format)
+      created_at = l(model.created_at.utc, format:)
+      updated_at = l(model.updated_at.utc, format:)
 
       return created_at if created_at == updated_at
 

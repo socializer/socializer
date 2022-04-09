@@ -39,7 +39,7 @@ module Socializer
           end
 
           group.memberships.create!(activity_member: person.activity_object,
-                                    active: active)
+                                    active:)
         end
       end
     end

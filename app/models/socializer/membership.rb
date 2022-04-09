@@ -48,7 +48,7 @@ module Socializer
     #
     # @return [ActiveRecord::Relation]
     def self.with_member_id(member_id:)
-      where(member_id: member_id)
+      where(member_id:)
     end
 
     # Instance Methods

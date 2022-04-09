@@ -18,7 +18,7 @@ module Socializer
 
         respond_to do |format|
           format.html do
-            render :index, locals: { person: person, likes: likes }
+            render :index, locals: { person:, likes: }
           end
         end
       end

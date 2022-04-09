@@ -18,14 +18,14 @@ module Socializer
       let(:valid_attributes) do
         { id: note,
           share: { content: "",
-                   object_ids: object_ids,
+                   object_ids:,
                    activity_id: note.guid } }
       end
 
       let(:invalid_attributes) do
         { id: note,
           share: { content: "",
-                   object_ids: object_ids,
+                   object_ids:,
                    activity_id: nil } }
       end
 

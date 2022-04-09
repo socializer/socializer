@@ -16,7 +16,7 @@ module Socializer
 
       respond_to do |format|
         format.json do
-          render json: AudienceList.call(person: current_user, query: query)
+          render json: AudienceList.call(person: current_user, query:)
         end
       end
     end

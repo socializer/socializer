@@ -24,7 +24,7 @@ module Socializer
     let(:valid_attributes) do
       { group: { author_id: user.guid,
                  display_name: "Test",
-                 privacy: privacy } }
+                 privacy: } }
     end
 
     let(:invalid_attributes) do
@@ -69,7 +69,7 @@ module Socializer
 
       describe "PATCH #update" do
         it "requires login" do
-          patch :update, params: { id: group, group: { privacy: privacy } }
+          patch :update, params: { id: group, group: { privacy: } }
           expect(response).to redirect_to root_path
         end
       end
@@ -165,7 +165,7 @@ module Socializer
           end
 
           it "redirects to groups#show" do
-            patch :update, params: { id: group, group: { privacy: privacy } }
+            patch :update, params: { id: group, group: { privacy: } }
             expect(response).to have_http_status(:found)
           end
         end
@@ -189,7 +189,7 @@ module Socializer
 
         context "when it can delete a group that has no members" do
           before do
-            Group::Services::Leave.new(group: group, person: user).call
+            Group::Services::Leave.new(group:, person: user).call
           end
 
           it "deletes the group" do

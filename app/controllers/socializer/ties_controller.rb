@@ -15,7 +15,7 @@ module Socializer
       circle = Circle.find_by(id: tie_params[:circle_id])
       tie = circle.add_contact(tie_params[:contact_id])
 
-      flash[:notice] = flash_message(action: :create, tie: tie, circle: circle)
+      flash[:notice] = flash_message(action: :create, tie:, circle:)
       respond_to do |format|
         # format.html { redirect_to circle }
         format.js
@@ -29,7 +29,7 @@ module Socializer
 
       tie.destroy
 
-      flash[:notice] = flash_message(action: :destroy, tie: tie, circle: circle)
+      flash[:notice] = flash_message(action: :destroy, tie:, circle:)
 
       redirect_to circle
     end

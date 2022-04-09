@@ -6,7 +6,7 @@ module Socializer
   RSpec.describe Activity::Services::Share, type: :service do
     let(:activity_object) { create(:activity_object) }
     let(:actor) { create(:person) }
-    let(:share) { described_class.new(actor: actor) }
+    let(:share) { described_class.new(actor:) }
 
     let(:share_attributes) do
       { activity_id: activity_object.id,

@@ -20,10 +20,10 @@ module Socializer
         #       method so we can do
         #       circle.activities(viewer_id: current_user.id)
 
-        activities = stream(circle: circle)
+        activities = stream(circle:)
 
-        render :index, locals: { activities: activities,
-                                 circle: circle,
+        render :index, locals: { activities:,
+                                 circle:,
                                  title: circle.display_name }
       end
 

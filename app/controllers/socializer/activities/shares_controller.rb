@@ -18,8 +18,7 @@ module Socializer
 
         respond_to do |format|
           format.html do
-            render :new, locals: { activity_object: activity_object,
-                                   share: share }
+            render :new, locals: { activity_object:, share: }
           end
         end
       end
@@ -34,13 +33,11 @@ module Socializer
                                             .call(params: share_params)
 
         if activity.persisted?
-          notice = flash_message(action: :create,
-                                 activity_object: activity_object)
+          notice = flash_message(action: :create, activity_object:)
 
-          redirect_to activities_path, notice: notice
+          redirect_to activities_path, notice:
         else
-          render :new, locals: { activity_object: activity_object,
-                                 share: share_params }
+          render :new, locals: { activity_object:, share: share_params }
         end
       end
 
@@ -48,7 +45,7 @@ module Socializer
 
       # TODO: Add to ActivityObject
       def find_activity_object(id:)
-        @find_activity_object ||= ActivityObject.find_by(id: id)
+        @find_activity_object ||= ActivityObject.find_by(id:)
       end
 
       def flash_message(action:, activity_object:)

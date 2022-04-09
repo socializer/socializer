@@ -107,7 +107,7 @@ module Socializer
         user.avatar_provider = avatar_provider
 
         user.authentications.build(provider: auth_provider,
-                                   uid: auth.uid, image_url: image_url)
+                                   uid: auth.uid, image_url:)
       end
     end
 

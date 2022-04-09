@@ -109,10 +109,10 @@ module Socializer
     #
     # @return [String]  An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
-      width, height = parse_size(size: size) if size
+      width, height = parse_size(size:) if size
 
-      helpers.tag.img(src: avatar_url, class: css_class, alt: alt,
-                      title: title, width: width, height: height,
+      helpers.tag.img(src: avatar_url, class: css_class, alt:,
+                      title:, width:, height:,
                       data: { behavior: "tooltip-on-hover" })
     end
 
@@ -259,8 +259,8 @@ module Socializer
     # toolbar partials for the initial requirements
     def toolbar_link(item)
       item = toolbar_object(object: item)
-      url  = toolbar_link_url(item: item)
-      class_name = toolbar_item_class(url: url)
+      url  = toolbar_link_url(item:)
+      class_name = toolbar_item_class(url:)
 
       helpers.tag.li do
         helpers.link_to(item.display_name, url, class: class_name)

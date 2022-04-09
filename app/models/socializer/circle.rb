@@ -51,7 +51,7 @@ module Socializer
     #
     # @return [Socializer::Circle]
     def self.with_id(id:)
-      where(id: id)
+      where(id:)
     end
 
     # Find circles where the author_id is equal to the given id
@@ -91,7 +91,7 @@ module Socializer
     # validations passes. Raises [ActiveRecord::RecordInvalid] when the
     # record is invalid.
     def add_contact(contact_id)
-      ties.create!(contact_id: contact_id)
+      ties.create!(contact_id:)
     end
 
     # Remove a contact from the circle
@@ -103,7 +103,7 @@ module Socializer
     # be made (since they can"t be persisted). If the before_destroy callback
     # returns false the action is cancelled and remove_contact returns false.
     def remove_contact(contact_id)
-      tie = ties.find_by(contact_id: contact_id)
+      tie = ties.find_by(contact_id:)
       tie.destroy
     end
   end

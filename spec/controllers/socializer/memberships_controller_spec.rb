@@ -15,7 +15,7 @@ module Socializer
 
     let(:membership) do
       create(:socializer_membership,
-             group: group,
+             group:,
              activity_member: user.activity_object)
     end
 

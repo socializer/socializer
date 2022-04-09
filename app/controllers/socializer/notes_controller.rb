@@ -28,7 +28,7 @@ module Socializer
       respond_to do |format|
         format.html { redirect_to activities_path }
         format.js do
-          render :create, locals: { activity: activity, note: Note.new,
+          render :create, locals: { activity:, note: Note.new,
                                     current_id: nil, title: "Activity stream" }
         end
       end
@@ -51,13 +51,13 @@ module Socializer
     # DELETE /notes/1
     def destroy
       note = find_note
-      activity_guid = activity_for_note(note: note).guid
+      activity_guid = activity_for_note(note:).guid
       note.destroy
 
       respond_to do |format|
         format.html { redirect_to activities_path }
         format.js do
-          render :destroy, locals: { activity_guid: activity_guid }
+          render :destroy, locals: { activity_guid: }
         end
       end
     end

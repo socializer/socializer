@@ -48,7 +48,7 @@ module Socializer
                                                           .id)
 
         # If the contact has the author of the activity in one of his circle.
-        create_notification(activity: activity, contact_id: contact_id)
+        create_notification(activity:, contact_id:)
       end
     end
 

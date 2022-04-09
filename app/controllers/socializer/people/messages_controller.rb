@@ -17,7 +17,7 @@ module Socializer
 
         respond_to do |format|
           format.html do
-            render :new, locals: { person: person,
+            render :new, locals: { person:,
                                    current_id: person.guid,
                                    note: Note.new }
           end

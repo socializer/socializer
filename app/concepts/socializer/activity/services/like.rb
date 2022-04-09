@@ -52,7 +52,7 @@ module Socializer
           Socializer::CreateActivity
             .new(actor_id: actor.guid,
                  activity_object_id: activity_object.id,
-                 verb: verb,
+                 verb:,
                  object_ids: PUBLIC).call
         end
 

@@ -33,7 +33,7 @@ module Socializer
       let(:circles) { person.activity_object.circles }
 
       before do
-        described_class.call(person: person)
+        described_class.call(person:)
       end
 
       specify { expect(person.activity_object.circles.size).to eq(4) }

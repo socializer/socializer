@@ -38,7 +38,7 @@ module Socializer
     #
     # @return [Socializer::AddDefaultCircles]
     def self.call(person:)
-      new(person: person).call
+      new(person:).call
     end
 
     # Instance Methods
@@ -64,7 +64,7 @@ module Socializer
 
     def create_circle(display_name:, content: nil)
       circles = @person.activity_object.circles
-      circles.create!(display_name: display_name, content: content)
+      circles.create!(display_name:, content:)
     end
 
     def acquaintances_content

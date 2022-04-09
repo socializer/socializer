@@ -38,7 +38,7 @@ module Socializer
     #
     # @return [Array]
     def self.call(person:, query: nil)
-      new(person: person, query: query).call
+      new(person:, query:).call
     end
 
     # Instance Methods
@@ -80,7 +80,7 @@ module Socializer
       return Person.none unless @person.respond_to?(tableized_type)
 
       query  = @person.public_send(tableized_type)
-      result = select_display_name_alias_and_guids(query: query)
+      result = select_display_name_alias_and_guids(query:)
 
       return result if @query.blank?
 
@@ -88,12 +88,12 @@ module Socializer
     end
 
     def merge_icon(list:, icon:)
-      return list.merge(icon: icon) if list.is_a?(Hash)
+      return list.merge(icon:) if list.is_a?(Hash)
 
       list = list.to_a unless list.is_a?(Array)
 
       list.map do |item|
-        item.serializable_hash.merge(icon: icon).symbolize_keys!
+        item.serializable_hash.merge(icon:).symbolize_keys!
       end
     end
 

@@ -22,7 +22,7 @@ module Socializer
     end
 
     let(:audience_list) do
-      ActivityAudienceList.new(activity: activity).call
+      ActivityAudienceList.new(activity:).call
     end
 
     context "when not logged in" do

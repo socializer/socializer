@@ -35,14 +35,14 @@ module Socializer
         #
         # @return [Socializer::Activity]
         def call(params:)
-          parse_params(params: params)
+          parse_params(params:)
 
           Socializer::CreateActivity
             .new(actor_id: actor_guid,
-                 activity_object_id: activity_object_id,
-                 verb: verb,
-                 object_ids: object_ids,
-                 content: content).call
+                 activity_object_id:,
+                 verb:,
+                 object_ids:,
+                 content:).call
         end
 
         private

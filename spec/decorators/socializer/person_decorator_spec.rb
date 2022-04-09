@@ -39,7 +39,7 @@ module Socializer
 
         context "when not nil" do
           let(:occupation) { "sleeping, eating, drinking" }
-          let(:person) { create(:person, occupation: occupation) }
+          let(:person) { create(:person, occupation:) }
 
           specify { expect(decorated_person.occupation).to eq(occupation) }
         end
@@ -69,7 +69,7 @@ module Socializer
 
         context "when not unknown" do
           let(:relationship) { "single" }
-          let(:person) { create(:person, relationship: relationship) }
+          let(:person) { create(:person, relationship:) }
 
           specify do
             expect(decorated_person.relationship).to eq(relationship.titleize)
@@ -86,7 +86,7 @@ module Socializer
 
         context "when not nil" do
           let(:skills) { "sleeping, eating, drinking" }
-          let(:person) { create(:person, skills: skills) }
+          let(:person) { create(:person, skills:) }
 
           specify { expect(decorated_person.skills).to eq(skills) }
         end
@@ -342,7 +342,7 @@ module Socializer
 
       context "with circles and no memberships" do
         before do
-          AddDefaultCircles.call(person: person)
+          AddDefaultCircles.call(person:)
         end
 
         let(:result) { decorated_person.toolbar_stream_links }
@@ -401,7 +401,7 @@ module Socializer
 
       context "with no circles, but with memberships" do
         before do
-          AddDefaultCircles.call(person: person)
+          AddDefaultCircles.call(person:)
 
           create(:group, author_id: person.id, display_name: "Group")
         end

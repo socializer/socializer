@@ -30,12 +30,12 @@ module Socializer
       let(:circles) { { id: "circles", name: "Circles" } }
 
       before do
-        AddDefaultCircles.call(person: person)
+        AddDefaultCircles.call(person:)
       end
 
       context "with no query" do
         let(:audience_list) do
-          described_class.new(person: person, query: nil).call
+          described_class.new(person:, query: nil).call
         end
 
         specify { expect(audience_list).to be_kind_of(Array) }
@@ -58,7 +58,7 @@ module Socializer
 
       context "with query" do
         let(:audience_list) do
-          described_class.new(person: person, query: "friends").call
+          described_class.new(person:, query: "friends").call
         end
 
         specify { expect(audience_list).to be_kind_of(Array) }

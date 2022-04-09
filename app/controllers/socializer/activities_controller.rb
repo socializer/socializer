@@ -14,7 +14,7 @@ module Socializer
     def index
       activities = Activity.stream(viewer_id: current_user.id).decorate
 
-      render :index, locals: { activities: activities,
+      render :index, locals: { activities:,
                                current_id: nil,
                                title: "Activity stream",
                                note: Note.new }

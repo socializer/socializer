@@ -80,7 +80,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def self.with_id(id:)
-      where(id: id)
+      where(id:)
     end
 
     # Find activities where the activity_object_id is equal to the given id
@@ -145,7 +145,7 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def self.activity_stream(actor_uid:, viewer_id:)
-      stream_query(viewer_id: viewer_id).with_id(id: actor_uid).distinct
+      stream_query(viewer_id:).with_id(id: actor_uid).distinct
     end
 
     # Display all activities for a given circle
@@ -166,7 +166,7 @@ module Socializer
 
       followed = Tie.with_circle_id(circle_id: circles).pluck(:contact_id)
 
-      stream_query(viewer_id: viewer_id).with_actor_id(id: followed).distinct
+      stream_query(viewer_id:).with_actor_id(id: followed).distinct
     end
 
     # This is a group. display everything that was posted to this group as
@@ -180,7 +180,7 @@ module Socializer
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
 
-      stream_query(viewer_id: viewer_id)
+      stream_query(viewer_id:)
         .merge(Audience.with_activity_object_id(id: group_id)).distinct
     end
 
@@ -194,7 +194,7 @@ module Socializer
     # @return [Socializer::Activity]
     def self.person_stream(actor_uid:, viewer_id:)
       person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id: viewer_id).with_actor_id(id: person_id).distinct
+      stream_query(viewer_id:).with_actor_id(id: person_id).distinct
     end
 
     # Class Methods - Private
@@ -212,8 +212,8 @@ module Socializer
               .merge(Verb.with_display_name(name: verbs_of_interest))
               .with_target_id(id: nil)
 
-      query.where(public_grouping(viewer_id: viewer_id)
-           .or(limited_grouping(viewer_id: viewer_id))
+      query.where(public_grouping(viewer_id:)
+           .or(limited_grouping(viewer_id:))
            .or(arel_table[:actor_id].eq(viewer_id)))
     end
     private_class_method :stream_query
@@ -224,7 +224,7 @@ module Socializer
     # Audience.with_privacy(:circles).where(viewer_literal.in(circles_subquery))
     def self.circles_grouping(viewer_id:)
       circles_privacy   ||= Audience.privacy.circles.value
-      viewer_literal    ||= viewer_literal(viewer_id: viewer_id)
+      viewer_literal    ||= viewer_literal(viewer_id:)
       @circles_grouping ||= audience_table
                             .grouping(privacy_field.eq(circles_privacy)
                               .and(viewer_literal.in(circles_subquery)))
@@ -239,7 +239,7 @@ module Socializer
     def self.limited_grouping(viewer_id:)
       activity_object_id = audience_table[:activity_object_id]
       limited_privacy    = Audience.privacy.limited.value
-      viewer_literal     = viewer_literal(viewer_id: viewer_id)
+      viewer_literal     = viewer_literal(viewer_id:)
       @limited_grouping ||= audience_table
                             .grouping(privacy_field.eq(limited_privacy)
                                   .and(viewer_literal
@@ -258,7 +258,7 @@ module Socializer
       public_privacy   ||= Audience.privacy.public.value
       @public_grouping ||= audience_table
                            .grouping(privacy_field.eq(public_privacy)
-                            .or(circles_grouping(viewer_id: viewer_id)))
+                            .or(circles_grouping(viewer_id:)))
     end
     private_class_method :public_grouping
 

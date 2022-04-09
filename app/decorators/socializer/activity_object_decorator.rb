@@ -32,7 +32,7 @@ module Socializer
 
       options = current_user_likes? ? like_options : unlike_options
 
-      like_or_unlike_link(options: options)
+      like_or_unlike_link(options:)
     end
 
     private
@@ -46,7 +46,7 @@ module Socializer
       # i18n-tasks-use t("socializer.shared.unlike")
       title = helpers.t("socializer.shared.unlike")
 
-      { class: "btn btn-danger", path: path, title: title, method: :delete }
+      { class: "btn btn-danger", path:, title:, method: :delete }
     end
 
     def unlike_options
@@ -54,7 +54,7 @@ module Socializer
       # i18n-tasks-use t("socializer.shared.like")
       title = helpers.t("socializer.shared.like")
 
-      { class: "btn btn-default", path: path, title: title, method: :post }
+      { class: "btn btn-default", path:, title:, method: :post }
     end
 
     def like_or_unlike_link(options:)

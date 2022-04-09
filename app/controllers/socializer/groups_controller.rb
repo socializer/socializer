@@ -22,7 +22,7 @@ module Socializer
 
       respond_to do |format|
         format.html do
-          render :show, locals: { group: group, membership: membership }
+          render :show, locals: { group:, membership: }
         end
       end
     end

@@ -14,9 +14,7 @@ module Socializer
     end
 
     let(:membership_attributes) do
-      { active: false,
-        group: group,
-        activity_member: user.activity_object }
+      { active: false, group:, activity_member: user.activity_object }
     end
 
     let(:membership) do

@@ -15,7 +15,7 @@ module Socializer
       circles = current_user.circles.decorate
 
       respond_to do |format|
-        format.html { render :index, locals: { circles: circles } }
+        format.html { render :index, locals: { circles: } }
       end
     end
 
@@ -48,7 +48,7 @@ module Socializer
         flash[:notice] = t("socializer.model.create", model: "Circle")
         redirect_to contacts_circles_path
       else
-        render :new, locals: { circle: circle }
+        render :new, locals: { circle: }
       end
     end
 
