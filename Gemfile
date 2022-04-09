@@ -38,6 +38,9 @@ group :test do
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
+  # net-smtp should be removable when a new version of the mikel/mail
+  # gem is released
+  gem "net-smtp", require: false
 end
 
 # gem "draper", github: "drapergem/draper"
