@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = "~> 3.0.3"
+  s.required_ruby_version = "~> 3.1.1"
 
   s.add_dependency("bcrypt", "~> 3.1.16")
   s.add_dependency("bootstrap-sass", "~> 3.4.1")

@@ -24,13 +24,13 @@ jobs:
       id: ruby-cache
       with:
         path: ~/local/rubies
-        key: ruby-3.0.3
+        key: ruby-3.1.1
 
     - name: "Install Ruby 3.0.x"
       uses: ruby/setup-ruby@v1
       id: ruby
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.1'
         bundler-cache: true
 
     - name: "Insall sqlite"
