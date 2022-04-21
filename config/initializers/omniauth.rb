@@ -19,9 +19,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                      name: "google",
                      identifier: "https://www.google.com/accounts/o8/id"
 
-  provider :twitter,  ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"]
-  provider :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"]
-  provider :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"]
+  provider :twitter,  ENV.fetch("TWITTER_KEY"), ENV.fetch("TWITTER_SECRET")
+  provider :facebook, ENV.fetch("FACEBOOK_KEY"), ENV.fetch("FACEBOOK_SECRET")
+  provider :linkedin, ENV.fetch("LINKEDIN_KEY"), ENV.fetch("LINKEDIN_SECRET")
 
   provider :identity, model: Socializer::Identity
 end

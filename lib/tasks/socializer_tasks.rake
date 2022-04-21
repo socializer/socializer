@@ -54,7 +54,7 @@ def enhance_assets_precompile
 end
 
 # Compile packs after we've compiled all other assets during precompilation
-webpacker_precompile = ENV["WEBPACKER_PRECOMPILE"]
+webpacker_precompile = ENV.fetch("WEBPACKER_PRECOMPILE")
 skip_webpacker_precompile = %w[no false n f].include?(webpacker_precompile)
 
 unless skip_webpacker_precompile
