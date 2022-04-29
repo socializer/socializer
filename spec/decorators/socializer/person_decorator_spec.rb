@@ -21,7 +21,7 @@ module Socializer
 
           specify do
             expect(decorated_person.birthdate)
-              .to eq(person.birthdate.to_s(:long_ordinal))
+              .to eq(person.birthdate.to_fs(:long_ordinal))
           end
         end
       end

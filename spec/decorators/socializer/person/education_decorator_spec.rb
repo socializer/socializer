@@ -15,7 +15,7 @@ module Socializer
       context "when it is a date" do
         let(:date) { Date.new(2015, 12, 3) }
         let(:education) { create(:person_education, ended_on: date) }
-        let(:ended_on) { date.to_s(:long_ordinal) }
+        let(:ended_on) { date.to_fs(:long_ordinal) }
 
         specify { expect(decorated_education.ended_on).to eq(ended_on) }
       end
@@ -53,13 +53,13 @@ module Socializer
     end
 
     describe "started_on" do
-      let(:started_on) { Date.new(2012, 12, 3).to_s(:long_ordinal) }
+      let(:started_on) { Date.new(2012, 12, 3).to_fs(:long_ordinal) }
 
       specify { expect(decorated_education.started_on).to eq(started_on) }
     end
 
     describe "started_on_to_ended_on" do
-      let(:started_on) { Date.new(2012, 12, 3).to_s(:long_ordinal) }
+      let(:started_on) { Date.new(2012, 12, 3).to_fs(:long_ordinal) }
 
       context "when ended_on is nil" do
         let(:value) { "#{started_on} - present" }
@@ -76,7 +76,7 @@ module Socializer
           create(:person_education, ended_on: date, current: false)
         end
 
-        let(:ended_on) { date.to_s(:long_ordinal) }
+        let(:ended_on) { date.to_fs(:long_ordinal) }
         let(:value) { "#{started_on} - #{ended_on}" }
 
         specify do

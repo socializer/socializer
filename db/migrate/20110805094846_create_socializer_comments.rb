@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerComments < ActiveRecord::Migration[6.0]
+class CreateSocializerComments < ActiveRecord::Migration[7.0]
   def change
     create_table :socializer_comments do |t|
       t.integer  :author_id, null: false

@@ -4,6 +4,19 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Rails 7 gitignore
+/.bundle/
+/doc/
+/log/*.log
+/pkg/
+/tmp/
+/spec/dummy/db/*.sqlite3
+/spec/dummy/db/*.sqlite3-*
+/spec/dummy/log/*.log
+/spec/dummy/storage/
+/spec/dummy/tmp/
+# End Rails 7
+
 # Ignore bundler config.
 /.bundle
 
@@ -60,6 +73,7 @@ pickle-email-*.html
 pkg/
 
 .idea
+.nova
 .vscode/*
 
 rails_best_practices_output.html
