@@ -28,7 +28,7 @@ module Socializer
       #
       # @return [String]
       def ended_on
-        model.ended_on.to_date.to_s(:long_ordinal) if model.ended_on?
+        model.ended_on.to_date.to_fs(:long_ordinal) if model.ended_on?
       end
 
       # Returns the started_on date using the long_ordinal format
@@ -38,7 +38,7 @@ module Socializer
       #
       # @return [String]
       def started_on
-        model.started_on.to_date.to_s(:long_ordinal) if model.started_on?
+        model.started_on.to_date.to_fs(:long_ordinal) if model.started_on?
       end
 
       # Returns the formatted education

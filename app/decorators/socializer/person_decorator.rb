@@ -23,7 +23,7 @@ module Socializer
     #
     # @return [String]
     def birthdate
-      model.birthdate? ? model.birthdate.to_s(:long_ordinal) : nil
+      model.birthdate? ? model.birthdate.to_fs(:long_ordinal) : nil
     end
 
     # Returns the capitalized gender
