@@ -23,7 +23,7 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[title='#{created_at.to_s(:short)}']")
+            .to have_selector("time[title='#{created_at.to_fs(:short)}']")
         end
 
         specify do
@@ -39,7 +39,7 @@ module Socializer
         end
 
         let(:time_title) do
-          "#{created_at.to_s(:short)} (edited #{updated_at.to_s(:short)})"
+          "#{created_at.to_fs(:short)} (edited #{updated_at.to_fs(:short)})"
         end
 
         specify do
