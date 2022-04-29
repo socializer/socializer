@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerGroupCategories < ActiveRecord::Migration[6.0]
+class CreateSocializerGroupCategories < ActiveRecord::Migration[7.0]
   def change
     create_table :socializer_group_categories do |t|
       t.references :group, null: false

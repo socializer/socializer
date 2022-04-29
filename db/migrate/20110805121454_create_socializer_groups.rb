@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerGroups < ActiveRecord::Migration[6.0]
+class CreateSocializerGroups < ActiveRecord::Migration[7.0]
   def change
     create_table :socializer_groups do |t|
       t.integer  :author_id,    null: false

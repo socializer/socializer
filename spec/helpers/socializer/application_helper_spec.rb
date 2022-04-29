@@ -33,12 +33,5 @@ module Socializer
         specify { expect(helper.current_user?(person)).to be true }
       end
     end
-
-    describe "#current_webpacker_instance" do
-      specify do
-        expect(helper.current_webpacker_instance)
-          .to be_kind_of(Webpacker::Instance)
-      end
-    end
   end
 end

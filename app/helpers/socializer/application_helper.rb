@@ -9,15 +9,6 @@ module Socializer
   # application.
   #
   module ApplicationHelper
-    include ::Webpacker::Helper
-
-    # Returns the current Webpacker instance.
-    # Could be overridden to use multiple Webpacker
-    # configurations within the same app (e.g. with engines).
-    def current_webpacker_instance
-      Socializer.webpacker
-    end
-
     # Build the sign path for the given provider
     #
     # @param provider [String]/[Symbol]

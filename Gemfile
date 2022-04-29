@@ -3,10 +3,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Declare your gem's dependencies in socializer.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
+# Specify your gem's dependencies in socializer.gemspec.
 gemspec
+
+gem "sprockets-rails"
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -18,6 +18,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
   gem "rspec-rails", "~> 5.1.0"
+  gem "sqlite3"
   gem "typeprof"
 end
 

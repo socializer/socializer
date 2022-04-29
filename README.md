@@ -93,4 +93,5 @@ The best way to contribute is to do one of the following :
 
 ## License ##
 
-Socializer is released under the [MIT License](https://github.com/socializer/socializer/blob/main/LICENSE)
+Socializer is available as open source under the terms of the [MIT License]
+(https://opensource.org/licenses/MIT).
