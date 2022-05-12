@@ -47,3 +47,5 @@ group :test do
 end
 
 # gem "draper", github: "drapergem/draper"
+
+gem "bundler-integrity", "~> 1.0"
