@@ -60,7 +60,7 @@ module Socializer
           it "deletes the authentication" do
             authentication
             expect { delete :destroy, params: { id: authentication } }
-              .to change(Authentication, :count).by(0)
+              .not_to change(Authentication, :count)
           end
         end
 
