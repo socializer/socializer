@@ -358,7 +358,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rbs (2.5.0)
-    regexp_parser (2.4.0)
+    regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
     request_store (1.5.1)
@@ -448,7 +448,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     sixarm_ruby_unaccent (1.2.0)
     smart_properties (1.17.0)
-    solargraph (0.44.3)
+    solargraph (0.45.0)
       backport (~> 1.2)
       benchmark
       bundler (>= 1.17.2)
@@ -463,9 +463,6 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    solargraph-rails (1.0.0.pre.1)
-      activesupport
-      solargraph (~> 0.44.2)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     sparkr (0.4.1)
@@ -546,7 +543,6 @@ DEPENDENCIES
   simplecov-lcov
   socializer!
   solargraph
-  solargraph-rails (~> 1.0.0.pre.1)
   sprockets-rails
   sqlite3
   typeprof

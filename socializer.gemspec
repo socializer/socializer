@@ -76,5 +76,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("scss_lint", "~> 0.59.0")
   spec.add_development_dependency("solargraph")
   # spec.add_development_dependency("solargraph-rails")
-  spec.add_development_dependency("solargraph-rails", "~> 1.0.0.pre.1")
+  # spec.add_development_dependency("solargraph-rails", "~> 1.0.0.pre.1")
 end
