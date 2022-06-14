@@ -398,7 +398,7 @@ GEM
     rubocop-performance (1.14.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -473,7 +473,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
+    sqlite3 (1.4.3)
     strscan (3.0.3)
     sync (0.5.0)
     term-ansicolor (1.7.1)
@@ -506,7 +506,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   x86_64-darwin-21
@@ -534,7 +534,7 @@ DEPENDENCIES
   rspec-rails (~> 5.1.0)
   rubocop (~> 1.30.0)
   rubocop-performance (~> 1.14.0)
-  rubocop-rails (~> 2.14.0)
+  rubocop-rails (~> 2.15.0)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.11.0)
   scss_lint (~> 0.59.0)
