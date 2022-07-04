@@ -232,7 +232,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.16.1)
+    minitest (5.16.2)
     multi_xml (0.6.0)
     net-imap (0.2.3)
       digest
@@ -330,7 +330,7 @@ GEM
       railties
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
-    rails-i18n (7.0.3)
+    rails-i18n (7.0.5)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     rails_best_practices (1.23.1)
@@ -403,7 +403,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.12.0)
+    rubocop-rspec (2.12.1)
       rubocop (~> 1.31)
     ruby-openid (2.9.2)
     ruby-progressbar (1.11.0)
