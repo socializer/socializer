@@ -47,8 +47,6 @@ spec/examples.txt
 
 /public/packs
 /public/packs-test
-/node_modules
-/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 
@@ -92,9 +90,6 @@ config/secrets.yml
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
-
-# Ignore Byebug command history file.
-.byebug_history
 
 # Ignore the dummy SQLite database.
 spec/dummy/db/*.sqlite3
