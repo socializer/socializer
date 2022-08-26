@@ -31,7 +31,7 @@ module Socializer
 
     # Check if a user is signed in
     #
-    # @return [TrueClass/FalseClass]
+    # @return [Boolean]
     def signed_in?
       current_user.present?
     end

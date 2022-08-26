@@ -16,9 +16,9 @@ module Socializer
       # Invite a member to join the group
       #
       class Invite < ServiceBase
-        # @return [Socializer::Membership] The resulting object is returned
-        # if validations passes. Raises [ActiveRecord::RecordInvalid] when the
-        # record is invalid.
+        # @return [Socializer::Membership]
+        #   The resulting object is returned. If validations passes.
+        # @raise [ActiveRecord::RecordInvalid] if the record is invalid.
         def call
           group.memberships.create!(activity_member: person.activity_object,
                                     active: false)

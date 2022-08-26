@@ -99,13 +99,12 @@ module Socializer
 
     # Build the list of people based on the query
     #
-    # @return [Socializer::Person] If query is nil or "", Person.none
-    # is returned
-    # @return [ActiveRecord::Relation] If a query is provided the display_name
-    # and guid
-    # for all records that match the query
+    # @return [Socializer::Person.none] if query is nil
+    #   or "", Person.none is returned
+    # @return [ActiveRecord::Relation] if a query is provided the display_name
+    #   and guid for all records that match the query
     #
-    # @return [Socializer::Person]
+    # @return [Socializer::Person] if blah
     def person_list
       return Person.none if @query.blank?
 

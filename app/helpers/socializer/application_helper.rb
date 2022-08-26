@@ -11,7 +11,7 @@ module Socializer
   module ApplicationHelper
     # Build the sign path for the given provider
     #
-    # @param provider [String]/[Symbol]
+    # @param provider [String, Symbol]
     #
     # @return [String]
     def signin_path(provider)
@@ -22,7 +22,7 @@ module Socializer
     #
     # @param user [Socializer::Person]
     #
-    # @return [TrueClass/FalseClass]
+    # @return [Boolean]
     def current_user?(user)
       user == current_user
     end

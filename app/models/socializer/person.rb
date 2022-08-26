@@ -126,7 +126,7 @@ module Socializer
     # owns
     #
     # @return [Socializer::Authentication] Returns a collection of
-    # {Socializer::Authentication authentications}
+    #   {Socializer::Authentication authentications}
     def services
       @services ||= authentications.not_with_provider(provider: "Identity")
     end
@@ -135,7 +135,7 @@ module Socializer
     # received
     #
     # @return [Socializer::Notification] Returns a collection of
-    # {Socializer::Notification notifications}
+    #   {Socializer::Notification notifications}
     def received_notifications
       @received_notifications ||= activity_object.notifications.newest_first
     end

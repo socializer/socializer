@@ -111,7 +111,7 @@ module Socializer
     #
     # @param person [Socializer::Person] the person that you are checking
     #
-    # @return [TrueClass/FalseClass]
+    # @return [Boolean]
     def member?(person)
       memberships.find_by(activity_member: person.activity_object).present?
     end
