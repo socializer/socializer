@@ -215,7 +215,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.6.2)
-    jwt (2.4.1)
+    jwt (2.5.0)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -253,7 +253,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
-    oauth (0.5.10)
+    oauth (1.0.0)
+      version_gem (~> 1.1)
     oauth2 (2.0.7)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
