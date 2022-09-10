@@ -69,7 +69,7 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency("database_cleaner", "~> 1.6.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.23.0")
   spec.add_development_dependency("rubocop", "~> 1.36.0")
-  spec.add_development_dependency("rubocop-performance", "~> 1.14.0")
+  spec.add_development_dependency("rubocop-performance", "~> 1.15.0")
   spec.add_development_dependency("rubocop-rails", "~> 2.16.0")
   spec.add_development_dependency("rubocop-rake", "~> 0.6.0")
   spec.add_development_dependency("rubocop-rspec", "~> 2.12.0")
