@@ -42,7 +42,7 @@ module Socializer
         context "when no active records" do
           let(:result) { described_class.active }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.exists?).to be false }
         end
 
@@ -51,7 +51,7 @@ module Socializer
 
           let(:result) { described_class.active }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.first.active).to be true }
         end
       end
@@ -60,7 +60,7 @@ module Socializer
         context "when no inactive records" do
           let(:result) { described_class.inactive }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.exists?).to be false }
         end
 
@@ -69,7 +69,7 @@ module Socializer
 
           let(:result) { described_class.inactive }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.first.active).to be false }
         end
       end
@@ -86,7 +86,7 @@ module Socializer
           let(:user) { create(:person) }
           let(:result) { described_class.with_member_id(member_id: user.guid) }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.exists?).to be false }
         end
 
@@ -97,7 +97,7 @@ module Socializer
             membership
           end
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
 
           context "when they have memberships" do
             specify { expect(result.exists?).to be true }

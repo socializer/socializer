@@ -38,7 +38,7 @@ module Socializer
           described_class.new(person:, query: nil).call
         end
 
-        specify { expect(audience_list).to be_kind_of(Array) }
+        specify { expect(audience_list).to be_a(Array) }
 
         it "has the :id, :name, and :icon keys" do
           expect(audience_list.each).to all(include(:id, :name, :icon))
@@ -61,7 +61,7 @@ module Socializer
           described_class.new(person:, query: "friends").call
         end
 
-        specify { expect(audience_list).to be_kind_of(Array) }
+        specify { expect(audience_list).to be_a(Array) }
         specify { expect(audience_list.count).to eq(3) }
 
         it "has the :id, :name, and :icon keys" do

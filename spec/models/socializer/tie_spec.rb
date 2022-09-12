@@ -58,6 +58,6 @@ module Socializer
     end
 
     # TODO: Test return values
-    specify { expect(tie.contact).to be_kind_of(Socializer::Person) }
+    specify { expect(tie.contact).to be_a(Socializer::Person) }
   end
 end

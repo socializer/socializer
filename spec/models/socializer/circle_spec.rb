@@ -79,7 +79,7 @@ module Socializer
 
     describe "author" do
       # TODO: Test return values
-      specify { expect(circle.author).to be_kind_of(Socializer::Person) }
+      specify { expect(circle.author).to be_a(Socializer::Person) }
     end
 
     context "when adding a contact" do

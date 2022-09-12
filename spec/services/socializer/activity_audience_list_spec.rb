@@ -32,7 +32,7 @@ module Socializer
           described_class.new(activity:).call
         end
 
-        specify { expect(audience_list).to be_kind_of(Array) }
+        specify { expect(audience_list).to be_a(Array) }
         specify { expect(audience_list.size).to eq(1) }
         specify { expect(audience_list.first).to start_with("name") }
       end

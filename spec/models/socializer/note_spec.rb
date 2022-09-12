@@ -30,6 +30,6 @@ module Socializer
     end
 
     # TODO: Test return values
-    specify { expect(note.author).to be_kind_of(Socializer::Person) }
+    specify { expect(note.author).to be_a(Socializer::Person) }
   end
 end

@@ -22,7 +22,7 @@ module Socializer
 
     describe ".call" do
       context "with no required attributes" do
-        it { expect(ac.call).to be_kind_of(Activity) }
+        it { expect(ac.call).to be_a(Activity) }
         it { expect(ac.call.persisted?).to be false }
       end
 
@@ -32,7 +32,7 @@ module Socializer
         let(:ac) { described_class.new(activity_attributes) }
 
         it { expect(ac.valid?).to be true }
-        it { expect(ac.call).to be_kind_of(Activity) }
+        it { expect(ac.call).to be_a(Activity) }
         it { expect(ac.call.persisted?).to be true }
       end
     end

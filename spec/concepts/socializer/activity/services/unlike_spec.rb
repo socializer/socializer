@@ -17,7 +17,7 @@ module Socializer
 
       it { expect(results.persisted?).to be(true) }
       it { expect(results.verb.display_name).to eq("unlike") }
-      it { expect(results).to be_kind_of(Socializer::Activity) }
+      it { expect(results).to be_a(Socializer::Activity) }
     end
 
     describe "check the like_count and liked_by" do
@@ -44,7 +44,7 @@ module Socializer
 
       it "must be ActiveRecord::Relation" do
         expect(results)
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
     end
   end

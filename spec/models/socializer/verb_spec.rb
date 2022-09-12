@@ -27,13 +27,13 @@ module Socializer
 
         let(:result) { described_class.with_display_name(name: "post") }
 
-        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result).to be_a(ActiveRecord::Relation) }
         specify { expect(result.first.display_name).to eq("post") }
 
         context "when the name is not found" do
           let(:result) { described_class.with_display_name(name: "none") }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.exists?).to be(false) }
         end
       end

@@ -132,9 +132,9 @@ module Socializer
     end
 
     # TODO: Test return values
-    specify { expect(activity.actor).to be_kind_of(Socializer::Person) }
-    specify { expect(activity.object).to be_kind_of(Socializer::Note) }
-    specify { expect(activity.target).to be_kind_of(Socializer::Group) }
+    specify { expect(activity.actor).to be_a(Socializer::Person) }
+    specify { expect(activity.object).to be_a(Socializer::Note) }
+    specify { expect(activity.target).to be_a(Socializer::Group) }
 
     describe ".stream" do
       let(:activity_object_person) do
@@ -152,31 +152,31 @@ module Socializer
 
       specify do
         expect(described_class.stream(viewer_id: person.id))
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
 
       specify do
         expect(described_class
                  .activity_stream(actor_uid: person.id, viewer_id: person.id))
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
 
       specify do
         expect(described_class
                  .circle_stream(actor_uid: person.id, viewer_id: person.id))
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
 
       specify do
         expect(described_class
                  .group_stream(actor_uid: group.id, viewer_id: person.id))
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
 
       specify do
         expect(described_class
                  .person_stream(actor_uid: person.id, viewer_id: person.id))
-          .to be_kind_of(ActiveRecord::Relation)
+          .to be_a(ActiveRecord::Relation)
       end
     end
   end

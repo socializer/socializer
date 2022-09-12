@@ -115,7 +115,7 @@ module Socializer
       # TODO: Test return values
       specify do
         expect(person.contacts)
-          .to be_kind_of(ActiveRecord::Associations::CollectionProxy)
+          .to be_a(ActiveRecord::Associations::CollectionProxy)
       end
     end
 
@@ -124,7 +124,7 @@ module Socializer
 
       # TODO: Test return values
       specify do
-        expect(person.contact_of).to be_kind_of(ActiveRecord::Relation)
+        expect(person.contact_of).to be_a(ActiveRecord::Relation)
       end
     end
 

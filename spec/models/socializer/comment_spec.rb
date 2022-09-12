@@ -30,7 +30,7 @@ module Socializer
     end
 
     # TODO: Test return values
-    specify { expect(comment.author).to be_kind_of(Socializer::Person) }
+    specify { expect(comment.author).to be_a(Socializer::Person) }
     specify { expect(comment.content).to eq("Comment") }
   end
 end

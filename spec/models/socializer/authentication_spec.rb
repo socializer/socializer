@@ -25,13 +25,13 @@ module Socializer
 
         let(:result) { described_class.with_provider(provider: "identity") }
 
-        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result).to be_a(ActiveRecord::Relation) }
         specify { expect(result.first.provider).to eq("identity") }
 
         context "when the provider is not found" do
           let(:result) { described_class.with_provider(provider: "none") }
 
-          specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+          specify { expect(result).to be_a(ActiveRecord::Relation) }
           specify { expect(result.exists?).to be(false) }
         end
       end
@@ -41,7 +41,7 @@ module Socializer
 
         let(:result) { described_class.not_with_provider(provider: "identity") }
 
-        specify { expect(result).to be_kind_of(ActiveRecord::Relation) }
+        specify { expect(result).to be_a(ActiveRecord::Relation) }
         specify { expect(result.exists?).to be(false) }
       end
     end
