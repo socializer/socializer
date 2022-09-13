@@ -20,10 +20,7 @@ module Socializer
         get :index
       end
 
-      it "is pending" do
-        pending "it has not been implemented yet."
-        raise
-      end
+      it "is pending", pending: true
     end
 
     context "when logged in" do

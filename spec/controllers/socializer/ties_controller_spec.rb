@@ -70,10 +70,7 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is pending" do
-            pending "it has not been implemented yet."
-            raise
-          end
+          it "is pending", pending: true
           # it "does not save the new address in the database" do
           #   expect { post :create, params: invalid_attributes, format: :js }
           #     .not_to change(Tie, :count)

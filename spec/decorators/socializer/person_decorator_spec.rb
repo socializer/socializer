@@ -161,10 +161,7 @@ module Socializer
       end
 
       context "with contacts" do
-        it "is pending" do
-          pending "it has not been implemented yet."
-          raise
-        end
+        it "is pending", pending: true
       end
     end
 
@@ -174,10 +171,7 @@ module Socializer
       end
 
       context "when a contact of someone" do
-        it "is pending" do
-          pending "it has not been implemented yet."
-          raise
-        end
+        it "is pending", pending: true
       end
     end
 

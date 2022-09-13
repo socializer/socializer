@@ -58,10 +58,7 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is pending" do
-            pending "it has not been implemented yet."
-            raise
-          end
+          it "is pending", pending: true
         end
       end
     end

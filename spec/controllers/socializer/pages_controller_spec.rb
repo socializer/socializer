@@ -20,10 +20,7 @@ module Socializer
       end
 
       context "when logged in" do
-        it "is pending" do
-          pending "it has not been implemented yet."
-          raise
-        end
+        it "is pending", pending: true
         # # Create a user
         # let(:user) { create(:person) }
 

@@ -42,10 +42,7 @@ module Socializer
 
       context "when a Person does exist" do
         context "when authentication is present" do
-          it "when authentication is present" do
-            pending "has not been implemented yet."
-            raise
-          end
+          it "is pending", pending: true
         end
 
         context "when they are signed in" do
@@ -69,10 +66,7 @@ module Socializer
         end
 
         context "when they are not signed in" do
-          it "when they are not signed in" do
-            pending "has not been implemented yet."
-            raise
-          end
+          it "is pending", pending: true
         end
       end
     end
