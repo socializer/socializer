@@ -138,7 +138,7 @@ module Socializer
       end
 
       describe "PATCH #update with invalid attributes" do
-        it "is pending", pending: true
+        it "is currently pending", pending: true
       end
 
       describe "DELETE #destroy" do
