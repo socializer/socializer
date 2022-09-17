@@ -91,7 +91,7 @@ module Socializer
 
     # Class Methods
 
-    # Find activitiy objects where the id is equal to the given id
+    # Find activity objects where the id is equal to the given id
     #
     # @param id: [Integer]
     #
@@ -100,7 +100,7 @@ module Socializer
       where(id:)
     end
 
-    # Find activitiy objects where the activitable_type is equal to the given
+    # Find activity objects where the activitable_type is equal to the given
     # type
     #
     # @param type: [String]
