@@ -19,7 +19,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
-  gem "rspec-rails", "~> 5.1.0"
+  gem "rspec-rails", "~> 6.0.0"
   gem "sqlite3"
   gem "typeprof"
 end
