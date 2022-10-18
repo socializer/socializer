@@ -367,7 +367,7 @@ GEM
     rspec-mocks (3.11.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
-    rspec-rails (6.0.0)
+    rspec-rails (6.0.1)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
@@ -386,7 +386,7 @@ GEM
       rubocop-ast (>= 1.20.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.21.0)
+    rubocop-ast (1.22.0)
       parser (>= 3.1.1.0)
     rubocop-performance (1.15.0)
       rubocop (>= 1.7.0, < 2.0)
@@ -542,4 +542,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.3.23
+   2.3.24
