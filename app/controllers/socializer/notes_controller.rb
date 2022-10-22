@@ -17,6 +17,11 @@ module Socializer
                              title: nil }
     end
 
+    # GET /notes/1/edit
+    def edit
+      render :edit, locals: { note: find_note, current_id: nil, title: nil }
+    end
+
     # POST /notes
     def create
       activity = activity_for_note(note: create_note)
@@ -32,11 +37,6 @@ module Socializer
                                     current_id: nil, title: "Activity stream" }
         end
       end
-    end
-
-    # GET /notes/1/edit
-    def edit
-      render :edit, locals: { note: find_note, current_id: nil, title: nil }
     end
 
     # PATCH/PUT /notes/1

@@ -19,6 +19,15 @@ module Socializer
       end
     end
 
+    # GET /comments/1/edit
+    def edit
+      respond_to do |format|
+        format.html do
+          render :edit, locals: { comment: find_comment, target_id: nil }
+        end
+      end
+    end
+
     # POST /comments
     def create
       comment = build_comment
@@ -29,15 +38,6 @@ module Socializer
       else
         render :new, locals: { comment:,
                                target_id: comment.activity_target_id }
-      end
-    end
-
-    # GET /comments/1/edit
-    def edit
-      respond_to do |format|
-        format.html do
-          render :edit, locals: { comment: find_comment, target_id: nil }
-        end
       end
     end
 
