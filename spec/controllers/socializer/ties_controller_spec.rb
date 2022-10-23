@@ -10,21 +10,17 @@ module Socializer
     let(:user) { create(:person) }
     let(:circle) { create(:circle) }
 
-    let(:tie_attributes) do
-      { activity_contact: user.activity_object, circle: }
-    end
-
     let(:tie) do
-      create(:tie, tie_attributes)
+      create(:tie, activity_contact: user.activity_object, circle:)
     end
 
     let(:valid_attributes) do
       { tie: { circle_id: circle.id, contact_id: user.activity_object.id } }
     end
 
-    let(:invalid_attributes) do
-      { tie: { circle_id: nil, contact_id: user.activity_object.id } }
-    end
+    # let(:invalid_attributes) do
+    #   { tie: { circle_id: nil, contact_id: user.activity_object.id } }
+    # end
 
     context "when not logged in" do
       describe "POST #create" do

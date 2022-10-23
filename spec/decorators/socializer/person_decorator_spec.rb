@@ -176,8 +176,6 @@ module Socializer
     end
 
     describe "image_tag_avatar" do
-      let(:person) { create(:person) }
-
       context "with no image_url" do
         let(:result) { decorated_person.image_tag_avatar }
 
@@ -252,7 +250,6 @@ module Socializer
     end
 
     describe "link_to_avatar" do
-      let(:person) { create(:person) }
       let(:result) { decorated_person.link_to_avatar }
 
       let(:image_tag_avatar) do
@@ -269,37 +266,38 @@ module Socializer
 
     describe "looking_for" do
       context "with no looking_for attributes set" do
-        let(:string) { "Who are you looking for?" }
-
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify do
+          expect(decorated_person.looking_for)
+            .to eq("Who are you looking for?")
+        end
       end
 
       context "with looking_for_friends true" do
         let(:person) { create(:person, looking_for_friends: true) }
-        let(:string) { "Friends<br>" }
 
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq("Friends<br>") }
       end
 
       context "with looking_for_dating true" do
         let(:person) { create(:person, looking_for_dating: true) }
-        let(:string) { "Dating<br>" }
 
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify { expect(decorated_person.looking_for).to eq("Dating<br>") }
       end
 
       context "with looking_for_relationship true" do
         let(:person) { create(:person, looking_for_relationship: true) }
-        let(:string) { "Relationship<br>" }
 
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify do
+          expect(decorated_person.looking_for).to eq("Relationship<br>")
+        end
       end
 
       context "with looking_for_networking true" do
         let(:person) { create(:person, looking_for_networking: true) }
-        let(:string) { "Networking<br>" }
 
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify do
+          expect(decorated_person.looking_for).to eq("Networking<br>")
+        end
       end
 
       context "with looking for friends and dating are true" do
@@ -307,29 +305,13 @@ module Socializer
           create(:person, looking_for_friends: true, looking_for_dating: true)
         end
 
-        let(:string) { "Friends<br>Dating<br>" }
-
-        specify { expect(decorated_person.looking_for).to eq(string) }
+        specify do
+          expect(decorated_person.looking_for).to eq("Friends<br>Dating<br>")
+        end
       end
     end
 
     describe "toolbar_stream_links" do
-      let(:person) { create(:person) }
-
-      let(:friends) { Circle.with_display_name(name: "Friends").first }
-      let(:family) { Circle.with_display_name(name: "Family").first }
-      let(:acquaintances) do
-        Circle.with_display_name(name: "Acquaintances").first
-      end
-      let(:following) { Circle.with_display_name(name: "Following").first }
-      let(:group) { Group.with_display_name(name: "Group").first }
-
-      let(:friends_url) { circle_activities_path(friends.id) }
-      let(:family_url) { circle_activities_path(family.id) }
-      let(:acquaintances_url) { circle_activities_path(acquaintances.id) }
-      let(:following_url) { circle_activities_path(following.id) }
-      let(:group_url) { group_activities_path(group&.id) }
-
       context "with no circles or memberships" do
         specify { expect(decorated_person.toolbar_stream_links).to be_nil }
       end
@@ -345,21 +327,33 @@ module Socializer
         specify { expect(result.html_safe?).to be true }
 
         specify do
+          friends = Circle.with_display_name(name: "Friends").first
+          friends_url = circle_activities_path(friends.id)
+
           expect(result)
             .to have_link("Friends", href: friends_url)
         end
 
         specify do
+          family = Circle.with_display_name(name: "Family").first
+          family_url = circle_activities_path(family.id)
+
           expect(result)
             .to have_link("Family", href: family_url)
         end
 
         specify do
+          acquaintances = Circle.with_display_name(name: "Acquaintances").first
+          acquaintances_url = circle_activities_path(acquaintances.id)
+
           expect(result)
             .to have_link("Acquaintances", href: acquaintances_url)
         end
 
         specify do
+          following = Circle.with_display_name(name: "Following").first
+          following_url = circle_activities_path(following.id)
+
           expect(result)
             .to have_link("Following", href: following_url)
         end
@@ -406,28 +400,42 @@ module Socializer
         specify { expect(result.html_safe?).to be true }
 
         specify do
+          friends = Circle.with_display_name(name: "Friends").first
+          friends_url = circle_activities_path(friends.id)
+
           expect(result)
             .to have_link("Friends", href: friends_url)
         end
 
         specify do
+          family = Circle.with_display_name(name: "Family").first
+          family_url = circle_activities_path(family.id)
+
           expect(result)
             .to have_link("Family", href: family_url)
         end
 
         specify do
+          acquaintances = Circle.with_display_name(name: "Acquaintances").first
+          acquaintances_url = circle_activities_path(acquaintances.id)
+
           expect(result)
             .to have_link("Acquaintances", href: acquaintances_url)
         end
 
         specify do
+          following = Circle.with_display_name(name: "Following").first
+          following_url = circle_activities_path(following.id)
+
           expect(result)
             .to have_link("Following", href: following_url)
         end
 
         specify do
+          group = Group.with_display_name(name: "Group").first
+
           expect(result)
-            .to have_link("Group", href: group_url)
+            .to have_link("Group", href: group_activities_path(group&.id))
         end
 
         specify { expect(result).to have_selector("li", count: li_count) }
