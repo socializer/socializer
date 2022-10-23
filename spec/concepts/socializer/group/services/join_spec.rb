@@ -7,15 +7,13 @@ module Socializer
     describe ".call" do
       let(:person) { create(:person) }
 
-      let(:membership_attributes) do
-        { member_id: person.guid, group_id: group.id }
-      end
-
       let(:join) do
         described_class.new(group:, person:)
       end
 
-      let(:membership) { Membership.find_by(membership_attributes) }
+      let(:membership) do
+        Membership.find_by({ member_id: person.guid, group_id: group.id })
+      end
 
       context "when the group is public" do
         let(:public_group) { create(:group, privacy: :public) }
@@ -64,12 +62,6 @@ module Socializer
       describe "when the group is private" do
         let(:private_group) { create(:group, privacy: :private) }
         let(:group) { private_group }
-        let(:error) { Errors::PrivateGroupCannotSelfJoin }
-
-        let(:error_message) do
-          I18n.t("private.cannot_self_join",
-                 scope: "socializer.errors.messages.group")
-        end
 
         before do
           private_group
@@ -84,7 +76,10 @@ module Socializer
         end
 
         it "cannot be joined" do
-          expect { join.call }.to raise_error(error, error_message)
+          expect { join.call }
+            .to raise_error(Errors::PrivateGroupCannotSelfJoin,
+                            I18n.t("private.cannot_self_join",
+                                   scope: "socializer.errors.messages.group"))
         end
       end
 
