@@ -13,10 +13,6 @@ module Socializer
       create(:group, activity_author: user.activity_object)
     end
 
-    let(:membership) do
-      Membership.find_by(group_id: group.id)
-    end
-
     let(:privacy) do
       Socializer::Group.privacy.find_value(:public).value
     end

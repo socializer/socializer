@@ -9,31 +9,22 @@ module Socializer
     # Create a user, activity, and activities
     let(:user) { create(:person) }
 
-    let(:note) do
-      create(:note, activity_author: user.activity_object)
-    end
-
     let(:creator_attributes) do
+      note = create(:note, activity_author: user.activity_object)
+
       { actor_id: user.guid,
         activity_object_id: note.guid,
         verb: "post",
         object_ids: "public" }
     end
 
-    let(:result) do
-      CreateActivity.new(creator_attributes).call
-    end
-
     let(:activity) do
-      result.decorate
-    end
-
-    let(:stream_attributes) do
-      { actor_uid: activity.id, viewer_id: user.id }
+      CreateActivity.new(creator_attributes).call.decorate
     end
 
     let(:activities) do
-      Activity.activity_stream(stream_attributes).decorate
+      Activity.activity_stream(actor_uid: activity.id,
+                               viewer_id: user.id).decorate
     end
 
     context "when not logged in" do

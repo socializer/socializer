@@ -66,16 +66,14 @@ module Socializer
               post :create, params: valid_attributes
             end
 
-            let(:message) do
-              t("socializer.model.create",
-                model: "Note")
-            end
-
             it "redirects to circles#contacts" do
               expect(response).to redirect_to activities_path
             end
 
-            specify { is_expected.to set_flash[:notice].to(message) }
+            specify do
+              expect(flash.notice)
+                .to eq(t("socializer.model.create", model: "Note"))
+            end
           end
 
           context "with invalid attributes" do

@@ -13,18 +13,14 @@ module Socializer
       create(:comment, activity_author: user.activity_object)
     end
 
-    let(:note) do
-      create(:note)
-    end
-
     let(:valid_params) do
       { comment: { content: "This is a comment",
-                   activity_target_id: note.guid } }
+                   activity_target_id: create(:note).guid } }
     end
 
     let(:invalid_params) do
       { comment: { content: "",
-                   activity_target_id: note.guid } }
+                   activity_target_id: create(:note).guid } }
     end
 
     let(:update_params) do

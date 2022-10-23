@@ -68,9 +68,8 @@ module Socializer
         end
 
         context "when unread notifications are > 0" do
-          let(:activity_object) { user.activity_object }
-
           it "reset to 0" do
+            activity_object = user.activity_object
             activity_object.update!(unread_notifications_count: 10)
             get :index
             expect(activity_object.reload.unread_notifications_count).to eq(0)
