@@ -46,15 +46,17 @@ module Socializer
         let(:result) { decorated_activity_object.link_to_like_or_unlike }
 
         context "when does not like" do
-          let(:url) { like_activity_path(activity_object) }
-
-          let(:selector) do
-            like = t("socializer.shared.like")
-            "a.btn.btn-default[data-method='post'][title=#{like}]"
+          specify do
+            url = like_activity_path(activity_object)
+            expect(result).to have_link("", href: url)
           end
 
-          specify { expect(result).to have_link("", href: url) }
-          specify { expect(result).to have_selector(selector) }
+          specify do
+            like = t("socializer.shared.like")
+            selector = "a.btn.btn-default[data-method='post'][title=#{like}]"
+
+            expect(result).to have_selector(selector)
+          end
         end
 
         context "when does like" do
@@ -63,15 +65,17 @@ module Socializer
                                     .call(activity_object:)
           end
 
-          let(:url) { unlike_activity_path(activity_object) }
-
-          let(:selector) do
-            unlike = t("socializer.shared.unlike")
-            "a.btn.btn-danger[data-method='delete'][title=#{unlike}]"
+          specify do
+            url = unlike_activity_path(activity_object)
+            expect(result).to have_link("", href: url)
           end
 
-          specify { expect(result).to have_link("", href: url) }
-          specify { expect(result).to have_selector(selector) }
+          specify do
+            unlike = t("socializer.shared.unlike")
+            selector = "a.btn.btn-danger[data-method='delete'][title=#{unlike}]"
+
+            expect(result).to have_selector(selector)
+          end
         end
       end
     end

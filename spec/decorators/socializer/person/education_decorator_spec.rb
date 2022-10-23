@@ -76,10 +76,8 @@ module Socializer
           create(:person_education, ended_on: date, current: false)
         end
 
-        let(:ended_on) { date.to_fs(:long_ordinal) }
-        let(:value) { "#{started_on} - #{ended_on}" }
-
         specify do
+          value = "#{started_on} - #{date.to_fs(:long_ordinal)}"
           expect(decorated_education.started_on_to_ended_on).to eq(value)
         end
       end

@@ -167,19 +167,17 @@ module Socializer
       end
 
       describe "DELETE #destroy" do
-        let(:delete_attributes) do
-          { id: education, person_id: user }
-        end
-
         it "deletes the education" do
+          delete_attributes = { id: education, person_id: user }
           education
+
           expect { delete :destroy, params: delete_attributes }
             .to change(Person::Education, :count).by(-1)
         end
 
         describe "it redirects to people#show" do
           before do
-            delete :destroy, params: delete_attributes
+            delete :destroy, params: { id: education, person_id: user }
           end
 
           specify { expect(response).to redirect_to user }
