@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::AddressesController, type: :controller do
+  RSpec.describe People::AddressesController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad address

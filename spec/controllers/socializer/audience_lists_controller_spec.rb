@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe AudienceListsController, type: :controller do
+  RSpec.describe AudienceListsController do
     routes { Socializer::Engine.routes }
 
     # Create a user

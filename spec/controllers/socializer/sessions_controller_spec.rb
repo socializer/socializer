@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe SessionsController, type: :controller do
+  RSpec.describe SessionsController do
     routes { Socializer::Engine.routes }
 
     # Create a user

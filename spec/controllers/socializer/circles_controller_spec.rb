@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe CirclesController, type: :controller do
+  RSpec.describe CirclesController do
     routes { Socializer::Engine.routes }
 
     # Create a user, a circle, and valid+attributes

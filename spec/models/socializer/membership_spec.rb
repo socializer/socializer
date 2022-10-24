@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Membership, type: :model do
+  RSpec.describe Membership do
     let(:user) { create(:person) }
 
     let(:group) do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Circle, type: :model do
+  RSpec.describe Circle do
     let(:circle) { build(:circle) }
 
     it "has a valid factory" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Circles::ContactOfController, type: :controller do
+  RSpec.describe Circles::ContactOfController do
     routes { Socializer::Engine.routes }
 
     # Create a user and contact_of

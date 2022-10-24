@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Authentication, type: :model do
+  RSpec.describe Authentication do
     let(:authentication) { build(:authentication) }
 
     it "has a valid factory" do

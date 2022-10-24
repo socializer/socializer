@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Tie, type: :model do
+  RSpec.describe Tie do
     let(:contact) { create(:person) }
     let(:tie) { build(:tie, contact_id: contact.id) }
 

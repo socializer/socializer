@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Verb, type: :model do
+  RSpec.describe Verb do
     let(:verb) { build(:verb) }
 
     it "has a valid factory" do

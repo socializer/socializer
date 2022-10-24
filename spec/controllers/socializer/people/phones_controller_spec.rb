@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::PhonesController, type: :controller do
+  RSpec.describe People::PhonesController do
     routes { Socializer::Engine.routes }
 
     # Create a user and phone

@@ -4,7 +4,7 @@ require "rails_helper"
 include Socializer::Engine.routes.url_helpers
 
 module Socializer
-  RSpec.describe Person::AddressDecorator, type: :decorator do
+  RSpec.describe Person::AddressDecorator do
     let(:address) { create(:person_address) }
     let(:decorated_address) { described_class.new(address) }
 

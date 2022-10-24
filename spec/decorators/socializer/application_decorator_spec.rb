@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ApplicationDecorator, type: :decorator do
+  RSpec.describe ApplicationDecorator do
     describe "created_at_time_ago" do
       let(:decorated_activity) { ActivityDecorator.new(create(:activity)) }
       let(:created_at) { decorated_activity.created_at.utc }

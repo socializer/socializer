@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe AuthenticationsController, type: :controller do
+  RSpec.describe AuthenticationsController do
     routes { Socializer::Engine.routes }
 
     # Create a user, authentication, and valid_params

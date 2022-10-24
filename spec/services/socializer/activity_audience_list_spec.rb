@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivityAudienceList, type: :service do
+  RSpec.describe ActivityAudienceList do
     let(:audience_list) do
       described_class.new(activity:).call
     end

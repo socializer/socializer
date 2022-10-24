@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe NotesController, type: :controller do
+  RSpec.describe NotesController do
     routes { Socializer::Engine.routes }
 
     # Create a user, note, privacy, valid_params

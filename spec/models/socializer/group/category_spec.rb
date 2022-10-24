@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Group::Category, type: :model do
+  RSpec.describe Group::Category do
     let(:group_category) { build(:group_category) }
 
     it "has a valid factory" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe AddDefaultCircles, type: :service do
+  RSpec.describe AddDefaultCircles do
     describe "when the person argument is nil" do
       describe ".new should raise an ArgumentError" do
         let(:add_default_circles) { described_class.new(person: nil) }

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Memberships::DeclineController, type: :routing do
+  RSpec.describe Memberships::DeclineController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

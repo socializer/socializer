@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Circles::SuggestionsController, type: :routing do
+  RSpec.describe Circles::SuggestionsController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

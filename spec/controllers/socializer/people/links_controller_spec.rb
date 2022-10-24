@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::LinksController, type: :controller do
+  RSpec.describe People::LinksController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad link

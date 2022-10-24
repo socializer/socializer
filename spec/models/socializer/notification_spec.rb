@@ -3,8 +3,8 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Notification, type: :model do
-    # Define a person for common testd instead of build one for each
+  RSpec.describe Notification do
+    # Define a notification for common testing instead of building one for each
     let(:notification) { build(:notification) }
 
     it "has a valid factory" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe AudienceListsController, type: :routing do
+  RSpec.describe AudienceListsController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

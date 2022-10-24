@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe CommentsController, type: :controller do
+  RSpec.describe CommentsController do
     routes { Socializer::Engine.routes }
 
     # Create a user and a comment

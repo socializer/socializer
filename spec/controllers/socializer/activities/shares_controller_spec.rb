@@ -4,7 +4,7 @@ require "rails_helper"
 
 module Socializer
   module Activities
-    RSpec.describe SharesController, type: :controller do
+    RSpec.describe SharesController do
       routes { Socializer::Engine.routes }
 
       # Create a user and a note to share

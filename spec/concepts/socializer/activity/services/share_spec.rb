@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Activity::Services::Share, type: :service do
+  RSpec.describe Activity::Services::Share do
     let(:activity_object) { create(:activity_object) }
     let(:actor) { create(:person) }
     let(:share) { described_class.new(actor:) }

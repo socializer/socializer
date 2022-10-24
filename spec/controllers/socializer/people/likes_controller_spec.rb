@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe People::LikesController, type: :controller do
+  RSpec.describe People::LikesController do
     routes { Socializer::Engine.routes }
 
     # Create a user and likes

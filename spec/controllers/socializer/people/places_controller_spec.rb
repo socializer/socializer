@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::PlacesController, type: :controller do
+  RSpec.describe People::PlacesController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad place

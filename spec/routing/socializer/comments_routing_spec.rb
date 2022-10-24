@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe CommentsController, type: :routing do
+  RSpec.describe CommentsController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

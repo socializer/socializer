@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe People::PhonesController, type: :routing do
+  RSpec.describe People::PhonesController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

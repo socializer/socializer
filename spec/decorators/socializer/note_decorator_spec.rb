@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe NoteDecorator, type: :decorator do
+  RSpec.describe NoteDecorator do
     it "is pending", pending: true
   end
 end

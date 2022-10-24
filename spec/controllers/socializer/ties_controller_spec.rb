@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe TiesController, type: :controller do
+  RSpec.describe TiesController do
     routes { Socializer::Engine.routes }
 
     # Create a user, a circle, a tie, and valid_attributes

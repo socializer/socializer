@@ -4,7 +4,7 @@ require "rails_helper"
 
 module Socializer
   # rubocop:disable RSpec/EmptyExampleGroup
-  RSpec.describe ApplicationJob, type: :job do
+  RSpec.describe ApplicationJob do
     include ActiveJob::TestHelper
   end
   # rubocop:enable RSpec/EmptyExampleGroup

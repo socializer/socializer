@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::ProfilesController, type: :controller do
+  RSpec.describe People::ProfilesController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad profile

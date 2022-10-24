@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Comment, type: :model do
+  RSpec.describe Comment do
     let(:comment) { build(:comment, content: "Comment") }
 
     it "has a valid factory" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe AudienceList, type: :service do
+  RSpec.describe AudienceList do
     describe "when the person argument is nil" do
       describe ".new should raise an ArgumentError" do
         let(:audience_list) { described_class.new(person: nil, query: nil) }

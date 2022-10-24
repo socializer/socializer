@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe GroupsController, type: :controller do
+  RSpec.describe GroupsController do
     routes { Socializer::Engine.routes }
 
     # Create a user and a group

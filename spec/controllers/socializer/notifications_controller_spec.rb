@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe NotificationsController, type: :controller do
+  RSpec.describe NotificationsController do
     routes { Socializer::Engine.routes }
 
     # Create a user and notification

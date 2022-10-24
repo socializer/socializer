@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Activities::AudiencesController, type: :controller do
+  RSpec.describe Activities::AudiencesController do
     routes { Socializer::Engine.routes }
 
     # Create a user, audience, and activities

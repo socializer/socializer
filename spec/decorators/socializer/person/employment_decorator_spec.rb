@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Person::EmploymentDecorator, type: :decorator do
+  RSpec.describe Person::EmploymentDecorator do
     let(:employment) { create(:person_employment) }
     let(:decorated_employment) { described_class.new(employment) }
 

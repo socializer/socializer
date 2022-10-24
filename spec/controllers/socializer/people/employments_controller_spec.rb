@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::EmploymentsController, type: :controller do
+  RSpec.describe People::EmploymentsController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad employment

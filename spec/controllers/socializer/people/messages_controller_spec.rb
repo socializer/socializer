@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe People::MessagesController, type: :controller do
+  RSpec.describe People::MessagesController do
     routes { Socializer::Engine.routes }
 
     # Create a user

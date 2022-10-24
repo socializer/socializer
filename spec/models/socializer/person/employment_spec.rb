@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Person::Employment, type: :model do
+  RSpec.describe Person::Employment do
     let(:employment) { build(:person_employment) }
 
     it "has a valid factory" do

@@ -4,7 +4,7 @@ require "rails_helper"
 
 module Socializer
   module Activities
-    RSpec.describe LikesController, type: :controller do
+    RSpec.describe LikesController do
       routes { Socializer::Engine.routes }
 
       # Create a user and a activity

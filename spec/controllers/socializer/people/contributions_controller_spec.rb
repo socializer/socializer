@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::ContributionsController, type: :controller do
+  RSpec.describe People::ContributionsController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad contribution

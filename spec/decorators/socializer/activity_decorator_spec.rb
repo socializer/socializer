@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivityDecorator, type: :decorator do
+  RSpec.describe ActivityDecorator do
     it "is pending", pending: true
   end
 end

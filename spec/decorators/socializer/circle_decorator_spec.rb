@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe CircleDecorator, type: :decorator do
+  RSpec.describe CircleDecorator do
     let(:circle) { build(:circle) }
     let(:decorated_circle) { described_class.new(circle) }
 

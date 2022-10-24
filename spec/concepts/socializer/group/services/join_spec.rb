@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Group::Services::Join, type: :service do
+  RSpec.describe Group::Services::Join do
     describe ".call" do
       let(:person) { create(:person) }
 

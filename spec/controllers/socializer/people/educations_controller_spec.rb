@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Socializer
-  RSpec.describe People::EducationsController, type: :controller do
+  RSpec.describe People::EducationsController do
     routes { Socializer::Engine.routes }
 
     # Create a user nad education

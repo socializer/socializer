@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Memberships::DeclineController, type: :controller do
+  RSpec.describe Memberships::DeclineController do
     routes { Socializer::Engine.routes }
 
     # Create a user, a group, and a membership

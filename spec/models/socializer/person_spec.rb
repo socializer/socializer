@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Person, type: :model do
+  RSpec.describe Person do
     let(:person) { build(:person) }
     let(:valid_providers) { %w[TWITTER FACEBOOK LINKEDIN GRAVATAR] }
 

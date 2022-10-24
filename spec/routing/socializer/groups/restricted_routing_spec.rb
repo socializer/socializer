@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Groups::RestrictedController, type: :routing do
+  RSpec.describe Groups::RestrictedController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe Group::Services::ServiceBase, type: :service do
+  RSpec.describe Group::Services::ServiceBase do
     let(:group) { build(:group) }
     let(:person) { build(:person) }
 

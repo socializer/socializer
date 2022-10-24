@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivitiesController, type: :routing do
+  RSpec.describe ActivitiesController do
     routes { Socializer::Engine.routes }
 
     context "with routing" do

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ApplicationController, type: :controller do
+  RSpec.describe ApplicationController do
     controller do
       def index
         render plain: "Hello"

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe PagesController, type: :controller do
+  RSpec.describe PagesController do
     routes { Socializer::Engine.routes }
 
     specify { is_expected.not_to use_before_action(:authenticate_user) }

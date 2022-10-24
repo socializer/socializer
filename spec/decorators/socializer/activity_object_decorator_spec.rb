@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Socializer
-  RSpec.describe ActivityObjectDecorator, type: :decorator do
+  RSpec.describe ActivityObjectDecorator do
     let(:activity_object) { create(:activity_object) }
 
     let(:decorated_activity_object) do
