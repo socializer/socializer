@@ -376,7 +376,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
-    rubocop (1.37.1)
+    rubocop (1.38.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.1.2.1)
@@ -499,7 +499,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.2)
+    zeitwerk (2.6.3)
 
 PLATFORMS
   x86_64-darwin-21
@@ -525,7 +525,7 @@ DEPENDENCIES
   rails_best_practices (~> 1.23.0)
   rake (~> 13.0.6)
   rspec-rails (~> 6.0.0)
-  rubocop (~> 1.37.0)
+  rubocop (~> 1.38.0)
   rubocop-performance (~> 1.15.0)
   rubocop-rails (~> 2.17.0)
   rubocop-rake (~> 0.6.0)
