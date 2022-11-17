@@ -206,7 +206,7 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     io-console (0.5.11)
-    irb (1.4.2)
+    irb (1.4.3)
       reline (>= 0.3.0)
     jaro_winkler (1.5.4)
     jquery-ui-rails (6.0.1)
@@ -350,7 +350,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rbs (2.7.0)
-    regexp_parser (2.6.0)
+    regexp_parser (2.6.1)
     reline (0.3.1)
       io-console (~> 0.5)
     request_store (1.5.1)
