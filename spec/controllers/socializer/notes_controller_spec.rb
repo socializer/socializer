@@ -117,7 +117,7 @@ module Socializer
       end
 
       describe "POST #create with invalid attributes" do
-        it "is pending", pending: true
+        it "is pending", pending: "TO DO"
       end
 
       describe "GET #edit" do
@@ -138,7 +138,7 @@ module Socializer
       end
 
       describe "PATCH #update with invalid attributes" do
-        it "is currently pending", pending: true
+        it "is currently pending", pending: "TO DO"
       end
 
       describe "DELETE #destroy" do

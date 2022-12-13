@@ -20,7 +20,7 @@ module Socializer
       end
 
       context "when logged in" do
-        it "is pending", pending: true
+        it "is pending", pending: "TO DO"
         # # Create a user
         # let(:user) { create(:person) }
 

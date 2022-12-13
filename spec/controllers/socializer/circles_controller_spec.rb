@@ -172,7 +172,7 @@ module Socializer
         end
 
         context "with invalid attributes" do
-          it "is pending", pending: true
+          it "is pending", pending: "TO DO"
         end
       end
 

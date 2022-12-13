@@ -20,7 +20,7 @@ module Socializer
         get :index
       end
 
-      it "is pending", pending: true
+      it "is pending", pending: "TO DO"
     end
 
     context "when logged in" do

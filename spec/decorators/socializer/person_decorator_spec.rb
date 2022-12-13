@@ -161,7 +161,7 @@ module Socializer
       end
 
       context "with contacts" do
-        it "is pending", pending: true
+        it "is pending", pending: "TO DO"
       end
     end
 
@@ -171,7 +171,7 @@ module Socializer
       end
 
       context "when a contact of someone" do
-        it "is pending", pending: true
+        it "is pending", pending: "TO DO"
       end
     end
 

@@ -42,7 +42,7 @@ module Socializer
 
       context "when a Person exists" do
         context "when authentication is present" do
-          it "is pending", pending: true
+          it "is pending", pending: "TO DO"
         end
 
         context "when they are signed in" do
@@ -66,7 +66,7 @@ module Socializer
         end
 
         context "when they are not signed in" do
-          it "is currently pending", pending: true
+          it "is currently pending", pending: "TO DO"
         end
       end
     end
