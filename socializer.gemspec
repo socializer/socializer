@@ -72,7 +72,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rubocop-performance", "~> 1.15.0")
   spec.add_development_dependency("rubocop-rails", "~> 2.17.0")
   spec.add_development_dependency("rubocop-rake", "~> 0.6.0")
-  spec.add_development_dependency("rubocop-rspec", "~> 2.15.0")
+  spec.add_development_dependency("rubocop-rspec", "~> 2.16.0")
   spec.add_development_dependency("scss_lint", "~> 0.59.0")
   spec.add_development_dependency("solargraph")
   # spec.add_development_dependency("solargraph-rails")
