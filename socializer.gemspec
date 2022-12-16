@@ -65,7 +65,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("factory_bot_rails", "~> 6.2.0")
   spec.add_development_dependency("i18n-tasks", "~> 1.0.0")
   spec.add_development_dependency("inch", "~> 0.8.0")
-  spec.add_development_dependency("shoulda-matchers", "~> 5.2.0")
+  spec.add_development_dependency("shoulda-matchers", "~> 5.3.0")
   # spec.add_development_dependency("database_cleaner", "~> 1.6.0")
   spec.add_development_dependency("rails_best_practices", "~> 1.23.0")
   spec.add_development_dependency("rubocop", "~> 1.40.0")
