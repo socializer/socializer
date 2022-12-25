@@ -509,7 +509,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 2.3.1)
+  bundler (~> 2.4.1)
   bundler-integrity (~> 1.0)
   byebug
   capybara (>= 2.15, < 4.0)
@@ -545,4 +545,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.3.26
+   2.4.1

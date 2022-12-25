@@ -56,7 +56,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("simple_form", "~> 5.1.0")
   spec.add_dependency("uglifier", ">= 4.1.19")
 
-  spec.add_development_dependency("bundler", "~> 2.3.1")
+  spec.add_development_dependency("bundler", "~> 2.4.1")
   spec.add_development_dependency("rake", "~> 13.0.6")
   # s.add_development_dependency("rspec-rails", "~> 3.9.0")
   # s.add_development_dependency("brakeman", "~> 3.0.5")
