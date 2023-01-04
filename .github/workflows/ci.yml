@@ -17,14 +17,14 @@ jobs:
       fail-fast: true
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: "Cache Ruby"
       uses: actions/cache@v2
       id: ruby-cache
       with:
         path: ~/local/rubies
-        key: ruby-3.2.0
+        key: ruby-3.2.x
 
     - name: "Install Ruby 3.2.x"
       uses: ruby/setup-ruby@v1
@@ -33,7 +33,7 @@ jobs:
         ruby-version: '3.2'
         bundler-cache: true
 
-    - name: "Insall sqlite"
+    - name: "Install sqlite"
       run: |
         sudo apt-get update
         sudo apt-get install libmysqlclient-dev libpq-dev libsqlite3-dev libncurses5-dev
