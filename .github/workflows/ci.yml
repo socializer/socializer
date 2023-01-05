@@ -27,7 +27,9 @@ jobs:
         key: ruby-3.2.x
 
     - name: "Install Ruby 3.2.x"
-      run: bundle install --full-index
+      run: |
+        gem install bundler
+        bundle install --full-index
 
     - name: "Install sqlite"
       run: |
