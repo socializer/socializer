@@ -19,17 +19,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: "Cache Ruby"
-      uses: actions/cache@v2
-      id: ruby-cache
-      with:
-        path: ~/local/rubies
-        key: ruby-3.2.x
+#    - name: "Cache Ruby"
+#      uses: actions/cache@v3
+#      id: ruby-cache
+#      with:
+#        path: ~/local/rubies
+#        key: ruby-3.2.x
 
     - name: "Install Ruby 3.2.x"
-      run: |
-        gem install bundler
-        bundle install --full-index
+      uses: ruby/setup-ruby@v1
+      id: ruby
+      with:
+        ruby-version: "3.2"
+        bundler-cache: true
 
     - name: "Install sqlite"
       run: |
