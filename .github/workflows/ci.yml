@@ -30,8 +30,9 @@ jobs:
       uses: ruby/setup-ruby@v1
       id: ruby
       with:
-        ruby-version: '3.2'
+        ruby-version: "3.2"
         bundler-cache: true
+        cache-version: 1
 
     - name: "Install sqlite"
       run: |
