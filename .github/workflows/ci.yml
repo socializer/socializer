@@ -30,11 +30,13 @@ jobs:
 #        key: ruby-3.2.x
 
       - name: "Install Ruby 3.2.x"
-        uses: ruby/setup-ruby@v1.130.0
+        uses: ruby/setup-ruby@v1
         id: ruby
         with:
           ruby-version: "3.2"
           bundler-cache: true
+      - name: Install dependencies
+        run: bundle install --full-index
 
       - name: "Install sqlite"
         run: |
