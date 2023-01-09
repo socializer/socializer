@@ -35,8 +35,6 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
-      - name: Install dependencies
-        run: bundle install --full-index
 
       - name: "Install sqlite"
         run: |
