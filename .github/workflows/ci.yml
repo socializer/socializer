@@ -59,6 +59,8 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: development
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
