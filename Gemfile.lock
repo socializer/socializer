@@ -203,6 +203,9 @@ GEM
       sparkr (>= 0.2.0)
       term-ansicolor
       yard (~> 0.9.12)
+    io-console (0.6.0)
+    irb (1.6.2)
+      reline (>= 0.3.0)
     jaro_winkler (1.5.4)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
@@ -350,6 +353,8 @@ GEM
       ffi (~> 1.0)
     rbs (2.8.3)
     regexp_parser (2.6.1)
+    reline (0.3.2)
+      io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
     require_all (3.0.0)
@@ -513,6 +518,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   i18n-tasks (~> 1.0.0)
   inch (~> 0.8.0)
+  irb
   listen
   net-smtp
   pry-rails
@@ -520,6 +526,7 @@ DEPENDENCIES
   rails-dummy (= 0.1.0)
   rails_best_practices (~> 1.23.0)
   rake (~> 13.0.6)
+  reline
   rspec-rails (~> 6.0.0)
   rubocop (~> 1.42.0)
   rubocop-performance (~> 1.15.0)
