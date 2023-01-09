@@ -17,10 +17,8 @@ group :development, :test do
   gem "byebug"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "irb" # manually required for Github Actions to work
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.0"
-  gem "reline" # manually required for Github Actions to work
   gem "rspec-rails", "~> 6.0.0"
   gem "sqlite3"
   gem "typeprof"
