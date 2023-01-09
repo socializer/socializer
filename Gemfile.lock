@@ -113,6 +113,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     bundler-integrity (1.0.9)
     byebug (11.1.3)
     capybara (3.38.0)
@@ -502,6 +505,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.4.1)
+  bundler-audit (~> 0.9.1)
   bundler-integrity (~> 1.0)
   byebug
   capybara (>= 2.15, < 4.0)

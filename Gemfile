@@ -14,6 +14,7 @@ gem "sprockets-rails"
 # your gem to rubygems.org.
 
 group :development, :test do
+  gem "bundler-audit", "~> 0.9.1"
   gem "byebug"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   # gem "debug", platforms: %i[mri mingw x64_mingw]
