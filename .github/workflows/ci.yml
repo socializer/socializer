@@ -10,14 +10,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: true
 
+    env:
+      RAILS_ENV: test
+
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+      - uses: actions/checkout@v3
 
 #    - name: "Cache Ruby"
 #      uses: actions/cache@v3
@@ -26,30 +29,30 @@ jobs:
 #        path: ~/local/rubies
 #        key: ruby-3.2.x
 
-    - name: "Install Ruby 3.2.x"
-      uses: ruby/setup-ruby@v1.133.1
-      id: ruby
-      with:
-        ruby-version: "3.2"
-        bundler-cache: true
+      - name: "Install Ruby 3.2.x"
+        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+        id: ruby
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
 
-    - name: "Install sqlite"
-      run: |
-        sudo apt-get update
-        sudo apt-get install libmysqlclient-dev libpq-dev libsqlite3-dev libncurses5-dev
-        sudo apt-get install -y sqlite3
+      - name: "Install sqlite"
+        run: |
+          sudo apt-get update
+          sudo apt-get install libmysqlclient-dev libpq-dev libsqlite3-dev libncurses5-dev
+          sudo apt-get install -y sqlite3
 
-    - name: "Prepare the database"
-      run: |
-        bin/rails app:db:environment:set RAILS_ENV=test
-        bin/rails app:db:migrate RAILS_ENV=test
-        bin/rails app:db:reset RAILS_ENV=test
+      - name: "Prepare the database"
+        run: |
+          bin/rails app:db:environment:set RAILS_ENV=test
+          bin/rails app:db:migrate RAILS_ENV=test
+          bin/rails app:db:reset RAILS_ENV=test
 
-    - name: "Run rspec"
-      run: |
-        bundle exec rspec
+      - name: "Run rspec"
+        run: |
+          bundle exec rspec
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@1.1.3
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Coveralls
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
