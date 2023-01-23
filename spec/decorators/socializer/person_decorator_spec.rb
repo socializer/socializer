@@ -143,7 +143,7 @@ module Socializer
       end
 
       context "when the provider is gravatar" do
-        let(:avatar_url) { "http://www.gravatar.com/avatar/" }
+        let(:avatar_url) { "https://www.gravatar.com/avatar/" }
 
         specify { expect(decorated_person.avatar_url).to include(avatar_url) }
 
