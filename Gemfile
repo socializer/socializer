@@ -26,6 +26,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "brakeman", "~> 5.4"
   gem "bundler", ">= 1.15.0", "< 3.0"
   gem "coffeelint", "~> 1.16.1"
   gem "factory_bot_rails", "~> 6.2.0"
