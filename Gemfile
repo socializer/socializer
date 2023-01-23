@@ -26,8 +26,24 @@ group :development, :test do
 end
 
 group :development do
+  gem "bundler", ">= 1.15.0", "< 3.0"
   gem "coffeelint", "~> 1.16.1"
+  gem "factory_bot_rails", "~> 6.2.0"
+  gem "i18n-tasks", "~> 1.0.0"
+  gem "inch", "~> 0.8.0"
   gem "listen"
+  gem "rails_best_practices", "~> 1.23.0"
+  gem "rake", "~> 13.0.6"
+  gem "rubocop", "~> 1.44.0"
+  gem "rubocop-performance", "~> 1.15.0"
+  gem "rubocop-rails", "~> 2.17.0"
+  gem "rubocop-rake", "~> 0.6.0"
+  gem "rubocop-rspec", "~> 2.18.0"
+  gem "scss_lint", "~> 0.59.0"
+  gem "shoulda-matchers", "~> 5.3.0"
+  gem "solargraph"
+  # gem "solargraph-rails"
+  # gem "solargraph-rails", "~> 1.0.0.pre.1"
 end
 
 group :test do
