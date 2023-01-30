@@ -53,6 +53,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("omniauth-twitter", "~> 1.4.0")
   spec.add_runtime_dependency("rails", "~> 7.0.2")
   spec.add_runtime_dependency("sass-rails", "~> 6.0.0")
-  spec.add_runtime_dependency("simple_form", "~> 5.1.0")
+  spec.add_runtime_dependency("simple_form", "~> 5.2.0")
   spec.add_runtime_dependency("uglifier", ">= 4.1.19")
 end
