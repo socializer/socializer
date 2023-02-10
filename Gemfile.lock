@@ -286,7 +286,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.22.1)
-    parser (3.2.0.0)
+    parser (3.2.1.0)
       ast (~> 2.4.1)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -501,7 +501,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-darwin-21
