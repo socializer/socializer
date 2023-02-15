@@ -50,7 +50,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "coveralls_reborn", "~> 0.26.0", require: false
+  gem "coveralls_reborn", "~> 0.27.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.22.0", require: false
