@@ -42,7 +42,7 @@ module Socializer
         end
 
         it "assigns @ownerships" do
-          expect(assigns(:ownerships)).to match_array([group])
+          expect(assigns(:ownerships)).to contain_exactly(group)
         end
       end
     end

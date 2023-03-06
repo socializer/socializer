@@ -53,7 +53,7 @@ module Socializer
         end
 
         it "assigns @people" do
-          expect(assigns(:people)).to match_array([user])
+          expect(assigns(:people)).to contain_exactly(user)
         end
 
         it "renders the :index template" do

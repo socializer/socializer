@@ -46,7 +46,7 @@ module Socializer
         end
 
         it "assigns @memberships" do
-          expect(assigns(:memberships)).to match_array([membership])
+          expect(assigns(:memberships)).to contain_exactly(membership)
         end
       end
     end
