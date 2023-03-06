@@ -47,14 +47,14 @@ module Socializer
     protected
 
     # REFACTOR: remove the before_create callback. Move the callback to the
-    # controller(s)?
+    #   controller(s)?
     #           Create a Collaborating Object?
     def activity_object_builder
       build_activity_object
     end
 
     # REFACTOR: remove the after_create callback. Move the callback to the
-    # controller(s)?
+    #   controller(s)?
     #           Create a Collaborating Object
     def append_to_activity_stream
       # the `return if activity_verb.blank?` guard is needed to block the
