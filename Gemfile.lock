@@ -243,6 +243,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nokogiri (1.14.2-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
@@ -289,7 +291,7 @@ GEM
     parallel (1.22.1)
     parser (3.2.1.1)
       ast (~> 2.4.1)
-    prettier_print (1.2.0)
+    prettier_print (1.2.1)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -465,7 +467,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.10705)
+    sorbet-runtime (0.5.10710)
     sparkr (0.4.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -474,6 +476,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.1-arm64-darwin)
     sqlite3 (1.6.1-x86_64-darwin)
     sqlite3 (1.6.1-x86_64-linux)
     sync (0.5.0)
@@ -513,6 +516,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-darwin-21
   x86_64-linux
 
@@ -555,4 +559,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.4.7
+   2.4.8
