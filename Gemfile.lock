@@ -425,7 +425,7 @@ GEM
       tilt
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
-    selenium-webdriver (4.8.3)
+    selenium-webdriver (4.8.6)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
