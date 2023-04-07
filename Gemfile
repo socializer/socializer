@@ -37,7 +37,7 @@ group :development do
   gem "rake", "~> 13.0.6"
   gem "rubocop", "~> 1.49.0"
   gem "rubocop-performance", "~> 1.16.0"
-  gem "rubocop-rails", "~> 2.18.0"
+  gem "rubocop-rails", "~> 2.19.0"
   gem "rubocop-rake", "~> 0.6.0"
   gem "rubocop-rspec", "~> 2.19.0"
   gem "scss_lint", "~> 0.60.0"
