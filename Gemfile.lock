@@ -143,7 +143,7 @@ GEM
       execjs
       json
     concurrent-ruby (1.2.2)
-    countries (5.3.2)
+    countries (5.4.0)
       unaccent (~> 0.3)
     country_select (8.0.1)
       countries (~> 5.0)
@@ -242,11 +242,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.14.2-arm64-darwin)
+    nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.2-x86_64-darwin)
+    nokogiri (1.14.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.2-x86_64-linux)
+    nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -378,7 +378,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
-    rubocop (1.50.0)
+    rubocop (1.50.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -504,7 +504,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.32)
+    yard (0.9.33)
     zeitwerk (2.6.7)
 
 PLATFORMS
@@ -552,4 +552,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.4.11
+   2.4.12
