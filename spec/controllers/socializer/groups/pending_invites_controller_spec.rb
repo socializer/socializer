@@ -42,7 +42,7 @@ module Socializer
         end
 
         it "assigns @pending_invites" do
-          expect(assigns(:pending_invites)).to match_array(%w[])
+          expect(assigns(:pending_invites)).to be_empty
         end
 
         context "with a pending invite" do
