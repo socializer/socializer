@@ -52,7 +52,6 @@ module Socializer
     end
 
     # Instance Methods
-
     def confirm
       update(active: true)
     end

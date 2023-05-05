@@ -69,7 +69,7 @@ module Socializer
 
     # Order records by created_at in descending order
     #
-    # @return [Socializer::Activity]
+    # @return [ActiveRecord::Relation<Socializer::Activity>]
     def self.newest_first
       order(created_at: :desc)
     end
@@ -78,7 +78,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Activity]
+    # @return [ActiveRecord::Relation<Socializer::Activity>]
     def self.with_id(id:)
       where(id:)
     end
@@ -87,7 +87,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Activity]
+    # @return [ActiveRecord::Relation<Socializer::Activity>]
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
@@ -96,7 +96,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Activity]
+    # @return [ActiveRecord::Relation<Socializer::Activity>]
     def self.with_actor_id(id:)
       where(actor_id: id)
     end
@@ -105,7 +105,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Activity]
+    # @return [ActiveRecord::Relation<Socializer::Activity>]
     def self.with_target_id(id:)
       where(target_id: id)
     end

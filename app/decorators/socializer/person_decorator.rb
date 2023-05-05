@@ -21,7 +21,7 @@ module Socializer
 
     # Format the birthdate attribute
     #
-    # @return [String]
+    # @return [String, nil]
     def birthdate
       model.birthdate? ? model.birthdate.to_fs(:long_ordinal) : nil
     end
@@ -78,8 +78,8 @@ module Socializer
       avatar_providers = Set.new(%w[FACEBOOK LINKEDIN TWITTER])
 
       # REFACTOR: Should an authentications decorator be created? If so,
-      # override the image_url method using this
-      # logic, or we can create an avatar_url method
+      #   override the image_url method using this
+      #   logic, or we can create an avatar_url method
       return social_avatar_url if avatar_providers.include?(avatar_provider)
 
       gravatar_url
