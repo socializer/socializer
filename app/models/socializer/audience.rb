@@ -16,6 +16,10 @@ module Socializer
     enumerize :privacy, in: %w[public circles limited],
                         default: :public, predicates: true, scope: true
 
+    PUBLIC_PRIVACY = privacy.public.value.freeze
+    CIRCLES_PRIVACY = privacy.circles.value.freeze
+    LIMITED_PRIVACY = privacy.limited.value.freeze
+
     # Relationships
     belongs_to :activity, inverse_of: :audiences
     belongs_to :activity_object, inverse_of: :audiences, optional: true
@@ -29,11 +33,35 @@ module Socializer
 
     # Class Methods
 
+    def self.circle_privacy_grouping(viewer_id:)
+      viewer_literal = viewer_literal(viewer_id:)
+      author_ids = ActivityObject.joins(:person).ids
+      subquery = Circle.with_author_id(id: author_ids).ids
+
+      arel_table.grouping(arel_table[:privacy].eq(CIRCLES_PRIVACY)
+                  .and(viewer_literal.in(subquery)))
+    end
+
+    def self.limited_privacy_grouping(viewer_id:)
+      activity_object_id = arel_table[:activity_object_id]
+
+      arel_table.grouping(arel_table[:privacy].eq(LIMITED_PRIVACY)
+                  .and(viewer_literal(viewer_id:).in(limited_circle_subquery)
+                    .or(activity_object_id
+                          .in(limited_group_subquery(viewer_id)))
+                  .or(activity_object_id.in(viewer_id))))
+    end
+
+    def self.public_privacy_grouping(viewer_id:)
+      arel_table.grouping(arel_table[:privacy].eq(PUBLIC_PRIVACY)
+                  .or(circle_privacy_grouping(viewer_id:)))
+    end
+
     # Find audiences where the activity_id is equal to the given id
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Audience]
+    # @return [ActiveRecord::Relation<Socializer::Audience>]
     def self.with_activity_id(id:)
       where(activity_id: id)
     end
@@ -42,9 +70,39 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::Audience]
+    # @return [ActiveRecord::Relation<Socializer::Audience>]
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
+    end
+
+    def self.viewer_literal(viewer_id:)
+      Arel::Nodes::SqlLiteral.new(viewer_id.to_s)
+    end
+    private_class_method :viewer_literal
+
+    # Audience : LIMITED
+    # Ensure that the audience is LIMITED and then make sure that the viewer
+    # is either part of a circle that is the target audience, or that the
+    # viewer is part of a group that is the target audience, or that the viewer
+    # is the target audience.
+    #
+    # @return [Array]
+    def self.limited_circle_subquery
+      # Retrieve the circle's unique identifier related to the audience (when
+      # the audience is not a circle, this query will simply return nothing)
+      subquery = Circle.joins(activity_object: :audiences).ids
+      Tie.with_circle_id(circle_id: subquery).pluck(:contact_id)
+    end
+
+    # Limited group subquery
+    #
+    # @param  viewer_id: [Integer] who wants to see the activity stream
+    #
+    # @return [Array]
+    def self.limited_group_subquery(viewer_id)
+      ActivityObject.joins(group: :memberships)
+                    .merge(Membership.with_member_id(member_id: viewer_id))
+                    .ids
     end
 
     # Instance Methods

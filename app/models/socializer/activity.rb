@@ -212,110 +212,11 @@ module Socializer
               .merge(Verb.with_display_name(name: verbs_of_interest))
               .with_target_id(id: nil)
 
-      query.where(public_grouping(viewer_id:)
-           .or(limited_grouping(viewer_id:))
+      query.where(Audience.public_privacy_grouping(viewer_id:)
+           .or(Audience.limited_privacy_grouping(viewer_id:))
            .or(arel_table[:actor_id].eq(viewer_id)))
     end
     private_class_method :stream_query
-
-    # TODO: Look into replacing with Active Record queries.
-    # May need to wait until Rails 5 for the .or if a backport doesn't exist
-    # Create/Use scopes. This one might be called viewer_in_circles
-    # Audience.with_privacy(:circles).where(viewer_literal.in(circles_subquery))
-    def self.circles_grouping(viewer_id:)
-      circles_privacy   ||= Audience.privacy.circles.value
-      viewer_literal    ||= viewer_literal(viewer_id:)
-      @circles_grouping ||= audience_table
-                            .grouping(privacy_field.eq(circles_privacy)
-                              .and(viewer_literal.in(circles_subquery)))
-    end
-    private_class_method :circles_grouping
-
-    # TODO: Look into replacing with Active Record queries.
-    # May need to wait until Rails 5 for the .or if a backport doesn't exist
-    # Create/Use scopes.
-    # Audience.with_privacy(:limited)
-    #   .where(viewer_literal.in(limited_circle_subquery))...
-    def self.limited_grouping(viewer_id:)
-      activity_object_id = audience_table[:activity_object_id]
-      limited_privacy    = Audience.privacy.limited.value
-      viewer_literal     = viewer_literal(viewer_id:)
-      @limited_grouping ||= audience_table
-                            .grouping(privacy_field.eq(limited_privacy)
-                                  .and(viewer_literal
-                                    .in(limited_circle_subquery)
-                                    .or(activity_object_id
-                                      .in(limited_group_subquery(viewer_id)))
-                                  .or(activity_object_id.in(viewer_id))))
-    end
-    private_class_method :limited_grouping
-
-    # TODO: Look into replacing with Active Record queries.
-    # May need to wait until Rails 5 for the .or if a backport doesn't exist
-    # Create/Use scopes.
-    # Audience.with_privacy(:public)...
-    def self.public_grouping(viewer_id:)
-      public_privacy   ||= Audience.privacy.public.value
-      @public_grouping ||= audience_table
-                           .grouping(privacy_field.eq(public_privacy)
-                            .or(circles_grouping(viewer_id:)))
-    end
-    private_class_method :public_grouping
-
-    # The arel_table method is technically private since it is marked :nodoc
-    def self.audience_table
-      @audience_table ||= Audience.arel_table
-    end
-    private_class_method :audience_table
-
-    def self.privacy_field
-      @privacy_field ||= audience_table[:privacy]
-    end
-    private_class_method :privacy_field
-
-    def self.viewer_literal(viewer_id:)
-      @viewer_literal ||= Arel::Nodes::SqlLiteral.new(viewer_id.to_s)
-    end
-    private_class_method :viewer_literal
-
-    # Audience : CIRCLES
-    # Ensure the audience is CIRCLES and then make sure that the viewer is in
-    # those circles
-    #
-    # @return [Array]
-    def self.circles_subquery
-      # Retrieve the author's unique identifier
-      subquery = ActivityObject.joins(:person).ids
-      Circle.with_author_id(id: subquery).ids
-    end
-    private_class_method :circles_subquery
-
-    # Audience : LIMITED
-    # Ensure that the audience is LIMITED and then make sure that the viewer
-    # is either part of a circle that is the target audience, or that the
-    # viewer is part of a group that is the target audience, or that the viewer
-    # is the target audience.
-    #
-    # @return [Array]
-    def self.limited_circle_subquery
-      # Retrieve the circle's unique identifier related to the audience (when
-      # the audience is not a circle, this query will simply return nothing)
-      subquery = Circle.joins(activity_object: :audiences).ids
-      Tie.with_circle_id(circle_id: subquery).pluck(:contact_id)
-    end
-    private_class_method :limited_circle_subquery
-
-    # Limited group subquery
-    #
-    # @param  viewer_id: [Integer] who wants to see the activity stream
-    #
-    # @return [Array]
-    def self.limited_group_subquery(viewer_id)
-      ActivityObject.joins(group: :memberships)
-                    .merge(Membership.with_member_id(member_id: viewer_id))
-                    .ids
-    end
-    private_class_method :limited_group_subquery
 
     # Instance Methods
 

@@ -19,8 +19,6 @@ module Socializer
       #   Activity::Services::Like.new(actor: current_user)
       #                           .call(activity_object: @likable)
       class Like
-        PUBLIC = Socializer::Audience.privacy.public.value.freeze
-
         # Initializer
         #
         # @param [Socializer::Person] actor: the person that likes the activity
@@ -53,7 +51,7 @@ module Socializer
             .new(actor_id: actor.guid,
                  activity_object_id: activity_object.id,
                  verb:,
-                 object_ids: PUBLIC).call
+                 object_ids: Socializer::Audience::PUBLIC_PRIVACY).call
         end
 
         # Increment the like_count for the [Socializer::ActivityObject]
