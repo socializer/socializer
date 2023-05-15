@@ -6,7 +6,7 @@ FactoryBot.define do
   factory :notification, class: "Socializer::Notification" do
     read { false }
 
-    association :activity_object, factory: :activity_object, strategy: :create
-    association :activity,        factory: :activity, strategy: :create
+    association :activity_object, strategy: :create
+    association :activity, strategy: :create
   end
 end

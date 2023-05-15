@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :authentication, class: "Socializer::Authentication" do
     provider { "identity" }
     uid { "1" }
-    association :person, factory: :person
+    association :person
   end
 end

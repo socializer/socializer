@@ -8,6 +8,6 @@ FactoryBot.define do
     started_on { Date.new(2014, 12, 3) }
     ended_on { nil }
     current { true }
-    association :person, factory: :person
+    association :person
   end
 end

@@ -29,7 +29,7 @@ FactoryBot.define do
     end
 
     factory :person_notes, class: "Socializer::Person" do
-      association :activity_object, factory: :activity_object
+      association :activity_object
     end
   end
 end
