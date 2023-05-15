@@ -3,6 +3,7 @@ inherit_from: ../.rubocop.yml
 require:
   - rubocop-rspec
   - rubocop-capybara
+  - rubocop-factory_bot
 
 Metrics/ModuleLength:
   Enabled: false
