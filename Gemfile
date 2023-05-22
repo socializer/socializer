@@ -36,7 +36,7 @@ group :development do
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0.6"
   gem "rubocop", "~> 1.51.0"
-  gem "rubocop-performance", "~> 1.17.0"
+  gem "rubocop-performance", "~> 1.18.0"
   gem "rubocop-rails", "~> 2.19.0"
   gem "rubocop-rake", "~> 0.6.0"
   gem "rubocop-rspec", "~> 2.22.0"
