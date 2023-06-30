@@ -62,6 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: development
+      BUNDLE_FROZEN: false
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
