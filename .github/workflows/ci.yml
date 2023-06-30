@@ -17,6 +17,7 @@ jobs:
 
     env:
       RAILS_ENV: test
+      BUNDLE_FROZEN: false
 
     steps:
       - name: Checkout code
