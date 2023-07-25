@@ -35,7 +35,7 @@ group :development do
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0.6"
-  gem "rubocop", "~> 1.54.0"
+  gem "rubocop", "~> 1.55.0"
   gem "rubocop-performance", "~> 1.18.0"
   gem "rubocop-rails", "~> 2.20.0"
   gem "rubocop-rake", "~> 0.6.0"
@@ -51,7 +51,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "coveralls_reborn", "~> 0.27.0", require: false
+  gem "coveralls_reborn", "~> 0.28.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.22.0", require: false
