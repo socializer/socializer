@@ -166,19 +166,19 @@ module Socializer
 
     context "when it rejects unknown avatar_provider" do
       it "when it is 'IDENTITY'" do
-        expect(build(:person, avatar_provider: "IDENTITY")).to be_invalid
+        expect(build(:person, avatar_provider: "IDENTITY")).not_to be_valid
       end
 
       it "when it is 'TEST'" do
-        expect(build(:person, avatar_provider: "TEST")).to be_invalid
+        expect(build(:person, avatar_provider: "TEST")).not_to be_valid
       end
 
       it "when it is 'DUMMY'" do
-        expect(build(:person, avatar_provider: "DUMMY")).to be_invalid
+        expect(build(:person, avatar_provider: "DUMMY")).not_to be_valid
       end
 
       it "when it is 'OTHER'" do
-        expect(build(:person, avatar_provider: "OTHER")).to be_invalid
+        expect(build(:person, avatar_provider: "OTHER")).not_to be_valid
       end
     end
   end
