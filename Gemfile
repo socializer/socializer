@@ -39,7 +39,7 @@ group :development do
   gem "rubocop-performance", "~> 1.18.0"
   gem "rubocop-rails", "~> 2.20.0"
   gem "rubocop-rake", "~> 0.6.0"
-  gem "rubocop-rspec", "~> 2.22.0"
+  gem "rubocop-rspec", "~> 2.23.0"
   gem "rubocop-thread_safety", require: false
   gem "scss_lint", "~> 0.60.0"
   gem "shoulda-matchers", "~> 5.3.0"
@@ -56,7 +56,7 @@ group :test do
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.22.0", require: false
   gem "simplecov-lcov", require: false
-  gem "webdrivers", "~> 5.0"
+  gem "webdrivers", "~> 5.3"
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
