@@ -180,7 +180,7 @@ module Socializer
         let(:result) { decorated_person.image_tag_avatar }
 
         specify do
-          expect(result).to have_selector("img[alt=Avatar][src*=gravatar]")
+          expect(result).to have_css("img[alt=Avatar][src*=gravatar]")
         end
 
         specify { expect(result).to include(decorated_person.avatar_url) }
@@ -364,7 +364,7 @@ module Socializer
         end
 
         specify do
-          expect(result).to have_selector("li", count: li_count)
+          expect(result).to have_css("li", count: li_count)
         end
 
         specify do
@@ -375,7 +375,7 @@ module Socializer
         end
 
         specify do
-          expect(result).to have_selector("li.dropdown")
+          expect(result).to have_css("li.dropdown")
         end
 
         # specify do
@@ -383,7 +383,7 @@ module Socializer
         # end
 
         specify do
-          expect(result).to have_selector("ul.dropdown-menu")
+          expect(result).to have_css("ul.dropdown-menu")
         end
       end
 
@@ -438,7 +438,7 @@ module Socializer
             .to have_link("Group", href: group_activities_path(group&.id))
         end
 
-        specify { expect(result).to have_selector("li", count: li_count) }
+        specify { expect(result).to have_css("li", count: li_count) }
 
         specify do
           # i18n-tasks-use t("socializer.shared.toolbar.more")
@@ -448,7 +448,7 @@ module Socializer
         end
 
         specify do
-          expect(result).to have_selector("li.dropdown")
+          expect(result).to have_css("li.dropdown")
         end
 
         # specify do
@@ -457,7 +457,7 @@ module Socializer
         # end
 
         specify do
-          expect(result).to have_selector("ul.dropdown-menu")
+          expect(result).to have_css("ul.dropdown-menu")
         end
       end
     end

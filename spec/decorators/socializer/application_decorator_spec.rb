@@ -13,7 +13,7 @@ module Socializer
       context "when created_at and updated_at are equal" do
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time", text: time_text)
+            .to have_css("time", text: time_text)
         end
 
         specify do
@@ -28,7 +28,7 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[data-time-ago='moment.js']")
+            .to have_css("time[data-time-ago='moment.js']")
         end
       end
 
@@ -44,7 +44,7 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time", text: time_text)
+            .to have_css("time", text: time_text)
         end
 
         specify do
@@ -59,7 +59,7 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[data-time-ago='moment.js']")
+            .to have_css("time[data-time-ago='moment.js']")
         end
       end
     end
