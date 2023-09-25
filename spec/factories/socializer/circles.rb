@@ -6,7 +6,7 @@ FactoryBot.define do
   factory :circle, class: "Socializer::Circle" do
     sequence(:display_name) { |n| "Friends no#{n}" }
     content { "This is some content" }
-    association :activity_author, factory: :activity_object_person
+    activity_author factory: %i[activity_object_person]
 
     trait :with_ties do
       transient do

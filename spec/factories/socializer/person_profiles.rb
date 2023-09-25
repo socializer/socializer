@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :person_profile, class: "Socializer::Person::Profile" do
     display_name { "test" }
     url { "http://test.org" }
-    association :person
+    person
   end
 end

@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :socializer_membership, class: "Socializer::Membership" do
     active { true }
-    association :group, strategy: :create
-    association :activity_member, factory: :activity_object_person
+    group strategy: :create
+    activity_member factory: %i[activity_object_person]
   end
 end

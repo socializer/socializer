@@ -7,6 +7,6 @@ FactoryBot.define do
     category { :home }
     number { "6666666666" }
     label { :phone }
-    association :person
+    person
   end
 end

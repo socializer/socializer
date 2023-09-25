@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :person_place, class: "Socializer::Person::Place" do
     city_name { "name" }
     current { true }
-    association :person
+    person
   end
 end

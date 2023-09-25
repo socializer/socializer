@@ -6,6 +6,6 @@ FactoryBot.define do
   factory :group_link, class: "Socializer::Group::Link" do
     display_name { "test" }
     url { "http://test.org" }
-    association :group
+    group
   end
 end

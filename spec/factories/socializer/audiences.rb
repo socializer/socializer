@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :audience, class: "Socializer::Audience" do
     privacy { :public }
-    association :activity
-    association :activity_object
+    activity
+    activity_object
   end
 end

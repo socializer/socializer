@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :tie, class: "Socializer::Tie" do
-    association :circle
-    association :activity_contact, factory: :activity_object_person
+    circle
+    activity_contact factory: %i[activity_object_person]
   end
 end

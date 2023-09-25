@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :person_address, class: "Socializer::Person::Address" do
     category { :home }
-    association :person
+    person
     line1 { "282 Kevin Brook" }
     city { "Imogeneborough" }
     province_or_state { "California" }
