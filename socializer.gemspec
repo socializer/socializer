@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("enumerize", "~> 2.7.0")
   # spec.add_runtime_dependency("jquery-rails", "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
-  spec.add_runtime_dependency("jquery-ui-rails", "~> 6.0.1")
+  # spec.add_runtime_dependency("jquery-ui-rails", "~> 7.0.0")
   spec.add_runtime_dependency("omniauth", "~> 2.1.0")
   spec.add_runtime_dependency("omniauth-facebook", "~> 9.0.0")
   spec.add_runtime_dependency("omniauth-identity", "~> 3.0.9")

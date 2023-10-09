@@ -68,3 +68,6 @@ end
 # gem "draper", github: "drapergem/draper"
 
 gem "bundler-integrity", "~> 1.0"
+
+# TODO: Move back to the gemspec once the gem is released
+gem "jquery-ui-rails", github: "jquery-ui-rails/jquery-ui-rails"
