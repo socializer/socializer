@@ -5,7 +5,7 @@
   "repository": "https://github.com/socializer/socializer.git",
   "license": "MIT",
   "dependencies": {
-    "@rails/ujs": "^7.0.8"
+    "@rails/ujs": "^7.1.0"
   },
   "version": "0.1.13",
   "devDependencies": {
