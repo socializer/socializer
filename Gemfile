@@ -19,7 +19,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   # gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
-  gem "rails-dummy", "= 0.1.0"
+  gem "rails-dummy", "= 0.1.1"
   gem "rspec-rails", "~> 6.0.0"
   gem "sqlite3"
   gem "typeprof"
@@ -35,7 +35,7 @@ group :development do
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0.6"
-  gem "rubocop", "~> 1.56.0"
+  gem "rubocop", "~> 1.57.0"
   gem "rubocop-performance", "~> 1.19.0"
   gem "rubocop-rails", "~> 2.21.0"
   gem "rubocop-rake", "~> 0.6.0"
