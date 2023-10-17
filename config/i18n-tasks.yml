@@ -13,7 +13,7 @@ data:
   ## Provide a custom adapter:
   # adapter: I18n::Tasks::Data::FileSystem
 
-  # Locale files or `File.find` patterns where translations are read from:
+  # Locale files or `Find.find` patterns where translations are read from:
   read:
     ## Default:
     # - config/locales/%{locale}.yml
@@ -52,10 +52,10 @@ data:
 
 # Find translate calls
 search:
-  ## Paths or `File.find` patterns to search in:
   paths:
     - app/
     - lib
+  ## Paths or `Find.find` patterns to search in:
 
   ## Root directories for relative keys resolution.
   # relative_roots:
@@ -95,7 +95,7 @@ search:
   ##     User.human_attribute_name(:email) and User.model_name.human
   ##
   ## To implement your own, please see `I18n::Tasks::Scanners::AstMatchers::BaseMatcher`.
-  <%# I18n::Tasks.add_ast_matcher('I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher') %>
+  # <%# I18n::Tasks.add_ast_matcher('I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher') %>
 
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
@@ -111,7 +111,9 @@ search:
 #   deepl_api_key: "48E92789-57A3-466A-9959-1A1A1A1A1A1A"
 #   # deepl_host: "https://api.deepl.com"
 #   # deepl_version: "v2"
-
+#   # add additional options to the DeepL.translate call: https://www.deepl.com/docs-api/translate-text/translate-text/
+#   deepl_options:
+#     formality: prefer_less
 ## Do not consider these keys missing:
 # ignore_missing:
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
