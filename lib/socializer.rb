@@ -5,7 +5,7 @@ require "socializer/engine"
 require "socializer/errors"
 
 # Added "jquery-ui-rails" for drag and drop
-require "jquery/ui/rails"
+# require "jquery/ui/rails"
 require "coffee-rails"
 require "sass/rails"
 require "bootstrap-sass"
