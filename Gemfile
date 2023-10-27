@@ -37,9 +37,9 @@ group :development do
   gem "rake", "~> 13.0.6"
   gem "rubocop", "~> 1.57.0"
   gem "rubocop-performance", "~> 1.19.0"
-  gem "rubocop-rails", "~> 2.21.0"
+  gem "rubocop-rails", "~> 2.22.0"
   gem "rubocop-rake", "~> 0.6.0"
-  gem "rubocop-rspec", "~> 2.24.0"
+  gem "rubocop-rspec", "~> 2.25.0"
   gem "rubocop-thread_safety", require: false
   gem "scss_lint", "~> 0.60.0"
   gem "shoulda-matchers", "~> 5.3.0"
