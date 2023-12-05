@@ -113,7 +113,7 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    brakeman (6.0.1)
+    brakeman (6.1.0)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -209,7 +209,7 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     jaro_winkler (1.5.6)
-    json (2.7.0)
+    json (2.7.1)
     jwt (2.7.1)
     kramdown (2.4.0)
       rexml
@@ -355,7 +355,7 @@ GEM
       ffi (~> 1.0)
     rbs (3.3.2)
       abbrev
-    regexp_parser (2.8.2)
+    regexp_parser (2.8.3)
     request_store (1.5.1)
       rack (>= 1.4)
     require_all (3.0.0)
