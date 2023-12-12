@@ -35,7 +35,7 @@ group :development do
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0"
-  gem "rubocop", "~> 1.58.0"
+  gem "rubocop", "~> 1.59.0"
   gem "rubocop-performance", "~> 1.19.0"
   gem "rubocop-rails", "~> 2.22.0"
   gem "rubocop-rake", "~> 0.6.0"
