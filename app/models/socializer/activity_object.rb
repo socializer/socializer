@@ -118,7 +118,7 @@ module Socializer
     def self.attribute_type_of(*args)
       args.each do |type|
         klass = "Socializer::#{type.to_s.classify}"
-        define_method("#{type}?") { activitable_type == klass }
+        define_method(:"#{type}?") { activitable_type == klass }
       end
     end
 

@@ -271,7 +271,7 @@ module Socializer
 
     def toolbar_link_url(item:)
       url_prefix = item.class.name.demodulize.downcase
-      helpers.public_send("#{url_prefix}_activities_path", item.id)
+      helpers.public_send(:"#{url_prefix}_activities_path", item.id)
     end
   end
 end
