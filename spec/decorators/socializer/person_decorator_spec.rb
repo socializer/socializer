@@ -360,7 +360,7 @@ module Socializer
 
         specify do
           expect(result)
-            .not_to have_link("Group", href: "/groups/1/activities")
+            .to have_no_link("Group", href: "/groups/1/activities")
         end
 
         specify do
