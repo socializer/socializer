@@ -45,4 +45,4 @@ Some things that will increase the chance that your pull request is accepted, ta
 ## License
 
 By contributing your code, you agree to license your contribution under the
-terms of the MIT license: http://www.opensource.org/licenses/mit-license.php
+terms of the MIT license: https://opensource.org/license/mit/

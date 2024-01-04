@@ -51,7 +51,7 @@ module Socializer
 
     describe "#services" do
       let(:authentications_attributes) do
-        { provider: "facebook", image_url: "http://facebook.com", uid: 1 }
+        { provider: "facebook", image_url: "https://facebook.com", uid: 1 }
       end
 
       let(:person) { create(:person, avatar_provider: "FACEBOOK") }

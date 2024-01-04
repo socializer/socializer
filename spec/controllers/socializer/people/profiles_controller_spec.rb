@@ -11,7 +11,7 @@ module Socializer
 
     let(:valid_params) do
       { person_id: user,
-        person_profile: { display_name: "test", url: "http://test.org" } }
+        person_profile: { display_name: "test", url: "https://test.org" } }
     end
 
     let(:invalid_params) do

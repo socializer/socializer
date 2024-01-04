@@ -11,7 +11,7 @@ module Socializer
   # {Socializer::ObjectTypeBase Object}
   # type that provide information about pending, ongoing or completed actions.
   #
-  # Activities follow the {http://activitystrea.ms/ Activity Streams} standard.
+  # Activities follow the {https://activitystrea.ms/ Activity Streams} standard.
   #
   class Activity < ApplicationRecord
     include ObjectTypeBase

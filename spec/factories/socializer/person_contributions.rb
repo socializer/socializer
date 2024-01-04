@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :person_contribution, class: "Socializer::Person::Contribution" do
     sequence(:display_name) { |n| "Contribution #{n}" }
-    url { "http://test.org" }
+    url { "https://test.org" }
     label { :current_contributor }
     person
   end

@@ -8,7 +8,7 @@ module Socializer
   # Object Type Base concern
   #
   # Common functionality for the
-  # {http://activitystrea.ms/registry/object_types/ Activity Streams}
+  # {https://activitystrea.ms/registry/object_types/ Activity Streams}
   # object types
   #
   module ObjectTypeBase

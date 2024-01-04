@@ -97,7 +97,7 @@ module Socializer
       context "when the provider is Facebook, LinkedIn, or Twitter" do
         let(:authentication_attributes) do
           { provider: provider.downcase,
-            image_url: "http://#{provider.downcase}.com",
+            image_url: "https://#{provider.downcase}.com",
             uid: person.id }
         end
 

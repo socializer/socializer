@@ -5,7 +5,7 @@
 FactoryBot.define do
   factory :person_profile, class: "Socializer::Person::Profile" do
     display_name { "test" }
-    url { "http://test.org" }
+    url { "https://test.org" }
     person
   end
 end

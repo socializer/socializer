@@ -12,7 +12,7 @@ module Socializer
     let(:valid_params) do
       { person_id: user,
         person_contribution: { display_name: "My Test",
-                               url: "http://test.org",
+                               url: "https://test.org",
                                label: :current_contributor } }
     end
 

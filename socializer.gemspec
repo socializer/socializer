@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = Socializer::VERSION
   spec.authors       = ["Dominic Goulet"]
   spec.email         = ["dominic.goulet@froggedsoft.com"]
-  spec.homepage      = "http://www.froggedsoft.com"
+  spec.homepage      = "https://www.froggedsoft.com"
   spec.summary       = "Make your project social."
   spec.description   = "Add social network capabilities to your projects."
   spec.license       = "MIT"
