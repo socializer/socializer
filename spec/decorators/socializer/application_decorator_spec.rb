@@ -18,12 +18,12 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[datetime='#{created_at.iso8601}']")
+            .to have_css("time[datetime='#{created_at.iso8601}']")
         end
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[title='#{created_at.to_fs(:short)}']")
+            .to have_css("time[title='#{created_at.to_fs(:short)}']")
         end
 
         specify do
@@ -49,12 +49,12 @@ module Socializer
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[datetime='#{created_at.iso8601}']")
+            .to have_css("time[datetime='#{created_at.iso8601}']")
         end
 
         specify do
           expect(decorated_activity.created_at_time_ago)
-            .to have_selector("time[title='#{time_title}']")
+            .to have_css("time[title='#{time_title}']")
         end
 
         specify do
