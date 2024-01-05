@@ -13,7 +13,7 @@ module Socializer
     include ObjectTypeBase
 
     # Relationships
-    belongs_to :activity_author, class_name: "ActivityObject",
+    belongs_to :activity_author, class_name: "Socializer::ActivityObject",
                                  foreign_key: "author_id",
                                  inverse_of: :notes
 

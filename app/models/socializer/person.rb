@@ -31,35 +31,35 @@ module Socializer
 
     # Relationships
     has_many :authentications, dependent: :destroy
-    has_many :addresses, class_name: "Person::Address",
+    has_many :addresses, class_name: "Socializer::Person::Address",
                          dependent: :destroy,
                          inverse_of: :person
 
-    has_many :contributions, class_name: "Person::Contribution",
+    has_many :contributions, class_name: "Socializer::Person::Contribution",
                              dependent: :destroy,
                              inverse_of: :person
 
-    has_many :educations, class_name: "Person::Education",
+    has_many :educations, class_name: "Socializer::Person::Education",
                           dependent: :destroy,
                           inverse_of: :person
 
-    has_many :employments, class_name: "Person::Employment",
+    has_many :employments, class_name: "Socializer::Person::Employment",
                            dependent: :destroy,
                            inverse_of: :person
 
-    has_many :links, class_name: "Person::Link",
+    has_many :links, class_name: "Socializer::Person::Link",
                      dependent: :destroy,
                      inverse_of: :person
 
-    has_many :phones, class_name: "Person::Phone",
+    has_many :phones, class_name: "Socializer::Person::Phone",
                       dependent: :destroy,
                       inverse_of: :person
 
-    has_many :places, class_name: "Person::Place",
+    has_many :places, class_name: "Socializer::Person::Place",
                       dependent: :destroy,
                       inverse_of: :person
 
-    has_many :profiles, class_name: "Person::Profile",
+    has_many :profiles, class_name: "Socializer::Person::Profile",
                         dependent: :destroy,
                         inverse_of: :person
 

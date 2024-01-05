@@ -17,20 +17,20 @@ module Socializer
     include ObjectTypeBase
 
     # Relationships
-    belongs_to :parent, class_name: "Activity",
+    belongs_to :parent, class_name: "Socializer::Activity",
                         foreign_key: "target_id",
                         optional: true,
                         inverse_of: :children
 
-    belongs_to :activitable_actor,  class_name: "ActivityObject",
+    belongs_to :activitable_actor,  class_name: "Socializer::ActivityObject",
                                     foreign_key: "actor_id",
                                     inverse_of: :actor_activities
 
-    belongs_to :activitable_object, class_name: "ActivityObject",
+    belongs_to :activitable_object, class_name: "Socializer::ActivityObject",
                                     foreign_key: "activity_object_id",
                                     inverse_of: :object_activities
 
-    belongs_to :activitable_target, class_name: "ActivityObject",
+    belongs_to :activitable_target, class_name: "Socializer::ActivityObject",
                                     foreign_key: "target_id",
                                     inverse_of: :target_activities,
                                     optional: true
@@ -49,7 +49,7 @@ module Socializer
     has_many :audiences, inverse_of: :activity, dependent: :destroy
     has_many :activity_objects, through: :audiences, dependent: :destroy
 
-    has_many :children, class_name: "Activity",
+    has_many :children, class_name: "Socializer::Activity",
                         foreign_key: "target_id",
                         dependent: :destroy,
                         inverse_of: :parent

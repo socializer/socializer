@@ -38,16 +38,16 @@ module Socializer
     has_many :audiences, inverse_of: :activity_object, dependent: :destroy
     has_many :activities, through: :audiences, dependent: :destroy
 
-    has_many :actor_activities, class_name: "Activity",
+    has_many :actor_activities, class_name: "Socializer::Activity",
                                 foreign_key: "actor_id",
                                 dependent: :destroy,
                                 inverse_of: :activitable_actor
 
-    has_many :object_activities, class_name: "Activity",
+    has_many :object_activities, class_name: "Socializer::Activity",
                                  dependent: :destroy,
                                  inverse_of: :activitable_object
 
-    has_many :target_activities, class_name: "Activity",
+    has_many :target_activities, class_name: "Socializer::Activity",
                                  foreign_key: "target_id",
                                  dependent: :destroy,
                                  inverse_of: :activitable_target

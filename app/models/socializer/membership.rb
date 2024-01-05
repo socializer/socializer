@@ -13,7 +13,7 @@ module Socializer
   class Membership < ApplicationRecord
     # Relationships
     belongs_to :group, inverse_of: :memberships
-    belongs_to :activity_member, class_name: "ActivityObject",
+    belongs_to :activity_member, class_name: "Socializer::ActivityObject",
                                  foreign_key: "member_id",
                                  inverse_of: :memberships
 

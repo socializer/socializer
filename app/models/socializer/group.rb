@@ -18,7 +18,7 @@ module Socializer
                         default: :public, predicates: true, scope: true
 
     # Relationships
-    belongs_to :activity_author, class_name: "ActivityObject",
+    belongs_to :activity_author, class_name: "Socializer::ActivityObject",
                                  foreign_key: "author_id",
                                  inverse_of: :groups
 
@@ -27,11 +27,11 @@ module Socializer
                      source_type: "Socializer::Person",
                      dependent: :destroy
 
-    has_many :links, class_name: "Group::Link",
+    has_many :links, class_name: "Socializer::Group::Link",
                      dependent: :destroy,
                      inverse_of: :group
 
-    has_many :categories, class_name: "Group::Category",
+    has_many :categories, class_name: "Socializer::Group::Category",
                           dependent: :destroy,
                           inverse_of: :group
 
