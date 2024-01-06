@@ -10,6 +10,8 @@ class CreateSocializerCircles < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :socializer_circles, %i[display_name author_id], unique: true
+    add_index :socializer_circles,
+              %i[lower(display_name) author_id],
+              unique: true
   end
 end
