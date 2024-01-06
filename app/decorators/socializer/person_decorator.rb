@@ -189,7 +189,7 @@ module Socializer
     def gravatar_url
       return if email.blank?
 
-      hash = Digest::MD5.hexdigest(email.downcase.strip)
+      hash = Digest::SHA256.hexdigest(email.downcase.strip)
 
       "https://www.gravatar.com/avatar/#{hash}"
     end
