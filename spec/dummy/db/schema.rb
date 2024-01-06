@@ -71,8 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2014_01_31_070951) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower(display_name), author_id", name: "index_socializer_circles_on_lower_display_name_author_id", unique: true
     t.index ["author_id"], name: "index_socializer_circles_on_author_id"
-    t.index ["display_name", "author_id"], name: "index_socializer_circles_on_display_name_and_author_id", unique: true
   end
 
   create_table "socializer_comments", force: :cascade do |t|
@@ -109,8 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2014_01_31_070951) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower(display_name), author_id", name: "index_socializer_groups_on_lower_display_name_author_id", unique: true
     t.index ["author_id"], name: "index_socializer_groups_on_author_id"
-    t.index ["display_name", "author_id"], name: "index_socializer_groups_on_display_name_and_author_id", unique: true
     t.index ["privacy"], name: "index_socializer_groups_on_privacy"
   end
 
@@ -246,7 +246,7 @@ ActiveRecord::Schema[7.0].define(version: 2014_01_31_070951) do
 
   create_table "socializer_person_places", force: :cascade do |t|
     t.integer "person_id", null: false
-    t.string "city_name"
+    t.string "city_name", null: false
     t.boolean "current", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -15,7 +15,7 @@ class CreateSocializerGroups < ActiveRecord::Migration[7.0]
     end
 
     add_index :socializer_groups,
-              %i[lower(display_name) author_id],
+              "lower(display_name), author_id",
               unique: true
   end
 end
