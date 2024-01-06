@@ -27,8 +27,8 @@ module Socializer
                      source_type: "Socializer::Person",
                      dependent: :destroy
 
-    has_many :ties, inverse_of: :circle, dependent: :destroy
-    has_many :activity_contacts, through: :ties, dependent: :destroy
+    has_many :ties, inverse_of: :circle, dependent: :delete_all
+    has_many :activity_contacts, through: :ties, dependent: :delete_all
     has_many :contacts, through: :activity_contacts,
                         source: :activitable,
                         source_type: "Socializer::Person",

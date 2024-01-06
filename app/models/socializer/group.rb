@@ -28,11 +28,11 @@ module Socializer
                      dependent: :destroy
 
     has_many :links, class_name: "Socializer::Group::Link",
-                     dependent: :destroy,
+                     dependent: :delete_all,
                      inverse_of: :group
 
     has_many :categories, class_name: "Socializer::Group::Category",
-                          dependent: :destroy,
+                          dependent: :delete_all,
                           inverse_of: :group
 
     has_many :memberships, dependent: nil, inverse_of: :group

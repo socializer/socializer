@@ -40,15 +40,15 @@ module Socializer
                              inverse_of: :person
 
     has_many :educations, class_name: "Socializer::Person::Education",
-                          dependent: :destroy,
+                          dependent: :delete_all,
                           inverse_of: :person
 
     has_many :employments, class_name: "Socializer::Person::Employment",
-                           dependent: :destroy,
+                           dependent: :delete_all,
                            inverse_of: :person
 
     has_many :links, class_name: "Socializer::Person::Link",
-                     dependent: :destroy,
+                     dependent: :delete_all,
                      inverse_of: :person
 
     has_many :phones, class_name: "Socializer::Person::Phone",
@@ -56,11 +56,11 @@ module Socializer
                       inverse_of: :person
 
     has_many :places, class_name: "Socializer::Person::Place",
-                      dependent: :destroy,
+                      dependent: :delete_all,
                       inverse_of: :person
 
     has_many :profiles, class_name: "Socializer::Person::Profile",
-                        dependent: :destroy,
+                        dependent: :delete_all,
                         inverse_of: :person
 
     # TODO: May be able replace the circles and contacts delegates. Should be

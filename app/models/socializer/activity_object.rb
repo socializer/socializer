@@ -18,7 +18,7 @@ module Socializer
     # Activity.limited_group_subquery queries. By using these relationships we
     # no longer need to use Arel in those methods.
     has_one :self_reference,
-            class_name: "ActivityObject",
+            class_name: "Socializer::ActivityObject",
             foreign_key: :id,
             dependent: nil
 
@@ -34,7 +34,10 @@ module Socializer
             source_type: Person.name,
             dependent: :destroy
 
-    has_many :notifications, inverse_of: :activity_object, dependent: :destroy
+    has_many :notifications,
+             inverse_of: :activity_object,
+             dependent: :delete_all
+
     has_many :audiences, inverse_of: :activity_object, dependent: :destroy
     has_many :activities, through: :audiences, dependent: :destroy
 
@@ -76,13 +79,13 @@ module Socializer
 
     has_many :ties, foreign_key: "contact_id",
                     inverse_of: :activity_contact,
-                    dependent: :destroy
+                    dependent: :delete_all
 
     has_many :memberships,
              -> { Membership.active },
              foreign_key: "member_id",
              inverse_of: :activity_member,
-             dependent: :destroy
+             dependent: :delete_all
 
     # Validations
     validates :activitable_type, presence: true

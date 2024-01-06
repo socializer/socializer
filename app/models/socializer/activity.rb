@@ -56,7 +56,7 @@ module Socializer
 
     has_many :notifications,
              inverse_of: :activity,
-             dependent: :destroy
+             dependent: :delete_all
 
     # Validations
 
