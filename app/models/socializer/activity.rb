@@ -39,7 +39,7 @@ module Socializer
 
     has_one :activity_field,
             inverse_of: :activity,
-            dependent: :destroy
+            dependent: :delete
 
     has_one :actor, through: :activitable_actor,
                     source: :activitable,
