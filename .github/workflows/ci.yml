@@ -28,13 +28,13 @@ jobs:
 #      id: ruby-cache
 #      with:
 #        path: ~/local/rubies
-#        key: ruby-3.2.x
+#        key: ruby-3.3.x
 
-      - name: "Install Ruby 3.2.x"
+      - name: "Install Ruby 3.3.x"
         uses: ruby/setup-ruby@v1
         id: ruby
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
           bundler-cache: true
 
       - name: "Install sqlite"
