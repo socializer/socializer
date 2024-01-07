@@ -17,6 +17,9 @@ module Socializer
   class Circle < ApplicationRecord
     include ObjectTypeBase
 
+    # FIXME: Rails 7.1.2 - remove the comment below.
+    # normalizes :display_name, with: ->(display_name) { display_name.strip.downcase }
+
     # Relationships
     belongs_to :activity_author, class_name: "Socializer::ActivityObject",
                                  foreign_key: "author_id",
