@@ -56,7 +56,6 @@ group :test do
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.22.0", require: false
   gem "simplecov-lcov", require: false
-  gem "webdrivers", "~> 5.3"
 
   # TODO: Update test so rails-controller-testing can be removed
   gem "rails-controller-testing"
