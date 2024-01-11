@@ -15,7 +15,10 @@ module Socializer
     include ObjectTypeBase
 
     # FIXME: Rails 7.1.2 - remove the comment below.
-    # normalizes :display_name, with: ->(display_name) { display_name.strip.downcase }
+    # TODO: Add a test for the normalizes method.
+    # normalizes :display_name, with: lambda { |display_name|
+    #                                   display_name.strip.downcase
+    #                                 }
 
     enumerize :privacy, in: { public: 1, restricted: 2, private: 3 },
                         default: :public, predicates: true, scope: true

@@ -6,7 +6,7 @@
 module Socializer
   # Wraps Socializer"s functionality so that it can be shares with other
   # applications or within a larger packaged application.
-  class Engine < Rails::Engine
+  class Engine < ::Rails::Engine
     isolate_namespace Socializer
 
     config.generators do |generator|

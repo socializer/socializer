@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2014_01_31_070951) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   create_table "socializer_activities", force: :cascade do |t|
     t.integer "actor_id", null: false
     t.integer "activity_object_id", null: false
