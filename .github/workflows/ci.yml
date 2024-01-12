@@ -48,6 +48,7 @@ jobs:
           bin/rails app:db:environment:set RAILS_ENV=test
           bin/rails app:db:migrate RAILS_ENV=test
           bin/rails app:db:reset RAILS_ENV=test
+          bin/rails db:migrate:status RAILS_ENV=test
 
       - name: "Run rspec"
         run: |
