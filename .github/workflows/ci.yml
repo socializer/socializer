@@ -51,8 +51,7 @@ jobs:
 
       - name: "Run rspec"
         run: |
-          bundle exec rspec
-
+          bundle exec rspec --fail-fast
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
