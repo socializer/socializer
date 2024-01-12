@@ -1,6 +1,6 @@
 # Socializer [![Gem Version](https://badge.fury.io/rb/socializer.svg)](https://badge.fury.io/rb/socializer) [![Status](https://img.shields.io/badge/Alpha-Not_Production_Ready-d84a38.svg?style=flat)](#important-notice)
 
-[![CI](https://github.com/socializer/socializer/workflows/CI/badge.svg)](https://github.com/socializer/socializer/actions?query=workflow%3ACI)
+[![CI](https://github.com/socializer/socializer/actions/workflows/ci.yml/badge.svg)](https://github.com/socializer/socializer/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/socializer/socializer/badge.svg?branch=main)](https://coveralls.io/github/socializer/socializer?branch=main)
 [![Maintainability](https://api.codeclimate.com/v1/badges/597d0f0dd08d9ec1dba5/maintainability)](https://codeclimate.com/github/socializer/socializer/maintainability)
 [![Dependency Status](https://gemnasium.com/badges/github.com/socializer/socializer.svg)](https://gemnasium.com/github.com/socializer/socializer)
