@@ -20,7 +20,7 @@ module Socializer
     # FIXME: Rails 7.1.2 - remove the comment below.
     # TODO: Add a test for the normalizes method.
     # normalizes :display_name, with: lambda { |display_name|
-    #                                   display_name.strip.downcase
+    #                                   display_name.strip.titleize
     #                                 }
 
     # Relationships
