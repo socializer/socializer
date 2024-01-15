@@ -17,6 +17,7 @@ group :development, :test do
   gem "byebug"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   # gem "debug", platforms: %i[mri mingw x64_mingw]
+  # gem "debug", "~> 1.7", ">= 1.7.1"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.1"
   gem "rspec-rails", "~> 6.1.0"
@@ -34,7 +35,7 @@ group :development do
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0"
-  gem "rubocop", "~> 1.59.0"
+  gem "rubocop", "~> 1.60.0"
   gem "rubocop-performance", "~> 1.20.0"
   gem "rubocop-rails", "~> 2.23.0"
   gem "rubocop-rake", "~> 0.6.0"
