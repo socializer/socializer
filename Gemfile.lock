@@ -219,7 +219,7 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     io-console (0.7.2)
-    irb (1.11.1)
+    irb (1.11.2)
       rdoc
       reline (>= 0.4.2)
     json (2.7.1)
@@ -240,7 +240,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.22.1)
+    minitest (5.22.2)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
     net-http (0.4.1)
@@ -498,7 +498,7 @@ GEM
     timeout (0.4.1)
     tins (1.32.1)
       sync
-    typeprof (0.21.9)
+    typeprof (0.21.10)
       rbs (>= 1.8.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
