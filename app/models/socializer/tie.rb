@@ -32,7 +32,7 @@ module Socializer
     #
     # @param circle_id: [Integer]
     #
-    # @return [Socializer::Tie]
+    # @return [ActiveRecord::Relation<Socializer::Tie>]
     def self.with_circle_id(circle_id:)
       where(circle_id:)
     end
@@ -41,7 +41,7 @@ module Socializer
     #
     # @param contact_id: [Integer]
     #
-    # @return [Socializer::Tie]
+    # @return [ActiveRecord::Relation<Socializer::Tie>]
     def self.with_contact_id(contact_id:)
       where(contact_id:)
     end

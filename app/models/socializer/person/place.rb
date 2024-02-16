@@ -24,14 +24,14 @@ module Socializer
 
       # Find places where current is true
       #
-      # @return [Socializer::Person::Place]
+      # @return [ActiveRecord::Relation<Socializer::Person::Place>]
       def self.current
         where(current: true)
       end
 
       # Find places where current is false
       #
-      # @return [Socializer::Person::Place]
+      # @return [ActiveRecord::Relation<Socializer::Person::Place>]
       def self.previous
         where(current: false)
       end

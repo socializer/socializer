@@ -69,7 +69,7 @@ module Socializer
     #
     # @param name: [String]
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.with_display_name(name:)
       where(display_name: name)
     end
@@ -78,7 +78,7 @@ module Socializer
     #
     # @param query: [String]
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end
