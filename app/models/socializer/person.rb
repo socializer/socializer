@@ -125,8 +125,8 @@ module Socializer
     # Collection of {Socializer::Authentication authentications} that the user
     # owns
     #
-    # @return [Socializer::Authentication] Returns a collection of
-    #   {Socializer::Authentication authentications}
+    # @return [ActiveRecord::Relation<Socializer::Authentication>] Returns a
+    #   collection of {Socializer::Authentication authentications}
     def services
       @services ||= authentications.not_with_provider(provider: "Identity")
     end

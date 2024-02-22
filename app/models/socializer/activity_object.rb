@@ -98,7 +98,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [Socializer::ActivityObject]
+    # @return [ActiveRecord::Relation<Socializer::ActivityObject>]
     def self.with_id(id:)
       where(id:)
     end
@@ -108,7 +108,7 @@ module Socializer
     #
     # @param type: [String]
     #
-    # @return [Socializer::ActivityObject]
+    # @return [ActiveRecord::Relation<Socializer::ActivityObject>]
     def self.with_activitable_type(type:)
       where(activitable_type: type)
     end
