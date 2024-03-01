@@ -30,10 +30,7 @@ module Socializer
       #
       # @return [ActiveRecord::Relation]
       def guids
-        # FIXME: Rails 7.1 - https://github.com/rails/rails/pull/45612 -
-        #        Allows using relation name when querying joins/includes
-        # joins(:activity_object).select(activity_object: [id:])
-        joins(:activity_object).select("socializer_activity_objects.id")
+        joins(:activity_object).select(socializer_activity_objects: [:id])
       end
     end
 
