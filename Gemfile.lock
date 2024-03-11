@@ -257,6 +257,8 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.2-x86_64-linux)
+      racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
       snaky_hash (~> 2.0)
@@ -402,7 +404,7 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.13.1)
-    rubocop (1.62.0)
+    rubocop (1.62.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -413,7 +415,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.31.1)
+    rubocop-ast (1.31.2)
       parser (>= 3.3.0.4)
     rubocop-capybara (2.20.0)
       rubocop (~> 1.41)
@@ -487,6 +489,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.7.2-arm64-darwin)
+    sqlite3 (1.7.2-x86_64-linux)
     stringio (3.1.0)
     sync (0.5.0)
     term-ansicolor (1.7.1)
@@ -521,6 +524,7 @@ GEM
 PLATFORMS
   arm64-darwin-22
   arm64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   brakeman (~> 6.0)
@@ -543,7 +547,7 @@ DEPENDENCIES
   rails_best_practices (~> 1.23.0)
   rake (~> 13.0)
   rspec-rails (~> 6.1.0)
-  rubocop (~> 1.62.0)
+  rubocop (~> 1.62.1)
   rubocop-performance (~> 1.20.0)
   rubocop-rails (~> 2.24.0)
   rubocop-rake (~> 0.6.0)
