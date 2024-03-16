@@ -462,7 +462,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.17.1)
-    shoulda-matchers (6.1.0)
+    shoulda-matchers (6.2.0)
       activesupport (>= 5.2.0)
     simple_form (5.3.0)
       actionpack (>= 5.2)
@@ -551,7 +551,7 @@ DEPENDENCIES
   rubocop-thread_safety
   scss_lint (~> 0.60.0)
   selenium-webdriver (~> 4.16)
-  shoulda-matchers (~> 6.1.0)
+  shoulda-matchers (~> 6.2.0)
   simplecov (~> 0.22.0)
   simplecov-lcov
   socializer!

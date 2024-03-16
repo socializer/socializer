@@ -42,7 +42,7 @@ group :development do
   gem "rubocop-rspec", "~> 2.27.0"
   gem "rubocop-thread_safety", require: false
   gem "scss_lint", "~> 0.60.0"
-  gem "shoulda-matchers", "~> 6.1.0"
+  gem "shoulda-matchers", "~> 6.2.0"
   # gem "solargraph", "~> 0.50.0"
   # gem "solargraph-rails"
   # gem "solargraph-rails", "~> 1.0.0.pre.1"
