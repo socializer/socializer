@@ -214,7 +214,7 @@ module Socializer
 
       query.where(Audience.public_privacy_grouping(viewer_id:)
            .or(Audience.limited_privacy_grouping(viewer_id:))
-           .or(arel_table[:actor_id].eq(viewer_id)))
+           .or(where(actor_id: viewer_id)))
     end
     private_class_method :stream_query
 
