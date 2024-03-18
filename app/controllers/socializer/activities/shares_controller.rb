@@ -45,7 +45,9 @@ module Socializer
 
       # TODO: Add to ActivityObject
       def find_activity_object(id:)
-        @find_activity_object ||= ActivityObject.find_by(id:)
+        return @find_activity_object if defined?(@find_activity_object)
+
+        @find_activity_object = ActivityObject.find_by(id:)
       end
 
       def flash_message(action:, activity_object:)

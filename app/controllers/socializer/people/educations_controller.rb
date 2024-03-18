@@ -61,11 +61,15 @@ module Socializer
       private
 
       def educations
-        @educations ||= current_user.educations
+        return @educations if defined?(@educations)
+
+        @educations = current_user.educations
       end
 
       def find_education
-        @find_education ||= educations.find_by(id: params[:id])
+        return @find_education if defined?(@find_education)
+
+        @find_education = educations.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

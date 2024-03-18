@@ -72,7 +72,9 @@ module Socializer
     private
 
     def find_group
-      @find_group ||= current_user.groups.find_by(id: params[:id])
+      return @find_group if defined?(@find_group)
+
+      @find_group = current_user.groups.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

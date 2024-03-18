@@ -58,11 +58,15 @@ module Socializer
       private
 
       def addresses
-        @addresses ||= current_user.addresses
+        return @addresses if defined?(@addresses)
+
+        @addresses = current_user.addresses
       end
 
       def find_address
-        @find_address ||= addresses.find_by(id: params[:id])
+        return @find_address if defined?(@find_address)
+
+        @find_address = addresses.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

@@ -61,11 +61,15 @@ module Socializer
       private
 
       def phones
-        @phones ||= current_user.phones
+        return @phones if defined?(@phones)
+
+        @phones = current_user.phones
       end
 
       def find_phone
-        @find_phone ||= phones.find_by(id: params[:id])
+        return @find_phone if defined?(@find_phone)
+
+        @find_phone = phones.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

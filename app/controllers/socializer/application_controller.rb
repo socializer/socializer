@@ -26,7 +26,9 @@ module Socializer
     private
 
     def current_user
-      @current_user ||= person
+      return @current_user if defined?(@current_user)
+
+      @current_user = person
     end
 
     # Check if a user is signed in
@@ -60,15 +62,19 @@ module Socializer
     end
 
     def http_accept_language
-      @http_accept_language ||= request.env["HTTP_ACCEPT_LANGUAGE"]
+      return @http_accept_language if defined?(@http_accept_language)
+
+      @http_accept_language = request.env["HTTP_ACCEPT_LANGUAGE"]
     end
 
     def person
+      return @person if defined?(@person)
+
       cookie_user_id = cookies.signed[:user_id]
 
       return if cookie_user_id.blank?
 
-      @person ||= Person.find_by(id: cookie_user_id).decorate
+      @person = Person.find_by(id: cookie_user_id).decorate
     end
   end
 end

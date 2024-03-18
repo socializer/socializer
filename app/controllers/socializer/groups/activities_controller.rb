@@ -30,8 +30,10 @@ module Socializer
       private
 
       def stream(group:)
-        @stream ||= Activity.group_stream(actor_uid: group.id,
-                                          viewer_id: current_user.id).decorate
+        return @stream if defined?(@stream)
+
+        @stream = Activity.group_stream(actor_uid: group.id,
+                                        viewer_id: current_user.id).decorate
       end
     end
   end

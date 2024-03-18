@@ -67,7 +67,9 @@ module Socializer
     end
 
     def find_comment
-      @find_comment ||= current_user.comments.find_by(id: params[:id])
+      return @find_comment if defined?(@find_comment)
+
+      @find_comment = current_user.comments.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -76,7 +76,9 @@ module Socializer
     end
 
     def current_user_likes?
-      @current_user_likes ||= helpers.current_user.likes?(model)
+      return @current_user_likes if defined?(@current_user_likes)
+
+      @current_user_likes = helpers.current_user.likes?(model)
     end
   end
 end

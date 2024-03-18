@@ -50,11 +50,15 @@ module Socializer
       private
 
       def find_likable
-        @find_likable ||= ActivityObject.find_by(id: params[:id])
+        return @find_likable if defined?(@find_likable)
+
+        @find_likable = ActivityObject.find_by(id: params[:id])
       end
 
       def find_activity
-        @find_activity ||= find_likable.activitable.decorate
+        return @find_activity if defined?(@find_activity)
+
+        @find_activity = find_likable.activitable.decorate
       end
 
       # Never trust parameters from the scary internet, only allow the white

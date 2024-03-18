@@ -62,11 +62,15 @@ module Socializer
       private
 
       def contributions
-        @contributions ||= current_user.contributions
+        return @contributions if defined?(@contributions)
+
+        @contributions = current_user.contributions
       end
 
       def find_contribution
-        @find_contribution ||= contributions.find_by(id: params[:id])
+        return @find_contribution if defined?(@find_contribution)
+
+        @find_contribution = contributions.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

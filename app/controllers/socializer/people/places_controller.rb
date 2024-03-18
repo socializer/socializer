@@ -61,11 +61,15 @@ module Socializer
       private
 
       def places
-        @places ||= current_user.places
+        return @places if defined?(@places)
+
+        @places = current_user.places
       end
 
       def find_place
-        @find_place ||= places.find_by(id: params[:id])
+        return @find_place if defined?(@find_place)
+
+        @find_place = places.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

@@ -71,7 +71,9 @@ module Socializer
     private
 
     def find_circle
-      @find_circle ||= current_user.circles.find_by(id: params[:id]).decorate
+      return @find_circle if defined?(@find_circle)
+
+      @find_circle = current_user.circles.find_by(id: params[:id]).decorate
     end
 
     # Only allow a list of trusted parameters through.

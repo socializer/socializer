@@ -235,11 +235,12 @@ module Socializer
     # @return [Socializer::Activity] a collection of
     # {Socializer::Activity} objects
     def comments
+      return @comments if defined?(@comments)
+
       activitable_type =
         ActivityObject.with_activitable_type(type: Comment.name)
 
-      @comments ||= children.joins(:activitable_object)
-                            .merge(activitable_type)
+      @comments = children.joins(:activitable_object).merge(activitable_type)
     end
 
     # The primary object of the activity.

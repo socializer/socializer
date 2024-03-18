@@ -61,11 +61,15 @@ module Socializer
       private
 
       def employments
-        @employments ||= current_user.employments
+        return @employments if defined?(@employments)
+
+        @employments = current_user.employments
       end
 
       def find_employment
-        @find_employment ||= employments.find_by(id: params[:id])
+        return @find_employment if defined?(@find_employment)
+
+        @find_employment = employments.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

@@ -66,25 +66,33 @@ module Socializer
     end
 
     def audience_privacy(audience_id:)
+      return @audience_privacy if defined?(@audience_privacy)
+
       not_limited = Set.new(%W[#{public_privacy} #{circles_privacy}])
 
-      @audience_privacy ||= if not_limited.include?(audience_id)
-                              audience_id
-                            else
-                              limited_privacy
-                            end
+      @audience_privacy = if not_limited.include?(audience_id)
+                            audience_id
+                          else
+                            limited_privacy
+                          end
     end
 
     def circles_privacy
-      @circles_privacy ||= Audience.privacy.circles.value
+      return @circles_privacy if defined?(@circles_privacy)
+
+      @circles_privacy = Audience.privacy.circles.value
     end
 
     def limited_privacy
-      @limited_privacy ||= Audience.privacy.limited.value
+      return @limited_privacy if defined?(@limited_privacy)
+
+      @limited_privacy = Audience.privacy.limited.value
     end
 
     def public_privacy
-      @public_privacy ||= Audience.privacy.public.value
+      return @public_privacy if defined?(@public_privacy)
+
+      @public_privacy = Audience.privacy.public.value
     end
 
     def create_activity

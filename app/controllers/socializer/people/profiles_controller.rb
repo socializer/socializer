@@ -61,11 +61,15 @@ module Socializer
       private
 
       def profiles
-        @profiles ||= current_user.profiles
+        return @profiles if defined?(@profiles)
+
+        @profiles = current_user.profiles
       end
 
       def find_profile
-        @find_profile ||= profiles.find_by(id: params[:id])
+        return @find_profile if defined?(@find_profile)
+
+        @find_profile = profiles.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

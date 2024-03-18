@@ -61,11 +61,15 @@ module Socializer
       private
 
       def links
-        @links ||= current_user.links
+        return @links if defined?(@links)
+
+        @links = current_user.links
       end
 
       def find_link
-        @find_link ||= links.find_by(id: params[:id])
+        return @find_link if defined?(@find_link)
+
+        @find_link = links.find_by(id: params[:id])
       end
 
       # Only allow a list of trusted parameters through.

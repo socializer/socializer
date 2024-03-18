@@ -26,11 +26,13 @@ module Socializer
       private
 
       def stream(activity_id:)
+        return @stream if defined?(@stream)
+
         activity = Activity.find_by(id: activity_id).decorate
 
-        @stream ||= Activity.activity_stream(actor_uid: activity.id,
-                                             viewer_id: current_user.id)
-                            .decorate
+        @stream = Activity.activity_stream(actor_uid: activity.id,
+                                           viewer_id: current_user.id)
+                          .decorate
       end
     end
   end

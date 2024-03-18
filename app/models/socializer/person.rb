@@ -128,7 +128,9 @@ module Socializer
     # @return [ActiveRecord::Relation<Socializer::Authentication>] Returns a
     #   collection of {Socializer::Authentication authentications}
     def services
-      @services ||= authentications.not_with_provider(provider: "Identity")
+      return @services if defined?(@services)
+
+      @services = authentications.not_with_provider(provider: "Identity")
     end
 
     # Collection of {Socializer::Notification notifications} that the user has
@@ -137,16 +139,20 @@ module Socializer
     # @return [Socializer::Notification] Returns a collection of
     #   {Socializer::Notification notifications}
     def received_notifications
-      @received_notifications ||= activity_object.notifications.newest_first
+      return @received_notifications if defined?(@received_notifications)
+
+      @received_notifications = activity_object.notifications.newest_first
     end
 
     # A collection of {Socializer::Person people} this person is a contact of
     #
     # @return [Socializer::Person]
     def contact_of
-      @contact_of ||= Person.distinct
-                            .joins(activity_object: { circles: :ties })
-                            .merge(Tie.with_contact_id(contact_id: guid))
+      return @contact_of if defined?(@contact_of)
+
+      @contact_of = Person.distinct
+                          .joins(activity_object: { circles: :ties })
+                          .merge(Tie.with_contact_id(contact_id: guid))
     end
 
     # A list of activities the user likes
@@ -156,6 +162,8 @@ module Socializer
     #
     # @return [Socializer::Activity]
     def likes
+      return @likes if defined?(@likes)
+
       verbs_of_interest = %w[like unlike]
 
       query = Activity.joins(:verb)
@@ -163,7 +171,7 @@ module Socializer
                       .with_target_id(id: nil)
                       .merge(Verb.with_display_name(name: verbs_of_interest))
 
-      @likes ||= query.group(:activity_object_id).having("COUNT(1) % 2 == 1")
+      @likes = query.group(:activity_object_id).having("COUNT(1) % 2 == 1")
     end
 
     # Checks if the person likes the object or not
@@ -192,10 +200,14 @@ module Socializer
     # @return [Socializer::Membership] Returns a collection of
     # {Socializer::Membership memberships}
     def pending_membership_invites
-      @pending_membership_invites ||= Membership.joins(:group)
-                                                .merge(Group.private)
-                                                .inactive
-                                                .with_member_id(member_id: guid)
+      if defined?(@pending_membership_invites)
+        return @pending_membership_invites
+      end
+
+      @pending_membership_invites = Membership.joins(:group)
+                                              .merge(Group.private)
+                                              .inactive
+                                              .with_member_id(member_id: guid)
     end
   end
 end
