@@ -16,6 +16,7 @@ module Socializer
       belongs_to :person, inverse_of: :employments
 
       # Validations
+      validates :current, presence: true
       validates :employer_name, presence: true
       validates :started_on, presence: true
     end

@@ -23,6 +23,7 @@ module Socializer
                      dependent: :destroy
 
     # Validations
+    validates :active, presence: true
 
     # Named Scopes
 

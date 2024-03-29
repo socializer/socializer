@@ -71,6 +71,10 @@ module Socializer
     # Validations
     validates :avatar_provider, inclusion: %w[TWITTER FACEBOOK LINKEDIN
                                               GRAVATAR]
+    validates :looking_for_friends, presence: true
+    validates :looking_for_dating, presence: true
+    validates :looking_for_relationship, presence: true
+    validates :looking_for_networking, presence: true
 
     # Named Scopes
 

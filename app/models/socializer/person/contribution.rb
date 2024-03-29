@@ -22,6 +22,7 @@ module Socializer
       belongs_to :person, inverse_of: :contributions
 
       # Validations
+      validates :current, presence: true
       validates :display_name, presence: true
       validates :label, presence: true
       validates :url, presence: true

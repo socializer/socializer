@@ -16,6 +16,7 @@ module Socializer
                                  counter_cache: :unread_notifications_count
 
     # Validations
+    validates :read, presence: true
 
     # Named Scopes
 

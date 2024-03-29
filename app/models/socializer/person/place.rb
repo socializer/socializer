@@ -17,6 +17,7 @@ module Socializer
 
       # Validations
       validates :city_name, presence: true
+      validates :current, presence: true
 
       # Named Scopes
 
