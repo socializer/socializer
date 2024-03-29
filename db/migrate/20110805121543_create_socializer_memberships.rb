@@ -4,7 +4,7 @@ class CreateSocializerMemberships < ActiveRecord::Migration[7.1]
   def change
     create_table :socializer_memberships do |t|
       t.references :group, null: false
-      t.integer :member_id, index: true, null: false
+      t.bigint :member_id, index: true, null: false
       t.boolean :active, default: false, null: false
 
       t.timestamps

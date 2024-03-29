@@ -3,9 +3,9 @@
 class CreateSocializerGroups < ActiveRecord::Migration[7.1]
   def change
     create_table :socializer_groups do |t|
-      t.integer  :author_id, index: true, null: false
-      t.string   :display_name, null: false
-      t.integer  :privacy, index: true, null: false
+      t.bigint :author_id, index: true, null: false
+      t.string :display_name, null: false
+      t.integer :privacy, index: true, null: false
 
       t.string   :tagline
       t.text     :about

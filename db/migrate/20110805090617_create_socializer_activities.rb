@@ -3,10 +3,10 @@
 class CreateSocializerActivities < ActiveRecord::Migration[7.1]
   def change
     create_table :socializer_activities do |t|
-      t.integer :actor_id, null: false
-      t.integer :activity_object_id, null: false
+      t.bigint :actor_id, null: false
+      t.bigint :activity_object_id, null: false
       t.references :verb, null: false
-      t.integer :target_id
+      t.bigint :target_id
 
       t.timestamps
     end

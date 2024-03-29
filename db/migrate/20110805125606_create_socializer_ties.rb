@@ -3,7 +3,7 @@
 class CreateSocializerTies < ActiveRecord::Migration[7.1]
   def change
     create_table :socializer_ties do |t|
-      t.integer :contact_id, index: true, null: false
+      t.bigint :contact_id, index: true, null: false
       t.references :circle, null: false
 
       t.timestamps
