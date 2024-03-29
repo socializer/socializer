@@ -25,8 +25,8 @@ module Socializer
     belongs_to :activity_object, inverse_of: :audiences, optional: true
 
     # Validations
-    # validates :activity_id, presence: true,
-    #                         uniqueness: { scope: :activity_object_id }
+    validates :activity_id, presence: false,
+                            uniqueness: { scope: :activity_object_id }
     validates :privacy, presence: true
 
     # Named Scopes
