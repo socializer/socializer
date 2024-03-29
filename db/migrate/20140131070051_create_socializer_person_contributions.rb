@@ -7,7 +7,7 @@ class CreateSocializerPersonContributions < ActiveRecord::Migration[7.1]
       t.string   :display_name, null: false
       t.integer  :label, null: false
       t.string   :url, null: false
-      t.boolean  :current, default: false
+      t.boolean  :current, default: false, null: false
 
       t.timestamps
     end

@@ -19,10 +19,10 @@ class CreateSocializerPeople < ActiveRecord::Migration[7.1]
 
       # basic information
       t.integer  :gender
-      t.boolean  :looking_for_friends
-      t.boolean  :looking_for_dating
-      t.boolean  :looking_for_relationship
-      t.boolean  :looking_for_networking
+      t.boolean  :looking_for_friends, default: false, null: false
+      t.boolean  :looking_for_dating, default: false, null: false
+      t.boolean  :looking_for_relationship, default: false, null: false
+      t.boolean  :looking_for_networking, default: false, null: false
       t.date     :birthdate
       t.integer  :relationship
       t.string   :other_names
