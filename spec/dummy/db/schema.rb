@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   create_table "socializer_activities", force: :cascade do |t|
-    t.integer "actor_id", null: false
-    t.integer "activity_object_id", null: false
+    t.bigint "actor_id", null: false
+    t.bigint "activity_object_id", null: false
     t.integer "verb_id", null: false
-    t.integer "target_id"
+    t.bigint "target_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_object_id"], name: "index_socializer_activities_on_activity_object_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_activity_objects", force: :cascade do |t|
-    t.integer "activitable_id", null: false
+    t.bigint "activitable_id", null: false
     t.string "activitable_type", null: false
     t.integer "like_count", default: 0
     t.integer "unread_notifications_count", default: 0
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_authentications", force: :cascade do |t|
-    t.integer "person_id", null: false
+    t.bigint "person_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
     t.string "image_url"
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_circles", force: :cascade do |t|
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.string "display_name", null: false
     t.text "content"
     t.datetime "created_at", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_comments", force: :cascade do |t|
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_groups", force: :cascade do |t|
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.string "display_name", null: false
     t.integer "privacy", null: false
     t.string "tagline"
@@ -125,8 +125,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
 
   create_table "socializer_memberships", force: :cascade do |t|
     t.integer "group_id", null: false
-    t.integer "member_id", null: false
-    t.boolean "active"
+    t.bigint "member_id", null: false
+    t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_socializer_memberships_on_group_id"
@@ -134,7 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_notes", force: :cascade do |t|
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -144,7 +144,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   create_table "socializer_notifications", force: :cascade do |t|
     t.integer "activity_id", null: false
     t.integer "activity_object_id", null: false
-    t.boolean "read", default: false
+    t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_socializer_notifications_on_activity_id"
@@ -162,10 +162,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
     t.string "occupation"
     t.string "skills"
     t.integer "gender"
-    t.boolean "looking_for_friends"
-    t.boolean "looking_for_dating"
-    t.boolean "looking_for_relationship"
-    t.boolean "looking_for_networking"
+    t.boolean "looking_for_friends", default: false, null: false
+    t.boolean "looking_for_dating", default: false, null: false
+    t.boolean "looking_for_relationship", default: false, null: false
+    t.boolean "looking_for_networking", default: false, null: false
     t.date "birthdate"
     t.integer "relationship"
     t.string "other_names"
@@ -193,7 +193,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
     t.string "display_name", null: false
     t.integer "label", null: false
     t.string "url", null: false
-    t.boolean "current", default: false
+    t.boolean "current", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_socializer_person_contributions_on_person_id"
@@ -205,7 +205,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
     t.string "major_or_field_of_study"
     t.date "started_on", null: false
     t.date "ended_on"
-    t.boolean "current", default: false
+    t.boolean "current", default: false, null: false
     t.text "courses_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -218,7 +218,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
     t.string "job_title"
     t.date "started_on", null: false
     t.date "ended_on"
-    t.boolean "current", default: false
+    t.boolean "current", default: false, null: false
     t.text "job_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -247,7 +247,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   create_table "socializer_person_places", force: :cascade do |t|
     t.integer "person_id", null: false
     t.string "city_name", null: false
-    t.boolean "current", default: false
+    t.boolean "current", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_socializer_person_places_on_person_id"
@@ -263,7 +263,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_205136) do
   end
 
   create_table "socializer_ties", force: :cascade do |t|
-    t.integer "contact_id", null: false
+    t.bigint "contact_id", null: false
     t.integer "circle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

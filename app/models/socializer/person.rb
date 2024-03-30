@@ -25,43 +25,34 @@ module Socializer
 
     enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2,
                                    engaged: 3, married: 4, complicated: 5,
-                                   open: 6, widowed: 7, domestic: 8,
-                                   civil: 9 },
+                                   open: 6, widowed: 7, domestic: 8, civil: 9 },
                              default: :unknown, predicates: true, scope: true
 
     # Relationships
     has_many :authentications, dependent: :destroy
     has_many :addresses, class_name: "Socializer::Person::Address",
-                         dependent: :destroy,
-                         inverse_of: :person
+                         dependent: :destroy, inverse_of: :person
 
     has_many :contributions, class_name: "Socializer::Person::Contribution",
-                             dependent: :destroy,
-                             inverse_of: :person
+                             dependent: :destroy, inverse_of: :person
 
     has_many :educations, class_name: "Socializer::Person::Education",
-                          dependent: :delete_all,
-                          inverse_of: :person
+                          dependent: :delete_all, inverse_of: :person
 
     has_many :employments, class_name: "Socializer::Person::Employment",
-                           dependent: :delete_all,
-                           inverse_of: :person
+                           dependent: :delete_all, inverse_of: :person
 
     has_many :links, class_name: "Socializer::Person::Link",
-                     dependent: :delete_all,
-                     inverse_of: :person
+                     dependent: :delete_all, inverse_of: :person
 
     has_many :phones, class_name: "Socializer::Person::Phone",
-                      dependent: :destroy,
-                      inverse_of: :person
+                      dependent: :destroy, inverse_of: :person
 
     has_many :places, class_name: "Socializer::Person::Place",
-                      dependent: :delete_all,
-                      inverse_of: :person
+                      dependent: :delete_all, inverse_of: :person
 
     has_many :profiles, class_name: "Socializer::Person::Profile",
-                        dependent: :delete_all,
-                        inverse_of: :person
+                        dependent: :delete_all, inverse_of: :person
 
     # TODO: May be able replace the circles and contacts delegates. Should be
     #       able to create circles through this relationship
@@ -71,10 +62,18 @@ module Socializer
     # Validations
     validates :avatar_provider, inclusion: %w[TWITTER FACEBOOK LINKEDIN
                                               GRAVATAR]
-    validates :looking_for_friends, presence: true
-    validates :looking_for_dating, presence: true
-    validates :looking_for_relationship, presence: true
-    validates :looking_for_networking, presence: true
+
+    validates :looking_for_friends, inclusion: { in: [true, false] },
+                                    allow_nil: false
+
+    validates :looking_for_dating, inclusion: { in: [true, false] },
+                                   allow_nil: false
+
+    validates :looking_for_relationship, inclusion: { in: [true, false] },
+                                         allow_nil: false
+
+    validates :looking_for_networking, inclusion: { in: [true, false] },
+                                       allow_nil: false
 
     # Named Scopes
 
@@ -84,7 +83,6 @@ module Socializer
     delegate :groups, to: :activity_object, allow_nil: true
     delegate :notes, to: :activity_object, allow_nil: true
     delegate :memberships, to: :activity_object, allow_nil: true
-
     delegate :count, to: :contacts, prefix: true, allow_nil: true
 
     # Class Methods
@@ -154,8 +152,8 @@ module Socializer
     def contact_of
       return @contact_of if defined?(@contact_of)
 
-      @contact_of = Person.distinct
-                          .joins(activity_object: { circles: :ties })
+      @contact_of = Person.joins(activity_object: { circles: :ties })
+                          .distinct
                           .merge(Tie.with_contact_id(contact_id: guid))
     end
 

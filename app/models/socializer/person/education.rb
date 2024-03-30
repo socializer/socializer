@@ -16,7 +16,7 @@ module Socializer
       belongs_to :person, inverse_of: :educations
 
       # Validations
-      validates :current, presence: true
+      validates :current, inclusion: { in: [true, false] }, allow_nil: false
       validates :school_name, presence: true
       validates :started_on, presence: true
     end
