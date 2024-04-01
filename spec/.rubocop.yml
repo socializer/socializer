@@ -11,7 +11,7 @@ Metrics/ModuleLength:
 Style/Documentation:
   Enabled: false
 
-RSpec/Rails/InferredSpecType:
+RSpecRails/InferredSpecType:
   Inferences:
     concepts: service
     decorators: decorator
