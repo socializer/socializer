@@ -36,7 +36,7 @@ module Socializer
         described_class.new(group:, person:).call
       end
 
-      it { expect { service }.to raise_error(NotImplementedError) }
+      it { expect { service }.to raise_error(NoMethodError) }
     end
   end
 end

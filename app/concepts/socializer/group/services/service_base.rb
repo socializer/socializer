@@ -46,7 +46,7 @@ module Socializer
         # @return [FalseClass] if the before_destroy callback fails. The action
         #   is cancelled.
         def call
-          raise(NotImplementedError, "You must implement the call method")
+          raise(NoMethodError, "You must implement the call method")
         end
       end
     end
