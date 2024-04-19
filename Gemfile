@@ -21,7 +21,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.1"
   gem "rspec-rails", "~> 6.1.0"
-  gem "sqlite3"
+  gem "sqlite3", "~> 1.7"
   gem "typeprof"
 end
 
