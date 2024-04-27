@@ -155,7 +155,7 @@ module Socializer
       specify { expect(activity_object.unread_notifications_count).to eq(0) }
     end
 
-    describe "#attribute_type_of" do
+    describe "#define_activitable_type_checkers" do
       it "when type is 'Activity" do
         activity_object.activitable_type = "Socializer::Activity"
         expect(activity_object.send(:activity?)).to be_truthy

@@ -115,17 +115,19 @@ module Socializer
 
     # Create predicate methods for comparing the activitable_type
     #
-    # @param  *args [Array] The activitable_type(s)
+    # @param  *types [Array] The activitable_type(s)
     #
     # @return [Object] The predicate method
-    def self.attribute_type_of(*args)
-      args.each do |type|
-        klass = "Socializer::#{type.to_s.classify}"
-        define_method(:"#{type}?") { activitable_type == klass }
+    def self.define_activitable_type_checkers(*types)
+      types.each do |type|
+        define_method(:"#{type}?") do
+          activitable_type == "Socializer::#{type.to_s.classify}"
+        end
       end
     end
 
-    attribute_type_of :note, :activity, :comment, :person, :group, :circle
+    define_activitable_type_checkers :note, :activity, :comment,
+                                     :person, :group, :circle
 
     # Instance Methods
 
