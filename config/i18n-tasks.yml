@@ -13,7 +13,7 @@ data:
   ## Provide a custom adapter:
   # adapter: I18n::Tasks::Data::FileSystem
 
-  # Locale files or `Find.find` patterns where translations are read from:
+  # Locale files or `Dir.glob` patterns where translations are read from:
   read:
     ## Default:
     # - config/locales/%{locale}.yml
@@ -93,9 +93,13 @@ search:
   ## - RailsModelMatcher
   ##     Matches ActiveRecord translations like
   ##     User.human_attribute_name(:email) and User.model_name.human
+  ## - DefaultI18nSubjectMatcher
+  ##     Matches ActionMailer's default_i18n_subject method
   ##
   ## To implement your own, please see `I18n::Tasks::Scanners::AstMatchers::BaseMatcher`.
-  # <%# I18n::Tasks.add_ast_matcher('I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher') %>
+  # ast_matchers:
+  #   - 'I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher'
+  #   - 'I18n::Tasks::Scanners::AstMatchers::DefaultI18nSubjectMatcher'
 
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
@@ -111,9 +115,28 @@ search:
 #   deepl_api_key: "48E92789-57A3-466A-9959-1A1A1A1A1A1A"
 #   # deepl_host: "https://api.deepl.com"
 #   # deepl_version: "v2"
+#   # deepl_glossary_ids:
+#   #   - f28106eb-0e06-489e-82c6-8215d6f95089
+#   #   - 2c6415be-1852-4f54-9e1b-d800463496b4
 #   # add additional options to the DeepL.translate call: https://www.deepl.com/docs-api/translate-text/translate-text/
 #   deepl_options:
 #     formality: prefer_less
+#   # OpenAI
+#   openai_api_key: "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+#   # openai_model: "gpt-3.5-turbo" # see https://platform.openai.com/docs/models
+#   # may contain `%{from}` and `%{to}`, which will be replaced by source and target locale codes, respectively (using `Kernel.format`)
+#   # openai_system_prompt: >-
+#   #   You are a professional translator that translates content from the %{from} locale
+#   #   to the %{to} locale in an i18n locale array.
+#   #
+#   #   The array has a structured format and contains multiple strings. Your task is to translate
+#   #   each of these strings and create a new array with the translated strings.
+#   #
+#   #   HTML markups (enclosed in < and > characters) must not be changed under any circumstance.
+#   #   Variables (starting with %%{ and ending with }) must not be changed under any circumstance.
+#   #
+#   #   Keep in mind the context of all the strings for a more accurate translation.
+
 ## Do not consider these keys missing:
 # ignore_missing:
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
