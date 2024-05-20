@@ -416,7 +416,7 @@ GEM
     rubocop-performance (1.21.0)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.24.1)
+    rubocop-rails (2.25.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -543,7 +543,7 @@ DEPENDENCIES
   rspec-rails (~> 6.1.0)
   rubocop (~> 1.63.0)
   rubocop-performance (~> 1.21.0)
-  rubocop-rails (~> 2.24.0)
+  rubocop-rails (~> 2.25.0)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.29.0)
   rubocop-thread_safety
