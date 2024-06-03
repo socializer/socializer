@@ -187,7 +187,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
-    ffi (1.16.3)
+    ffi (1.17.0-arm64-darwin)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -238,7 +238,7 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
@@ -424,7 +424,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.29.2)
+    rubocop-rspec (2.30.0)
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
@@ -546,7 +546,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.21.0)
   rubocop-rails (~> 2.25.0)
   rubocop-rake (~> 0.6.0)
-  rubocop-rspec (~> 2.29.0)
+  rubocop-rspec (~> 2.30.0)
   rubocop-thread_safety
   scss_lint (~> 0.60.0)
   selenium-webdriver (~> 4.16)
