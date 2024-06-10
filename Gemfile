@@ -39,7 +39,7 @@ group :development do
   gem "rubocop-performance", "~> 1.21.0"
   gem "rubocop-rails", "~> 2.25.0"
   gem "rubocop-rake", "~> 0.6.0"
-  gem "rubocop-rspec", "~> 2.30.0"
+  gem "rubocop-rspec", "~> 2.31.0"
   gem "rubocop-thread_safety", require: false
   gem "scss_lint", "~> 0.60.0"
   gem "shoulda-matchers", "~> 6.2.0"
