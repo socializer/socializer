@@ -9,6 +9,14 @@ module Socializer
   class Engine < ::Rails::Engine
     isolate_namespace Socializer
 
+    initializer "socializer.set_factory_paths",
+                after: "factory_bot.set_factory_paths" do
+      if defined?(FactoryBot) && !Rails.env.production?
+        definition_file_paths = File.join(Engine.root, "spec", "factories")
+        FactoryBot.definition_file_paths.prepend(definition_file_paths)
+      end
+    end
+
     config.generators do |generator|
       generator.test_framework :rspec,
                                fixtures: true,
