@@ -1,9 +1,10 @@
 inherit_from: ../.rubocop.yml
 
 require:
-  - rubocop-rspec_rails
   - rubocop-capybara
   - rubocop-factory_bot
+  - rubocop-rspec
+  - rubocop-rspec_rails
 
 Metrics/ModuleLength:
   Enabled: false

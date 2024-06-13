@@ -1,8 +1,18 @@
 require:
+  - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
+  - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-thread_safety
+
+# We want Exclude directives from different
+# config files to get merged, not overwritten
+inherit_mode:
+  merge:
+    - Exclude
 
 inherit_from:
   - .rubocop/.rails.yml
@@ -12,6 +22,8 @@ inherit_from:
 AllCops:
   NewCops: enable
   Exclude:
+    - '**/db/migrate/*'
+    - 'db/schema.rb'
     - "bin/**/*"
     - "features/support/env.rb"
     - "lib/tasks/cucumber.rake"
@@ -52,6 +64,7 @@ Layout/LineLength:
   Exclude:
     - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
+    - "db/schema.rb"
 
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
@@ -63,6 +76,11 @@ Metrics/BlockLength:
     - "**/*.gemspec"
     - "config/routes.rb"
     - "config/initializers/simple_form_bootstrap.rb"
+    - "db/schema.rb"
+
+Style/NumericLiterals:
+  Exclude:
+    - "db/schema.rb"
 
 Style/RegexpLiteral:
   Exclude:
@@ -70,3 +88,7 @@ Style/RegexpLiteral:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/WordArray:
+  Exclude:
+    - "db/schema.rb"

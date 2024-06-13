@@ -13,14 +13,29 @@ gem "sprockets-rails"
 # your gem to rubygems.org.
 
 group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri windows]
+
+  gem "rspec-rails", "~> 6.1.0"
+  gem "factory_bot_rails"
+
+  gem "rubocop", "~> 1.64", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-factory_bot", require: false
+  gem "rubocop-performance", "~> 1.21", require: false
+  gem "rubocop-rails", "~> 2.25", require: false
+  gem "rubocop-rake", "~> 0.6", require: false
+  gem "rubocop-rspec", "~> 3.0", require: false
+  gem "rubocop-rspec_rails", require: false
+  gem "rubocop-thread_safety", require: false
+  # gem "solargraph", "~> 0.50.0"
+  # gem "solargraph-rails"
+  # gem "solargraph-rails", "~> 1.0.0.pre.1"
+
   gem "bundler-audit", "~> 0.9.1"
   gem "byebug"
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  # gem "debug", platforms: %i[mri mingw x64_mingw]
-  # gem "debug", "~> 1.7", ">= 1.7.1"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.1"
-  gem "rspec-rails", "~> 6.1.0"
   gem "sqlite3", "~> 1.7"
   gem "typeprof"
 end
@@ -29,23 +44,13 @@ group :development do
   gem "brakeman", "~> 6.0"
   gem "bundler", ">= 1.15.0", "< 3.0"
   gem "coffeelint", "~> 1.16.1"
-  gem "factory_bot_rails", "~> 6.4.0"
   gem "i18n-tasks", "~> 1.0.0"
   gem "inch", "~> 0.8.0"
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0"
-  gem "rubocop", "~> 1.64.0"
-  gem "rubocop-performance", "~> 1.21.0"
-  gem "rubocop-rails", "~> 2.25.0"
-  gem "rubocop-rake", "~> 0.6.0"
-  gem "rubocop-rspec", "~> 3.0.0"
-  gem "rubocop-thread_safety", require: false
   gem "scss_lint", "~> 0.60.0"
   gem "shoulda-matchers", "~> 6.2.0"
-  # gem "solargraph", "~> 0.50.0"
-  # gem "solargraph-rails"
-  # gem "solargraph-rails", "~> 1.0.0.pre.1"
 end
 
 group :test do
