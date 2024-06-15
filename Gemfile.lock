@@ -177,7 +177,7 @@ GEM
     elasticsearch-rails (7.2.1)
     enumerize (2.8.1)
       activesupport (>= 3.2)
-    erubi (1.12.0)
+    erubi (1.13.0)
     erubis (2.7.0)
     execjs (2.9.1)
     factory_bot (6.4.6)
@@ -250,7 +250,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -384,7 +384,7 @@ GEM
       strscan
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.0)
+    rspec-expectations (3.13.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-mocks (3.13.1)
@@ -562,4 +562,4 @@ DEPENDENCIES
   typeprof
 
 BUNDLED WITH
-   2.5.11
+   2.5.12
