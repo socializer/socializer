@@ -7,7 +7,7 @@ PATH
       coffee-rails (~> 5.0.0)
       country_select (~> 9.0)
       draper (~> 4.0.2)
-      elasticsearch-rails (~> 7.2.0)
+      elasticsearch-rails (>= 7.2, < 8.1)
       enumerize (~> 2.8.0)
       omniauth (~> 2.1.0)
       omniauth-facebook (~> 10.0.0)
@@ -174,7 +174,7 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     drb (2.2.1)
-    elasticsearch-rails (7.2.1)
+    elasticsearch-rails (8.0.0)
     enumerize (2.8.1)
       activesupport (>= 3.2)
     erubi (1.13.0)
@@ -190,6 +190,7 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -253,6 +254,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -492,6 +495,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     stringio (3.1.1)
     strscan (3.1.0)
     sync (0.5.0)
@@ -528,6 +532,7 @@ GEM
 
 PLATFORMS
   arm64-darwin
+  x86_64-linux
 
 DEPENDENCIES
   brakeman (~> 6.0)
