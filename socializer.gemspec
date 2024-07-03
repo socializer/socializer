@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("coffee-rails", "~> 5.0.0")
   spec.add_runtime_dependency("country_select", "~> 9.0")
   spec.add_runtime_dependency("draper", "~> 4.0.2")
-  spec.add_runtime_dependency("elasticsearch-rails", "~> 7.2.0")
+  spec.add_runtime_dependency("elasticsearch-rails", ">= 7.2", "< 8.1")
   spec.add_runtime_dependency("enumerize", "~> 2.8.0")
   # spec.add_runtime_dependency("jquery-rails", "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
