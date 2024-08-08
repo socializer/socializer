@@ -8,14 +8,17 @@ module Socializer
   # Activity Object model
   #
   class ActivityObject < ApplicationRecord
-    attr_accessor :scope, :object_ids
+    # CLEANUP: Remove the attr_accessor and add the object_ids attribute
+    # attr_accessor :scope, :object_ids
+    # attribute :object_ids
+    attribute :scope
 
     # Relationships
     belongs_to :activitable, polymorphic: true
 
     # Polymorphic
-    # These relationships simplify the Activity.circles_subquery and
-    # Activity.limited_group_subquery queries. By using these relationships we
+    # These relationships simplify the Audience.circles_subquery and
+    # Audience.limited_group_subquery queries. By using these relationships we
     # no longer need to use Arel in those methods.
     has_one :self_reference,
             class_name: "Socializer::ActivityObject",
@@ -141,6 +144,15 @@ module Socializer
       #                  .merge(subquery)
       # likers   = people.merge(Verb.by_display_name("like"))
       # unlikers = people.merge(Verb.by_display_name("unlike")).pluck(:id)
+      #
+      # subquery = Activity.where(activity_object_id: id)
+      # people = Person.joins(activity_object: { actor_activities: :verb })
+      #                .where(actor_activities: { activity_id: subquery })
+      #                .where(verbs: { display_name: "like" })
+      #
+      # unlikers = Person.joins(activity_object: { actor_activities: :verb })
+      #                  .where(actor_activities: { activity_id: subquery })
+      #                  .where(verbs: { display_name: "unlike" })
 
       query    = Activity.joins(:verb).with_activity_object_id(id:)
       likers   = query.merge(Verb.with_display_name(name: "like"))
@@ -148,6 +160,28 @@ module Socializer
       people   = likers.map(&:actor)
 
       people.excluding(unlikers.map(&:actor))
+
+      # query = Activity.joins(:verb).with_activity_object_id(id:)
+      # likers = query.merge(Verb.with_display_name(name: "like"))
+      # unlikers = query.merge(Verb.with_display_name(name: "unlike"))
+      # people = likers.joins(:actor).where.not(actor_activities: { actor_id: unlikers.select(:actor_id) })
+
+      # people
+
+      # Person.joins(activity_object: { actor_activities: :verb })
+      #       .where(activity_object: { id: })
+      #       .where(verbs: { display_name: "like" })
+      #       .where.not(activity_object: { id: Activity.joins(:verb)
+      #                      .with_activity_object_id(id:)
+      #                      .merge(Verb.with_display_name(name: "unlike"))
+      #                      .select(:id) })
+
+      # people = Activity.joins(:verb)
+      #                  .with_activity_object_id(id:)
+      #                  .joins(:actor)
+      #                  # .merge(Actor.with_display_name(name: "person"))
+      #                  .where.not(verb: { display_name: "unlike" })
+      #                  .where(verb: { display_name: "like" }).map(&:actor)
     end
 
     # Reset unread_notifications_count to 0

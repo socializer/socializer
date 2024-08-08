@@ -15,7 +15,12 @@ module Socializer
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor :activity_verb, :scope, :object_ids, :activity_target_id
+      # CLEANUP: remove the attr_accessor
+      # attr_accessor :activity_verb, :scope, :object_ids, :activity_target_id
+      attribute :activity_target_id
+      attribute :activity_verb
+      attribute :object_ids
+      attribute :scope
 
       has_one :activity_object, as: :activitable, dependent: :destroy
 
