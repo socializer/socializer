@@ -314,8 +314,8 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    parallel (1.25.1)
-    parser (3.3.4.1)
+    parallel (1.26.1)
+    parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
     pry (0.14.2)
