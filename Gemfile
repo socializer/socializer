@@ -50,7 +50,7 @@ group :development do
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0"
   gem "scss_lint", "~> 0.60.0"
-  gem "shoulda-matchers", "~> 6.2.0"
+  gem "shoulda-matchers", "~> 6.3"
 end
 
 group :test do
