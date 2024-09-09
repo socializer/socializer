@@ -20,8 +20,12 @@ module Socializer
     #                                   display_name.strip.titleize
     #                                 }
 
+    # FIXME: Use Rails native enum instead of enumerize. Does the native enum
+    #        method add inclusion validation?
     enumerize :privacy, in: { public: 1, restricted: 2, private: 3 },
                         default: :public, predicates: true, scope: true
+    # enum :privacy, { public: 1, restricted: 2, private: 3 },
+    #      default: :public, scopes: false
 
     # Relationships
     belongs_to :activity_author, class_name: "Socializer::ActivityObject",

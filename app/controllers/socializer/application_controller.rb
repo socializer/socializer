@@ -11,6 +11,9 @@ module Socializer
     protect_from_forgery with: :exception
     # skip_before_action :verify_authenticity_token
 
+    allow_browser versions: :modern
+    # rate_limit to: 100, within: 1.minute, only: :create
+
     helper_method :current_user
     helper_method :signed_in?
 
