@@ -17,6 +17,7 @@ module Socializer
         expect(activity_object).to have_one(:self_reference)
           .class_name("ActivityObject")
           .with_foreign_key("id")
+          .inverse_of(:self_reference)
       end
 
       # FIXME: Test for source_type when available

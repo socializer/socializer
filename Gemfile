@@ -16,7 +16,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
 
-  gem "rspec-rails", "~> 6.1.0"
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # gem "rubocop-rails-omakase", require: false
+
+  gem "rspec-rails", "~> 7.0"
 
   gem "rubocop", "~> 1.65", require: false
   gem "rubocop-capybara", require: false
@@ -36,7 +39,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.1"
-  gem "sqlite3", "~> 1.7"
+  gem "sqlite3", ">= 1.7"
   gem "typeprof"
 end
 
@@ -49,8 +52,10 @@ group :development do
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
   gem "rake", "~> 13.0"
+  # gem "ruby-lsp"
+  # gem "ruby-lsp-rspec", require: false
   gem "scss_lint", "~> 0.60.0"
-  gem "shoulda-matchers", "~> 6.3"
+  gem "shoulda-matchers", "~> 6.4"
 end
 
 group :test do
@@ -76,4 +81,5 @@ gem "bundler-integrity", "~> 1.0"
 
 # TODO: Move back to the gemspec once the gem is released
 # gem "jquery-ui-rails", github: "jquery-ui-rails/jquery-ui-rails"
-# gem "jquery-ui-rails", github: "jquery-ui-rails/jquery-ui-rails", tag: "v7.0.0"
+# gem "jquery-ui-rails", github: "jquery-ui-rails/jquery-ui-rails",
+#                        tag: "v7.0.0"

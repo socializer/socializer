@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerAudiences < ActiveRecord::Migration[7.1]
+class CreateSocializerAudiences < ActiveRecord::Migration[7.2]
   def change
     create_table :socializer_audiences do |t|
       t.references :activity, null: false

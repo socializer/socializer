@@ -30,7 +30,7 @@ module Socializer
         end
 
         context "when it returns default values" do
-          let(:json) { JSON.parse(response.body) }
+          let(:json) { response.parsed_body }
 
           specify { expect(json.count).to eq(2) }
 

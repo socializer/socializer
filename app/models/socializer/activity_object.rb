@@ -23,7 +23,8 @@ module Socializer
     has_one :self_reference,
             class_name: "Socializer::ActivityObject",
             foreign_key: :id,
-            dependent: nil
+            dependent: nil,
+            inverse_of: :self_reference
 
     has_one :group,
             through: :self_reference,
@@ -164,7 +165,9 @@ module Socializer
       # query = Activity.joins(:verb).with_activity_object_id(id:)
       # likers = query.merge(Verb.with_display_name(name: "like"))
       # unlikers = query.merge(Verb.with_display_name(name: "unlike"))
-      # people = likers.joins(:actor).where.not(actor_activities: { actor_id: unlikers.select(:actor_id) })
+      #                 .select(:actor_id)
+      # people = likers.joins(:actor)
+      #                .where.not(actor_activities: { actor_id: unlikers })
 
       # people
 

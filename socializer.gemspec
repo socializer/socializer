@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = "~> 3.3.4"
+  spec.required_ruby_version = "~> 3.3.5"
 
   spec.add_dependency("bcrypt", "~> 3.1.16")
   spec.add_dependency("bootstrap-sass", "~> 3.4.1")
@@ -51,7 +51,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-openid", "~> 2.0.1")
   spec.add_dependency("omniauth-rails_csrf_protection")
   spec.add_dependency("omniauth-twitter", "~> 1.4.0")
-  spec.add_dependency("rails", "~> 7.1.3")
+  spec.add_dependency("rails", "~> 7.2.0")
   spec.add_dependency("sass-rails", "~> 6.0.0")
   spec.add_dependency("simple_form", "~> 5.3.0")
   spec.add_dependency("uglifier", ">= 4.1.19")

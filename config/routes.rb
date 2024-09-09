@@ -119,6 +119,15 @@ Socializer::Engine.routes.draw do
 
   resources :ties, only: %i[create destroy]
 
+  # Reveal health status on /up that returns 200 if the app boots with no
+  # exceptions, otherwise 500. Can be used by load balancers and uptime
+  # monitors to verify that the app is live.
+  get "up", to: "rails/health#show", as: :rails_health_check
+
+  # Render dynamic PWA files from app/views/pwa/*
+  get "service-worker", to: "rails/pwa#service_worker", as: :pwa_service_worker
+  get "manifest", to: "rails/pwa#manifest", as: :pwa_manifest
+
   # Example root that gets defined for a logged in user
   # get "/",
   #     to: "activities#index",

@@ -1,4 +1,47 @@
 {
+  "eablokker.tabsSidebar.config.collapsedFolders" : [
+
+  ],
+  "eablokker.tabsSidebar.config.customKindGroupsOrder" : [
+    "ruby",
+    "html+erb"
+  ],
+  "eablokker.tabsSidebar.config.customTabOrder" : [
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/group\/operations\/create.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/activity\/operations\/create.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/views\/socializer\/people\/index.html.erb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/controllers\/socializer\/circles_controller.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/spec\/controllers\/socializer\/notes_controller_spec.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/Gemfile",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/note.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/activity.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/group.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/controllers\/socializer\/people_controller.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/socializer.gemspec",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/activity_object.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/activity\/operations\/like.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/group\/services\/join.rb",
+    "file:\/\/\/Users\/tompietschker\/.Trash\/models\/application_record.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/controllers\/socializer\/comments_controller.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/person.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/presenters\/socializer\/person_presenter.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/audience.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/spec\/presenters\/socializer\/person_presenter_spec.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/activity\/contracts\/share.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/activity\/contracts\/like.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/controllers\/socializer\/ties_controller.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/helpers\/socializer\/application_helper.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/group\/contracts\/create.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/verb\/contracts\/create.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/presenters\/socializer\/presenter_base.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/note\/contracts\/create.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/activity\/operations\/share.rb",
+    "file:\/\/\/Users\/tpietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/verb\/operations\/create.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/concepts\/socializer\/group\/services\/service_base.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/activity_field.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/decorators\/socializer\/circle_decorator.rb",
+    "file:\/\/\/Users\/tompietschker\/Projects\/github\/socializer\/app\/models\/socializer\/circle.rb"
+  ],
   "editor.default_syntax" : "ruby",
   "john-ellis.rubocop-nova.base-command" : "bundle exec rubocop"
 }
