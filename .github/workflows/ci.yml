@@ -30,11 +30,11 @@ jobs:
 #        path: ~/local/rubies
 #        key: ruby-3.3.x
 
-      - name: "Install Ruby 3.3.x"
+      - name: "Install Ruby"
         uses: ruby/setup-ruby@v1
         id: ruby
         with:
-          ruby-version: "3.3"
+          ruby-version: .ruby-version
           bundler-cache: true
 
       - name: "Install sqlite"
