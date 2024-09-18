@@ -44,13 +44,17 @@ jobs:
           sudo apt-get install -y sqlite3
 
       - name: "Prepare the database"
+        env:
+          RAILS_ENV: test
         run: |
-          bin/rails app:db:environment:set RAILS_ENV=test
-          bin/rails app:db:reset RAILS_ENV=test
-          bin/rails app:db:migrate RAILS_ENV=test
-          bin/rails db:migrate:status RAILS_ENV=test
+          bin/rails app:db:environment
+          bin/rails app:db:reset
+          bin/rails app:db:migrate
+          bin/rails db:migrate:status
 
       - name: "Run rspec"
+        env:
+          RAILS_ENV: test
         run: |
           bundle exec rspec --fail-fast
       - name: Coveralls
