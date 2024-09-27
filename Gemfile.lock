@@ -220,7 +220,7 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     io-console (0.7.2)
-    irb (1.14.0)
+    irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.7.2)
