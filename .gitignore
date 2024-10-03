@@ -57,7 +57,11 @@ spec/examples.txt
 yarn-debug.log*
 .yarn-integrity
 
-.yardoc/
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
 
 
 
