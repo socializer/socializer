@@ -26,6 +26,9 @@ module Socializer
                         default: :public, predicates: true, scope: true
     # enum :privacy, { public: 1, restricted: 2, private: 3 },
     #      default: :public, scopes: false
+    # Stores values as strings instead of integers
+    # enum :privacy, %i[public restricted private].index_by(&:itself),
+    #      default: :public, scopes: false
 
     # Relationships
     belongs_to :activity_author, class_name: "Socializer::ActivityObject",

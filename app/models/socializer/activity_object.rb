@@ -155,6 +155,14 @@ module Socializer
       #                  .where(actor_activities: { activity_id: subquery })
       #                  .where(verbs: { display_name: "unlike" })
 
+      # query = Activity.joins(:verb).with_activity_object_id(id:)
+      # likers = query.merge(Verb.with_display_name(name: "like"))
+      #               .pluck(:actor_id)
+      # unlikers = query.merge(Verb.with_display_name(name: "unlike"))
+      #                 .pluck(:actor_id)
+      # return [] if likers.empty?
+      # Person.where(id: likers - unlikers)
+
       query    = Activity.joins(:verb).with_activity_object_id(id:)
       likers   = query.merge(Verb.with_display_name(name: "like"))
       unlikers = query.merge(Verb.with_display_name(name: "unlike"))

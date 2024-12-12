@@ -67,18 +67,29 @@ module Socializer
 
     # Class Methods
 
-    # Order records by created_at in descending order
+    # Orders the activities by their creation time in descending order.
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
+    #   a relation of activities ordered by `created_at` in descending order.
+    #
+    # @example
+    #   Socializer::Activity.newest_first
+    #   # => Returns the activities ordered from newest to oldest based on
+    #   # => their creation time.
     def self.newest_first
       order(created_at: :desc)
     end
 
     # Find activities where the id is equal to the given id
     #
-    # @param id: [Integer]
+    # @param id: [Integer] the ID of the record to find
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
+    #   the records matching the given ID
+    #
+    # @example Find record with specific ID
+    #   Socializer::Activity.with_id(id: 1)
+    #   # => Returns the activity with ID 1
     def self.with_id(id:)
       where(id:)
     end
@@ -140,7 +151,7 @@ module Socializer
     # allowed to do so.
     #
     # @param  actor_uid: [Integer] unique identifier of the previously typed
-    # provider
+    #   provider
     # @param  viewer_id: [Integer] who wants to see the activity stream
     #
     # @return [Socializer::Activity]
@@ -172,9 +183,11 @@ module Socializer
     # This is a group. display everything that was posted to this group as
     # audience
     #
-    # @param  actor_uid: [Integer] unique identifier of the previously typed
-    # provider
-    # @param  viewer_id: [Integer] who wants to see the activity stream
+    # @param  actor_uid: [Integer]
+    #   unique identifier of the previously typed provider
+    #
+    # @param  viewer_id: [Integer]
+    #   who wants to see the activity stream
     #
     # @return [Socializer::Activity]
     def self.group_stream(actor_uid:, viewer_id:)
@@ -184,26 +197,62 @@ module Socializer
         .merge(Audience.with_activity_object_id(id: group_id)).distinct
     end
 
-    # This is a user profile. display everything about them that you are
-    # allowed to see
+    # Class Method: person_query
     #
-    # @param  actor_uid: [Integer] unique identifier of the previously typed
-    # provider
-    # @param  viewer_id: [Integer] who wants to see the activity stream
+    # Retrieves a distinct stream of activities for a specified person.
     #
-    # @return [Socializer::Activity]
+    # This method finds the `Person` record associated with the given
+    # `actor_uid`, retrieves their globally unique `guid`, and then queries
+    # the activity stream for activities related to that `Person`, scoped to
+    # the given `viewer_id`. The results are returned in a distinct manner to
+    # avoid duplicate entries.
+    #
+    # @param actor_uid [Integer] The ID of the actor (Person) whose stream is
+    #   to be fetched.
+    #
+    # @param viewer_id [Integer] The ID of the viewer requesting the stream.
+    #
+    # @return [Socializer::Activity, nil]
+    #   The filtered activity stream scoped by `viewer_id`
+    #   and associated with the `actor_uid`. Returns `nil` if the `Person`
+    #   record is not found.
+    #
+    # @example Fetching the activity stream for a person
+    #   # Assuming we have a person with actor_uid = 1 and viewer_id = 2
+    #   stream = Socializer::Activity.person_stream(actor_uid: 1, viewer_id: 2)
+    #   stream.each do |activity|
+    #     puts activity.content
+    #   end
     def self.person_stream(actor_uid:, viewer_id:)
-      person_id = Person.find_by(id: actor_uid).guid
-      stream_query(viewer_id:).with_actor_id(id: person_id).distinct
+      person = Person.find_by(id: actor_uid)
+      return unless person # Handle case where person is nil
+
+      stream_query(viewer_id:).with_actor_id(id: person.guid).distinct
     end
 
     # Class Methods - Private
 
-    # Build the stream query
+    # Class Method: stream_query
     #
-    # @param  viewer_id: [Integer] who wants to see the activity stream
+    # This method constructs a query to fetch activities that are of interest
+    # to a viewer.
+    #
+    # @param viewer_id [Integer] The ID of the viewer for whom the activities
+    #   are being queried.
     #
     # @return [Socializer::Activity]
+    #   A query object that can be used to fetch activities.
+    #
+    # The method filters activities based on the following criteria:
+    # - The activity must correspond to one of the verbs of interest, which
+    #   are 'post' and 'share'.
+    # - The activity must be associated with a public or limited privacy
+    #   grouping that includes the viewer, or the viewer must be the actor
+    #   of the activity.
+    #
+    # Example usage:
+    #   Activity.stream_query(viewer_id: 1)
+    #
     def self.stream_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these
       # verbs
