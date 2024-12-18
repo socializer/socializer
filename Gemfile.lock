@@ -222,7 +222,7 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     io-console (0.8.0)
-    irb (1.14.2)
+    irb (1.14.3)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.9.0)
@@ -323,7 +323,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
-    psych (5.2.1)
+    psych (5.2.2)
       date
       stringio
     public_suffix (6.0.1)
@@ -395,7 +395,7 @@ GEM
       ffi (~> 1.0)
     rbs (3.7.0)
       logger
-    rdoc (6.9.1)
+    rdoc (6.10.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.3)
     reline (0.6.0)
@@ -606,4 +606,4 @@ DEPENDENCIES
   typeprof
 
 BUNDLED WITH
-   2.6.0
+   2.6.1
