@@ -175,7 +175,7 @@ GEM
     elasticsearch-rails (8.0.0)
     enumerize (2.8.1)
       activesupport (>= 3.2)
-    erubi (1.13.0)
+    erubi (1.13.1)
     erubis (2.7.0)
     execjs (2.10.0)
     factory_bot (6.5.0)
