@@ -49,8 +49,28 @@ AllCops:
   # default. Change behavior by overriding StyleGuideCopsOnly, or by giving
   # the --only-guide-cops option.
   StyleGuideCopsOnly: false
-  # What version of the Ruby interpreter is the inspected code intended to
+  # Enables the result cache if `true`. Can be overridden by the `--cache` command
+  # line option.
+  UseCache: true
+  # The cache will be stored in "rubocop_cache" under this directory. If
+  # CacheRootDirectory is ~ (nil), which it is by default, the root will be
+  # taken from the environment variable `$XDG_CACHE_HOME` if it is set, or if
+  # `$XDG_CACHE_HOME` is not set, it will be `$HOME/.cache/`.
+  # The CacheRootDirectory can be overwritten by passing the `--cache-root` command
+  # line option or by setting `$RUBOCOP_CACHE_ROOT` environment variable.
+  CacheRootDirectory: tmp
+  # What MRI version of the Ruby interpreter is the inspected code intended to
   # run on? (If there is more than one, set this to the lowest version.)
+  # If a value is specified for TargetRubyVersion then it is used. Acceptable
+  # values are specified as a float (i.e. 3.0); the teeny version of Ruby
+  # should not be included. If the project specifies a Ruby version in the
+  # .tool-versions or .ruby-version files, Gemfile or gems.rb file, RuboCop will
+  # try to determine the desired version of Ruby by inspecting the
+  # .tool-versions file first, then .ruby-version, followed by the Gemfile.lock
+  # or gems.locked file. (Although the Ruby version is specified in the Gemfile
+  # or gems.rb file, RuboCop reads the final value from the lock file.) If the
+  # Ruby version is still unresolved, RuboCop will use the oldest officially
+  # supported Ruby version (currently Ruby 2.7).
   TargetRubyVersion: 3.3
 
 Layout/HashAlignment:
