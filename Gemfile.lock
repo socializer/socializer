@@ -111,7 +111,7 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    brakeman (6.2.2)
+    brakeman (7.0.0)
       racc
     builder (3.3.0)
     bundler-audit (0.9.2)
@@ -573,7 +573,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  brakeman (~> 6.0)
+  brakeman (~> 7.0)
   bundler (>= 1.15.0, < 3.0)
   bundler-audit (~> 0.9.1)
   bundler-integrity (~> 1.0)
