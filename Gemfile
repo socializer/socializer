@@ -21,7 +21,7 @@ group :development, :test do
 
   gem "rspec-rails", "~> 7.0"
 
-  gem "rubocop", "~> 1.65", require: false
+  gem "rubocop", "~> 1.7", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-performance", "~> 1.21", require: false
