@@ -71,7 +71,7 @@ AllCops:
   # or gems.rb file, RuboCop reads the final value from the lock file.) If the
   # Ruby version is still unresolved, RuboCop will use the oldest officially
   # supported Ruby version (currently Ruby 2.7).
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 3.4
 
 Layout/HashAlignment:
   Exclude:
