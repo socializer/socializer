@@ -222,7 +222,8 @@ GEM
       term-ansicolor
       yard (~> 0.9.12)
     io-console (0.8.0)
-    irb (1.14.3)
+    irb (1.15.0)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.9.1)
@@ -325,6 +326,9 @@ GEM
     parser (3.3.7.0)
       ast (~> 2.4.1)
       racc
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
