@@ -259,7 +259,8 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.5.0)
+    net-smtp (0.5.1)
+      net-protocol
     nio4r (2.7.4)
     nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
@@ -323,7 +324,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.26.3)
-    parser (3.3.7.0)
+    parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
     pp (0.6.2)
@@ -407,7 +408,7 @@ GEM
       ffi (~> 1.0)
     rbs (3.8.1)
       logger
-    rdoc (6.11.0)
+    rdoc (6.12.0)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
@@ -416,7 +417,7 @@ GEM
       rack (>= 1.4)
     require_all (3.0.0)
     rexml (3.4.0)
-    rspec-core (3.13.2)
+    rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -424,7 +425,7 @@ GEM
     rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (7.1.0)
+    rspec-rails (7.1.1)
       actionpack (>= 7.0)
       activesupport (>= 7.0)
       railties (>= 7.0)
