@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-# Maintain your gem's version:
 require_relative "lib/socializer/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.name          = "socializer"
   spec.version       = Socializer::VERSION
@@ -14,9 +12,8 @@ Gem::Specification.new do |spec|
   spec.description   = "Add social network capabilities to your projects."
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the
-  # "allowed_push_host" to allow pushing to a single host or delete this "
-  # section to allow pushing to any host.
+  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
+  # to allow pushing to a single host or delete this section to allow pushing to any host.
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["rubygems_mfa_required"] = "true"
 
@@ -24,10 +21,10 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/socializer/socializer"
   # spec.metadata["changelog_uri"] = "TODO: CHANGELOG.md URL here."
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile",
-                   "README.md"]
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  end
 
-  # spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
@@ -50,7 +47,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-openid", "~> 2.0.1")
   spec.add_dependency("omniauth-rails_csrf_protection")
   spec.add_dependency("omniauth-twitter", "~> 1.4.0")
-  spec.add_dependency("rails", "~> 7.2.0")
+  spec.add_dependency("rails", "~> 8.0.1")
   spec.add_dependency("sass-rails", "~> 6.0.0")
   spec.add_dependency("simple_form", "~> 5.3.0")
   spec.add_dependency("uglifier", ">= 4.1.19")

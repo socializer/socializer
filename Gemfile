@@ -39,7 +39,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails-dummy", "= 0.1.1"
-  gem "sqlite3", ">= 1.7"
+  gem "sqlite3"
   gem "typeprof"
 end
 
