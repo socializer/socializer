@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerPersonProfiles < ActiveRecord::Migration[7.2]
+class CreateSocializerPersonProfiles < ActiveRecord::Migration[8.0]
   def change
     create_table :socializer_person_profiles do |t|
       t.references :person, null: false
