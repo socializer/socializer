@@ -71,7 +71,8 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_address_params
-        params.expect(person_address: %i[line1 line2 city postal_code_or_zip
+        params.expect(person_address: %i[label line1 line2 city
+                                         postal_code_or_zip
                                          province_or_state country])
       end
     end
