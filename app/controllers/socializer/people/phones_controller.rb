@@ -74,7 +74,7 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_phone_params
-        params.require(:person_phone).permit(:label, :number)
+        params.expect(person_phone: %i[label number])
       end
     end
   end

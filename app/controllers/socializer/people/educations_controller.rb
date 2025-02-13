@@ -74,9 +74,9 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_education_params
-        params.require(:person_education)
-              .permit(:school_name, :major_or_field_of_study, :started_on,
-                      :ended_on, :current, :courses_description)
+        params.expect(person_education: %i[school_name major_or_field_of_study
+                                           started_on ended_on current
+                                           courses_description])
       end
     end
   end

@@ -41,13 +41,12 @@ module Socializer
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person)
-            .permit(:display_name, :email, :language, :avatar_provider,
-                    :tagline, :introduction, :bragging_rights, :occupation,
-                    :skills, :gender, :looking_for_friends,
-                    :looking_for_dating, :looking_for_relationship,
-                    :looking_for_networking, :birthdate, :relationship,
-                    :other_names)
+      params.expect(person: %i[display_name email language avatar_provider
+                               tagline introduction bragging_rights occupation
+                               skills gender looking_for_friends
+                               looking_for_dating looking_for_relationship
+                               looking_for_networking birthdate relationship
+                               other_names])
     end
   end
 end

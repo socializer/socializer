@@ -74,7 +74,7 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_profile_params
-        params.require(:person_profile).permit(:display_name, :url)
+        params.expect(person_profile: %i[display_name url])
       end
     end
   end

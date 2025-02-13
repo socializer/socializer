@@ -75,8 +75,7 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_contribution_params
-        params.require(:person_contribution)
-              .permit(:display_name, :label, :url, :current)
+        params.expect(person_contribution: %i[display_name label url current])
       end
     end
   end

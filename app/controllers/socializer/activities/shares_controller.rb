@@ -57,7 +57,7 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def share_params
-        params.require(:share).permit(:activity_id, :content, :object_ids)
+        params.expect(share: %i[activity_id content object_ids])
       end
     end
   end

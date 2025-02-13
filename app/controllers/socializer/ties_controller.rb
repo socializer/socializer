@@ -44,7 +44,7 @@ module Socializer
 
     # Only allow a list of trusted parameters through.
     def tie_params
-      params.require(:tie).permit(:contact_id, :circle_id)
+      params.expect(tie: %i[contact_id circle_id])
     end
   end
 end

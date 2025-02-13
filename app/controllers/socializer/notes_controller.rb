@@ -81,7 +81,7 @@ module Socializer
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:activity_verb, :content, :object_ids)
+      params.expect(note: %i[activity_verb content object_ids])
     end
   end
 end

@@ -74,7 +74,7 @@ module Socializer
 
       # Only allow a list of trusted parameters through.
       def person_place_params
-        params.require(:person_place).permit(:city_name, :current)
+        params.expect(person_place: %i[city_name current])
       end
     end
   end

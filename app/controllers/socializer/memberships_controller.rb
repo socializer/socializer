@@ -33,7 +33,7 @@ module Socializer
 
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:group_id)
+      params.expect(membership: [:group_id])
     end
   end
 end

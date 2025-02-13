@@ -78,7 +78,7 @@ module Socializer
 
     # Only allow a list of trusted parameters through.
     def circle_params
-      params.require(:circle).permit(:display_name, :content)
+      params.expect(circle: %i[display_name content])
     end
   end
 end
