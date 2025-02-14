@@ -53,9 +53,7 @@ module Socializer
         education = []
         education << content_and_br(content: model.school_name)
 
-        if model.major_or_field_of_study?
-          education << content_and_br(content: model.major_or_field_of_study)
-        end
+        education << content_and_br(content: model.major_or_field_of_study) if model.major_or_field_of_study?
 
         education << started_on_to_ended_on
 

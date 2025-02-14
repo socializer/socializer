@@ -27,9 +27,7 @@ module Socializer
       classname = "panel-default"
       classname = "panel-default bg-muted" if model.read
 
-      if index <= unread_notifications_count
-        classname = "panel-success bg-success"
-      end
+      classname = "panel-success bg-success" if index <= unread_notifications_count
 
       classname
     end

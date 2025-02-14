@@ -202,9 +202,7 @@ module Socializer
     # @return [Socializer::Membership] Returns a collection of
     # {Socializer::Membership memberships}
     def pending_membership_invites
-      if defined?(@pending_membership_invites)
-        return @pending_membership_invites
-      end
+      return @pending_membership_invites if defined?(@pending_membership_invites)
 
       @pending_membership_invites = Membership.joins(:group)
                                               .merge(Group.private)
