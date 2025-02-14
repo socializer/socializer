@@ -77,15 +77,6 @@ Layout/HashAlignment:
   Exclude:
     - "config/initializers/simple_form.rb"
 
-Layout/LineLength:
-  Description: 'Limit lines to 80 characters.'
-  Max: 80
-  Enabled: true
-  Exclude:
-    - "config/initializers/simple_form.rb"
-    - "config/initializers/simple_form_bootstrap.rb"
-    - "db/schema.rb"
-
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
