@@ -24,7 +24,7 @@ module Socializer
 
     # Order records by created_at in descending order
     #
-    # @return [Socializer::Notification]
+    # @return [ActiveRecord::Relation<Socializer::Notification>]
     def self.newest_first
       order(created_at: :desc)
     end
@@ -76,7 +76,7 @@ module Socializer
     # @param activity [Socializer::Activity]
     # @param contact_id [Socializer::Person]
     #
-    # @return [Socializer::Notification]
+    # @return [TrueClass/FalseClass]
     def self.create_notification(activity:, contact_id:)
       object = Notification.new do |notification|
         notification.activity = activity

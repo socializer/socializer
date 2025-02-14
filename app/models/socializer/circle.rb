@@ -55,7 +55,7 @@ module Socializer
     #
     # @param id: [Integer]
     #
-    # @return [(ActiveRecord::Relation<Socializer::Circle>]
+    # @return [ActiveRecord::Relation<Socializer::Circle>]
     def self.with_id(id:)
       where(id:)
     end
