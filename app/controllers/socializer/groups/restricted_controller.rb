@@ -4,6 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Module for grouping related controllers
+  #
   module Groups
     #
     # Restricted controller

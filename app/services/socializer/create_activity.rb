@@ -11,6 +11,18 @@ module Socializer
     include ActiveModel::Model
     include Utilities::Message
 
+    # @!attribute [rw] actor_id
+    #   @return [Integer] the ID of the actor
+    # @!attribute [rw] activity_object_id
+    #   @return [Integer] the ID of the activity object
+    # @!attribute [rw] target_id
+    #   @return [Integer, nil] the ID of the target, if any
+    # @!attribute [rw] verb
+    #   @return [String] the verb describing the activity
+    # @!attribute [rw] object_ids
+    #   @return [String, Array<Integer>] the IDs of the objects involved in the activity
+    # @!attribute [rw] content
+    #   @return [String, nil] the content of the activity, if any
     attr_accessor :actor_id, :activity_object_id, :target_id, :verb,
                   :object_ids, :content
 
@@ -46,7 +58,7 @@ module Socializer
 
     # Add an audience to the activity
     #
-    # @param activity: [Socializer::Activity] The activity to add the audience
+    # @param activity [Socializer::Activity] The activity to add the audience
     # to
     def add_audience_to_activity(activity:)
       object_ids_array.each do |audience_id|

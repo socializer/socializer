@@ -100,14 +100,17 @@ module Socializer
       helpers.pluralize(model.contact_of.count, "person")
     end
 
-    # Creates an image tag for the persons avatar
+    # Creates an image tag for the person's avatar
     #
-    # @param [String] size: nil
-    # @param [String] css_class: nil
-    # @param [String] alt: "Avatar"
-    # @param [String] title: nil
+    # @example
+    #   image_tag_avatar(size: "100x100", css_class: "avatar", alt: "User Avatar", title: "User")
     #
-    # @return [String]  An HTML image tag
+    # @param size [String] The size of the avatar (optional)
+    # @param css_class [String] The CSS class for the image tag (optional)
+    # @param alt [String] The alt text for the image (default: "Avatar")
+    # @param title [String] The title text for the image (optional)
+    #
+    # @return [String] An HTML image tag
     def image_tag_avatar(size: nil, css_class: nil, alt: "Avatar", title: nil)
       width, height = parse_size(size:) if size
 
@@ -223,12 +226,14 @@ module Socializer
       end
     end
 
-    # Check if the url is the current page
+    # Check if the URL is the current page
     #
-    # @param url: [String] The url to check
+    # @example
+    #   toolbar_item_class(url: "/home") #=> "active"
     #
-    # @return [String]/[NilClass] Returns "active" if the url is the
-    # current page.
+    # @param url [String] The URL to check
+    #
+    # @return [String, nil] Returns "active" if the URL is the current page, otherwise nil
     def toolbar_item_class(url:)
       "active" if helpers.current_page?(url)
     end
@@ -241,11 +246,15 @@ module Socializer
       helpers.safe_join(links)
     end
 
-    # Check if the object is an instance of {Socializer::Membership}
+    # Returns the group if the object is a Socializer::Membership, otherwise returns the object itself
     #
-    # @param object:
+    # @example
+    #   toolbar_object(object: membership) #=> group
+    #   toolbar_object(object: circle)     #=> circle
     #
-    # @return [Socializer::Group]
+    # @param object [Object] The object to check
+    #
+    # @return [Object] The group or the object itself
     def toolbar_object(object:)
       return object.group if object.is_a?(Socializer::Membership)
 

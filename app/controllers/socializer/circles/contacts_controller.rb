@@ -4,6 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Module for handling circle-related actions
+  #
   module Circles
     #
     # Contacts controller

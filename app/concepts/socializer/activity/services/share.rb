@@ -23,16 +23,14 @@ module Socializer
 
         # Initializer
         #
-        # @param [Socializer::Person] actor: the person sharing the activity
+        # @param actor [Socializer::Person] the person sharing the activity
         def initialize(actor:)
           @actor_guid = actor.guid
         end
 
-        # Creates the [Socializer::Activity]
+        # Calls the service to create a new Socializer::Activity
         #
-        # @param [ActionController::Parameters] params: the share parameters
-        # from the request
-        #
+        # @param params [ActionController::Parameters] the share parameters
         # @return [Socializer::Activity]
         def call(params:)
           parse_params(params:)

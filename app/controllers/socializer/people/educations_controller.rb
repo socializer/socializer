@@ -4,6 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Module for handling people-related actions
+  #
   module People
     #
     # Educations controller

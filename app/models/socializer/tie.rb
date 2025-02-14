@@ -30,6 +30,9 @@ module Socializer
 
     # Find ties where the circle_id is equal to the given circle_id
     #
+    # @example
+    #   Socializer::Tie.with_circle_id(circle_id: 1)
+    #
     # @param circle_id: [Integer]
     #
     # @return [ActiveRecord::Relation<Socializer::Tie>]
@@ -38,6 +41,9 @@ module Socializer
     end
 
     # Find ties where the contact_id is equal to the given contact_id
+    #
+    # @example
+    #   Socializer::Tie.with_contact_id(contact_id: 1)
     #
     # @param contact_id: [Integer]
     #

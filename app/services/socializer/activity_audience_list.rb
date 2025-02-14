@@ -17,7 +17,7 @@ module Socializer
 
     # Initializer
     #
-    # @param activity: [Socializer::Activity] the activity to build the
+    # @param activity [Socializer::Activity] the activity to build the
     # audience for
     #
     # @return [Socializer::ActivityAudienceList] returns an instance of
@@ -32,8 +32,8 @@ module Socializer
 
     # Invoke the ActivityAudienceList. This is the primary public API method.
     #
-    # @param activity: [Socializer::Activity] the activity to build the
-    # audience for
+    # @param activity [Socializer::Activity] the activity to build the
+    #   audience for
     #
     # @return [Array]
     def self.call(activity:)

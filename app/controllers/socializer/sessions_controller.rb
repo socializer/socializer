@@ -54,6 +54,13 @@ module Socializer
 
     protected
 
+    # Retrieves the authentication hash from the OmniAuth request environment.
+    #
+    # @example
+    #   auth_hash = auth_hash()
+    #   puts auth_hash['provider'] # => 'facebook'
+    #
+    # @return [Hash] the authentication hash containing provider and uid information
     def auth_hash
       request.env["omniauth.auth"]
     end

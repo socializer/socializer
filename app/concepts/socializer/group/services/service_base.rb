@@ -24,11 +24,13 @@ module Socializer
         validates :group, presence: true, type: Socializer::Group
         validates :person, presence: true, type: Socializer::Person
 
-        # Initializer
+        # Initializes a new instance of the ServiceBase class.
         #
-        # @param [Socializer::Group] group: the group to invite the person to
-        # @param [Socializer::Person] person: the person that is being invited
-        #   to the group
+        # @example
+        #   ServiceBase.new(group: some_group, person: some_person)
+        #
+        # @param group [Socializer::Group] the group to invite the person to
+        # @param person [Socializer::Person] the person that is being invited to the group
         #
         # @return [Socializer::Group::Services] returns an instance of
         #   the object that inherits from [ServiceBase]

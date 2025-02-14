@@ -14,14 +14,15 @@ module Socializer
     module Message
       module_function
 
-      # Creates an error message if the argument(s) passed to the
-      # initializer are the wrong type
+      # Generates an error message for an instance of the wrong type.
       #
-      # @param [NilClass, Socializer::Person, Socializer::Activity]
-      # instance: the model instance you will be acting on
-      # @param [Class] valid_class: the instance type that should be passed in
+      # @example
+      #   wrong_type_message(instance: "string", valid_class: Integer)
+      #   # => "Expected argument to be of type Integer, but got String"
       #
-      # @return [String]
+      # @param instance [Object] the instance that has the wrong type
+      # @param valid_class [Class] the class that the instance should be
+      # @return [String] the error message
       def wrong_type_message(instance:, valid_class:)
         valid_class_name = valid_class.name
 

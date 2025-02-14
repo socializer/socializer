@@ -195,7 +195,10 @@ module Socializer
       #                  .where(verb: { display_name: "like" }).map(&:actor)
     end
 
-    # Reset unread_notifications_count to 0
+    # Resets the unread notifications count to zero if it is not already zero.
+    #
+    # @example
+    #   activity_object.reset_unread_notifications
     def reset_unread_notifications
       return if unread_notifications_count.zero?
 

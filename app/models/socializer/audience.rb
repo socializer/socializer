@@ -16,8 +16,11 @@ module Socializer
     enumerize :privacy, in: %w[public circles limited],
                         default: :public, predicates: true, scope: true
 
+    # Constant for public privacy value
     PUBLIC_PRIVACY = privacy.public.value.freeze
+    # Constant for circles privacy value
     CIRCLES_PRIVACY = privacy.circles.value.freeze
+    # Constant for limited privacy value
     LIMITED_PRIVACY = privacy.limited.value.freeze
 
     # Relationships
@@ -33,6 +36,13 @@ module Socializer
 
     # Class Methods
 
+    # Grouping for audiences with circle privacy
+    #
+    # @example
+    #   Socializer::Audience.circle_privacy_grouping(viewer_id: 1)
+    #
+    # @param viewer_id [Integer] the ID of the viewer
+    # @return [Arel::Nodes::Grouping] the grouping condition for circle privacy
     def self.circle_privacy_grouping(viewer_id:)
       viewer_literal = viewer_literal(viewer_id:)
       author_ids = ActivityObject.joins(:person).ids
@@ -42,6 +52,13 @@ module Socializer
                   .and(viewer_literal.in(subquery)))
     end
 
+    # Grouping for audiences with limited privacy
+    #
+    # @example
+    #   Socializer::Audience.limited_privacy_grouping(viewer_id: 1)
+    #
+    # @param viewer_id [Integer] the ID of the viewer
+    # @return [Arel::Nodes::Grouping] the grouping condition for limited privacy
     def self.limited_privacy_grouping(viewer_id:)
       activity_object_id = arel_table[:activity_object_id]
 
@@ -52,6 +69,13 @@ module Socializer
                   .or(activity_object_id.in(viewer_id))))
     end
 
+    # Grouping for audiences with public privacy
+    #
+    # @example
+    #   Socializer::Audience.public_privacy_grouping(viewer_id: 1)
+    #
+    # @param viewer_id [Integer] the ID of the viewer
+    # @return [Arel::Nodes::Grouping] the grouping condition for public privacy
     def self.public_privacy_grouping(viewer_id:)
       arel_table.grouping(arel_table[:privacy].eq(PUBLIC_PRIVACY)
                   .or(circle_privacy_grouping(viewer_id:)))
@@ -96,9 +120,11 @@ module Socializer
 
     # Limited group subquery
     #
-    # @param  viewer_id: [Integer] who wants to see the activity stream
+    # @example
+    #   Socializer::Audience.limited_group_subquery(viewer_id: 1)
     #
-    # @return [Array]
+    # @param viewer_id [Integer] the ID of the viewer who wants to see the activity stream
+    # @return [Array] the IDs of the activity objects related to the groups the viewer is a member of
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
                     .merge(Membership.with_member_id(member_id: viewer_id))

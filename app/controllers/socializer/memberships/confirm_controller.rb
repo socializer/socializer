@@ -4,6 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
+  #
+  # Module for handling membership-related actions
+  #
   module Memberships
     #
     # Confirm controller

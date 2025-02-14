@@ -51,9 +51,12 @@ module Socializer
 
     # Class Methods
 
-    # Find circles where the id is equal to the given id
+    # Find circles by their id
     #
-    # @param id: [Integer]
+    # @example
+    #   Socializer::Circle.with_id(id: 1)
+    #
+    # @param id [Integer] The id to match
     #
     # @return [ActiveRecord::Relation<Socializer::Circle>]
     def self.with_id(id:)
@@ -62,7 +65,10 @@ module Socializer
 
     # Find circles where the author_id is equal to the given id
     #
-    # @param id: [Integer]
+    # @example
+    #   Socializer::Circle.with_author_id(id: 1)
+    #
+    # @param id [Integer] The author id to match
     #
     # @return [ActiveRecord::Relation<Socializer::Circle>]
     def self.with_author_id(id:)
@@ -71,16 +77,22 @@ module Socializer
 
     # Find circles where the display_name is equal to the given name
     #
-    # @param name: [String]
+    # @example
+    #   Socializer::Circle.with_display_name(name: "Friends")
+    #
+    # @param name [String] The display name to match
     #
     # @return [ActiveRecord::Relation<Socializer::Circle>]
     def self.with_display_name(name:)
       where(display_name: name)
     end
 
-    # Find all records where display_name is like "query"
+    # Find circles where the display_name matches the given query
     #
-    # @param query: [String]
+    # @example
+    #   Socializer::Circle.display_name_like(query: "%John%")
+    #
+    # @param query [String] The query string to match against display_name
     #
     # @return [ActiveRecord::Relation<Socializer::Circle>]
     def self.display_name_like(query:)

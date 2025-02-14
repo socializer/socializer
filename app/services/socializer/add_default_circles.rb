@@ -15,13 +15,13 @@ module Socializer
 
     validates :person, presence: true, type: Socializer::Person
 
-    # Initializer
+    # Initializes a new instance of AddDefaultCircles
     #
-    # @param person: [Socializer::Person] the person to create the default
-    # circles for
+    # @example
+    #   Socializer::AddDefaultCircles.new(person: some_person)
     #
-    # @return [Socializer::AddDefaultCircles] returns an instance of
-    # AddDefaultCircles
+    # @param person [Socializer::Person] the person to create the default circles for
+    # @return [Socializer::AddDefaultCircles] returns an instance of AddDefaultCircles
     def initialize(person:)
       @person = person
 
@@ -30,22 +30,23 @@ module Socializer
 
     # Class Methods
 
-    # Invoke the AddDefaultCircles. This is the primary public API method.
-    # Add the default circles
+    # Class method to create and invoke an instance of AddDefaultCircles
     #
-    # @param person: [Socializer::Person] the person to create the default
-    # circles for
+    # @example
+    #   Socializer::AddDefaultCircles.call(person: some_person)
     #
-    # @return [Socializer::AddDefaultCircles]
+    # @param person [Socializer::Person] the person to create the default circles for
+    # @return [void]
     def self.call(person:)
       new(person:).call
     end
 
     # Instance Methods
 
-    # Invoke the AddDefaultCircles instance. This is the primary public API
-    # method.
-    # Add the default circles
+    # Invokes the creation of default circles for the person
+    #
+    # @example
+    #   Socializer::AddDefaultCircles.new(person: some_person).call
     def call
       create_circle(display_name: "Friends",
                     content: friends_content)
@@ -62,6 +63,13 @@ module Socializer
 
     private
 
+    # Creates a circle for the person with the given display name and content
+    #
+    # @example
+    #   create_circle(display_name: "Friends", content: "Close friends")
+    #
+    # @param display_name [String] the name of the circle
+    # @param content [String, nil] the content/description of the circle
     def create_circle(display_name:, content: nil)
       circles = @person.activity_object.circles
       circles.create!(display_name:, content:)

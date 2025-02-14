@@ -21,15 +21,15 @@ module Socializer
       class Like
         # Initializer
         #
-        # @param [Socializer::Person] actor: the person that likes the activity
+        # @param actor [Socializer::Person] the person that likes the activity
         def initialize(actor:)
           @actor = actor
         end
 
         # Creates the [Socializer::Activity]
         #
-        # @param [Socializer::ActivityObject] activity_object: the
-        # Socialicer::ActivityObject being liked
+        # @param activity_object [Socializer::ActivityObject] the
+        #   Socialicer::ActivityObject being liked
         #
         # @return [Socializer::Activity]
         def call(activity_object:)
