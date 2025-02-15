@@ -98,19 +98,24 @@ module Socializer
 
     # Class Methods
 
-    # Find activity objects where the id is equal to the given id
+    # Find activity objects with the specified ID
     #
-    # @param id: [Integer]
+    # @example
+    #   Socializer::ActivityObject.with_id(id: 1)
+    #
+    # @param id [Integer] The ID to filter by
     #
     # @return [ActiveRecord::Relation<Socializer::ActivityObject>]
     def self.with_id(id:)
       where(id:)
     end
 
-    # Find activity objects where the activitable_type is equal to the given
-    # type
+    # Find activity objects with the specified activitable type
     #
-    # @param type: [String]
+    # @example
+    #   Socializer::ActivityObject.with_activitable_type(type: "Socializer::Note")
+    #
+    # @param type [String] The activitable type to filter by
     #
     # @return [ActiveRecord::Relation<Socializer::ActivityObject>]
     def self.with_activitable_type(type:)
@@ -119,7 +124,10 @@ module Socializer
 
     # Create predicate methods for comparing the activitable_type
     #
-    # @param  *types [Array] The activitable_type(s)
+    # @example
+    #   Socializer::ActivityObject.define_activitable_type_checkers(:note, :activity)
+    #
+    # @param  types [Array] The activitable_type(s)
     #
     # @return [Object] The predicate method
     def self.define_activitable_type_checkers(*types)

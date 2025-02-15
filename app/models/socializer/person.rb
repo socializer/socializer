@@ -113,11 +113,14 @@ module Socializer
       end
     end
 
-    # Find all records where display_name is like "query"
+    # Finds people whose display name matches the given query.
     #
-    # @param query: [String]
+    # @example
+    #   Socializer::Person.display_name_like(query: "%John%")
     #
-    # @return [(ActiveRecord::Relation<Socializer::Person>]
+    # @param query [String] The query string to match display names.
+    #
+    # @return [ActiveRecord::Relation<Socializer::Person>] A collection of people with matching display names.
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end

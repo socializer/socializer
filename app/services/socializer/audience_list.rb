@@ -15,12 +15,15 @@ module Socializer
 
     validates :person, presence: true, type: Socializer::Person
 
-    # Initializer
+    # Initialize a new AudienceList instance
     #
-    # @param person: [Socializer::Person] the person to build the list for
-    # @param query: nil [String] Used to filter the audience list.
+    # @example
+    #   Socializer::AudienceList.new(person: some_person, query: "example")
     #
-    # @return [Socializer::AudienceList] returns an instance of AudienceList
+    # @param person [Socializer::Person] the person to build the list for
+    # @param query [String, nil] Used to filter the audience list
+    #
+    # @return [AudienceList]
     def initialize(person:, query: nil)
       @person = person
       @query  = query
@@ -30,13 +33,15 @@ module Socializer
 
     # Class Methods
 
-    # Invoke the AudienceList. This is the primary public API method.
-    # Create the audience list
+    # Class method to create and invoke an instance of AudienceList
     #
-    # @param person: [Socializer::Person] the person to build the list for
-    # @param query: nil [String] Used to filter the audience list.
+    # @example
+    #   Socializer::AudienceList.call(person: some_person, query: "example")
     #
-    # @return [Array]
+    # @param person [Socializer::Person] the person to build the list for
+    # @param query [String, nil] Used to filter the audience list
+    #
+    # @return [Array] the audience list
     def self.call(person:, query: nil)
       new(person:, query:).call
     end

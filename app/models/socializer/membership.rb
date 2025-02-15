@@ -43,9 +43,12 @@ module Socializer
       where(active: false)
     end
 
-    # Find memberships where the member_id is equal to the given member_id
+    # Find memberships by member ID
     #
-    # @param member_id: [Integer]
+    # @example
+    #   Socializer::Membership.with_member_id(member_id: 1)
+    #
+    # @param member_id [Integer] the ID of the member
     #
     # @return [ActiveRecord::Relation]
     def self.with_member_id(member_id:)
@@ -53,7 +56,12 @@ module Socializer
     end
 
     # Instance Methods
-    def confirm
+
+    # Confirms the membership by setting active to true
+    #
+    # @example
+    #   membership.confirm
+    def confirmdef confirm
       update(active: true)
     end
   end

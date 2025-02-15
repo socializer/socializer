@@ -5,13 +5,14 @@
 class TypeValidator < ActiveModel::EachValidator
   include Socializer::Utilities::Message
 
-  # Validate that the value is the type we expect
+  # Validates that the value of the specified attribute is an instance of the expected type.
   #
-  # @param [Object] record: the instance
-  # @param [Symbol] attribute: the attribute to be validated
-  # @param [Object] value: the value of the attribute in the passed instance
+  # @example
+  #   validates :attribute_name, type: { with: String }
   #
-  # @return [nil]
+  # @param record [Object] the object being validated
+  # @param attribute [Symbol] the attribute being validated
+  # @param value [Object] the value of the attribute
   def validate_each(record, attribute, value)
     expected_type = options[:with]
 

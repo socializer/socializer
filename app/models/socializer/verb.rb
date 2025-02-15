@@ -20,11 +20,14 @@ module Socializer
 
     # Class Methods
 
-    # Find verbs where the display_name is equal to the given name
+    # Finds the verb with the given display name.
     #
-    # @param name: [String]
+    # @example
+    #   Socializer::Verb.with_display_name(name: 'like')
     #
-    # @return [ActiveRecord::Relation<Socializer::Verb>]
+    # @param name [String] the display name of the verb
+    #
+    # @return [ActiveRecord::Relation] the verbs with the given display name
     def self.with_display_name(name:)
       where(display_name: name)
     end

@@ -25,18 +25,24 @@ module Socializer
 
     # Class Methods
 
-    # Find authentications that have the given provider
+    # Find authentications with the given provider
     #
-    # @param provider: [String]
+    # @example
+    #   Socializer::Authentication.with_provider(provider: 'facebook')
+    #
+    # @param provider [String]
     #
     # @return [ActiveRecord::Relation<Socializer::Authentication>]
     def self.with_provider(provider:)
       where(provider: provider.downcase)
     end
 
-    # Find authentications that are not provider
+    # Find authentications that do not have the given provider
     #
-    # @param provider: [String]
+    # @example
+    #   Socializer::Authentication.not_with_provider(provider: 'facebook')
+    #
+    # @param provider [String]
     #
     # @return [ActiveRecord::Relation<Socializer::Authentication>]
     def self.not_with_provider(provider:)
