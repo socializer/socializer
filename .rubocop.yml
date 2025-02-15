@@ -1,9 +1,11 @@
-require:
-  - rubocop-capybara
-  - rubocop-factory_bot
+plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
+
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-rspec
   - rubocop-rspec_rails
   - rubocop-thread_safety

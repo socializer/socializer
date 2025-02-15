@@ -1,6 +1,7 @@
 inherit_from: ../../.rubocop.yml
 
-require: rubocop-rails
+plugins:
+  - rubocop-rails
 
 Metrics/AbcSize:
   Enabled: false
