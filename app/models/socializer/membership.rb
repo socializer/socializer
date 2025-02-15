@@ -61,7 +61,7 @@ module Socializer
     #
     # @example
     #   membership.confirm
-    def confirmdef confirm
+    def confirm
       update(active: true)
     end
   end
