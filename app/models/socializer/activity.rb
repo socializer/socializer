@@ -170,7 +170,8 @@ module Socializer
     # @param actor_uid [Integer] The unique identifier of the actor (circle).
     # @param viewer_id [Integer] The unique identifier of the viewer.
     #
-    # @return [Socializer::Activity] The filtered activity stream scoped by `viewer_id` and associated with the `actor_uid`.
+    # @return [Socializer::Activity] The filtered activity stream scoped by
+    #   `viewer_id` and associated with the `actor_uid`.
     #
     # FIXME: Should display notes even if circle has no members and the owner
     #   is viewing it.
