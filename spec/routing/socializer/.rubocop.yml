@@ -1,6 +1,6 @@
 inherit_from: ../../.rubocop.yml
 
-require: rubocop-rspec
+plugins: rubocop-rspec
 
 RSpec/ExpectActual:
   Enabled: false

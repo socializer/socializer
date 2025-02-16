@@ -2,11 +2,11 @@ plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
+  - rubocop-rspec
 
 require:
   - rubocop-capybara
   - rubocop-factory_bot
-  - rubocop-rspec
   - rubocop-rspec_rails
   - rubocop-thread_safety
 

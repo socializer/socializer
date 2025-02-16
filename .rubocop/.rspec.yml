@@ -1,5 +1,6 @@
+plugins: rubocop-rspec
+
 require:
-  - rubocop-rspec
   - rubocop-capybara
   - rubocop-factory_bot
 
