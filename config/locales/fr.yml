@@ -32,11 +32,6 @@ fr:
         tooltip:
           new: Add a new service
     circles:
-      content:
-        acquaintances: A good place to stick people you've met but aren't particularly close to.
-        family: Your close and extended family, with as many or as few in-laws as you want.
-        following: People you don't know personally, but whose posts you find interesting.
-        friends: Your real friends, the ones you feel comfortable sharing private details with.
       contact_of:
         index:
           header:
@@ -45,6 +40,11 @@ fr:
       contacts:
         index:
           header: Your circles
+      content:
+        acquaintances: A good place to stick people you've met but aren't particularly close to.
+        family: Your close and extended family, with as many or as few in-laws as you want.
+        following: People you don't know personally, but whose posts you find interesting.
+        friends: Your real friends, the ones you feel comfortable sharing private details with.
       edit:
         header: Edit %{name}
       form:
