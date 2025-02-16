@@ -48,17 +48,9 @@ module Socializer
     # @example
     #   Socializer::AddDefaultCircles.new(person: some_person).call
     def call
-      create_circle(display_name: "Friends",
-                    content: friends_content)
-
-      create_circle(display_name: "Family",
-                    content: family_content)
-
-      create_circle(display_name: "Acquaintances",
-                    content: acquaintances_content)
-
-      create_circle(display_name: "Following",
-                    content: following_content)
+      default_circles.each do |display_name, content|
+        create_circle(display_name:, content:)
+      end
     end
 
     private
@@ -71,28 +63,42 @@ module Socializer
     # @param display_name [String] the name of the circle
     # @param content [String, nil] the content/description of the circle
     def create_circle(display_name:, content: nil)
-      circles = @person.activity_object.circles
-      circles.create!(display_name:, content:)
+      @person.activity_object.circles.create!(display_name:, content:)
+    end
+
+    # Returns a hash of default circles with their respective content
+    #
+    # @example
+    #   default_circles
+    #   # => { "Friends" => "Your real friends, the ones you feel comfortable sharing private details with.",
+    #          "Family" => "Your close and extended family, with as many or as few in-laws as you want.",
+    #          "Acquaintances" => "A good place to stick people you've met but aren't particularly close to.",
+    #          "Following" => "People you don't know personally, but whose posts you find interesting." }
+    #
+    # @return [Hash] a hash of default circles and their content
+    def default_circles
+      {
+        "Friends" => friends_content,
+        "Family" => family_content,
+        "Acquaintances" => acquaintances_content,
+        "Following" => following_content
+      }
     end
 
     def acquaintances_content
-      "A good place to stick people you've met but " \
-        "aren't particularly close to."
+      I18n.t("socializer.circles.content.acquaintances")
     end
 
     def family_content
-      "Your close and extended family, with as " \
-        "many or as few in-laws as you want."
+      I18n.t("socializer.circles.content.family")
     end
 
     def following_content
-      "People you don't know personally, but whose " \
-        "posts you find interesting."
+      I18n.t("socializer.circles.content.following")
     end
 
     def friends_content
-      "Your real friends, the ones you feel " \
-        "comfortable sharing private details with."
+      I18n.t("socializer.circles.content.friends")
     end
   end
 end
