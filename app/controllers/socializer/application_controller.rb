@@ -4,9 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
-  # Application controller
-  #
+  # ApplicationController is the base controller class for the application.
+  # It inherits from ActionController::Base and includes common functionality
+  # for all controllers.
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     # skip_before_action :verify_authenticity_token
