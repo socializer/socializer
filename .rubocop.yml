@@ -1,4 +1,5 @@
 plugins:
+  - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
@@ -7,7 +8,6 @@ plugins:
 
 require:
   - rubocop-capybara
-  - rubocop-factory_bot
   - rubocop-rspec_rails
 
 # We want Exclude directives from different
