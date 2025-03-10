@@ -1,14 +1,12 @@
 plugins:
+  - rubocop-capybara
   - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
-  - rubocop-thread_safety
-
-require:
-  - rubocop-capybara
   - rubocop-rspec_rails
+  - rubocop-thread_safety
 
 # We want Exclude directives from different
 # config files to get merged, not overwritten

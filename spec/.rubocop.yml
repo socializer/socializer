@@ -1,11 +1,9 @@
 inherit_from: ../.rubocop.yml
 
 plugins:
+  - rubocop-capybara
   - rubocop-factory_bot
   - rubocop-rspec
-
-require:
-  - rubocop-capybara
   - rubocop-rspec_rails
 
 Metrics/ModuleLength:

@@ -1,9 +1,7 @@
 plugins:
+  - rubocop-capybara
   - rubocop-factory_bot
   - rubocop-rspec
-
-require:
-  - rubocop-capybara
 
 # Disable all cops by default,
 # only enable those defined explicitly in this configuration file
