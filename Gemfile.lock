@@ -326,7 +326,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.26.3)
-    parser (3.3.7.3)
+    parser (3.3.7.4)
       ast (~> 2.4.1)
       racc
     pp (0.6.2)
@@ -409,9 +409,9 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rbs (3.9.1)
+    rbs (3.9.2)
       logger
-    rdoc (6.13.0)
+    rdoc (6.13.1)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
