@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Group related objects
+  # Namespace for Group-related objects
   #
   class Group
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects
     #
     module Services
       #
@@ -42,11 +42,11 @@ module Socializer
         end
 
         # @return [Socializer::Membership] if
-        #   validations pass the record is deleted from the database and
+        #   validations pass, the record is deleted from the database and
         #   freezes this instance to reflect that no changes should be made
         #   (since they can't be persisted).
         # @return [FalseClass] if the before_destroy callback fails. The action
-        #   is cancelled.
+        #   is canceled.
         def call
           raise(NoMethodError, "You must implement the call method")
         end

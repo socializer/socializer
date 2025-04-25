@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Activity related objects
+  # Namespace for Activity-related objects.
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects.
     #
     module Services
       #
@@ -29,7 +29,7 @@ module Socializer
         # Creates the [Socializer::Activity]
         #
         # @param activity_object [Socializer::ActivityObject] the
-        #   Socialicer::ActivityObject being liked
+        #   Socializer::ActivityObject being liked
         #
         # @return [Socializer::Activity]
         def call(activity_object:)
@@ -62,14 +62,14 @@ module Socializer
           activity_object.increment(:like_count).save
         end
 
-        # Return true if creating the [Socializer::Activity] shoud not proceed
+        # Return true if creating the [Socializer::Activity] should not proceed
         #
         # @return [TrueClass, FalseClass]
         def blocked?
           actor.likes?(activity_object)
         end
 
-        # The verb to use when liking an [Socializer::ActivityObject]
+        # The verb to use when liking a [Socializer::ActivityObject]
         #
         # @return [String]
         def verb

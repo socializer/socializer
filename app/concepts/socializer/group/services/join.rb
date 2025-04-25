@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Group related objects
+  # Namespace for Group-related objects
   #
   class Group
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects
     #
     module Services
       #
@@ -17,7 +17,7 @@ module Socializer
       #
       class Join < ServiceBase
         # @return [Socializer::Membership] if
-        #   validations pass the resulting object is returned.
+        #   validations pass, the resulting object is returned.
         # @raise [ActiveRecord::RecordInvalid] when the record is invalid.
         def call
           privacy = group.privacy

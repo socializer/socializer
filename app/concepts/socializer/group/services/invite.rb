@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Group related objects
+  # Namespace for Group-related objects
   #
   class Group
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects
     #
     module Services
       #

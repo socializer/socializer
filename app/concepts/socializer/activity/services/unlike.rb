@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Activity related objects
+  # Namespace for Activity-related objects
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects
     #
     module Services
       #
@@ -29,14 +29,14 @@ module Socializer
           activity_object.decrement(:like_count).save
         end
 
-        # Return true if creating the [Socializer::Activity] shoud not proceed
+        # Return true if creating the [Socializer::Activity] should not proceed
         #
         # @return [TrueClass, FalseClass]
         def blocked?
           !actor.likes?(activity_object)
         end
 
-        # The verb to use when unliking an [Socializer::ActivityObject]
+        # The verb to use when unliking a [Socializer::ActivityObject]
         #
         # @return [String]
         #

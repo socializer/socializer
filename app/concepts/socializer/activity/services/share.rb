@@ -5,11 +5,11 @@
 #
 module Socializer
   #
-  # Namespace for Activity related objects
+  # Namespace for Activity-related objects
   #
   class Activity
     #
-    # Namespace for Service related objects
+    # Namespace for Service-related objects
     #
     module Services
       #
@@ -53,7 +53,7 @@ module Socializer
           @object_ids = params[:object_ids].split(",")
         end
 
-        # The verb to use when sharing an [Socializer::ActivityObject]
+        # The verb to use when sharing a [Socializer::ActivityObject]
         #
         # @return [String]
         def verb
