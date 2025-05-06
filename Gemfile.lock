@@ -425,7 +425,7 @@ GEM
     rspec-expectations (3.13.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.3)
+    rspec-mocks (3.13.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-rails (8.0.0)
@@ -567,7 +567,7 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
-    version_gem (1.1.7)
+    version_gem (1.1.8)
     websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
