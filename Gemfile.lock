@@ -171,7 +171,7 @@ GEM
       activesupport (>= 5.0)
       request_store (>= 1.0)
       ruby2_keywords
-    drb (2.2.1)
+    drb (2.2.3)
     elasticsearch-rails (8.0.0)
     enumerize (2.8.1)
       activesupport (>= 3.2)
@@ -380,7 +380,7 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
