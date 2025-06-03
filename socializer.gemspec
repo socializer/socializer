@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("bcrypt", "~> 3.1.16")
   spec.add_dependency("bootstrap-sass", "~> 3.4.1")
   spec.add_dependency("coffee-rails", "~> 5.0.0")
-  spec.add_dependency("country_select", "~> 10.0")
+  spec.add_dependency("country_select", "~> 11.0")
   spec.add_dependency("draper", "~> 4.0.2")
   spec.add_dependency("elasticsearch-rails", ">= 7.2", "< 8.1")
   spec.add_dependency("enumerize", "~> 2.8.0")
