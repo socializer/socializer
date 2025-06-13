@@ -179,7 +179,7 @@ GEM
     erubi (1.13.1)
     erubis (2.7.0)
     execjs (2.10.0)
-    factory_bot (6.5.3)
+    factory_bot (6.5.4)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
