@@ -148,7 +148,7 @@ GEM
       unaccent (~> 0.3)
     country_select (11.0.0)
       countries (> 6.0, < 9.0)
-    coveralls_reborn (0.28.0)
+    coveralls_reborn (0.29.0)
       simplecov (~> 0.22.0)
       term-ansicolor (~> 1.7)
       thor (~> 1.2)
@@ -609,7 +609,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
-  coveralls_reborn (~> 0.28.0)
+  coveralls_reborn (~> 0.29.0)
   database_cleaner-active_record (~> 2.0)
   debug
   factory_bot_rails
