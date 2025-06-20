@@ -52,7 +52,7 @@ module Socializer
     private
 
     def make_sure_its_not_the_last_one
-      return unless person.authentications.count == 1
+      return unless person.authentications.one?
 
       errors.add(:base, I18n.t(:cannot_delete_last_authentication,
                                scope: "socializer.errors.messages"))
