@@ -229,7 +229,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.12.2)
-    jwt (3.1.1)
+    jwt (3.1.2)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -510,7 +510,7 @@ GEM
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
     securerandom (0.4.1)
-    selenium-webdriver (4.33.0)
+    selenium-webdriver (4.34.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
