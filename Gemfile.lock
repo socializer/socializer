@@ -560,7 +560,7 @@ GEM
     thor (1.4.0)
     tilt (2.6.1)
     timeout (0.4.3)
-    tins (1.39.1)
+    tins (1.42.0)
       bigdecimal
       sync
     typeprof (0.30.1)
