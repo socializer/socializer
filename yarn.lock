@@ -858,10 +858,10 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
 
-memfs@^4.6.0:
-  version "4.43.0"
-  resolved "https://registry.yarnpkg.com/memfs/-/memfs-4.43.0.tgz#8aeed4d242e29acf57dfdfe93fec4f84280f8df6"
-  integrity sha512-XCdhMy33sgxCwJ4JgjSasLGgOjFm9/i+IEhO03gPHroJeTBhM7ZQ1+v3j7di9nNKtcLGjVvKjHVOkTbVop/R/Q==
+"memfs@>=4.6.0 <4.43.0":
+  version "4.42.0"
+  resolved "https://registry.yarnpkg.com/memfs/-/memfs-4.42.0.tgz#faa3b89d78fb723bef37370ca86a460763c23e15"
+  integrity sha512-RG+4HMGyIVp6UWDWbFmZ38yKrSzblPnfJu0PyPt0hw52KW4PPlPp+HdV4qZBG0hLDuYVnf8wfQT4NymKXnlQjA==
   dependencies:
     "@jsonjoy.com/json-pack" "^1.11.0"
     "@jsonjoy.com/util" "^1.9.0"
@@ -1374,12 +1374,12 @@ wbuf@^1.1.0, wbuf@^1.7.3:
     minimalistic-assert "^1.0.0"
 
 webpack-dev-middleware@^7.4.2:
-  version "7.4.3"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-7.4.3.tgz#4e23b479a574549334641faa4e00670720f01839"
-  integrity sha512-5kA/PzpZzDz5mNOkcNLmU1UdjGeSSxd7rt1akWpI70jMNHLASiBPRaQZn0hgyhvhawfIwSnnLfDABIxL3ueyFg==
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-7.4.4.tgz#def03430943fd74e06ef90d0b4d35153b6b79250"
+  integrity sha512-MMERxBs7QRSrquqjvExZ3GtTJc3r/yWASgiOCMnvXB4jdfEN/Jb9p68KzD6zku3+BViaG8cA+CiRkADFFaDCfw==
   dependencies:
     colorette "^2.0.10"
-    memfs "^4.6.0"
+    memfs ">=4.6.0 <4.43.0"
     mime-types "^3.0.1"
     on-finished "^2.4.1"
     range-parser "^1.2.1"
