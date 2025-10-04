@@ -420,9 +420,10 @@ GEM
       ffi (~> 1.0)
     rbs (3.9.5)
       logger
-    rdoc (6.14.2)
+    rdoc (6.15.0)
       erb
       psych (>= 4.0.0)
+      tsort
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
@@ -639,7 +640,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubocop-thread_safety
   scss_lint (~> 0.60.0)
-  selenium-webdriver (~> 4.16)
+  selenium-webdriver (~> 4.3)
   shoulda-matchers (~> 6.4)
   simplecov (~> 0.22.0)
   simplecov-lcov

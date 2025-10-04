@@ -64,7 +64,7 @@ group :test do
   gem "coveralls_reborn", "~> 0.29.0", require: false
   # gem "cucumber-rails", "~> 1.5.0", require: false
   gem "database_cleaner-active_record", "~> 2.0"
-  gem "selenium-webdriver", "~> 4.16"
+  gem "selenium-webdriver", "~> 4.3"
   gem "simplecov", "~> 0.22.0", require: false
   gem "simplecov-lcov", require: false
 
