@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = "~> 3.4.6"
+  spec.required_ruby_version = "~> 3.4.7"
 
   spec.add_dependency("bcrypt", "~> 3.1.16")
   spec.add_dependency("bootstrap-sass", "~> 3.4.1")
