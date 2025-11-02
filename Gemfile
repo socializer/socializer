@@ -56,7 +56,7 @@ group :development do
   # gem "ruby-lsp"
   # gem "ruby-lsp-rspec", require: false
   gem "scss_lint", "~> 0.60.0"
-  gem "shoulda-matchers", "~> 6.4"
+  gem "shoulda-matchers", "~> 7.0"
 end
 
 group :test do
