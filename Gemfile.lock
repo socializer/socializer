@@ -6,7 +6,7 @@ PATH
       bootstrap-sass (~> 3.4.1)
       coffee-rails (~> 5.0.0)
       country_select (~> 11.0)
-      draper (~> 4.0.2)
+      draper (= 4.0.4)
       elasticsearch-rails (>= 7.2, < 8.1)
       enumerize (~> 2.8.0)
       omniauth (~> 2.1.0)
