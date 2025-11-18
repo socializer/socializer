@@ -42,6 +42,7 @@ group :development, :test do
   gem "rails-dummy", "= 0.1.1"
   gem "sqlite3"
   gem "typeprof"
+  gem "yard-lint"
 end
 
 group :development do

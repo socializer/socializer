@@ -596,6 +596,9 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.37)
+    yard-lint (1.2.3)
+      yard (~> 0.9)
+      zeitwerk (~> 2.6)
     zeitwerk (2.7.3)
 
 PLATFORMS
@@ -654,6 +657,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3
   typeprof
+  yard-lint
 
 BUNDLED WITH
    2.7.2
