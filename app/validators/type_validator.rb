@@ -7,12 +7,12 @@ class TypeValidator < ActiveModel::EachValidator
 
   # Validates that the value of the specified attribute is an instance of the expected type.
   #
-  # @example
-  #   validates :attribute_name, type: { with: String }
-  #
   # @param record [Object] the object being validated
   # @param attribute [Symbol] the attribute being validated
   # @param value [Object] the value of the attribute
+  #
+  # @example
+  #   validates :attribute_name, type: { with: String }
   def validate_each(record, attribute, value)
     expected_type = options[:with]
 

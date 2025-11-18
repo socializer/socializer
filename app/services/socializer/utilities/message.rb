@@ -16,13 +16,14 @@ module Socializer
 
       # Generates an error message for an instance of the wrong type.
       #
+      # @param instance [Object] the instance that has the wrong type
+      # @param valid_class [Class] the class that the instance should be
+      #
+      # @return [String] the error message
+      #
       # @example
       #   wrong_type_message(instance: "string", valid_class: Integer)
       #   # => "Expected argument to be of type Integer, but got String"
-      #
-      # @param instance [Object] the instance that has the wrong type
-      # @param valid_class [Class] the class that the instance should be
-      # @return [String] the error message
       def wrong_type_message(instance:, valid_class:)
         valid_class_name = valid_class.name
 

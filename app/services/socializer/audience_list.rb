@@ -17,13 +17,13 @@ module Socializer
 
     # Initialize a new AudienceList instance
     #
-    # @example
-    #   Socializer::AudienceList.new(person: some_person, query: "example")
-    #
     # @param person [Socializer::Person] the person to build the list for
     # @param query [String, nil] Used to filter the audience list
     #
     # @return [AudienceList]
+    #
+    # @example
+    #   Socializer::AudienceList.new(person: some_person, query: "example")
     def initialize(person:, query: nil)
       @person = person
       @query  = query
@@ -35,13 +35,13 @@ module Socializer
 
     # Class method to create and invoke an instance of AudienceList
     #
-    # @example
-    #   Socializer::AudienceList.call(person: some_person, query: "example")
-    #
     # @param person [Socializer::Person] the person to build the list for
     # @param query [String, nil] Used to filter the audience list
     #
     # @return [Array] the audience list
+    #
+    # @example
+    #   Socializer::AudienceList.call(person: some_person, query: "example")
     def self.call(person:, query: nil)
       new(person:, query:).call
     end
@@ -120,13 +120,13 @@ module Socializer
 
     # Returns a {Hash} containing the value and text for the privacy level
     #
-    # @example
-    #   privacy_hash(privacy_symbol: :public)
-    #
     # @param  privacy_symbol [Symbol] The symbol representing the Audience
     # privacy
     #
     # @return [Hash] Using the example you will get !{id: 1, name: "Public"}
+    #
+    # @example
+    #   privacy_hash(privacy_symbol: :public)
     def privacy_hash(privacy_symbol:)
       privacy_symbol = privacy_symbol.downcase.to_sym
       privacy        = Audience.privacy.find_value(privacy_symbol)
