@@ -137,10 +137,32 @@ module Socializer
 
     private
 
+    # Adds the group's author as an active member.
+    # Called as an `after_create` callback to ensure the author is enrolled in the group.
+    #
+    # @return [Socializer::Membership] the created membership record
+    #
+    # @raise [ActiveRecord::RecordInvalid] if the membership cannot be created (uses `create!`)
+    #
+    # @example
+    #   # After creating a group, the group's author will be added as a member
+    #   group = Socializer::Group.create!(display_name: "Team", author: person)
+    #   group.members.include?(person) # => true
     def add_author_to_members
       author.memberships.create!(group_id: id, active: true)
     end
 
+    # Prevent destroying a group that still has members.
+    #
+    # This `before_destroy` callback adds an error on `:base` and halts the destroy
+    # by throwing `:abort` when any memberships exist for the group.
+    #
+    # @return [void]
+    #
+    # @example
+    #   # Attempting to destroy a group with members will be aborted:
+    #   group = Socializer::Group.find(1)
+    #   group.destroy # => false
     def deny_delete_if_members
       return if memberships.none?
 
