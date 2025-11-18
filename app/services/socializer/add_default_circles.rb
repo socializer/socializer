@@ -89,18 +89,30 @@ module Socializer
       }
     end
 
+    # Returns the localized description for the "Acquaintances" circle.
+    #
+    # @return [String] localized content retrieved from I18n translations
     def acquaintances_content
       I18n.t("socializer.circles.content.acquaintances")
     end
 
+    # Returns the localized description for the "Family" circle.
+    #
+    # @return [String] localized content retrieved from I18n translations
     def family_content
       I18n.t("socializer.circles.content.family")
     end
 
+    # Returns the localized description for the "Following" circle.
+    #
+    # @return [String] localized content retrieved from I18n translations
     def following_content
       I18n.t("socializer.circles.content.following")
     end
 
+    # Returns the localized description for the "Friends" circle.
+    #
+    # @return [String] localized content retrieved from I18n translations
     def friends_content
       I18n.t("socializer.circles.content.friends")
     end
