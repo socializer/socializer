@@ -74,24 +74,24 @@ module Socializer
 
     # Find groups with the specified display name
     #
-    # @example
-    #   Socializer::Group.with_display_name(name: "Example Group")
-    #
     # @param name [String] the display name to search for
     #
     # @return [ActiveRecord::Relation<Socializer::Group>]
+    #
+    # @example
+    #   Socializer::Group.with_display_name(name: "Example Group")
     def self.with_display_name(name:)
       where(display_name: name)
     end
 
     # Find groups where the display_name matches the given query pattern
     #
-    # @example
-    #   Socializer::Group.display_name_like(query: "%example%")
-    #
     # @param query [String] the pattern to match against display_name
     #
     # @return [ActiveRecord::Relation<Socializer::Group>]
+    #
+    # @example
+    #   Socializer::Group.display_name_like(query: "%example%")
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end

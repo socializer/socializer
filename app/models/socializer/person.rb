@@ -115,12 +115,12 @@ module Socializer
 
     # Finds people whose display name matches the given query.
     #
-    # @example
-    #   Socializer::Person.display_name_like(query: "%John%")
-    #
     # @param query [String] The query string to match display names.
     #
     # @return [ActiveRecord::Relation<Socializer::Person>] A collection of people with matching display names.
+    #
+    # @example
+    #   Socializer::Person.display_name_like(query: "%John%")
     def self.display_name_like(query:)
       where(arel_table[:display_name].matches(query))
     end
@@ -162,10 +162,10 @@ module Socializer
 
     # A list of activities the user likes
     #
+    # @return [Socializer::Activity]
+    #
     # @example
     #   current_user.likes
-    #
-    # @return [Socializer::Activity]
     def likes
       return @likes if defined?(@likes)
 
@@ -181,13 +181,13 @@ module Socializer
 
     # Checks if the person likes the object or not
     #
-    # @example
-    #   current_user.likes?(object)
-    #
-    # @param [Socializer::ActivityObject] object
+    # @param object [Socializer::ActivityObject]
     #
     # @return [TrueClass] if the person likes the object
     # @return [FalseClass] if the person does not like the object
+    #
+    # @example
+    #   current_user.likes?(object)
     def likes?(object)
       verbs_of_interest = %w[like unlike]
 

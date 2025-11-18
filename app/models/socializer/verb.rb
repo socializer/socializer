@@ -22,12 +22,12 @@ module Socializer
 
     # Finds the verb with the given display name.
     #
-    # @example
-    #   Socializer::Verb.with_display_name(name: 'like')
-    #
     # @param name [String] the display name of the verb
     #
     # @return [ActiveRecord::Relation] the verbs with the given display name
+    #
+    # @example
+    #   Socializer::Verb.with_display_name(name: 'like')
     def self.with_display_name(name:)
       where(display_name: name)
     end

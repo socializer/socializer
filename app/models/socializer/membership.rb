@@ -45,12 +45,12 @@ module Socializer
 
     # Find memberships by member ID
     #
-    # @example
-    #   Socializer::Membership.with_member_id(member_id: 1)
-    #
     # @param member_id [Integer] the ID of the member
     #
     # @return [ActiveRecord::Relation]
+    #
+    # @example
+    #   Socializer::Membership.with_member_id(member_id: 1)
     def self.with_member_id(member_id:)
       where(member_id:)
     end
