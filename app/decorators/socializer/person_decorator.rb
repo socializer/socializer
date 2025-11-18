@@ -186,7 +186,7 @@ module Socializer
 
     def social_avatar_url
       auth = authentications.find_by(provider: avatar_provider.downcase)
-      auth.image_url if auth.present?
+      auth.presence&.image_url
     end
 
     def gravatar_url
