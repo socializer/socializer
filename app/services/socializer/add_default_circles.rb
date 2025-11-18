@@ -17,11 +17,11 @@ module Socializer
 
     # Initializes a new instance of AddDefaultCircles
     #
-    # @example
-    #   Socializer::AddDefaultCircles.new(person: some_person)
-    #
     # @param person [Socializer::Person] the person to create the default circles for
     # @return [Socializer::AddDefaultCircles] returns an instance of AddDefaultCircles
+    #
+    # @example
+    #   Socializer::AddDefaultCircles.new(person: some_person)
     def initialize(person:)
       @person = person
 
@@ -32,11 +32,11 @@ module Socializer
 
     # Class method to create and invoke an instance of AddDefaultCircles
     #
-    # @example
-    #   Socializer::AddDefaultCircles.call(person: some_person)
-    #
     # @param person [Socializer::Person] the person to create the default circles for
     # @return [void]
+    #
+    # @example
+    #   Socializer::AddDefaultCircles.call(person: some_person)
     def self.call(person:)
       new(person:).call
     end
@@ -57,25 +57,29 @@ module Socializer
 
     # Creates a circle for the person with the given display name and content
     #
-    # @example
-    #   create_circle(display_name: "Friends", content: "Close friends")
-    #
     # @param display_name [String] the name of the circle
     # @param content [String, nil] the content/description of the circle
+    #
+    # @example
+    #   create_circle(display_name: "Friends", content: "Close friends")
     def create_circle(display_name:, content: nil)
       @person.activity_object.circles.create!(display_name:, content:)
     end
 
     # Returns a hash of default circles with their respective content
     #
-    # @example
-    #   default_circles
-    #   # => { "Friends" => "Your real friends, the ones you feel comfortable sharing private details with.",
-    #          "Family" => "Your close and extended family, with as many or as few in-laws as you want.",
-    #          "Acquaintances" => "A good place to stick people you've met but aren't particularly close to.",
-    #          "Following" => "People you don't know personally, but whose posts you find interesting." }
-    #
     # @return [Hash] a hash of default circles and their content
+    #
+    # @example
+    #   # Example usage
+    #   default_circles
+    #   # =>
+    #   # {
+    #   #   "Friends" => "Your real friends, the ones you feel comfortable sharing private details with.",
+    #   #   "Family" => "Your close and extended family, with as many or as few in-laws as you want.",
+    #   #   "Acquaintances" => "A good place to stick people you've met but aren't particularly close to.",
+    #   #   "Following" => "People you don't know personally, but whose posts you find interesting."
+    #   # }
     def default_circles
       {
         "Friends" => friends_content,
