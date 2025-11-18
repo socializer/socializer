@@ -92,6 +92,24 @@ module Socializer
       result.display_name_like(query: "%#{@query}%")
     end
 
+    # Merge an icon into the provided list.
+    #
+    # If `list` is a Hash it will be merged with the `icon` key and returned.
+    # If `list` is an Array or ActiveRecord::Relation each element will be
+    # converted to a hash via `serializable_hash` and the `icon` key will be added.
+    #
+    # @param list [Array, ActiveRecord::Relation, Hash] the collection or hash to augment
+    # @param icon [String] Icon identifier or CSS class to attach to each item (e.g. `fa-user`)
+    #
+    # @return [Hash, Array<Hash>] Returns a Hash when `list` is a Hash; otherwise returns an Array
+    #   of Hashes with symbolized keys.
+    #
+    # @example
+    #   merge_icon(list: { id: 1, name: 'Public' }, icon: 'fa-globe')
+    #   # => { id: 1, name: 'Public', icon: 'fa-globe' }
+    #
+    #   merge_icon(list: Person.where(active: true), icon: 'fa-user')
+    #   # => [{ id: 1, name: 'Alice', icon: 'fa-user' }, ...]
     def merge_icon(list:, icon:)
       return list.merge(icon:) if list.is_a?(Hash)
 
@@ -130,6 +148,21 @@ module Socializer
       { id: privacy.value, name: privacy.text }
     end
 
+    # Selects the `display_name` attribute aliased as `name` and ensures the query
+    # includes GUIDs by applying the `guids` scope.
+    #
+    # @param query [ActiveRecord::Relation, Class] An ActiveRecord relation or model
+    #   class. The method uses `query.base_class` and expects the relation to respond
+    #   to `select` and the model to have a `display_name` column. Passing a model
+    #   class (e.g. `Person`) or a relation (e.g. `Person.where(active: true)`) is
+    #   supported.
+    #
+    # @return [ActiveRecord::Relation] The provided relation with `display_name` aliased
+    #   to `name` and the `guids` scope applied.
+    #
+    # @example
+    #   select_display_name_alias_and_guids(query: Person)
+    #   # => SELECT people.display_name AS name, ... WITH guids scope applied
     def select_display_name_alias_and_guids(query:)
       klass              = query.base_class
       display_name_alias = klass.arel_table[:display_name].as("name")
