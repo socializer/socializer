@@ -73,10 +73,16 @@ module Socializer
 
     # Create a notification for the given activity and contact
     #
-    # @param activity [Socializer::Activity]
-    # @param contact_id [Socializer::Person]
+    # @param activity [Socializer::Activity] the activity to create the notification for
+    # @param contact_id [Integer] the id of the ActivityObject (contact) to receive the notification
     #
-    # @return [TrueClass/FalseClass]
+    # @return [Boolean] returns true if the record was saved successfully
+    #
+    # @raise [ActiveRecord::RecordInvalid] if validation fails during save!
+    #
+    # @example
+    #   activity = Socializer::Activity.find(1)
+    #   Socializer::Notification.create_notification(activity: activity, contact_id: 42)
     def self.create_notification(activity:, contact_id:)
       object = Notification.new do |notification|
         notification.activity = activity
