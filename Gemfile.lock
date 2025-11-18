@@ -18,7 +18,7 @@ PATH
       omniauth-twitter (~> 1.4.0)
       rails (~> 8.1.1)
       sass-rails (~> 6.0.0)
-      simple_form (~> 5.3.0)
+      simple_form (~> 5.4.0)
       uglifier (>= 4.1.19)
 
 GEM
@@ -528,9 +528,9 @@ GEM
     sexp_processor (4.17.4)
     shoulda-matchers (7.0.1)
       activesupport (>= 7.1)
-    simple_form (5.3.1)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
+    simple_form (5.4.0)
+      actionpack (>= 7.0)
+      activemodel (>= 7.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
