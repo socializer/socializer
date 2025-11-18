@@ -48,7 +48,7 @@ group :development do
   gem "brakeman", "~> 7.0"
   gem "bundler", ">= 1.15.0", "< 3.0"
   gem "coffeelint", "~> 1.16.1"
-  gem "i18n-tasks", "~> 1.0.0"
+  gem "i18n-tasks", "~> 1.1.0"
   gem "inch", "~> 0.8.0"
   gem "listen"
   gem "rails_best_practices", "~> 1.23.0"
