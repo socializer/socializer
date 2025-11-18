@@ -94,6 +94,16 @@ module Socializer
     private_class_method :create_notification
 
     # FIXME: Move to Tie or Activity
+    # Returns unique contact ids for potential recipients of the given activity.
+    # Traverses the association chain: Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id.
+    #
+    # @param activity_id [Integer] the id of the activity whose audience should be inspected
+    #
+    # @return [Array<Integer>] an array of distinct contact ids (ActivityObject ids) that are potential recipients
+    #
+    # @example
+    #   # returns an array of contact ids, e.g. [42, 99]
+    #   Socializer::Notification.get_potential_contact_ids(activity_id: 1)
     def self.get_potential_contact_ids(activity_id:)
       # Activity -> Audience -> ActivityObject -> Circle -> Tie -> contact_id
       Tie.joins(circle: { activity_object: :audiences })
@@ -104,6 +114,17 @@ module Socializer
     private_class_method :get_potential_contact_ids
 
     # FIXME: Move to ActivityObject or Circle
+    # Determines whether the activity object identified by `child_contact_id` is a
+    # member of any circle belonging to the activity object identified by
+    # `parent_contact_id`.
+    #
+    # @param parent_contact_id [Integer] the ActivityObject id that owns one or more circles
+    # @param child_contact_id [Integer] the ActivityObject id representing the person to check
+    #
+    # @return [Boolean] true if the child contact appears in at least one circle of the parent
+    #
+    # @example
+    #   Socializer::Notification.person_in_circle?(parent_contact_id: 42, child_contact_id: 99)
     def self.person_in_circle?(parent_contact_id:, child_contact_id:)
       # ActivityObject.id = parent_contact_id
       # ActivityObject -> Circle -> Tie -> contact_id = child_contact_id
