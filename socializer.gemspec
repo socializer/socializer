@@ -46,7 +46,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("omniauth-openid", "~> 2.0.1")
   spec.add_dependency("omniauth-rails_csrf_protection")
   spec.add_dependency("omniauth-twitter", "~> 1.4.0")
-  spec.add_dependency("rails", "~> 8.0.1")
+  spec.add_dependency("rails", "~> 8.1.1")
   spec.add_dependency("sass-rails", "~> 6.0.0")
   spec.add_dependency("simple_form", "~> 5.3.0")
   spec.add_dependency("uglifier", ">= 4.1.19")

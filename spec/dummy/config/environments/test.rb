@@ -39,8 +39,14 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "example.com" }
 
-  # Print deprecation notices to the stderr.
+  # Print deprecation notices to the stderr by default. You can temporarily
+  # switch this to :raise locally to surface deprecations during development.
   config.active_support.deprecation = :stderr
+
+  # Treat any disallowed deprecations as errors. This is inert until you add
+  # patterns to `disallowed_deprecation_warnings`.
+  config.active_support.disallowed_deprecation = :raise
+  config.active_support.disallowed_deprecation_warnings = []
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

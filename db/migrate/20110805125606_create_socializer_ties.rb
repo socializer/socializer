@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerTies < ActiveRecord::Migration[8.0]
+class CreateSocializerTies < ActiveRecord::Migration[8.1]
   def change
     create_table :socializer_ties do |t|
       t.bigint :contact_id, index: true, null: false

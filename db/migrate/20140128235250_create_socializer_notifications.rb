@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerNotifications < ActiveRecord::Migration[8.0]
+class CreateSocializerNotifications < ActiveRecord::Migration[8.1]
   def change
     create_table :socializer_notifications do |t|
       t.references :activity, null: false

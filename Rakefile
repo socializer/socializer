@@ -29,7 +29,8 @@ end
 APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
 load "rails/tasks/engine.rake"
 
-load "rails/tasks/statistics.rake"
+# Rails deprecated rails/tasks/statistics.rake and removed it in 8.2.
+# Use `bin/rails stats` instead of the legacy rake task.
 
 Dir[File.join(File.dirname(__FILE__), "tasks/**/*.rake")].each { |f| load f }
 

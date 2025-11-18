@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSocializerActivityObjects < ActiveRecord::Migration[8.0]
+class CreateSocializerActivityObjects < ActiveRecord::Migration[8.1]
   def change
     create_table :socializer_activity_objects do |t|
       t.bigint   :activitable_id,             null: false
