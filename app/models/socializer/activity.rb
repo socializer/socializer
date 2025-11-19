@@ -82,69 +82,69 @@ module Socializer
 
     # Find activities where the id is equal to the given id
     #
-    # @example Find record with specific ID
-    #   Socializer::Activity.with_id(id: 1)
-    #   # => Returns the activity with ID 1
-    #
     # @param id [Integer] the ID of the record to find
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
     #   the records matching the given ID
+    #
+    # @example Find record with specific ID
+    #   Socializer::Activity.with_id(id: 1)
+    #   # => Returns the activity with ID 1
     def self.with_id(id:)
       where(id:)
     end
 
     # Find activities where the activity\_object\_id is equal to the given id
     #
-    # @example Find activities with a specific activity_object_id
-    #   Socializer::Activity.with_activity_object_id(id: 1)
-    #   # => Returns the activities with activity_object_id 1
-    #
     # @param id [Integer] the ID of the activity object
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
     #   the records matching the given activity\_object\_id
+    #
+    # @example Find activities with a specific activity_object_id
+    #   Socializer::Activity.with_activity_object_id(id: 1)
+    #   # => Returns the activities with activity_object_id 1
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
 
     # Find activities where the actor_id is equal to the given id
     #
-    # @example Find activities with a specific actor ID
-    #   Socializer::Activity.with_actor_id(id: 1)
-    #   # => Returns the activities with actor ID 1
-    #
     # @param id [Integer] the ID of the actor
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
     #   the records matching the given actor ID
+    #
+    # @example Find activities with a specific actor ID
+    #   Socializer::Activity.with_actor_id(id: 1)
+    #   # => Returns the activities with actor ID 1
     def self.with_actor_id(id:)
       where(actor_id: id)
     end
 
     # Find activities where the target_id is equal to the given id
     #
-    # @example Find activities with a specific target ID
-    #   Socializer::Activity.with_target_id(id: 1)
-    #   # => Returns the activities with target ID 1
-    #
     # @param id [Integer] the ID of the target
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>]
     #   the records matching the given target ID
+    #
+    # @example Find activities with a specific target ID
+    #   Socializer::Activity.with_target_id(id: 1)
+    #   # => Returns the activities with target ID 1
     def self.with_target_id(id:)
       where(target_id: id)
     end
 
     # Returns a filtered, newest-first stream of activities for the specified viewer.
     #
-    # @example
-    #   Socializer::Activity.stream(viewer_id: 1)
-    #   # => Returns the activity stream for the viewer with ID 1
-    #
     # @param viewer_id [Integer] the ID of the viewer requesting the stream
     #
     # @return [ActiveRecord::Relation<Socializer::Activity>] the filtered activity stream
+    #
+    # @example
+    #   Socializer::Activity.stream(viewer_id: 1)
+    #   # => Returns the activity stream for the viewer with ID 1
     def self.stream(viewer_id:)
       person_id = Person.find_by(id: viewer_id).guid
       stream_query(viewer_id: person_id).newest_first.distinct
@@ -163,15 +163,15 @@ module Socializer
 
     # Display all activities for a given circle
     #
-    # @example
-    #   Socializer::Activity.circle_stream(actor_uid: 1, viewer_id: 2)
-    #   # => Returns the activity stream for the circle with actor_uid 1 and viewer_id 2
-    #
     # @param actor_uid [Integer] The unique identifier of the actor (circle).
     # @param viewer_id [Integer] The unique identifier of the viewer.
     #
     # @return [Socializer::Activity] The filtered activity stream scoped by
     #   `viewer_id` and associated with the `actor_uid`.
+    #
+    # @example
+    #   Socializer::Activity.circle_stream(actor_uid: 1, viewer_id: 2)
+    #   # => Returns the activity stream for the circle with actor_uid 1 and viewer_id 2
     #
     # FIXME: Should display notes even if circle has no members and the owner
     #   is viewing it.
@@ -187,15 +187,15 @@ module Socializer
 
     # Retrieves a distinct activity stream for a specific group and viewer.
     #
-    # @example
-    #   Socializer::Activity.group_stream(actor_uid: 1, viewer_id: 2)
-    #   # => Returns the activity stream for the group with ID 1 and viewer with ID 2
-    #
     # @param actor_uid [Integer] The unique identifier of the group.
     # @param viewer_id [Integer] The unique identifier of the viewer.
     #
     # @return [Socializer::Activity] The filtered activity stream scoped by `viewer_id` and associated with
     #   the `actor_uid`.
+    #
+    # @example
+    #   Socializer::Activity.group_stream(actor_uid: 1, viewer_id: 2)
+    #   # => Returns the activity stream for the group with ID 1 and viewer with ID 2
     def self.group_stream(actor_uid:, viewer_id:)
       group_id = Group.find_by(id: actor_uid).guid
 
@@ -256,7 +256,7 @@ module Socializer
     #   grouping that includes the viewer, or the viewer must be the actor
     #   of the activity.
     #
-    # Example usage:
+    # @example
     #   Activity.stream_query(viewer_id: 1)
     #
     def self.stream_query(viewer_id:)
@@ -277,10 +277,10 @@ module Socializer
 
     # Returns true if activity has comments
     #
+    # @return [TrueClass, FalseClass]
+    #
     # @example
     #   activity.comments?
-    #
-    # @return [TrueClass, FalseClass]
     def comments?
       comments.exists?
     end

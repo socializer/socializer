@@ -19,12 +19,14 @@ module Socializer
       #     end
       #   end
 
-      # Returns the formatted label and phone number
+      # Returns a safe HTML fragment combining the phone label and number.
+      # The label is titleized, and a separator is inserted between label and number.
+      #
+      # @return [ActiveSupport::SafeBuffer] HTML-safe string produced by `helpers.safe_join`
       #
       # @example
-      #   Mobile : 1112223333
-      #
-      # @return [String]
+      #   # => "Home : 555-1234"
+      #   decorator.label_and_number
       def label_and_number
         content = []
         content << model.label.titleize

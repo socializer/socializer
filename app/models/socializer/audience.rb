@@ -38,11 +38,12 @@ module Socializer
 
     # Grouping for audiences with circle privacy
     #
+    # @param viewer_id [Integer] the ID of the viewer
+    #
+    # @return [Arel::Nodes::Grouping] the grouping condition for circle privacy
+    #
     # @example
     #   Socializer::Audience.circle_privacy_grouping(viewer_id: 1)
-    #
-    # @param viewer_id [Integer] the ID of the viewer
-    # @return [Arel::Nodes::Grouping] the grouping condition for circle privacy
     def self.circle_privacy_grouping(viewer_id:)
       viewer_literal = viewer_literal(viewer_id:)
       author_ids = ActivityObject.joins(:person).ids
@@ -54,11 +55,12 @@ module Socializer
 
     # Grouping for audiences with limited privacy
     #
+    # @param viewer_id [Integer] the ID of the viewer
+    #
+    # @return [Arel::Nodes::Grouping] the grouping condition for limited privacy
+    #
     # @example
     #   Socializer::Audience.limited_privacy_grouping(viewer_id: 1)
-    #
-    # @param viewer_id [Integer] the ID of the viewer
-    # @return [Arel::Nodes::Grouping] the grouping condition for limited privacy
     def self.limited_privacy_grouping(viewer_id:)
       activity_object_id = arel_table[:activity_object_id]
 
@@ -71,11 +73,12 @@ module Socializer
 
     # Grouping for audiences with public privacy
     #
+    # @param viewer_id [Integer] the ID of the viewer
+    #
+    # @return [Arel::Nodes::Grouping] the grouping condition for public privacy
+    #
     # @example
     #   Socializer::Audience.public_privacy_grouping(viewer_id: 1)
-    #
-    # @param viewer_id [Integer] the ID of the viewer
-    # @return [Arel::Nodes::Grouping] the grouping condition for public privacy
     def self.public_privacy_grouping(viewer_id:)
       arel_table.grouping(arel_table[:privacy].eq(PUBLIC_PRIVACY)
                   .or(circle_privacy_grouping(viewer_id:)))
@@ -83,28 +86,38 @@ module Socializer
 
     # Find audiences where the activity_id is equal to the given id
     #
-    # @example
-    #   Socializer::Audience.with_activity_id(id: 1)
-    #
     # @param id [Integer] the ID of the activity
     #
     # @return [ActiveRecord::Relation<Socializer::Audience>]
+    #
+    # @example
+    #   Socializer::Audience.with_activity_id(id: 1)
     def self.with_activity_id(id:)
       where(activity_id: id)
     end
 
     # Find audiences where the activity_object_id is equal to the given id
     #
-    # @example
-    #   Socializer::Audience.with_activity_object_id(id: 1)
-    #
     # @param id [Integer] the ID of the activity object
     #
     # @return [ActiveRecord::Relation<Socializer::Audience>]
+    #
+    # @example
+    #   Socializer::Audience.with_activity_object_id(id: 1)
     def self.with_activity_object_id(id:)
       where(activity_object_id: id)
     end
 
+    # Return an Arel SQL literal for the given viewer id so it can be used
+    # directly in Arel subqueries.
+    #
+    # @param viewer_id [Integer, String] the ID of the viewer; converted to String
+    #
+    # @return [Arel::Nodes::SqlLiteral] SQL literal representing the viewer id
+    #
+    # @example
+    #   Socializer::Audience.viewer_literal(viewer_id: 42)
+    #   # => #<Arel::Nodes::SqlLiteral: "42">
     def self.viewer_literal(viewer_id:)
       Arel::Nodes::SqlLiteral.new(viewer_id.to_s)
     end
@@ -126,11 +139,12 @@ module Socializer
 
     # Limited group subquery
     #
+    # @param viewer_id [Integer] the ID of the viewer who wants to see the activity stream
+    #
+    # @return [Array] the IDs of the activity objects related to the groups the viewer is a member of
+    #
     # @example
     #   Socializer::Audience.limited_group_subquery(viewer_id: 1)
-    #
-    # @param viewer_id [Integer] the ID of the viewer who wants to see the activity stream
-    # @return [Array] the IDs of the activity objects related to the groups the viewer is a member of
     def self.limited_group_subquery(viewer_id)
       ActivityObject.joins(group: :memberships)
                     .merge(Membership.with_member_id(member_id: viewer_id))
