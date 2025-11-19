@@ -347,7 +347,9 @@ module Socializer
     # @example
     #   # In a decorator/view context:
     #   dropdown_link
-    #   # => "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\">More <span class=\"fa fa-angle-down fa-fw\"></span></a>"
+    #   # => "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\">"
+    #           "More <span class=\"fa fa-angle-down fa-fw\">"</span>"
+    #        "</a>"
     def dropdown_link
       css_class = "dropdown-toggle"
       icon      = helpers.tag.span(class: "fa fa-angle-down fa-fw")

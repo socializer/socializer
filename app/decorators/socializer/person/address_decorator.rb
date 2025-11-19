@@ -63,7 +63,8 @@ module Socializer
 
       # Returns the second address line (line2) followed by an HTML line break when present.
       #
-      # @return [Array, nil] an array suitable for `helpers.safe_join` (content string and `br` tag), or `nil` when `line2` is blank
+      # @return [Array, nil] an array suitable for `helpers.safe_join`
+      #   (content string and `br` tag), or `nil` when `line2` is blank
       #
       # @example
       #   # => ["Suite 100", #<ActiveSupport::SafeBuffer ...>]

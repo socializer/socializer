@@ -53,7 +53,8 @@ module Socializer
     # Creates a new Person record from the supplied OmniAuth hash, adds default circles for the new person,
     # and logs the person in by delegating to `login`.
     #
-    # @param auth [OmniAuth::AuthHash, Hash] Authentication data provided by OmniAuth (expected to respond to `provider` and `uid`).
+    # @param auth [OmniAuth::AuthHash, Hash] Authentication data provided by OmniAuth
+    #   (expected to respond to `provider` and `uid`).
     #
     # @return [void]
     #
@@ -84,7 +85,7 @@ module Socializer
 
     # Retrieves the OmniAuth authentication hash from the Rack request environment.
     #
-    # @return [Hash, OmniAuth::AuthHash, nil] Authentication data provided by the OmniAuth strategy, or nil if not available.
+    # @return [Hash, OmniAuth::AuthHash, nil] OmniAuth auth hash or nil.
     #
     # @example
     #   # In an omniauth callback action:
