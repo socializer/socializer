@@ -18,19 +18,14 @@ module Socializer
     #   end
     #
 
-    # Return the CSS class for the notification
-    #
-    # @param index: [Integer] Index of the item in the enum
-    #
-    # @return [String] [description]
-
     # Returns the CSS class for the notification card based on its index and read status.
+    #
+    # @param index [Integer] the index of the item in the enumeration
+    #
+    # @return [String] the CSS class for the notification card
     #
     # @example
     #   card_class(index: 1) #=> "panel-success bg-success"
-    #
-    # @param index [Integer] the index of the item in the enumeration
-    # @return [String] the CSS class for the notification card
     def card_class(index:)
       classname = "panel-default"
       classname = "panel-default bg-muted" if model.read
@@ -42,6 +37,12 @@ module Socializer
 
     private
 
+    # Returns the number of unread notifications for the current user's activity object.
+    #
+    # @return [Integer] the unread notification count (0 when none)
+    #
+    # @example
+    #   unread_notifications_count #=> 3
     def unread_notifications_count
       helpers.current_user.activity_object.unread_notifications_count
     end

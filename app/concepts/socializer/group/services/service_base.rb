@@ -26,14 +26,14 @@ module Socializer
 
         # Initializes a new instance of the ServiceBase class.
         #
-        # @example
-        #   ServiceBase.new(group: some_group, person: some_person)
-        #
         # @param group [Socializer::Group] the group to invite the person to
         # @param person [Socializer::Person] the person that is being invited to the group
         #
         # @return [Socializer::Group::Services] returns an instance of
         #   the object that inherits from [ServiceBase]
+        #
+        # @example
+        #   ServiceBase.new(group: some_group, person: some_person)
         def initialize(group:, person:)
           @group  = group
           @person = person
