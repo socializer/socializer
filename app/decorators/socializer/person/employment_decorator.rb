@@ -118,6 +118,7 @@ module Socializer
       #   job_description_with_br_or_empty
       def job_description_with_br_or_empty
         return unless model.job_description?
+
         content_and_br(content: model.job_description)
       end
     end
