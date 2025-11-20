@@ -16,7 +16,7 @@ module Socializer
     # rate_limit to: 100, within: 1.minute, only: :create
 
     # Changes to the importmap will invalidate the etag for HTML responses
-    stale_when_importmap_changes
+    # stale_when_importmap_changes
 
     helper_method :current_user
     helper_method :signed_in?
