@@ -17,6 +17,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
 
+  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
+  gem "bundler-audit", require: false
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   # gem "rubocop-rails-omakase", require: false
 
@@ -35,7 +38,6 @@ group :development, :test do
   # gem "solargraph-rails"
   # gem "solargraph-rails", "~> 1.0.0.pre.1"
 
-  gem "bundler-audit", "~> 0.9.1"
   gem "byebug"
   gem "factory_bot_rails"
   gem "pry-rails"
