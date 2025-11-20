@@ -28,6 +28,16 @@ module Socializer
 
       private
 
+      # Retrieves the activity stream for the given activity id and memoizes the result.
+      #
+      # @param activity_id [Integer, nil] ID of the activity whose actor stream should be loaded.
+      #   When nil, the behavior depends on downstream callers (may return a global stream).
+      #
+      # @return [Object] Decorated stream (an ActiveRecord relation or collection decorated via Draper).
+      #
+      # @example
+      #   # fetch and render the activity stream for activity with id 15
+      #   stream(activity_id: 15)
       def stream(activity_id:)
         return @stream if defined?(@stream)
 

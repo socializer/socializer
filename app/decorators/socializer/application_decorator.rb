@@ -8,10 +8,9 @@ module Socializer
   # from ApplicationDecorator
   class ApplicationDecorator < Draper::Decorator
     # @param options [Hash] Options forwarded to the internal `time_ago` helper.
-    #   Common keys:
-    #   @option options [String] :class CSS classes added to the generated time tag.
-    #   @option options [String] :title Tooltip/title text for the time tag (defaults to created/updated tooltip).
-    #   @option options [Hash] :data HTML data attributes (defaults are merged for JS behavior).
+    # @option options [String] :class CSS classes added to the generated time tag.
+    # @option options [String] :title Tooltip/title text for the time tag (defaults to created/updated tooltip).
+    # @option options [Hash] :data HTML data attributes (defaults are merged for JS behavior).
     #
     # @return [String] HTML-safe time tag with tooltip and data attributes.
     #
@@ -20,8 +19,6 @@ module Socializer
     #   decorator.created_at_time_ago(class: 'timestamp small')
     # @api private
     def created_at_time_ago(options = {})
-      time_ago(options:)
-    end
       time_ago(options:)
     end
 

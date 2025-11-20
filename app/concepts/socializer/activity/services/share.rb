@@ -47,15 +47,31 @@ module Socializer
 
         attr_reader :actor_guid, :activity_object_id, :object_ids, :content
 
+        # Parse share parameters and set instance variables used by the service.
+        #
+        # @param params [ActionController::Parameters, Hash] parameters for the share action.
+        #   Expected keys:
+        #     - :activity_id [String] the id of the activity being shared
+        #     - :content [String, nil] optional text accompanying the share
+        #     - :object_ids [String, Array<String>] comma-separated ids or array of ids to attach
+        #
+        # @return [void]
+        #
+        # @example
+        #   # when called from controller
+        #   parse_params(params: params[:share])
         def parse_params(params:)
           @activity_object_id = params[:activity_id]
           @content = params[:content]
           @object_ids = params[:object_ids].split(",")
         end
 
-        # The verb to use when sharing a [Socializer::ActivityObject]
+        # Returns the activity verb used when creating a shared activity.
         #
-        # @return [String]
+        # @return [String] the verb identifier for this service
+        #
+        # @example
+        #   Activity::Services::Share.new(actor: person).send(:verb) # => "share"
         def verb
           "share"
         end

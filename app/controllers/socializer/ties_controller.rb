@@ -36,13 +36,29 @@ module Socializer
 
     private
 
+    d# Sets a flash notice for tie actions.
+    #
+    # @param action [Symbol, String] the action performed (e.g. :create, :destroy)
+    # @param tie [Socializer::Tie] the tie instance involved
+    # @param circle [Socializer::Circle] the circle that owns the tie
+    #
+    # @return [void]
+    #
+    # @example
+    #   flash_message(action: :create, tie: tie, circle: circle)
     def flash_message(action:, tie:, circle:)
       flash.now.notice = t("socializer.model.tie.#{action.to_s.downcase}",
                            person_name: tie.contact.display_name,
                            circle_name: circle.display_name)
     end
 
-    # Only allow a list of trusted parameters through.
+    # Returns the permitted parameters for tie operations.
+    #
+    # @return [ActionController::Parameters] parameters containing :contact_id and :circle_id keys
+    #
+    # @example
+    #   # Given params = { tie: { contact_id: '1', circle_id: '2' } }
+    #   tie_params # => { contact_id: '1', circle_id: '2' }
     def tie_params
       params.expect(tie: %i[contact_id circle_id])
     end

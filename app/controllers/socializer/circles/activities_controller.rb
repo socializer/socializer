@@ -32,6 +32,16 @@ module Socializer
 
       private
 
+      # Returns the memoized activity stream for the given circle scoped to the current user.
+      # Uses Activity.circle_stream(actor_uid: circle.id, viewer_id: current_user.id)
+      # and decorates the result. The value is cached in @stream to avoid repeated queries.
+      # @param circle [Circle] a decorated Circle instance
+      #
+      # @return [Object] decorated activity stream (usually a decorated ActiveRecord relation)
+      #
+      # @example
+      #   # inside controller action:
+      #   activities = stream(circle: circle)
       def stream(circle:)
         return @stream if defined?(@stream)
 

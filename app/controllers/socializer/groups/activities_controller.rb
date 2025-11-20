@@ -32,6 +32,15 @@ module Socializer
 
       private
 
+      # Returns the activity stream for the provided group, memoized in `@stream`.
+      #
+      # @param group [Group] the group whose activity stream will be retrieved
+      #
+      # @return [Object] a decorated collection representing the group's activities
+      #
+      # @example
+      #   # Fetch and memoize activities for a group
+      #   activities = stream(group: @group)
       def stream(group:)
         return @stream if defined?(@stream)
 

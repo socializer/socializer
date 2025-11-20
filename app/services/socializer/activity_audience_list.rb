@@ -64,6 +64,20 @@ module Socializer
 
     private
 
+    # Returns an array of display names for the given `audience`.
+    # - For circle audiences this delegates to `circles_audience_list`.
+    # - For limited audiences this delegates to `limited_audience_list`.
+    # - For other audience types it returns `nil`.
+    #
+    # @param audience [Socializer::Audience] the audience to build the list for
+    #
+    # @return [Array<String>, nil] display names included in the audience or `nil`
+    #
+    # @example
+    #   # Circle audience
+    #   audience_list(audience: circle_audience) # => ["Alice", "Bob"]
+    #   # Limited audience (person/group)
+    #   audience_list(audience: limited_audience) # => ["John Doe"]
     def audience_list(audience:)
       return circles_audience_list if audience.circles?
 
@@ -72,13 +86,35 @@ module Socializer
       limited_audience_list(activitable:) if audience.limited?
     end
 
+    # Returns an array of display names for the circle audience.
+    # Collects the actor's contacts and plucks their `display_name`
+    # values for use in the activity tooltip list.
+    #
+    # @return [Array<String>] display names of contacts in the actor's circles
+    #
+    # @example
+    #   # Given an activity whose actor has contacts:
+    #   # activity.actor.contacts.pluck(:display_name) # => ["Alice", "Bob"]
+    #   circles_audience_list
+    #   # => ["Alice", "Bob"]
     def circles_audience_list
       @activity.actor.contacts.pluck(:display_name)
     end
 
-    # In the case of LIMITED audience, then go through all the audience
-    # circles and add contacts from those circles in the list of allowed
-    # audience.
+    # Returns an array of display names for a LIMITED audience.
+    # For non-Circle activitable objects (e.g. Person or Group), returns the
+    # activitable's `display_name` wrapped in an Array. For Circle activitables,
+    # returns the `display_name` of each contact in the circle.
+    #
+    # @param activitable [Object] the audience target (Circle, Group or Person)
+    #
+    # @return [Array<String>] display names included in the limited audience
+    #
+    # @example
+    #   # Person or Group
+    #   limited_audience_list(activitable: person) # => ["John Doe"]
+    #   # Circle
+    #   limited_audience_list(activitable: circle) # => ["Alice", "Bob"]
     def limited_audience_list(activitable:)
       # The target audience is either a group or a person,
       # which means we can add it as it is in the audience list.

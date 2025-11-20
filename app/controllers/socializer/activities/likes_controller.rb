@@ -52,12 +52,27 @@ module Socializer
 
       private
 
+      # Finds and memoizes the likable ActivityObject for the current request.
+      #
+      # @return [ActivityObject, nil] the ActivityObject found by params[:id], or nil if not found
+      #
+      # @example
+      #   # with params[:id] set to the ActivityObject id
+      #   #   find_likable # => #<ActivityObject id: 1 ...>
       def find_likable
         return @find_likable if defined?(@find_likable)
 
         @find_likable = ActivityObject.find_by(id: params[:id])
       end
 
+      # Finds and memoizes the activity associated with the likable object.
+      #
+      # @return [Object] the decorated activitable for the current ActivityObject
+      #
+      # @example
+      #   # with params[:id] set to the ActivityObject id
+      #   # => returns a decorator suitable for rendering in views
+      #   find_activity # => #<ActivityDecorator ...>
       def find_activity
         return @find_activity if defined?(@find_activity)
 
