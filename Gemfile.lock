@@ -254,7 +254,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.1)
+    minitest (5.26.2)
     mize (0.6.1)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
@@ -620,7 +620,7 @@ PLATFORMS
 DEPENDENCIES
   brakeman (~> 7.0)
   bundler (>= 1.15.0, < 3.0)
-  bundler-audit (~> 0.9.1)
+  bundler-audit
   bundler-integrity (~> 1.0)
   byebug
   capybara (>= 2.15, < 4.0)
