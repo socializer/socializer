@@ -36,7 +36,7 @@ module Socializer
 
     private
 
-    d# Sets a flash notice for tie actions.
+    # Sets a flash notice for tie actions.
     #
     # @param action [Symbol, String] the action performed (e.g. :create, :destroy)
     # @param tie [Socializer::Tie] the tie instance involved
