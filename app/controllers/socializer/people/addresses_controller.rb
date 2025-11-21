@@ -60,19 +60,48 @@ module Socializer
 
       private
 
+      # Returns the addresses collection associated with the currently authenticated user.
+      # The result is memoized to prevent multiple database queries during a single request.
+      #
+      # @return [ActiveRecord::Relation<Socializer::Address>] the current user's addresses
+      #
+      # @example
+      #   # assume current_user has two addresses
+      #   addresses
+      #   # => #<ActiveRecord::Relation [#<Socializer::Address id: 1 ...>, #<Socializer::Address id: 2 ...>]>
       def addresses
         return @addresses if defined?(@addresses)
 
         @addresses = current_user.addresses
       end
 
+      # Finds and memoizes the Address record belonging to the current user matching
+      # `params[:id]`.
+      #
+      # Uses memoization (\@find_address) to prevent repeated database queries during a
+      # single request.
+      #
+      # @return [Socializer::Address, nil] the Address instance when found, otherwise nil
+      #
+      # @example
+      #   # params = { id: '123' }
+      #   find_address
+      #   # => #<Socializer::Address id: 123, ...> or nil
       def find_address
         return @find_address if defined?(@find_address)
 
         @find_address = addresses.find_by(id: params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Returns permitted parameters for a person's address extracted from `params`.
+      # Uses `params.expect` to require the `:person_address` key and allow expected keys.
+      #
+      # @return [ActionController::Parameters] the permitted address parameters
+      #
+      # @example
+      #   # params = { person_address: { label: 'Home', line1: '1 Main St' } }
+      #   person_address_params
+      #   # => #<ActionController::Parameters {"label"=>"Home","line1"=>"1 Main St"} permitted: true>
       def person_address_params
         params.expect(person_address: %i[label line1 line2 city
                                          postal_code_or_zip

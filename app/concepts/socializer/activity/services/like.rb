@@ -46,6 +46,15 @@ module Socializer
 
         attr_reader :actor, :activity_object
 
+        # Creates and persists a "like" Activity for the current +actor+ and
+        # +activity_object+. Delegates creation to +Socializer::CreateActivity+
+        # with the +like+ verb and public audience.
+        #
+        # @return [Array, Socializer::Activity] the created activity (or an AR relation/none)
+        #
+        # @example
+        #   # Called internally by Activity::Services::Like#call
+        #   create_activity
         def create_activity
           Socializer::CreateActivity
             .new(actor_id: actor.guid,

@@ -63,19 +63,65 @@ module Socializer
 
       private
 
+      # Returns the current user's collection of Education records, memoized to avoid
+      # repeated database lookups within the same request.
+      #
+      # @return [ActiveRecord::Associations::CollectionProxy<Socializer::Education>]
+      #
+      # @example
+      #   # First call loads from the database, subsequent calls return the memoized value
+      #   first_call = educations
+      #   second_call = educations
+      #   first_call.equal?(second_call) # => true
       def educations
         return @educations if defined?(@educations)
 
         @educations = current_user.educations
       end
 
+      # Finds and memoizes the current user's Education record by the `:id` param.
+      #
+      # This method uses memoization to prevent multiple database lookups within
+      # the same request. It scopes the lookup to the current user's educations.
+      #
+      # @return [Socializer::Education, nil] the matching Education record or `nil` if not found
+      #
+      # @example
+      #   # When params[:id] is present and belongs to the current user
+      #   # find_education
+      #   # => #<Socializer::Education id: 1, school_name: "Acme University", ...>
+      #
+      #   # When no matching record exists
+      #   # find_education
+      #   # => nil
       def find_education
         return @find_education if defined?(@find_education)
 
         @find_education = educations.find_by(id: params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Returns the permitted parameters for creating/updating a person's education.
+      #
+      # Extracts and whitelists the education-related attributes from the request
+      # parameters so they can be safely passed to the model in `create`/`update`.
+      #
+      # @return [ActionController::Parameters] filtered education parameters
+      #
+      # @example
+      #   # Given:
+      #   # params = { person_education: {
+      #   #   school_name: "Acme University",
+      #   #   major_or_field_of_study: "Computer Science",
+      #   #   started_on: "2020-09-01",
+      #   #   ended_on: "2024-06-01",
+      #   #   current: false,
+      #   #   courses_description: "Algorithms, OS"
+      #   # } }
+      #   #
+      #   # Calling:
+      #   # person_education_params
+      #   #
+      #   # Returns the permitted parameters for building/updating an Education record.
       def person_education_params
         params.expect(person_education: %i[school_name major_or_field_of_study
                                            started_on ended_on current

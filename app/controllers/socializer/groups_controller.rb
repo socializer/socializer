@@ -71,13 +71,35 @@ module Socializer
 
     private
 
+    # Finds and memoizes the Group belonging to the `current_user` matching `params[:id]`.
+    #
+    # Uses memoization to avoid multiple DB queries during the same request.
+    #
+    # @return [Group, nil] the found Group or `nil` if none is found or the user has no access.
+    #
+    # @example
+    #   # in a controller action:
+    #   group = find_group
+    #   if group
+    #     render :show, locals: { group: group }
+    #   else
+    #     redirect_to groups_path, alert: 'Group not found'
+    #   end
     def find_group
       return @find_group if defined?(@find_group)
 
-      @find_group = current_user.groups.find_by(id: params[:id])
+      @find_group = current_user&.groups&.find_by(id: params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Returns permitted parameters for Group operations.
+    # Uses `params.expect` to require and permit attributes for creating/updating a Group.
+    #
+    # @return [ActionController::Parameters] filtered params containing permitted keys
+    #
+    # @example
+    #   # in controller:
+    #   #   group = current_user.groups.build(group_params)
+    #   # permitted keys: :display_name, :privacy, :tagline, :about
     def group_params
       params.expect(group: %i[display_name privacy tagline about])
     end

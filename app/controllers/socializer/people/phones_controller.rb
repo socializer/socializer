@@ -63,19 +63,40 @@ module Socializer
 
       private
 
+      # Returns the memoized collection of phones for the current user.
+      #
+      # @return [ActiveRecord::Associations::CollectionProxy<Socializer::Phone>] the user's phones association
+      #
+      # @example
+      #   # current_user.phones =>
+      #   #<ActiveRecord::Associations::CollectionProxy[#<Socializer::Phone id: 1, label: "home", number: "555-1234">]>
       def phones
         return @phones if defined?(@phones)
 
         @phones = current_user.phones
       end
 
+      # Finds the phone record for the current user by the `:id` parameter.
+      #
+      # @return [Socializer::Phone, nil] the matching phone record if found, otherwise `nil`.
+      #
+      # @example
+      #   # phone = find_phone
+      #   # => #<Socializer::Phone id: 1, label: "home", number: "555-1234">
       def find_phone
         return @find_phone if defined?(@find_phone)
 
         @find_phone = phones.find_by(id: params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Returns the permitted parameters for a person's phone.
+      #
+      # @return [ActionController::Parameters] permitted parameters with keys:
+      #   - person_phone: { label: String, number: String }
+      #
+      # @example
+      #   # phone_attrs = person_phone_params
+      #   # => { "person_phone" => { "label" => "home", "number" => "555-1234" } }
       def person_phone_params
         params.expect(person_phone: %i[label number])
       end

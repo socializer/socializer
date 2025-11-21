@@ -34,6 +34,16 @@ module Socializer
 
     private
 
+    # Finds the Activity corresponding to `params[:id]`.
+    # This private helper returns the activity record or `nil` when not found.
+    #
+    # @return [Activity, nil]
+    #
+    # @example
+    #   activity = find_activity
+    #   if activity
+    #     activity.destroy
+    #   end
     def find_activity
       Activity.find_by(id: params[:id])
     end

@@ -28,6 +28,17 @@ module Socializer
 
     private
 
+    # Resets the unread notifications counter for the current user's activity object.
+    #
+    # Delegates the actual reset operation to the user's associated activity object.
+    # This is called after loading the notifications index to mark that unread
+    # notifications have been acknowledged by the user.
+    #
+    # @return [void]
+    #
+    # @example
+    #   # When rendering the notifications index:
+    #   reset_unread_notifications
     def reset_unread_notifications
       current_user.activity_object.reset_unread_notifications
     end

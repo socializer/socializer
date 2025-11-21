@@ -63,19 +63,56 @@ module Socializer
 
       private
 
+      # Returns the current user's profiles association, memoized in `@profiles`.
+      #
+      # Caches the association result on the controller instance to avoid repeated
+      # database queries during the same request.
+      #
+      # @return [ActiveRecord::Relation<Socializer::Profile>] profiles relation for `current_user`
+      #
+      # @example
+      #   # inside controller action
+      #   user_profiles = profiles
+      #   profile = user_profiles.build(display_name: "Alice", url: "https://example.com")
       def profiles
         return @profiles if defined?(@profiles)
 
         @profiles = current_user.profiles
       end
 
+      # Finds and memoizes the profile for the current user identified by params[:id].
+      #
+      # This method queries the `profiles` association and stores the result in
+      # `@find_profile` to prevent multiple database lookups during the same request.
+      # Returns `nil` when no profile with the given id exists.
+      #
+      # @return [Socializer::Profile, nil]
+      #
+      # @example
+      #   # inside controller action
+      #   profile = find_profile
+      #   if profile
+      #     render json: profile
+      #   else
+      #     head :not_found
+      #   end
       def find_profile
         return @find_profile if defined?(@find_profile)
 
         @find_profile = profiles.find_by(id: params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Returns the permitted parameters for a person's profile.
+      #
+      # Uses `params.expect` to require and permit the `:person_profile` hash with
+      # the allowed keys `:display_name` and `:url`.
+      #
+      # @return [ActionController::Parameters] permitted parameters for creating/updating a Profile
+      #
+      # @example
+      #   # inside controller action
+      #   permitted = person_profile_params
+      #   profile = profiles.build(permitted)
       def person_profile_params
         params.expect(person_profile: %i[display_name url])
       end

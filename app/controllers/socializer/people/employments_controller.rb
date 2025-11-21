@@ -63,19 +63,59 @@ module Socializer
 
       private
 
+      # Returns the ActiveRecord relation of employments for the current user.
+      # Memoizes the lookup in `@employments` to avoid repeated database queries
+      # during the same request.
+      #
+      # @return [ActiveRecord::Relation<Socializer::Employment>] the current_user's employments
+      #
+      # @example
+      #   # When the current user has employments:
+      #   #   employments.count # => 2
+      #   #   employments.build(employer_name: "Acme") # => #<Socializer::Employment ...> (unsaved)
       def employments
         return @employments if defined?(@employments)
 
         @employments = current_user.employments
       end
 
+      # Finds the Employment record belonging to the current user by the `:id` param.
+      #
+      # This method memoizes the lookup in `@find_employment` to avoid repeated
+      # database queries within the same request lifecycle.
+      #
+      # @return [Socializer::Employment, nil] the found employment or `nil` if not found
+      #
+      # @example
+      #   # When params[:id] is "5" and the current_user has an employment with id 5:
+      #   find_employment # => #<Socializer::Employment id: 5, employer_name: "Acme">
       def find_employment
         return @find_employment if defined?(@find_employment)
 
         @find_employment = employments.find_by(id: params[:id])
       end
 
-      # Only allow a list of trusted parameters through.
+      # Return the expected parameters for creating or updating an Employment.
+      #
+      # This method validates that `params` includes a `person_employment` hash
+      # containing the permitted keys used by the Employment model. It delegates
+      # validation to the application's `params.expect` helper.
+      #
+      # @return [Hash] validated `person_employment` parameters
+      #
+      # @example
+      #   # Incoming request params:
+      #   {
+      #     person_employment: {
+      #       employer_name: "Acme Inc.",
+      #       job_title: "Software Engineer",
+      #       started_on: "2020-01-01",
+      #       ended_on: "2023-06-30",
+      #       current: false,
+      #       job_description: "Developed web applications"
+      #     }
+      #   }
+      #   person_employment_params
       def person_employment_params
         params.expect(person_employment: %i[employer_name job_title started_on
                                             ended_on current job_description])

@@ -32,6 +32,15 @@ module Socializer
 
       private
 
+      # Returns the activity stream for the given person, memoized in `@stream`.
+      #
+      # @param person [Person, PersonDecorator] the person whose stream to load.
+      #
+      # @return [ActiveRecord::Relation] decorated activity stream scoped to the current viewer.
+      #
+      # @example
+      #   # inside controller action
+      #   activities = stream(person: @person)
       def stream(person:)
         return @stream if defined?(@stream)
 

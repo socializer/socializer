@@ -70,13 +70,34 @@ module Socializer
 
     private
 
+    # Returns the circle belonging to the current user for the id in `params`.
+    #
+    # This method memoizes the decorated circle in an instance variable to avoid
+    # repeated database queries within the same request.
+    #
+    # @return [CircleDecorator, nil] the decorated Circle if found, or `nil` when not found
+    #
+    # @example
+    #   # Used in controller actions:
+    #   circle = find_circle
+    #   if circle
+    #     render :show, locals: { circle: circle }
+    #   else
+    #     redirect_to contacts_circles_path, alert: 'Circle not found'
+    #   end
     def find_circle
       return @find_circle if defined?(@find_circle)
 
       @find_circle = current_user.circles.find_by(id: params[:id]).decorate
     end
 
-    # Only allow a list of trusted parameters through.
+    # Strong parameters for Circle
+    #
+    # @return [ActionController::Parameters] permitted parameters for a Circle
+    #
+    # @example
+    #   # Given params: { circle: { display_name: 'Friends', content: 'Close friends' } }
+    #   circle_params # => { 'display_name' => 'Friends', 'content' => 'Close friends' }
     def circle_params
       params.expect(circle: %i[display_name content])
     end

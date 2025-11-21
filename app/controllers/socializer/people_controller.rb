@@ -35,11 +35,32 @@ module Socializer
 
     private
 
+    # Finds and returns the requested Person decorated for view use.
+    # Looks up the Person by `params[:id]` and decorates the result.
+    # Returns `nil` when no matching record is found.
+    #
+    # @return [Socializer::PersonDecorator, nil] decorated Person or nil
+    #
+    # @example
+    #   # GET /people/1
+    #   @person = find_person
+    #   # => #<Socializer::PersonDecorator:0x000...>
     def find_person
       Person.find_by(id: params[:id]).decorate
     end
 
-    # Only allow a list of trusted parameters through.
+    # Returns the permitted parameters for a Person update request.
+    # Uses the controller `params` hash and expects a top-level `:person` key.
+    #
+    # @return [ActionController::Parameters] the filtered parameters for `:person`
+    #
+    # @example
+    #   # Given params:
+    #   # { person: { display_name: "Alice", email: "a@example.com" } }
+    #   #
+    #   # Calling:
+    #   person_params
+    #   # => ActionController::Parameters with only the permitted person attributes
     def person_params
       params.expect(person: %i[display_name email language avatar_provider
                                tagline introduction bragging_rights occupation
