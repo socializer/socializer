@@ -4,11 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Comment model
   #
   # A textual response to another object
-  #
   class Comment < ApplicationRecord
     include ObjectTypeBase
 

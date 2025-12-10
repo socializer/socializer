@@ -4,15 +4,10 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Namespace for Activity-related objects
-  #
   class Activity
-    #
     # Namespace for Service-related objects
-    #
     module Services
-      #
       # Service object for unliking a Socializer::Activity
       #
       # @example
@@ -36,10 +31,13 @@ module Socializer
           !actor.likes?(activity_object)
         end
 
-        # The verb to use when unliking a [Socializer::ActivityObject]
+        # Return the action verb for this service.
         #
-        # @return [String]
+        # @return [String] the verb describing the operation performed by this service.
         #
+        # @example
+        #   service = Activity::Services::Unlike.new(actor: current_user)
+        #   service.verb #=> "unlike"
         def verb
           "unlike"
         end

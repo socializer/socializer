@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
-#
 # Namespace for the Socializer engine
-#
 module Socializer
-  #
   # Namespace for Activity-related objects.
-  #
   class Activity
-    #
     # Namespace for Service-related objects.
-    #
     module Services
-      #
       # Service object for liking a Socializer::Activity
       #
       # @example
@@ -20,7 +13,6 @@ module Socializer
       #                           .call(activity_object: @likable)
       class Like
         # Initializer
-        #
         # @param actor [Socializer::Person] the person that likes the activity
         def initialize(actor:)
           @actor = actor

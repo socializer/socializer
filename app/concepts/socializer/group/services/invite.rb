@@ -4,17 +4,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Namespace for Group-related objects
-  #
   class Group
-    #
     # Namespace for Service-related objects
-    #
     module Services
-      #
       # Invite a member to join the group
-      #
       class Invite < ServiceBase
         # @return [Socializer::Membership]
         #   The resulting object is returned. If validations passes.

@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
-  # Build the audience list that is used in the notes and shares forms
-  #
+  # Build the audience list used in the notes and shares forms
   class AudienceList
     include ActiveModel::Model
     include Utilities::Message

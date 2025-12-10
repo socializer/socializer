@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Service object for creating a Socializer::Activity
-  #
   class CreateActivity
     include ActiveModel::Model
     include Utilities::Message

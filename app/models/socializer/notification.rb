@@ -62,9 +62,13 @@ module Socializer
       update!(read: true)
     end
 
-    # Is the notification unread?
+    # Returns whether the notification is unread.
     #
-    # @return [boolean]
+    # @return [Boolean] true when the notification has not been read
+    #
+    # @example
+    #   notification = Socializer::Notification.new(read: false)
+    #   notification.unread? # => true
     def unread?
       !read
     end
