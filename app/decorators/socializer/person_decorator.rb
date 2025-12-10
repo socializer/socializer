@@ -340,16 +340,14 @@ module Socializer
     # Builds the dropdown toggle link used by the toolbar.
     #
     # Generates an anchor tag with the CSS class and data attributes required
-    # to toggle the dropdown menu (compatible with Bootstrap-style dropdowns).
+    # to toggle a dropdown menu (compatible with Bootstrap-style dropdowns).
     #
     # @return [String] HTML-safe anchor element used as the dropdown toggle.
     #
     # @example
     #   # In a decorator/view context:
     #   dropdown_link
-    #   # => "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\">"
-    #           "More <span class=\"fa fa-angle-down fa-fw\">"</span>"
-    #        "</a>"
+    #   # => "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\">More <span class=\"fa fa-angle-down fa-fw\"></span></a>"
     def dropdown_link
       css_class = "dropdown-toggle"
       icon      = helpers.tag.span(class: "fa fa-angle-down fa-fw")
