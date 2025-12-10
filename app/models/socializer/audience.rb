@@ -153,6 +153,12 @@ module Socializer
 
     # Instance Methods
 
+    # Returns the activitable object for this audience's activity_object.
+    #
+    # @return [Object] the activitable associated with the activity_object
+    #
+    # @example
+    #   audience.object # => #<Socializer::Person id: 1, ...>
     def object
       activity_object.activitable
     end
