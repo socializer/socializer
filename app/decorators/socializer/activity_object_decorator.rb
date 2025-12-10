@@ -86,13 +86,17 @@ module Socializer
     # Extracts the `:path` from the provided `options`, merges in `default_options`,
     # and delegates to `helpers.link_to` using `like_or_unlike_content` as the link body.
     #
-    # @param options [Hash] options used to build the link. Must include `:path` (will be removed).
+    # @param options [Hash] Options forwarded to the `link_to` helper.
+    #
+    # @option options [String, #to_s] :path The target URL or path helper for the link (required).
+    # @option options [String] :class CSS classes applied to the link element.
+    # @option options [String] :title The localized title/tooltip for the link.
+    # @option options [Symbol] :method HTTP method to use for the link (e.g. :post, :delete).
     #
     # @return [ActiveSupport::SafeBuffer] HTML-safe anchor element for the like/unlike action.
     #
     # @example
-    #   # Assuming `decorator` is an ActivityObjectDecorator for an activity:
-    #   decorator.like_or_unlike_link(options: { path: helpers.like_activity_path(activity), class: "btn" })
+    #   like_or_unlike_link(options: { path: helpers.like_activity_path(activity), class: "btn" })
     def like_or_unlike_link(options:)
       path = options.delete(:path)
 

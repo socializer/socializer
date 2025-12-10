@@ -24,18 +24,20 @@ module Socializer
 
     private
 
-    # Internal helper that builds a time tag for the model's `created_at`
-    # timestamp, merging in default tooltip/title and JS data attributes.
+    # Internal helper that builds a time tag for the model's `created_at` timestamp,
+    # merging default tooltip/title and JavaScript data attributes.
     #
-    # @param options [Hash] options forwarded to the internal `time_tag` helper.
-    #   Common keys: `:class`, `:title`, `:data` (defaults will be merged).
+    # @param options [Hash] Options forwarded to the internal `time_tag` helper.
+    #
+    # @option options [String] :class CSS classes added to the generated time tag.
+    # @option options [String] :title Tooltip/title text for the time tag (defaults to created/updated tooltip).
+    # @option options [Hash] :data HTML data attributes (defaults are merged for JS behavior).
     #
     # @return [String] HTML-safe time tag with tooltip and data attributes.
     #
     # @example
     #   # => adds default tooltip and data attributes for moment.js
     #   decorator.time_ago(class: 'timestamp small')
-    # @api private
     def time_ago(options: {})
       data = { behavior: "tooltip-on-hover", time_ago: "moment.js" }
 
@@ -46,8 +48,11 @@ module Socializer
 
     # Builds an HTML time tag for the model's `created_at` timestamp.
     #
-    # @param options [Hash] Options forwarded to `helpers.time_tag`. Common keys:
-    #   `:class`, `:title`, `:data` (defaults are merged by the caller).
+    # @param options [Hash] Options forwarded to `helpers.time_tag`.
+    #
+    # @option options [String] :class CSS classes added to the generated time tag.
+    # @option options [String] :title Tooltip/title text for the time tag (defaults to created/updated tooltip).
+    # @option options [Hash] :data HTML data attributes (defaults are merged by the caller).
     #
     # @return [String] HTML-safe time tag representing the model's creation time.
     #
