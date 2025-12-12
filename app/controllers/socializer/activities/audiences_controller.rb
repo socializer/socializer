@@ -8,9 +8,7 @@ module Socializer
   # Module for activity-related controllers
   #
   module Activities
-    #
     # Audiences controller
-    #
     class AudiencesController < ApplicationController
       before_action :authenticate_user
 

@@ -12,9 +12,7 @@ module Socializer
     # Namespace for Service-related objects
     #
     module Services
-      #
       # Add a member to a group
-      #
       class Join < ServiceBase
         # @return [Socializer::Membership] if
         #   validations pass, the resulting object is returned.

@@ -12,7 +12,6 @@ module Socializer
     # Namespace for Service-related objects
     #
     module Services
-      #
       # Service object for sharing a Socializer::Activity
       #
       # @example

@@ -12,9 +12,7 @@ module Socializer
     # Namespace for Service-related objects
     #
     module Services
-      #
       # Base class for Group::Service
-      #
       class ServiceBase
         include ActiveModel::Model
         include Utilities::Message

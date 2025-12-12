@@ -12,9 +12,7 @@ module Socializer
     # Namespace for Service-related objects
     #
     module Services
-      #
       # Leave a group
-      #
       class Leave < ServiceBase
         # @return [Socializer::Membership] if
         #   validations pass, the record is deleted from the database and
