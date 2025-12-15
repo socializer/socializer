@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Notes controller
-  #
   class NotesController < ApplicationController
     before_action :authenticate_user
 

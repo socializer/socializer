@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Group model
   class Group
-    #
     # Group Link model
     #
     # URLs related to the {Socializer::Group group}
-    #
     class Link < ApplicationRecord
       # Relationships
       belongs_to :group, inverse_of: :links

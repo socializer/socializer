@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Person model
   class Person
-    #
     # Person Contribution model
     #
     # Links to content that {Socializer::Person person} has contributed to
-    #
     class Contribution < ApplicationRecord
       extend Enumerize
 

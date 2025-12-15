@@ -4,11 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Notification model
   #
   # The system informing you that something of interest has occurred for you.
-  #
   class Notification < ApplicationRecord
     # Relationships
     belongs_to :activity, inverse_of: :notifications

@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Activity Object model
-  #
   class ActivityObject < ApplicationRecord
     # CLEANUP: Remove the attr_accessor and add the object_ids attribute
     # attr_accessor :scope, :object_ids

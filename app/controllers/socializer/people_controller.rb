@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # People controller
-  #
   class PeopleController < ApplicationController
     before_action :authenticate_user
 

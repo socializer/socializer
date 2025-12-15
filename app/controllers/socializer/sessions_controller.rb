@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Sessions controller
-  #
   class SessionsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :create
 

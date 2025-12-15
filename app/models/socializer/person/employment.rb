@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Person model
   class Person
-    #
     # Person Employment model
     #
     # Where the {Socializer::Person person} has worked
-    #
     class Employment < ApplicationRecord
       # Relationships
       belongs_to :person, inverse_of: :employments

@@ -4,12 +4,10 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Tie model
   #
   # A {Socializer::Tie} is a link between a {Socializer::Circle} and a
   # {Socializer::Person}
-  #
   class Tie < ApplicationRecord
     # Relationships
     belongs_to :circle, inverse_of: :ties

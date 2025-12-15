@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Ties controller
-  #
   class TiesController < ApplicationController
     before_action :authenticate_user
 

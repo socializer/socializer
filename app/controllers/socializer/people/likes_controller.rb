@@ -8,9 +8,7 @@ module Socializer
   # Module for handling people-related actions
   #
   module People
-    #
     # Likes controller
-    #
     class LikesController < ApplicationController
       before_action :authenticate_user
 

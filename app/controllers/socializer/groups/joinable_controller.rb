@@ -8,9 +8,7 @@ module Socializer
   # Module for grouping related controllers
   #
   module Groups
-    #
     # Joinable controller
-    #
     class JoinableController < ApplicationController
       before_action :authenticate_user
 

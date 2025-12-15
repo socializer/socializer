@@ -6,12 +6,10 @@
 module Socializer
   # Namespace for models related to the Group model
   class Group
-    #
     # Group Category model
     #
     # Categories guide discussions and help members find the topics they're most
     # interested in.
-    #
     class Category < ApplicationRecord
       # Relationships
       belongs_to :group, inverse_of: :links

@@ -8,9 +8,7 @@ module Socializer
   # Module for handling circle-related actions
   #
   module Circles
-    #
     # Suggestions controller
-    #
     class SuggestionsController < ApplicationController
       before_action :authenticate_user
 

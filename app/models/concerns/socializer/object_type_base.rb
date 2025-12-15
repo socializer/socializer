@@ -4,13 +4,11 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Object Type Base concern
   #
   # Common functionality for the
   # {https://activitystrea.ms/registry/object_types/ Activity Streams}
   # object types
-  #
   module ObjectTypeBase
     extend ActiveSupport::Concern
 
@@ -29,7 +27,6 @@ module Socializer
     end
 
     # Class methods
-    #
     module ClassMethods
       # Joins the activity object and retrieves the activity_objects.id
       #

@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Activity Field model
-  #
   class ActivityField < ApplicationRecord
     # Relationships
     belongs_to :activity, inverse_of: :activity_field

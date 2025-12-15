@@ -6,11 +6,9 @@ require "digest/md5"
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Person model
   #
   # Represents an individual {person Socializer::Person}.
-  #
   class Person < ApplicationRecord
     extend Enumerize
     include ObjectTypeBase

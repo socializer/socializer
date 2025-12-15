@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Circles controller
-  #
   class CirclesController < ApplicationController
     before_action :authenticate_user
 

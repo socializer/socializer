@@ -4,12 +4,10 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Membership model
   #
   # A {Socializer::Membership} is a link between a {Socializer::Group} and a
   # {Socializer::Person}
-  #
   class Membership < ApplicationRecord
     # Relationships
     belongs_to :group, inverse_of: :memberships

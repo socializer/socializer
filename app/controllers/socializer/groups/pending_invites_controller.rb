@@ -11,7 +11,6 @@ module Socializer
     # TODO: This may belong under people
     #
     # Pending Invites controller
-    #
     class PendingInvitesController < ApplicationController
       # Ensures the user is authenticated before accessing any actions in this controller
       before_action :authenticate_user

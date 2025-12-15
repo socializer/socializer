@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Person model
   class Person
-    #
     # Person Place model
     #
     # Where the {Socializer::Person person} has lived
-    #
     class Place < ApplicationRecord
       # Relationships
       belongs_to :person, inverse_of: :places

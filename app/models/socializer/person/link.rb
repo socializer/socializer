@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Person model
   class Person
-    #
     # Person Link model
     #
     # URLs that are interesting to the {Socializer::Person person}
-    #
     class Link < ApplicationRecord
       # Relationships
       belongs_to :person, inverse_of: :links

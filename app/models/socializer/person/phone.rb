@@ -6,11 +6,9 @@
 module Socializer
   # Namespace for models related to the Person model
   class Person
-    #
     # Person Phone model
     #
     # Phone numbers related to the {Socializer::Person person}
-    #
     class Phone < ApplicationRecord
       extend Enumerize
 

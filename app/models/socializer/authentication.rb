@@ -4,11 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Authentication model
   #
   # Tracks the authentication provders for each {Socializer::Person person}.
-  #
   class Authentication < ApplicationRecord
     # Relationships
     belongs_to :person

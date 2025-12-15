@@ -4,12 +4,10 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Audience model
   #
   # Every {Socializer::Activity} is shared with one or more
   # {Socializer::Audience audiences}.
-  #
   class Audience < ApplicationRecord
     extend Enumerize
 

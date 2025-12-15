@@ -11,7 +11,6 @@ module Socializer
     # TODO: This may belong under people
     #
     # Memberships controller
-    #
     class MembershipsController < ApplicationController
       before_action :authenticate_user
 

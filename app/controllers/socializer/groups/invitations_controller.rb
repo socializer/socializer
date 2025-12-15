@@ -8,9 +8,7 @@ module Socializer
   # Module for grouping related controllers
   #
   module Groups
-    #
     # Invitations controller
-    #
     class InvitationsController < ApplicationController
       before_action :authenticate_user
 

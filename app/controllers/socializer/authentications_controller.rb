@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Authentications controller
-  #
   class AuthenticationsController < ApplicationController
     before_action :authenticate_user
 
@@ -14,7 +12,7 @@ module Socializer
     def index
       respond_to do |format|
         format.html do
-          render :index, locals: { authentications: current_user.services }
+          render :index, locals: { authentications: current_user&.services }
         end
       end
     end

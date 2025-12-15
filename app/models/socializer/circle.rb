@@ -4,7 +4,6 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Circle model
   #
   # Circles make it easy to share the right things with the right people.
@@ -13,7 +12,6 @@ module Socializer
   #
   # The association between a {Socializer::Person person} and a
   # {Socializer::Circle circle} is called a {Socializer::Tie tie}.
-  #
   class Circle < ApplicationRecord
     include ObjectTypeBase
 

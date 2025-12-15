@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Add the default circles for the person
-  #
   class AddDefaultCircles
     include ActiveModel::Model
     include Utilities::Message

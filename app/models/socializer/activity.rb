@@ -258,7 +258,6 @@ module Socializer
     #
     # @example
     #   Activity.stream_query(viewer_id: 1)
-    #
     def self.stream_query(viewer_id:)
       # for an activity to be interesting, it must correspond to one of these
       # verbs

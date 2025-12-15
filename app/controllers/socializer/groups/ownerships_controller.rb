@@ -11,7 +11,6 @@ module Socializer
     # TODO: This may belong under people
     #
     # Ownerships controller
-    #
     class OwnershipsController < ApplicationController
       before_action :authenticate_user
 

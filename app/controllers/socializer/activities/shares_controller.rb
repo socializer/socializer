@@ -8,9 +8,7 @@ module Socializer
   # Module for activity-related controllers
   #
   module Activities
-    #
     # Shares controller
-    #
     class SharesController < ApplicationController
       before_action :authenticate_user
 

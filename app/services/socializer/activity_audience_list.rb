@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Prepares the list to display in the tooltip
-  #
   class ActivityAudienceList
     include ActiveModel::Model
     include Utilities::Message

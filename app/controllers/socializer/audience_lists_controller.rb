@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Audience Lists controller
-  #
   class AudienceListsController < ApplicationController
     before_action :authenticate_user
 

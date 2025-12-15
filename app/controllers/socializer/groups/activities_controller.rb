@@ -4,13 +4,9 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Module for grouping related controllers
-  #
   module Groups
-    #
     # Activities controller
-    #
     class ActivitiesController < ApplicationController
       before_action :authenticate_user
 

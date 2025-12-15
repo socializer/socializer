@@ -4,9 +4,7 @@
 # Namespace for the Socializer engine
 #
 module Socializer
-  #
   # Notifications controller
-  #
   class NotificationsController < ApplicationController
     before_action :authenticate_user
 
