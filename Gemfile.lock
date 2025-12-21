@@ -430,6 +430,8 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+    readline (0.0.4)
+      reline
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -570,9 +572,10 @@ GEM
     thor (1.4.0)
     tilt (2.6.1)
     timeout (0.6.0)
-    tins (1.49.0)
+    tins (1.51.0)
       bigdecimal
       mize (~> 0.6)
+      readline
       sync
     tsort (0.2.0)
     typeprof (0.31.0)
