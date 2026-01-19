@@ -526,7 +526,7 @@ GEM
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
     securerandom (0.4.1)
-    selenium-webdriver (4.39.0)
+    selenium-webdriver (4.40.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -657,7 +657,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubocop-thread_safety
   scss_lint (~> 0.60.0)
-  selenium-webdriver (~> 4.3)
+  selenium-webdriver (~> 4.40)
   shoulda-matchers (~> 7.0)
   simplecov (~> 0.22.0)
   simplecov-lcov
