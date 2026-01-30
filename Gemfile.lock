@@ -113,7 +113,7 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    brakeman (7.1.2)
+    brakeman (8.0.1)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
@@ -428,8 +428,9 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rbs (3.10.2)
+    rbs (3.10.3)
       logger
+      tsort
     rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
@@ -459,7 +460,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.6)
+    rspec-support (3.13.7)
     rubocop (1.84.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -626,7 +627,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  brakeman (~> 7.0)
+  brakeman
   bundler (~> 4.0, >= 4.0.1)
   bundler-audit
   bundler-integrity (~> 1.0)

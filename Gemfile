@@ -20,6 +20,9 @@ group :development, :test do
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
 
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", require: false
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   # gem "rubocop-rails-omakase", require: false
 
@@ -48,7 +51,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "~> 7.0"
   gem "bundler", "~> 4.0", ">= 4.0.1"
   gem "coffeelint", "~> 1.16.1"
   gem "i18n-tasks", "~> 1.1.0"
