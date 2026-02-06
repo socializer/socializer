@@ -43,8 +43,8 @@ module Socializer
       potential_contact_ids.each do |contact_id|
         next unless person_in_circle?(parent_contact_id: contact_id,
                                       child_contact_id: activity
-                                                          .activitable_actor
-                                                          .id)
+                                                        .activitable_actor
+                                                        .id)
 
         # If the contact has the author of the activity in one of his circle.
         create_notification(activity:, contact_id:)
