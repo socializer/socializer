@@ -178,7 +178,7 @@ GEM
     elasticsearch-rails (8.0.1)
     enumerize (2.8.1)
       activesupport (>= 3.2)
-    erb (6.0.1)
+    erb (6.0.2)
     erubi (1.13.1)
     erubis (2.7.0)
     execjs (2.10.0)
@@ -578,7 +578,7 @@ GEM
     thor (1.5.0)
     tilt (2.7.0)
     timeout (0.6.0)
-    tins (1.51.1)
+    tins (1.52.0)
       bigdecimal
       mize (~> 0.6)
       readline
