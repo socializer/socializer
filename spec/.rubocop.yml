@@ -6,6 +6,9 @@ plugins:
   - rubocop-rspec
   - rubocop-rspec_rails
 
+AllCops:
+  CacheRootDirectory: ../tmp
+
 Metrics/ModuleLength:
   Enabled: false
 
