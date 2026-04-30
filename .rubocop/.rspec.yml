@@ -47,7 +47,7 @@ RSpec/MissingExampleGroupArgument:
 RSpec/ReceiveCounts:
   Enabled: true
 
-Capybara/CurrentPathExpectation:
+Capybara/RSpec/CurrentPathExpectation:
   Enabled: true
 
 FactoryBot/AttributeDefinedStatically:
