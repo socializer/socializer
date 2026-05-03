@@ -20,7 +20,7 @@ module Socializer
 
     # Finds the verb with the given display name.
     #
-    # @param name [String] the display name of the verb
+    # @param name [String, Array<String>] the display name of the verb
     #
     # @return [ActiveRecord::Relation] the verbs with the given display name
     #
