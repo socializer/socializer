@@ -187,7 +187,7 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.14.1)
+    faraday (2.14.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -235,7 +235,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.19.5)
-    jwt (3.1.2)
+    jwt (3.2.0)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -466,7 +466,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.86.1)
+    rubocop (1.86.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -588,7 +588,7 @@ GEM
       readline
       sync
     tsort (0.2.0)
-    typeprof (0.31.1)
+    typeprof (0.32.0)
       prism (>= 1.4.0)
       rbs (>= 3.6.0)
     tzinfo (2.0.6)
