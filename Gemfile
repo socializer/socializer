@@ -40,6 +40,7 @@ group :development, :test do
   # gem "solargraph", "~> 0.50.0"
   # gem "solargraph-rails"
   # gem "solargraph-rails", "~> 1.0.0.pre.1"
+  gem "ruby-lsp-rails", require: false
 
   gem "byebug"
   gem "factory_bot_rails"
@@ -61,7 +62,7 @@ group :development do
   # gem "ruby-lsp"
   # gem "ruby-lsp-rspec", require: false
   gem "scss_lint", "~> 0.60.0"
-  gem "shoulda-matchers", "~> 7.0"
+  gem "shoulda-matchers", "~> 8.0"
 end
 
 group :test do

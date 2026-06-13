@@ -520,6 +520,12 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-ast (>= 1.44.0, < 2.0)
+    ruby-lsp (0.26.9)
+      language_server-protocol (~> 3.17.0)
+      prism (>= 1.2, < 2.0)
+      rbs (>= 3, < 5)
+    ruby-lsp-rails (0.4.8)
+      ruby-lsp (>= 0.26.0, < 0.27.0)
     ruby-openid (2.9.2)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
@@ -549,8 +555,8 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     sexp_processor (4.17.5)
-    shoulda-matchers (7.0.1)
-      activesupport (>= 7.1)
+    shoulda-matchers (8.0.1)
+      activesupport (>= 7.2)
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
@@ -672,9 +678,10 @@ DEPENDENCIES
   rubocop-rspec (~> 3.0)
   rubocop-rspec_rails
   rubocop-thread_safety
+  ruby-lsp-rails
   scss_lint (~> 0.60.0)
   selenium-webdriver (~> 4.3)
-  shoulda-matchers (~> 7.0)
+  shoulda-matchers (~> 8.0)
   simplecov (~> 0.22.0)
   simplecov-lcov
   socializer!
