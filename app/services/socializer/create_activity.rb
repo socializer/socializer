@@ -59,7 +59,7 @@ module Socializer
     # The returned hash contains:
     # - `:actor_id` — the ID of the actor performing the activity
     # - `:activity_object_id` — the ID of the primary object for the activity
-    # - `:target_id` — optional target ID (may be `nil`)
+    # - `:target_id` — optional target ID (maybe `nil`)
     # - `:verb` — a `Verb` record resolved by `display_name` (created if missing)
     #
     # @return [Hash] attributes suitable for `Activity.create`
@@ -82,7 +82,7 @@ module Socializer
 
     # Adds audience entries to the provided activity based on `object_ids`.
     # Iterates over `object_ids_array`, determines the correct privacy for each
-    # audience id and builds an Audience on the activity. When the privacy is the
+    # audience id, and builds an Audience on the activity. When the privacy is the
     # configured limited value, the audience's `activity_object_id` is set to the
     # original audience id.
     #
@@ -106,8 +106,8 @@ module Socializer
     end
 
     # Converts the `object_ids` attribute into an Array.
-    # If `object_ids` is a comma-separated `String`, returns the result of `split(",")`.
-    # Otherwise assumes `object_ids` is already an `Array` and returns it unchanged.
+    # If `object_ids` is a comma-separated `String`, it returns the result of `split(",")`.
+    # Otherwise, assumes `object_ids` is already an `Array` and returns it unchanged.
     #
     # @return [Array<Integer, String>, String] an array of object id values
     #
