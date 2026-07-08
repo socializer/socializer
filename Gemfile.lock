@@ -241,7 +241,7 @@ GEM
     json (2.20.0)
     jwt (3.2.0)
       base64
-    language_server-protocol (3.17.0.5)
+    language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
     listen (3.10.0)
       logger
@@ -251,7 +251,7 @@ GEM
     loofah (2.25.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.9.0)
+    mail (2.9.1)
       logger
       mini_mime (>= 0.1.1)
       net-imap
@@ -474,7 +474,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.88.0)
+    rubocop (1.88.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -485,7 +485,7 @@ GEM
       rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.49.1)
+    rubocop-ast (1.50.0)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
     rubocop-capybara (3.0.0)
@@ -519,7 +519,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-ast (>= 1.44.0, < 2.0)
-    ruby-lsp (0.26.9)
+    ruby-lsp (0.26.10)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 5)
@@ -594,7 +594,7 @@ GEM
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.5.0)
-    tilt (2.7.0)
+    tilt (2.8.0)
     timeout (0.6.1)
     tins (1.54.0)
       bigdecimal
@@ -624,7 +624,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.44)
-    yard-lint (1.8.0)
+    yard-lint (1.9.0)
       yard (~> 0.9)
       zeitwerk (~> 2.6)
     zeitwerk (2.8.2)
