@@ -156,11 +156,11 @@ GEM
       unaccent (~> 0.3)
     country_select (11.0.0)
       countries (> 6.0, < 9.0)
-    coveralls_reborn (0.29.1)
-      simplecov (~> 0.22.0)
-      term-ansicolor (~> 1.7)
-      thor (~> 1.2)
-      tins (~> 1.32)
+    coveralls_reborn (1.0.0)
+      simplecov (>= 1.0)
+      term-ansicolor (>= 1.11)
+      thor (>= 1.5)
+      tins (>= 1.54)
     crass (1.0.7)
     database_cleaner-active_record (2.2.2)
       activerecord (>= 5.a)
@@ -171,7 +171,6 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
-    docile (1.4.1)
     draper (4.0.4)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -563,13 +562,8 @@ GEM
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
-    simplecov (0.22.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.13.2)
+    simplecov (1.0.2)
     simplecov-lcov (0.9.0)
-    simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.7)
       hashie (>= 0.1.0, < 6)
       version_gem (~> 1.1, >= 1.1.14)
@@ -657,7 +651,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   coffeelint (~> 1.16.1)
-  coveralls_reborn (~> 0.29.0)
+  coveralls_reborn (~> 1.0)
   database_cleaner-active_record (~> 2.0)
   debug
   factory_bot_rails
@@ -684,7 +678,7 @@ DEPENDENCIES
   scss_lint (~> 0.60.0)
   selenium-webdriver (~> 4.3)
   shoulda-matchers (~> 8.0)
-  simplecov (~> 0.22.0)
+  simplecov (~> 1.0)
   simplecov-lcov
   socializer!
   sprockets-rails
