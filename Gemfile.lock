@@ -10,7 +10,7 @@ PATH
       elasticsearch-rails (>= 7.2, < 8.1)
       enumerize (~> 2.8.0)
       omniauth (~> 2.1.0)
-      omniauth-facebook (~> 10.0.0)
+      omniauth-facebook (~> 11.0)
       omniauth-identity (~> 3.0)
       omniauth-linkedin (~> 0.2.0)
       omniauth-openid (~> 2.0.1)
@@ -326,7 +326,7 @@ GEM
       logger
       rack (>= 2.2.3)
       rack-protection
-    omniauth-facebook (10.0.0)
+    omniauth-facebook (11.0.0)
       bigdecimal
       omniauth-oauth2 (>= 1.2, < 3)
     omniauth-identity (3.2.1)
