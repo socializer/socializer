@@ -8,7 +8,7 @@ SimpleCov.start "rails" do
 
   # Add source groups
   add_group "Decorators", "app/decorators"
-  # add_group "Services",   %w(app/services)
+  # add_group "Services", %w(app/services)
   add_group("Services")   { |src| src.filename.include?("/services") }
   add_group "Validators", "app/validators"
 
