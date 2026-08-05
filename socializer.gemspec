@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("country_select", "~> 11.0")
   spec.add_dependency("draper", "4.0.4")
   spec.add_dependency("elasticsearch-rails", ">= 7.2", "< 8.1")
-  spec.add_dependency("enumerize", "~> 2.8.0")
+  spec.add_dependency("enumerize", "~> 3.0")
   # spec.add_dependency("jquery-rails", "~> 4.3.3")
   # Added "jquery-ui-rails" for drag and drop
   # spec.add_dependency("jquery-ui-rails", "~> 7.0.0")

@@ -8,7 +8,7 @@ PATH
       country_select (~> 11.0)
       draper (= 4.0.4)
       elasticsearch-rails (>= 7.2, < 8.1)
-      enumerize (~> 2.8.0)
+      enumerize (~> 3.0)
       omniauth (~> 2.1.0)
       omniauth-facebook (~> 11.0)
       omniauth-identity (~> 3.0)
@@ -180,7 +180,7 @@ GEM
       ruby2_keywords
     drb (2.2.3)
     elasticsearch-rails (8.0.1)
-    enumerize (2.8.1)
+    enumerize (3.0.0)
       activesupport (>= 3.2)
     erb (6.0.7)
     erubi (1.13.1)
