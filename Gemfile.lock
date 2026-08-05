@@ -182,7 +182,7 @@ GEM
     elasticsearch-rails (8.0.1)
     enumerize (2.8.1)
       activesupport (>= 3.2)
-    erb (6.0.6)
+    erb (6.0.7)
     erubi (1.13.1)
     erubis (2.7.0)
     execjs (2.10.1)
@@ -442,7 +442,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rbs (4.1.1)
+    rbs (4.1.2)
       logger
       prism (>= 1.6.0)
       tsort
@@ -477,7 +477,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.88.2)
+    rubocop (1.89.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -614,7 +614,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
-    version_gem (1.1.14)
+    version_gem (1.1.15)
     websocket (1.2.11)
     websocket-driver (0.8.2)
       base64
@@ -623,10 +623,10 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.45)
-    yard-lint (1.10.2)
+    yard-lint (1.10.3)
       yard (~> 0.9)
       zeitwerk (~> 2.6)
-    zeitwerk (2.8.2)
+    zeitwerk (2.8.3)
 
 PLATFORMS
   aarch64-linux
@@ -688,4 +688,4 @@ DEPENDENCIES
   yard-lint
 
 BUNDLED WITH
-  4.0.17
+  4.0.18
