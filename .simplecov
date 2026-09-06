@@ -7,10 +7,10 @@ SimpleCov.start "rails" do
   enable_coverage :branch # Only supported for Ruby >= 2.5
 
   # Add source groups
-  add_group "Decorators", "app/decorators"
-  # add_group "Services", %w(app/services)
-  add_group("Services")   { |src| src.filename.include?("/services") }
-  add_group "Validators", "app/validators"
+  group "Decorators", "app/decorators"
+  # group "Services", %w(app/services)
+  group("Services")   { |src| src.filename.include?("/services") }
+  group "Validators", "app/validators"
 
   # Exclude these paths from analysis
   add_filter "vendor"
