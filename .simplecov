@@ -13,6 +13,6 @@ SimpleCov.start "rails" do
   group "Validators", "app/validators"
 
   # Exclude these paths from analysis
-  add_filter "vendor"
-  add_filter "bundle"
+  skip "vendor"
+  skip "bundle"
 end
