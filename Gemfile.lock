@@ -272,7 +272,7 @@ GEM
     mutex_m (0.3.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.6.6)
+    net-imap (0.6.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -551,7 +551,7 @@ GEM
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
     securerandom (0.4.1)
-    selenium-webdriver (4.48.0)
+    selenium-webdriver (4.49.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -602,7 +602,7 @@ GEM
       readline
       sync
     tsort (0.2.0)
-    typeprof (0.33.0)
+    typeprof (0.33.1)
       prism (>= 1.4.0)
       rbs (>= 3.6.0)
     tzinfo (2.0.6)
