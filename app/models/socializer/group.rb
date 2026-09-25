@@ -12,11 +12,9 @@ module Socializer
     extend Enumerize
     include ObjectTypeBase
 
-    # FIXME: Rails 7.1.2 - remove the comment below.
-    # TODO: Add a test for the normalizes method.
-    # normalizes :display_name, with: lambda { |display_name|
-    #                                   display_name.strip.titleize
-    #                                 }
+    normalizes :display_name, with: lambda { |display_name|
+                                      display_name.strip.titleize
+                                    }
 
     # FIXME: Use Rails native enum instead of enumerize. Does the native enum
     #        method add inclusion validation?

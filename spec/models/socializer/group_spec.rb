@@ -53,6 +53,7 @@ module Socializer
           .to validate_uniqueness_of(:display_name)
           .scoped_to(:author_id)
           .case_insensitive
+          .ignoring_case_sensitivity
       end
     end
 
