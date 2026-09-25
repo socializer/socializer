@@ -34,7 +34,8 @@ module Socializer
     # @param activity [Socializer::Activity] the activity to create the
     # notifications for
     #
-    # @return [Array] an [Array] of [Socializer::Notification] objects
+    # @return [Array<Integer>] an [Array] of [Socializer::Notification] objects
+    #: (Socializer::Activity activity) -> Array[Integer]
     def self.create_for_activity(activity)
       # Get all ties related to the audience of the activity
       potential_contact_ids =
