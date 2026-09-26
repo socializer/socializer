@@ -16,16 +16,16 @@ module Socializer
 
     context "with validations" do
       specify { is_expected.to validate_presence_of(:display_name) }
-      specify { is_expected.to validate_presence_of(:label) }
       specify { is_expected.to validate_presence_of(:url) }
     end
 
     specify do
-      expect(contribution).to enumerize(:label)
-        .in(:current_contributor, :past_contributor)
+      is_expected.to define_enum_for(:label)
+        .with_values(current_contributor: 1, past_contributor: 2)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
         .with_default(:current_contributor)
-        .with_predicates(true)
-        .with_scope(true)
+        .validating(allowing_nil: false)
     end
   end
 end

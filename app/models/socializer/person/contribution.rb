@@ -10,11 +10,8 @@ module Socializer
     #
     # Links to content that {Socializer::Person person} has contributed to
     class Contribution < ApplicationRecord
-      extend Enumerize
-
-      enumerize :label, in: { current_contributor: 1, past_contributor: 2 },
-                        default: :current_contributor, predicates: true,
-                        scope: true
+      enum :label, { current_contributor: 1, past_contributor: 2 },
+           default: :current_contributor, prefix: true, validate: { allow_nil: false }
 
       # Relationships
       belongs_to :person, inverse_of: :contributions
@@ -22,7 +19,6 @@ module Socializer
       # Validations
       validates :current, inclusion: { in: [true, false] }, allow_nil: false
       validates :display_name, presence: true
-      validates :label, presence: true
       validates :url, presence: true
     end
   end
