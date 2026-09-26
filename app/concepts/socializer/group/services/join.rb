@@ -18,12 +18,10 @@ module Socializer
         #   validations pass, the resulting object is returned.
         # @raise [ActiveRecord::RecordInvalid] when the record is invalid.
         def call
-          privacy = group.privacy
+          active = true if group.public?
+          active = false if group.restricted?
 
-          active = true if privacy.public?
-          active = false if privacy.restricted?
-
-          if privacy.private?
+          if group.private?
             raise(Errors::PrivateGroupCannotSelfJoin)
             # TODO: add errors to base, make it a validation problem instead of
             #       failing

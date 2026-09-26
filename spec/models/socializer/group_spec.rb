@@ -10,6 +10,8 @@ module Socializer
       expect(group).to be_valid
     end
 
+    it { is_expected.to normalize(:display_name).from(" tEst grOUp\n").to("Test Group") }
+
     context "with relationships" do
       specify do
         expect(group).to belong_to(:activity_author)
@@ -45,7 +47,6 @@ module Socializer
 
     context "with validations" do
       specify { is_expected.to validate_presence_of(:display_name) }
-      specify { is_expected.to validate_presence_of(:privacy) }
 
       it "check uniqueness of display_name" do
         create(:group)
@@ -72,11 +73,17 @@ module Socializer
     end
 
     specify do
-      expect(group)
-        .to enumerize(:privacy)
-        .in(:public, :restricted, :private).with_default(:public)
-        .with_predicates(true)
-        .with_scope(true)
+      is_expected.to define_enum_for(:privacy)
+        .with_values(public: 1, restricted: 2, private: 3)
+        .backed_by_column_of_type(:integer)
+        # .without_scopes
+        .with_default(:public)
+        .validating(allowing_nil: false)
+      # expect(group)
+      #   .to enumerize(:privacy)
+      #   .in(:public, :restricted, :private).with_default(:public)
+      #   .with_predicates(true)
+      #   .with_scope(true)
     end
 
     specify { is_expected.to respond_to(:author) }

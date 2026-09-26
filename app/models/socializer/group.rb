@@ -9,22 +9,14 @@ module Socializer
   # A {Socializer::Group group} is a link between people where all members
   # share the same level of connection with each other.
   class Group < ApplicationRecord
-    extend Enumerize
     include ObjectTypeBase
 
     normalizes :display_name, with: lambda { |display_name|
-                                      display_name.strip.titleize
+                                      display_name.strip.gsub(/\w+/, &:capitalize)
                                     }
 
-    # FIXME: Use Rails native enum instead of enumerize. Does the native enum
-    #        method add inclusion validation?
-    enumerize :privacy, in: { public: 1, restricted: 2, private: 3 },
-                        default: :public, predicates: true, scope: true
-    # enum :privacy, { public: 1, restricted: 2, private: 3 },
-    #      default: :public, scopes: false
-    # Stores values as strings instead of integers
-    # enum :privacy, %i[public restricted private].index_by(&:itself),
-    #      default: :public, scopes: false
+    enum :privacy, { public: 1, restricted: 2, private: 3 },
+         default: :public, scopes: false, validate: { allow_nil: false }
 
     # Relationships
     belongs_to :activity_author, class_name: "Socializer::ActivityObject",
@@ -58,8 +50,6 @@ module Socializer
     validates :display_name, presence: true,
                              uniqueness: { scope: :author_id,
                                            case_sensitive: false }
-    validates :privacy, presence: true
-
     # Callbacks
     after_create :add_author_to_members
     before_destroy :deny_delete_if_members
@@ -94,30 +84,30 @@ module Socializer
 
     # Return all groups with a privacy of public
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.public
-      with_privacy(:public)
+      where(privacy: :public)
     end
 
     # Return all groups with a privacy of restricted
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.restricted
-      with_privacy(:restricted)
+      where(privacy: :restricted)
     end
 
     # Return all groups with a privacy of private
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.private
-      with_privacy(:private)
+      where(privacy: :private)
     end
 
     # Return all groups with a privacy of public or restricted
     #
-    # @return [Socializer::Group]
+    # @return [ActiveRecord::Relation<Socializer::Group>]
     def self.joinable
-      with_privacy(:public, :restricted)
+      where(privacy: %i[public restricted])
     end
 
     # Instance Methods

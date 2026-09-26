@@ -9,12 +9,8 @@ module Socializer
     # Create a user and a group
     let(:user) { create(:person) }
 
-    let(:privacy) do
-      Socializer::Group.privacy.find_value(:restricted).value
-    end
-
     let(:group_attributes) do
-      { activity_author: user.activity_object, privacy: }
+      { activity_author: user.activity_object, privacy: :restricted }
     end
 
     let(:group) do

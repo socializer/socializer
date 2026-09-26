@@ -32,7 +32,7 @@ module Socializer
         end
 
         it "is has the right privacy level" do
-          expect(public_group.privacy).to be_public
+          expect(public_group).to be_public
         end
 
         it "member? is false" do
@@ -72,7 +72,7 @@ module Socializer
         end
 
         it "is has the right privacy level" do
-          expect(private_group.privacy).to be_private
+          expect(private_group).to be_private
         end
 
         it "cannot be joined" do
@@ -100,7 +100,7 @@ module Socializer
         end
 
         it "has the right privacy level" do
-          expect(restricted_group.privacy).to be_restricted
+          expect(restricted_group).to be_restricted
         end
 
         context "when a person joins it" do
