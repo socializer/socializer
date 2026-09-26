@@ -55,7 +55,7 @@ module Socializer
     def relationship
       relationship = model.relationship
 
-      return "Seeing anyone?" if relationship.unknown?
+      return "Seeing anyone?" if model.relationship_unknown?
 
       relationship.titleize
     end

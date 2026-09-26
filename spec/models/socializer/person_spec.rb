@@ -31,18 +31,23 @@ module Socializer
     end
 
     specify do
-      expect(person).to enumerize(:gender)
-        .in(:unknown, :female, :male).with_default(:unknown)
-        .with_predicates(true)
-        .with_scope(true)
+      is_expected.to define_enum_for(:gender)
+        .with_values(unknown: 0, female: 1, male: 2)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
+        .with_default(:unknown)
+        .validating(allowing_nil: false)
     end
 
     specify do
-      expect(person).to enumerize(:relationship)
-        .in(:unknown, :single, :relationship, :engaged, :married, :complicated,
-            :open, :widowed, :domestic, :civil)
+      is_expected.to define_enum_for(:relationship)
+        .with_values(unknown: 0, single: 1, relationship: 2,
+                     engaged: 3, married: 4, complicated: 5,
+                     open: 6, widowed: 7, domestic: 8, civil: 9)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
         .with_default(:unknown)
-        .with_predicates(true).with_scope(true)
+        .validating(allowing_nil: false)
     end
 
     it ".create_with_omniauth" do

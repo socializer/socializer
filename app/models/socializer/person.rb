@@ -10,21 +10,18 @@ module Socializer
   #
   # Represents an individual {person Socializer::Person}.
   class Person < ApplicationRecord
-    extend Enumerize
     include ObjectTypeBase
 
-    # enumerize :avatar_provider, in: { twitter: 1, facebook: 2, linkedin: 3,
-    #                                   gravatar: 4 },
-    #                             default: :gravatar,
-    #                             predicates: true, scope: true
+    # enum :avatar_provider, { twitter: 1, facebook: 2, linkedin: 3, gravatar: 4 },
+    #      default: :gravatar, prefix: true, validate: { allow_nil: false }
 
-    enumerize :gender, in: { unknown: 0, female: 1, male: 2 },
-                       default: :unknown, predicates: true, scope: true
+    enum :gender, { unknown: 0, female: 1, male: 2 },
+         default: :unknown, prefix: true, validate: { allow_nil: false }
 
-    enumerize :relationship, in: { unknown: 0, single: 1, relationship: 2,
-                                   engaged: 3, married: 4, complicated: 5,
-                                   open: 6, widowed: 7, domestic: 8, civil: 9 },
-                             default: :unknown, predicates: true, scope: true
+    enum :relationship, { unknown: 0, single: 1, relationship: 2,
+                          engaged: 3, married: 4, complicated: 5,
+                          open: 6, widowed: 7, domestic: 8, civil: 9 },
+         default: :unknown, prefix: true, validate: { allow_nil: false }
 
     # Relationships
     has_many :authentications, dependent: :destroy
@@ -58,6 +55,7 @@ module Socializer
     # has_many :contacts, through: :circles
 
     # Validations
+    # TODO: Should this be an integer enum?
     validates :avatar_provider, inclusion: %w[TWITTER FACEBOOK LINKEDIN
                                               GRAVATAR]
 
