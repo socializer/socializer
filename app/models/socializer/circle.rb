@@ -16,7 +16,7 @@ module Socializer
     include ObjectTypeBase
 
     normalizes :display_name, with: lambda { |display_name|
-                                      display_name.strip.titleize
+                                      display_name.strip.gsub(/\w+/, &:capitalize)
                                     }
 
     # Relationships

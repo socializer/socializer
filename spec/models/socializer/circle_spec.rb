@@ -10,6 +10,8 @@ module Socializer
       expect(circle).to be_valid
     end
 
+    it { is_expected.to normalize(:display_name).from(" tEst CIrcLE\n").to("Test Circle") }
+
     context "with relationships" do
       specify do
         expect(circle).to belong_to(:activity_author)
