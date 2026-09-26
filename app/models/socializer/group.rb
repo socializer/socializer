@@ -16,7 +16,7 @@ module Socializer
                                     }
 
     enum :privacy, { public: 1, restricted: 2, private: 3 },
-         default: :public, scopes: false, validate: { allow_nil: false }
+         default: :public, prefix: true, validate: { allow_nil: false }
 
     # Relationships
     belongs_to :activity_author, class_name: "Socializer::ActivityObject",

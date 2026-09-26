@@ -76,14 +76,9 @@ module Socializer
       is_expected.to define_enum_for(:privacy)
         .with_values(public: 1, restricted: 2, private: 3)
         .backed_by_column_of_type(:integer)
-        # .without_scopes
+        .with_prefix
         .with_default(:public)
         .validating(allowing_nil: false)
-      # expect(group)
-      #   .to enumerize(:privacy)
-      #   .in(:public, :restricted, :private).with_default(:public)
-      #   .with_predicates(true)
-      #   .with_scope(true)
     end
 
     specify { is_expected.to respond_to(:author) }
