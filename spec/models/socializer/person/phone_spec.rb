@@ -15,23 +15,25 @@ module Socializer
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:category) }
-      specify { is_expected.to validate_presence_of(:label) }
       specify { is_expected.to validate_presence_of(:number) }
     end
 
     specify do
-      expect(phone).to enumerize(:category)
-        .in(:home, :work).with_default(:home)
-        .with_predicates(true)
-        .with_scope(true)
+      is_expected.to define_enum_for(:category)
+        .with_values(home: 1, work: 2)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
+        .with_default(:home)
+        .validating(allowing_nil: false)
     end
 
     specify do
-      expect(phone).to enumerize(:label)
-        .in(:phone, :mobile, :fax).with_default(:phone)
-        .with_predicates(true)
-        .with_scope(true)
+      is_expected.to define_enum_for(:label)
+        .with_values(phone: 1, mobile: 2, fax: 3)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
+        .with_default(:phone)
+        .validating(allowing_nil: false)
     end
   end
 end

@@ -11,7 +11,7 @@ module Socializer
 
     let(:valid_params) do
       { person_id: user,
-        person_phone: { category: :home, label: 1, number: "1234567890" } }
+        person_phone: { category: :home, label: :phone, number: "1234567890" } }
     end
 
     let(:invalid_params) do

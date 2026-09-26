@@ -10,20 +10,16 @@ module Socializer
     #
     # Phone numbers related to the {Socializer::Person person}
     class Phone < ApplicationRecord
-      extend Enumerize
+      enum :category, { home: 1, work: 2 },
+           default: :home, prefix: true, validate: { allow_nil: false }
 
-      enumerize :category, in: { home: 1, work: 2 }, default: :home,
-                           predicates: true, scope: true
-
-      enumerize :label, in: { phone: 1, mobile: 2, fax: 3 }, default: :phone,
-                        predicates: true, scope: true
+      enum :label, { phone: 1, mobile: 2, fax: 3 },
+           default: :phone, prefix: true, validate: { allow_nil: false }
 
       # Relationships
       belongs_to :person, inverse_of: :phones
 
       # Validations
-      validates :category, presence: true
-      validates :label, presence: true
       validates :number, presence: true
     end
   end
