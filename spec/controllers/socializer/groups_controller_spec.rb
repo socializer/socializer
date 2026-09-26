@@ -152,7 +152,6 @@ module Socializer
 
       describe "PATCH #update" do
         context "with valid attributes" do
-
           it "redirects to groups#show" do
             patch :update, params: { id: group, group: { privacy: :private } }
             expect(response).to have_http_status(:found)

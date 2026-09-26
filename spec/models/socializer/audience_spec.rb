@@ -19,21 +19,21 @@ module Socializer
       end
     end
 
-    context "with validations" do
-      # specify { is_expected.to validate_presence_of(:activity_id) }
-      #
-      # specify do
-      #   is_expected
-      #   .to validate_uniqueness_of(:activity_id)
-      #     .scoped_to(:activity_object_id)
-      # end
-
-      # specify do
-      #   expect(create(:audience))
-      #   .to validate_uniqueness_of(:activity_id)
-      #     .scoped_to(:activity_object_id)
-      # end
-    end
+    # context "with validations" do
+    #   specify { is_expected.to validate_presence_of(:activity_id) }
+    #
+    #   specify do
+    #     is_expected
+    #     .to validate_uniqueness_of(:activity_id)
+    #       .scoped_to(:activity_object_id)
+    #   end
+    #
+    #   specify do
+    #     expect(create(:audience))
+    #     .to validate_uniqueness_of(:activity_id)
+    #       .scoped_to(:activity_object_id)
+    #   end
+    # end
 
     context "with scopes" do
       describe "with_activity_id" do
