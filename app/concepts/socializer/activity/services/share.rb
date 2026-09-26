@@ -62,7 +62,7 @@ module Socializer
         def parse_params(params:)
           @activity_object_id = params[:activity_id]
           @content = params[:content]
-          @object_ids = params[:object_ids].split(",")
+          @object_ids = params[:object_ids].to_s.split(",")
         end
 
         # Returns the activity verb used when creating a shared activity.

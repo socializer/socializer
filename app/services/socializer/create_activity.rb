@@ -112,13 +112,13 @@ module Socializer
     # @return [Array<Integer, String>, String] an array of object id values
     #
     # @example
-    #   self.object_ids = "1,2,3"
-    #   object_ids_array # => ["1", "2", "3"]
+    #   self.object_ids = -1
+    #   object_ids_array # => ["-1"]
     #
     #   self.object_ids = [1, 2, 3]
     #   object_ids_array # => [1, 2, 3]
     def object_ids_array
-      return object_ids.split(",") if Set.new(%w[Integer String]).include?(object_ids.class.name)
+      return object_ids.to_s.split(",") if object_ids.is_a?(Integer) || object_ids.is_a?(String)
 
       object_ids
     end
@@ -136,66 +136,65 @@ module Socializer
     #
     # @example
     #   # inside an instance of Socializer::CreateActivity
-    #   audience_privacy(audience_id: Audience.privacy.public.value)
-    #   # => Audience.privacy.public.value
+    #   audience_privacy(audience_id: Audience::PUBLIC_PRIVACY)
+    #   # => Audience::PUBLIC_PRIVACY
     def audience_privacy(audience_id:)
-      return @audience_privacy if defined?(@audience_privacy)
-
-      not_limited = Set.new(%W[#{public_privacy} #{circles_privacy}])
-
-      @audience_privacy = if not_limited.include?(audience_id)
-                            audience_id
-                          else
-                            limited_privacy
-                          end
+      case audience_id.to_s
+      when "public", public_privacy.to_s
+        public_privacy
+      when "circles", circles_privacy.to_s
+        circles_privacy
+      else
+        limited_privacy
+      end
     end
 
     # Returns the memoized value used to represent `circles` audience privacy.
     #
-    # This method fetches `Audience.privacy.circles.value` and caches it in
+    # This method fetches `Audience::CIRCLES_PRIVACY` and caches it in
     # `@circles_privacy` to avoid repeated lookups.
     #
     # @return [Object] the privacy value (commonly an Integer or String)
     #
     # @example
     #   # inside an instance of Socializer::CreateActivity
-    #   circles_privacy #=> Audience.privacy.circles.value
+    #   circles_privacy #=> Audience::CIRCLES_PRIVACY
     def circles_privacy
       return @circles_privacy if defined?(@circles_privacy)
 
-      @circles_privacy = Audience.privacy.circles.value
+      @circles_privacy = Audience::CIRCLES_PRIVACY
     end
 
     # Returns the memoized value used to represent `limited` audience privacy.
     #
-    # This method fetches `Audience.privacy.limited.value` and caches it in
+    # This method fetches `Audience::LIMITED_PRIVACY` and caches it in
     # `@limited_privacy` to avoid repeated lookups.
     #
     # @return [Object] the privacy value (commonly an Integer or String)
     #
     # @example
     #   # inside an instance of Socializer::CreateActivity
-    #   limited_privacy #=> Audience.privacy.limited.value
+    #   limited_privacy #=> Audience::LIMITED_PRIVACY
     def limited_privacy
       return @limited_privacy if defined?(@limited_privacy)
 
-      @limited_privacy = Audience.privacy.limited.value
+      @limited_privacy = Audience::LIMITED_PRIVACY
     end
 
     # Returns the memoized value used to represent `public` audience privacy.
     #
-    # This method fetches `Audience.privacy.public.value` and caches it in
+    # This method fetches `Audience::PUBLIC_PRIVACY` and caches it in
     # `@public_privacy` to avoid repeated lookups.
     #
     # @return [Object] the privacy value (commonly an Integer or String)
     #
     # @example
     #   # inside an instance of Socializer::CreateActivity
-    #   public_privacy #=> Audience.privacy.public.value
+    #   public_privacy #=> Audience::PUBLIC_PRIVACY
     def public_privacy
       return @public_privacy if defined?(@public_privacy)
 
-      @public_privacy = Audience.privacy.public.value
+      @public_privacy = Audience::PUBLIC_PRIVACY
     end
 
     # Creates and persists a `Socializer::Activity`.

@@ -10,7 +10,7 @@ module Socializer
 
     let(:share_attributes) do
       { activity_id: activity_object.id,
-        object_ids: Socializer::Audience.privacy.find_value(:public).value,
+        object_ids: Socializer::Audience::PUBLIC_PRIVACY,
         content: "Share" }
     end
 

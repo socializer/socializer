@@ -57,11 +57,12 @@ module Socializer
     end
 
     specify do
-      expect(audience).to enumerize(:privacy)
-        .in(:public, :circles, :limited)
+      is_expected.to define_enum_for(:privacy)
+        .with_values(public: 1, circles: 2, limited: 3)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
         .with_default(:public)
-        .with_predicates(true)
-        .with_scope(true)
+        .validating(allowing_nil: false)
     end
 
     describe "#object" do

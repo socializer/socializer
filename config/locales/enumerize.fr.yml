@@ -6,7 +6,8 @@ fr:
         public: Public
         restricted: Restreint
         private: Privé
-    socializer/audience:
+  socializer:
+    audiences:
       privacy:
         public: Publique
         circles: Cercles

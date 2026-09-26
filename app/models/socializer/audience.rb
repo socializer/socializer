@@ -9,17 +9,15 @@ module Socializer
   # Every {Socializer::Activity} is shared with one or more
   # {Socializer::Audience audiences}.
   class Audience < ApplicationRecord
-    extend Enumerize
-
-    enumerize :privacy, in: %w[public circles limited],
-                        default: :public, predicates: true, scope: true
+    enum :privacy, { public: 1, circles: 2, limited: 3 },
+         default: :public, prefix: true, validate: { allow_nil: false }
 
     # Constant for public privacy value
-    PUBLIC_PRIVACY = privacy.public.value.freeze
+    PUBLIC_PRIVACY = privacies.fetch(:public).freeze
     # Constant for circles privacy value
-    CIRCLES_PRIVACY = privacy.circles.value.freeze
+    CIRCLES_PRIVACY = privacies.fetch(:circles).freeze
     # Constant for limited privacy value
-    LIMITED_PRIVACY = privacy.limited.value.freeze
+    LIMITED_PRIVACY = privacies.fetch(:limited).freeze
 
     # Relationships
     belongs_to :activity, inverse_of: :audiences

@@ -6,7 +6,8 @@ en:
         public: Public
         restricted: Restricted
         private: Private
-    socializer/audience:
+  socializer:
+    audiences:
       privacy:
         public: Public
         circles: Circles

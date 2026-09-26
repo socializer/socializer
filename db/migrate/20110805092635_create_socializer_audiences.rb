@@ -5,7 +5,7 @@ class CreateSocializerAudiences < ActiveRecord::Migration[8.1]
     create_table :socializer_audiences do |t|
       t.references :activity, null: false
       t.references :activity_object
-      t.string :privacy, index: true, null: false
+      t.bigint :privacy, index: true, null: false
 
       t.timestamps
     end

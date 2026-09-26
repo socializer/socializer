@@ -48,7 +48,7 @@ module Socializer
       list = []
 
       @activity.audiences.each do |audience|
-        if audience.public?
+        if audience.privacy_public?
           message = I18n.t("tooltip.public",
                            scope: "socializer.activities.audiences.index")
           return [message]
@@ -77,11 +77,11 @@ module Socializer
     #   # Limited audience (person/group)
     #   audience_list(audience: limited_audience) # => ["John Doe"]
     def audience_list(audience:)
-      return circles_audience_list if audience.circles?
+      return circles_audience_list if audience.privacy_circles?
 
       activitable = audience.activity_object.activitable
 
-      limited_audience_list(activitable:) if audience.limited?
+      limited_audience_list(activitable:) if audience.privacy_limited?
     end
 
     # Returns an array of display names for the circle audience.

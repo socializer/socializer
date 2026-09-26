@@ -12,7 +12,7 @@ module Socializer
       let(:note) { create(:note) }
 
       let(:object_ids) do
-        Socializer::Audience.privacy.find_value(:public).value
+        Socializer::Audience::PUBLIC_PRIVACY
       end
 
       let(:valid_attributes) do

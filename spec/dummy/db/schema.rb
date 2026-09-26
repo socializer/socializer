@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2014_01_31_070951) do
+ActiveRecord::Schema[8.1].define(version: 2014_01_31_070951) do
   create_table "socializer_activities", force: :cascade do |t|
     t.bigint "actor_id", null: false
     t.bigint "activity_object_id", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2014_01_31_070951) do
   create_table "socializer_audiences", force: :cascade do |t|
     t.integer "activity_id", null: false
     t.integer "activity_object_id"
-    t.string "privacy", null: false
+    t.bigint "privacy", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id", "activity_object_id"], name: "index_audiences_on_activity_id__activity_object_id", unique: true

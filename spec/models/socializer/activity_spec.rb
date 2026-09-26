@@ -112,7 +112,7 @@ module Socializer
 
       describe "expected to be true" do
         let(:activity) { create(:activity) }
-        let(:scope) { Audience.privacy.find_value(:public) }
+        let(:scope) { Audience::PUBLIC_PRIVACY }
 
         let(:comment_attributes) do
           { content: "Comment",

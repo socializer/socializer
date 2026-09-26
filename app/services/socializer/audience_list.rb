@@ -141,9 +141,11 @@ module Socializer
     #   privacy_hash(privacy_symbol: :public)
     def privacy_hash(privacy_symbol:)
       privacy_symbol = privacy_symbol.downcase.to_sym
-      privacy        = Audience.privacy.find_value(privacy_symbol)
 
-      { id: privacy.value, name: privacy.text }
+      # TODO: better return value in the guard clause
+      return { id: "knf", name: "key not found" } unless Audience.privacies.key?(privacy_symbol)
+
+      { id: privacy_symbol.to_s, name: privacy_symbol.to_s.titlecase }
     end
 
     # Selects the `display_name` attribute aliased as `name` and ensures the query
