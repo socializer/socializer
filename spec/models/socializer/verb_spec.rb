@@ -10,6 +10,8 @@ module Socializer
       expect(verb).to be_valid
     end
 
+    it { is_expected.to normalize(:display_name).from(" dIsplAy nAMe\n").to("display name") }
+
     context "with relationships" do
       specify { is_expected.to have_many(:activities) }
     end
@@ -18,7 +20,7 @@ module Socializer
       subject { verb }
 
       specify { is_expected.to validate_presence_of(:display_name) }
-      specify { is_expected.to validate_uniqueness_of(:display_name) }
+      specify { is_expected.to validate_uniqueness_of(:display_name).ignoring_case_sensitivity }
     end
 
     context "with scopes" do

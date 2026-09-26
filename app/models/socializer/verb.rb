@@ -8,11 +8,14 @@ module Socializer
   #
   # Identifies the action that the activity describes.
   class Verb < ApplicationRecord
+    normalizes :display_name, with: lambda { |display_name|
+                                      display_name.strip.gsub(/\w+/, &:downcase)
+                                    }
     # Relationships
     has_many :activities, inverse_of: :verb, dependent: :destroy
 
     # Validations
-    validates :display_name, presence: true, uniqueness: true
+    validates :display_name, presence: true, uniqueness: { case_sensitive: true }
 
     # Named Scopes
 
