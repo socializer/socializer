@@ -26,7 +26,6 @@ module Socializer
     # Validations
     validates :activity_id, presence: false,
                             uniqueness: { scope: :activity_object_id }
-    validates :privacy, presence: true
 
     # Named Scopes
 

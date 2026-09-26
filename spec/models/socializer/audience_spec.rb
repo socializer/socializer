@@ -20,7 +20,6 @@ module Socializer
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:privacy) }
       # specify { is_expected.to validate_presence_of(:activity_id) }
       #
       # specify do
