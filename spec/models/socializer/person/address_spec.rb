@@ -15,7 +15,6 @@ module Socializer
     end
 
     context "with validations" do
-      specify { is_expected.to validate_presence_of(:category) }
       specify { is_expected.to validate_presence_of(:line1) }
       specify { is_expected.to validate_presence_of(:city) }
       specify { is_expected.to validate_presence_of(:province_or_state) }
@@ -24,11 +23,12 @@ module Socializer
     end
 
     specify do
-      expect(address).to enumerize(:category)
-        .in(:home, :work)
+      is_expected.to define_enum_for(:category)
+        .with_values(home: 1, work: 2)
+        .backed_by_column_of_type(:integer)
+        .with_prefix
         .with_default(:home)
-        .with_predicates(true)
-        .with_scope(true)
+        .validating(allowing_nil: false)
     end
   end
 end

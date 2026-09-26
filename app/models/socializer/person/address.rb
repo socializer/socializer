@@ -10,16 +10,13 @@ module Socializer
     #
     # Addresses related to the {Socializer::Person person}
     class Address < ApplicationRecord
-      extend Enumerize
-
-      enumerize :category, in: { home: 1, work: 2 },
-                           default: :home, predicates: true, scope: true
+      enum :category, { home: 1, work: 2 },
+           default: :home, prefix: true, validate: { allow_nil: false }
 
       # Relationships
       belongs_to :person, inverse_of: :addresses
 
       # Validations
-      validates :category, presence: true
       validates :line1, presence: true
       validates :city, presence: true
       validates :province_or_state, presence: true
