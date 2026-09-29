@@ -444,14 +444,14 @@ GEM
       logger
       prism (>= 1.6.0)
       tsort
-    rdoc (8.0.0)
+    rdoc (8.1.0)
       erb
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
     readline (0.0.4)
       reline
-    regexp_parser (2.13.0)
+    regexp_parser (2.13.1)
     reline (0.7.0)
       io-console (~> 0.5)
     request_store (1.7.0)
@@ -599,7 +599,7 @@ GEM
       readline
       sync
     tsort (0.2.0)
-    typeprof (0.33.1)
+    typeprof (0.33.2)
       prism (>= 1.4.0)
       rbs (>= 3.6.0)
     tzinfo (2.0.6)
