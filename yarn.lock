@@ -1122,9 +1122,9 @@ picomatch@^4.0.4:
   integrity sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==
 
 pkijs@^3.3.3:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/pkijs/-/pkijs-3.4.2.tgz#b6db83ab33430eef699cb787e23c0cd86d6bbf22"
-  integrity sha512-LIy5RqLEzlliax2ANQNWvDLvhJ2CtlpJahiSvKtXnpMdKHhXXoLdpdnWqae/uaTyF3U5l5ARweW0kZp9B0s2VA==
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/pkijs/-/pkijs-3.4.3.tgz#3d94b67b86f77474c9024f1992c2f6b56c246e9e"
+  integrity sha512-V9kOzaItwDgqlryhXysQsAXUEKi5O7kqWUaP3dXI7MLvkPqWWMb4wVb1QAtmEDCKI+XIAINsZoNKMFF7sZb1eg==
   dependencies:
     "@noble/hashes" "1.8.0"
     asn1js "^3.0.6"
