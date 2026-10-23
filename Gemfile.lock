@@ -103,8 +103,8 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
-    anonymous_loader (0.1.3)
-      version_gem (~> 1.1, >= 1.1.14)
+    anonymous_loader (0.1.4)
+      version_gem (~> 1.1, >= 1.1.15)
     ast (2.4.3)
     auth-sanitizer (0.2.3)
       version_gem (~> 1.1, >= 1.1.14)
@@ -207,7 +207,7 @@ GEM
     ffi (1.17.4-x86_64-linux-musl)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    hashie (5.1.0)
+    hashie (5.2.0)
       logger
     highline (3.1.2)
       reline
@@ -359,7 +359,7 @@ GEM
       rack
     ostruct (0.6.3)
     parallel (2.3.0)
-    parser (3.3.12.0)
+    parser (3.3.13.0)
       ast (~> 2.4.1)
       racc
     pp (0.6.4)
@@ -563,9 +563,9 @@ GEM
       activemodel (>= 7.0)
     simplecov (1.3.2)
     simplecov-lcov (0.9.0)
-    snaky_hash (2.0.7)
+    snaky_hash (2.0.8)
       hashie (>= 0.1.0, < 6)
-      version_gem (~> 1.1, >= 1.1.14)
+      version_gem (~> 1.1, >= 1.1.16)
     sparkr (0.4.1)
     sprockets (4.4.1)
       concurrent-ruby (~> 1.1)
@@ -613,7 +613,7 @@ GEM
     unicode-emoji (4.3.0)
     uri (1.1.2)
     useragent (0.16.11)
-    version_gem (1.1.15)
+    version_gem (1.1.16)
     websocket (1.2.11)
     websocket-driver (0.8.2)
       base64
