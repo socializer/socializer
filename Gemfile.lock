@@ -106,8 +106,8 @@ GEM
     anonymous_loader (0.1.4)
       version_gem (~> 1.1, >= 1.1.15)
     ast (2.4.3)
-    auth-sanitizer (0.2.3)
-      version_gem (~> 1.1, >= 1.1.14)
+    auth-sanitizer (0.2.4)
+      version_gem (~> 1.1, >= 1.1.16)
     autoprefixer-rails (10.6.1.0)
       execjs (~> 2)
     base64 (0.3.0)
@@ -688,4 +688,4 @@ DEPENDENCIES
   yard-lint
 
 BUNDLED WITH
-  4.0.21
+  4.0.23
