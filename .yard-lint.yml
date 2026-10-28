@@ -29,6 +29,8 @@ Documentation/UndocumentedMethodArguments:
   Description: Checks for method parameters without @param tags.
   Enabled: true
   Severity: warning
+  CheckParameterNames: true
+  SkipFullyUndocumented: false
 
 Documentation/UndocumentedBooleanMethods:
   Description: Checks that question mark methods document their boolean return.
@@ -37,6 +39,19 @@ Documentation/UndocumentedBooleanMethods:
 
 Documentation/UndocumentedOptions:
   Description: Detects methods with options hash parameters but no @option tags.
+  Enabled: true
+  Severity: warning
+
+Documentation/MissingReturn:
+  Description: Requires @return tags on all methods (opt-in for strict documentation).
+  Enabled: false
+  Severity: warning
+  ExcludedMethods:
+  - initialize
+
+Documentation/OrphanedDocComment:
+  Description: Detects YARD comment blocks with tags not attached to any documentable
+    construct.
   Enabled: true
   Severity: warning
 
@@ -62,6 +77,49 @@ Documentation/BlankLineBeforeDefinition:
     SingleBlankLine: true
     OrphanedDocs: true
 
+Documentation/LineLength:
+  Description: Detects documentation comment lines that exceed the configured maximum
+    length.
+  Enabled: false
+  Severity: convention
+  MaxLength: 120
+
+Documentation/UnderfilledLines:
+  Description: Detects documentation prose that wraps before using the available line
+    width.
+  Enabled: false
+  Severity: convention
+  MaxLength: 120
+  MinTrailingSpace: 20
+  MinParagraphLines: 2
+  SentenceEndChars:
+  - "."
+  - "?"
+  - "!"
+  - ":"
+  - ";"
+  SkipNonAscii: true
+
+Documentation/TextSubstitution:
+  Description: Detects forbidden characters or strings in documentation and suggests
+    replacements.
+  Enabled: false
+  Severity: warning
+  Substitutions:
+    "—": "-"
+    "–": "-"
+
+Documentation/DuplicateNamespaceComment:
+  Description: Detects namespaces (modules and classes) documented in more than one
+    file.
+  Enabled: true
+  Severity: warning
+
+Documentation/ReferenceTypo:
+  Description: Detects probable typos in method and constant references.
+  Enabled: true
+  Severity: warning
+
 # Tags validators
 Tags/Order:
   Description: Enforces consistent ordering of YARD tags.
@@ -82,6 +140,7 @@ Tags/InvalidTypes:
   - param
   - option
   - return
+  StrictConstantNames: false
 
 Tags/TypeSyntax:
   Description: Validates YARD type syntax using YARD parser.
@@ -104,6 +163,12 @@ Tags/MeaninglessTag:
   - class
   - module
   - constant
+
+Tags/MissingYield:
+  Description: Detects methods that yield to a block without a @yield, @yieldparam,
+    or @yieldreturn tag.
+  Enabled: false
+  Severity: warning
 
 Tags/CollectionType:
   Description: Validates Hash collection syntax consistency.
@@ -143,6 +208,12 @@ Tags/ExampleSyntax:
   Description: Validates Ruby syntax in @example tags.
   Enabled: true
   Severity: warning
+  SkipNonRuby: false
+
+Tags/ExampleStyle:
+  Description: Validates code style in @example tags using RuboCop/StandardRB.
+  Enabled: false
+  Severity: convention
 
 Tags/RedundantParamDescription:
   Description: Detects meaningless parameter descriptions that add no value.
@@ -181,6 +252,7 @@ Tags/InformalNotation:
   Severity: warning
   CaseSensitive: false
   RequireStartOfLine: true
+  SkipIndentedCodeBlocks: false
   Patterns:
     Note: "@note"
     Todo: "@todo"
@@ -237,7 +309,30 @@ Tags/TagGroupSeparator:
     - yieldreturn
   RequireAfterDescription: false
 
+Tags/TagSeparator:
+  Description: Enforces a blank line between every consecutive YARD tag.
+  Enabled: false
+  Severity: convention
+  Exempt: []
+  RequireAfterDescription: false
+
+Tags/ForbiddenTags:
+  Description: Detects forbidden tag and type combinations.
+  Enabled: false
+  Severity: convention
+  ForbiddenPatterns: []
+
+Tags/OverloadConsistency:
+  Description: Checks the tags of each @overload against its own signature.
+  Enabled: true
+  Severity: warning
+
 # Warnings validators - catches YARD parser errors
+Warnings/SyntaxError:
+  Description: Detects Ruby files YARD cannot parse (syntax errors).
+  Enabled: true
+  Severity: error
+
 Warnings/UnknownTag:
   Description: Detects unknown YARD tags.
   Enabled: true
