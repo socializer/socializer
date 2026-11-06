@@ -468,7 +468,7 @@ GEM
     rspec-mocks (3.13.8)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (8.0.4)
+    rspec-rails (8.1.0)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
       railties (>= 7.2)
@@ -593,7 +593,7 @@ GEM
     thor (1.5.0)
     tilt (2.9.0)
     timeout (0.6.1)
-    tins (1.61.0)
+    tins (1.62.0)
       bigdecimal
       irb
       mize (~> 0.6)
