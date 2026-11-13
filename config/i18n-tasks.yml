@@ -54,10 +54,10 @@ data:
 
 # Find translate calls
 search:
+  ## Paths or `Find.find` patterns to search in:
   paths:
     - app/
     - lib
-  ## Paths or `Find.find` patterns to search in:
 
   ## Root directories for relative keys resolution.
   # relative_roots:
