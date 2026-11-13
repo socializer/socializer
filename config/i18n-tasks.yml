@@ -13,7 +13,9 @@ data:
   ## Provide a custom adapter:
   # adapter: I18n::Tasks::Data::FileSystem
 
-  # Locale files or `Dir.glob` patterns where translations are read from:
+  # Locale files or `Dir.glob` patterns where translations are read from.
+  # When a key is defined in several files, the file read last wins: patterns are read in order,
+  # and the files matching a pattern in the order `Dir.glob` returns them.
   read:
     ## Default:
     # - config/locales/%{locale}.yml
@@ -116,8 +118,7 @@ search:
 #   # deepl_host: "https://api.deepl.com"
 #   # deepl_version: "v2"
 #   # deepl_glossary_ids:
-#   #   - f28106eb-0e06-489e-82c6-8215d6f95089
-#   #   - 2c6415be-1852-4f54-9e1b-d800463496b4
+#   #   - uuid
 #   # add additional options to the DeepL.translate call: https://www.deepl.com/docs-api/translate-text/translate-text/
 #   deepl_options:
 #     formality: prefer_less
@@ -153,6 +154,13 @@ search:
 # ignore_missing:
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
 # - '{devise,simple_form}.*'
+
+## Alternatively, ignore missing keys per locale (just like ignore_eq_base):
+# ignore_missing:
+#   all:
+#     - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
+#   fr,es:
+#     - '{devise,simple_form}.*'
 
 ## Consider these keys used:
 # ignore_unused:
