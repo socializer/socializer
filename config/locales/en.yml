@@ -160,10 +160,10 @@ en:
     model:
       create: "%{model} was successfully created."
       destroy: "%{model} was successfully removed."
-      share: "%{model} was successfully shared."
-      tie:
-        create: "%{person_name} was added to your %{circle_name} circle."
-        destroy: "%{person_name} was removed from your %{circle_name} circle."
+#      share: "%{model} was successfully shared."
+#      tie:
+#        create: "%{person_name} was added to your %{circle_name} circle."
+#        destroy: "%{person_name} was removed from your %{circle_name} circle."
       update: "%{model} was successfully updated."
     notes:
       form:
