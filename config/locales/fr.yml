@@ -21,7 +21,7 @@ fr:
         unbind: Unbind
       index:
         header:
-          one: 1 bound service
+          one: "%{count} bound service"
           other: "%{count} bound services"
       new:
         header: Add a new service
@@ -35,7 +35,7 @@ fr:
       contact_of:
         index:
           header:
-            one: 1 person
+            one: "%{count} person"
             other: "%{count} people"
       contacts:
         index:
@@ -104,12 +104,12 @@ fr:
       joinable:
         index:
           header:
-            one: 1 joinable group
+            one: "%{count} joinable group"
             other: "%{count} joinable groups"
       memberships:
         index:
           header:
-            one: You belong to 1 group
+            one: You belong to %{count} group
             other: You belong to %{count} groups
           leave: quitter
       new:
@@ -119,24 +119,24 @@ fr:
           delete: supprimer
           edit: éditer
           header:
-            one: You own 1 group
+            one: You own %{count} group
             other: You own %{count} groups
       pending_invites:
         index:
           confirm: confirmer
           decline: refuser
           header:
-            one: You have 1 pending invite
+            one: You have %{count} pending invite
             other: You have %{count} pending invites
       public:
         index:
           header:
-            one: 1 public group
+            one: "%{count} public group"
             other: "%{count} public groups"
       restricted:
         index:
           header:
-            one: 1 restricted group
+            one: "%{count} restricted group"
             other: "%{count} restricted groups"
       show:
         confirm: Are you sure?
@@ -160,10 +160,6 @@ fr:
     model:
       create: "%{model} was successfully created."
       destroy: "%{model} was successfully removed."
-#      share: "%{model} was successfully shared."
-#      tie:
-#        create: "%{person_name} was added to your %{circle_name} circle."
-#        destroy: "%{person_name} was removed from your %{circle_name} circle."
       update: "%{model} was successfully updated."
     notes:
       form:
