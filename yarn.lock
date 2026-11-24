@@ -1417,9 +1417,9 @@ vary@^1.1.2, vary@~1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 webpack-dev-middleware@^8.4.0:
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-8.6.2.tgz#d5721ed253785f0080bf9d9e28a789f4cff79658"
-  integrity sha512-steMJ1dS33+DuX0I08QMKU1B1qdn7CT3BHYYY3XZa7IMe8r5SAUXXoQOaeqB7CsWQLGxsipAWwAE27q/2inl/Q==
+  version "8.6.3"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-8.6.3.tgz#d9e0e5a9a72bbcc3baa5f6e7f8b25983a69afc3b"
+  integrity sha512-dDxACv07a+8mOYnQusKjndG7HEIdKJA1bimx4mCfZKu0jDaq5EbaeFaAuNtTdbkKFgg9mtmCpc5ZTjtFxszpNg==
   dependencies:
     memfs "^4.68.2"
     mime-db "^1.54.0"
